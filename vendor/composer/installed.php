@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => '__root__',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => null,
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => 'b05509567de8866758f9561d1115d6970f1b83e8',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         '__root__' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => null,
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => 'b05509567de8866758f9561d1115d6970f1b83e8',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -29,9 +29,9 @@
             'dev_requirement' => false,
         ),
         'symfony/intl' => array(
-            'pretty_version' => 'v7.1.6',
-            'version' => '7.1.6.0',
-            'reference' => 'c65630cc9c22acd9b511a87a3f4734e48e500932',
+            'pretty_version' => 'v7.1.7',
+            'version' => '7.1.7.0',
+            'reference' => '4770ebd8f6d96c6bff8ad2c76ffcf02955acfd49',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/intl',
             'aliases' => array(),
@@ -74,9 +74,9 @@
             'dev_requirement' => false,
         ),
         'twig/twig' => array(
-            'pretty_version' => 'v3.14.0',
-            'version' => '3.14.0.0',
-            'reference' => '126b2c97818dbff0cdf3fbfc881aedb3d40aae72',
+            'pretty_version' => 'v3.13.0',
+            'version' => '3.13.0.0',
+            'reference' => 'afc0eb63dc66c248c5a94504dc2b255bc9b86575',
             'type' => 'library',
             'install_path' => __DIR__ . '/../twig/twig',
             'aliases' => array(),

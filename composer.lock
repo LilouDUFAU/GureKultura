@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2e52c25efe37c91e7615e886ba00aab6",
+    "content-hash": "7da96a5466454c34689d84eaa5d0861b",
     "packages": [
         {
             "name": "symfony/deprecation-contracts",
@@ -75,16 +75,16 @@
         },
         {
             "name": "symfony/intl",
-            "version": "v7.1.6",
+            "version": "v7.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/intl.git",
-                "reference": "c65630cc9c22acd9b511a87a3f4734e48e500932"
+                "reference": "4770ebd8f6d96c6bff8ad2c76ffcf02955acfd49"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/intl/zipball/c65630cc9c22acd9b511a87a3f4734e48e500932",
-                "reference": "c65630cc9c22acd9b511a87a3f4734e48e500932",
+                "url": "https://api.github.com/repos/symfony/intl/zipball/4770ebd8f6d96c6bff8ad2c76ffcf02955acfd49",
+                "reference": "4770ebd8f6d96c6bff8ad2c76ffcf02955acfd49",
                 "shasum": ""
             },
             "require": {
@@ -141,7 +141,7 @@
                 "localization"
             ],
             "support": {
-                "source": "https://github.com/symfony/intl/tree/v7.1.6"
+                "source": "https://github.com/symfony/intl/tree/v7.1.7"
             },
             "funding": [
                 {
@@ -157,7 +157,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-10-09T08:46:59+00:00"
+            "time": "2024-11-05T15:34:55+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -460,16 +460,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v3.14.0",
+            "version": "v3.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "126b2c97818dbff0cdf3fbfc881aedb3d40aae72"
+                "reference": "afc0eb63dc66c248c5a94504dc2b255bc9b86575"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/126b2c97818dbff0cdf3fbfc881aedb3d40aae72",
-                "reference": "126b2c97818dbff0cdf3fbfc881aedb3d40aae72",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/afc0eb63dc66c248c5a94504dc2b255bc9b86575",
+                "reference": "afc0eb63dc66c248c5a94504dc2b255bc9b86575",
                 "shasum": ""
             },
             "require": {
@@ -523,7 +523,7 @@
             ],
             "support": {
                 "issues": "https://github.com/twigphp/Twig/issues",
-                "source": "https://github.com/twigphp/Twig/tree/v3.14.0"
+                "source": "https://github.com/twigphp/Twig/tree/v3.13.0"
             },
             "funding": [
                 {
@@ -535,7 +535,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-09-09T17:55:12+00:00"
+            "time": "2024-09-07T08:01:12+00:00"
         }
     ],
     "packages-dev": [],

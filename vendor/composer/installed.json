@@ -29,7 +29,7 @@
                     "url": "https://github.com/symfony/contracts"
                 }
             },
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "files": [
                     "function.php"
@@ -72,17 +72,17 @@
         },
         {
             "name": "symfony/intl",
-            "version": "v7.1.6",
-            "version_normalized": "7.1.6.0",
+            "version": "v7.1.7",
+            "version_normalized": "7.1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/intl.git",
-                "reference": "c65630cc9c22acd9b511a87a3f4734e48e500932"
+                "reference": "4770ebd8f6d96c6bff8ad2c76ffcf02955acfd49"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/intl/zipball/c65630cc9c22acd9b511a87a3f4734e48e500932",
-                "reference": "c65630cc9c22acd9b511a87a3f4734e48e500932",
+                "url": "https://api.github.com/repos/symfony/intl/zipball/4770ebd8f6d96c6bff8ad2c76ffcf02955acfd49",
+                "reference": "4770ebd8f6d96c6bff8ad2c76ffcf02955acfd49",
                 "shasum": ""
             },
             "require": {
@@ -96,9 +96,9 @@
                 "symfony/filesystem": "^6.4|^7.0",
                 "symfony/var-exporter": "^6.4|^7.0"
             },
-            "time": "2024-10-09T08:46:59+00:00",
+            "time": "2024-11-05T15:34:55+00:00",
             "type": "library",
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Symfony\\Component\\Intl\\": ""
@@ -141,7 +141,7 @@
                 "localization"
             ],
             "support": {
-                "source": "https://github.com/symfony/intl/tree/v7.1.6"
+                "source": "https://github.com/symfony/intl/tree/v7.1.7"
             },
             "funding": [
                 {
@@ -191,7 +191,7 @@
                     "url": "https://github.com/symfony/polyfill"
                 }
             },
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "files": [
                     "bootstrap.php"
@@ -273,7 +273,7 @@
                     "url": "https://github.com/symfony/polyfill"
                 }
             },
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "files": [
                     "bootstrap.php"
@@ -350,7 +350,7 @@
                     "url": "https://github.com/symfony/polyfill"
                 }
             },
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "files": [
                     "bootstrap.php"
@@ -428,7 +428,7 @@
             },
             "time": "2024-09-03T13:08:40+00:00",
             "type": "library",
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Twig\\Extra\\Intl\\": ""
@@ -472,17 +472,17 @@
         },
         {
             "name": "twig/twig",
-            "version": "v3.14.0",
-            "version_normalized": "3.14.0.0",
+            "version": "v3.13.0",
+            "version_normalized": "3.13.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "126b2c97818dbff0cdf3fbfc881aedb3d40aae72"
+                "reference": "afc0eb63dc66c248c5a94504dc2b255bc9b86575"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/126b2c97818dbff0cdf3fbfc881aedb3d40aae72",
-                "reference": "126b2c97818dbff0cdf3fbfc881aedb3d40aae72",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/afc0eb63dc66c248c5a94504dc2b255bc9b86575",
+                "reference": "afc0eb63dc66c248c5a94504dc2b255bc9b86575",
                 "shasum": ""
             },
             "require": {
@@ -496,9 +496,9 @@
                 "psr/container": "^1.0|^2.0",
                 "symfony/phpunit-bridge": "^5.4.9|^6.4|^7.0"
             },
-            "time": "2024-09-09T17:55:12+00:00",
+            "time": "2024-09-07T08:01:12+00:00",
             "type": "library",
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "files": [
                     "src/Resources/core.php",
@@ -538,7 +538,7 @@
             ],
             "support": {
                 "issues": "https://github.com/twigphp/Twig/issues",
-                "source": "https://github.com/twigphp/Twig/tree/v3.14.0"
+                "source": "https://github.com/twigphp/Twig/tree/v3.13.0"
             },
             "funding": [
                 {
