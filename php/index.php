@@ -15,4 +15,3 @@ echo $twig->render('index.html.twig', [
     'title' => 'Page d\'Accueil'
 ]);
 ////////////////////////////////////
-?>

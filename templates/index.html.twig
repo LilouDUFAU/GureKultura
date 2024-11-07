@@ -48,7 +48,7 @@
         </nav>
 
         <!-- compte btn -->
-        <button class="flex items-center justify-center px-7 max-h-1 border-2 border-[#ffffff] p-4 font-bold font-['Sen']">Compte</button>
+        <button class="flex items-center justify-center px-7 max-h-1 border-4 border-[#ffffff] p-4 font-bold font-['Sen']">Compte</button>
     </header>
 
     <!-- Content -->
@@ -63,12 +63,12 @@
         <!-- content -->
         <div class="font-['Sen']">
             <!-- Fil d'Ariane -->
-            <nav class="flex text-[#A23145] space-x-2 p-4">
+            <nav class="flex items-center text-[#A23145] space-x-2 p-4 border-4 border-[#A23145] max-h-1">
                 {% for breadcrumb in breadcrumbs %}
                     {% if loop.last %}
                         <span>{{ breadcrumb.title }}</span>
                     {% else %}
-                        <a href="{{ breadcrumb.url }}" class="border-r-2 border-[#bfbfbf] pr-2">{{ breadcrumb.title }}</a>
+                        <a href="{{ breadcrumb.url }}" class="border-r-2 border-[#bfbfbf]  pr-2">{{ breadcrumb.title }}</a>
                     {% endif %}
                 {% endfor %}
             </nav>
