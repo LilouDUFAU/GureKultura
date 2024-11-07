@@ -1,0 +1,6 @@
+Pour page accueil: 
+	pour generer les cartes d'evenements :
+		1- créer le Template de la carte
+		2- recuperer les donnes (dans la bd)
+		3- Generer les templates a partir des donnees recuperees (parametre de render)
+	
