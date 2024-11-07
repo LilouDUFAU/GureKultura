@@ -586,6 +586,10 @@ video {
   height: 100vh;
 }
 
+.h-auto {
+  height: auto;
+}
+
 .max-h-1 {
   max-height: 0.25rem;
 }
@@ -596,6 +600,10 @@ video {
 
 .w-full {
   width: 100%;
+}
+
+.w-auto {
+  width: auto;
 }
 
 .transform {
@@ -656,8 +664,17 @@ video {
   background-color: rgb(162 49 69 / var(--tw-bg-opacity));
 }
 
+.bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
 .bg-\[url\(\'\.\.\/asset\/bg_footer\.svg\'\)\] {
   background-image: url('../asset/bg_footer.svg');
+}
+
+.bg-\[url\(\'\.\.\/asset\/bg_img\.svg\'\)\] {
+  background-image: url('../asset/bg_img.svg');
 }
 
 .p-2 {
@@ -707,8 +724,8 @@ video {
   padding-top: 0.5rem;
 }
 
-.font-\[\'Sen\'\] {
-  font-family: 'Sen';
+.font-\[\'verdana\'\] {
+  font-family: 'verdana';
 }
 
 .text-2xl {
@@ -733,4 +750,9 @@ video {
 .text-\[\#ffffff\] {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.drop-shadow-\[0_5px_5px_rgba\(0\2c 0\2c 0\2c 0\.3\)\] {
+  --tw-drop-shadow: drop-shadow(0 5px 5px rgba(0,0,0,0.3));
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }

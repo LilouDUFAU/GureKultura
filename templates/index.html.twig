@@ -8,7 +8,7 @@
     <link rel="icon" type="image/x-icon" href="../asset/logo.ico">
     <link href="../css/output.css" rel="stylesheet">
 </head>
-<body>
+<body class="font-['verdana']">
 
     <!-- Header -->
     <header class="flex justify-between items-center min-h-24 px-7 bg-[#A23145] text-[#ffffff]">
@@ -31,39 +31,39 @@
         </a>
 
         <!-- navbar -->
-        <nav class="font-['Sen']">
+        <nav class="">
             <ul class="">
                 <li class="inline p-4">
                     <a class="text-xl" href="#">ACCUEIL</a>
                 </li>
 
                 <li class="inline border-l-2 border-r-2 border-[#ffffff] p-2">
-                    <a class="text-xl" href="#">CATEGORIE</a>
+                    <a class="text-xl" href="../php/categorie.php">CATEGORIE</a>
                 </li>
 
                 <li class="inline p-4">
-                    <a class="text-xl" href="#">PROPOSITION D'EVENEMENT</a>
+                    <a class="text-xl" href="../php/propEv.php">PROPOSITION D'EVENEMENT</a>
                 </li>
             </ul>
         </nav>
 
         <!-- compte btn -->
-        <button class="flex items-center justify-center px-7 max-h-1 border-4 border-[#ffffff] p-4 font-bold font-['Sen']">Compte</button>
+        <button href="../php/compte.php" class="flex items-center justify-center px-7 max-h-1 border-4 border-[#ffffff] p-4 font-bold ">Compte</button>
     </header>
 
     <!-- Content -->
     <main class="py-2 pr-2 grid h-screen" style="grid-template-columns : 200px 1fr;">
         <!-- Aside -->
         <div class="pr-2">
-            <aside class="flex justify-center h-full bg-[#A23145] text-[#ffffff] font-['Sen'] ">
+            <aside class="flex justify-center h-full bg-[#A23145] text-[#ffffff]  ">
                 <h1 class="text-2xl">ACTUS</h1>
             </aside>
         </div>
         
         <!-- content -->
-        <div class="font-['Sen']">
+        <div class="">
             <!-- Fil d'Ariane -->
-            <nav class="flex items-center text-[#A23145] space-x-2 p-4 border-4 border-[#A23145] max-h-1">
+            <nav class="flex items-center text-[#A23145] space-x-2 p-4 border-4 bg-white border-[#A23145] max-h-1 drop-shadow-[0_5px_5px_rgba(0,0,0,0.3)]">
                 {% for breadcrumb in breadcrumbs %}
                     {% if loop.last %}
                         <span>{{ breadcrumb.title }}</span>
@@ -84,10 +84,10 @@
     
 
     <!-- Footer -->
-     <footer class="flex justify-between items-center px-7 bg-[url('../asset/bg_footer.svg')] text-[#ffffff] font-['Sen'] pb-4">
+     <footer class="flex justify-between items-center px-7 bg-[url('../asset/bg_footer.svg')] text-[#ffffff]  pb-4">
        
         <!-- logo -->
-        <a href="#">
+        <a href="../php/index.php">
             <svg width="195" height="52" viewBox="0 0 195 52" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <rect width="195" height="52" fill="url(#pattern0_2338_21)"/>
                 <rect width="195" height="52" fill="url(#pattern1_2338_21)"/>
@@ -156,7 +156,7 @@
         <ul>
             <li class="m-0.5 text-2xl pt-2 pb-0">PROPOSEZ-NOUS</li>
             <li class="m-0.5 text-2xl pt-0">DES EVENEMENTS</li>
-            <button href="#" class="flex items-center justify-center max-h-1 w-full border-4 border-[#ffffff] p-4 font-bold">Formulaire</button>
+            <button href="../php/propEv.php" class="flex items-center justify-center max-h-1 w-full border-4 border-[#ffffff] p-4 font-bold">Formulaire</button>
         </ul>
     </footer>
 </body>

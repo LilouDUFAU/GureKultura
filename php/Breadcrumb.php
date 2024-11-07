@@ -11,7 +11,7 @@ class Breadcrumb
         $breadcrumbs[] = ['url' => '/', 'title' => 'Accueil'];
 
         $currentPath = '';
-        foreach ($segments as $segment) {
+        foreach ($segments as $segment) { 
             $currentPath .= '/' . $segment;
             $breadcrumbs[] = [
                 'url' => $currentPath,
