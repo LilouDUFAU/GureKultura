@@ -12,6 +12,6 @@ $breadcrumbs = Breadcrumb::generate();
 // Rendre le template Twig
 echo $twig->render('propEv.html.twig', [
     'breadcrumbs' => $breadcrumbs,
-    'title' => 'Page d\'Accueil'
+    'title' => 'Proposition événements'
 ]);
 ////////////////////////////////////
