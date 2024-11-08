@@ -635,31 +635,6 @@ video {
   max-height: 0.25rem;
 }
 
-.max-h-fit {
-  max-height: -moz-fit-content;
-  max-height: fit-content;
-}
-
-.max-h-96 {
-  max-height: 24rem;
-}
-
-.max-h-full {
-  max-height: 100%;
-}
-
-.max-h-svh {
-  max-height: 100svh;
-}
-
-.max-h-lvh {
-  max-height: 100lvh;
-}
-
-.max-h-dvh {
-  max-height: 100dvh;
-}
-
 .max-h-max {
   max-height: -moz-max-content;
   max-height: max-content;
@@ -804,11 +779,6 @@ video {
   background-color: rgb(229 231 235 / var(--tw-bg-opacity));
 }
 
-.bg-red-700 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(185 28 28 / var(--tw-bg-opacity));
-}
-
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
@@ -905,10 +875,6 @@ video {
 
 .text-center {
   text-align: center;
-}
-
-.text-right {
-  text-align: right;
 }
 
 .font-\[\'Sen\'\] {
@@ -1091,6 +1057,11 @@ video {
 .hover\:bg-gray-100:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-gray-200:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
 }
 
 .hover\:bg-red-800:hover {
