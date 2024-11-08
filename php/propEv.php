@@ -12,6 +12,6 @@ $breadcrumbs = Breadcrumb::generate();
 // Rendre le template Twig
 echo $twig->render('propEv.html.twig', [
     'breadcrumbs' => $breadcrumbs,
-    'title' => 'Proposition événements'
+    'title' => 'GureKultura | Proposition événements'
 ]);
 ////////////////////////////////////

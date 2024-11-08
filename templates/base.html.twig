@@ -1,12 +1,12 @@
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GureKultura | Accueil</title>
+    <title>{{ title }}</title>
     <link rel="icon" type="image/x-icon" href="../asset/logo.ico">
     <link href="../css/output.css" rel="stylesheet">
 </head>
-<body class="font-['verdana'] flex flex-col gap-2">
+<body class="font-['verdana']">
 
     <!-- Header -->
     <header class="flex justify-between items-center min-h-24 px-7 bg-[#A23145] text-[#ffffff]">
@@ -29,37 +29,69 @@
         </a>
 
         <!-- navbar -->
-        <nav class="font-['Sen']">
+        <nav class="">
             <ul class="">
                 <li class="inline p-4">
                     <a class="text-xl" href="#">ACCUEIL</a>
                 </li>
 
                 <li class="inline border-l-2 border-r-2 border-[#ffffff] p-2">
-                    <a class="text-xl" href="#">CATEGORIE</a>
+                    <a class="text-xl" href="../php/categorie.php">CATEGORIE</a>
                 </li>
 
                 <li class="inline p-4">
-                    <a class="text-xl" href="#">PROPOSITION D'EVENEMENT</a>
+                    <a class="text-xl" href="../php/propEv.php">PROPOSITION D'EVENEMENT</a>
                 </li>
             </ul>
         </nav>
 
         <!-- compte btn -->
-        <button class="flex items-center justify-center px-7 max-h-1 border-2 border-[#ffffff] p-4 font-bold font-['Sen']">Compte</button>
+        <a href="../php/connexion.php" class="flex items-center justify-center px-7 max-h-1 border-2 border-[#ffffff] p-4 rounded-lg">Compte</a>
     </header>
 
     <!-- Content -->
-    <main class="pr-2 grid h-screen" style="grid-template-columns : 200px 1fr;">
+    <main class="py-2 pr-2 grid h-screen" style="grid-template-columns : 200px 1fr;">
         <!-- Aside -->
-        <div class="pr-2">
-            <aside class="flex justify-center h-full bg-[#A23145] text-[#ffffff]  ">
-                <h1 class="text-3xl">ACTUS</h1>
+        <div class="pr-2 scrollable">
+            <aside class="flex h-full justify-center bg-[#A23145] font-['Sen'] text-[#ffffff] scrollable">
+                <div class="p-4 py-2 gap-y">
+                    <h1 class="text-2xl">ACTUS</h1>
+                    <a src="https://www.google.com">
+                    <div class="h-35 w-35 box-content rounded-lg border-2 bg-[#ffffff] p-4 text-[#000000]">
+                        <h2>ceci est un text pour le titre d'une actu</h2>
+                        <img src="https://imgs.search.brave.com/abb96LUMARipbuwgZgIyD9XU25lQ8dlm1u-v5HDIVd0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMuY3RmYXNzZXRz/Lm5ldC96Znh5dHJr/Nm5mN20vMjVYV2xh/ZWh5MHdzYVNBVzhD/cVNxOC83MWU3YzRl/MjA3MzUwODY1OTEy/NDBiYTY2ZjE4YTQ2/YS9jYXJ0ZS1iaWFy/cml0ei5qcGc_dz0z/MjgmaD0zMjgmcT05/MCZmbD1wcm9ncmVz/c2l2ZSZmaXQ9Zmls/bA" />
+                    </div>
+                    </a>
+                    <a src="https://www.google.com">
+                    <div class="h-35 w-35 box-content rounded-lg border-2 bg-[#ffffff] p-4 text-[#000000]">
+                        <h2>ceci est un text pour le titre d'une actu</h2>
+                        <img src="https://imgs.search.brave.com/abb96LUMARipbuwgZgIyD9XU25lQ8dlm1u-v5HDIVd0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMuY3RmYXNzZXRz/Lm5ldC96Znh5dHJr/Nm5mN20vMjVYV2xh/ZWh5MHdzYVNBVzhD/cVNxOC83MWU3YzRl/MjA3MzUwODY1OTEy/NDBiYTY2ZjE4YTQ2/YS9jYXJ0ZS1iaWFy/cml0ei5qcGc_dz0z/MjgmaD0zMjgmcT05/MCZmbD1wcm9ncmVz/c2l2ZSZmaXQ9Zmls/bA" />
+                    </div>
+                    </a>
+                    <a src="https://www.google.com">
+                    <div class="h-35 w-35 box-content rounded-lg border-2 bg-[#ffffff] p-4 text-[#000000]">
+                        <h2>ceci est un text pour le titre d'une actu</h2>
+                        <img src="https://imgs.search.brave.com/abb96LUMARipbuwgZgIyD9XU25lQ8dlm1u-v5HDIVd0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMuY3RmYXNzZXRz/Lm5ldC96Znh5dHJr/Nm5mN20vMjVYV2xh/ZWh5MHdzYVNBVzhD/cVNxOC83MWU3YzRl/MjA3MzUwODY1OTEy/NDBiYTY2ZjE4YTQ2/YS9jYXJ0ZS1iaWFy/cml0ei5qcGc_dz0z/MjgmaD0zMjgmcT05/MCZmbD1wcm9ncmVz/c2l2ZSZmaXQ9Zmls/bA" />
+                    </div>
+                    </a>
+                    <a src="https://www.google.com">
+                    <div class="h-35 w-35 box-content rounded-lg border-2 bg-[#ffffff] p-4 text-[#000000]">
+                        <h2>ceci est un text pour le titre d'une actu</h2>
+                        <img src="https://imgs.search.brave.com/abb96LUMARipbuwgZgIyD9XU25lQ8dlm1u-v5HDIVd0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMuY3RmYXNzZXRz/Lm5ldC96Znh5dHJr/Nm5mN20vMjVYV2xh/ZWh5MHdzYVNBVzhD/cVNxOC83MWU3YzRl/MjA3MzUwODY1OTEy/NDBiYTY2ZjE4YTQ2/YS9jYXJ0ZS1iaWFy/cml0ei5qcGc_dz0z/MjgmaD0zMjgmcT05/MCZmbD1wcm9ncmVz/c2l2ZSZmaXQ9Zmls/bA" />
+                    </div>
+                    </a>
+                    <a src="https://www.google.com">
+                    <div class="h-35 w-35 box-content rounded-lg border-2 bg-[#ffffff] p-4 text-[#000000]">
+                        <h2>ceci est un text pour le titre d'une actu</h2>
+                        <img src="https://imgs.search.brave.com/abb96LUMARipbuwgZgIyD9XU25lQ8dlm1u-v5HDIVd0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMuY3RmYXNzZXRz/Lm5ldC96Znh5dHJr/Nm5mN20vMjVYV2xh/ZWh5MHdzYVNBVzhD/cVNxOC83MWU3YzRl/MjA3MzUwODY1OTEy/NDBiYTY2ZjE4YTQ2/YS9jYXJ0ZS1iaWFy/cml0ei5qcGc_dz0z/MjgmaD0zMjgmcT05/MCZmbD1wcm9ncmVz/c2l2ZSZmaXQ9Zmls/bA" />
+                    </div>
+                    </a>
+                </div>
             </aside>
         </div>
         
         <!-- content -->
-        <div class="h-full flex flex-col gap-2">
+        <div class="">
             <!-- Fil d'Ariane -->
             <nav class="flex items-center text-[#A23145] space-x-2 p-4 border-4 bg-white border-[#A23145] max-h-1 drop-shadow-[0_5px_5px_rgba(0,0,0,0.3)]">
                 {% for breadcrumb in breadcrumbs %}
@@ -71,15 +103,18 @@
                 {% endfor %}
             </nav>
 
-            <div>
-
+            <!-- Contenu spécifique de chaque page -->
+            <div class="p-4">
+                {% block content %}
+                <!-- Contenu des pages filles sera inséré ici -->
+                {% endblock %}
             </div>
         </div>
     </main>
     
 
     <!-- Footer -->
-     <footer class="flex justify-between items-center px-7 bg-[url('../asset/bg_footer.svg')] text-[#ffffff] font-['Sen'] pb-4">
+     <footer class="flex justify-between items-center px-7 bg-[url('../asset/bg_footer.svg')] text-[#ffffff]  pb-4">
        
         <!-- logo -->
         <a href="#">
@@ -151,7 +186,7 @@
         <ul>
             <li class="m-0.5 text-2xl pt-2 pb-0">PROPOSEZ-NOUS</li>
             <li class="m-0.5 text-2xl pt-0">DES EVENEMENTS</li>
-            <button href="#" class="flex items-center justify-center max-h-1 w-full border-4 border-[#ffffff] p-4 font-bold">Formulaire</button>
+            <a href="../php/propEv.php" class="flex items-center justify-center max-h-1 w-full border-2 border-[#ffffff] p-4 rounded-lg">Formulaire</a>
         </ul>
     </footer>
 </body>
