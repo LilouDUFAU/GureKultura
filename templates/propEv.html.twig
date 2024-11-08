@@ -8,7 +8,7 @@
     <link rel="icon" type="image/x-icon" href="../asset/logo.ico">
     <link href="../css/output.css" rel="stylesheet">
 </head>
-<body class="font-['verdana']">
+<body class="font-['verdana'] flex flex-col gap-2 ">
 
     <!-- Header -->
     <header class="flex justify-between items-center min-h-24 px-7 bg-[#A23145] text-[#ffffff]">
@@ -52,7 +52,7 @@
     </header>
 
     <!-- Content -->
-    <main class="py-2 pr-2 grid h-screen" style="grid-template-columns : 200px 1fr;">
+    <main class="pr-2 grid h-screen" style="grid-template-columns : 200px 1fr;">
         <!-- Aside -->
         <div class="pr-2">
             <aside class="flex justify-center h-full bg-[#A23145] text-[#ffffff]  ">
@@ -90,13 +90,13 @@
                     </div>
 
                     <div class="flex h-full w-full flex-row items-left gap-2 ">
-                        <div class="flex flex-col gap-2">
+                        <div class="flex flex-1 flex-col gap-2">
                             <div class="bg-[#A23145] opacity-75 rounded-2xl p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
                                 <label class="text-white min-w-auto">Joindre les autorisation essentielles :</label>
                                 <input type="text" id="name" name="name" class="border-2 border-solid border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]" placeholder="Insérer pdf, jpg, doc ...">
                             </div>
 
-                            <div class="flex flex-col bg-[#A23145] opacity-75 text-white rounded-2xl p-4">
+                            <div class="flex flex-1 flex-col bg-[#A23145] opacity-75 text-white rounded-2xl p-4">
                                 <h1>Tes coordonées :</h1>
                                 <div class="flex bg-[#A23145] opacity-75 text-white rounded-2xl py-2 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
                                     <label class="flex justify-left bg-[#A23145] opacity-75 text-white rounded-2xl">Email :</label>
@@ -113,6 +113,9 @@
                                 <div class="flex bg-[#A23145] opacity-75 text-white rounded-2xl py-2">
                                     <label class="flex justify-left bg-[#A23145] opacity-75 text-white rounded-2xl">Prénom du représenant de l'événement :</label>
                                     <input type="text" id="repfname" name="repfname" class="border-2 border-solid border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full" placeholder="Saisir un email ...">
+                                </div>
+                                <div class="flex bg-[#A23145] opacity-75 text-white rounded-2xl py-2">
+                                    <label class="flex justify-left bg-[#A23145] opacity-75 text-white rounded-2xl text-xs">Aide nous à pouvoir te contacter par mail ou téléphone si ton événement est retenus :</label>
                                 </div>
                             </div>
                         </div>
@@ -147,6 +150,11 @@
                                     <label class="flex justify-left bg-[#A23145] opacity-75 text-white rounded-2xl">Photo :</label>
                                     <button href="#" class="flex items-center justify-center px-7 max-h-1 text-[#A23145] bg-[#ffffff] rounded-lg p-4 font-bold ">Ajouter</button>
                                 </div>
+                            </div>
+                            <div class="flex items-center justify-center bg-[#A23145] opacity-75 text-white rounded-2xl p-2 gap-2">
+                                <button href="#" class="flex items-center justify-center max-h-1 text-[#A23145] bg-[#ffffff] rounded-lg p-4 font-bold ">Besoins d'aide ?</button>
+                                <button href="#" class="flex items-center justify-center max-h-1 text-[#A23145] bg-[#ffffff] rounded-lg p-4 font-bold ">Annuler</button>
+                                <button href="#" class="flex items-center justify-center max-h-1 text-[#A23145] bg-[#ffffff] rounded-lg p-4 font-bold ">Valider</button>
                             </div>
                         </div>
                     </div>
