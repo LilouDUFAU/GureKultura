@@ -6,7 +6,7 @@ use DateTime;
 
 class Actualite
 {
-    private ?int $id_actualite;
+    private ?int $id;
     private ?string $type;
     private ?string $titre;
     private ?string $resume;
@@ -16,7 +16,7 @@ class Actualite
     public function __construct(?int $id, ?string $type, ?string $titre, ?string $resume, ?DateTime $date_publication, ?string $image)
     {
         $this->id = $id;
-        $this->thme = $type;
+        $this->type = $type;
         $this->titre = $titre;
         $this->resume = $resume;
         $this->date_publication = $date_publication;
