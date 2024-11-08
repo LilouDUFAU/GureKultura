@@ -1,0 +1,32 @@
+ETAPE 1:
+Dans un terminal vs code, entrez les commandes suivantes (dans l'ordre):
+
+composer remove twig/intl-extra
+composer remove twig/twig
+
+ETAPE 2:
+Dans le fichier composer.json, modifiez le fichier qui soit similaire à:
+
+{
+    "config": {
+        "platform": {
+            "php": "8.2.0"
+        }
+    },
+    "require": {
+        
+    }
+}
+
+La version a mettre de php dépend de celle que le serveur utilise (l'erreur php doit normalement vous l'indiquer).
+
+ETAPE 3:
+
+Supprimez le fichier composer.lock
+
+ETAPE 4:
+Dans un terminal vs code, entrez les commandes suivantes (dans l'ordre):
+
+composer install
+composer require twig/twig
+composer require twig/intl-extra
