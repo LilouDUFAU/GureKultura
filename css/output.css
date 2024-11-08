@@ -640,6 +640,10 @@ video {
   max-height: max-content;
 }
 
+.max-h-lvh {
+  max-height: 100lvh;
+}
+
 .min-h-24 {
   min-height: 6rem;
 }
