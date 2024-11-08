@@ -16,7 +16,7 @@ class ConnectionBD {
             //$this->conn = new PDO('mysql:host=lakartxela;dbname=tlague_pro','root',''); 
         
             // pour ceux qui sont sur machine person (a condition d'avoir importe la BD et de l'avoir nomme gurekultura_bd)
-            $this->conn = new PDO('mysql:host=localhost;dbname=tlague_pro','root','');
+            $this->conn = new PDO('mysql:host=localhost;dbname=gurekultura_bd','root','');
         echo"connection reussie";
         } catch (PDOException $exception) {
             echo "Connection error: " . $exception->getMessage();

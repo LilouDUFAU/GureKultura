@@ -15,7 +15,7 @@ class Breadcrumb
             $currentPath .= '/' . $segment;
             $breadcrumbs[] = [
                 'url' => $currentPath,
-                'title' => ucfirst(urldecode($segment)) 
+                'title' => ucfirst(urldecode($segment))
             ];
         }
 
