@@ -4,8 +4,8 @@
 <!-- Contenu spécifique de chaque page -->
 <div>
     <div class="flex flex-col items-center bg-cover bg-no-repeat bg-[url('../asset/bg_img.svg')] gap-2 p-2 py-24">
-        <div class="flex flex-col gap-3 w-full max-w-md p-8 bg-[#A23145] bg-opacity-70 rounded-lg shadow-lg">
-            <h1 class="text-3xl font-bold text-white text-center mb-6">Connexion</h1>
+        <div class="flex flex-col gap-3 w-full max-w-xl p-8 bg-[#A23145] bg-opacity-70 rounded-lg shadow-lg">
+            <h1 class="text-3xl font-bold text-white text-center mb-6">Inscription</h1>
             <form class="space-y-4 gap-2">
                 <div>
                     <input type="text" placeholder="Num. téléphone ou e-mail" 
@@ -13,7 +13,7 @@
                 </div>
                 <div>
                     <input type="text" placeholder="Nom complet" 
-                        class="w-full p-3 rounded-md bg-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-400">
+                        class="w-full items-center p-3 rounded-md bg-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-400">
                 </div>
                 <div>
                     <input type="text" placeholder="Nom d'utilisateur" 
@@ -24,16 +24,20 @@
                         class="w-full p-3 rounded-md bg-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-400">
                 </div>
                 <div>
-                    <input type="password" placeholder="Mot de passe" 
+                    <input type="password" placeholder="Confirmer le mot de passe" 
                         class="w-full p-3 rounded-md bg-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-400">
                 </div>
                 <div>
-                    <p class="w-full p-3">
+                    <p class="w-full text-left text-white text-sm">
                     En vous inscrivant, vous acceptez nos Conditions Générales. Découvrez comment nous collectons, utilisons et partageons vos données en lisant notre Politique d'utilisation des données et comment nous utilisons les cookies et autres technologies similaires en consultant notre Politique d'utilisation des cookies.
                     </p>
-                    <label class="inline-flex items-center cursor-pointer">En cochant cette option, vous consentez à recevoir des notifications par mail ou SMS concernant les dernières actualités de GureKultura
-                    </label>     
-                    <button type="submit" class="w-full p-3 bg-white text-red-700 font-semibold rounded-md hover:bg-red-800 transition">S'inscrire</button>
+                    <div class="flex items-center my-4 justify-between">
+                        <label class="inline-flex items-center cursor-pointer text-left text-white text-sm pb-6 max-w-md">En cochant cette option, vous consentez à recevoir des notifications par mail ou SMS concernant les dernières actualités de GureKultura
+                        </label>
+                        <input type="checkbox" value="" class="peer w-5 h-5">
+                    </div>
+                    <button type="submit" class="w-full p-3 bg-white text-red-700 font-semibold rounded-md hover:bg-gray-200 transition">S'inscrire</button>
+                </div>
             </form>
             <div class="flex items-center my-4 ">
                 <hr class="w-full border-gray-300">
@@ -41,10 +45,10 @@
                 <hr class="w-full border-gray-300">
             </div>
         </div>
-        <div class="w-full max-w-md p-8 bg-[#A23145] bg-opacity-70 rounded-lg shadow-lg">
+        <div class="w-full max-w-xl p-8 bg-[#A23145] bg-opacity-70 rounded-lg shadow-lg">
             <div class="text-center">
                 <p class="text-white mb-4">Vous avez déjà un compte ?</p>
-                <a href="../php/connexion.php" class="w-full p-3 bg-white text-red-700 font-semibold rounded-md block hover:bg-gray-100 transition">Connectez-vous</a>
+                <a href="../php/connexion.php" class="w-full p-3 bg-white text-red-700 font-semibold rounded-md block hover:bg-gray-200 transition">Connectez-vous</a>
             </div>
         </div>
     </div>
