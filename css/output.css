@@ -635,12 +635,38 @@ video {
   max-height: 0.25rem;
 }
 
-.min-h-24 {
-  min-height: 6rem;
+.max-h-fit {
+  max-height: -moz-fit-content;
+  max-height: fit-content;
 }
 
-.min-h-screen {
-  min-height: 100vh;
+.max-h-96 {
+  max-height: 24rem;
+}
+
+.max-h-full {
+  max-height: 100%;
+}
+
+.max-h-svh {
+  max-height: 100svh;
+}
+
+.max-h-lvh {
+  max-height: 100lvh;
+}
+
+.max-h-dvh {
+  max-height: 100dvh;
+}
+
+.max-h-max {
+  max-height: -moz-max-content;
+  max-height: max-content;
+}
+
+.min-h-24 {
+  min-height: 6rem;
 }
 
 .w-11 {
