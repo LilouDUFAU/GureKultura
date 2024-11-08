@@ -7,7 +7,7 @@
     <link href="../css/output.css" rel="stylesheet">
 </head>
 <body class="font-['verdana']">
-
+<main>
     <!-- Header -->
     <header class="flex justify-between items-center min-h-24 px-7 bg-[#A23145] text-[#ffffff]">
         
@@ -50,7 +50,7 @@
     </header>
 
     <!-- Content -->
-    <main class="py-2 pr-2 grid h-screen" style="grid-template-columns : 200px 1fr;">
+    <div class="py-2 pr-2 grid min-h-screen" style="grid-template-columns : 200px 1fr;">
         <!-- Aside -->
         <div class="pr-2 scrollable">
             <aside class="flex h-full justify-center bg-[#A23145] font-['Sen'] text-[#ffffff] scrollable">
@@ -110,9 +110,7 @@
                 {% endblock %}
             </div>
         </div>
-    </main>
-    
-
+    </div>
     <!-- Footer -->
      <footer class="flex justify-between items-center px-7 bg-[url('../asset/bg_footer.svg')] text-[#ffffff]  pb-4">
        
@@ -189,5 +187,8 @@
             <a href="../php/propEv.php" class="flex items-center justify-center max-h-1 w-full border-2 border-[#ffffff] p-4 rounded-lg">Formulaire</a>
         </ul>
     </footer>
+</main>
+    
+
 </body>
 </html>
