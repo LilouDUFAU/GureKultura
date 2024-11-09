@@ -3,19 +3,53 @@
 {% block content %}
 <!-- Contenu spécifique de chaque page -->
 <div class="h-full">
-    <div class="flex flex-col items-left bg-cover bg-no-repeat bg-[url('../asset/bg_img.svg')] gap-2 p-2">
-        <h1 class="text-center text-white font-bold text-5xl bg-[#A23145] rounded-2xl p-2 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] mb-10">Propose ton événement :</h1>
-        <div class="flex bg-[#A23145] bg-opacity-75 rounded-2xl p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
-            <label class="text-white min-w-auto">Quel est le nom de ton événement :</label>
-            <input type="text" id="name" name="name" class="border-2 border-solid border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]" placeholder="Saisir une description ...">
+    <div class="bg-cover bg-no-repeat bg-[url('../asset/bg_img.svg')] gap-2 p-2 grid grid-cols-12 items-center">
+        
+        {# titre de la page #}
+        <h1 class="col-span-12 text-white font-bold text-4xl text-center bg-[#A23145] rounded-2xl p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] mb-10">Propose ton événement :</h1>
+        
+        
+        {# premiere ligne #}
+        <div class="grid grid-cols-subgrid row-start-2 row-span-1 col-start-1 col-span-12 bg-[#A23145] opacity-75 rounded-2xl p-4 w-full drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
+            <label class="text-white col-span-4">Quel est le nom de ton événement :</label>
+            <input type="text" id="name" name="name" class="col-span-8 border-2 border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-auto drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]" placeholder="Saisir une description ...">
         </div>
 
-        <div class="flex bg-[#A23145] bg-opacity-75 rounded-2xl p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
-            <label class="text-white min-w-auto">Quel est le type de ton événement :</label>
-            <input type="text" id="type" name="type" class="border-2 border-solid border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]" placeholder="Fête, Cinéma, Concert, Sport ...">
+        {# deuxieme ligne #}
+        <div class="grid grid-cols-subgrid row-start-3 row-span-1 col-start-1 col-span-12 bg-[#A23145] opacity-75 text-white rounded-2xl p-4 w-full drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
+            <label class="text-white col-span-4">Quel est le type de ton événement :</label>
+            <input type="text" id="type" name="type" class="col-span-8 border-2 border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]" placeholder="Fête, Cinéma, Concert, Sport ...">
         </div>
 
-        <div class="flex flex-row items-left gap-2 ">
+        {# colonne 1 de gauche #}
+        <div class="grid grid-cols-subgrid row-start-4 col-span-6 bg-[#A23145] opacity-75 text-white rounded-2xl p-4 w-full">
+            <label class="text-white col-span-6 grid grid-cols-subgrid row-start-4">Joindre les autorisation essentielles :</label>
+            <input type="text" id="autorisation" name="autorisatione" class="col-span-6 border-2 border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full grid grid-cols-subgrid row-start-5"  placeholder="Insérer pdf,jpg,doc ...">
+        </div>
+        
+
+        {# colonne 1 de droite #}
+        <div class="grid grid-cols-subgrid row-start-4 col-start-7 col-span-6 bg-[#A23145] opacity-75 text-white rounded-2xl p-4 w-full">
+            <label class="text-white col-span-4">Décris ton événement :</label>
+            <input type="text" id="description" name="description" class="col-span-8 border-2 border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full"  placeholder="Saisir une description ...">
+        </div>
+
+
+        {# colonne 2 de gauche #}
+        <div class="grid grid-cols-subgrid row-start-5 col-span-6 bg-[#A23145] opacity-75 text-white rounded-2xl p-4 w-full">
+            <label class="text-white col-span-4">Joindre les autorisation essentielles :</label>
+            <input type="text" id="name" name="name" class="col-span-8 border-2 border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full"  placeholder="Fête, Cinéma, Concert, Sport ...">
+        </div>
+        
+
+        {# colonne 2 de droite #}
+        <div class="grid grid-cols-subgrid row-start-5 col-start-7 col-span-6 bg-[#A23145] opacity-75 text-white rounded-2xl p-4 w-full">
+            <label class="text-white col-span-4">Quel est le type de ton événement :</label>
+            <input type="text" id="name" name="name" class="col-span-8 border-2 border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full"  placeholder="Fête, Cinéma, Concert, Sport ...">
+        </div>
+
+        
+        {# <div class="flex flex-row items-left gap-2 ">
             <div class="flex flex-col gap-2 flex-auto">
                 <div class="bg-[#A23145] bg-opacity-75 rounded-2xl p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
                     <label class="text-white min-w-auto">Joindre les autorisation essentielles :</label>
@@ -42,7 +76,6 @@
                     </div>
                     <div class="flex text-white rounded-2xl py-2">
                         <label class="inline-flex items-center cursor-pointer">
-                        {# ICI #}
                             <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300 max-w-md">Autorise-nous à pouvoir te contacter par mail ou téléphone si ton événement est retenus :</span>
                             <input type="checkbox" value="" class="sr-only peer">
                             <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
@@ -51,6 +84,7 @@
                 </div>
             </div>
 
+            
             <div class="flex flex-col gap-2 flex-auto">
                 <div class="bg-[#A23145] bg-opacity-75 rounded-2xl p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
                     <label class="text-white min-w-auto">Décris ton événement :</label>
@@ -90,7 +124,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> #}
     </div>
 </div>          
 {% endblock %}
