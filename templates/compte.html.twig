@@ -3,76 +3,100 @@
 {% block content %}
 <!-- Contenu spécifique de chaque page -->
 <div class="h-full">
-    <div class="flex flex-col items-left bg-cover bg-no-repeat bg-[url('../asset/bg_img.svg')] gap-2 p-2">
-    <h1 class="text-center text-white font-bold text-5xl bg-[#A23145] rounded-2xl p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] mb-10">Votre compte :</h1>
-        <div class="flex flex-row gap-2 flex-1">
-            <div class="flex flex-1 flex-col bg-[#A23145] bg-opacity-75 text-white rounded-2xl p-4">
-                <h1 class="text-center text-white font-bold text-xl">Informations personnelles :</h1>
-                <div class="flex text-white rounded-2xl py-2 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
-                    <label class="flex justify-left  text-white rounded-2xl">Email :</label>
-                    <input type="text" id="mail" name="mail" class="border-2 border-solid border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]" placeholder="Saisir un email ...">
+    <div class="bg-cover bg-no-repeat bg-[url('../asset/bg_img.svg')] gap-2 p-2 grid grid-cols-12 items-center">
+        
+        {# titre de la page #}
+        <h1 class="col-span-12 text-white font-bold text-4xl text-center bg-[#A23145] rounded-2xl p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] mb-10">Votre compte :</h1>
+        
+        {# colonne de gauche #}
+        <div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-6 w-full gap-2">
+            {# bloc #}
+            <div class="grid grid-cols-subgrid row-start-1 col-span-6 bg-[#A23145] opacity-75 text-white rounded-2xl p-4 w-full gap-1 ">
+                <h1 class="row-start-1 col-span-6 text-xl">Informations personnelles</h1>
+                
+                <div class="grid grid-cols-subgrid row-start-2 col-span-6 text-white rounded-2xl py-2 w-full items-center">
+                    <label class="text-white col-span-2 ">Nom</label>
+                    <label class="text-[#bfbfbf] col-start-3 col-span-2">Rémi Gentil</label>
+                    <button href="#" class="col-start-6 flex items-center justify-center max-h-1 text-white bg-[#DFABAB] opacity-64 border-2 border-solid border-[#621220] rounded-2xl p-4 font-bold drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">Modifier</button>
                 </div>
-                <div class="flex text-white rounded-2xl py-2 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
-                    <label class="flex justify-left  text-white rounded-2xl">Téléphone :</label>
-                    <input type="text" id="tel" name="tel" class="border-2 border-solid border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full" placeholder="Saisir un téléphone ...">
+
+                <div class="grid grid-cols-subgrid row-start-3 col-span-6 text-white rounded-2xl py-2 w-full items-center">
+                    <label class="text-white col-span-2 ">Email</label>
+                    <label class="text-[#bfbfbf] col-start-3 col-span-2">remi.gentil@gmail.com</label>
+                    <button href="#" class="col-start-6 flex items-center justify-center max-h-1 text-white bg-[#DFABAB] opacity-64 border-2 border-solid border-[#621220] rounded-2xl p-4 font-bold drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">Modifier</button>
                 </div>
-                <div class="flex text-white rounded-2xl py-2 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
-                    <label class="flex justify-left  text-white rounded-2xl">Nom du représentant de l'événement :</label>
-                    <input type="text" id="replname" name="replname" class="border-2 border-solid border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full" placeholder="Saisir un email ...">
+
+                <div class="grid grid-cols-subgrid row-start-4 col-span-6 text-white rounded-2xl py-2 w-full items-center">
+                    <label class="text-white col-span-2 ">Téléphone</label>
+                    <label class="text-[#bfbfbf] col-start-3 col-span-2">08.51.62.27.46</label>
+                    <button href="#" class="col-start-6 flex items-center justify-center max-h-1 text-white bg-[#DFABAB] opacity-64 border-2 border-solid border-[#621220] rounded-2xl p-4 font-bold drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">Modifier</button>
                 </div>
-                <div class="flex text-white rounded-2xl py-2 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
-                    <label class="flex justify-left text-white rounded-2xl">Prénom du représenant de l'événement :</label>
-                    <input type="text" id="repfname" name="repfname" class="border-2 border-solid border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full" placeholder="Saisir un email ...">
+
+                <div class="grid grid-cols-subgrid row-start-5 col-span-6 text-white rounded-2xl py-2 w-full items-center">
+                    <label class="text-white col-span-2 ">Adresse</label>
+                    <label class="text-[#bfbfbf] col-start-3 col-span-2">non renseigné</label>
+                    <button href="#" class="col-start-6 flex items-center justify-center max-h-1 text-white bg-[#DFABAB] opacity-64 border-2 border-solid border-[#621220] rounded-2xl p-4 font-bold drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">Modifier</button>
                 </div>
-                <div class="flex text-white rounded-2xl py-2">
-                    <label class="inline-flex items-center cursor-pointer">
-                        <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300 max-w-md">Autorise-nous à pouvoir te contacter par mail ou téléphone si ton événement est retenus :</span>
-                        <input type="checkbox" value="" class="sr-only peer ">
-                        <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600">
-                        </div>
-                    </label>
+
+                <div class="grid grid-cols-subgrid row-start-6 col-span-6 text-white rounded-2xl py-2 w-full items-center">
+                    <label class="text-white col-span-2 ">Photo de profil</label>
+                    <img src="../asset/phpEx.png" class="col-start-3"/img>
+                    <button href="#" class="col-start-6 flex items-center justify-center max-h-1 text-white bg-[#DFABAB] opacity-64 border-2 border-solid border-[#621220] rounded-2xl p-4 font-bold drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">Modifier</button>
+                </div>
+
+                <div class="grid grid-cols-subgrid row-start-7 col-span-6 text-white rounded-2xl py-2 w-full items-center">
+                    <label class="text-white col-span-2 ">Supprimer mon compte</label>
+                    <button href="#" class="col-start-6 flex items-center justify-center max-h-1 text-white bg-[#DFABAB] opacity-64 border-2 border-solid border-[#621220] rounded-2xl p-4 font-bold drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">Modifier</button>
+                </div>
+            </div>
+        </div>
+        
+
+        {# colonne de droite #}
+        <div class="grid grid-cols-subgrid row-start-2 col-start-7 col-span-6 w-full gap-2">
+            {# premier bloc #}
+            <div class="grid grid-cols-subgrid row-start-1 col-span-6 bg-[#A23145] opacity-75 text-white rounded-2xl p-4 w-full">
+                <h1 class="row-start-1 col-span-6 text-xl"> Changer mon mot de passse</h1>
+
+                <div class="grid grid-cols-subgrid row-start-2 col-span-6  text-white rounded-2xl py-2 w-full">
+                    <label class="text-white col-span-3">Mot de passe actuel :</label>
+                    <input type="text" id="lieu" name="lieu" class="col-start-4 col-span-3 border-2 border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full py-2"  placeholder="Saisir votre mot de passe ...">
+                </div>
+
+                <div class="grid grid-cols-subgrid row-start-3 col-span-6  text-white rounded-2xl py-2 w-full">
+                    <label class="text-white col-span-3">Nouveau mot de passe :</label>
+                    <input type="text" id="lieu" name="lieu" class="col-start-4 col-span-3 border-2 border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full py-2"  placeholder="Saisir nouveau mot de passe ...">
+                </div>
+
+                <div class="grid grid-cols-subgrid row-start-4 col-span-6  text-white rounded-2xl w-full py-2">
+                    <a class="text-white col-span-2 text-sm">Mot de passe oublié ? :</a>
+                    <button href="#" class="col-start-6 flex items-center justify-center max-h-1 text-[#A23145] bg-[#ffffff] rounded-lg p-4 font-bold drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">Valider</button>
                 </div>
             </div>
 
-            <div class="flex flex-col gap-2 flex-1">
-                <div class="bg-[#A23145] bg-opacity-75 rounded-2xl p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
-                    <h1 class="text-center text-white font-bold text-xl">Mon mot de passe :</h1>
-                    <div class="flex">
-                        <label class="text-white min-w-auto">Mot de passe actuel :</label>
-                        <input type="text" id="mdpnow" name="mdpnow" class="border-2 border-solid border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]" placeholder="Saisir une description ...">
-                    </div>
-                    <div class="flex">
-                        <label class="text-white min-w-auto">Nouveau mot de passe :</label>
-                        <input type="text" id="mdpnew" name="mdpnew" class="border-2 border-solid border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]" placeholder="Saisir une description ...">
-                    </div>
-                    <div class="flex flex-row justify-between">
-                        <a href = "#" class="text-sm text-white">Mot de passe oublié ?</a>
-                        <button href="#" class="flex items-center justify-center px-7 max-h-1 text-[#A23145] bg-[#ffffff] rounded-lg p-4 font-bold drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">Valider</button>
-                    </div>
+            {# deuxieme bloc #}
+            <div class="grid grid-cols-subgrid row-start-2 col-span-6 bg-[#A23145] opacity-75 text-white rounded-2xl p-4 w-full">
+                <h1 class="row-start-1 col-span-6 text-xl">Mes autorisations</h1>
+
+                <div class="grid grid-cols-subgrid row-start-2 col-span-6  text-white rounded-2xl py-2 w-full items-center">
+                    <label class="inline-flex items-center cursor-pointer col-span-6">
+                        <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300 max-w-md">Autorise-nous à pouvoir te contacter par mail ou téléphone si ton événement est retenus :</span>
+                        <input type="checkbox" value="" class="sr-only peer">
+                        <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                    </label>
                 </div>
 
-                <div class="flex flex-col bg-[#A23145] bg-opacity-75 text-white rounded-2xl p-4">
-                    <h1 class="text-center text-white font-bold text-xl">Mes autorisations :</h1>
-                    <div class="flex  text-white rounded-2xl py-2 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
-                        <label class="inline-flex items-center cursor-pointer">
-                        {# ICI #}
-                            <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300 max-w-md">J'autorise GureKultura à utiliser mon adresse e-mail et/ou mon numéro de téléphone pour m'envoyer des recommandations personnalisées, des nouveautés pertinentes.</span>
-                            <input type="checkbox" value="" class="sr-only peer">
-                            <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
-                        </label>
-                    </div>
-                    <div class="flex  text-white rounded-2xl py-2 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
-                        <label class="inline-flex items-center cursor-pointer">
-                        {# ICI #}
-                            <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300 max-w-md">J'autorise GureKultura à utiliser et stocker mes données personnelles telles que mes photos, nom et prénom, conformément à leur politique de confidentialité.</span>
-                            <input type="checkbox" value="" class="sr-only peer">
-                            <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
-                        </label>
-                    </div>
-                    
+                <div class="grid grid-cols-subgrid row-start-3 col-span-6  text-white rounded-2xl py-2 w-full items-center">
+                    <label class="inline-flex items-center cursor-pointer col-span-6">
+                        <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300 max-w-md">Autorise-nous à pouvoir te contacter par mail ou téléphone si ton événement est retenus :</span>
+                        <input type="checkbox" value="" class="sr-only peer">
+                        <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                    </label>
                 </div>
             </div>
         </div>
     </div>
-</div>          
+</div>       
+
+{# <button href="#" class="col-start-6 flex items-center justify-center max-h-1 text-[#A23145] bg-[#ffffff] rounded-lg p-4 font-bold drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">Valider</button> #}
 {% endblock %}
