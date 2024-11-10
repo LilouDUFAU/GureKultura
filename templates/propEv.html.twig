@@ -12,43 +12,46 @@
         {# premiere ligne #}
         <div class="grid grid-cols-subgrid row-start-2 row-span-1 col-start-1 col-span-12 bg-[#A23145] opacity-75 rounded-2xl p-4 w-full drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
             <label class="text-white col-span-4">Quel est le nom de ton événement :</label>
-            <input type="text" id="name" name="name" class="col-span-8 border-2 border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-auto drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]" placeholder="Saisir une description ...">
+            <input type="text" id="name" name="name" class="col-span-8 border-2 border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-auto drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] py-2" placeholder="Saisir une description ...">
         </div>
 
         {# deuxieme ligne #}
         <div class="grid grid-cols-subgrid row-start-3 row-span-1 col-start-1 col-span-12 bg-[#A23145] opacity-75 text-white rounded-2xl p-4 w-full drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
             <label class="text-white col-span-4">Quel est le type de ton événement :</label>
-            <input type="text" id="type" name="type" class="col-span-8 border-2 border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]" placeholder="Fête, Cinéma, Concert, Sport ...">
+            <input type="text" id="type" name="type" class="col-span-8 border-2 border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] py-2" placeholder="Fête, Cinéma, Concert, Sport ...">
         </div>
 
-        {# colonne 1 de gauche #}
-        <div class="grid grid-cols-subgrid row-start-4 col-start-1 col-span-6 bg-[#A23145] opacity-75 text-white rounded-2xl p-4 w-full">
-            <label class="text-white col-span-4">Joindre les autorisations essentielles</label>
-            <button href="#" class=" col-span-8 flex items-center justify-center max-h-1 text-[#A23145] bg-[#ffffff] rounded-lg p-4 font-bold drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">Insérer</button>
-        </div>
-        
-
-        {# colonne 1 de droite #}
-        <div class="grid grid-cols-subgrid row-start-5 col-start-7 col-span-6 w-full gap-2">
-            <div class="grid grid-cols-subgrid row-start-4 col-span-6 bg-[#A23145] opacity-75 text-white rounded-2xl w-full p-4">
-                <label class="text-white col-span-3">Décris ton événement :</label>
-                <input type="text" id="description" name="description" class="col-span-9 border-2 border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full"  placeholder="Saisir une description ...">
+        {# colonne de gauche #}
+        <div class="grid grid-cols-subgrid row-start-4 col-start-1 col-span-6 w-full gap-2">
+            <div class="grid grid-cols-subgrid row-start-1 col-span-6 bg-[#A23145] opacity-75 text-white rounded-2xl w-full p-4 items-center">
+                <label class="row-start-1 text-white col-span-4 pb-2">Joindre les autorisations essentielles</label>
+                <button href="#" class="row-start-2 col-start-6 flex items-center justify-center max-h-1 text-[#A23145] bg-[#ffffff] rounded-lg p-4 font-bold drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">Insérer</button>
             </div>
-            {# premier bloc #}
-            <div class="grid grid-cols-subgrid row-start-5 col-span-6 bg-[#A23145] opacity-75 text-white rounded-2xl w-full">
-                <div class="grid grid-cols-subgrid row-start-5 col-span-6 bg-[#A23145] opacity-75 text-white rounded-2xl p-4 w-full">
-                    <label class="text-white col-span-4">Joindre les autorisation essentielles :</label>
-                    <input type="text" id="name" name="name" class="col-span-8 border-2 border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full"  placeholder="Fête, Cinéma, Concert, Sport ...">
+
+            {# bloc #}
+            <div class="grid grid-cols-subgrid row-start-2 col-span-6 bg-[#A23145] opacity-75 text-white rounded-2xl p-4 w-full gap-1 ">
+                <h1 class="row-start-1 col-span-6 text-xl"> Tes coordonnées :</h1>
+                <div class="grid grid-cols-subgrid row-start-2 col-span-6 bg-[#A23145] opacity-75 text-white rounded-2xl py-2 w-full items-center">
+                    <label class="text-white col-span-2">Email :</label>
+                    <input type="text" id="email" name="email" class="col-start-3 col-span-2 border-2 border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] py-2"  placeholder="Saisir un email...">
                 </div>
-                <div class="grid grid-cols-subgrid row-start-6 col-span-6 bg-[#A23145] opacity-75 text-white rounded-2xl p-4 w-full">
-                    <label class="text-white col-span-4">Joindre les autorisation essentielles :</label>
-                    <input type="text" id="name" name="name" class="col-span-8 border-2 border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full"  placeholder="Fête, Cinéma, Concert, Sport ...">
+
+                <div class="grid grid-cols-subgrid row-start-3 col-span-6 bg-[#A23145] opacity-75 text-white rounded-2xl py-2 w-full items-center">
+                    <label class="text-white col-span-2">Téléphone :</label>
+                    <input type="text" id="tel" name="tel" class="col-start-3 col-span-2 border-2 border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] py-2"  placeholder="Saisir un email...">
                 </div>
-                <div class="grid grid-cols-subgrid row-start-7 col-span-6 bg-[#A23145] opacity-75 text-white rounded-2xl p-4 w-full">
-                    <label class="text-white col-span-4">Joindre les autorisation essentielles :</label>
-                    <input type="text" id="name" name="name" class="col-span-8 border-2 border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full"  placeholder="Fête, Cinéma, Concert, Sport ...">
+
+                <div class="grid grid-cols-subgrid row-start-4 col-span-6 bg-[#A23145] opacity-75 text-white rounded-2xl py-2 w-full items-center">
+                    <label class="text-white col-span-4">Nom du représentant de l'événement :</label>
+                    <input type="text" id="nomRep" name="nomRep" class="col-span-2 border-2 border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] py-2"  placeholder="Saisir un email...">
                 </div>
-                <div class="grid grid-cols-subgrid row-start-9 col-span-6 bg-[#A23145] opacity-75 text-white rounded-2xl p-4 w-full">
+
+                <div class="grid grid-cols-subgrid row-start-5 col-span-6 bg-[#A23145] opacity-75 text-white rounded-2xl py-2 w-full items-center">
+                    <label class="text-white col-span-4">Prénom du représentant de l'événement :</label>
+                    <input type="text" id="prenomRep" name="prenomRep" class="col-span-2 border-2 border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] py-2"  placeholder="Saisir un email...">
+                </div>
+
+                <div class="grid grid-cols-subgrid row-start-6 col-span-6 bg-[#A23145] opacity-75 text-white rounded-2xl py-2 w-full items-center">
                     <label class="inline-flex items-center cursor-pointer col-span-6">
                         <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300 max-w-md">Autorise-nous à pouvoir te contacter par mail ou téléphone si ton événement est retenus :</span>
                         <input type="checkbox" value="" class="sr-only peer">
@@ -56,118 +59,53 @@
                     </label>
                 </div>
             </div>
-
-            {# deuxieme bloc #}
-            <div class="grid grid-cols-subgrid row-start-6 col-start-1 col-span-6 bg-[#A23145] opacity-75 text-white rounded-2xl p-4 w-full">
-                <label class="text-white col-span-4">Quel est le type de ton événement :</label>
-                <input type="text" id="name" name="name" class="col-span-8 border-2 border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full"  placeholder="Fête, Cinéma, Concert, Sport ...">
-            </div>
-        </div>
-
-
-        {# colonne 2 de gauche #}
-        <div class="grid grid-cols-subgrid row-start-5 col-span-6 bg-[#A23145] opacity-75 text-white rounded-2xl p-4 w-full">
-            <div class="grid grid-cols-subgrid row-start-5 col-span-6 bg-[#A23145] opacity-75 text-white rounded-2xl p-4 w-full">
-                <label class="text-white col-span-4">Joindre les autorisation essentielles :</label>
-                <input type="text" id="name" name="name" class="col-span-8 border-2 border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full"  placeholder="Fête, Cinéma, Concert, Sport ...">
-            </div>
-            <div class="grid grid-cols-subgrid row-start-6 col-span-6 bg-[#A23145] opacity-75 text-white rounded-2xl p-4 w-full">
-                <label class="text-white col-span-4">Joindre les autorisation essentielles :</label>
-                <input type="text" id="name" name="name" class="col-span-8 border-2 border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full"  placeholder="Fête, Cinéma, Concert, Sport ...">
-            </div>
-            <div class="grid grid-cols-subgrid row-start-7 col-span-6 bg-[#A23145] opacity-75 text-white rounded-2xl p-4 w-full">
-                <label class="text-white col-span-4">Joindre les autorisation essentielles :</label>
-                <input type="text" id="name" name="name" class="col-span-8 border-2 border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full"  placeholder="Fête, Cinéma, Concert, Sport ...">
-            </div>
-            <div class="grid grid-cols-subgrid row-start-8 col-span-6 bg-[#A23145] opacity-75 text-white rounded-2xl p-4 w-full">
-                <label class="text-white col-span-4">Joindre les autorisation essentielles :</label>
-                <input type="text" id="name" name="name" class="col-span-8 border-2 border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full"  placeholder="Fête, Cinéma, Concert, Sport ...">
-            </div>
-            <div class="grid grid-cols-subgrid row-start-9 col-span-6 bg-[#A23145] opacity-75 text-white rounded-2xl p-4 w-full">
-                <label class="inline-flex items-center cursor-pointer col-span-6">
-                    <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300 max-w-md">Autorise-nous à pouvoir te contacter par mail ou téléphone si ton événement est retenus :</span>
-                    <input type="checkbox" value="" class="sr-only peer">
-                    <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
-                </label>
-            </div>
         </div>
         
-        {# <div class="flex flex-row items-left gap-2 ">
-            <div class="flex flex-col gap-2 flex-auto">
-                <div class="bg-[#A23145] bg-opacity-75 rounded-2xl p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
-                    <label class="text-white min-w-auto">Joindre les autorisation essentielles :</label>
-                    <input type="text" id="name" name="name" class="border-2 border-solid border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]" placeholder="Insérer pdf, jpg, doc ...">
-                </div>
 
-                <div class="flex flex-1 flex-col bg-[#A23145] bg-opacity-75 text-white rounded-2xl p-4">
-                    <h1>Tes coordonées :</h1>
-                    <div class="flex text-white rounded-2xl py-2 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
-                        <label class="flex justify-left  text-white rounded-2xl">Email :</label>
-                        <input type="text" id="mail" name="mail" class="border-2 border-solid border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]" placeholder="Saisir un email ...">
-                    </div>
-                    <div class="flex text-white rounded-2xl py-2 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
-                        <label class="flex justify-left  text-white rounded-2xl">Téléphone :</label>
-                        <input type="text" id="tel" name="tel" class="border-2 border-solid border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full" placeholder="Saisir un téléphone ...">
-                    </div>
-                    <div class="flex text-white rounded-2xl py-2 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
-                        <label class="flex justify-left  text-white rounded-2xl">Nom du représentant de l'événement :</label>
-                        <input type="text" id="replname" name="replname" class="border-2 border-solid border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full" placeholder="Saisir nom ...">
-                    </div>
-                    <div class="flex text-white rounded-2xl py-2 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
-                        <label class="flex justify-left text-white rounded-2xl">Prénom du représenant de l'événement :</label>
-                        <input type="text" id="repfname" name="repfname" class="border-2 border-solid border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full" placeholder="Saisir prénom ...">
-                    </div>
-                    <div class="flex text-white rounded-2xl py-2">
-                        <label class="inline-flex items-center cursor-pointer">
-                            <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300 max-w-md">Autorise-nous à pouvoir te contacter par mail ou téléphone si ton événement est retenus :</span>
-                            <input type="checkbox" value="" class="sr-only peer">
-                            <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
-                        </label>
-                    </div>
-                </div>
+        {# colonne de droite #}
+        <div class="grid grid-cols-subgrid row-start-4 col-start-7 col-span-6 w-full gap-2">
+            <div class="grid grid-cols-subgrid row-start-1 col-span-6 bg-[#A23145] opacity-75 text-white rounded-2xl w-full p-4">
+                <label class="text-white col-span-3">Décris ton événement :</label>
+                <input type="text" id="description" name="description" class="col-start-1 col-span-6 border-2 border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full py-2"  placeholder="Saisir une description ...">
             </div>
 
-            
-            <div class="flex flex-col gap-2 flex-auto">
-                <div class="bg-[#A23145] bg-opacity-75 rounded-2xl p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
-                    <label class="text-white min-w-auto">Décris ton événement :</label>
-                    <input type="text" id="description" name="description" class="border-2 border-solid border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]" placeholder="Saisir une description ...">
+            {# premier bloc #}
+            <div class="grid grid-cols-subgrid row-start-2 col-span-6 bg-[#A23145] opacity-75 text-white rounded-2xl p-4 w-full">
+                <h1 class="row-start-1 col-span-6 text-xl"> Informations de ton événement :</h1>
+
+                <div class="grid grid-cols-subgrid row-start-2 col-span-6 bg-[#A23145] opacity-75 text-white rounded-2xl py-4 w-full items-center">
+                    <label class="text-white col-span-1">Du :</label>
+                    <input type="text" id="debutDate" name="debutDate" class="col-start-2 col-span-2 border-2 border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full py-2"  placeholder="Saisir date début">
+                    <label class="text-white col-start-4 col-span-1">Au :</label>
+                    <input type="text" id="finDate" name="finDate" class="col-start-5 col-span-2 border-2 border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full py-2"  placeholder="Saisir date fin">
                 </div>
 
-                <div class="flex flex-col bg-[#A23145] bg-opacity-75 text-white rounded-2xl p-4">
-                    <h1>Informations de ton événement :</h1>
-                    <div class="flex  text-white rounded-2xl py-2 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
-                        <label class="flex justify-left  text-white rounded-2xl">Date :</label>
-                        <label class="flex justify-left  text-white rounded-2xl">Du :</label>
-                        <input type="text" id="datebegin" name="datebegin" class="border-2 border-solid border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]" placeholder="Saisir date début">
-                        <label class="flex justify-left  text-white rounded-2xl">Au :</label>
-                        <input type="text" id="dateend" name="dateend" class="border-2 border-solid border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]" placeholder="Saisir date fin">
-                    </div>
-                    <div class="flex  text-white rounded-2xl py-2 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
-                        <label class="flex justify-left  text-white rounded-2xl">Date :</label>
-                        <label class="flex justify-left  text-white rounded-2xl">Du :</label>
-                        <input type="text" id="hourbegin" name="hourbegin" class="border-2 border-solid border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]" placeholder="Saisir heure début">
-                        <label class="flex justify-left  text-white rounded-2xl">Au :</label>
-                        <input type="text" id="hourend" name="hourend" class="border-2 border-solid border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]" placeholder="Saisir heure début">
-                    </div>
-                    <div class="flex  text-white rounded-2xl py-2 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
-                        <label class="flex justify-left  text-white rounded-2xl">Lieu :</label>
-                        <input type="text" id="place" name="place" class="border-2 border-solid border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full" placeholder="Saisir une adresse ...">
-                    </div>
-                    <div class="flex  text-white rounded-2xl py-2 justify-between">
-                        <label class="flex justify-left  text-white rounded-2xl">Photo :</label>
-                        <button href="#" class="flex items-center justify-center px-7 max-h-1 text-[#A23145] bg-[#ffffff] rounded-lg p-4 font-bold ">Ajouter</button>
-                    </div>
+                <div class="grid grid-cols-subgrid row-start-5 col-span-6 bg-[#A23145] opacity-75 text-white rounded-2xl py-4 w-full items-center">
+                    <label class="text-white col-span-1">Du :</label>
+                    <input type="text" id="debutHeure" name="debutHeure" class="col-start-2 col-span-2 border-2 border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full py-2"  placeholder="Saisir heure début">
+                    <label class="text-white col-start-4 col-span-1">Au :</label>
+                    <input type="text" id="finHeure" name="finHeure" class="col-start-5 col-span-2 border-2 border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full py-2"  placeholder="Saisir heure fin">
                 </div>
-                <div class="flex items-center justify-between bg-[#A23145] bg-opacity-75 text-white rounded-2xl p-2">
-                    <button href="#" class="flex items-center justify-center max-h-1 text-[#A23145] bg-[#ffffff] rounded-lg p-4 font-bold ">Besoins d'aide ?</button>
-                    <div class="flex gap-2">
-                        <button href="#" class="flex items-center justify-center max-h-1 text-[#A23145] bg-[#ffffff] rounded-lg p-4 font-bold drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">Annuler</button>
-                        <button href="#" class="flex items-center justify-center max-h-1 text-[#A23145] bg-[#ffffff] rounded-lg p-4 font-bold drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">Valider</button>
-                    </div>
+
+                <div class="grid grid-cols-subgrid row-start-4 col-span-6 bg-[#A23145] opacity-75 text-white rounded-2xl py-4 w-full">
+                    <label class="text-white col-span-1">Lieu :</label>
+                    <input type="text" id="lieu" name="lieu" class="col-start-2 col-span-3 border-2 border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full py-2"  placeholder="Saisir une adresse ...">
                 </div>
+
+                <div class="grid grid-cols-subgrid row-start-5 col-span-6 bg-[#A23145] opacity-75 text-white rounded-2xl w-full py-4">
+                    <label class="text-white col-span-1">Photos :</label>
+                    <button href="#" class="col-start-2 col-span-1 flex items-center justify-center max-h-1 text-[#A23145] bg-[#ffffff] rounded-lg p-4 font-bold drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">Ajouter</button>
+                </div>
+
             </div>
-        </div> #}
+
+            {# deuxieme bloc #}
+            <div class="grid grid-cols-subgrid row-start-3 col-start-1 col-span-6 bg-[#A23145] opacity-75 text-white rounded-2xl p-4 w-full">
+                <button href="#" class=" col-span-2 flex items-center justify-center max-h-1 text-[#A23145] bg-[#ffffff] rounded-lg p-4 font-bold drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">Besoin d'aide ?</button>
+                <button href="#" class="col-start-5 flex items-center justify-center max-h-1 text-[#A23145] bg-[#ffffff] rounded-lg p-4 font-bold drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">Annuler</button>
+                <button href="#" class="col-start-6 flex items-center justify-center max-h-1 text-[#A23145] bg-[#ffffff] rounded-lg p-4 font-bold drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">Valider</button>
+            </div>
+        </div>
     </div>
 </div>          
 {% endblock %}
