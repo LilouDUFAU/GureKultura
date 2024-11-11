@@ -7,8 +7,8 @@ require_once 'include.php';
 $breadcrumbs = Breadcrumb::generate();
 
 // Rendre le template Twig
-echo $twig->render('carteEvt.html.twig', [
+echo $twig->render('baseCarteAct.html.twig', [
     'breadcrumbs' => $breadcrumbs,
-    'title' => 'Carte des événements'
+    'title' => 'Carte des Actualités'
 ]);
 ////////////////////////////////////
