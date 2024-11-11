@@ -1,61 +1,51 @@
 {% extends 'base.html.twig' %}
 
-{# {% block content %}
-<div class="flex flex-row p-4 bg-[#A23145] rounded-lg drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] w-[45%] text-white">
-    <div >
-        <img src="https://via.placeholder.com/150" alt="Affiche de l'événement" class="rounded-lg">
-    </div>
-    <div class="w-2/3 pl-4 flex flex-row gap-5 justify-between">
-        <div class="flex flex-col w-[250px]">
-            <h3 class="text-lg font-bold">FIFAVA : Festival international du court-métrage d'Anglet</h3>
-            <p class="mt-2 text-sm">Du 23/11 au 26/11</p>
-            <p class="text-sm">Théâtre Quintaou<br>64600 Anglet</p>
-        </div>
-        <div class="flex flex-col justify-between items-center mt-4">
-            <span class="px-3 py-1 bg-white text-red-700 font-bold rounded-lg">Cinéma</span>
-            <a href="#" class="text-white font-bold underline">EN SAVOIR PLUS</a>
-        </div>
-    </div>
-</div>
-{% endblock %} #}
-
 {% block content %}
 <!-- Contenu spécifique de chaque page -->
-<div class="p-2 grid grid-cols-3 items-center rounded-2xl bg-[#A23451] drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
 
-    {# img de l'événement #}
-    <img src="../asset/bg_img.svg" alt="illustration" class="col-start-1 col-span-1 h-full w-full rounded-2xl" >
+{# creatin d'une grille a deux colonnes #}
+<div class="grid grid-cols-2 gap-2">
 
-    {# infos de l'événement #}
-    <div class="grid grid-cols-subgrid col-start-2 col-span-1 flex-col w-[250px] text-white gap-5 p-4">
-
-        {# titre événement #}
-        <h3 class="text-xl font-bold row-start-1 col-span-2 ">FIFAVA : Festival international du court-métrage d'Anglet</h3>
-
-        {# date événement #}
-        <p class="row-start-2 col-span-2">Du 23/11 au 26/11</p>
-
-        {# lieu événement #}
-        <p class="row-start-3 col-span-2">Théâtre Quintaou<br>64600 Anglet</p>
+    {# colonne de gauche #}
+    <div class="col-start-1 col-span-1 p-2 grid grid-cols-6 items-center rounded-2xl bg-[#A23145] drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
+        {# img de l'événement #}
+        <img src="../asset/bg_img.svg" alt="illustration" class="col-start-1 col-span-2 h-full w-full rounded-2xl" >
+        {# infos de l'événement #}
+        <div class="grid grid-cols-subgrid col-start-3 col-span-2 flex-col w-[250px] text-white gap-2 p-4">
+            {# titre événement #}
+            <h3 class="font-bold row-start-1 col-span-2 ">FIFAVA : Festival international du court-métrage d'Anglet</h3>
+            {# date événement #}
+            <p class="row-start-2 col-span-2">Du 23/11 au 26/11</p>
+            {# lieu événement #}
+            <p class="row-start-3 col-span-2">Théâtre Quintaou<br>64600 Anglet</p>
+        </div>
+        {# bouton pour accéder à la page de l'événement #}
+        <div class="col-start-5 col-span-2 flex flex-col items-center justify-center gap-10">
+            <button class="bg-white text-[#A23145] rounded-2xl p-2 font-bold ">Type d'événement</button>
+            <a href="#" class="text-white text-md font-bold ">EN SAVOIR PLUS</a>
+        </div>
     </div>
 
 
-
-{# a revoir  #}
-
-    {# catégorie événement +infos supp #}
-    <div class="grid grid-cols-subgrid col-start-3 flex-col w-[250px] text-white gap-10">
-        {# catégorie événement #}
-        <button class="px-3 py-1 bg-white text-red-700 font-bold rounded-lg row-start-1 min-w-4">Cinéma</button>
-
-        {# lien vers la page de l'événement #}
-        <a href="#" class="text-white font-bold underline row-start-3 ">EN SAVOIR PLUS</a>    
+    {# colonne de droite #}
+    <div class="col-start-2 col-span-1 p-2 grid grid-cols-6 items-center rounded-2xl bg-[#A23145] drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
+        {# img de l'événement #}
+        <img src="../asset/bg_img.svg" alt="illustration" class="col-start-1 col-span-2 h-full w-full rounded-2xl" >
+        {# infos de l'événement #}
+        <div class="grid grid-cols-subgrid col-start-3 col-span-2 flex-col w-[250px] text-white gap-2 p-4">
+            {# titre événement #}
+            <h3 class="font-bold row-start-1 col-span-2 ">FIFAVA : Festival international du court-métrage d'Anglet</h3>
+            {# date événement #}
+            <p class="row-start-2 col-span-2">Du 23/11 au 26/11</p>
+            {# lieu événement #}
+            <p class="row-start-3 col-span-2">Théâtre Quintaou<br>64600 Anglet</p>
+        </div>
+        {# bouton pour accéder à la page de l'événement #}
+        <div class="col-start-5 col-span-2 flex flex-col items-center justify-center gap-10">
+            <button class="bg-white text-[#A23145] rounded-2xl p-2 font-bold ">Type d'événement</button>
+            <a href="#" class="text-white text-md font-bold ">EN SAVOIR PLUS</a>
+        </div>
     </div>
-
-    
-    
-
-    
-
-</div>    
-{% endblock %} 
+     
+</div>
+{% endblock %}   
