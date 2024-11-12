@@ -1,4 +1,4 @@
-const carousel = document.querySelector('.carousel');
+const carousel = document.querySelectorAll('.carousel');
 const slides = document.querySelectorAll('.slide');
 const slidesToShow = 3; // Nombre de diapositives visibles
 const totalSlides = slides.length;

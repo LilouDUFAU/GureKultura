@@ -55,11 +55,11 @@
     <div class="py-2 pr-2 grid" style="grid-template-columns : 200px 1fr;">
         <!-- Aside -->
         <div class="pr-2 scrollable max-h-lvh">
-            <aside class="flex flex-col justify-center bg-[#A23145] font-['Sen'] text-[#ffffff] scrollable p-2">
+            <aside class="flex flex-col justify-center bg-[#A23145] gap-2 font-['Sen'] text-[#ffffff] scrollable p-2">
                 <h1 class="text-xl text-white text-center">ACTUS</h1>
 
                 {% for actualite in actualites %}
-                    <div class="bg gap-2 p-2 grid grid-cols-6 items-center rounded-lg bg-white drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
+                    <div class="bg p-2 grid grid-cols-6 items-center rounded-lg bg-white drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
                         {# titre de l'actualité #}
                         <h1 class="col-span-6 text-black text-center row-start-1">{{ actualite.titre }}</h1>
 
