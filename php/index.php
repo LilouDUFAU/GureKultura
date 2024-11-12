@@ -4,6 +4,7 @@
 // Ajout du code commun à toutes les pages
 require_once 'include.php';
 require_once 'prerequis.php';
+// require_once '../routes.php';
 
 $loader = new \Twig\Loader\FilesystemLoader('../templates');
 $twig = new \Twig\Environment($loader);
