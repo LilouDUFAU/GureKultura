@@ -11,29 +11,26 @@
         {# contenu #}
 
         {# faire une grid de 2 colonnes #}
-        <div class="grid grid-cols-2 gap-4 col-start-1 col-span-12"> 
-            {# faire une boucle for dans laquelle on met n carteEvt suivant ce qui est en bd et les repartir dans les colonnes #}
-        </div>
-            
-
-        {# carteEvt #}
-        <div class="col-start-1 col-span-12 p-2 grid grid-cols-6 items-center rounded-2xl bg-[#A23145] drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
-            {# img de l'événement #}
-            <img src="../asset/bg_img.svg" alt="illustration" class="col-start-1 col-span-2 h-full w-full rounded-2xl" >
-            {# infos de l'événement #}
-            <div class="grid grid-cols-subgrid col-start-3 col-span-2 flex-col w-[250px] text-white gap-2 p-4">
-                {# titre événement #}
-                <h3 class="font-bold row-start-1 col-span-2 ">FIFAVA : Festival international du court-métrage d'Anglet</h3>
-                {# date événement #}
-                <p class="row-start-2 col-span-2">Du 23/11 au 26/11</p>
-                {# lieu événement #}
-                <p class="row-start-3 col-span-2">Théâtre Quintaou<br>64600 Anglet</p>
+        <div class="grid grid-cols-2 gap-4 col-start-1 col-span-12">  
+            {% for event in events %}
+            <div class="col-start-1 col-span-12 p-2 grid grid-cols-6 items-center rounded-2xl bg-[#A23145] drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
+                {# Image de l'événement #}
+                <img src="../asset/event/{{ event.image }}" alt="illustration" class="col-start-1 col-span-2 h-full w-full rounded-2xl">
+                
+                {# Infos de l'événement #}
+                <div class="grid grid-cols-subgrid col-start-3 col-span-2 flex-col w-[250px] text-white gap-2 p-4">
+                    <h3 class="font-bold row-start-1 col-span-2">{{ event.titre }}</h3>
+                    <p class="row-start-2 col-span-2">{{ event.date_evt }}</p>
+                    <p class="row-start-3 col-span-2">{{ event.localisation | nl2br }}</p>
+                </div>
+                
+                {# Bouton pour accéder à la page de l'événement #}
+                <div class="col-start-5 col-span-2 flex flex-col items-center justify-center gap-10">
+                    <button class="bg-white text-[#A23145] rounded-2xl p-2 font-bold">Type d'événement</button>
+                    <a href="details.php?id={{ event.id }}" class="text-white text-md font-bold">EN SAVOIR PLUS</a>
+                </div>
             </div>
-            {# bouton pour accéder à la page de l'événement #}
-            <div class="col-start-5 col-span-2 flex flex-col items-center justify-center gap-10">
-                <button class="bg-white text-[#A23145] rounded-2xl p-2 font-bold ">Type d'événement</button>
-                <a href="#" class="text-white text-md font-bold ">EN SAVOIR PLUS</a>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </div>
