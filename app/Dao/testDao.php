@@ -24,4 +24,3 @@ foreach ($array2 as $key => $value) {
     }
 }
 
-?>

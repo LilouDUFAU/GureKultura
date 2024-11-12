@@ -12,4 +12,3 @@ echo $twig->render('codeVerif.html.twig', [
     'title' => 'Code de vérification'
 ]);
 ////////////////////////////////////
-?>

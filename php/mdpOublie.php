@@ -12,4 +12,3 @@ echo $twig->render('mdpOublie.html.twig', [
     'title' => 'Mot de passe oublié'
 ]);
 ////////////////////////////////////
-?>

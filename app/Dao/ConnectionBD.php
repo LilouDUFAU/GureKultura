@@ -3,9 +3,6 @@ class ConnectionBD {
     /////////////////////////////////////////////
     /////////  Connexion à la BD en pdo /////////
     /////////////////////////////////////////////
-
-
-
     private $conn;
 
     public function getConnection() {
@@ -24,4 +21,4 @@ class ConnectionBD {
         return $this->conn;
     }
 }
-?>
+

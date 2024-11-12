@@ -11,7 +11,10 @@
         {# contenu #}
 
         {# grille de deux colonnes #}
-        <div class="grid grid-cols-2 gap-4"></div>
+        <div class="grid grid-cols-2 gap-4">
+            {% block carteEvt %}    
+            {% endblock %}
+        </div>
     </div>
 </div>
 {% endblock %}  
