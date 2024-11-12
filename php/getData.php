@@ -1,5 +1,5 @@
 <?php
-class event {
+class getData {
 
     public static function getActiveEvents($pdo) {
         $query = "SELECT id, titre, description, date_evt, localisation, image FROM gk_evenement WHERE status_evt = 'actif'";
@@ -8,6 +8,10 @@ class event {
         
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    // public static function getAccountInfo($pdo) {
+    //     $query = "SELECT "
+    // }
 }
 
 ?>

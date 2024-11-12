@@ -3,6 +3,7 @@
 //Ajout de l'autoloadd de Composer
 require_once '../vendor/autoload.php';
 require_once 'Breadcrumb.php';
+require_once 'getData.php';
 
 //Ajout du fichier constantes qui permet de configurer le site
 require_once '../config/constantes.php';
