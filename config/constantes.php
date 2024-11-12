@@ -5,7 +5,7 @@
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'gurekultura_bd');
 define('DB_USER', 'root');  
-define('DB_PASS', 'root');
+define('DB_PASS', '');
 
 // pour citrix
 // define('DB_HOST', 'lakartxela');

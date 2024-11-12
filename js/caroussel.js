@@ -32,5 +32,5 @@ function initCarousel(carouselContainer, nextBtnId, prevBtnId, slidesToShow) {
 }
 
 // Initialisation des deux carrousels
-initCarousel(document.querySelector('#carousel1'), 'next1', 'prev1', 3);
-initCarousel(document.querySelector('#carousel2'), 'next2', 'prev2', 3);
+initCarousel(document.querySelector('#carousel1'), 'next1', 'prev1', 6);
+initCarousel(document.querySelector('#carousel2'), 'next2', 'prev2', 6);
