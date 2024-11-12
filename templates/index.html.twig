@@ -19,9 +19,9 @@
                 
                 {# Infos de l'événement #}
                 <div class="grid grid-cols-subgrid col-start-3 col-span-2 flex-col w-[250px] text-white gap-2 p-4">
-                    <h3 class="font-bold row-start-1 col-span-2">{{ event.titre }}</h3>
-                    <p class="row-start-2 col-span-2">{{ event.date_evt }}</p>
-                    <p class="row-start-3 col-span-2">{{ event.localisation | nl2br }}</p>
+                    <h3 class="font-bold text-xl row-start-1 col-span-2 break-words">{{ event.titre }}</h3>
+                    <p class="row-start-2 col-span-2 break-words">{{ event.date_evt }}</p>
+                    <p class="row-start-3 col-span-2 break-words">{{ event.localisation | nl2br }}</p>
                 </div>
                 
                 {# Bouton pour accéder à la page de l'événement #}
