@@ -7,7 +7,6 @@ require_once 'include.php';
 $loader = new \Twig\Loader\FilesystemLoader('../templates');
 $twig = new \Twig\Environment($loader);
 
-$breadcrumbs = Breadcrumb::generate();
 
 // Rendre le template Twig
 echo $twig->render('inscription.html.twig', [

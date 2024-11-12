@@ -17,3 +17,5 @@ require_once '../config/connexionBD.php';
 //Ajout des modèles 
 require_once '../Models/Actualite.classe.php';
 require_once '../Models/Evenement.classe.php';
+
+
