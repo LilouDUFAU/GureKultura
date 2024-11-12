@@ -15,7 +15,7 @@ require_once '../config/twig.php';
 require_once '../config/connexionBD.php';
 
 //Ajout des modèles 
-require_once '../Models/Actualite.classe.php';
-require_once '../Models/Evenement.classe.php';
+require_once '../app/models/Actualite.classe.php';
+require_once '../app/models/Evenement.classe.php';
 
 
