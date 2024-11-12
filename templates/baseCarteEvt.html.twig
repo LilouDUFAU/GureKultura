@@ -1,20 +1,27 @@
-{% block carteEvt %}
-<div class="p-2 grid grid-cols-6 items-center rounded-2xl bg-[#A23145] drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
-    {# img de l'événement #}
-    <img src="../asset/bg_img.svg" alt="illustration" class="col-start-1 col-span-2 h-full w-full rounded-2xl" >
-    {# infos de l'événement #}
-    <div class="grid grid-cols-subgrid col-start-3 col-span-2 flex-col w-[250px] text-white gap-2 p-4">
-        {# titre événement #}
-        <h3 class="font-bold row-start-1 col-span-2 ">FIFAVA : Festival international du court-métrage d'Anglet</h3>
-        {# date événement #}
-        <p class="row-start-2 col-span-2">Du 23/11 au 26/11</p>
-        {# lieu événement #}
-        <p class="row-start-3 col-span-2">Théâtre Quintaou<br>64600 Anglet</p>
+{% extends "base.html.twig" %}
+
+{% block content %}
+<!-- Contenu spécifique de chaque page -->
+<div class="h-full">
+
+    <div class="p-2 grid grid-cols-6 items-center rounded-2xl bg-[#A23145] drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
+        {# img de l'événement #}
+        <img src="../asset/bg_img.svg" alt="illustration" class="col-start-1 col-span-2 h-full w-full rounded-2xl" >
+        {# infos de l'événement #}
+        <div class="grid grid-cols-subgrid col-start-3 col-span-2 flex-col w-[250px] text-white gap-2 p-4">
+            {# titre événement #}
+            <h3 class="font-bold row-start-1 col-span-2 ">FIFAVA : Festival international du court-métrage d'Anglet</h3>
+            {# date événement #}
+            <p class="row-start-2 col-span-2">Du 23/11 au 26/11</p>
+            {# lieu événement #}
+            <p class="row-start-3 col-span-2">Théâtre Quintaou<br>64600 Anglet</p>
+        </div>
+        {# bouton pour accéder à la page de l'événement #}
+        <div class="col-start-5 col-span-2 flex flex-col items-center justify-center gap-10">
+            <button class="bg-white text-[#A23145] rounded-2xl p-2 font-bold ">Type d'événement</button>
+            <a href="#" class="text-white text-md font-bold ">EN SAVOIR PLUS</a>
+        </div>
     </div>
-    {# bouton pour accéder à la page de l'événement #}
-    <div class="col-start-5 col-span-2 flex flex-col items-center justify-center gap-10">
-        <button class="bg-white text-[#A23145] rounded-2xl p-2 font-bold ">Type d'événement</button>
-        <a href="#" class="text-white text-md font-bold ">EN SAVOIR PLUS</a>
-    </div>
+
 </div>
-{% endblock %}   
+{% endblock %}
