@@ -9,9 +9,9 @@ define('DB_PASS', '');
 
 // pour citrix
 // define('DB_HOST', 'lakartxela');
-// define('DB_NAME', 'tlague_pro');
-// define('DB_USER', 'tlague_pro');  
-// define('DB_PASS', 'tlague_pro');
+// define('DB_NAME', 'ldufau007_pro');
+// define('DB_USER', 'ldufau007_pro');  
+// define('DB_PASS', 'ldufau007_pro');
 
 // pour distinguer les tables de la base de données (elles commencent toutes par gk_)
 define ('PREFIX_TABLE','gk_');
