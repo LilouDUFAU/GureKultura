@@ -3,7 +3,6 @@
 // BLOC A METTRE DANS UN CONTROLLEUR
 // Ajout du code commun à toutes les pages
 require_once 'include.php';
-require_once 'prerequis.php';
 // require_once '../routes.php';
 $pdo = Bd::getInstance()->getPdo();
 
@@ -18,9 +17,6 @@ $actualite = $managerActualite->findAll();
 
 $managerEvenement = new EvenementDao($pdo);
 $events = $managerEvenement->findAll();
-
-$events = getData::getActiveEvents($conn);
-
 
 // Rendre le template Twig
 echo $twig->render('index.html.twig', [

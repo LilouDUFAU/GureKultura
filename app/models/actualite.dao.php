@@ -16,7 +16,7 @@ class ActualiteDao {
     }
 
     public function find(?int $id): ?Actualite {
-        $sql="SELECT * FROM " . PREFIX_TABLE . "actualite WHERE id_actualite = :id";
+        $sql="SELECT * FROM " . PREFIX_TABLE . "actu WHERE actuId = :id";
         $pdoStatement = $this->pdo->prepare($sql);
         $pdoStatement->execute(array(':id' => $id));
         $pdoStatement->setFetchMode(PDO::FETCH_ASSOC);
@@ -26,7 +26,7 @@ class ActualiteDao {
     }
 
     public function findAll() {
-        $sql="SELECT * FROM " . PREFIX_TABLE . "actualite";
+        $sql="SELECT * FROM " . PREFIX_TABLE . "actu";
         $pdoStatement = $this->pdo->prepare($sql);
         $pdoStatement->execute();
         $pdoStatement->setFetchMode(PDO::FETCH_ASSOC);
@@ -37,15 +37,15 @@ class ActualiteDao {
 
     public function hydrate(array $tab): Actualite {
         $actualite = new Actualite();
-        $actualite->setId($tab['id_actualite']);
-        $actualite->setType($tab['type']);
+        $actualite->setActuId($tab['actuId']);
         $actualite->setTitre($tab['titre']);
-        $actualite->setResume($tab['resume']);
-        if (is_string($tab['date_publication'])) {
-            $tab['date_publication'] = new DateTime($tab['date_publication']);
+        $actualite->setFicResume($tab['ficResume']);
+        $actualite->setFicContenu($tab['ficContenu']);
+        if (is_string($tab['datePubli'])) {
+            $tab['datePubli'] = new DateTime($tab['datePubli']);
         }
-        $actualite->setDatePublication($tab['date_publication']);
-        $actualite->setImage($tab['image']);
+        $actualite->setDatePubli($tab['datePubli']);
+        $actualite->setImg($tab['img']);
         return $actualite;
     }
 

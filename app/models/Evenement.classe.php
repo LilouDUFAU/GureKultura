@@ -6,81 +6,94 @@ use DateTime;
 
 class Evenement
 {
-    private ?int $id;
+    private ?int $evtId;
     private ?string $titre;
-    private ?string $description;
-    private ?DateTime $date;
-    private ?string $lieu;
-    private ?bool $status;
+    private ?string $descr;
+    private ?DateTime $dateEvt;
+    private ?string $loc;
+    private ?bool $statutEvt;
+    private ?string $img;
 
-    public function __construct(?int $id=null, ?string $titre=null, ?string $description=null, ?DateTime $date=null, ?string $lieu=null, ?bool $status=null)
+    public function __construct(?int $evtId=null, ?string $titre=null, ?string $descr=null, ?DateTime $dateEvt=null, ?string $loc=null, ?bool $statutEvt=null, ?string $img=null)
     {
-        $this->id = $id;
+        $this->evtId = $evtId;
         $this->titre = $titre;
-        $this->description = $description;
-        $this->date = $date;
-        $this->lieu = $lieu;
-        $this->status = $status;
+        $this->descr = $descr;
+        $this->dateEvt = $dateEvt;
+        $this->loc = $loc;
+        $this->statutEvt = $statutEvt;
+        $this->img = $img;
     }
 
     // Getters
-    public function getId()
+    public function getEvtId(): ?int
     {
-        return $this->id;
+        return $this->evtId;
     }
 
-    public function getTitre()
+    public function getTitre(): ?string
     {
         return $this->titre;
     }
 
-    public function getDescription()
+    public function getDescr(): ?string
     {
-        return $this->description;
+        return $this->descr;
     }
 
-    public function getDate()
+    public function getDateEvt(): ?DateTime
     {
-        return $this->date;
+        return $this->dateEvt;
     }
 
-    public function getLieu()
+    public function getLoc(): ?string
     {
-        return $this->lieu;
+        return $this->loc;
     }
 
-    public function getStatus()
+    public function getStatutEvt(): ?bool
     {
-        return $this->status;
+        return $this->statutEvt;
+    }
+
+    public function getImg(): ?string
+    {
+        return $this->img;
     }
 
     // Setters
-    public function setId($id)
+    public function setEvtId(?int $evtId): void
     {
-        $this->id = $id;
+        $this->evtId = $evtId;
     }
-    public function setTitre($titre)
+
+    public function setTitre(?string $titre): void
     {
         $this->titre = $titre;
     }
 
-    public function setDescription($description)
+    public function setDescr(?string $descr): void
     {
-        $this->description = $description;
+        $this->descr = $descr;
     }
 
-    public function setDate($date)
+    public function setDateEvt(?DateTime $dateEvt): void
     {
-        $this->date = $date;
+        $this->dateEvt = $dateEvt;
     }
 
-    public function setLieu($lieu)
+    public function setLoc(?string $loc): void
     {
-        $this->lieu = $lieu;
+        $this->loc = $loc;
     }
 
-    public function setStatus($status)
+    public function setStatutEvt(?bool $statutEvt): void
     {
-        $this->status = $status;
+        $this->statutEvt = $statutEvt;
+    }
+
+    public function setImg(?string $img): void
+    {
+        $this->img = $img;
     }
 }
