@@ -1,0 +1,34 @@
+Outil de génération de documentation : 
+    - Doxygene
+
+--------------------------------------------
+Qu'est ce qu'on doit documenter:
+    - variables
+    - enregistrements
+    - types énumérés
+    - procédure/fonctions
+    - paramètres
+    - classes
+    - attributs/méthodes
+    - fichiers constituants le code
+    - ...
+
+--------------------------------------------
+Caractéristiques doxygène:
+    - le plus simple faire un latex puis exporter en pdf
+
+--------------------------------------------
+Revoir le tutoriel de petch (si besoins)
+(https://elearn.univ-pau.fr/course/view.php?id=19006&section=9#tabs-tree-start)
+
+Etape du tuto:
+    -cloner le depot de l'atelier
+        git clone https://github.com/patrick-etcheverry/atelier-doxygen.git 
+    -re generer les librairies necessaires
+        -cd atelier-doxygen 
+        -composer install
+        -npm install
+        -rm -fr .git
+        -mkdir docs
+
+
