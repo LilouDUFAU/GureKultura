@@ -31,4 +31,8 @@ Etape du tuto:
         -rm -fr .git
         -mkdir docs
 
+    -pour re generer la documentation
+        - entrer la commande doxygene en ligne de commande 
+        OU 
+        - run depuis l'interface docwizard
 
