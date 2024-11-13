@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+// namespace App\Models;
 
 use DateTime;
 
@@ -13,7 +13,7 @@ class Evenement
     private ?string $lieu;
     private ?bool $status;
 
-    public function __construct(?int $id, ?string $titre, ?string $description, ?DateTime $date, ?string $lieu, ?bool $status)
+    public function __construct(?int $id=null, ?string $titre=null, ?string $description=null, ?DateTime $date=null, ?string $lieu=null, ?bool $status=null)
     {
         $this->id = $id;
         $this->titre = $titre;
@@ -55,6 +55,10 @@ class Evenement
     }
 
     // Setters
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
     public function setTitre($titre)
     {
         $this->titre = $titre;
