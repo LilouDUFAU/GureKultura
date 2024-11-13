@@ -5,11 +5,12 @@
 require_once 'include.php';
 require_once 'prerequis.php';
 // require_once '../routes.php';
+$pdo = Bd::getInstance()->getPdo();
 
 $loader = new \Twig\Loader\FilesystemLoader('../templates');
 $twig = new \Twig\Environment($loader);
 
-$pdo = Bd::getInstance()->getPdo();
+
 
 $managerActualite = new ActualiteDao($pdo);
 
