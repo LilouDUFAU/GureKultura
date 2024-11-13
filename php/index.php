@@ -3,17 +3,20 @@
 // BLOC A METTRE DANS UN CONTROLLEUR
 // Ajout du code commun à toutes les pages
 require_once 'include.php';
-// require_once 'prerequis.php';
+require_once 'prerequis.php';
 // require_once '../routes.php';
 
 $loader = new \Twig\Loader\FilesystemLoader('../templates');
 $twig = new \Twig\Environment($loader);
 
+$pdo = Bd::getInstance()->getPdo();
+
 $managerActualite = new ActualiteDao($pdo);
+
 $actualite = $managerActualite->findAll();
 
-$managerEvenement = new EvenementDao($pdo);
-$events = $managerEvenement->findAll();
+// $managerEvenement = new EvenementDao($pdo);
+// $events = $managerEvenement->findAll();
 
 $events = getData::getActiveEvents($conn);
 
