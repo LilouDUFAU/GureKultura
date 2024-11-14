@@ -6,73 +6,82 @@ use DateTime;
 
 class Actualite
 {
-    private ?int $id;
-    private ?string $type;
+    private ?int $actuId;
     private ?string $titre;
-    private ?string $resume;
-    private ?DateTime $date_publication;
-    private ?string $image;
+    private ?string $ficResume;
+    private ?string $ficContenu;
+    private ?DateTime $datePubli;
+    private ?string $img;
 
-    public function __construct(?int $id=null, ?string $type=null, ?string $titre=null, ?string $resume=null, ?DateTime $date_publication=null, ?string $image=null)
+    public function __construct(?int $actuId=null, ?string $titre=null, ?string $ficResume=null, ?string $ficContenu=null, ?DateTime $datePubli=null, ?string $img=null)
     {
-        $this->id = $id;
-        $this->type = $type;
+        $this->actuId = $actuId;
         $this->titre = $titre;
-        $this->resume = $resume;
-        $this->date_publication = $date_publication;
-        $this->image = $image;
+        $this->ficResume = $ficResume;
+        $this->ficContenu = $ficContenu;
+        $this->datePubli = $datePubli;
+        $this->img = $img;
     }
 
-    // Getters
-    public function getId()
+    //getters
+    public function getActuId(): ?int
     {
-        return $this->id;
+        return $this->actuId;
     }
-    public function getType()
-    {
-        return $this->type;
-    }
-    public function getTitre()
+
+    public function getTitre(): ?string
     {
         return $this->titre;
     }
-    public function getResume()
+
+    public function getFicResume(): ?string
     {
-        return $this->resume;
-    }
-    public function getDatePublication()
-    {
-        return $this->date_publication;
-    }
-    public function getImage()
-    {
-        return $this->image;
+        return $this->ficResume;
     }
 
-    // Setters
-    public function setId($id)
+    public function getFicContenu(): ?string
     {
-        $this->id = $id;
+        return $this->ficContenu;
     }
-    public function setType($type)
+
+    public function getDatePubli(): ?DateTime
     {
-        $this->type = $type;
+        return $this->datePubli;
     }
-    public function setTitre($titre)
+
+    public function getImg(): ?string
+    {
+        return $this->img;
+    }
+
+    //setters
+    public function setActuId(?int $actuId): void
+    {
+        $this->actuId = $actuId;
+    }
+
+    public function setTitre(?string $titre): void
     {
         $this->titre = $titre;
     }
-    public function setResume($resume)
+
+    public function setFicResume(?string $ficResume): void
     {
-        $this->resume = $resume;
-    }
-    public function setDatePublication($date_publication)
-    {
-        $this->date_publication = $date_publication;
-    }
-    public function setImage($image)
-    {
-        $this->image = $image;
+        $this->ficResume = $ficResume;
     }
 
+    public function setFicContenu(?string $ficContenu): void
+    {
+        $this->ficContenu = $ficContenu;
+    }
+
+    public function setDatePubli(?DateTime $datePubli): void
+    {
+        $this->datePubli = $datePubli;
+    }
+
+    public function setImg(?string $img): void
+    {
+        $this->img = $img;
+    }
 }

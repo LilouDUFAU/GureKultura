@@ -16,7 +16,7 @@ class EvenementDao {
     }
 
     public function find(?int $id): ?Evenement {
-        $sql = "SELECT * FROM " . PREFIX_TABLE . "evenement WHERE id = :id";
+        $sql = "SELECT * FROM " . PREFIX_TABLE . "evt WHERE evtId = :id";
         $pdoStatement = $this->pdo->prepare($sql);
         $pdoStatement->execute(array(':id' => $id));
         $pdoStatement->setFetchMode(PDO::FETCH_CLASS);
@@ -26,7 +26,7 @@ class EvenementDao {
     }
 
     public function findAll() {
-        $sql = "SELECT * FROM " . PREFIX_TABLE . "evenement";
+        $sql = "SELECT * FROM " . PREFIX_TABLE . "evt";
         $pdoStatement = $this->pdo->prepare($sql);
         $pdoStatement->execute();
         $pdoStatement->setFetchMode(PDO::FETCH_ASSOC);
@@ -37,15 +37,16 @@ class EvenementDao {
 
     public function hydrate(array $tab): Evenement {
         $evenement = new Evenement();
-        $evenement->setId($tab['Id']);
+        $evenement->setEvtId($tab['evtId']);
         $evenement->setTitre($tab['titre']);
-        $evenement->setDescription($tab['description']);
-        if (is_string($tab['date_evt'])) {
-            $tab['date_evt'] = new DateTime($tab['date_evt']);
+        $evenement->setDescr($tab['descr']);
+        if (is_string($tab['dateEvt'])) {
+            $tab['dateEvt'] = new DateTime($tab['dateEvt']);
         }
-        $evenement->setDate($tab['date_evt']);
-        $evenement->setLieu($tab['localisation']);
-        $evenement->setStatus($tab['status_evt']);
+        $evenement->setDateEvt($tab['dateEvt']);
+        $evenement->setLoc($tab['loc']);
+        $evenement->setStatutEvt($tab['statutEvt']);
+        $evenement->setImg($tab['img']);
         return $evenement;
     }
 
