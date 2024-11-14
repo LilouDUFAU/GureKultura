@@ -813,6 +813,10 @@ video {
   cursor: pointer;
 }
 
+.auto-cols-max {
+  grid-auto-columns: max-content;
+}
+
 .auto-cols-min {
   grid-auto-columns: min-content;
 }
@@ -950,6 +954,11 @@ video {
 .border-\[\#A23145\] {
   --tw-border-opacity: 1;
   border-color: rgb(162 49 69 / var(--tw-border-opacity));
+}
+
+.border-\[\#B96574\] {
+  --tw-border-opacity: 1;
+  border-color: rgb(185 101 116 / var(--tw-border-opacity));
 }
 
 .border-\[\#bfbfbf\] {
@@ -1093,11 +1102,6 @@ video {
   padding-bottom: 6rem;
 }
 
-.py-4 {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-}
-
 .pb-0 {
   padding-bottom: 0px;
 }
@@ -1128,10 +1132,6 @@ video {
 
 .pt-2 {
   padding-top: 0.5rem;
-}
-
-.pt-4 {
-  padding-top: 1rem;
 }
 
 .text-left {
