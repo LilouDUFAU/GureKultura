@@ -1,0 +1,44 @@
+{% extends "base.html.twig" %}
+
+{% block content %}
+<!-- Contenu spÃ©cifique de chaque page -->
+<div class="h-full">
+    <div class="bg-white gap-24 p-2 grid grid-cols-12 items-center">
+        
+        {# titre de la page #}
+        <h1 class="col-start-3 col-span-8 text-white font-bold text-4xl text-center bg-[#A23145] opacity-75 rounded-2xl p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">Bayonne - Perpignan 14 DECEMBRE 2023 </h1>
+        
+        {# colonne de gauche #}
+        <img src="../asset/bg_img.svg" class="row-start-2 col-start-1 col-span-6 h-full w-full gap-2 rounded-lg drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]" >       
+
+        {# colonne de droite #}
+        <div class="grid grid-cols-subgrid row-start-2 col-start-7 col-span-6 w-full bg-[#A23145] opacity-75 gap-2 p-4 h-full rounded-lg">
+            <h1 class="row-start-1 col-span-6 text-white text-center text-2xl font-bold"> Choix des places</h1>
+
+            <div class="grid grid-cols-subgrid auto-cols-max row-start-2 col-span-6  text-white rounded-2xl p-2 w-full">
+                <label class="text-white col-span-1 text-xl">Tribune :</label>
+                <button class="col-start-3 col-span-1 border-2 border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full py-2 bg-white"> KEOLIS </button>
+            </div>
+
+            <div class="grid grid-cols-subgrid auto-cols-max row-start-3 col-span-6  text-white rounded-2xl p-2 w-full">
+                <label class="text-white col-span-2 text-xl">Bloc :</label>
+                <button class="col-start-3 col-span-1 border-2 border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full py-2 bg-white"> A HAUT </button>
+            </div>
+
+            <div class="grid grid-cols-subgrid auto-cols-max row-start-4 col-span-6  text-white rounded-2xl p-2 w-full">
+                <label class="text-white col-span-2 text-xl">Rang :</label>
+                <button class="col-start-3 col-span-1 border-2 border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full py-2 bg-white"> D </button>
+            </div>
+
+            <div class="grid grid-cols-subgrid auto-cols-max row-start-5 col-span-6  text-white rounded-2xl p-2 w-full">
+                <label class="text-white col-span-2 text-xl">Numéro :</label>
+                <button class="col-start-3 col-span-1 border-2 border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full py-2 bg-white"> 12 </button>
+            </div>
+
+            <button class="row-start-6 col-start-3 col-span-2 border-2  rounded-lg pl-2 text-[#bfbfbf] w-full py-2 text-white text-center text-2xl font-bold"> Confirmer </h1>
+
+        </div>
+    </div>
+</div>       
+
+{% endblock %}
