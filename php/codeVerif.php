@@ -10,7 +10,6 @@ $actualite = $managerActualite->findAll();
 
 // Rendre le template Twig
 echo $twig->render('codeVerif.html.twig', [
-    'breadcrumbs' => $breadcrumbs,
     'title' => 'Code de vérification',
     'actualites' => $actualite
 ]);

@@ -12,7 +12,6 @@ $twig = new \Twig\Environment($loader);
 
 // Rendre le template Twig
 echo $twig->render('propEv.html.twig', [
-    'breadcrumbs' => $breadcrumbs,
     'title' => 'Proposition événements',
     'actualites' => $actualite
 ]);

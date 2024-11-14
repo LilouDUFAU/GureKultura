@@ -10,7 +10,6 @@ $actualite = $managerActualite->findAll();
 
 // Rendre le template Twig
 echo $twig->render('connexion.html.twig', [
-    'breadcrumbs' => $breadcrumbs,
     'title' => 'Connexion',
     'actualites' => $actualite
 ]);

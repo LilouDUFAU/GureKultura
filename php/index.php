@@ -18,7 +18,6 @@ $events = $managerEvenement->findAll();
 
 // Rendre le template Twig
 echo $twig->render('index.html.twig', [
-    'breadcrumbs' => $breadcrumbs,
     'title' => 'Accueil',
     // 'description' => 'un site de gestion evenementielle au Pays Basque du Groupe 7'
     'events' => $events,

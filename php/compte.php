@@ -13,7 +13,6 @@ $twig = new \Twig\Environment($loader);
 
 // Rendre le template Twig
 echo $twig->render('compte.html.twig', [
-    'breadcrumbs' => $breadcrumbs,
     'title' => 'Mon compte',
     'actualites' => $actualite
 ]);

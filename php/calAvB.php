@@ -13,7 +13,6 @@ $twig = new \Twig\Environment($loader);
 
 // Rendre le template Twig
 echo $twig->render('calAvB.html.twig', [
-    'breadcrumbs' => $breadcrumbs,
     'title' => 'Calendrier Aviron Bayonnais',
     'actualites' => $actualite
 ]);

@@ -13,7 +13,6 @@ $twig = new \Twig\Environment($loader);
 
 // Rendre le template Twig
 echo $twig->render('inscription.html.twig', [
-    'breadcrumbs' => $breadcrumbs,
     'title' => 'Inscription',
     'actualites' => $actualite
 ]);

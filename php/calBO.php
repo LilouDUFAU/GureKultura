@@ -13,7 +13,6 @@ $twig = new \Twig\Environment($loader);
 
 // Rendre le template Twig
 echo $twig->render('calBO.html.twig', [
-    'breadcrumbs' => $breadcrumbs,
     'title' => 'Calendrier Biarritz Olympique',
     'actualites' => $actualite
 ]);

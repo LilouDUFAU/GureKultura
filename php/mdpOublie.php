@@ -10,7 +10,6 @@ $actualite = $managerActualite->findAll();
 
 // Rendre le template Twig
 echo $twig->render('mdpOublie.html.twig', [
-    'breadcrumbs' => $breadcrumbs,
     'title' => 'Mot de passe oublié',
     'actualites' => $actualite
 ]);
