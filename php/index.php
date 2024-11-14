@@ -12,9 +12,7 @@ $twig = new \Twig\Environment($loader);
 
 
 $managerActualite = new ActualiteDao($pdo);
-
 $actualite = $managerActualite->findAll();
-
 $managerEvenement = new EvenementDao($pdo);
 $events = $managerEvenement->findAll();
 
