@@ -51,5 +51,5 @@ class CategorieDao {
             $categories[] = $this->hydrate($categorie);
         }
         return $categories;
-    }
+    } 
 }

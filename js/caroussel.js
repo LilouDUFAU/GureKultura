@@ -33,8 +33,8 @@ function initCarousel(carouselContainer, nextBtnId, prevBtnId) {
 }
 
 // Initialisation des deux carrousels
-initCarousel(document.querySelector('#carousel1'), 'next1', 'prev1');
-initCarousel(document.querySelector('#carousel2'), 'next2', 'prev2');
-initCarousel(document.querySelector('#carousel3'), 'next3', 'prev3');
-initCarousel(document.querySelector('#carousel4'), 'next4', 'prev4');
+initCarousel(document.getElementById('carousel1'), 'next1', 'prev1');
+initCarousel(document.getElementById('carousel2'), 'next2', 'prev2');
+initCarousel(document.getElementById('carousel3'), 'next3', 'prev3');
+initCarousel(document.getElementById('carousel4'), 'next4', 'prev4');
 
