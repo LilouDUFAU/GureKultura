@@ -6,7 +6,60 @@
     <div class="gap-2 p-2 grid grid-cols-12 items-center">
         
         {# titre de la page #}
-        <h1 class="col-span-12 text-white font-bold text-4xl text-center bg-[#A23145] rounded-2xl p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] mb-10">Calendrier des matchs du Biarritz Olympique</h1>
+        <h1 class="row-start-1 col-span-12 text-white font-bold text-4xl text-center bg-[#A23145] rounded-2xl p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] mb-10">Calendrier des matchs de l'Aviron Bayonnais</h1>
+
+        <h2 class="row-start-2 col-span-12 text-black font-bold text-3xl text-left">À VENIR</h2>
+
+        <div  id="carousel1" class="row-start-3 col-span-12 relative w-full overflow-hidden mx-auto bg-[#A23145] opacity-75 rounded-lg" data-slides="6">
+            <!-- Conteneur du carrousel -->
+            <div  id="carousel" class="carousel flex transition-transform duration-500 ease-out gap-2 p-2">
+                <!-- Diapositives -->
+                <div class="slide w-1/6 flex-shrink-0 bg-blue-500 text-white text-center py-16 rounded-lg">Diapositive 1</div>
+                <div class="slide w-1/6 flex-shrink-0 bg-green-500 text-white text-center py-16 rounded-lg">Diapositive 2</div>
+                <div class="slide w-1/6 flex-shrink-0 bg-red-500 text-white text-center py-16 rounded-lg">Diapositive 3</div>
+                <div class="slide w-1/6 flex-shrink-0 bg-yellow-500 text-white text-center py-16 rounded-lg">Diapositive 4</div>
+                <div class="slide w-1/6 flex-shrink-0 bg-purple-500 text-white text-center py-16 rounded-lg">Diapositive 5</div>
+                <div class="slide w-1/6 flex-shrink-0 bg-pink-500 text-white text-center py-16 rounded-lg">Diapositive 6</div>
+                <div class="slide w-1/6 flex-shrink-0 bg-blue-500 text-white text-center py-16 rounded-lg">Diapositive 1</div>
+                <div class="slide w-1/6 flex-shrink-0 bg-green-500 text-white text-center py-16 rounded-lg">Diapositive 2</div>
+                <div class="slide w-1/6 flex-shrink-0 bg-red-500 text-white text-center py-16 rounded-lg">Diapositive 3</div>
+                <div class="slide w-1/6 flex-shrink-0 bg-yellow-500 text-white text-center py-16 rounded-lg">Diapositive 4</div>
+                <div class="slide w-1/6 flex-shrink-0 bg-purple-500 text-white text-center py-16 rounded-lg">Diapositive 5</div>
+                <div class="slide w-1/6 flex-shrink-0 bg-pink-500 text-white text-center py-16 rounded-lg">Diapositive 6</div>
+            </div>
+            <!-- Boutons de navigation -->
+            <button id="prev1" class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full"><</button>
+            <button id="next1" class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full">></button>
+        </div>
+
+        <h2 class="row-start-4 col-span-12 text-black font-bold text-3xl text-left mt-32">PASSÉS</h2>
+
+        <div id="carousel2" class="row-start-5 col-span-12 relative w-full overflow-hidden mx-auto bg-[#A23145] opacity-75 rounded-lg" data-slides="6">
+            <!-- Conteneur du carrousel -->
+            <div id="carousel"class="carousel flex transition-transform duration-500 ease-out gap-2 p-2" >
+                <!-- Diapositives -->
+                <div class="slide w-1/6 flex-shrink-0 bg-blue-500 text-white text-center py-16 rounded-lg">Diapositive 1</div>
+                <div class="slide w-1/6 flex-shrink-0 bg-green-500 text-white text-center py-16 rounded-lg">Diapositive 2</div>
+                <div class="slide w-1/6 flex-shrink-0 bg-red-500 text-white text-center py-16 rounded-lg">Diapositive 3</div>
+                <div class="slide w-1/6 flex-shrink-0 bg-yellow-500 text-white text-center py-16 rounded-lg">Diapositive 4</div>
+                <div class="slide w-1/6 flex-shrink-0 bg-purple-500 text-white text-center py-16 rounded-lg">Diapositive 5</div>
+                <div class="slide w-1/6 flex-shrink-0 bg-pink-500 text-white text-center py-16 rounded-lg">Diapositive 6</div>
+                <div class="slide w-1/6 flex-shrink-0 bg-blue-500 text-white text-center py-16 rounded-lg">Diapositive 1</div>
+                <div class="slide w-1/6 flex-shrink-0 bg-green-500 text-white text-center py-16 rounded-lg">Diapositive 2</div>
+                <div class="slide w-1/6 flex-shrink-0 bg-red-500 text-white text-center py-16 rounded-lg">Diapositive 3</div>
+                <div class="slide w-1/6 flex-shrink-0 bg-yellow-500 text-white text-center py-16 rounded-lg">Diapositive 4</div>
+                <div class="slide w-1/6 flex-shrink-0 bg-purple-500 text-white text-center py-16 rounded-lg">Diapositive 5</div>
+                <div class="slide w-1/6 flex-shrink-0 bg-pink-500 text-white text-center py-16 rounded-lg">Diapositive 6</div>
+            </div>
+            <!-- Boutons de navigation -->
+            <button id="prev2" class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full"><</button>
+            <button id="next2" class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full">></button>
+        </div>
+        
     </div>
 </div>
+{% endblock %}
+{% block script %}
+<script src="../js/caroussel.js"></script>
 {% endblock %}  
+

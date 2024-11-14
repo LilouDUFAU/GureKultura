@@ -3,14 +3,18 @@
 // BLOC A METTRE DANS UN CONTROLLEUR
 // Ajout du code commun à toutes les pages
 require_once 'include.php';
-require_once 'prerequis.php';
+// require_once '../routes.php';
+$pdo = Bd::getInstance()->getPdo();
 
 $loader = new \Twig\Loader\FilesystemLoader('../templates');
 $twig = new \Twig\Environment($loader);
 
 
-$events = getData::getActiveEvents($conn);
 
+$managerActualite = new ActualiteDao($pdo);
+$actualite = $managerActualite->findAll();
+$managerEvenement = new EvenementDao($pdo);
+$events = $managerEvenement->findAll();
 
 // Rendre le template Twig
 echo $twig->render('index.html.twig', [

@@ -8,7 +8,7 @@
     <link href="../css/output.css" rel="stylesheet">
     <link href="../css/scrollbar.css" rel="stylesheet">
 </head>
-<body class="font-['Sen']">
+<body class="font-['Segoe UI']">
 <main>
     <!-- Header -->
     <header class="flex justify-between items-center min-h-24 px-7 bg-[#A23145] text-[#ffffff]">
@@ -52,7 +52,7 @@
     </header>
 
     <!-- Content -->
-    <div class="py-2 pr-2 grid" style="grid-template-columns : 200px 1fr;">
+    <div class="py-2 pr-2 grid grid-cols-[200px_1fr]" >
         <!-- Aside -->
         <div class="pr-2 scrollable max-h-lvh">
             <aside class="flex flex-col justify-center bg-[#A23145] gap-2 font-['Sen'] text-[#ffffff] scrollable p-2">
@@ -64,7 +64,7 @@
                         <h1 class="col-span-6 text-black text-center row-start-1">{{ actualite.titre }}</h1>
 
                         {# illustration #}
-                        <img src="../asset/evenement/{{ actualite.image}}" alt="illustration" class="col-start-2 row-start-2 col-span-4 h-full w-full" >
+                        <img src="../asset/actualite/{{ actualite.img }}" alt="illustration" class="row-start-2 col-span-6 h-full w-full" >
                     </div> 
                 {% endfor %}
 
