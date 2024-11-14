@@ -21,4 +21,3 @@ define ('WEBSITE_TITLE','GureKultura | ');
 // define ('WEBSITE_VERSION','1.0');
 define ('WEBSITE_DESCRIPTION','un site de gestion evenementielle au Pays Basque');
 define ('WEBSITE_LANGUAGE','fr');
-
