@@ -1087,11 +1087,6 @@ video {
   padding-right: 1.75rem;
 }
 
-.py-1 {
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
-}
-
 .py-16 {
   padding-top: 4rem;
   padding-bottom: 4rem;
@@ -1126,10 +1121,6 @@ video {
 
 .pb-6 {
   padding-bottom: 1.5rem;
-}
-
-.pl-1 {
-  padding-left: 0.25rem;
 }
 
 .pl-2 {
@@ -1244,6 +1235,11 @@ video {
 
 .opacity-75 {
   opacity: 0.75;
+}
+
+.drop-shadow-2xl {
+  --tw-drop-shadow: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15));
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
 .drop-shadow-\[0_5px_5px_rgba\(0\2c 0\2c 0\2c 0\.3\)\] {
