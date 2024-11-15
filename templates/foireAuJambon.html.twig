@@ -8,19 +8,29 @@
         {# colonne de gauche #}
         <div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-8 w-full gap-3">
             {# bloc 1#}
-            <div class="grid grid-cols-subgrid row-start-2 col-span-8 bg-[#A23145] text-white p-4 w-full gap-1 ">  
-                <div  id="carousel1" class="row-start-2 col-span-12 relative w-full overflow-hidden mx-auto bg-[#A23145] opacity-75 rounded-lg">
-                    <img src="../asset/bg_img.svg" class="row-start-2 col-start-1 col-span-6 h-full w-full gap-2 rounded-lg">
+            <div class="grid grid-cols-subgrid row-start-2 col-span-8 text-white p-4 w-full gap-1 ">  
+                <div  id="carousel1" class="row-start-3 col-span-12 relative w-full overflow-hidden mx-auto opacity-75 rounded-lg" data-slides="1">
+                <!-- Conteneur du carrousel -->
+                <div  id="carousel" class="carousel flex transition-transform duration-500 ease-out gap-2 p-2">
+                    <!-- Diapositives -->
+                    <div class="slide w-1 flex-shrink-0 py-16 rounded-lg">
+                        <img src="../asset/AvB_logo.png" class="row-start-2 col-start-1 col-span-8 h-full w-full gap-2 border-solid border-2 border-black">
+                    </div>
                 </div>
+            <!-- Boutons de navigation -->
+            <button id="prev1" class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full"><</button>
+            <button id="next1" class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full">></button>
+        </div>
             </div>
             {# bloc 2#}
-            <div class="grid grid-cols-subgrid row-start-3 col-start-1 col-span-8 bg-[#FFFFFF] text-black p-4 w-full gap-1 border-2 border-black">                
-                <label class="text-black col-span-4 p-2 ">Du 04 au 07 Avril 2024 Esplanade Roland Barthes, Bayonne, 64100</label>
+            <div class="grid grid-cols-subgrid row-start-3 col-start-2 col-span-6 bg-[#FFFFFF] text-black p-4 w-full gap-1 border-2 border-black">                
+                <label class="text-black col-span-2 p-2 text-center ">Du 04 au 07 Avril 2024</label>
+                <label class="text-black col-start-4 col-span-6 p-2 text-center ">Esplanade Roland Barthes, Bayonne, 64100</label>
             </div>
         </div>
 
         {# colonne de droite #}
-        <div class="grid grid-cols-subgrid row-start-2 col-start-9 col-span-4 w-full gap-2">
+        <div class="grid grid-cols-subgrid row-start-2 col-start-9 col-span-4 w-full gap-2 border-solid border-2 border-black">
             <div class="grid grid-cols-subgrid row-start-1 col-span-6 bg-[#A23145] text-white p-4">
                 <h1 class="col-span-6 text-black p-2 font-bold text-2xl"> Mais qu'est-ce que la Foire au <br> Jambon ?</h1>                    
                 <label class="text-white col-span-4 p-2">Bienvenue à la célèbre Foire au Jambon de Bayonne ! Depuis des siècles, cette manifestation emblématique enchante les papilles
@@ -64,3 +74,6 @@
 </div>       
 
 {% endblock %}
+{% block script %}
+<script src="../js/caroussel.js"></script>
+{% endblock %} 
