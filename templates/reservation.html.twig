@@ -17,22 +17,33 @@
 
             <div class="grid grid-cols-subgrid auto-cols-max row-start-2 col-span-6  text-white rounded-2xl p-2 w-full items-center">
                 <label class="text-white col-span-1 text-xl">TRIBUNE :</label>
-                <button class="font-bold col-start-3 col-span-1 py-2 border-solid border-2 border-[#B96574] rounded-lg text-black w-full bg-white drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]"> KEOLIS </button>
-            </div>
+                <select class="font-bold col-start-3 col-span-1 py-2 border-solid border-2 border-[#B96574] rounded-lg text-black w-full bg-white drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
+                    <option value="keolis">KEOLIS</option>
+                    <option value="nord">NORD</option>
+                    <option value="honneur">HONNEUR</option>
+                    <option value="europcar">EUROPCAR</option>
+                </select>            </div>
 
             <div class="grid grid-cols-subgrid auto-cols-max row-start-3 col-span-6  text-white rounded-2xl p-2 w-full items-center">
                 <label class="text-white col-span-2 text-xl">BLOC :</label>
-                <button class="font-bold col-start-3 col-span-1 py-2 border-solid border-2 border-[#B96574] rounded-lg text-black w-full bg-white drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]"> A HAUT </button>
+                <select class="font-bold col-start-3 col-span-1 py-2 border-solid border-2 border-[#B96574] rounded-lg text-black w-full bg-white drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
+                    <option value="bloc_a">Bloc A</option>
+                    <option value="bloc_b">Bloc B</option>
+                    <option value="bloc_c">Bloc C</option>
+                </select>            
             </div>
-
             <div class="grid grid-cols-subgrid auto-cols-max row-start-4 col-span-6  text-white rounded-2xl p-2 w-full items-center">
                 <label class="text-white col-span-2 text-xl">RANG :</label>
-                <button class="font-bold col-start-3 col-span-1 py-2 border-solid border-2 border-[#B96574] rounded-lg text-black w-full bg-white drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]"> D </button>
+                <select class="font-bold col-start-3 col-span-1 py-2 border-solid border-2 border-[#B96574] rounded-lg text-black w-full bg-white drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
+                    <option value="rang_a">Rang A</option>
+                    <option value="rang_b">Rang B</option>
+                    <option value="rang_c">Rang C</option>
+                    <option value="rang_d">Rang D</option>
+                </select>            
             </div>
-
             <div class="grid grid-cols-subgrid auto-cols-max row-start-5 col-span-6  text-white rounded-2xl p-2 w-full items-center">
                 <label class="text-white col-span-2 text-xl">NUMERO :</label>
-                <button class="font-bold col-start-3 col-span-1 py-2 border-solid border-2 border-[#B96574] rounded-lg text-black w-full bg-white drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]"> 12 </button>
+                <input type="number" placeholder="Entrez numéro" class="font-bold col-start-3 col-span-1 py-2 px-4 border-solid border-2 border-[#B96574] rounded-lg text-black w-full bg-white drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] text-center" min="1" max="30" step="1" required>
             </div>
 
             <button class="row-start-6 col-start-5 col-span-1 border-2  rounded-lg text-[#bfbfbf] text-white text-center text-md font-bold"> Confirmer </h1>
