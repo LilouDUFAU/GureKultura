@@ -658,6 +658,10 @@ video {
   grid-column-start: 8;
 }
 
+.col-start-9 {
+  grid-column-start: 9;
+}
+
 .col-start-11 {
   grid-column-start: 11;
 }
@@ -993,6 +997,11 @@ video {
 .border-white {
   --tw-border-opacity: 1;
   border-color: rgb(255 255 255 / var(--tw-border-opacity));
+}
+
+.border-black {
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity));
 }
 
 .bg-\[\#A23145\] {
