@@ -1,6 +1,6 @@
 <?php
 
-class ControllerConnexion extends Controller {
+class ControllerIndex extends Controller {
     public function __construct(\Twig\Environment $twig, \Twig\Loader\FileSystemLoader $loader) {
         parent::__construct($twig, $loader);
     }
@@ -17,10 +17,14 @@ class ControllerConnexion extends Controller {
 
         $managerActualite = new ActualiteDao($this->getPdo());
         $actualite = $managerActualite->findAll();
+        $managerEvenement = new EvenementDao($this->getPdo());
+        $events = $managerEvenement->findAll();
 
         // Rendre le template Twig
-        echo $this->getTwig()->render('connexion.html.twig', [
-            'title' => 'Connexion',
+        echo $this->getTwig()->render('index.html.twig', [
+            'title' => 'Accueil',
+            // 'description' => 'un site de gestion evenementielle au Pays Basque du Groupe 7'
+            'events' => $events,
             'actualites' => $actualite
         ]);
     }

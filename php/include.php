@@ -17,6 +17,7 @@ require_once '../app/controllers/controller.class.php';
 require_once '../app/controllers/controller_factory.class.php';
 require_once '../app/controllers/controller_inscription.class.php';
 require_once '../app/controllers/controller_connexion.class.php';
+require_once '../app/controllers/controller_index.class.php';
 
 //Ajout des modèles 
 require_once '../app/models/actualite.classe.php';
