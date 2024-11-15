@@ -1,0 +1,66 @@
+{% extends "base.html.twig" %}
+
+{% block content %}
+<!-- Contenu spécifique de chaque page -->
+<div class="h-full">
+    <div class=" gap-2 p-2 grid grid-cols-12 items-center">   
+        <h1 class="col-span-12 text-black font-bold text-4xl text-center p-4">Foire au jambon </h1>     
+        {# colonne de gauche #}
+        <div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-8 w-full gap-3">
+            {# bloc 1#}
+            <div class="grid grid-cols-subgrid row-start-2 col-span-8 bg-[#A23145] text-white p-4 w-full gap-1 ">  
+                <div  id="carousel1" class="row-start-2 col-span-12 relative w-full overflow-hidden mx-auto bg-[#A23145] opacity-75 rounded-lg">
+                    <img src="../asset/bg_img.svg" class="row-start-2 col-start-1 col-span-6 h-full w-full gap-2 rounded-lg">
+                </div>
+            </div>
+            {# bloc 2#}
+            <div class="grid grid-cols-subgrid row-start-3 col-start-1 col-span-8 bg-[#FFFFFF] text-black p-4 w-full gap-1 border-2 border-black">                
+                <label class="text-black col-span-4 p-2 ">Du 04 au 07 Avril 2024 Esplanade Roland Barthes, Bayonne, 64100</label>
+            </div>
+        </div>
+
+        {# colonne de droite #}
+        <div class="grid grid-cols-subgrid row-start-2 col-start-9 col-span-4 w-full gap-2">
+            <div class="grid grid-cols-subgrid row-start-1 col-span-6 bg-[#A23145] text-white p-4">
+                <h1 class="col-span-6 text-black p-2 font-bold text-2xl"> Mais qu'est-ce que la Foire au <br> Jambon ?</h1>                    
+                <label class="text-white col-span-4 p-2">Bienvenue à la célèbre Foire au Jambon de Bayonne ! Depuis des siècles, cette manifestation emblématique enchante les papilles
+                et célèbre la tradition charcutière basque. Nichée au cœur de la magnifique ville de Bayonne, cette foire est bien plus qu'un simple événement gastronomique ; c'est un
+                véritable hommage à l'histoire et à la culture locales.</label>
+
+                <h1 class="col-span-6 col-start-1 text-black p-2 font-bold text-2xl"> Depuis quand ?</h1>   
+                <label class="text-white col-span-4 p-2">La Foire au Jambon de Bayonne existe depuis plus de 550 ans, ce qui en fait l'une des plus anciennes foires gastronomiques de France.
+                Elle remonte au Moyen Âge, témoignant ainsi d'une longue tradition charcutière dans la région basque. Chaque année, cet événement perpétue cette tradition séculaire en
+                réunissant producteurs, artisans et amateurs de jambon autour de cette spécialité emblématique.</label>  
+
+                <h1 class="col-span-6 col-start-1 text-black p-2 font-bold text-2xl"> Pour qui ?</h1>   
+                <label class="text-white col-span-4 p-2">Que vous soyez un visiteur ou un local aguerri, cet événement est un moment convivial où tout le monde est accueilli !
+                Si vous aimez le jambon et la fête, c’est l’événement à ne pas manquer !</label>               
+                </div>
+
+            </div>
+        </div>
+    </div>
+        <!-- Section Commentaires -->
+    <div class="mt-8 p-4 bg-[#f4f4f4] rounded-lg shadow-md">
+        <h2 class="text-2xl font-bold text-[#A23145] mb-4">Commentaires</h2>
+            
+        <!-- Exemples de commentaires -->
+        <div class="mb-6">
+            <p class="font-semibold text-[#A23145]">John Doe :</p>
+            <p class="text-gray-700">"Un super match, la victoire de Bayonne était bien méritée. Hâte de voir la prochaine rencontre !"</p>
+        </div>
+        <div class="mb-6">
+            <p class="font-semibold text-[#A23145]">Marie Dupont :</p>
+            <p class="text-gray-700">"Clermont a bien joué, mais quelques erreurs ont coûté cher. Bravo à Bayonne pour leur performance."</p>
+        </div>
+
+        <!-- Formulaire pour ajouter un commentaire -->
+        <div class="mt-6">
+            <label for="comment" class="block text-[#A23145] font-semibold mb-2">Ajouter un commentaire :</label>
+            <textarea id="comment" name="comment" rows="3" class="w-full p-3 border-2 border-[#A23145] rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#A23145]"></textarea>
+            <button type="submit" class="mt-4 px-6 py-2 bg-[#A23145] text-white font-semibold rounded-lg hover:bg-[#8a1e36]">Envoyer</button>
+        </div>
+    </div>
+</div>       
+
+{% endblock %}
