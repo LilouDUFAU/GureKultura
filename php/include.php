@@ -14,6 +14,7 @@ require_once '../app/models/bd.class.php';
 
 //Ajout des controllers
 require_once '../app/controllers/controller.class.php';
+require_once '../app/controllers/controller_factory.class.php';
 require_once '../app/controllers/controller_inscription.class.php';
 require_once '../app/controllers/controller_connexion.class.php';
 
