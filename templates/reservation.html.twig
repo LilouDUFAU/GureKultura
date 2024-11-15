@@ -1,7 +1,7 @@
 {% extends "base.html.twig" %}
 
 {% block content %}
-<!-- Contenu spÃ©cifique de chaque page -->
+<!-- Contenu spécifique de chaque page -->
 <div class="h-full">
     <div class="bg-white gap-4 p-2 grid grid-cols-12 items-center">
         
@@ -17,31 +17,34 @@
 
             <div class="grid grid-cols-subgrid auto-cols-max row-start-2 col-span-6  text-white rounded-2xl p-2 w-full items-center">
                 <label class="text-white col-span-1 text-xl">TRIBUNE :</label>
-                <select class="font-bold col-start-3 col-span-1 py-2 border-solid border-2 border-[#B96574] rounded-lg text-black w-full bg-white drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
+                <select id="tribune" class="font-bold col-start-3 col-span-1 py-2 border-solid border-2 border-[#B96574] rounded-lg text-black w-full bg-white drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
                     <option value="keolis">KEOLIS</option>
                     <option value="nord">NORD</option>
                     <option value="honneur">HONNEUR</option>
                     <option value="europcar">EUROPCAR</option>
-                </select>            </div>
+                </select>            
+            </div>
 
-            <div class="grid grid-cols-subgrid auto-cols-max row-start-3 col-span-6  text-white rounded-2xl p-2 w-full items-center">
+            <div class="grid grid-cols-subgrid auto-cols-max row-start-3 col-span-6 text-white rounded-2xl p-2 w-full items-center">
                 <label class="text-white col-span-2 text-xl">BLOC :</label>
-                <select class="font-bold col-start-3 col-span-1 py-2 border-solid border-2 border-[#B96574] rounded-lg text-black w-full bg-white drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
+                <select id="bloc" class="font-bold col-start-3 col-span-1 py-2 border-solid border-2 border-[#B96574] rounded-lg text-black w-full bg-white drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
                     <option value="blocA">Bloc A</option>
                     <option value="blocB">Bloc B</option>
                     <option value="blocC">Bloc C</option>
                 </select>            
             </div>
-            <div class="grid grid-cols-subgrid auto-cols-max row-start-4 col-span-6  text-white rounded-2xl p-2 w-full items-center">
+
+            <div class="grid grid-cols-subgrid auto-cols-max row-start-4 col-span-6 text-white rounded-2xl p-2 w-full items-center">
                 <label class="text-white col-span-2 text-xl">RANG :</label>
-                <select class="font-bold col-start-3 col-span-1 py-2 border-solid border-2 border-[#B96574] rounded-lg text-black w-full bg-white drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
+                <select id="rang" class="font-bold col-start-3 col-span-1 py-2 border-solid border-2 border-[#B96574] rounded-lg text-black w-full bg-white drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
                     <option value="rangA">Rang A</option>
                     <option value="rangB">Rang B</option>
                     <option value="rangC">Rang C</option>
                     <option value="rangD">Rang D</option>
                 </select>            
             </div>
-            <div class="grid grid-cols-subgrid auto-cols-max row-start-5 col-span-6  text-white rounded-2xl p-2 w-full items-center">
+
+            <div class="grid grid-cols-subgrid auto-cols-max row-start-5 col-span-6 text-white rounded-2xl p-2 w-full items-center">
                 <label class="text-white col-span-2 text-xl">NUMERO :</label>
                 <input type="text" placeholder="Numéro" class="font-bold col-start-3 col-span-1 py-2 px-4 border-solid border-2 border-[#B96574] rounded-lg text-black w-full bg-white drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] text-center" pattern="^(?:[1-9]|[1-2][0-9]|30)$" inputmode="numeric" required>
             </div>
@@ -52,3 +55,7 @@
 </div>       
 
 {% endblock %}
+
+{% block script %}
+<script src="../js/tribune.js"></script>
+{% endblock %}  
