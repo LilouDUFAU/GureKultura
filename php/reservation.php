@@ -12,7 +12,6 @@ $twig = new \Twig\Environment($loader);
 
 // Rendre le template Twig pour la réservation
 echo $twig->render('reservation.html.twig', [
-    'breadcrumbs' => $breadcrumbs,
     'title' => 'Réservation de Place',
     'actualites' => $actualite
 ]);

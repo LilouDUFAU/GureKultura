@@ -2,7 +2,7 @@
 
 {% block content %}
 <!-- Contenu spécifique de chaque page -->
-<div class="h-full">
+<div>
     <div class="bg-cover bg-no-repeat bg-[url('../asset/bg_img.svg')] gap-2 p-2 grid grid-cols-12 items-center">
         
         {# titre de la page #}
@@ -10,26 +10,26 @@
         
         
         {# premiere ligne #}
-        <div class="grid grid-cols-subgrid row-start-2 row-span-1 col-start-1 col-span-12 bg-[#A23145] opacity-75 rounded-2xl p-4 w-full drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
+        <div class="grid grid-cols-subgrid row-start-2 row-span-1 col-start-1 col-span-12 bg-[#A23145] bg-opacity-75 rounded-2xl p-4 w-full drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
             <label class="text-white col-span-4">Quel est le nom de ton événement :</label>
             <input type="text" id="name" name="name" class="col-span-8 border-2 border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-auto drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] py-2" placeholder="Saisir une description ...">
         </div>
 
         {# deuxieme ligne #}
-        <div class="grid grid-cols-subgrid row-start-3 row-span-1 col-start-1 col-span-12 bg-[#A23145] opacity-75 text-white rounded-2xl p-4 w-full drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
+        <div class="grid grid-cols-subgrid row-start-3 row-span-1 col-start-1 col-span-12 bg-[#A23145] bg-opacity-75 text-white rounded-2xl p-4 w-full drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
             <label class="text-white col-span-4">Quel est le type de ton événement :</label>
             <input type="text" id="type" name="type" class="col-span-8 border-2 border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] py-2" placeholder="Fête, Cinéma, Concert, Sport ...">
         </div>
 
         {# colonne de gauche #}
         <div class="grid grid-cols-subgrid row-start-4 col-start-1 col-span-6 w-full gap-2 h-full">
-            <div class="grid grid-cols-subgrid row-start-1 col-span-6 bg-[#A23145] opacity-75 text-white rounded-2xl w-full p-4 items-center">
+            <div class="grid grid-cols-subgrid row-start-1 col-span-6 bg-[#A23145] bg-opacity-75 text-white rounded-2xl w-full p-4 items-center">
                 <label class="row-start-1 text-white col-span-5">Joindre les autorisations essentielles (pdf, jpg, doc, ...) </label>
-                <button class="row-start-2 col-start-6 flex items-center justify-center max-h-1 text-[#A23145] bg-[#ffffff] rounded-lg p-4 font-bold drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">Insérer</button>
+                <button class="row-start-2 col-start-5 col-span-2 flex items-center justify-center max-h-1 text-[#A23145] bg-[#ffffff] rounded-lg p-4 font-bold drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">Insérer</button>
             </div>
 
             {# bloc #}
-            <div class="grid grid-cols-subgrid row-start-2 col-span-6 bg-[#A23145] opacity-75 text-white rounded-2xl p-4 w-full gap-1 ">
+            <div class="grid grid-cols-subgrid row-start-2 col-span-6 bg-[#A23145] bg-opacity-75 text-white rounded-2xl p-4 w-full gap-1 ">
                 <h1 class="row-start-1 col-span-6 text-xl"> Tes coordonnées :</h1>
                 <div class="grid grid-cols-subgrid row-start-2 col-span-6  text-white rounded-2xl py-2 w-full items-center">
                     <label class="text-white col-span-2">Email :</label>
@@ -66,13 +66,13 @@
 
         {# colonne de droite #}
         <div class="grid grid-cols-subgrid row-start-4 col-start-7 col-span-6 w-full gap-2">
-            <div class="grid grid-cols-subgrid row-start-1 col-span-6 bg-[#A23145] opacity-75 text-white rounded-2xl w-full p-4">
+            <div class="grid grid-cols-subgrid row-start-1 col-span-6 bg-[#A23145] bg-opacity-75 text-white rounded-2xl w-full p-4">
                 <label class="text-white col-span-3 pb-3">Décris ton événement :</label>
                 <input type="text" id="description" name="description" class="col-start-1 col-span-6 border-2 border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full py-2"  placeholder="Saisir une description ...">
             </div>
 
             {# premier bloc #}
-            <div class="grid grid-cols-subgrid row-start-2 col-span-6 bg-[#A23145] opacity-75 text-white rounded-2xl p-4 w-full">
+            <div class="grid grid-cols-subgrid row-start-2 col-span-6 bg-[#A23145] bg-opacity-75 text-white rounded-2xl p-4 w-full">
                 <h1 class="row-start-1 col-span-6 text-xl"> Informations de ton événement :</h1>
 
                 <div class="grid grid-cols-subgrid row-start-2 col-span-6  text-white rounded-2xl py-2 w-full items-center">
@@ -96,13 +96,13 @@
 
                 <div class="grid grid-cols-subgrid row-start-5 col-span-6  text-white rounded-2xl w-full py-2">
                     <label class="text-white col-span-1">Photos :</label>
-                    <button class="col-start-6 flex items-center justify-center max-h-1 text-[#A23145] bg-[#ffffff] rounded-lg p-4 font-bold drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">Ajouter</button>
+                    <button class="col-start-6 col-span-1 flex items-center justify-center max-h-1 text-[#A23145] bg-[#ffffff] rounded-lg p-4 font-bold drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">Ajouter</button>
                 </div>
 
             </div>
 
             {# deuxieme bloc #}
-            <div class="grid grid-cols-subgrid row-start-3 col-start-1 col-span-6 bg-[#A23145] opacity-75 text-white rounded-2xl p-4 w-full">
+            <div class="grid grid-cols-subgrid row-start-3 col-start-1 col-span-6 bg-[#A23145] bg-opacity-75 text-white rounded-2xl p-4 w-full">
                 <button class=" col-span-2 flex items-center justify-center max-h-1 text-[#A23145] bg-[#ffffff] rounded-lg p-4 font-bold drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">Besoin d'aide ?</button>
                 <button class="col-start-5 flex items-center justify-center max-h-1 text-[#A23145] bg-[#ffffff] rounded-lg p-4 font-bold drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">Annuler</button>
                 <button class="col-start-6 flex items-center justify-center max-h-1 text-[#A23145] bg-[#ffffff] rounded-lg p-4 font-bold drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">Valider</button>

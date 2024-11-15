@@ -10,9 +10,10 @@ $actualite = $managerActualite->findAll();
 $loader = new \Twig\Loader\FilesystemLoader('../templates');
 $twig = new \Twig\Environment($loader);
 
+
 // Rendre le template Twig
-echo $twig->render('propEv.html.twig', [
-    'title' => 'Proposition événements',
+echo $twig->render('categorie.html.twig', [
+    'title' => 'Categories',
     'actualites' => $actualite
 ]);
 ////////////////////////////////////
