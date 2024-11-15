@@ -3,7 +3,7 @@
 {% block content %}
 <!-- Contenu spécifique de chaque page -->
 <div class="h-full">
-    <div class="gap-2 grid grid-cols-12 items-center bg-[#A23145] rounded-2xl p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] mb-10">
+    <div class="gap-2 grid grid-cols-12 items-start bg-[#A23145] rounded-2xl p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] mb-10">
         
         {# titre de l'article #}
         <h1 class="col-span-12 text-white font-bold text-5xl text-left mb-4 break-words col-start-1 row-start-1">Top 14 (J20) : Bayonne tombe lourdement à Anoeta contre Toulon</h1>
@@ -11,12 +11,20 @@
         <div class="col-span-10 text-white font-bold text-2xl text-left mb-4 break-words col-start-1 row-start-2">TOP 14 2023/2024 – Bayonne a subi à Anoeta sa première défaite à domicile de la saison, battu par un RC Toulon qui s’offre le bonus (10-46). L’Aviron Bayonnais aura été hors sujet tout au long de la partie, dans ce match délocalisé. Cette défaite renvoie les Bayonnais vers la lutte pour le maintien, alors qu’ils pouvaient se rapprocher du Top 6. À l’inverse des Toulonnais, qui remontent à la 5e place.</div>
         {# contenu #}
         {# image de l'article #}
-        <img src="../asset/actualite/aviron.jpg" alt="Image de l'événement" class="col-start-1 col-span-6 row-start-3 w-full rounded-lg mb-4">
+        <img src="../asset/actualite/aviron.jpg" alt="Image de l'événement" class="col-start-1 col-span-6 row-start-3 w-full rounded-lg mb-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
         {# contenu de l'article #}
         <div class="col-span-8 text-white font-medium text-2xl text-left mb-4 break-words col-start-1 row-start-4">Le RC Toulon a pris à la gorge Bayonne<br>Était-ce la pression ? Le fait de jouer à Anoeta ? Le fait est que l’Aviron Bayonnais a sans doute fait son moins bon match de la saison. Pour ne pas dire depuis sa remontée. Les Basques, toujours invaincus à domicile depuis près deux saisons, sauf à Anoeta, sont empruntés, commettent des fautes d’entrée. Melvyn Jaminet profite de l’indiscipline, pour marquer deux pénalités (6e, 9e). Il faut dire que ce RC Toulon, pourtant parfois peu inspiré en déplacement, joue le coup à fond. En atteste leur 63 % de possession de balle, dans ce premier acte, mais aussi les 237 mètres gagnés ballon en mains, et les 8 défenseurs battus, contre 67 mètres et 4 défenseurs battus pour les locaux.
         Dominateurs et opportunistes, quand Duncan Paia’aua intercepte une passe du pilier Matis Perchaud, pour filer directement en terre promise (3-13, 21e). Et si on croit Bayonne enfin lancé après l’essai Arthur Iturria, au cœur du regroupement (10-13, 27e), l’éclaircie est de courte durée.</div>
         {# section commentaire #}
-        <div class="gap-2 grid grid-cols-6 items-center bg-[#ffffff] rounded-2xl p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] mb-10 col-start-9 col-span-4 row-start-3 row-span-2">TEST</div>
+        <div class="gap-2 grid grid-cols-6 items-center bg-[#ffffff] rounded-2xl p-2 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] mb-10 col-start-9 col-span-4 row-start-3 row-span-2">
+            <div class="gap-2 grid grid-cols-6 items-center bg-[#A23145] rounded-2xl p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] mb-4 col-span-6 text-white text-3xl text-left font-medium">
+                Commentaire
+            </div>
+            <div class="gap-2 grid grid-cols-6 items-center p-2 mb-4 col-span-6">
+                <img src="../asset/pfp.svg" alt="pfp" class="col-start-1 col-span-1 row-span-2 row-start-1 w-full rounded-lg drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
+            </div>
+
+        </div>
     </div>
 </div>
 {% endblock %}  
