@@ -1,12 +1,13 @@
-<?php
+<?php 
 
-class ControllerConnexion extends Controller {
+class ControllerCompte extends Controller {
+
     public function __construct(\Twig\Environment $twig, \Twig\Loader\FileSystemLoader $loader) {
         parent::__construct($twig, $loader);
     }
 
     public function afficher() {
-        echo "afficher connexion";
+        echo "afficher compte";
     }
 
     public function lister() {
@@ -19,9 +20,9 @@ class ControllerConnexion extends Controller {
         $actualite = $managerActualite->findAll();
 
         // Rendre le template Twig
-        echo $this->getTwig()->render('connexion.html.twig', [
-            'title' => 'Connexion',
+        echo $this->getTwig()->render('compte.html.twig', [
+            'title' => 'Compte',
             'actualites' => $actualite
         ]);
-    }
+    }   
 }
