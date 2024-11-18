@@ -2,16 +2,16 @@
 //Connexion à la base de données
 
 // // pour machines personnelles
-// define('DB_HOST', 'localhost');
-// define('DB_NAME', 'gurekultura_bd');
-// define('DB_USER', 'root');  
-// define('DB_PASS', '');
+define('DB_HOST', 'localhost');
+define('DB_NAME', 'gurekultura_bd');
+define('DB_USER', 'root');  
+define('DB_PASS', '');
 
 // pour citrix
-define('DB_HOST', 'lakartxela');
-define('DB_NAME', 'ldufau007_pro');
-define('DB_USER', 'ldufau007_pro');  
-define('DB_PASS', 'ldufau007_pro');
+// define('DB_HOST', 'lakartxela');
+// define('DB_NAME', 'ldufau007_pro');
+// define('DB_USER', 'ldufau007_pro');  
+// define('DB_PASS', 'ldufau007_pro');
 
 // pour distinguer les tables de la base de données (elles commencent toutes par gk_)
 define ('PREFIX_TABLE','gk_');
