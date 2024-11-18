@@ -3,4 +3,7 @@ Pour page accueil:
 		1- créer le Template de la carte
 		2- recuperer les donnes (dans la bd)
 		3- Generer les templates a partir des donnees recuperees (parametre de render)
-	
+
+
+
+Pour index.php voir video moulin
