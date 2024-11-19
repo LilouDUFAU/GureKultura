@@ -960,10 +960,6 @@ video {
   border-radius: 1rem;
 }
 
-.rounded-4xl {
-  border-radius: 3rem;
-}
-
 .rounded-full {
   border-radius: 9999px;
 }
@@ -1150,15 +1146,9 @@ video {
   padding-right: 0.75rem;
 }
 
-<<<<<<< HEAD
 .px-6 {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
-=======
-.px-4 {
-  padding-left: 1rem;
-  padding-right: 1rem;
->>>>>>> ca97c2b8d0f2188545d9868e5d14fb400d9c6d6a
 }
 
 .px-7 {
@@ -1208,6 +1198,10 @@ video {
 
 .pr-2 {
   padding-right: 0.5rem;
+}
+
+.pr-4 {
+  padding-right: 1rem;
 }
 
 .pt-0 {

@@ -25,6 +25,7 @@ require_once "../app/controllers/controller_categorie.class.php";
 require_once "../app/controllers/controller_codeVerif.class.php";
 require_once "../app/controllers/controller_mdpOublie.class.php";
 require_once "../app/controllers/controller_propEv.class.php";
+require_once "../app/controllers/controller_reservation.class.php";
 
 //Ajout des modèles 
 require_once '../app/models/actualite.classe.php';

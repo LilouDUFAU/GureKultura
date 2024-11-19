@@ -3,24 +3,22 @@
 {% block content %}
 <!-- Contenu spécifique de chaque page -->
 <div class="h-full">
-    <div class=" gap-2 p-2 grid grid-cols-12 items-center">   
-        <h1 class="col-span-12 text-black font-bold text-4xl text-center p-4">Foire au jambon </h1>     
+    <div class="gap-2 p-2 grid grid-cols-12 items-center">   
+        <h1 class="col-span-12 text-4xl p-2">Foire au jambon </h1>     
         {# colonne de gauche #}
-        <div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-8 w-full gap-3">
-            {# bloc 1#}
-            <div class="grid grid-cols-subgrid row-start-2 col-span-8 text-white p-4 w-full gap-1 ">  
-                <div  id="carousel1" class="row-start-3 col-span-12 relative w-full overflow-hidden mx-auto opacity-75 rounded-lg" data-slides="1">
-                <!-- Conteneur du carrousel -->
-                <div  id="carousel" class="carousel flex transition-transform duration-500 ease-out gap-2 p-2">
+        <div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-8 w-full">
+            <div id="carousel1" class="col-start-2 col-span-12 relative overflow-hidden col-span-4">
+                <div id="carousel" class="carousel flex transition-transform duration-500 ease-out p-2">
                     <!-- Diapositives -->
-                    <div class="slide w-1 flex-shrink-0 py-16 rounded-lg">
-                        <img src="../asset/AvB_logo.png" class="row-start-2 col-start-1 col-span-8 h-full w-full gap-2 border-solid border-2 border-black">
+                    <div class="slide flex-shrink-0">
+                        <img src="../asset/AvB_logo.png" class="col-span-4 h-40 w-auto mx-auto border-2 border-black">
                     </div>
                 </div>
-            <!-- Boutons de navigation -->
-            <button id="prev1" class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full"><</button>
-            <button id="next1" class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full">></button>
-        </div>
+                <!-- Boutons de navigation -->
+                <button id="prev1" 
+                    class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-200 text-white p-2 rounded-full"><</button>
+                <button id="next1" 
+                    class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-200 text-white p-2 rounded-full">></button>
             </div>
             {# bloc 2#}
             <div class="grid grid-cols-subgrid row-start-3 col-start-2 col-span-6 bg-[#FFFFFF] text-black p-4 w-full gap-1 border-2 border-black">                
@@ -32,7 +30,7 @@
         {# colonne de droite #}
         <div class="grid grid-cols-subgrid row-start-2 col-start-9 col-span-4 w-full gap-2 border-solid border-2 border-black">
             <div class="grid grid-cols-subgrid row-start-1 col-span-6 bg-[#A23145] text-white p-4">
-                <h1 class="col-span-6 text-black p-2 font-bold text-2xl"> Mais qu'est-ce que la Foire au <br> Jambon ?</h1>                    
+                <h1 class="col-span-6 text-black p-2 font-bold text-4xl"> Mais qu'est-ce que la Foire au <br> Jambon ?</h1>                    
                 <label class="text-white col-span-4 p-2">Bienvenue à la célèbre Foire au Jambon de Bayonne ! Depuis des siècles, cette manifestation emblématique enchante les papilles
                 et célèbre la tradition charcutière basque. Nichée au cœur de la magnifique ville de Bayonne, cette foire est bien plus qu'un simple événement gastronomique ; c'est un
                 véritable hommage à l'histoire et à la culture locales.</label>

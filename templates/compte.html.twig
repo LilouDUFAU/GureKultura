@@ -2,7 +2,7 @@
 
 {% block content %}
 <!-- Contenu spécifique de chaque page -->
-<div>
+<div class="pt-2">
     <div class="bg-cover bg-no-repeat bg-[url('../asset/bg_img.svg')] gap-2 p-2 grid grid-cols-12 items-center">
         
         {# titre de la page #}
@@ -69,7 +69,7 @@
                 </div>
 
                 <div class="grid grid-cols-subgrid row-start-4 col-span-6  text-white rounded-2xl w-full py-2">
-                    <a href="mdpOublie.php"class="text-white col-span-2 text-sm">Mot de passe oublié ?</a>
+                    <a href="index.php?controlleur=mdpOublie&methode=lister"class="text-white col-span-2 text-sm">Mot de passe oublié ?</a>
                     <button class="col-start-6 flex items-center justify-center max-h-1 text-[#A23145] bg-[#ffffff] rounded-lg p-4 font-bold drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">Valider</button>
                 </div>
             </div>
