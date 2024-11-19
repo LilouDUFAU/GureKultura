@@ -3,7 +3,6 @@
 // BLOC A METTRE DANS UN CONTROLLEUR
 // Ajout du code commun à toutes les pages
 require_once 'include.php';
-// require_once '../routes.php';
 $pdo = Bd::getInstance()->getPdo();
 
 $loader = new \Twig\Loader\FilesystemLoader('../templates');
@@ -18,8 +17,7 @@ $events = $managerEvenement->findAll();
 
 // Rendre le template Twig
 echo $twig->render('uneActualite.html.twig', [
-    'breadcrumbs' => $breadcrumbs,
-    'title' => 'Actualité ex',
+    'title' => 'Actualité',
     // 'description' => 'un site de gestion evenementielle au Pays Basque du Groupe 7'
     'events' => $events,
     'actualites' => $actualite
