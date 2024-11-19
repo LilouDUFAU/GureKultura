@@ -1,27 +1,41 @@
 <?php
-////////////////////////////////////
-// BLOC A METTRE DANS UN CONTROLLEUR
-// Ajout du code commun à toutes les pages
 require_once 'include.php';
-// require_once '../routes.php';
-$pdo = Bd::getInstance()->getPdo();
-
-$loader = new \Twig\Loader\FilesystemLoader('../templates');
-$twig = new \Twig\Environment($loader);
 
 
 
-$managerActualite = new ActualiteDao($pdo);
-$actualite = $managerActualite->findAll();
-$managerEvenement = new EvenementDao($pdo);
-$events = $managerEvenement->findAll();
+try {
+    if (isset($_GET['controlleur'])) {
+        $controlleurName = $_GET['controlleur'];
+    } else {
+        $controlleurName = '';
+    }
 
-// Rendre le template Twig
-echo $twig->render('index.html.twig', [
-    'breadcrumbs' => $breadcrumbs,
-    'title' => 'Accueil',
-    // 'description' => 'un site de gestion evenementielle au Pays Basque du Groupe 7'
-    'events' => $events,
-    'actualites' => $actualite
-]);
-////////////////////////////////////
+    if (isset($_GET['methode'])) {
+        $methode = $_GET['methode'];
+    } else {
+        $methode = '';
+    }
+
+    if ($controlleurName == '' && $methode == '') {
+        $controlleurName = 'index';
+        $methode = 'lister';
+    }
+
+    if ($controlleurName == '') {
+        throw new Exception("Le controlleur n'est pas définis");
+    }
+
+    if ($methode == '') {
+        throw new Exception("La méthode n'est pas définie");
+    }
+
+    $controlleur = ControllerFactory::getController($controlleurName, $loader, $twig);
+    $controlleur->call($methode);
+
+} catch (Exception $e) {
+    die('Erreur : ' . $e->getMessage());
+}
+
+
+
+

@@ -2,7 +2,7 @@
 
 {% block content %}
 <!-- Contenu spécifique de chaque page -->
-<div class="h-full">
+<div class="pt-2">
     <div class="gap-2 p-2 grid grid-cols-12 items-center">
         
         {# titre de la page #}
@@ -27,6 +27,8 @@
                 {# Bouton pour accéder à la page de l'événement #}
                 <div class="col-start-5 col-span-2 flex flex-col items-center justify-center gap-10">
                     <button class="bg-white text-[#A23145] rounded-2xl p-2 font-bold">Type d'événement</button>
+
+                    {# Voir video moulin pour faire comme quand il clique sur une recette #}
                     <a href="details.php?id={{ event.id }}" class="text-white text-md font-bold">EN SAVOIR PLUS</a>
                 </div>
             </div>
