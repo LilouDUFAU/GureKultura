@@ -9,8 +9,8 @@
 		<link href="../css/output.css" rel="stylesheet">
 		<link href="../css/scrollbar.css" rel="stylesheet">
 	</head>
-	<body class="font-['Segoe UI']">
-		<main>
+	<body class="font-['Segoe UI'] min-h-dvh">
+		<main class="flex flex-col">
 			<!-- Header -->
 			<header
 				class="flex justify-between items-center min-h-24 px-7 bg-[#A23145] text-[#ffffff] relative z-50">
@@ -48,7 +48,7 @@
 							<a class="text-xl block md:inline" href="index.php?controlleur=index&methode=lister">ACCUEIL</a>
 						</li>
 
-						<li class="border-t md:border-t-0 md:border-l-2 md:border-r-2 border-[#ffffff] p-2">
+						<li class="border-t md:border-t-0 md:border-l-2 md:border-r-2 border-[#ffffff] p-4">
 							<a class="text-xl block md:inline" href="index.php?controlleur=categorie&methode=lister">CATEGORIE</a>
 						</li>
 
@@ -64,7 +64,7 @@
 
 			<!-- Content -->
 			<div
-				id="grid-container" class="p-2 grid grid-cols-1 md:grid-cols-[200px_1fr] overflow-hidden">
+				id="grid-container" class="p-2 grid grid-cols-1 md:grid-cols-[200px_1fr] overflow-hidden flex-auto">
 				
 			<!-- Aside (Visible on Tablet and PC, Hidden on Mobile) -->
 			<div id="left-column" class="pr-2 scrollable hidden sm:block">
