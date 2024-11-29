@@ -1,7 +1,11 @@
 <?php 
 //Connexion à la base de données
 
+<<<<<<< HEAD
 // pour machines personnelles
+=======
+// // pour machines personnelles
+>>>>>>> db7f9e555fcce0615aba8aa038c11ff7babe2272
 // define('DB_HOST', 'localhost');
 // define('DB_NAME', 'gurekultura_bd');
 // define('DB_USER', 'root');  
