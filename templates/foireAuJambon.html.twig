@@ -8,19 +8,26 @@
 
         <!-- colonne de gauche -->
         <div class="grid grid-cols-12 gap-2 w-full col-span-12 lg:col-span-8">
-            <div id="carousel1" class="relative overflow-hidden col-span-12 lg:col-span-6">
-                <div id="carousel" class="carousel flex transition-transform duration-500 ease-out p-2">
-                    <!-- Diapositives -->
-                    <div class="slide flex-shrink-0">
-                        <img src="../asset/AvB_logo.png" class="w-full h-auto mx-auto border-2 border-black">
-                    </div>
+        <div id="carousel1" class="relative overflow-hidden col-span-12 lg:col-span-6">
+            <div id="carousel" class="carousel flex transition-transform duration-500 ease-out p-2">
+                <!-- Diapositives -->
+                <div class="slide flex-shrink-0">
+                    <img src="../asset/AvB_logo.png" 
+                        class="w-full h-auto max-w-full max-h-full object-contain mx-auto border-2 border-black">
                 </div>
-                <!-- Boutons de navigation -->
-                <button id="prev1" class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-gray-200 text-white p-2 rounded-full z-10">
-                    <</button>
-                <button id="next1" class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-gray-200 text-white p-2 rounded-full z-10">
-                    ></button>
             </div>
+            <!-- Boutons de navigation -->
+            <button id="prev1" 
+                class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-200 text-white p-2 rounded-full z-10">
+                &lt;
+            </button>
+            <button id="next1" 
+                class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-200 text-white p-2 rounded-full z-10">
+                &gt;
+            </button>
+
+        </div>
+
             
             <!-- Bloc 2 (Informations sur l'événement) -->
             <div class="grid grid-cols-12 gap-1 bg-white text-black p-4 w-full border-2 border-black col-span-12 lg:col-span-6">
