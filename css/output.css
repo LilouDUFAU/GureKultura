@@ -695,6 +695,30 @@ video {
   grid-row: span 2 / span 2;
 }
 
+.row-span-3 {
+  grid-row: span 3 / span 3;
+}
+
+.row-span-4 {
+  grid-row: span 4 / span 4;
+}
+
+.row-span-6 {
+  grid-row: span 6 / span 6;
+}
+
+.row-span-7 {
+  grid-row: span 7 / span 7;
+}
+
+.row-span-8 {
+  grid-row: span 8 / span 8;
+}
+
+.row-span-9 {
+  grid-row: span 9 / span 9;
+}
+
 .row-start-1 {
   grid-row-start: 1;
 }
@@ -846,10 +870,6 @@ video {
   width: 33.333333%;
 }
 
-.w-1\/6 {
-  width: 16.666667%;
-}
-
 .w-11 {
   width: 2.75rem;
 }
@@ -933,6 +953,14 @@ video {
 
 .grid-cols-subgrid {
   grid-template-columns: subgrid;
+}
+
+.grid-rows-2 {
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+}
+
+.grid-rows-9 {
+  grid-template-rows: repeat(9, minmax(0, 1fr));
 }
 
 .flex-col {
@@ -1576,10 +1604,6 @@ video {
     grid-column: span 6 / span 6;
   }
 
-  .sm\:col-span-8 {
-    grid-column: span 8 / span 8;
-  }
-
   .sm\:col-start-1 {
     grid-column-start: 1;
   }
@@ -1733,10 +1757,6 @@ video {
 
   .xl\:col-span-8 {
     grid-column: span 8 / span 8;
-  }
-
-  .xl\:col-span-12 {
-    grid-column: span 12 / span 12;
   }
 
   .xl\:col-start-1 {
