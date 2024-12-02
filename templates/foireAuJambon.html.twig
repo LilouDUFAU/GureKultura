@@ -4,68 +4,61 @@
 <!-- Contenu spécifique de chaque page -->
 <div class="h-full">
     <div class="gap-2 p-2 grid grid-cols-12 items-center">   
-        <h1 class="col-span-12 text-center font-bold text-4xl p-2 text-[#A23145]">Foire au jambon </h1>     
-        
-        {# Colonne de gauche #}
-        <div class="grid grid-cols-1 md:grid-cols-8 row-start-2 col-span-12 md:col-start-1 w-full gap-4">
-            <div id="carousel1" class="col-span-1 md:col-span-4 relative overflow-hidden mx-auto">
+        <h1 class="col-span-12 text-center font-bold text-4xl p-2">Foire au jambon </h1>     
+        {# colonne de gauche #}
+        <div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-8 w-full">
+            <div id="carousel1" class="col-start-2 col-span-12 relative overflow-hidden col-span-4">
                 <div id="carousel" class="carousel flex transition-transform duration-500 ease-out p-2">
                     <!-- Diapositives -->
                     <div class="slide flex-shrink-0">
-                        <img src="../asset/images.png" class="h-40 w-auto mx-auto border-2 border-black">
+                        <img src="../asset/AvB_logo.png" class="col-span-4 h-40 w-auto mx-auto border-2 border-black">
                     </div>
                 </div>
                 <!-- Boutons de navigation -->
                 <button id="prev1" 
-                    class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-200 text-white p-2 rounded-full hidden md:block"><</button>
+                    class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-200 text-white p-2 rounded-full"><</button>
                 <button id="next1" 
-                    class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-200 text-white p-2 rounded-full hidden md:block">></button>
+                    class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-200 text-white p-2 rounded-full">></button>
             </div>
-            
-            {# Bloc d'informations #}
-            <div class="grid grid-cols-1 md:grid-cols-6 bg-white text-black p-4 gap-2 border-2 border-black rounded-lg">
-                <label class="text-center text-lg font-bold col-span-6 md:col-span-3">Du 04 au 07 Avril 2024</label>
-                <label class="text-center text-lg col-span-6 md:col-span-3">Esplanade Roland Barthes, Bayonne, 64100</label>
+            {# bloc 2#}
+            <div class="grid grid-cols-subgrid row-start-3 col-start-2 col-span-6 bg-[#FFFFFF] text-black p-4 w-full gap-1 border-2 border-black">                
+                <label class="text-black col-span-2 p-2 text-center ">Du 04 au 07 Avril 2024</label>
+                <label class="text-black col-start-4 col-span-6 p-2 text-center ">Esplanade Roland Barthes, Bayonne, 64100</label>
             </div>
         </div>
 
-        {# Colonne de droite #}
-        <div class="grid grid-cols-1 md:grid-cols-6 row-start-3 col-span-12 md:col-start-9 md:col-span-4 gap-4">
-            <div class="bg-[#A23145] text-white p-4 rounded-lg shadow-md">
-                <h1 class="text-black text-xl md:text-2xl font-bold mb-4 text-center">
-                    Mais qu'est-ce que la Foire au Jambon ?
-                </h1>                    
-                <p class="text-white mb-4">
-                    Bienvenue à la célèbre Foire au Jambon de Bayonne ! Depuis des siècles, cette manifestation emblématique enchante les papilles
-                    et célèbre la tradition charcutière basque. Nichée au cœur de la magnifique ville de Bayonne, cette foire est bien plus qu'un
-                    simple événement gastronomique ; c'est un véritable hommage à l'histoire et à la culture locales.
-                </p>
-                <h2 class="text-black text-xl font-bold mb-2">Depuis quand ?</h2>   
-                <p class="text-white mb-4">
-                    La Foire au Jambon de Bayonne existe depuis plus de 550 ans, ce qui en fait l'une des plus anciennes foires gastronomiques de France.
-                    Elle remonte au Moyen Âge, témoignant ainsi d'une longue tradition charcutière dans la région basque.
-                </p>  
-                <h2 class="text-black text-xl font-bold mb-2">Pour qui ?</h2>   
-                <p class="text-white">
-                    Que vous soyez un visiteur ou un local aguerri, cet événement est un moment convivial où tout le monde est accueilli !
-                    Si vous aimez le jambon et la fête, c’est l’événement à ne pas manquer !
-                </p>               
+        {# colonne de droite #}
+        <div class="grid grid-cols-subgrid row-start-2 col-start-9 col-span-4 w-full gap-2 border-solid border-2 border-black">
+            <div class="grid grid-cols-subgrid row-start-1 col-span-6 bg-[#A23145] text-white p-4">
+                <h1 class="col-span-6 text-black p-2 font-bold text-4xl"> Mais qu'est-ce que la Foire au <br> Jambon ?</h1>                    
+                <label class="text-white col-span-4 p-2">Bienvenue à la célèbre Foire au Jambon de Bayonne ! Depuis des siècles, cette manifestation emblématique enchante les papilles
+                et célèbre la tradition charcutière basque. Nichée au cœur de la magnifique ville de Bayonne, cette foire est bien plus qu'un simple événement gastronomique ; c'est un
+                véritable hommage à l'histoire et à la culture locales.</label>
+
+                <h1 class="col-span-6 col-start-1 text-black p-2 font-bold text-2xl"> Depuis quand ?</h1>   
+                <label class="text-white col-span-4 p-2">La Foire au Jambon de Bayonne existe depuis plus de 550 ans, ce qui en fait l'une des plus anciennes foires gastronomiques de France.
+                Elle remonte au Moyen Âge, témoignant ainsi d'une longue tradition charcutière dans la région basque. Chaque année, cet événement perpétue cette tradition séculaire en
+                réunissant producteurs, artisans et amateurs de jambon autour de cette spécialité emblématique.</label>  
+
+                <h1 class="col-span-6 col-start-1 text-black p-2 font-bold text-2xl"> Pour qui ?</h1>   
+                <label class="text-white col-span-4 p-2">Que vous soyez un visiteur ou un local aguerri, cet événement est un moment convivial où tout le monde est accueilli !
+                Si vous aimez le jambon et la fête, c’est l’événement à ne pas manquer !</label>               
+                </div>
             </div>
         </div>
     </div>
-    
-    <!-- Section Commentaires -->
+        <!-- Section Commentaires -->
     <div class="mt-8 p-4 bg-[#f4f4f4] rounded-lg shadow-md">
         <h2 class="text-2xl font-bold text-[#A23145] mb-4">Commentaires</h2>
             
         <!-- Exemples de commentaires -->
         <div class="mb-6">
             <p class="font-semibold text-[#A23145]">John Doe :</p>
-            <p class="text-gray-700">"Un super événement, la Foire au Jambon est toujours une réussite !"</p>
+            <p class="text-gray-700">"Un super match, la victoire de Bayonne était bien méritée. Hâte de voir la prochaine rencontre !"</p>
         </div>
         <div class="mb-6">
             <p class="font-semibold text-[#A23145]">Marie Dupont :</p>
-            <p class="text-gray-700">"Une ambiance incroyable et de super produits locaux. À ne pas manquer !"</p>
+            <p class="text-gray-700">"Clermont a bien joué, mais quelques erreurs ont coûté cher. Bravo à Bayonne pour leur performance."</p>
         </div>
 
         <!-- Formulaire pour ajouter un commentaire -->
@@ -80,4 +73,4 @@
 {% endblock %}
 {% block script %}
 <script src="../js/caroussel.js"></script>
-{% endblock %}
+{% endblock %} 
