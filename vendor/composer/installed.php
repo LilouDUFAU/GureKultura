@@ -4,6 +4,9 @@
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
 
+        'reference' => '88e2cd3c710cc1a5ac546ce1892affeae5bc73ce',
+
+
         'reference' => 'd6c51660351bfa8d0f5e8fc867a0d79c83dd77fd',
 
         'reference' => 'ba32271134334d110b93e8a011edca78c1541814',
@@ -18,9 +21,13 @@
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
 
+            'reference' => '88e2cd3c710cc1a5ac546ce1892affeae5bc73ce',
+
+
             'reference' => 'd6c51660351bfa8d0f5e8fc867a0d79c83dd77fd',
 
             'reference' => 'ba32271134334d110b93e8a011edca78c1541814',
+
 
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
@@ -43,9 +50,15 @@
             'dev_requirement' => false,
         ),
         'symfony/intl' => array(
+
+            'pretty_version' => 'v6.4.15',
+            'version' => '6.4.15.0',
+            'reference' => 'b1d5e8d82615b60f229216edfee0b59e2ef66da6',
+
             'pretty_version' => 'v7.1.7',
             'version' => '7.1.7.0',
             'reference' => '4770ebd8f6d96c6bff8ad2c76ffcf02955acfd49',
+
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/intl',
             'aliases' => array(),

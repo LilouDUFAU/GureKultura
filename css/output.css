@@ -894,6 +894,10 @@ video {
   width: 2.75rem;
 }
 
+.w-24 {
+  width: 6rem;
+}
+
 .w-5 {
   width: 1.25rem;
 }
@@ -933,6 +937,10 @@ video {
 
 .cursor-pointer {
   cursor: pointer;
+}
+
+.resize-none {
+  resize: none;
 }
 
 .auto-cols-max {
@@ -1032,6 +1040,10 @@ video {
   --tw-space-y-reverse: 0;
   margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1rem * var(--tw-space-y-reverse));
+}
+
+.overflow-auto {
+  overflow: auto;
 }
 
 .overflow-hidden {
@@ -1342,11 +1354,6 @@ video {
   line-height: 2.5rem;
 }
 
-.text-5xl {
-  font-size: 3rem;
-  line-height: 1;
-}
-
 .text-base {
   font-size: 1rem;
   line-height: 1.5rem;
@@ -1610,10 +1617,6 @@ video {
 
 
 @media (min-width: 640px) {
-  .sm\:col-span-12 {
-    grid-column: span 12 / span 12;
-  }
-
   .sm\:col-span-6 {
     grid-column: span 6 / span 6;
   }
@@ -1912,6 +1915,11 @@ video {
     grid-template-columns: repeat(12, minmax(0, 1fr));
   }
 
+
+  .lg\:text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+
   .lg\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1979,12 +1987,28 @@ video {
 
   .lg\:text-left {
     text-align: left;
+
   }
 
   .lg\:text-4xl {
     font-size: 2.25rem;
     line-height: 2.5rem;
   }
+
+
+  .lg\:text-5xl {
+    font-size: 3rem;
+    line-height: 1;
+  }
+
+  .lg\:text-base {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
+  .lg\:text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
 
   .lg\:text-lg {
     font-size: 1.125rem;
@@ -1998,6 +2022,7 @@ video {
 
   .lg\:font-bold {
     font-weight: 700;
+
   }
 }
 
