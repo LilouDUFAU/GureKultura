@@ -821,6 +821,10 @@ video {
   height: 1.5rem;
 }
 
+.h-auto {
+  height: auto;
+}
+
 .h-full {
   height: 100%;
 }
@@ -872,10 +876,6 @@ video {
 
 .max-w-xl {
   max-width: 36rem;
-}
-
-.flex-auto {
-  flex: 1 1 auto;
 }
 
 .flex-shrink-0 {
@@ -1214,6 +1214,11 @@ video {
   padding-right: 1.75rem;
 }
 
+.py-1 {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
 .py-16 {
   padding-top: 4rem;
   padding-bottom: 4rem;
@@ -1240,6 +1245,10 @@ video {
 
 .pb-6 {
   padding-bottom: 1.5rem;
+}
+
+.pl-1 {
+  padding-left: 0.25rem;
 }
 
 .pl-2 {
@@ -1572,10 +1581,6 @@ video {
     grid-row-start: 4;
   }
 
-  .sm\:block {
-    display: block;
-  }
-
   .sm\:h-full {
     height: 100%;
   }
@@ -1683,10 +1688,6 @@ video {
     grid-template-columns: repeat(8, minmax(0, 1fr));
   }
 
-  .md\:grid-cols-\[200px_1fr\] {
-    grid-template-columns: 200px 1fr;
-  }
-
   .md\:flex-row {
     flex-direction: row;
   }
@@ -1752,6 +1753,16 @@ video {
 }
 
 @media (min-width: 1024px) {
+  @media (min-width: 768px) {
+    .lg\:md\:grid-cols-\[200px_1fr\] {
+      grid-template-columns: 200px 1fr;
+    }
+  }
+
+  .lg\:col-span-1 {
+    grid-column: span 1 / span 1;
+  }
+
   .lg\:col-span-2 {
     grid-column: span 2 / span 2;
   }
@@ -1780,6 +1791,10 @@ video {
     grid-column-start: 5;
   }
 
+  .lg\:col-start-6 {
+    grid-column-start: 6;
+  }
+
   .lg\:col-start-7 {
     grid-column-start: 7;
   }
@@ -1800,6 +1815,10 @@ video {
     grid-row-start: 4;
   }
 
+  .lg\:block {
+    display: block;
+  }
+
   .lg\:flex {
     display: flex;
   }
@@ -1818,6 +1837,10 @@ video {
 
   .lg\:w-full {
     width: 100%;
+  }
+
+  .lg\:flex-auto {
+    flex: 1 1 auto;
   }
 
   .lg\:auto-cols-min {
@@ -1868,12 +1891,33 @@ video {
     gap: 1rem;
   }
 
+  .lg\:overflow-hidden {
+    overflow: hidden;
+  }
+
   .lg\:p-2 {
     padding: 0.5rem;
   }
 
   .lg\:p-4 {
     padding: 1rem;
+  }
+
+  .lg\:py-2 {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .lg\:pl-2 {
+    padding-left: 0.5rem;
+  }
+
+  .lg\:pr-2 {
+    padding-right: 0.5rem;
+  }
+
+  .lg\:pt-2 {
+    padding-top: 0.5rem;
   }
 
   .lg\:text-left {
@@ -1883,6 +1927,11 @@ video {
   .lg\:text-4xl {
     font-size: 2.25rem;
     line-height: 2.5rem;
+  }
+
+  .lg\:text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
   }
 
   .lg\:text-xl {

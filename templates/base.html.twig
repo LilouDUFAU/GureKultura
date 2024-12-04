@@ -63,22 +63,21 @@
 			</header>
 
 			<!-- Content -->
-			<div
-				id="grid-container" class="pr-2 py-2 grid grid-cols-1 md:grid-cols-[200px_1fr] overflow-hidden flex-auto">
+			<div id="grid-container" class="lg:pr-2 lg:py-2 lg:grid lg:md:grid-cols-[200px_1fr] lg:overflow-hidden lg:flex-auto ">
 				
-			<!-- Aside (Visible on Tablet and PC, Hidden on Mobile) -->
-			<div id="left-column" class="pr-2 scrollable hidden sm:block">
-				<aside class="flex flex-col justify-center bg-[#A23145] gap-2 font-['Sen'] text-[#ffffff] scrollable p-2">
-					<h1 class="text-xl text-white text-center">ACTUS</h1>
 
-					{% for actualite in actualites %}
-						<div class="p-2 grid grid-cols-1 items-center rounded-lg bg-white drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
-							<h1 class="text-black text-center">{{ actualite.titre }}</h1>
-							<img src="../asset/actualite/{{ actualite.img }}" alt="illustration" class="h-full w-full object-cover rounded-lg">
-						</div>
-					{% endfor %}
-				</aside>
-			</div>
+				<div id="left-column" class="pr-2 scrollable hidden lg:block">
+					<aside class="flex flex-col justify-center bg-[#A23145] gap-2 font-['Sen'] text-[#ffffff] scrollable p-2">
+						<h1 class="text-xl text-white text-center">ACTUS</h1>
+
+						{% for actualite in actualites %}
+							<div class="p-2 grid grid-cols-1 items-center rounded-lg bg-white drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
+								<h1 class="text-black text-center">{{ actualite.titre }}</h1>
+								<img src="../asset/actualite/{{ actualite.img }}" alt="illustration" class="h-full w-full object-cover rounded-lg">
+							</div>
+						{% endfor %}
+					</aside>
+				</div>
 
 
 
@@ -86,7 +85,7 @@
 				<div>
 					<div id="right-column" class="h-min">
 						<!-- Fil d'Ariane -->
-						<nav class="flex items-center text-[#A23145] space-x-2 p-4 border-4 bg-white border-[#A23145] drop-shadow-[0_5px_5px_rgba(0,0,0,0.3)]"></nav>
+						<nav class="hidden lg:block lg:items-center text-[#A23145] space-x-2 p-4 border-4 bg-white border-[#A23145] drop-shadow-[0_5px_5px_rgba(0,0,0,0.3)]"></nav>
 
 						<!-- Contenu spécifique de chaque page -->
 						<div>
