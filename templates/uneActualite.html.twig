@@ -59,8 +59,8 @@
             {# barre d'interaction #}
             <form action="TROUVERUNNOM.php" method="post" class="gap-2 grid grid-cols-12 items-start col-span-12" enctype="multipart/form-data" novalidate>
                 {# barre de texte #}
-                <div class="col-start-1 col-span-10 row-start-1 row-span-2 items-center p-2 rounded-lg border-2 border-solid border-black bg-[#ffffff]">
-                    <input type="text" placeholder="Ajouter un commentaire" name="commentaire" maxlength="500" class="placeholder-gray-500 text-[#000000] w-full">
+                <div class="col-start-1 col-span-10 row-start-1 row-span-2 items-center rounded-lg border-2 border-solid border-black bg-[#ffffff]">
+                    <textarea placeholder="Ajouter un commentaire" name="commentaire" maxlength="500" class="placeholder-gray-500 p-4 text-[#000000] w-full resize-none overflow-auto" rows="1"></textarea>
                 </div>
                 {# Ajouter une image #}
                 <input type="file" id="image" name="image" accept=".jpg,.jpeg,.png,.svg,.webp" class="hidden" />
@@ -70,7 +70,6 @@
                 {# Ajouter un like #}
                 <img src="../asset/pouce_en_l_air_grand.svg" alt="Like" name="like" class="col-start-11 col-span-1 row-start-2">
                 {# Envoyer le commentaire #}
-                <img src="../asset/envoyer_message.svg" alt="Publier" class="col-start-12 col-span-1 row-start-2">
                 <input type="submit" id="submit" class="hidden" />
                 <label for="submit" class="cursor-pointer col-start-12 col-span-1 row-start-2">
                     <img src="../asset/envoyer_message.svg" alt="Publier" class="w-24 h-auto" />

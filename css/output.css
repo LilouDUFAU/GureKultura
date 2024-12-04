@@ -907,6 +907,10 @@ video {
   cursor: pointer;
 }
 
+.resize-none {
+  resize: none;
+}
+
 .auto-cols-max {
   grid-auto-columns: max-content;
 }
@@ -1000,6 +1004,10 @@ video {
   --tw-space-y-reverse: 0;
   margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1rem * var(--tw-space-y-reverse));
+}
+
+.overflow-auto {
+  overflow: auto;
 }
 
 .overflow-hidden {
