@@ -19,10 +19,14 @@ class ControllerCategorie extends Controller {
         $managerActualite = new ActualiteDao($this->getPdo());
         $actualite = $managerActualite->findAll();
 
+        $managerCategorie = new CategorieDao($this->getPdo());
+        $categorie = $managerCategorie->findAll();
+
         // Rendre le template Twig
         echo $this->getTwig()->render('categorie.html.twig', [
             'title' => 'Categorie',
-            'actualites' => $actualite
+            'actualites' => $actualite,
+            'categories' => $categorie,
         ]);
     }   
 }
