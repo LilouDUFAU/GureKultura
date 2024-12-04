@@ -899,6 +899,10 @@ video {
   cursor: pointer;
 }
 
+.auto-cols-max {
+  grid-auto-columns: max-content;
+}
+
 .auto-cols-min {
   grid-auto-columns: min-content;
 }
@@ -1256,10 +1260,6 @@ video {
 
 .pr-2 {
   padding-right: 0.5rem;
-}
-
-.pr-3 {
-  padding-right: 0.75rem;
 }
 
 .pt-2 {
