@@ -2,10 +2,24 @@
 //Connexion à la base de données
 
 // pour machines personnelles
+
 // define('DB_HOST', 'localhost');
 // define('DB_NAME', 'gurekultura_bd');
 // define('DB_USER', 'root');  
 // define('DB_PASS', '');
+
+
+//define('DB_HOST', 'localhost');
+//define('DB_NAME', 'gurekultura_bd');
+//define('DB_USER', 'root');  
+//define('DB_PASS', '');
+
+define('DB_HOST', 'localhost');
+define('DB_NAME', 'gurekultura_bd');
+define('DB_USER', 'root');  
+define('DB_PASS', 'root');
+
+
 
 // pour citrix
 define('DB_HOST', 'lakartxela');

@@ -17,7 +17,7 @@ class CategorieDao {
     }
 
     public function find(?int $id): ?Categorie {
-        $sql="SELECT * FROM " . PREFIX_TABLE . "categorie WHERE cateId = :id";
+        $sql="SELECT * FROM " . PREFIX_TABLE . "cate WHERE cateId = :id";
         $pdoStatement = $this->pdo->prepare($sql);
         $pdoStatement->execute(array(':id' => $id));
         $pdoStatement->setFetchMode(PDO::FETCH_ASSOC);
@@ -27,7 +27,7 @@ class CategorieDao {
     }
 
     public function findAll() {
-        $sql="SELECT * FROM " . PREFIX_TABLE . "categorie";
+        $sql="SELECT * FROM " . PREFIX_TABLE . "cate";
         $pdoStatement = $this->pdo->prepare($sql);
         $pdoStatement->execute();
         $pdoStatement->setFetchMode(PDO::FETCH_ASSOC);
