@@ -2,7 +2,7 @@
 1- git branch <nomBranche>
 2- git switch <nomBranche>
 3- travailler sur la branche 
-4- git commit am "<nomCommit>"
+4- git commit -am "<nomCommit>"
 5- git push --set-upstream origin <nomBranche>
 6- aller sur github
 7- aller sur pull request
