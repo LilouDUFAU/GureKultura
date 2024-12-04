@@ -59,3 +59,84 @@
 {% block script %}
 <script src="../js/tribune.js"></script>
 {% endblock %}  
+
+
+
+{# 
+{% extends "base.html.twig" %}
+
+{% block content %}
+<!-- Contenu spécifique de chaque page -->
+<div class="h-full">
+    <div class="grid lg:grid-cols-12 gap-4 p-2 items-center">
+        
+        {# titre de la page 
+        <h1 class="lg:col-start-3 lg:col-span-8 text-[#A23145] font-bold text-2xl lg:text-4xl text-center border-4 border-solid border-[#A23145] opacity-75 bg-white rounded-2xl p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
+            BAYONNE - PERPIGNAN 14 DECEMBRE 2023
+        </h1>
+        
+        {# colonne de gauche (Image) 
+        <div class="lg:row-start-2 lg:col-start-1 lg:col-span-6 flex justify-center lg:justify-start">
+            <img src="../asset/bg_img.svg" class="w-full lg:h-auto h-40 rounded-2xl drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] object-cover">
+        </div>
+
+        {# colonne de droite (Formulaire) 
+        <div class="lg:grid lg:grid-cols-subgrid lg:row-start-2 lg:col-start-7 lg:col-span-6 bg-[#A23145] opacity-90 rounded-2xl p-4 lg:py-6 lg:pr-3 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
+            <h1 class="text-white text-center text-lg lg:text-2xl font-bold lg:col-span-6">
+                Choix des places
+            </h1>
+
+            {# Formulaire responsive 
+            <div class="space-y-4 lg:space-y-0">
+                {# Champ Tribune 
+                <div class="grid grid-cols-1 lg:grid-cols-6 items-center gap-2">
+                    <label class="text-white text-lg lg:col-span-2">TRIBUNE :</label>
+                    <select id="tribune" class="lg:col-span-4 py-2 border-2 border-[#B96574] rounded-lg text-black bg-white drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
+                        <option value="keolis">KEOLIS</option>
+                        <option value="nord">NORD</option>
+                        <option value="honneur">HONNEUR</option>
+                        <option value="europcar">EUROPCAR</option>
+                    </select>
+                </div>
+
+                {# Champ Bloc 
+                <div class="grid grid-cols-1 lg:grid-cols-6 items-center gap-2">
+                    <label class="text-white text-lg lg:col-span-2">BLOC :</label>
+                    <select id="bloc" class="lg:col-span-4 py-2 border-2 border-[#B96574] rounded-lg text-black bg-white drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
+                        <option value="blocA">Bloc A</option>
+                        <option value="blocB">Bloc B</option>
+                        <option value="blocC">Bloc C</option>
+                    </select>
+                </div>
+
+                {# Champ Rang 
+                <div class="grid grid-cols-1 lg:grid-cols-6 items-center gap-2">
+                    <label class="text-white text-lg lg:col-span-2">RANG :</label>
+                    <select id="rang" class="lg:col-span-4 py-2 border-2 border-[#B96574] rounded-lg text-black bg-white drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
+                        <option value="rangA">Rang A</option>
+                        <option value="rangB">Rang B</option>
+                        <option value="rangC">Rang C</option>
+                        <option value="rangD">Rang D</option>
+                    </select>
+                </div>
+
+                {# Champ Numéro 
+                <div class="grid grid-cols-1 lg:grid-cols-6 items-center gap-2">
+                    <label class="text-white text-lg lg:col-span-2">NUMERO :</label>
+                    <input type="text" placeholder="Numéro" class="lg:col-span-4 py-2 px-4 border-2 border-[#B96574] rounded-lg text-black bg-white drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] text-center" pattern="^(?:[1-9]|[1-2][0-9]|30)$" inputmode="numeric" required>
+                </div>
+            </div>
+
+            <div class="flex justify-end lg:row-start-6 lg:col-span-6">
+                <button class="py-2 px-4 bg-[#B96574] text-white font-bold rounded-lg shadow-md hover:bg-[#A23145]">
+                    Confirmer
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script src="../js/tribune.js"></script>
+{% endblock %} #}
