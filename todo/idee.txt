@@ -5,5 +5,4 @@ Pour page accueil:
 		3- Generer les templates a partir des donnees recuperees (parametre de render)
 
 
-
-Pour index.php voir video moulin
+Pour les cartes evenements : join les tables evt et cate pour pouvoir recuperer chaque cate de chaque evt pour les afficher pour la page index 
