@@ -1609,14 +1609,6 @@ video {
     grid-column-start: 2;
   }
 
-  .sm\:row-start-2 {
-    grid-row-start: 2;
-  }
-
-  .sm\:row-start-3 {
-    grid-row-start: 3;
-  }
-
   .sm\:row-start-4 {
     grid-row-start: 4;
   }
