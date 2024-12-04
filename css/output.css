@@ -943,17 +943,16 @@ video {
   grid-template-columns: subgrid;
 }
 
-
-.flex-row {
-  flex-direction: row;
-=======
 .grid-rows-2 {
   grid-template-rows: repeat(2, minmax(0, 1fr));
 }
 
 .grid-rows-9 {
   grid-template-rows: repeat(9, minmax(0, 1fr));
+}
 
+.flex-row {
+  flex-direction: row;
 }
 
 .flex-col {
@@ -1834,10 +1833,6 @@ video {
 
   .lg\:col-start-5 {
     grid-column-start: 5;
-  }
-
-  .lg\:col-start-6 {
-    grid-column-start: 6;
   }
 
   .lg\:col-start-7 {

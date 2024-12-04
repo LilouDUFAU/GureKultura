@@ -1,0 +1,16 @@
+0- ETRE A JOUR DES MODIFICATIONS DONC SI CEST PAS LE CAS : git pull
+1- git branch <nomBranche>
+2- git switch <nomBranche>
+3- travailler sur la branche 
+4- git commit am "<nomCommit>"
+5- git push --set-upstream origin <nomBranche>
+6- aller sur github
+7- aller sur pull request
+8- aller sur creer un pull request 
+9- selectionner la branch depuis laquelle on veut faire le pull request
+10- faire le pull request
+11- faire voir et accepter le pull request a quelqu'un
+12- on peut faire un git switch main pour verifier que le pull request ai fonctionne
+13- git switch <nomBranche>
+14- git pull
+15- continuer de travailler sur la branche
