@@ -1,11 +1,10 @@
 {
     "config": {
         "platform": {
-            "php": "8.2.0"
+            "php": "7.4.11"
         }
     },
     "require": {
-        "twig/twig": "^3.16",
-        "twig/intl-extra": "*"
+        "twig/twig": "^3.11"
     }
 }
