@@ -24,11 +24,11 @@
                 </div>
                 
                 {# Bouton pour accéder à la page de l'événement #}
-                <div class="lg:col-start-5 lg:col-span-2 lg:flex lg:flex-col lg:items-center lg:justify-center lg:gap-10 flex flex-row justify-between p-4 md:flex md:flex-row md:justify-between md:p-4">
+                <div class="lg:col-start-5 lg:col-span-2 lg:flex lg:flex-col lg:items-center lg:justify-center lg:gap-10 grid grid-cols-2 justify-between p-4 md:flex md:flex-row md:justify-between md:p-4">
                     <p class="bg-white text-[#A23145] rounded-2xl text-sm p-2 font-bold lg:row-start-3 lg:col-start-1 lg:col-span-2  row-start-3 col-start-1 col-span-1 flex justify-center items-center text-center w-full">{{ event.nomCategorie }}</p>
 
                     {# Voir video moulin pour faire comme quand il clique sur une recette #}
-                    <a href="details.php?id={{ event.id }}" class="text-white  text-sm  lg:text-md  font-bold row-start-3 col-start-8 col-span-2 flex justify-center items-center md:font-bold md:row-start-3 md:col-start-8 md:col-span-2 md:flex md:justify-center md:items-center">EN SAVOIR PLUS</a>
+                    <a href="details.php?id={{ event.id }}" class="text-white  text-sm  lg:text-md  font-bold row-start-3 flex justify-center items-center md:font-bold md:row-start-3 md:col-start-8 md:col-span-2 md:flex md:justify-center md:items-center">EN SAVOIR PLUS</a>
                 </div>
             </div>
             {% endfor %}
