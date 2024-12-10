@@ -1,5 +1,5 @@
 ETAPE 1:
-Dans un terminal vs code, entrez les commandes suivantes (dans l'ordre):
+Dans un terminal portainer, entrez les commandes suivantes (dans l'ordre):
 
 composer remove twig/intl-extra
 composer remove twig/twig
