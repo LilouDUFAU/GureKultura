@@ -19,7 +19,7 @@ Dans le fichier composer.json, modifiez le fichier qui soit similaire à:
 }
 
 La version a mettre de php dépend de celle que le serveur utilise (l'erreur php doit normalement vous l'indiquer).
-
+bn
 ETAPE 3:
 
 Supprimez le fichier composer.lock
