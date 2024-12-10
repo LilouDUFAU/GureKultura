@@ -591,16 +591,8 @@ video {
   left: 0.5rem;
 }
 
-.left-4 {
-  left: 1rem;
-}
-
 .right-2 {
   right: 0.5rem;
-}
-
-.right-4 {
-  right: 1rem;
 }
 
 .top-1\/2 {
@@ -900,6 +892,15 @@ video {
 
 .w-full {
   width: 100%;
+}
+
+.min-w-max {
+  min-width: -moz-max-content;
+  min-width: max-content;
+}
+
+.min-w-full {
+  min-width: 100%;
 }
 
 .max-w-md {
@@ -1465,10 +1466,6 @@ video {
   transition-duration: 150ms;
 }
 
-.duration-300 {
-  transition-duration: 300ms;
-}
-
 .duration-500 {
   transition-duration: 500ms;
 }
@@ -1684,6 +1681,10 @@ video {
     grid-row-start: 1;
   }
 
+  .md\:row-start-2 {
+    grid-row-start: 2;
+  }
+
   .md\:row-start-3 {
     grid-row-start: 3;
   }
@@ -1807,6 +1808,10 @@ video {
     }
   }
 
+  .lg\:relative {
+    position: relative;
+  }
+
   .lg\:col-span-1 {
     grid-column: span 1 / span 1;
   }
@@ -1891,10 +1896,6 @@ video {
     grid-auto-columns: min-content;
   }
 
-  .lg\:auto-cols-max {
-    grid-auto-columns: max-content;
-  }
-
   .lg\:auto-rows-fr {
     grid-auto-rows: minmax(0, 1fr);
   }
@@ -1939,12 +1940,24 @@ video {
     gap: 1rem;
   }
 
-  .lg\:gap-1 {
-    gap: 0.25rem;
-  }
-
   .lg\:overflow-hidden {
     overflow: hidden;
+  }
+
+  .lg\:bg-\[url\(\'\.\.\/asset\/bg_footer\.svg\'\)\] {
+    background-image: url('../asset/bg_footer.svg');
+  }
+
+  .lg\:bg-cover {
+    background-size: cover;
+  }
+
+  .lg\:bg-center {
+    background-position: center;
+  }
+
+  .lg\:bg-no-repeat {
+    background-repeat: no-repeat;
   }
 
   .lg\:p-2 {
@@ -1977,10 +1990,6 @@ video {
     padding-top: 0.5rem;
   }
 
-  .lg\:pr-3 {
-    padding-right: 0.75rem;
-  }
-
   .lg\:text-left {
     text-align: left;
   }
@@ -2002,6 +2011,11 @@ video {
 
   .lg\:font-bold {
     font-weight: 700;
+  }
+
+  .lg\:text-\[\#ffffff\] {
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity));
   }
 }
 

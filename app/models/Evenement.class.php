@@ -13,8 +13,11 @@ class Evenement
     private ?string $loc;
     private ?bool $statutEvt;
     private ?string $img;
+    private ?Categorie $categorie;
 
-    public function __construct(?int $evtId=null, ?string $titre=null, ?string $descr=null, ?DateTime $dateEvt=null, ?string $loc=null, ?bool $statutEvt=null, ?string $img=null)
+    private ?string $nomCategorie;
+
+    public function __construct(?int $evtId=null, ?string $titre=null, ?string $descr=null, ?DateTime $dateEvt=null, ?string $loc=null, ?bool $statutEvt=null, ?string $img=null, ?Categorie $categorie=null)
     {
         $this->evtId = $evtId;
         $this->titre = $titre;
@@ -23,6 +26,7 @@ class Evenement
         $this->loc = $loc;
         $this->statutEvt = $statutEvt;
         $this->img = $img;
+        $this->categorie = $categorie;
     }
 
     // Getters
@@ -61,6 +65,17 @@ class Evenement
         return $this->img;
     }
 
+    public function getCategorie(): ?Categorie
+    {
+        return $this->categorie;
+    }
+
+
+    public function getNomCategorie(): ?string
+    {
+        return $this->nomCategorie;
+    }
+
     // Setters
     public function setEvtId(?int $evtId): void
     {
@@ -95,5 +110,15 @@ class Evenement
     public function setImg(?string $img): void
     {
         $this->img = $img;
+    }
+
+    public function setCategorie(?Categorie $categorie): void
+    {
+        $this->categorie = $categorie;
+    }
+
+    public function setNomCategorie(?string $nomCategorie): void
+    {
+        $this->nomCategorie = $nomCategorie;
     }
 }

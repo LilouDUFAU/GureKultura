@@ -37,5 +37,7 @@ require_once '../app/models/actualite.class.php';
 require_once '../app/models/actualite.dao.php';
 require_once '../app/models/evenement.class.php';
 require_once '../app/models/evenement.dao.php';
+require_once '../app/models/categorie.class.php';
+require_once '../app/models/categorie.dao.php';
 
 
