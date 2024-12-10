@@ -6,3 +6,5 @@ Pour page accueil:
 
 
 Pour les cartes evenements : join les tables evt et cate pour pouvoir recuperer chaque cate de chaque evt pour les afficher pour la page index 
+
+quand date time mettre le 'truc->format('Y-m-D h:i:s');'
