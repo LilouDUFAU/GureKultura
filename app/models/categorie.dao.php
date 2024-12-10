@@ -17,7 +17,7 @@ class CategorieDao {
     }
 
     public function find(?int $id): ?Categorie {
-        $sql="SELECT * FROM " . PREFIX_TABLE . "categorie WHERE cateId = :id";
+        $sql="SELECT * FROM " . PREFIX_TABLE . "cate WHERE cateId = :id";
         $pdoStatement = $this->pdo->prepare($sql);
         $pdoStatement->execute(array(':id' => $id));
         $pdoStatement->setFetchMode(PDO::FETCH_ASSOC);
@@ -27,7 +27,7 @@ class CategorieDao {
     }
 
     public function findAll() {
-        $sql="SELECT * FROM " . PREFIX_TABLE . "categorie";
+        $sql="SELECT * FROM " . PREFIX_TABLE . "cate";
         $pdoStatement = $this->pdo->prepare($sql);
         $pdoStatement->execute();
         $pdoStatement->setFetchMode(PDO::FETCH_ASSOC);
@@ -52,4 +52,48 @@ class CategorieDao {
         }
         return $categories;
     } 
+
+    // recupere tout des categories appartenant a la categorie originale sport pour chaque evenement (pour la page categorie)
+    public function findCateOriSportEvt(): array {
+        $stmt = $this->pdo->prepare("SELECT * FROM " . PREFIX_TABLE . "cate JOIN " . PREFIX_TABLE . "evt ON " . PREFIX_TABLE . "cate.cateId = " . PREFIX_TABLE . "evt.cateId WHERE " . PREFIX_TABLE . "evt.cateId = " . PREFIX_TABLE . "cate.cateId AND" . PREFIX_TABLE . "cate.cateId_cateOri = 'sport'");
+        $stmt->execute();
+
+        $nomCategories = $stmt->fetch(PDO::FETCH_ASSOC);
+        var_dump($nomCategories);
+        return $nomCategories;
+    }
+
+
+    // recupere tout des categories appartenant a la categorie originale culture pour chaque evenement (pour la page categorie)
+    public function findCateOriCultureEvt(): array {
+        $stmt = $this->pdo->prepare("SELECT * FROM " . PREFIX_TABLE . "cate JOIN " . PREFIX_TABLE . "evt ON " . PREFIX_TABLE . "cate.cateId = " . PREFIX_TABLE . "evt.cateId WHERE " . PREFIX_TABLE . "evt.cateId = " . PREFIX_TABLE . "cate.cateId AND" . PREFIX_TABLE . "cate.cateId_cateOri = 'culture'");
+        $stmt->execute();
+
+        $nomCategories = $stmt->fetch(PDO::FETCH_ASSOC);
+        var_dump($nomCategories);
+        return $nomCategories;
+    }
+
+
+    // recupere tout des categories appartenant a la categorie originale sport pour chaque actualite (pour la page categorie)
+    public function findCateOriSportActu(): array {
+        $stmt = $this->pdo->prepare("SELECT * FROM " . PREFIX_TABLE . "cate JOIN " . PREFIX_TABLE . "actu ON " . PREFIX_TABLE . "cate.cateId = " . PREFIX_TABLE . "actu.cateId WHERE " . PREFIX_TABLE . "actu.cateId = " . PREFIX_TABLE . "cate.cateId AND" . PREFIX_TABLE . "cate.cateId_cateOri = 'sport'");
+        $stmt->execute();
+
+        $nomCategories = $stmt->fetch(PDO::FETCH_ASSOC);
+        var_dump($nomCategories);
+        return $nomCategories;
+    }
+
+
+    // recupere tout des categories appartenant a la categorie originale culture pour chaque actualite (pour la page categorie)
+    public function findCateOriCultureActu(): array {
+        $stmt = $this->pdo->prepare("SELECT * FROM " . PREFIX_TABLE . "cate JOIN " . PREFIX_TABLE . "actu ON " . PREFIX_TABLE . "cate.cateId = " . PREFIX_TABLE . "actu.cateId WHERE " . PREFIX_TABLE . "actu.cateId = " . PREFIX_TABLE . "cate.cateId AND" . PREFIX_TABLE . "cate.cateId_cateOri = 'culture'");
+        $stmt->execute();
+
+        $nomCategories = $stmt->fetch(PDO::FETCH_ASSOC);
+        var_dump($nomCategories);
+        return $nomCategories;
+    }
+
 }

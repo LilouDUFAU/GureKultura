@@ -5,123 +5,33 @@
 <div>
     <div class="gap-2 p-2 grid grid-cols-12 items-center">
         
-        <h2 class="row-start-2 col-span-12 text-black font-bold text-3xl text-left">SPORT</h2>
+        <h2 class="row-start-2 col-span-12 text-black font-bold text-3xl text-left">EVENEMENTS</h2>
 
         <div  id="carousel1" class="row-start-3 col-span-12 relative w-full overflow-hidden mx-auto bg-[#A23145] opacity-75 rounded-lg" data-slides="3">
             <!-- Conteneur du carrousel -->
-            <div  id="carousel" class="carousel flex transition-transform duration-500 ease-out gap-2 p-2">
+            <div  id="carousel"  data-slides="6" class="carousel flex transition-transform duration-500 ease-out gap-2 p-2">
                 <!-- Diapositives -->
-                {# <div class="bg-[url('#')]"> FOOTBALL </div> #}
-
-                <div class="slide w-1/3 flex-shrink-0 bg-blue-500 text-[#A23145] text-center py-16 rounded-lg relative">
-                    <div class="bg-white border-[#A23145] absolute inset-x-0 bottom-0 text-center rounded-lg p-2 mr-2 ml-2 mb-2"> Diapositive 1 </div>
+                {% for categorie in categories %}
+                    <div style="background-image: url('{{ categorie.img }}')" class="slide md:w-1/3 w-full flex-shrink-0 text-white text-center py-16 rounded-lg">{{ categorie.nom}}</div>
+                {% endfor %}
                 </div>
 
-                <div class="slide w-1/3 flex-shrink-0 bg-green-500 text-[#A23145] text-center py-16 rounded-lg relative">
-                    <div class="bg-white border-[#A23145] absolute inset-x-0 bottom-0 text-center rounded-lg p-2 mr-2 ml-2 mb-2"> Diapositive 2</div>
-                </div>
-
-                <div class="slide w-1/3 flex-shrink-0 bg-red-500 text-[#A23145] text-center py-16 rounded-lg relative">
-                    <div class="bg-white border-[#A23145] absolute inset-x-0 bottom-0 text-center rounded-lg p-2 mr-2 ml-2 mb-2"> Diapositive 3</div>
-                </div>
-
-                <div class="slide w-1/3 flex-shrink-0 bg-yellow-500 text-[#A23145] text-center py-16 rounded-lg relative">
-                    <div class="bg-white border-[#A23145] absolute inset-x-0 bottom-0 text-center rounded-lg p-2 mr-2 ml-2 mb-2"> Diapositive 4</div>
-                </div>
-
-                <div class="slide w-1/3 flex-shrink-0 bg-purple-500 text-[#A23145] text-center py-16 rounded-lg relative">
-                    <div class="bg-white border-[#A23145] absolute inset-x-0 bottom-0 text-center rounded-lg p-2 mr-2 ml-2 mb-2"> Diapositive 5</div>
-                </div>
-
-                <div class="slide w-1/3 flex-shrink-0 bg-pink-500 text-[#A23145] text-center py-16 rounded-lg relative">
-                    <div class="bg-white border-[#A23145] absolute inset-x-0 bottom-0 text-center rounded-lg p-2 mr-2 ml-2 mb-2"> Diapositive 6</div>
-                </div>
-
-                <div class="slide w-1/3 flex-shrink-0 bg-blue-500 text-[#A23145] text-center py-16 rounded-lg relative">
-                    <div class="bg-white border-[#A23145] absolute inset-x-0 bottom-0 text-center rounded-lg p-2 mr-2 ml-2 mb-2"> Diapositive 1</div>
-                </div>
-
-                <div class="slide w-1/3 flex-shrink-0 bg-green-500 text-[#A23145] text-center py-16 rounded-lg relative">
-                    <div class="bg-white border-[#A23145] absolute inset-x-0 bottom-0 text-center rounded-lg p-2 mr-2 ml-2 mb-2"> Diapositive 2</div>
-                </div>
-
-                <div class="slide w-1/3 flex-shrink-0 bg-red-500 text-[#A23145] text-center py-16 rounded-lg relative">
-                    <div class="bg-white border-[#A23145] absolute inset-x-0 bottom-0 text-center rounded-lg p-2 mr-2 ml-2 mb-2"> Diapositive 3</div>
-                </div>
-
-                <div class="slide w-1/3 flex-shrink-0 bg-yellow-500 text-[#A23145] text-center py-16 rounded-lg relative">
-                    <div class="bg-white border-[#A23145] absolute inset-x-0 bottom-0 text-center rounded-lg p-2 mr-2 ml-2 mb-2"> Diapositive 4</div>
-                </div>
-
-                <div class="slide w-1/3 flex-shrink-0 bg-purple-500 text-[#A23145] text-center py-16 rounded-lg relative">
-                    <div class="bg-white border-[#A23145] absolute inset-x-0 bottom-0 text-center rounded-lg p-2 mr-2 ml-2 mb-2"> Diapositive 5</div>
-                </div>
-
-                <div class="slide w-1/3 flex-shrink-0 bg-pink-500 text-[#A23145] text-center py-16 rounded-lg relative">
-                    <div class="bg-white border-[#A23145] absolute inset-x-0 bottom-0 text-center rounded-lg p-2 mr-2 ml-2 mb-2"> Diapositive 6</div>
-                </div>
-            </div>
             <!-- Boutons de navigation -->
             <button id="prev1" class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full"><</button>
             <button id="next1" class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full">></button>
         </div>
 
 
-        <h2 class="row-start-4 col-span-12 text-black font-bold text-3xl text-left mt-32">CULTURE</h2>
+        <h2 class="row-start-4 col-span-12 text-black font-bold text-3xl text-left mt-32">ACTUALITES</h2>
         <div  id="carousel2" class="row-start-5 col-span-12 relative w-full overflow-hidden mx-auto bg-[#A23145] opacity-75 rounded-lg" data-slides="6">
             <!-- Conteneur du carrousel -->
-            <div  id="carousel" class="carousel flex transition-transform duration-500 ease-out gap-2 p-2">
+            <div  id="carousel"  data-slides="6" class="carousel flex transition-transform duration-500 ease-out gap-2 p-2">
                 <!-- Diapositives -->
-                {# <div class="bg-[url('#')]"> FOOTBALL </div> #}
-
-                <div class="slide w-1/3 flex-shrink-0 bg-blue-500 text-[#A23145] text-center py-16 rounded-lg relative">
-                    <div class="bg-white border-[#A23145] absolute inset-x-0 bottom-0 text-center rounded-lg p-2 mr-2 ml-2 mb-2"> Diapositive 1 </div>
-                </div>
-
-                <div class="slide w-1/3 flex-shrink-0 bg-green-500 text-[#A23145] text-center py-16 rounded-lg relative">
-                    <div class="bg-white border-[#A23145] absolute inset-x-0 bottom-0 text-center rounded-lg p-2 mr-2 ml-2 mb-2"> Diapositive 2</div>
-                </div>
-
-                <div class="slide w-1/3 flex-shrink-0 bg-red-500 text-[#A23145] text-center py-16 rounded-lg relative">
-                    <div class="bg-white border-[#A23145] absolute inset-x-0 bottom-0 text-center rounded-lg p-2 mr-2 ml-2 mb-2"> Diapositive 3</div>
-                </div>
-
-                <div class="slide w-1/3 flex-shrink-0 bg-yellow-500 text-[#A23145] text-center py-16 rounded-lg relative">
-                    <div class="bg-white border-[#A23145] absolute inset-x-0 bottom-0 text-center rounded-lg p-2 mr-2 ml-2 mb-2"> Diapositive 4</div>
-                </div>
-
-                <div class="slide w-1/3 flex-shrink-0 bg-purple-500 text-[#A23145] text-center py-16 rounded-lg relative">
-                    <div class="bg-white border-[#A23145] absolute inset-x-0 bottom-0 text-center rounded-lg p-2 mr-2 ml-2 mb-2"> Diapositive 5</div>
-                </div>
-
-                <div class="slide w-1/3 flex-shrink-0 bg-pink-500 text-[#A23145] text-center py-16 rounded-lg relative">
-                    <div class="bg-white border-[#A23145] absolute inset-x-0 bottom-0 text-center rounded-lg p-2 mr-2 ml-2 mb-2"> Diapositive 6</div>
-                </div>
-
-                <div class="slide w-1/3 flex-shrink-0 bg-blue-500 text-[#A23145] text-center py-16 rounded-lg relative">
-                    <div class="bg-white border-[#A23145] absolute inset-x-0 bottom-0 text-center rounded-lg p-2 mr-2 ml-2 mb-2"> Diapositive 1</div>
-                </div>
-
-                <div class="slide w-1/3 flex-shrink-0 bg-green-500 text-[#A23145] text-center py-16 rounded-lg relative">
-                    <div class="bg-white border-[#A23145] absolute inset-x-0 bottom-0 text-center rounded-lg p-2 mr-2 ml-2 mb-2"> Diapositive 2</div>
-                </div>
-
-                <div class="slide w-1/3 flex-shrink-0 bg-red-500 text-[#A23145] text-center py-16 rounded-lg relative">
-                    <div class="bg-white border-[#A23145] absolute inset-x-0 bottom-0 text-center rounded-lg p-2 mr-2 ml-2 mb-2"> Diapositive 3</div>
-                </div>
-
-                <div class="slide w-1/3 flex-shrink-0 bg-yellow-500 text-[#A23145] text-center py-16 rounded-lg relative">
-                    <div class="bg-white border-[#A23145] absolute inset-x-0 bottom-0 text-center rounded-lg p-2 mr-2 ml-2 mb-2"> Diapositive 4</div>
-                </div>
-
-                <div class="slide w-1/3 flex-shrink-0 bg-purple-500 text-[#A23145] text-center py-16 rounded-lg relative">
-                    <div class="bg-white border-[#A23145] absolute inset-x-0 bottom-0 text-center rounded-lg p-2 mr-2 ml-2 mb-2"> Diapositive 5</div>
-                </div>
-
-                <div class="slide w-1/3 flex-shrink-0 bg-pink-500 text-[#A23145] text-center py-16 rounded-lg relative">
-                    <div class="bg-white border-[#A23145] absolute inset-x-0 bottom-0 text-center rounded-lg p-2 mr-2 ml-2 mb-2"> Diapositive 6</div>
-                </div>
+                {% for categorie in categories %}
+                    <div style="background-image: url('{{ categorie.img }}')" class="slide md:w-1/3 w-full flex-shrink-0 text-white text-center py-16 rounded-lg">{{ categorie.nom}}</div>
+                {% endfor %}
             </div>
+
             <!-- Boutons de navigation -->
             <button id="prev2" class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full"><</button>
             <button id="next2" class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full">></button>
