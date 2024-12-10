@@ -6,6 +6,6 @@
     },
     "require": {
         "twig/twig": "^3.11",
-        "twig/intl-extra": "^3.11"
+        "twig/intl-extra": "*"
     }
 }
