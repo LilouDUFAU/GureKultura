@@ -1,86 +1,83 @@
 {% extends "base.html.twig" %}
 
 {% block content %}
+<!-- Ajout de la meta viewport -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <div class="h-full">
-    <div class="gap-2 p-2 grid grid-cols-12 sm:grid-cols-1 md:grid-cols-6 lg:grid-cols-12 items-center">        
-        {# colonne de gauche #}
-        <div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-8 sm:col-span-6 md:col-span-6 lg:col-span-8 w-full gap-3">
-            <h1 class="col-span-8 row-start-1 text-white font-bold text-2xl sm:text-xl lg:text-4xl text-center bg-[#A23145] rounded-2xl p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 p-4 items-start">
+        <!-- Colonne de gauche -->
+        <div class="lg:col-span-8">
+            <h1 class="text-white font-bold text-2xl lg:text-4xl text-center bg-[#A23145] rounded-2xl p-4 shadow-md">
                 BAYONNE 21-12 ASM CLERMONT AUVERGNE
             </h1>
-            {# bloc 1#}
-            <div class="grid grid-cols-subgrid row-start-2 col-span-4 sm:col-span-6 md:col-span-6 bg-[#A23145] text-white rounded-2xl p-4 w-full gap-1">                
-                {# Contenu adapté aux petits écrans #}
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div class="flex flex-col">
-                        <label class="text-[#bfbfbf]">Compétition</label>
-                        <label class="text-white">Top 14</label>
+            <div class="bg-[#A23145] text-white rounded-2xl p-4 mt-4 shadow-md">
+                <div class="grid gap-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-[#bfbfbf]">Compétition</span>
+                        <span class="text-white font-bold">Top 14</span>
                     </div>
-                    <div class="flex flex-col">
-                        <label class="text-[#bfbfbf]">Tour</label>
-                        <label class="text-white">15ème journée</label>
+                    <div class="flex justify-between items-center">
+                        <span class="text-[#bfbfbf]">Tour</span>
+                        <span class="text-white font-bold">15ème journée</span>
                     </div>
-                </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
-                    <div class="flex flex-col">
-                        <label class="text-[#bfbfbf]">Date</label>
-                        <label class="text-white">Samedi 17 février à 20h05</label>
+                    <div class="flex justify-between items-center">
+                        <span class="text-[#bfbfbf]">Date</span>
+                        <span class="text-white font-bold">Samedi 17 février à 20h05</span>
                     </div>
-                    <div class="flex flex-col">
-                        <label class="text-[#bfbfbf]">Lieu</label>
-                        <label class="text-white">Stade Jean Dauger</label>
+                    <div class="flex justify-between items-center">
+                        <span class="text-[#bfbfbf]">Lieu</span>
+                        <span class="text-white font-bold">Stade Jean Dauger</span>
                     </div>
-                </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
-                    <div class="flex flex-col">
-                        <label class="text-[#bfbfbf]">Arbitre</label>
-                        <label class="text-white">M.Nuchy</label>
-                    </div>
-                    <div class="flex flex-col">
-                        <label class="text-[#bfbfbf]">Assistance</label>
-                        <label class="text-white">-</label>
+                    <div class="flex justify-between items-center">
+                        <span class="text-[#bfbfbf]">Arbitre</span>
+                        <span class="text-white font-bold">M. Nuchy</span>
                     </div>
                 </div>
             </div>
-
-            {# bloc 2#}
-            <div class="grid grid-cols-subgrid row-start-2 col-start-5 col-span-8 sm:col-span-6 md:col-span-6 bg-[#FFFFFF] text-black rounded-2xl p-4 w-full gap-1 border-2 border-black">
-                <div class="text-center font-bold text-2xl border-black border-b-2 pb-3">Bayonne</div>
-                <div class="grid grid-cols-2 gap-4 mt-4">
-                    <label class="font-bold">5' Lopez</label>
-                    <label class="font-bold">8’ Roziere<br>Trans: Urdapilleta</label>
-                </div>
-                <div class="grid grid-cols-2 gap-4 mt-4">
-                    <label class="font-bold">27’ Bourdeau<br>Trans: Lopez</label>
-                    <label class="font-bold">20' Urdapilleta</label>
-                </div>
-                <div class="grid grid-cols-2 gap-4 mt-4">
-                    <label class="font-bold">47' Martocq</label>
-                    <label class="font-bold">58’ Urdapilleta</label>
-                </div>
-                <div class="grid grid-cols-2 gap-4 mt-4">
-                    <label class="font-bold">72' Lopez</label>
-                    <label class="font-bold">74 Bibi Biziwu</label>
-                </div>
-                <div class="grid grid-cols-1 mt-4 text-center">
-                    <label class="font-bold">74’ Lopez</label>
+            
+            <!-- Bloc 2 -->
+            <div class="bg-white text-black rounded-2xl p-4 mt-4 shadow-md border border-black flex-grow">
+                <h2 class="text-center text-xl lg:text-2xl font-bold border-b border-black pb-2 mb-4">
+                    Résumé du match
+                </h2>
+                <div class="space-y-2">
+                    <div class="flex justify-between">
+                        <span class="font-bold">5' Lopez</span>
+                        <span class="font-bold">8’ Roziere (Trans: Urdapilleta)</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="font-bold">27’ Bourdeau (Trans: Lopez)</span>
+                        <span class="font-bold">20' Urdapilleta</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="font-bold">47' Martocq</span>
+                        <span class="font-bold">58’ Urdapilleta</span>
+                    </div>
                 </div>
             </div>
         </div>
 
-        {# colonne de droite #}
-        <div class="row-start-2 col-start-9 col-span-4 sm:col-span-6 md:col-span-6 lg:col-span-4 w-full gap-2 text-center">
-            <div class="bg-[#A23145] text-white rounded-2xl p-4">
-                <h1 class="bg-white text-[#A23145] rounded-2xl p-2 font-bold text-2xl">La victoire basque</h1>
-                <p class="mt-4">Bayonne garde son invincibilité à Jean-Dauger une semaine de plus... L'Aviron a disposé de l'ASM 21 à 13.<br><br>
-                    Dans une rencontre fermée et hachée, les Basques se sont nourris des fautes et des imprécisions techniques des Auvergnats pour l'emporter.</p>
+        <!-- Colonne de droite -->
+        <div class="lg:col-span-4">
+            <div class="bg-[#A23145] text-white rounded-2xl p-4 shadow-md">
+                <h2 class="bg-white text-[#A23145] rounded-2xl text-center font-bold text-lg lg:text-2xl p-2">
+                    La victoire basque
+                </h2>
+                <p class="mt-4">
+                    Bayonne garde son invincibilité à Jean-Dauger une semaine de plus...
+                    L'Aviron a disposé de l'ASM 21 à 13. Dans une rencontre fermée et hachée, les Basques se sont nourris des fautes
+                    des Auvergnats pour l'emporter. Clermont n'a que trop rarement pu lancer son jeu et sort du top 6.
+                </p>
             </div>
         </div>
     </div>
 
-    {# Section Commentaires #}
+    <!-- Section commentaires -->
     <div class="mt-8 p-4 bg-[#f4f4f4] rounded-lg shadow-md">
         <h2 class="text-2xl font-bold text-[#A23145] mb-4">Commentaires</h2>
+        
+        <!-- Exemples de commentaires -->
         <div class="mb-6">
             <p class="font-semibold text-[#A23145]">John Doe :</p>
             <p class="text-gray-700">"Un super match, la victoire de Bayonne était bien méritée. Hâte de voir la prochaine rencontre !"</p>
@@ -89,11 +86,16 @@
             <p class="font-semibold text-[#A23145]">Marie Dupont :</p>
             <p class="text-gray-700">"Clermont a bien joué, mais quelques erreurs ont coûté cher. Bravo à Bayonne pour leur performance."</p>
         </div>
+
+        <!-- Formulaire pour ajouter un commentaire -->
         <div class="mt-6">
             <label for="comment" class="block text-[#A23145] font-semibold mb-2">Ajouter un commentaire :</label>
-            <textarea id="comment" name="comment" rows="3" class="w-full p-3 border-2 border-[#A23145] rounded-lg text-gray-700"></textarea>
-            <button type="submit" class="mt-4 px-6 py-2 bg-[#A23145] text-white font-semibold rounded-lg hover:bg-[#8a1e36]">Envoyer</button>
+            <textarea id="comment" name="comment" rows="3" class="w-full p-3 border-2 border-[#A23145] rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#A23145]"></textarea>
+            <button type="submit" class="mt-4 px-6 py-2 bg-[#A23145] text-white font-semibold rounded-lg hover:bg-[#8a1e36]">
+                Envoyer
+            </button>
         </div>
     </div>
 </div>
+
 {% endblock %}
