@@ -14,7 +14,7 @@
             {% for event in events %}
             <div class="lg:p-2 lg:grid lg:grid-cols-6 lg:auto-cols-min lg:items-center rounded-2xl bg-[#A23145] drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
                 {# Image de l'événement #}
-                <img src="../asset/evenement/{{ event.img }}" alt="Image de l'événement" class=" lg:row-start-1 lg:col-start-1 lg:col-span-2 lg:w-full  rounded-lg row-start-1 col-start-1 col-span-12 lg:p-2 p-4 w-full md:rounded-2xl md:row-start-1 md:col-start-1 md:col-span-12 md:w-full">
+                <img src="../asset/evenement/{{ event.img }}" alt="Image de l'événement" class=" lg:row-start-1 lg:col-start-1 lg:col-span-2 lg:w-full  rounded-lg row-start-1 col-start-1 col-span-12 lg:p-2 p-4 w-full md:rounded-2xl md:row-start-1 md:col-start-1 md:col-span-12 md:w-full" loading="lazy">
                 
                 {# Infos de l'événement #}
                 <div class="lg:grid lg:grid-cols-subgrid lg:col-start-3 lg:col-span-2 lg:flex-col lg:w-[250px] text-white lg:gap-2 lg:p-4">
@@ -27,7 +27,7 @@
                     <p class="bg-white text-[#A23145] rounded-2xl text-sm p-2 font-bold lg:row-start-3 lg:col-start-1 lg:col-span-2 flex justify-center items-center text-center">event.cateId</p>
 
                     {# Voir video moulin pour faire comme quand il clique sur une recette #}
-                    <a href="details.php?id={{ event.id }}" class="text-white  text-sm  lg:text-md  font-bold row-start-3 col-start-8 col-span-2 flex justify-center items-center md:font-bold md:row-start-3 md:col-start-8 md:col-span-2 md:flex md:justify-center md:items-center">EN SAVOIR PLUS</a>
+                    <a href="details.php?id={{ event.id }}" class="text-white  text-sm  lg:text-md  font-bold row-start-3 col-start-8 col-span-2 flex justify-center items-center md:font-bold md:row-start-3 md:col-start-8 md:col-span-2 md:flex md:justify-center md:items-center" aria-label="EN SAVOIR PLUS">EN SAVOIR PLUS</a>
                 </div>
             </div>
             {% endfor %}

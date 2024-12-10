@@ -14,9 +14,9 @@
                 <div>
                     <input type="password" placeholder="Mot de passe" name="password"
                         class="w-full p-3 rounded-md bg-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-400">
-                    <a href="index.php?controlleur=mdpOublie&methode=lister" class="text-sm text-white mt-2 block text-center hover:underline">Mot de passe oublié ?</a>
+                    <a href="index.php?controlleur=mdpOublie&methode=lister" class="text-sm text-white mt-2 block text-center hover:underline" aria-label="Mot de passe oublié">Mot de passe oublié ?</a>
                 </div>
-                <button type="submit" class="w-full p-3 bg-white text-red-700 font-semibold rounded-md hover:bg-gray-200 transition">Se connecter</button>
+                <button type="submit" class="w-full p-3 bg-white text-red-700 font-semibold rounded-md hover:bg-gray-200 transition" aria-label="Se connecter">Se connecter</button>
             </form>
             {% if error %}
                 <div class="text-black text-center">{{ error }}</div>
@@ -30,7 +30,7 @@
         <div class="w-full max-w-md p-8 bg-[#A23145] bg-opacity-70 rounded-lg drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
             <div class="text-center">
                 <p class="text-white mb-4">Vous n'avez pas de compte ?</p>
-                <a href="index.php?controlleur=inscription&methode=lister" class="w-full p-3 bg-white text-red-700 font-semibold rounded-md block hover:bg-gray-200 transition">Inscrivez-vous</a>
+                <a href="index.php?controlleur=inscription&methode=lister" class="w-full p-3 bg-white text-red-700 font-semibold rounded-md block hover:bg-gray-200 transition" aria-label="Inscrivez-vous">Inscrivez-vous</a>
             </div>
         </div>
     </div>

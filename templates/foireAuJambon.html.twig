@@ -12,13 +12,13 @@
                 <div id="carousel" class="carousel flex transition-transform duration-500 ease-out p-2">
                     <!-- Diapositives -->
                     <div class="slide flex-shrink-0">
-                        <img src="../asset/images.png" class="h-40 w-auto mx-auto border-2 border-black">
+                        <img src="../asset/images.png" class="h-40 w-auto mx-auto border-2 border-black" loading="lazy">
                     </div>
                 </div>
                 <!-- Boutons de navigation -->
-                <button id="prev1" 
+                <button id="prev1" aria-label="B_prev1"
                     class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-200 text-white p-2 rounded-full hidden md:block"><</button>
-                <button id="next1" 
+                <button id="next1"  aria-label="B_next1"
                     class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-200 text-white p-2 rounded-full hidden md:block">></button>
             </div>
             
@@ -72,12 +72,12 @@
         <div class="mt-6">
             <label for="comment" class="block text-[#A23145] font-semibold mb-2">Ajouter un commentaire :</label>
             <textarea id="comment" name="comment" rows="3" class="w-full p-3 border-2 border-[#A23145] rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#A23145]"></textarea>
-            <button type="submit" class="mt-4 px-6 py-2 bg-[#A23145] text-white font-semibold rounded-lg hover:bg-[#8a1e36]">Envoyer</button>
+            <button type="submit" class="mt-4 px-6 py-2 bg-[#A23145] text-white font-semibold rounded-lg hover:bg-[#8a1e36]" aria-label="Envoyer">Envoyer</button>
         </div>
     </div>
 </div>       
 
 {% endblock %}
 {% block script %}
-<script src="../js/caroussel.js"></script>
+<script src="../js/caroussel.js" defer></script>
 {% endblock %}

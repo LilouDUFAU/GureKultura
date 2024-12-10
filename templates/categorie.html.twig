@@ -17,8 +17,8 @@
                 </div>
 
             <!-- Boutons de navigation -->
-            <button id="prev1" class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full"><</button>
-            <button id="next1" class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full">></button>
+            <button aria-label="B_prev1" id="prev1" class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full"><</button>
+            <button aria-label="B_next1" id="next1" class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full">></button>
         </div>
 
 
@@ -33,13 +33,13 @@
             </div>
 
             <!-- Boutons de navigation -->
-            <button id="prev2" class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full"><</button>
-            <button id="next2" class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full">></button>
+            <button aria-label="B_prev2" id="prev2" class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full"><</button>
+            <button aria-label="B_next2" id="next2" class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full">></button>
         </div>
     </div>
 </div>
 {% endblock %}
 {% block script %}
-<script src="../js/caroussel.js"></script>
+<script src="../js/caroussel.js" defer></script>
 {% endblock %}  
 

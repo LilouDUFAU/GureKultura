@@ -9,7 +9,7 @@
         <h1 class="lg:col-start-3 lg:col-span-8 text-[#A23145] lg:font-bold lg:text-4xl text-center border-4 border-solid border-[#A23145] opacity-75 bg-white rounded-2xl p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] text-lg col-start-1 col-span-12">BAYONNE - PERPIGNAN 14 DECEMBRE 2023 </h1>
         
         {# colonne de gauche #}
-        <img src="../asset/bg_img.svg" class="row-start-2 col-start-1 col-span-6 h-full w-full gap-2 rounded-2xl drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]" >       
+        <img src="../asset/bg_img.svg" class="row-start-2 col-start-1 col-span-6 h-full w-full gap-2 rounded-2xl drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]" loading="lazy">       
 
         {# colonne de droite #}
         <div class="grid grid-cols-subgrid lg:row-start-2 lg:col-start-7 lg:col-span-6 lg:w-full bg-[#A23145] opacity-75 lg:gap-1 lg:py-4 lg:h-full rounded-2xl lg:pr-3 row-start-3 col-start-1 col-span-12">
@@ -49,7 +49,7 @@
                 <input type="text" placeholder="Numéro" class="font-bold col-start-3 col-span-1 py-2 px-4 border-solid border-2 border-[#B96574] rounded-lg text-black w-full bg-white drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] text-center" pattern="^(?:[1-9]|[1-2][0-9]|30)$" inputmode="numeric" required>
             </div>
 
-            <button class="row-start-6 col-start-6 col-span-1 border-2 rounded-lg text-white text-center text-md font-bold"> Confirmer </h1>
+            <button class="row-start-6 col-start-6 col-span-1 border-2 rounded-lg text-white text-center text-md font-bold" aria-label="Confirmer"> Confirmer </h1>
         </div>
     </div>
 </div>       
@@ -57,6 +57,6 @@
 {% endblock %}
 
 {% block script %}
-<script src="../js/tribune.js"></script>
+<script src="../js/tribune.js" defer></script>
 {% endblock %}  
 
