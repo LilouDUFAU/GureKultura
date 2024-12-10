@@ -5,37 +5,83 @@
 <div>
     <div class="gap-2 p-2 grid grid-cols-12 items-center">
         
-        <h2 class="row-start-2 col-span-12 text-black font-bold text-3xl text-left">EVENEMENTS</h2>
+        <h2 class="row-span-2 col-span-12 text-black font-bold text-3xl text-left">EVENEMENTS</h2>
 
-        <div  id="carousel1" class="row-start-3 col-span-12 relative w-full overflow-hidden mx-auto bg-[#A23145] opacity-75 rounded-lg" data-slides="3">
+        <h3 class="row-span-2 col-span-12 text-black font-bold text-3xl text-left">SPORT</h3>
+
+        <div id="carousel1" class="row-span-3 col-span-12 relative w-full overflow-hidden mx-auto bg-[#A23145] opacity-75 rounded-lg" data-slides-default="3" data-slides-mobile="1">
             <!-- Conteneur du carrousel -->
-            <div  id="carousel"  data-slides="6" class="carousel flex transition-transform duration-500 ease-out gap-2 p-2">
+            <div  id="carousel" class="carousel flex transition-transform duration-500 ease-out gap-2 p-2">
                 <!-- Diapositives -->
+                {# <div class="bg-[url('#')]"> FOOTBALL </div> #}
                 {% for categorie in categories %}
-                    <div style="background-image: url('{{ categorie.img }}')" class="slide md:w-1/3 w-full flex-shrink-0 text-white text-center py-16 rounded-lg">{{ categorie.nom}}</div>
+                    <div style="background-image: url('{{ categorie.img }}')"class="slide md:w-1/3 w-full flex-shrink-0 text-[#A23145] text-center py-16 rounded-lg relative">
+                        <div class="bg-white border-[#A23145] absolute inset-x-0 bottom-0 text-center rounded-lg p-2 mr-2 ml-2 mb-2">{{ categorie.nom}}</div>
+                    </div>
                 {% endfor %}
-                </div>
-
+            </div>
             <!-- Boutons de navigation -->
             <button id="prev1" class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full"><</button>
             <button id="next1" class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full">></button>
         </div>
 
+        <h3 class="row-span-4 col-span-12 text-black font-bold text-3xl text-left">CULTURE</h3>
 
-        <h2 class="row-start-4 col-span-12 text-black font-bold text-3xl text-left mt-32">ACTUALITES</h2>
-        <div  id="carousel2" class="row-start-5 col-span-12 relative w-full overflow-hidden mx-auto bg-[#A23145] opacity-75 rounded-lg" data-slides="6">
+        <div id="carousel2" class="row-span-6 col-span-12 relative w-full overflow-hidden mx-auto bg-[#A23145] opacity-75 rounded-lg" data-slides-default="3" data-slides-mobile="1">
             <!-- Conteneur du carrousel -->
-            <div  id="carousel"  data-slides="6" class="carousel flex transition-transform duration-500 ease-out gap-2 p-2">
+            <div  id="carousel" class="carousel flex transition-transform duration-500 ease-out gap-2 p-2">
                 <!-- Diapositives -->
+                {# <div class="bg-[url('#')]"> FOOTBALL </div> #}
                 {% for categorie in categories %}
-                    <div style="background-image: url('{{ categorie.img }}')" class="slide md:w-1/3 w-full flex-shrink-0 text-white text-center py-16 rounded-lg">{{ categorie.nom}}</div>
+                    <div style="background-image: url('{{ categorie.img }}')"class="slide md:w-1/3 w-full flex-shrink-0 text-[#A23145] text-center py-16 rounded-lg relative">
+                        <div class="bg-white border-[#A23145] absolute inset-x-0 bottom-0 text-center rounded-lg p-2 mr-2 ml-2 mb-2">{{ categorie.nom}}</div>
+                    </div>
                 {% endfor %}
             </div>
-
             <!-- Boutons de navigation -->
             <button id="prev2" class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full"><</button>
             <button id="next2" class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full">></button>
         </div>
+
+
+
+        <h2 class="row-span-5 col-span-12 text-black font-bold text-3xl text-left mt-32">ACTUALITES</h2>
+        <h3 class="row-span-5 col-span-12 text-black font-bold text-3xl text-left">SPORT</h3>
+        
+        <div id="carousel3" class="row-span-6 col-span-12 relative w-full overflow-hidden mx-auto bg-[#A23145] opacity-75 rounded-lg" data-slides-default="3" data-slides-mobile="1">
+            <!-- Conteneur du carrousel -->
+            <div  id="carousel" class="carousel flex transition-transform duration-500 ease-out gap-2 p-2">
+                <!-- Diapositives -->
+                {# <div class="bg-[url('#')]"> FOOTBALL </div> #}
+                {% for categorie in categories %}
+                    <div style="background-image: url('{{ categorie.img }}')"class="slide md:w-1/3 w-full flex-shrink-0 text-[#A23145] text-center py-16 rounded-lg relative">
+                        <div class="bg-white border-[#A23145] absolute inset-x-0 bottom-0 text-center rounded-lg p-2 mr-2 ml-2 mb-2">{{ categorie.nom}}</div>
+                    </div>
+                {% endfor %}
+            </div>
+            <!-- Boutons de navigation -->
+            <button id="prev3" class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full"><</button>
+            <button id="next3" class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full">></button>
+        </div>
+
+        <h3 class="row-span-7 col-span-12 text-black font-bold text-3xl text-left">CULTURE</h3>
+        
+        <div id="carousel4" class="row-span-8 col-span-12 relative w-full overflow-hidden mx-auto bg-[#A23145] opacity-75 rounded-lg" data-slides-default="3" data-slides-mobile="1">
+            <!-- Conteneur du carrousel -->
+            <div  id="carousel" class="carousel flex transition-transform duration-500 ease-out gap-2 p-2">
+                <!-- Diapositives -->
+                {# <div class="bg-[url('#')]"> FOOTBALL </div> #}
+                {% for categorie in categories %}
+                    <div style="background-image: url('{{ categorie.img }}')"class="slide md:w-1/3 w-full flex-shrink-0 text-[#A23145] text-center py-16 rounded-lg relative">
+                        <div class="bg-white border-[#A23145] absolute inset-x-0 bottom-0 text-center rounded-lg p-2 mr-2 ml-2 mb-2">{{ categorie.nom}}</div>
+                    </div>
+                {% endfor %}
+            </div>
+            <!-- Boutons de navigation -->
+            <button id="prev4" class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full"><</button>
+            <button id="next4" class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full">></button>
+        </div>
+
     </div>
 </div>
 {% endblock %}
