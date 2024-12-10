@@ -7,8 +7,6 @@
 
     "content-hash": "b20d14fc846f49ebf44e4f5962d3e264",
 
-    "content-hash": "26a46c76929616beb640a6eeb05bce15",
-
     "packages": [
         {
             "name": "symfony/deprecation-contracts",
@@ -160,8 +158,6 @@
                 }
             ],
             "time": "2024-11-08T15:28:48+00:00"
-
-            "time": "2024-09-25T14:11:13+00:00"
 
         },
         {
@@ -571,8 +567,6 @@
     "platform-overrides": {
 
         "php": "8.1.20"
-
-        "php": "7.4.11"
 
     },
     "plugin-api-version": "2.6.0"
