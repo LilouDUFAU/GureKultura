@@ -29,6 +29,7 @@ require_once '../app/controllers/controller_reservation.class.php';
 require_once '../app/controllers/controller_uneActualite.class.php';
 require_once '../app/controllers/controller_pageBayonneAsm.class.php';
 require_once '../app/controllers/controller_foireAuJambon.class.php';
+require_once '../app/controllers/controller_pageRugby.class.php';
 
 
 

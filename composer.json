@@ -5,7 +5,7 @@
         }
     },
     "require": {
-        "twig/twig": "^3.16",
-        "twig/intl-extra": "*"
+        "twig/twig": "*",
+        "twig/intl-extra": "^3.16"
     }
 }

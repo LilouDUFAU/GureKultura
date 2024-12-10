@@ -1,11 +1,31 @@
 // Fonction pour initialiser un carrousel
 function initCarousel(carouselContainer, nextBtnId, prevBtnId) {
-  const slidesToShow = parseInt(carouselContainer.getAttribute('data-slides'), 10);
+  // Récupération des valeurs par défaut et spécifiques
+  const defaultSlidesToShow = parseInt(carouselContainer.getAttribute('data-slides-default'), 10);
+  const mobileSlidesToShow = parseInt(carouselContainer.getAttribute('data-slides-mobile'), 10);
+
+  // Gestion dynamique du nombre de slides à afficher
+  let slidesToShow = defaultSlidesToShow;
   const carousel = carouselContainer.querySelector('.carousel');
   const slides = carouselContainer.querySelectorAll('.slide');
   const totalSlides = slides.length;
   let currentSlide = 0;
 
+  // Fonction pour mettre à jour slidesToShow en fonction de la taille de l'écran
+  function updateSlidesToShow() {
+    if (window.matchMedia('(max-width: 768px)').matches) {
+      // Taille mobile
+      slidesToShow = mobileSlidesToShow;
+    } else {
+      // Taille écran large (par défaut)
+      slidesToShow = defaultSlidesToShow;
+    }
+  }
+
+  // Appeler la mise à jour au démarrage et lors des changements de taille
+  updateSlidesToShow();
+  window.addEventListener('resize', updateSlidesToShow);
+ 
   // Gestion du bouton suivant
   document.getElementById(nextBtnId).addEventListener('click', () => {
     if (currentSlide < totalSlides - slidesToShow) {
@@ -27,8 +47,8 @@ function initCarousel(carouselContainer, nextBtnId, prevBtnId) {
   });
 
   function updateCarousel() {
-    const slideWidth = slides[0].clientWidth; // Largeur d'une diapositive
-    carousel.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+    const slideWidth = slides[0]?.clientWidth || 0; // Largeur d'une diapositive
+    carousel.style.transform = `translateX(-${currentSlide * (slideWidth + 8)}px)`;
   }
 }
 
