@@ -12,23 +12,26 @@
 
         <div class="lg:grid lg:grid-cols-2 lg:auto-rows-fr lg:gap-4 col-start-1 col-span-12 flex flex-col gap-2 md:grid md:grid-cols-2 md:auto-rows-fr md:gap-4 p-4">  
             {% for event in events %}
-            <div class="lg:p-2 lg:grid lg:grid-cols-6 lg:auto-cols-min lg:items-center rounded-2xl bg-[#A23145] drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
+            <div class="flex gap-4 flex-col h-full lg:px-4 lg:grid lg:grid-cols-6 lg:auto-cols-min lg:items-center rounded-2xl bg-[#A23145] drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] p-4">
                 {# Image de l'événement #}
-                <img src="../asset/evenement/{{ event.img }}" alt="Image de l'événement" class=" lg:row-start-1 lg:col-start-1 lg:col-span-2 lg:w-full rounded-2xl row-start-1 col-start-1 col-span-12 lg:p-2 p-4 w-full h-full md:row-start-1 md:col-start-1 md:col-span-12 md:w-full">
+                <div class="flex-1 lg:row-start-1 lg:col-start-1 lg:col-span-2 lg:w-full row-start-1 col-start-1 col-span-12 lg:m-2 w-full md:row-start-1 md:col-start-1 md:col-span-12 md:w-full lg:object-contain">
+                    <img src="../asset/evenement/{{ event.img }}" alt="Image de l'événement" class="rounded-lg"  >
+                </div>
+
                 
                 {# Infos de l'événement #}
                 <div class="lg:grid lg:grid-cols-subgrid lg:col-start-3 lg:col-span-2 lg:flex-col lg:w-[250px] text-white lg:gap-2 lg:p-4">
                     <h3 class="lg:font-bold lg:text-xl lg:row-start-1 lg:col-span-2 lg:text-left break-words row-start-1 col-start-1 col-span-12 text-center text-lg md:row-start-1 md:col-start-1 md:col-span-12 md:text-center">{{ event.titre }}</h3>
-                    <p class="lg:text-md lg:row-start-2 lg:col-span-2 lg:text-left break-words row-start-2 col-start-1 col-span-12 text-center text-lg md:row-start-2 md:col-start-1 md:col-span-12 md:text-center">{{ event.date }}</p>
+                    <p class="lg:text-md lg:row-start-2 lg:col-span-2 lg:text-left break-words row-start-2 col-start-1 col-span-12 text-center text-lg md:row-start-2 md:col-start-1 md:col-span-12 md:text-center">event.date</p>
                     <p class="lg:text-md lg:row-start-3 lg:col-span-2 lg:text-left break-words row-start-3 col-start-1 col-span-12 text-center text-lg md:row-start-3 md:col-start-1 md:col-span-12 md:text-center">{{ event.loc }}</p>
                 </div>
                 
                 {# Bouton pour accéder à la page de l'événement #}
-                <div class="lg:col-start-5 lg:col-span-2 lg:flex lg:flex-col lg:items-center lg:justify-center lg:gap-10 grid grid-cols-2 justify-between p-4 md:flex md:flex-row md:justify-between md:p-4">
+                <div class="lg:col-start-5 lg:col-span-2 lg:flex lg:flex-col lg:items-center lg:justify-center lg:gap-10 grid grid-cols-2 justify-between mg:grid mg:grid-cols-2 md:justify-between">
                     <p class="bg-white text-[#A23145] rounded-2xl text-sm p-2 font-bold lg:row-start-3 lg:col-start-1 lg:col-span-2  row-start-3 col-start-1 col-span-1 flex justify-center items-center text-center w-full">{{ event.nomCategorie }}</p>
 
                     {# Voir video moulin pour faire comme quand il clique sur une recette #}
-                    <a href="details.php?id={{ event.id }}" class="text-white  text-sm  lg:text-md  font-bold row-start-3 flex justify-center items-center md:font-bold md:row-start-3 md:col-start-8 md:col-span-2 md:flex md:justify-center md:items-center">EN SAVOIR PLUS</a>
+                    <a href="details.php?id={{ event.id }}" class="text-white  text-sm  lg:text-md  font-bold row-start-3 flex justify-center items-center md:font-bold md:row-start-3 md:col-start-2 md:col-span-2 md:flex md:justify-center md:items-center">EN SAVOIR PLUS</a>
                 </div>
             </div>
             {% endfor %}
