@@ -12,13 +12,13 @@
 				{# premiere ligne #}
 				<div class="grid grid-cols-subgrid row-start-2 row-span-1 col-start-1 col-span-12 bg-[#A23145] bg-opacity-75 rounded-2xl p-4 w-full drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] gap-2">
 					<label class="text-white lg:col-span-4 col-span-12 lg:text-lg text-sm">Quel est le nom de ton événement :</label>
-					<input type="text" id="name" name="name" class="lg:col-span-8 lg:col-start-5 lg:row-start-1 row-start-2 col-span-12 border-2 border-[#A23145] rounded-lg lg:pl-2 pl-1 text-[#bfbfbf] w-auto drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] lg:py-2 py-1" placeholder="Saisir une description ...">
+					<input type="text" required minlenght="5" maxlenght="30" id="name" name="name" class="lg:col-span-8 lg:col-start-5 lg:row-start-1 row-start-2 col-span-12 border-2 border-[#A23145] rounded-lg lg:pl-2 pl-1 text-[#bfbfbf] w-auto drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] lg:py-2 py-1" placeholder="Saisir une description ...">
 				</div>
 
 				{# deuxieme ligne #}
 				<div class="grid grid-cols-subgrid row-start-3 row-span-1 col-start-1 col-span-12 bg-[#A23145] bg-opacity-75 text-white rounded-2xl p-4 w-full drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] gap-2">
 					<label class="text-white lg:col-span-4 col-span-12 lg:text-lg text-sm">Quel est le type de ton événement :</label>
-					<input type="text" id="type" name="type" class="lg:col-span-8 lg:col-start-5 lg:row-start-1 row-start-2 col-span-12 border-2 border-[#A23145] rounded-lg lg:pl-2 pl-1 text-[#bfbfbf] w-auto drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] lg:py-2 py-1" placeholder="Fête, Cinéma, Concert, Sport ...">
+					<input type="text" required id="type" minlenght="5" maxlenght="30" name="type" class="lg:col-span-8 lg:col-start-5 lg:row-start-1 row-start-2 col-span-12 border-2 border-[#A23145] rounded-lg lg:pl-2 pl-1 text-[#bfbfbf] w-auto drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] lg:py-2 py-1" placeholder="Fête, Cinéma, Concert, Sport ...">
 				</div>
 
 				{# colonne de gauche #}
@@ -35,22 +35,22 @@
 							Tes coordonnées :</h1>
 						<div class="grid grid-cols-subgrid row-start-2 col-span-6  text-white rounded-2xl py-2 w-full items-center">
 							<label class="text-white col-span-2">Email :</label>
-							<input type="email" id="email" name="email" class="col-start-3 col-span-2 border-2 border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] py-2" placeholder="Saisir un email...">
+							<input type="email" required id="email" minlenght="50" maxlenght="100" name="email" class="col-start-3 col-span-2 border-2 border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] py-2" placeholder="Saisir un email...">
 						</div>
 
 						<div class="grid grid-cols-subgrid row-start-3 col-span-6  text-white rounded-2xl py-2 w-full items-center">
 							<label class="text-white col-span-2">Téléphone :</label>
-							<input type="tel" id="tel" name="tel" class="col-start-3 col-span-2 border-2 border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] py-2" placeholder="Saisir un téléphone...">
+							<input type="tel" id="tel" required pattern="^0\d(\s|-|.)?(\d{2}(\s|-|.)?){4}$" name="tel" class="col-start-3 col-span-2 border-2 border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] py-2" placeholder="Saisir un téléphone...">
 						</div>
 
 						<div class="grid grid-cols-subgrid row-start-4 col-span-6  text-white rounded-2xl py-2 w-full items-center">
 							<label class="text-white col-span-4">Nom du représentant de l'événement :</label>
-							<input type="text" id="nomRep" name="nomRep" class="col-span-2 border-2 border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] py-2" placeholder="Saisir un nom...">
+							<input type="text" id="nomRep" required minlenght="2" maxlenght="100" name="nomRep" class="col-span-2 border-2 border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] py-2" placeholder="Saisir un nom...">
 						</div>
 
 						<div class="grid grid-cols-subgrid row-start-5 col-span-6  text-white rounded-2xl py-2 w-full items-center">
 							<label class="text-white col-span-4">Prénom du représentant de l'événement :</label>
-							<input type="text" id="prenomRep" name="prenomRep" class="col-span-2 border-2 border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] py-2" placeholder="Saisir un prénom...">
+							<input type="text" id="prenomRep" required minlenght="2" maxlenght="100" name="prenomRep" class="col-span-2 border-2 border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] py-2" placeholder="Saisir un prénom...">
 						</div>
 
 						<div class="col-span-6 text-white rounded-2xl py-2 w-full items-center">
@@ -70,36 +70,34 @@
 				<div class="lg:grid lg:grid-cols-subgrid lg:row-start-4 lg:col-start-7 lg:col-span-6 lg:w-full lg:gap-2 col-start-1 col-span-12 row-start-5 flex flex-col gap-2 ">
 					<div class="grid grid-cols-subgrid row-start-1 col-span-6 bg-[#A23145] bg-opacity-75 text-white rounded-2xl w-full p-4">
 						<label class="text-white col-span-3 pb-3">Décris ton événement :</label>
-						<input type="text" id="description" name="description" class="col-start-1 col-span-6 border-2 border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full py-2" placeholder="Saisir une description ...">
+						<input type="text" id="description" required minlenght="100" maxlenght="500" name="description" class="col-start-1 col-span-6 border-2 border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full py-2" placeholder="Saisir une description ...">
 					</div>
 
 					{# premier bloc #}
 					<div class="grid grid-cols-subgrid row-start-2 col-span-6 bg-[#A23145] bg-opacity-75 text-white rounded-2xl p-4 w-full">
-						<h1 class="row-start-1 col-span-6 text-xl">
-							Informations de ton événement :</h1>
-
+						<h1 class="row-start-1 col-span-6 text-xl">Informations de ton événement :</h1>
 						<div class="grid grid-cols-subgrid row-start-2 col-span-6  text-white rounded-2xl py-2 w-full items-center">
 							<label class="text-white col-span-1">Du :</label>
-							<input type="date" id="debutDate" name="debutDate" class="col-start-2 col-span-2 border-2 border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full py-2" placeholder="Saisir date début">
+							<input type="date" id="debutDate" required name="debutDate" class="col-start-2 col-span-2 border-2 border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full py-2" placeholder="Saisir date début">
 							<label class="text-white col-start-4 col-span-1">Au :</label>
-							<input type="date" id="finDate" name="finDate" class="col-start-5 col-span-2 border-2 border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full py-2" placeholder="Saisir date fin">
+							<input type="date" id="finDate" required name="finDate" class="col-start-5 col-span-2 border-2 border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full py-2" placeholder="Saisir date fin">
 						</div>
 
 						<div class="grid grid-cols-subgrid row-start-3 col-span-6  text-white rounded-2xl py-2 w-full items-center">
 							<label class="text-white col-span-1">Du :</label>
-							<input type="time" id="debutHeure" name="debutHeure" class="col-start-2 col-span-2 border-2 border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full py-2" placeholder="Saisir heure début">
+							<input type="time" id="debutHeure" required name="debutHeure" class="col-start-2 col-span-2 border-2 border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full py-2" placeholder="Saisir heure début">
 							<label class="text-white col-start-4 col-span-1">Au :</label>
-							<input type="time" id="finHeure" name="finHeure" class="col-start-5 col-span-2 border-2 border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full py-2" placeholder="Saisir heure fin">
+							<input type="time" id="finHeure" required name="finHeure" class="col-start-5 col-span-2 border-2 border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full py-2" placeholder="Saisir heure fin">
 						</div>
 
 						<div class="grid grid-cols-subgrid row-start-4 col-span-6  text-white rounded-2xl py-2 w-full">
 							<label class="text-white col-span-1">Lieu :</label>
-							<input type="text" id="lieu" name="lieu" class="col-start-2 col-span-3 border-2 border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full py-2" placeholder="Saisir une adresse ...">
+							<input type="text" id="lieu" required minlenght="50" maxlenght="500" name="lieu" class="col-start-2 col-span-3 border-2 border-[#A23145] rounded-lg pl-2 text-[#bfbfbf] w-full py-2" placeholder="Saisir une adresse ...">
 						</div>
 
 						<div class="grid grid-cols-subgrid row-start-5 col-span-6  text-white rounded-2xl w-full py-2">
 							<label class="text-white col-span-1">Photos :</label>
-							<button arial-label="b_ajouterPhotoEv" class="col-start-6 col-span-1 flex items-center justify-center max-h-1 text-[#A23145] bg-[#ffffff] rounded-lg p-4 font-bold drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">Ajouter</button>
+							<button arial-label="b_ajouterPhotoEv" accept=".jpg, .png" class="col-start-6 col-span-1 flex items-center justify-center max-h-1 text-[#A23145] bg-[#ffffff] rounded-lg p-4 font-bold drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">Ajouter</button>
 						</div>
 
 					</div>
