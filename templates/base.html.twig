@@ -164,6 +164,7 @@
 			</footer>
 		</main>
 
+		{% block script %}
 		<script>
 			// Toggle Burger Menu
 			const burgerMenu = document.getElementById('burger-menu');
@@ -172,8 +173,6 @@
 				menu.classList.toggle('hidden');
 			});
 		</script>
-
-		{% block script %}
 			<script src="../js/aside.js"></script>
 		{% endblock %}
 	</body>
