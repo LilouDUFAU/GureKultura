@@ -69,6 +69,11 @@
                 </label>
                 {# Ajouter un like #}
                 <img src="../asset/pouce_en_l_air_grand.svg" alt="Like" name="like" class="col-start-11 col-span-1 row-start-2">
+
+                <button type="button" id="like-button" class="col-start-11 col-span-1 row-start-2" onclick="toggleLike()">
+                    <img id="like-icon" src="../asset/pouce_en_l_air_grand.svg" alt="Like"/>
+                </button>
+
                 {# Envoyer le commentaire #}
                 <input type="submit" id="submit" class="hidden" />
                 <label for="submit" class="cursor-pointer col-start-12 col-span-1 row-start-2">
@@ -78,6 +83,36 @@
 
                 {# <input type="image" id="image" alt="Login" src="/media/examples/login-button.png" /> #}
             </form>
+
+            {# CETTE FONCTION SERA A MODIFIER GRANDEMENT LORSQUE LES LIKES SERONT IMPLEMENTES CORRECTEMENT DANS LA BASE DE DONNES #}
+            {#
+            <script>
+                // Fonction pour basculer l'état du like
+                function toggleLike() {
+                    const likeIcon = document.getElementById('like-icon');
+                    const isLiked = localStorage.getItem('liked') === 'true'; // Vérifie si le like a déjà été donné
+
+                    if (isLiked) {
+                        // Si le like a déjà été donné, on le retire
+                        localStorage.setItem('liked', 'false');
+                        likeIcon.src = '../asset/pouce_en_l_air_grand.svg'; // Remet l'icône par défaut
+                    } else {
+                        // Si le like n'a pas encore été donné, on l'ajoute
+                        localStorage.setItem('liked', 'true');
+                        likeIcon.src = '../asset/pouce_en_l_air_grand_active.svg'; // Change l'icône pour montrer que c'est aimé
+                    }
+                }
+
+                // Vérifier si l'utilisateur a déjà liké au chargement de la page
+                document.addEventListener('DOMContentLoaded', function() {
+                    const likeIcon = document.getElementById('like-icon');
+                    if (localStorage.getItem('liked') === 'true') {
+                        likeIcon.src = '../asset/pouce_en_l_air_grand_active.svg'; // L'icône de "like" actif
+                    }
+                });
+            </script>
+            #}
+
         </div>
     </div>
 </div>
