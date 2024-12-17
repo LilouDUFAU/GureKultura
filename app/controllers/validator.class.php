@@ -3,7 +3,7 @@
 class Validator
 {
     private array $regleValidation; // Les règles de validation à vérifier 
-    private array $erreurs = []; // Les erreurs de validation rencontrées
+    private array $messagesErreurs = []; // Les erreurs de validation rencontrées
 
     public function __construct(array $regleValidation)
     {
@@ -37,7 +37,7 @@ class Validator
     public function valider(array $donnees): bool
     {
         $valide = true;
-        $this->erreurs = []; // Réinitialisation des erreurs
+        $this->messagesErreurs = []; // Réinitialisation des erreurs
 
         foreach ($this->regleValidation as $champ => $reglesChamp) {
             $valeur = $donnees[$champ] ?? null;
@@ -54,7 +54,7 @@ class Validator
         $estValide = true;
 
         if (isset($regleValidation['obligatoire']) && $regleValidation['obligatoire'] && empty($valeur)) {
-            $this->erreurs[$champ][] = "Le champ $champ est obligatoire.";
+            $this->messagesErreurs[$champ][] = "Le champ $champ est obligatoire.";
             return false; // Stop ici si le champ est vide et obligatoire
         }
 
@@ -66,46 +66,46 @@ class Validator
             switch ($regle) {
                 case 'type':
                     if ($parametre === 'string' && !is_string($valeur)) {
-                        $this->erreurs[$champ][] = "Le champ $champ doit être une chaîne de caractères.";
+                        $this->messagesErreurs[$champ][] = "Le champ $champ doit être une chaîne de caractères.";
                         $estValide = false;
                     } elseif ($parametre === 'int' && !is_int($valeur)) {
-                        $this->erreurs[$champ][] = "Le champ $champ doit être un entier.";
+                        $this->messagesErreurs[$champ][] = "Le champ $champ doit être un entier.";
                         $estValide = false;
                     } elseif ($parametre === 'file' && !$this->is_file($valeur)) {
-                        $this->erreurs[$champ][] = "Le champ $champ doit être un fichier.";
+                        $this->messagesErreurs[$champ][] = "Le champ $champ doit être un fichier.";
                         $estValide = false;
                     } elseif ($parametre === 'image' && !$this->is_image($valeur)) {
-                        $this->erreurs[$champ][] = "Le champ $champ doit être une image.";
+                        $this->messagesErreurs[$champ][] = "Le champ $champ doit être une image.";
                         $estValide = false;
                     } elseif ($parametre === 'date' && !$this->is_date($valeur)) {
-                        $this->erreurs[$champ][] = "Le champ $champ doit être une date valide (Y-m-d).";
+                        $this->messagesErreurs[$champ][] = "Le champ $champ doit être une date valide (Y-m-d).";
                         $estValide = false;
                     } elseif ($parametre === 'time' && !$this->is_time($valeur)) {
-                        $this->erreurs[$champ][] = "Le champ $champ doit être une heure valide (H:i).";
+                        $this->messagesErreurs[$champ][] = "Le champ $champ doit être une heure valide (H:i).";
                         $estValide = false;
                     }
                     break;
                 case 'longueurMin':
                     if (strlen($valeur) < $parametre) {
-                        $this->erreurs[$champ][] = "Le champ $champ doit contenir au moins $parametre caractères.";
+                        $this->messagesErreurs[$champ][] = "Le champ $champ doit contenir au moins $parametre caractères.";
                         $estValide = false;
                     }
                     break;
                 case 'longueurMax':
                     if (strlen($valeur) > $parametre) {
-                        $this->erreurs[$champ][] = "Le champ $champ doit contenir au maximum $parametre caractères.";
+                        $this->messagesErreurs[$champ][] = "Le champ $champ doit contenir au maximum $parametre caractères.";
                         $estValide = false;
                     }
                     break;
                 case 'longueurExacte':
                     if (strlen($valeur) !== $parametre) {
-                        $this->erreurs[$champ][] = "Le champ $champ doit contenir exactement $parametre caractères.";
+                        $this->messagesErreurs[$champ][] = "Le champ $champ doit contenir exactement $parametre caractères.";
                         $estValide = false;
                     }
                     break;
                 case 'email':
                     if (!filter_var($valeur, FILTER_VALIDATE_EMAIL)) {
-                        $this->erreurs[$champ][] = "Le champ $champ doit être une adresse email valide.";
+                        $this->messagesErreurs[$champ][] = "Le champ $champ doit être une adresse email valide.";
                         $estValide = false;
                     }
                     break;
@@ -116,6 +116,6 @@ class Validator
 
     public function getMessageErreurs(): array
     {
-        return $this->erreurs;
+        return $this->messagesErreurs;
     }
 }
