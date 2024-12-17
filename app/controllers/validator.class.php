@@ -97,6 +97,12 @@ class Validator
                         $estValide = false;
                     }
                     break;
+                case 'longueurExacte':
+                    if (strlen($valeur) !== $parametre) {
+                        $this->erreurs[$champ][] = "Le champ $champ doit contenir exactement $parametre caractères.";
+                        $estValide = false;
+                    }
+                    break;
                 case 'email':
                     if (!filter_var($valeur, FILTER_VALIDATE_EMAIL)) {
                         $this->erreurs[$champ][] = "Le champ $champ doit être une adresse email valide.";
