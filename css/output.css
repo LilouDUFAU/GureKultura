@@ -1873,15 +1873,6 @@ video {
     display: grid;
   }
 
-  .lg\:hidden {
-    display: none;
-  }
-
-  .lg\:size-10 {
-    width: 2.5rem;
-    height: 2.5rem;
-  }
-
   .lg\:h-full {
     height: 100%;
   }
