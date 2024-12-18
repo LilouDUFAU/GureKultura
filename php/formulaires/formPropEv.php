@@ -1,8 +1,29 @@
 <?php
-// inclusion du fichier de connexion à la base de données
+// demarrage de la session
+session_start();
+
+// stockage des valeurs du formulaire dans des variables de session
+$_SESSION['titre'] = $_POST['titre'] ?? '';
+$_SESSION['type'] = $_POST['type'] ?? '';
+$_SESSION['autorisation'] = $_POST['autorisation'] ?? '';
+$_SESSION['email'] = $_POST['email'] ?? '';
+$_SESSION['tel'] = $_POST['tel'] ?? '';
+$_SESSION['nomRep'] = $_POST['nomRep'] ?? '';
+$_SESSION['prenomRep'] = $_POST['prenomRep'] ?? '';
+$_SESSION['description'] = $_POST['description'] ?? '';
+$_SESSION['debutDate'] = $_POST['debutDate'] ?? '';
+$_SESSION['finDate'] = $_POST['finDate'] ?? '';
+$_SESSION['debutHeure'] = $_POST['debutHeure'] ?? '';
+$_SESSION['finHeure'] = $_POST['finHeure'] ?? '';
+$_SESSION['lieu'] = $_POST['lieu'] ?? '';
+$_SESSION['photo'] = $_POST['photo'] ?? '';
+
+// inclusion du fichier contenant les constantes
+require_once '../../config/constantes.php';
 
 // inclusion du fichier contenant la classe de validation des donnees
 require_once '../../app/controllers/validator.class.php';
+
 // definition des regles de validations que l'on souhaite verifier pour chaque champs du formulaire
 $regleValidation = [
     'titre' => [
@@ -182,13 +203,20 @@ if (!empty($messageErreurs)) {
             echo "<li>$erreur</li>";
         }
     }
+    // envoie a la base de donnees
+    // $sql = "INSERT INTO " . PREFIX_TABLE . "evt (titre, type, autorisation, email, tel, nomRep, prenomRep, description, debutDate, finDate, debutHeure, finHeure, lieu, photo) VALUES (:titre, :type, :autorisation, :email, :tel, :nomRep, :prenomRep, :description, :debutDate, :finDate, :debutHeure, :finHeure, :lieu, :photo)";
+    // $stmt = $pdo->prepare($sql);
     echo '</ul>';
     echo '</div>';
 }
-?>
-<div class="flex justify-center items-center mt-8">
-    <a href="../index.php?controlleur=propEv&methode=lister" class="border-2 border-solid border-gray-400 rounded-lg p-2">Retour à l'édition de la proposition d'événement</a>
-    <button type="submit" class="border-2 border-solid border-gray-400 rounded-lg p-2">Valider</button>
-</div>
 
-</body>
+echo '<div class="flex justify-center items-center mt-8">
+<a href="../index.php?controlleur=propEv&methode=lister" class="border-2 border-solid border-gray-400 rounded-lg p-2">Retour à l\'édition de la proposition d\'événement</a>
+<a href="../index.php?controlleur=index&methode=lister" class="border-2 border-solid border-gray-400 rounded-lg p-2">Valider</a>
+</div>';
+echo '</body>';
+echo '</html>';
+
+// fermeture de la session
+session_destroy();
+?>
