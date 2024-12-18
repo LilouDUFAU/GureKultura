@@ -1,1 +1,0 @@
-Contenu de resume 4

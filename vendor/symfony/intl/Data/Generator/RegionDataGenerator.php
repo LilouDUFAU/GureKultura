@@ -242,7 +242,7 @@ class RegionDataGenerator extends AbstractDataGenerator
                 continue;
             }
 
-            if (\in_array($alias, self::WITHDRAWN_CODES, true)) {
+            if (\in_array($alias, self::WITHDRAWN_CODES)) {
                 continue;
             }
 

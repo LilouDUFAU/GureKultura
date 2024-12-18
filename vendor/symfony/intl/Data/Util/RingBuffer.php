@@ -36,10 +36,11 @@ class RingBuffer implements \ArrayAccess
     /** @var array<TKey, int> */
     private array $indices = [];
     private int $cursor = 0;
+    private int $size;
 
-    public function __construct(
-        private int $size,
-    ) {
+    public function __construct(int $size)
+    {
+        $this->size = $size;
     }
 
     public function offsetExists(mixed $key): bool
@@ -50,7 +51,7 @@ class RingBuffer implements \ArrayAccess
     public function offsetGet(mixed $key): mixed
     {
         if (!isset($this->indices[$key])) {
-            throw new OutOfBoundsException(\sprintf('The index "%s" does not exist.', $key));
+            throw new OutOfBoundsException(sprintf('The index "%s" does not exist.', $key));
         }
 
         return $this->values[$this->indices[$key]];
