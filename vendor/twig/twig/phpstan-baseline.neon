@@ -23,3 +23,9 @@ parameters:
 			identifier: parameter.phpDocType
 			count: 5
 			path: src/Node/Node.php
+
+		- # Adding 0 to the string representation of a number is valid and what we want here
+			message: '#^Binary operation "\+" between 0 and string results in an error\.$#'
+			identifier: binaryOp.invalid
+			count: 1
+			path: src/Lexer.php
