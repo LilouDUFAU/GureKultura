@@ -34,6 +34,36 @@ class ActualiteDao {
         $actualite = $this->hydrateAll($ActualiteTab);
         return $actualite;
     }
+    
+    public function findEnCours(?int $id) {
+        $sql="SELECT * FROM " . PREFIX_TABLE . "actu WHERE datePubli = CURRENT_DATE AND cateId =:id";
+        $pdoStatement = $this->pdo->prepare($sql);
+        $pdoStatement->execute(array(':id' => $id));
+        $pdoStatement->setFetchMode(PDO::FETCH_ASSOC);
+        $ActualiteTab = $pdoStatement->fetchAll();
+        $actualite = $this->hydrateAll($ActualiteTab);
+        return $actualite;
+    }
+    
+    public function findASuivre(?int $id) {
+        $sql="SELECT * FROM " . PREFIX_TABLE . "actu WHERE datePubli > CURRENT_DATE AND cateId =:id";
+        $pdoStatement = $this->pdo->prepare($sql);
+        $pdoStatement->execute(array(':id' => $id));
+        $pdoStatement->setFetchMode(PDO::FETCH_ASSOC);
+        $ActualiteTab = $pdoStatement->fetchAll();
+        $actualite = $this->hydrateAll($ActualiteTab);
+        return $actualite;
+    }
+    
+    public function findPasser(?int $id) {
+        $sql="SELECT * FROM " . PREFIX_TABLE . "actu WHERE datePubli < CURRENT_DATE AND cateId =:id";
+        $pdoStatement = $this->pdo->prepare($sql);
+        $pdoStatement->execute(array(':id' => $id));
+        $pdoStatement->setFetchMode(PDO::FETCH_ASSOC);
+        $ActualiteTab = $pdoStatement->fetchAll();
+        $actualite = $this->hydrateAll($ActualiteTab);
+        return $actualite;
+    }
 
     public function hydrate(array $tab): Actualite {
         $actualite = new Actualite();
