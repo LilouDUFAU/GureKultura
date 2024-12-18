@@ -26,7 +26,7 @@ class Validator
      */
     public function is_image($valeur): bool
     {
-        $extensions = array('.png', '.gif', '.jpg', '.jpeg');
+        $extensions = array('.png', '.jpg', '.jpeg', '.svg');
         $extension = strrchr($valeur, '.');
         return in_array($extension, $extensions);
     }

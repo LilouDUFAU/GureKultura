@@ -15,7 +15,7 @@ $regleValidation = [
     'type' => [
         'obligatoire' => true,
         'type' => 'string',
-        'longueurMin' => 5,
+        'longueurMin' => 4,
         'longueurMax' => 30,
         'format' => '/^[a-zA-Z0-9\s]+$/'
     ],
@@ -27,7 +27,7 @@ $regleValidation = [
     'email' => [
         'obligatoire' => true,
         'type' => 'string',
-        'longueurMin' => 50,
+        'longueurMin' => 10,
         'longueurMax' => 100,
         'format' => FILTER_VALIDATE_EMAIL
     ],
@@ -170,6 +170,20 @@ if (isset($_FILES['photo']) && $_FILES['photo']['error'] === UPLOAD_ERR_OK) {
     }
 } else {
     echo "<strong>Erreur : Aucune photo téléchargée ou erreur lors du téléchargement.</strong>";
+}
+
+// Affichage des erreurs de validation
+if (!empty($messageErreurs)) {
+    echo '<div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">';
+    echo '<strong class="font-bold">Erreurs dans le formulaire :</strong>';
+    echo '<ul>';
+    foreach ($messageErreurs as $champ => $erreurs) {
+        foreach ($erreurs as $erreur) {
+            echo "<li>$erreur</li>";
+        }
+    }
+    echo '</ul>';
+    echo '</div>';
 }
 ?>
 <div class="flex justify-center items-center mt-8">
