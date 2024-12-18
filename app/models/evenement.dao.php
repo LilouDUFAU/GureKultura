@@ -41,6 +41,41 @@ class EvenementDao
         return $evenement;
     }
 
+    
+    public function findEnCours(?int $id)
+    {
+        $sql = "SELECT * FROM " . PREFIX_TABLE . "evt WHERE dateEvt = CURRENT_DATE AND cateId =:id";
+        $pdoStatement = $this->pdo->prepare($sql);
+        $pdoStatement->execute(array(':id' => $id));
+        $pdoStatement->setFetchMode(PDO::FETCH_ASSOC);
+        $EvenementTab = $pdoStatement->fetchAll();
+        $evenement = $this->hydrateAll($EvenementTab);
+        return $evenement;
+    }
+
+
+    public function findASuivre(?int $id)
+    {
+        $sql = "SELECT * FROM " . PREFIX_TABLE . "evt WHERE dateEvt > CURRENT_DATE AND cateId =:id";
+        $pdoStatement = $this->pdo->prepare($sql);
+        $pdoStatement->execute(array(':id' => $id));
+        $pdoStatement->setFetchMode(PDO::FETCH_ASSOC);
+        $EvenementTab = $pdoStatement->fetchAll();
+        $evenement = $this->hydrateAll($EvenementTab);
+        return $evenement;
+    }
+    
+    public function findPasser(?int $id)
+    {
+        $sql = "SELECT * FROM " . PREFIX_TABLE . "evt WHERE dateEvt < CURRENT_DATE AND cateId =:id";
+        $pdoStatement = $this->pdo->prepare($sql);
+        $pdoStatement->execute(array(':id' => $id));
+        $pdoStatement->setFetchMode(PDO::FETCH_ASSOC);
+        $EvenementTab = $pdoStatement->fetchAll();
+        $evenement = $this->hydrateAll($EvenementTab);
+        return $evenement;
+    }
+    
     public function findAllWithCategorie(): array
     {
         $sql = "SELECT evt.evtId, evt.titre, evt.descr, evt.dateEvt, evt.loc, evt.statutEvt, evt.img, cate.nom AS nomCategorie
