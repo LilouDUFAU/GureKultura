@@ -52,9 +52,20 @@ function initCarousel(carouselContainer, nextBtnId, prevBtnId) {
   }
 }
 
-// Initialisation des deux carrousels
-initCarousel(document.getElementById('carousel1'), 'next1', 'prev1');
-initCarousel(document.getElementById('carousel2'), 'next2', 'prev2');
-initCarousel(document.getElementById('carousel3'), 'next3', 'prev3');
-initCarousel(document.getElementById('carousel4'), 'next4', 'prev4');
-
+// Initialisation des carrousels
+const carousel1 = document.getElementById('carousel1');
+if (carousel1) {
+  initCarousel(carousel1, 'next1', 'prev1');
+}
+const carousel2 = document.getElementById('carousel2');
+if (carousel2) {
+  initCarousel(carousel2, 'next2', 'prev2');
+}
+const carousel3 = document.getElementById('carousel3');
+if (carousel3) {
+  initCarousel(carousel3, 'next3', 'prev3');
+}
+const carousel4 = document.getElementById('carousel4');
+if (carousel4) {
+  initCarousel(carousel2, 'next4', 'prev4');
+}
