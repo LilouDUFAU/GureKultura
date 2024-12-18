@@ -126,21 +126,21 @@ $messageErreurs = $validator->getMessageErreurs();
     <div class="container mt-5">
         <h2 class="text-center mb-4 font-bold text-2xl">Résultat de la proposition d'événement</h2>
 
-        <ul class="list-none mb-8">
-            <li class="border-2 border-solid border-gray-400 p-2"><strong>Titre :</strong> <?=$_POST['titre']?? '';?></li>
-            <li class="border-2 border-solid border-gray-400 p-2"><strong>Type :</strong> <?=$_POST['type']?? '';?></li>
-            <li class="border-2 border-solid border-gray-400 p-2"><strong>Autorisation jointe :</strong> <?=$_POST['autorisation']?? '';?></li>
-            <li class="border-2 border-solid border-gray-400 p-2"><strong>Email du responsable :</strong> <?=$_POST['email']?? '';?></li>
-            <li class="border-2 border-solid border-gray-400 p-2"><strong>Téléphone du responsable :</strong> <?=$_POST['tel']?? '';?></li>
-            <li class="border-2 border-solid border-gray-400 p-2"><strong>Nom du responsable :</strong> <?=$_POST['nomRep']?? '';?></li>
-            <li class="border-2 border-solid border-gray-400 p-2"><strong>Prénom du responsable :</strong> <?=$_POST['prenomRep']?? '';?></li>
-            <li class="border-2 border-solid border-gray-400 p-2"><strong>Description de l'événement :</strong> <?=$_POST['description']?? '';?></li>
-            <li class="border-2 border-solid border-gray-400 p-2"><strong>Date de début :</strong> <?=$_POST['debutDate']?? '';?></li>
-            <li class="border-2 border-solid border-gray-400 p-2"><strong>Date de fin :</strong> <?=$_POST['finDate']?? '';?></li>
-            <li class="border-2 border-solid border-gray-400 p-2"><strong>Heure de début :</strong> <?=$_POST['debutHeure']?? '';?></li>
-            <li class="border-2 border-solid border-gray-400 p-2"><strong>Heure de fin :</strong> <?=$_POST['finHeure']?? '';?></li>
-            <li class="border-2 border-solid border-gray-400 p-2"><strong>Lieu de l'événement :</strong> <?=$_POST['lieu']?? '';?></li>
-            <li class="border-2 border-solid border-gray-400 p-2"><strong>Image de l'événement :</strong> <?=$_POST['photo']?? '';?></li>
+        <ul class="list-none mb-8 border-solid border-2 border-gray-300 rounded-lg">
+            <li class="p-2"><strong>Titre :</strong> <?=$_POST['titre']?? '';?></li>
+            <li class="p-2 border-t-2 border-t-solid border-gray-300"><strong>Type :</strong> <?=$_POST['type']?? '';?></li>
+            <li class="p-2 border-t-2 border-t-solid border-gray-300"><strong>Autorisation jointe :</strong> <?=$_POST['autorisation']?? '';?></li>
+            <li class="p-2 border-t-2 border-t-solid border-gray-300"><strong>Email du responsable :</strong> <?=$_POST['email']?? '';?></li>
+            <li class="p-2 border-t-2 border-t-solid border-gray-300"><strong>Téléphone du responsable :</strong> <?=$_POST['tel']?? '';?></li>
+            <li class="p-2 border-t-2 border-t-solid border-gray-300"><strong>Nom du responsable :</strong> <?=$_POST['nomRep']?? '';?></li>
+            <li class="p-2 border-t-2 border-t-solid border-gray-300"><strong>Prénom du responsable :</strong> <?=$_POST['prenomRep']?? '';?></li>
+            <li class="p-2 border-t-2 border-t-solid border-gray-300"><strong>Description de l'événement :</strong> <?=$_POST['description']?? '';?></li>
+            <li class="p-2 border-t-2 border-t-solid border-gray-300"><strong>Date de début :</strong> <?=$_POST['debutDate']?? '';?></li>
+            <li class="p-2 border-t-2 border-t-solid border-gray-300"><strong>Date de fin :</strong> <?=$_POST['finDate']?? '';?></li>
+            <li class="p-2 border-t-2 border-t-solid border-gray-300"><strong>Heure de début :</strong> <?=$_POST['debutHeure']?? '';?></li>
+            <li class="p-2 border-t-2 border-t-solid border-gray-300"><strong>Heure de fin :</strong> <?=$_POST['finHeure']?? '';?></li>
+            <li class="p-2 border-t-2 border-t-solid border-gray-300"><strong>Lieu de l'événement :</strong> <?=$_POST['lieu']?? '';?></li>
+            <li class="p-2 border-t-2 border-t-solid border-gray-300"><strong>Image de l'événement :</strong> <?=$_POST['photo']?? '';?></li>
         </ul>
     </div>
 <?php 
@@ -166,15 +166,15 @@ if (isset($_FILES['photo']) && $_FILES['photo']['error'] === UPLOAD_ERR_OK) {
     if (move_uploaded_file($_FILES['photo']['tmp_name'], $filePath)) {
         echo "Le fichier est valide, et a été téléchargé avec succès.\n";
     } else {
-        echo "<strong><br>Erreur : Le fichieer n'a pas été téléchargé.</strong>";
+        echo "<strong>Erreur : Le fichieer n'a pas été téléchargé.</strong>";
     }
 } else {
-    echo "<strong><br>Erreur : Aucune photo téléchargée ou erreur lors du téléchargement.</strong>";
+    echo "<strong>Erreur : Aucune photo téléchargée ou erreur lors du téléchargement.</strong>";
 }
 ?>
 <div class="flex justify-center items-center mt-8">
-    <a href="../index.php?controlleur=propEv&methode=lister" class="border-2 border-solid border-gray-500 rounded-lg p-2">Retour à l'édition de la proposition d'événement</a>
-    <button type="submit" class="border-2 border-solid border-gray-500 rounded-lg p-2">Valider</button>
+    <a href="../index.php?controlleur=propEv&methode=lister" class="border-2 border-solid border-gray-400 rounded-lg p-2">Retour à l'édition de la proposition d'événement</a>
+    <button type="submit" class="border-2 border-solid border-gray-400 rounded-lg p-2">Valider</button>
 </div>
 
 </body>
