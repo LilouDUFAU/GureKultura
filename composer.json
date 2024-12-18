@@ -1,17 +1,12 @@
 {
     "config": {
         "platform": {
-            "php": " 7.4.11"
+            "php": "8.2.0"
         }
     },
     "require": {
-        "twig/twig": "^3.11",
-        "twig/intl-extra": "*"
-            "php": "8.1.20"
-        }
-    },
-    "require": {
-        "twig/twig": "^3.16",
-        "twig/intl-extra": "^3.16"
+        "twig/twig": "^3.17",
+        "twig/intl-extra": "^3.17",
+        "symfony/validator": "^7.2"
     }
 }

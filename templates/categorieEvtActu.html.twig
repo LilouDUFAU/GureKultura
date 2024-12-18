@@ -1,0 +1,107 @@
+{% extends "base.html.twig" %}
+
+{% block content %}
+<!-- Contenu spécifique de chaque page -->
+<div>
+    <div class="gap-2 p-2 grid grid-cols-12 items-center">
+        
+        <h2 class="row-span-2 col-span-12 text-white lg:font-bold lg:text-4xl text-2xl text-center bg-[#A23145] rounded-2xl p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] mb-10">{{ title }} - {{ type }}</h2>
+        {% if evtActusEnCours is not empty %}
+            <h3 class="row-span-2 col-span-12 text-black font-bold text-3xl text-left">{{ type }} en cours</h3>
+
+            <div id="carousel1" class="row-span-3 col-span-12 relative w-full overflow-hidden mx-auto bg-[#A23145] opacity-75 rounded-lg" data-slides-default="1" data-slides-mobile="1">
+                <!-- Conteneur du carrousel -->
+                <div  id="carousel" class="carousel flex transition-transform duration-500 ease-out gap-2 p-2">
+                    <!-- Diapositives -->
+                    {% for evtActuEnCours in evtActusEnCours %}
+                        <div style="background: url('../{{ evtActuEnCours.img }}')" class="slide md:w-1/3 w-full flex-shrink-0 text-[#A23145] text-center py-16 rounded-lg relative">
+                            <FORM ACTION="evenementTemplate.php" METHOD="POST">
+                                <INPUT TYPE="hidden" NAME="nom" VALUE="{{evtActuEnCours.titre}}"> 
+                                <INPUT TYPE="SUBMIT" VALUE="{{ evtActuEnCours.titre }}" class="bg-white border-[#A23145] absolute inset-x-0 bottom-0 text-center rounded-lg p-2 mr-2 ml-2 mb-2">
+                            </FORM>
+                        </div>
+                    {% endfor %}
+                </div>
+                <!-- Boutons de navigation -->
+                <button id="prev1" class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full"><</button>
+                <button id="next1" class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full">></button>
+            </div>
+        {% endif %}
+        {% if evtActusEnCours is empty %}
+            {% if type == 'Evenements' %}
+                <h3 class="row-span-2 col-span-12 text-black font-bold text-3xl text-left p-6">Aucun {{ type }} en cours</h3>
+            {% endif %}
+            {% if type == 'Actualites' %}
+                <h3 class="row-span-2 col-span-12 text-black font-bold text-3xl text-left p-6">Aucune {{ type }} en cours</h3>
+            {% endif %}
+        {% endif %}
+
+
+        {% if evtActusASuivre is not empty %}
+            <h3 class="row-span-4 col-span-12 text-black font-bold text-3xl text-left">{{ type }} à venir</h3>
+
+            <div id="carousel2" class="row-span-6 col-span-12 relative w-full overflow-hidden mx-auto bg-[#A23145] opacity-75 rounded-lg" data-slides-default="1" data-slides-mobile="1">
+                <!-- Conteneur du carrousel -->
+                <div  id="carousel" class="carousel flex transition-transform duration-500 ease-out gap-2 p-2">
+                    <!-- Diapositives -->
+                    {% for evtActuASuivre in evtActusASuivre %}
+                        <div style="background: url('../{{ evtActuASuivre.img }}')" class="slide md:w-1/3 w-full flex-shrink-0 text-[#A23145] text-center py-16 rounded-lg relative">
+                            <FORM ACTION="evenementTemplate.php" METHOD="POST">
+                                <INPUT TYPE="hidden" NAME="nom" VALUE="{{evtActuASuivre.titre}}"> 
+                                <INPUT TYPE="SUBMIT" VALUE="{{ evtActuASuivre.titre }}" class="bg-white border-[#A23145] absolute inset-x-0 bottom-0 text-center rounded-lg p-2 mr-2 ml-2 mb-2">
+                            </FORM>
+                        </div>
+                    {% endfor %}
+                </div>
+                <!-- Boutons de navigation -->
+                <button id="prev2" class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full"><</button>
+                <button id="next2" class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full">></button>
+            </div>
+        {% endif %}
+        {% if evtActusASuivre is empty %}
+            {% if type == 'Evenements' %}
+                <h3 class="row-span-2 col-span-12 text-black font-bold text-3xl text-left p-6">Aucun {{ type }} à venir</h3>
+            {% endif %}
+            {% if type == 'Actualites' %}
+                <h3 class="row-span-2 col-span-12 text-black font-bold text-3xl text-left p-6">Aucune {{ type }} à venir</h3>
+            {% endif %}
+        {% endif %}
+
+
+        {% if evtActusPasser is not empty %}
+            <h3 class="row-span-5 col-span-12 text-black font-bold text-3xl text-left">{{ type }} passer</h3>
+            
+            <div id="carousel3" class="row-span-6 col-span-12 relative w-full overflow-hidden mx-auto bg-[#A23145] opacity-75 rounded-lg" data-slides-default="1" data-slides-mobile="1">
+                <!-- Conteneur du carrousel -->
+                <div  id="carousel" class="carousel flex transition-transform duration-500 ease-out gap-2 p-2">
+                    <!-- Diapositives -->
+                    {% for evtActuPasser in evtActusPasser %}
+                        <div style="background: url('../{{ evtActuPasser.img }}')" class="slide md:w-1/3 w-full flex-shrink-0 text-[#A23145] text-center py-16 rounded-lg relative">
+                            <FORM ACTION="evenementTemplate.php" METHOD="POST">
+                                <INPUT TYPE="hidden" NAME="nom" VALUE="{{evtActuPasser.titre}}"> 
+                                <INPUT TYPE="SUBMIT" VALUE="{{ evtActuPasser.titre }}" class="bg-white border-[#A23145] absolute inset-x-0 bottom-0 text-center rounded-lg p-2 mr-2 ml-2 mb-2">
+                            </FORM>
+                        </div>
+                    {% endfor %}
+                </div>
+                <!-- Boutons de navigation -->
+                <button id="prev3" class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full"><</button>
+                <button id="next3" class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full">></button>
+            </div>
+        {% endif %}
+        {% if evtActusPasser is empty %}
+            {% if type == 'Evenements' %}
+                <h3 class="row-span-2 col-span-12 text-black font-bold text-3xl text-left p-6">Aucun {{ type }} passer</h3>
+            {% endif %}
+            {% if type == 'Actualites' %}
+                <h3 class="row-span-2 col-span-12 text-black font-bold text-3xl text-left p-6">Aucune {{ type }} passer</h3>
+            {% endif %}
+        {% endif %}
+
+    </div>
+</div>
+{% endblock %}
+{% block script %}
+<script src="../js/caroussel.js"></script>
+{% endblock %}  
+
