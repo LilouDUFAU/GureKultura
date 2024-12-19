@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./**/*.twig"],
+  content: ["./**/*.twig", "./**/*.php"],
   theme: {
     screens: {
       'sm': '640px',

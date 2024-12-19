@@ -96,15 +96,14 @@ class EvenementDao
         $evenement = new Evenement();
         $evenement->setEvtId($tab['evtId']);
         $evenement->setTitre($tab['titre']);
-        $evenement->setDescr($tab['descr']);
+        $evenement->setDescription($tab['descr']);
 
         if (is_string($tab['dateEvt'])) {
             $tab['dateEvt'] = new DateTime($tab['dateEvt']);
         }
-        $evenement->setDateEvt($tab['dateEvt']);
-        $evenement->setLoc($tab['loc']);
-        $evenement->setStatutEvt($tab['statutEvt']);
-        $evenement->setImg($tab['img']);
+        $evenement->setDebutDate($tab['dateEvt']);
+        $evenement->setLieu($tab['loc']);
+        $evenement->setPhoto($tab['img']);
 
         // Hydratation du nom de la catégorie
         if (isset($tab['nomCategorie'])) {
