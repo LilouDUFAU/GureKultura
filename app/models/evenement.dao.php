@@ -78,9 +78,9 @@ class EvenementDao
     
     public function findAllWithCategorie(): array
     {
-        $sql = "SELECT evt.evtId, evt.titre, evt.description, evt.dateDebut, evt.dateFin, evt.heureDebut, evt.heureFin, evt.photo, cate.nom AS nomCategorie
-            FROM gk_evenement AS evt
-            JOIN gk_categorie AS cate ON evt.cateId = cate.cateId";
+        $sql = "SELECT " . PREFIX_TABLE . "evenement.evtId, " . PREFIX_TABLE . "evenement.titre, " . PREFIX_TABLE . "evenement.description, " . PREFIX_TABLE . "evenement.dateDebut, " . PREFIX_TABLE . "evenement.dateFin, " . PREFIX_TABLE . "evenement.heureDebut, " . PREFIX_TABLE . "evenement.heureFin, " . PREFIX_TABLE . "evenement.photo, " . PREFIX_TABLE . "categorie.nom AS nomCategorie
+            FROM " . PREFIX_TABLE . "evenement
+            JOIN " . PREFIX_TABLE . "categorie ON " . PREFIX_TABLE . "evenement.cateId = " . PREFIX_TABLE . "categorie.cateId";
 
         $pdoStatement = $this->pdo->prepare($sql);
         $pdoStatement->execute();
