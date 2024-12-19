@@ -78,7 +78,7 @@ class EvenementDao
     
     public function findAllWithCategorie(): array
     {
-        $sql = "SELECT evt.evtId, evt.titre, evt.descr, evt.dateDebut, evt.dateFin, evt.heureDebut, evt.heureFin, evt.loc, evt.statutEvt, evt.img, cate.nom AS nomCategorie
+        $sql = "SELECT evt.evtId, evt.titre, evt.description, evt.dateDebut, evt.dateFin, evt.heureDebut, evt.heureFin, evt.photo, cate.nom AS nomCategorie
             FROM gk_evenement AS evt
             JOIN gk_categorie AS cate ON evt.cateId = cate.cateId";
 
@@ -96,16 +96,25 @@ class EvenementDao
         $evenement = new Evenement();
         $evenement->setEvtId($tab['evtId']);
         $evenement->setTitre($tab['titre']);
-        $evenement->setDescr($tab['description']);
+        $evenement->setDescription($tab['description']);
 
         if (is_string($tab['dateDebut'])) {
             $tab['dateDebut'] = new DateTime($tab['dateDebut']);
         }
-        $evenement->setDateDebut($tab['dateDebut']);
-        $evenement->setDateFin($tab['dateFin']);
-        $evenement->setHeureDebut($tab['heureDebut']);
-        $evenement->setHeureFin($tab['heureFin']);
-        $evenement->setImg($tab['img']);
+        $evenement->setDebutDate($tab['dateDebut']);
+        if (is_string($tab['dateFin'])) {
+            $tab['dateFin'] = new DateTime($tab['dateFin']);
+        }
+        $evenement->setFinDate($tab['dateFin']);
+        if (is_string($tab['heureDebut'])) {
+            $tab['heureDebut'] = new DateTime($tab['heureDebut']);
+        }
+        $evenement->setDebutHeure($tab['heureDebut']);
+        if (is_string($tab['heureFin'])) {
+            $tab['heureFin'] = new DateTime($tab['heureFin']);
+        }
+        $evenement->setFinHeure($tab['heureFin']);
+        $evenement->setPhoto($tab['photo']);
 
         // Hydratation du nom de la catégorie
         if (isset($tab['nomCategorie'])) {
@@ -139,7 +148,7 @@ class EvenementDao
     // recuperer le nom de categorie associe a chaque evenement (pour la page d'accueil)
     public function findNomCategorie(): array
     {
-        $stmt = $this->pdo->prepare("SELECT nom FROM " . PREFIX_TABLE . "cate JOIN " . PREFIX_TABLE . "evt ON " . PREFIX_TABLE . "cate.cateId = " . PREFIX_TABLE . "evt.cateId WHERE " . PREFIX_TABLE . "evt.cateId = " . PREFIX_TABLE . "cate.cateId");
+        $stmt = $this->pdo->prepare("SELECT nom FROM " . PREFIX_TABLE . "cate JOIN " . PREFIX_TABLE . "evenement ON " . PREFIX_TABLE . "cate.cateId = " . PREFIX_TABLE . "evenement.cateId WHERE " . PREFIX_TABLE . "evenement.cateId = " . PREFIX_TABLE . "cate.cateId");
         $stmt->execute();
 
         $nomCategories = $stmt->fetch(PDO::FETCH_ASSOC);
