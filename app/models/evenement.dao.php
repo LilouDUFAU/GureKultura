@@ -21,7 +21,7 @@ class EvenementDao
 
     public function find(?int $id): ?Evenement
     {
-        $sql = "SELECT * FROM " . PREFIX_TABLE . "evt WHERE evtId = :id";
+        $sql = "SELECT * FROM " . PREFIX_TABLE . "evenement WHERE evtId = :id";
         $pdoStatement = $this->pdo->prepare($sql);
         $pdoStatement->execute(array(':id' => $id));
         $pdoStatement->setFetchMode(PDO::FETCH_CLASS);
@@ -32,7 +32,7 @@ class EvenementDao
 
     public function findAll()
     {
-        $sql = "SELECT * FROM " . PREFIX_TABLE . "evt";
+        $sql = "SELECT * FROM " . PREFIX_TABLE . "evenement";
         $pdoStatement = $this->pdo->prepare($sql);
         $pdoStatement->execute();
         $pdoStatement->setFetchMode(PDO::FETCH_ASSOC);
@@ -44,7 +44,7 @@ class EvenementDao
     
     public function findEnCours(?int $id)
     {
-        $sql = "SELECT * FROM " . PREFIX_TABLE . "evt WHERE dateEvt = CURRENT_DATE AND cateId =:id";
+        $sql = "SELECT * FROM " . PREFIX_TABLE . "evenement WHERE dateDebut = CURRENT_DATE AND cateId =:id";
         $pdoStatement = $this->pdo->prepare($sql);
         $pdoStatement->execute(array(':id' => $id));
         $pdoStatement->setFetchMode(PDO::FETCH_ASSOC);
@@ -56,7 +56,7 @@ class EvenementDao
 
     public function findASuivre(?int $id)
     {
-        $sql = "SELECT * FROM " . PREFIX_TABLE . "evt WHERE dateEvt > CURRENT_DATE AND cateId =:id";
+        $sql = "SELECT * FROM " . PREFIX_TABLE . "evenement WHERE dateDebut > CURRENT_DATE AND cateId =:id";
         $pdoStatement = $this->pdo->prepare($sql);
         $pdoStatement->execute(array(':id' => $id));
         $pdoStatement->setFetchMode(PDO::FETCH_ASSOC);
@@ -67,7 +67,7 @@ class EvenementDao
     
     public function findPasser(?int $id)
     {
-        $sql = "SELECT * FROM " . PREFIX_TABLE . "evt WHERE dateEvt < CURRENT_DATE AND cateId =:id";
+        $sql = "SELECT * FROM " . PREFIX_TABLE . "evenement WHERE dateFin < CURRENT_DATE AND cateId =:id";
         $pdoStatement = $this->pdo->prepare($sql);
         $pdoStatement->execute(array(':id' => $id));
         $pdoStatement->setFetchMode(PDO::FETCH_ASSOC);
@@ -78,9 +78,9 @@ class EvenementDao
     
     public function findAllWithCategorie(): array
     {
-        $sql = "SELECT evt.evtId, evt.titre, evt.descr, evt.dateEvt, evt.loc, evt.statutEvt, evt.img, cate.nom AS nomCategorie
-            FROM gk_evt AS evt
-            JOIN gk_cate AS cate ON evt.cateId = cate.cateId";
+        $sql = "SELECT evt.evtId, evt.titre, evt.descr, evt.dateDebut, evt.dateFin, evt.heureDebut, evt.heureFin, evt.loc, evt.statutEvt, evt.img, cate.nom AS nomCategorie
+            FROM gk_evenement AS evt
+            JOIN gk_categorie AS cate ON evt.cateId = cate.cateId";
 
         $pdoStatement = $this->pdo->prepare($sql);
         $pdoStatement->execute();
@@ -96,14 +96,15 @@ class EvenementDao
         $evenement = new Evenement();
         $evenement->setEvtId($tab['evtId']);
         $evenement->setTitre($tab['titre']);
-        $evenement->setDescr($tab['descr']);
+        $evenement->setDescr($tab['description']);
 
-        if (is_string($tab['dateEvt'])) {
-            $tab['dateEvt'] = new DateTime($tab['dateEvt']);
+        if (is_string($tab['dateDebut'])) {
+            $tab['dateDebut'] = new DateTime($tab['dateDebut']);
         }
-        $evenement->setDateEvt($tab['dateEvt']);
-        $evenement->setLoc($tab['loc']);
-        $evenement->setStatutEvt($tab['statutEvt']);
+        $evenement->setDateDebut($tab['dateDebut']);
+        $evenement->setDateFin($tab['dateFin']);
+        $evenement->setHeureDebut($tab['heureDebut']);
+        $evenement->setHeureFin($tab['heureFin']);
         $evenement->setImg($tab['img']);
 
         // Hydratation du nom de la catégorie
