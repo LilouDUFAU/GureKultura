@@ -41,7 +41,7 @@ class Actualite
 
     public function getContenu(): ?string
     {
-        return $this->Contenu;
+        return $this->contenu;
     }
 
     public function getDatePubli(): ?DateTime
@@ -70,7 +70,7 @@ class Actualite
         $this->resume = $resume;
     }
 
-    public function setContenu(?string $Contenu): void
+    public function setContenu(?string $contenu): void
     {
         $this->contenu = $contenu;
     }
