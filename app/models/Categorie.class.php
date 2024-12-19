@@ -6,14 +6,14 @@ class Categorie
 {
     private ?int $cateId;
     private ?string $nom;
-    private ?int $cateId_cateOri;
+    private ?int $categorieOriginale;
     private ?string $img;
 
-    public function __construct(?int $cateId=null, ?string $nom=null, ?int $cateId_cateOri=null, ?string $img=null)
+    public function __construct(?int $cateId=null, ?string $nom=null, ?int $categorieOriginale=null, ?string $img=null)
     {
         $this->cateId = $cateId;
         $this->nom = $nom;
-        $this->cateId_cateOri = $cateId_cateOri;
+        $this->categorieOriginale = $categorieOriginale;
         $this->img = $img;
     }
 
@@ -29,9 +29,9 @@ class Categorie
         return $this->nom;
     }   
 
-    public function getCateId_cateOri(): ?int
+    public function getCategorieOriginale(): ?int
     {
-        return $this->cateId_cateOri;
+        return $this->categorieOriginale;
     }
 
     public function getImg(): ?string
@@ -51,9 +51,9 @@ class Categorie
         $this->nom = $nom;
     }
 
-    public function setCateId_cateOri(?int $cateId_cateOri): void
+    public function setCategorieOriginale(?int $categorieOriginale): void
     {
-        $this->cateId_cateOri = $cateId_cateOri;
+        $this->categorieOriginale = $categorieOriginale;
     }
 
     public function setImg(?string $img): void
