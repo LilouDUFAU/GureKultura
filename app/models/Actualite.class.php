@@ -8,17 +8,17 @@ class Actualite
 {
     private ?int $actuId;
     private ?string $titre;
-    private ?string $ficResume;
-    private ?string $ficContenu;
+    private ?string $resume;
+    private ?string $contenu;
     private ?DateTime $datePubli;
     private ?string $img;
 
-    public function __construct(?int $actuId=null, ?string $titre=null, ?string $ficResume=null, ?string $ficContenu=null, ?DateTime $datePubli=null, ?string $img=null)
+    public function __construct(?int $actuId=null, ?string $titre=null, ?string $resume=null, ?string $contenu=null, ?DateTime $datePubli=null, ?string $img=null)
     {
         $this->actuId = $actuId;
         $this->titre = $titre;
-        $this->ficResume = $ficResume;
-        $this->ficContenu = $ficContenu;
+        $this->resume = $resume;
+        $this->contenu = $contenu;
         $this->datePubli = $datePubli;
         $this->img = $img;
     }
@@ -34,14 +34,14 @@ class Actualite
         return $this->titre;
     }
 
-    public function getFicResume(): ?string
+    public function getResume(): ?string
     {
-        return $this->ficResume;
+        return $this->resume;
     }
 
-    public function getFicContenu(): ?string
+    public function getContenu(): ?string
     {
-        return $this->ficContenu;
+        return $this->Contenu;
     }
 
     public function getDatePubli(): ?DateTime
@@ -65,14 +65,14 @@ class Actualite
         $this->titre = $titre;
     }
 
-    public function setFicResume(?string $ficResume): void
+    public function setResume(?string $resume): void
     {
-        $this->ficResume = $ficResume;
+        $this->resume = $resume;
     }
 
-    public function setFicContenu(?string $ficContenu): void
+    public function setContenu(?string $Contenu): void
     {
-        $this->ficContenu = $ficContenu;
+        $this->contenu = $contenu;
     }
 
     public function setDatePubli(?DateTime $datePubli): void

@@ -15,7 +15,7 @@
                     <!-- Diapositives -->
                     {% for evtActuEnCours in evtActusEnCours %}
                         <div style="background: url('../{{ evtActuEnCours.img }}')" class="slide md:w-1/3 w-full flex-shrink-0 text-[#A23145] text-center py-16 rounded-lg relative">
-                            <FORM ACTION="evenementTemplate.php" METHOD="POST">
+                            <FORM ACTION="evtActu.php" METHOD="POST">
                                 <INPUT TYPE="hidden" NAME="nom" VALUE="{{evtActuEnCours.titre}}"> 
                                 <INPUT TYPE="hidden" NAME="id" VALUE="{{evtActuEnCours.cateId}}"> 
                                 <INPUT TYPE="hidden" NAME="type" VALUE="Evenements"> 
@@ -48,7 +48,7 @@
                     <!-- Diapositives -->
                     {% for evtActuASuivre in evtActusASuivre %}
                         <div style="background: url('../{{ evtActuASuivre.img }}')" class="slide md:w-1/3 w-full flex-shrink-0 text-[#A23145] text-center py-16 rounded-lg relative">
-                            <FORM ACTION="evenementTemplate.php" METHOD="POST">
+                            <FORM ACTION="evtActu.php" METHOD="POST">
                                 <INPUT TYPE="hidden" NAME="nom" VALUE="{{evtActuASuivre.titre}}"> 
                                 <INPUT TYPE="hidden" NAME="id" VALUE="{{evtActuASuivre.cateId}}"> 
                                 <INPUT TYPE="hidden" NAME="type" VALUE="Evenements"> 
@@ -81,7 +81,7 @@
                     <!-- Diapositives -->
                     {% for evtActuPasser in evtActusPasser %}
                         <div style="background: url('../{{ evtActuPasser.img }}')" class="slide md:w-1/3 w-full flex-shrink-0 text-[#A23145] text-center py-16 rounded-lg relative">
-                            <FORM ACTION="evenementTemplate.php" METHOD="POST">
+                            <FORM ACTION="evtActu.php" METHOD="POST">
                                 <INPUT TYPE="hidden" NAME="nom" VALUE="{{evtActuPasser.titre}}"> 
                                 <INPUT TYPE="hidden" NAME="id" VALUE="{{evtActuPasser.cateId}}"> 
                                 <INPUT TYPE="hidden" NAME="type" VALUE="Evenements"> 
