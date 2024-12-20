@@ -120,7 +120,13 @@ class Evenement
 
 
     /***
-     * @brief Photo de l'événement
+     * @brief Lieu de l'événement
+     * 
+     * @var string
+     */
+    private ?string $lieu;
+
+     /* @brief Photo de l'événement
      * 
      * @var string
      */
@@ -348,8 +354,8 @@ class Evenement
         return $this->cateId;
     }
 
+      
     // Setters
-
 
     /***
      * @brief Setter de l'ID
