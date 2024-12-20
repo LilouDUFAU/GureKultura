@@ -16,9 +16,14 @@
                     {% for evtActuEnCours in evtActusEnCours %}
                         <div style="background: url('../{{ evtActuEnCours.img }}')" class="slide md:w-1/3 w-full flex-shrink-0 text-[#A23145] text-center py-16 rounded-lg relative">
                             <FORM ACTION="evtActu.php" METHOD="POST">
-                                <INPUT TYPE="hidden" NAME="nom" VALUE="{{evtActuEnCours.titre}}"> 
-                                <INPUT TYPE="hidden" NAME="id" VALUE="{{evtActuEnCours.cateId}}"> 
-                                <INPUT TYPE="hidden" NAME="type" VALUE="Evenements"> 
+                                <INPUT TYPE="hidden" NAME="nom" VALUE="{{evtActuEnCours.titre}}">
+                                {% if type == 'Evenements' %} 
+                                    <INPUT TYPE="hidden" NAME="id" VALUE={{evtActuEnCours.evtId}}>
+                                {% endif %}
+                                {% if type == 'Actualites' %} 
+                                    <INPUT TYPE="hidden" NAME="id" VALUE={{evtActuEnCours.actuId}}> 
+                                {% endif %}
+                                <INPUT TYPE="hidden" NAME="type" VALUE="{{ type }}"> 
                                 <INPUT TYPE="SUBMIT" VALUE="{{ evtActuEnCours.titre }}" class="bg-white border-[#A23145] absolute inset-x-0 bottom-0 text-center rounded-lg p-2 mr-2 ml-2 mb-2">
                             </FORM>
                         </div>
@@ -50,8 +55,13 @@
                         <div style="background: url('../{{ evtActuASuivre.img }}')" class="slide md:w-1/3 w-full flex-shrink-0 text-[#A23145] text-center py-16 rounded-lg relative">
                             <FORM ACTION="evtActu.php" METHOD="POST">
                                 <INPUT TYPE="hidden" NAME="nom" VALUE="{{evtActuASuivre.titre}}"> 
-                                <INPUT TYPE="hidden" NAME="id" VALUE="{{evtActuASuivre.cateId}}"> 
-                                <INPUT TYPE="hidden" NAME="type" VALUE="Evenements"> 
+                                {% if type == 'Evenements' %} 
+                                    <INPUT TYPE="hidden" NAME="id" VALUE={{evtActuASuivre.evtId}}>
+                                {% endif %}
+                                {% if type == 'Actualites' %} 
+                                    <INPUT TYPE="hidden" NAME="id" VALUE={{evtActuASuivre.actuId}}> 
+                                {% endif %}
+                                <INPUT TYPE="hidden" NAME="type" VALUE="{{ type }}"> 
                                 <INPUT TYPE="SUBMIT" VALUE="{{ evtActuASuivre.titre }}" class="bg-white border-[#A23145] absolute inset-x-0 bottom-0 text-center rounded-lg p-2 mr-2 ml-2 mb-2">
                             </FORM>
                         </div>
@@ -83,8 +93,13 @@
                         <div style="background: url('../{{ evtActuPasser.img }}')" class="slide md:w-1/3 w-full flex-shrink-0 text-[#A23145] text-center py-16 rounded-lg relative">
                             <FORM ACTION="evtActu.php" METHOD="POST">
                                 <INPUT TYPE="hidden" NAME="nom" VALUE="{{evtActuPasser.titre}}"> 
-                                <INPUT TYPE="hidden" NAME="id" VALUE="{{evtActuPasser.cateId}}"> 
-                                <INPUT TYPE="hidden" NAME="type" VALUE="Evenements"> 
+                                {% if type == 'Evenements' %} 
+                                    <INPUT TYPE="hidden" NAME="id" VALUE={{evtActuPasser.evtId}}>
+                                {% endif %}
+                                {% if type == 'Actualites' %} 
+                                    <INPUT TYPE="hidden" NAME="id" VALUE={{evtActuPasser.actuId}}> 
+                                {% endif %}
+                                <INPUT TYPE="hidden" NAME="type" VALUE="{{ type }}"> 
                                 <INPUT TYPE="SUBMIT" VALUE="{{ evtActuPasser.titre }}" class="bg-white border-[#A23145] absolute inset-x-0 bottom-0 text-center rounded-lg p-2 mr-2 ml-2 mb-2">
                             </FORM>
                         </div>

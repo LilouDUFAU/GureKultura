@@ -24,7 +24,7 @@ class EvenementDao
         $sql = "SELECT * FROM " . PREFIX_TABLE . "evenement WHERE evtId = :id";
         $pdoStatement = $this->pdo->prepare($sql);
         $pdoStatement->execute(array(':id' => $id));
-        $pdoStatement->setFetchMode(PDO::FETCH_CLASS);
+        $pdoStatement->setFetchMode(PDO::FETCH_ASSOC);
         $EvenementTab = $pdoStatement->fetch();
         $evenement = $this->hydrate($EvenementTab);
         return $evenement;
@@ -67,7 +67,7 @@ class EvenementDao
     
     public function findPasser(?int $id)
     {
-        $sql = "SELECT * FROM " . PREFIX_TABLE . "evenement WHERE dateFin < CURRENT_DATE AND cateId =:id";
+        $sql = "SELECT * FROM " . PREFIX_TABLE . "evenement WHERE dateDebut < CURRENT_DATE AND cateId =:id";
         $pdoStatement = $this->pdo->prepare($sql);
         $pdoStatement->execute(array(':id' => $id));
         $pdoStatement->setFetchMode(PDO::FETCH_ASSOC);
@@ -78,9 +78,9 @@ class EvenementDao
     
     public function findAllWithCategorie(): array
     {
-        $sql = "SELECT " . PREFIX_TABLE . "evenement.evtId, " . PREFIX_TABLE . "evenement.titre, " . PREFIX_TABLE . "evenement.description, " . PREFIX_TABLE . "evenement.dateDebut, " . PREFIX_TABLE . "evenement.dateFin, " . PREFIX_TABLE . "evenement.heureDebut, " . PREFIX_TABLE . "evenement.heureFin, " . PREFIX_TABLE . "evenement.photo, " . PREFIX_TABLE . "categorie.nom AS nomCategorie
-            FROM " . PREFIX_TABLE . "evenement
-            JOIN " . PREFIX_TABLE . "categorie ON " . PREFIX_TABLE . "evenement.cateId = " . PREFIX_TABLE . "categorie.cateId";
+        $sql = "SELECT evt.evtId, evt.titre, evt.descr, evt.dateEvt, evt.loc, evt.statutEvt, evt.img, cate.nom AS nomCategorie
+            FROM gk_evenement AS evt
+            JOIN gk_categorie AS cate ON evt.cateId = cate.cateId";
 
         $pdoStatement = $this->pdo->prepare($sql);
         $pdoStatement->execute();
@@ -96,29 +96,33 @@ class EvenementDao
         $evenement = new Evenement();
         $evenement->setEvtId($tab['evtId']);
         $evenement->setTitre($tab['titre']);
+        $evenement->setAutorisation($tab['autorisation']);
         $evenement->setDescription($tab['description']);
+        $evenement->setEmail($tab['email']);
+        $evenement->setTel($tab['tel']);
+        $evenement->setNomRep($tab['nomRep']);
+        $evenement->setPrenomRep($tab['prenomRep']);
 
         if (is_string($tab['dateDebut'])) {
             $tab['dateDebut'] = new DateTime($tab['dateDebut']);
         }
-        $evenement->setDebutDate($tab['dateDebut']);
         if (is_string($tab['dateFin'])) {
             $tab['dateFin'] = new DateTime($tab['dateFin']);
         }
-        $evenement->setFinDate($tab['dateFin']);
         if (is_string($tab['heureDebut'])) {
             $tab['heureDebut'] = new DateTime($tab['heureDebut']);
         }
-        $evenement->setDebutHeure($tab['heureDebut']);
         if (is_string($tab['heureFin'])) {
             $tab['heureFin'] = new DateTime($tab['heureFin']);
         }
-        $evenement->setFinHeure($tab['heureFin']);
         $evenement->setPhoto($tab['photo']);
 
         // Hydratation du nom de la catégorie
-        if (isset($tab['nomCategorie'])) {
-            $evenement->setNomCategorie($tab['nomCategorie']);
+        if (isset($tab['userId'])) {
+            $evenement->setUserId($tab['userId']);
+        }        
+        if (isset($tab['cateId'])) {
+            $evenement->setCateId($tab['cateId']);
         }
 
         return $evenement;
@@ -148,7 +152,7 @@ class EvenementDao
     // recuperer le nom de categorie associe a chaque evenement (pour la page d'accueil)
     public function findNomCategorie(): array
     {
-        $stmt = $this->pdo->prepare("SELECT nom FROM " . PREFIX_TABLE . "cate JOIN " . PREFIX_TABLE . "evenement ON " . PREFIX_TABLE . "cate.cateId = " . PREFIX_TABLE . "evenement.cateId WHERE " . PREFIX_TABLE . "evenement.cateId = " . PREFIX_TABLE . "cate.cateId");
+        $stmt = $this->pdo->prepare("SELECT nom FROM " . PREFIX_TABLE . "categorie JOIN " . PREFIX_TABLE . "evenement ON " . PREFIX_TABLE . "categorie.cateId = " . PREFIX_TABLE . "evenement.cateId WHERE " . PREFIX_TABLE . "evenement.cateId = " . PREFIX_TABLE . "categorie.cateId");
         $stmt->execute();
 
         $nomCategories = $stmt->fetch(PDO::FETCH_ASSOC);
