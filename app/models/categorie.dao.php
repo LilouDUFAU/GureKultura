@@ -17,7 +17,7 @@ class CategorieDao {
     }
 
     public function find(?int $id): ?Categorie {
-        $sql="SELECT * FROM " . PREFIX_TABLE . "cate WHERE cateId = :id";
+        $sql="SELECT * FROM " . PREFIX_TABLE . "categorie WHERE cateId = :id";
         $pdoStatement = $this->pdo->prepare($sql);
         $pdoStatement->execute(array(':id' => $id));
         $pdoStatement->setFetchMode(PDO::FETCH_ASSOC);
@@ -27,7 +27,7 @@ class CategorieDao {
     }
 
     public function findAll() {
-        $sql="SELECT * FROM " . PREFIX_TABLE . "cate";
+        $sql="SELECT * FROM " . PREFIX_TABLE . "categorie";
         $pdoStatement = $this->pdo->prepare($sql);
         $pdoStatement->execute();
         $pdoStatement->setFetchMode(PDO::FETCH_ASSOC);
@@ -37,10 +37,10 @@ class CategorieDao {
     }
 
     public function findEvtSport() {
-        $sql="SELECT DISTINCT(gk_evt.cateId), gk_cate.nom, gk_cate.cateId, gk_cate.cateId_cateOri, gk_cate.img 
-        FROM gk_evt 
-        JOIN gk_cate ON gk_evt.cateId = gk_cate.cateId
-        WHERE gk_cate.cateId_cateOri = 1";
+        $sql="SELECT DISTINCT(gk_evenement.cateId), gk_categorie.nom, gk_categorie.cateId, gk_categorie.categorieOriginale, gk_categorie.img 
+        FROM gk_evenement 
+        JOIN gk_categorie ON gk_evenement.cateId = gk_categorie.cateId
+        WHERE gk_categorie.categorieOriginale = 1";
         $pdoStatement = $this->pdo->prepare($sql);
         $pdoStatement->execute();
         $pdoStatement->setFetchMode(PDO::FETCH_ASSOC);
@@ -49,10 +49,10 @@ class CategorieDao {
         return $categorie;
     }
     public function findEvtCult() {
-        $sql="SELECT DISTINCT(gk_evt.cateId), gk_cate.nom, gk_cate.cateId, gk_cate.cateId_cateOri, gk_cate.img 
-        FROM gk_evt 
-        JOIN gk_cate ON gk_evt.cateId = gk_cate.cateId
-        WHERE gk_cate.cateId_cateOri = 2";
+        $sql="SELECT DISTINCT(gk_evenement.cateId), gk_categorie.nom, gk_categorie.cateId, gk_categorie.categorieOriginale, gk_categorie.img 
+        FROM gk_evenement 
+        JOIN gk_categorie ON gk_evenement.cateId = gk_categorie.cateId
+        WHERE gk_categorie.categorieOriginale = 2";
         $pdoStatement = $this->pdo->prepare($sql);
         $pdoStatement->execute();
         $pdoStatement->setFetchMode(PDO::FETCH_ASSOC);
@@ -62,10 +62,10 @@ class CategorieDao {
     }
 
     public function findActuSport() {
-        $sql="SELECT DISTINCT(gk_actu.cateId), gk_cate.nom, gk_cate.cateId, gk_cate.cateId_cateOri, gk_cate.img 
-        FROM gk_actu 
-        JOIN gk_cate ON gk_actu.cateId = gk_cate.cateId
-        WHERE gk_cate.cateId_cateOri = 1";
+        $sql="SELECT DISTINCT(gk_actualite.cateId), gk_categorie.nom, gk_categorie.cateId, gk_categorie.categorieOriginale, gk_categorie.img
+        FROM gk_actualite 
+        JOIN gk_categorie ON gk_actualite.cateId = gk_categorie.cateId
+        WHERE gk_categorie.categorieOriginale = 1";
         $pdoStatement = $this->pdo->prepare($sql);
         $pdoStatement->execute();
         $pdoStatement->setFetchMode(PDO::FETCH_ASSOC);
@@ -74,10 +74,10 @@ class CategorieDao {
         return $categorie;
     }
     public function findActuCult() {
-        $sql="SELECT DISTINCT(gk_actu.cateId), gk_cate.nom, gk_cate.cateId, gk_cate.cateId_cateOri, gk_cate.img 
-        FROM gk_actu 
-        JOIN gk_cate ON gk_actu.cateId = gk_cate.cateId
-        WHERE gk_cate.cateId_cateOri = 2";
+        $sql="SELECT DISTINCT(gk_actualite.cateId), gk_categorie.nom, gk_categorie.cateId, gk_categorie.categorieOriginale, gk_categorie.img
+        FROM gk_actualite 
+        JOIN gk_categorie ON gk_actualite.cateId = gk_categorie.cateId
+        WHERE gk_categorie.categorieOriginale = 2";
         $pdoStatement = $this->pdo->prepare($sql);
         $pdoStatement->execute();
         $pdoStatement->setFetchMode(PDO::FETCH_ASSOC);
@@ -90,7 +90,7 @@ class CategorieDao {
         $categorie = new Categorie();
         $categorie->setCateId($tab['cateId']);
         $categorie->setNom($tab['nom']);
-        $categorie->setCateId_cateOri($tab['cateId_cateOri']);
+        $categorie->setCategorieOriginale($tab['categorieOriginale']);
         $categorie->setImg($tab['img']);
         return $categorie;
     }
@@ -105,7 +105,7 @@ class CategorieDao {
 
     // recupere tout des categories appartenant a la categorie originale sport pour chaque evenement (pour la page categorie)
     public function findCateOriSportEvt(): array {
-        $stmt = $this->pdo->prepare("SELECT * FROM " . PREFIX_TABLE . "cate JOIN " . PREFIX_TABLE . "evt ON " . PREFIX_TABLE . "cate.cateId = " . PREFIX_TABLE . "evt.cateId WHERE " . PREFIX_TABLE . "evt.cateId = " . PREFIX_TABLE . "cate.cateId AND " . PREFIX_TABLE . "cate.cateId_cateOri = 1");
+        $stmt = $this->pdo->prepare("SELECT * FROM " . PREFIX_TABLE . "categorie JOIN " . PREFIX_TABLE . "evenement ON " . PREFIX_TABLE . "categorie.cateId = " . PREFIX_TABLE . "evenement.cateId WHERE " . PREFIX_TABLE . "evenement.cateId = " . PREFIX_TABLE . "categorie.cateId AND " . PREFIX_TABLE . "categorie.categorieOriginale = 1");
         $stmt->execute();
 
         $nomCategories = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -116,7 +116,7 @@ class CategorieDao {
 
     // recupere tout des categories appartenant a la categorie originale culture pour chaque evenement (pour la page categorie)
     public function findCateOriCultureEvt(): array {
-        $stmt = $this->pdo->prepare("SELECT * FROM " . PREFIX_TABLE . "cate JOIN " . PREFIX_TABLE . "evt ON " . PREFIX_TABLE . "cate.cateId = " . PREFIX_TABLE . "evt.cateId WHERE " . PREFIX_TABLE . "evt.cateId = " . PREFIX_TABLE . "cate.cateId AND " . PREFIX_TABLE . "cate.cateId_cateOri = 2");
+        $stmt = $this->pdo->prepare("SELECT * FROM " . PREFIX_TABLE . "categorie JOIN " . PREFIX_TABLE . "evenement ON " . PREFIX_TABLE . "categorie.cateId = " . PREFIX_TABLE . "evenement.cateId WHERE " . PREFIX_TABLE . "evenement.cateId = " . PREFIX_TABLE . "categorie.cateId AND " . PREFIX_TABLE . "categorie.categorieOriginale = 2");
         $stmt->execute();
 
         $nomCategories = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -127,7 +127,7 @@ class CategorieDao {
 
     // recupere tout des categories appartenant a la categorie originale sport pour chaque actualite (pour la page categorie)
     public function findCateOriSportActu(): array {
-        $stmt = $this->pdo->prepare("SELECT * FROM " . PREFIX_TABLE . "cate JOIN " . PREFIX_TABLE . "actu ON " . PREFIX_TABLE . "cate.cateId = " . PREFIX_TABLE . "actu.cateId WHERE " . PREFIX_TABLE . "actu.cateId = " . PREFIX_TABLE . "cate.cateId AND" . PREFIX_TABLE . "cate.cateId_cateOri = 1");
+        $stmt = $this->pdo->prepare("SELECT * FROM " . PREFIX_TABLE . "categorie JOIN " . PREFIX_TABLE . "actualite ON " . PREFIX_TABLE . "categorie.cateId = " . PREFIX_TABLE . "actualite.cateId WHERE " . PREFIX_TABLE . "actualite.cateId = " . PREFIX_TABLE . "categorie.cateId AND" . PREFIX_TABLE . "categorie.categorieOriginale = 1");
         $stmt->execute();
 
         $nomCategories = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -138,7 +138,7 @@ class CategorieDao {
 
     // recupere tout des categories appartenant a la categorie originale culture pour chaque actualite (pour la page categorie)
     public function findCateOriCultureActu(): array {
-        $stmt = $this->pdo->prepare("SELECT * FROM " . PREFIX_TABLE . "cate JOIN " . PREFIX_TABLE . "actu ON " . PREFIX_TABLE . "cate.cateId = " . PREFIX_TABLE . "actu.cateId WHERE " . PREFIX_TABLE . "actu.cateId = " . PREFIX_TABLE . "cate.cateId AND" . PREFIX_TABLE . "cate.cateId_cateOri = 2");
+        $stmt = $this->pdo->prepare("SELECT * FROM " . PREFIX_TABLE . "categorie JOIN " . PREFIX_TABLE . "actualite ON " . PREFIX_TABLE . "categorie.cateId = " . PREFIX_TABLE . "actualite.cateId WHERE " . PREFIX_TABLE . "actualite.cateId = " . PREFIX_TABLE . "categorie.cateId AND" . PREFIX_TABLE . "categorie.categorieOriginale = 2");
         $stmt->execute();
 
         $nomCategories = $stmt->fetch(PDO::FETCH_ASSOC);

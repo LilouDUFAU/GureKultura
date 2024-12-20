@@ -3,10 +3,6 @@ Intl Component
 
 The Intl component provides access to the localization data of the ICU library.
 
-If you have the zlib extension enabled, you can compress the data by running:
-
-    php vendor/symfony/intl/Resources/bin/compress
-
 Resources
 ---------
 

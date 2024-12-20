@@ -110,7 +110,6 @@ class Evenement
      */
     private ?DateTime $finHeure;
 
-
     /***
      * @brief Lieu de l'événement
      * 
@@ -118,9 +117,7 @@ class Evenement
      */
     private ?string $lieu;
 
-
-    /***
-     * @brief Photo de l'événement
+     /* @brief Photo de l'événement
      * 
      * @var string
      */
@@ -146,11 +143,12 @@ class Evenement
     /***
      * @brief Constructeur de la classe Evenement
      * 
-     * @param int $evtId, string $titre,string $autorisation, string $email, string $tel, string $nomRep, string $prenomRep, string $description, DateTime $debutDate, DateTime $finDate, DateTime $debutHeure, DateTime $finHeure, string $lieu, string $photo, Categorie $categorie, string $nomCategorie
+     * @param int $evtId, string $titre,string $autorisation, string $email, string $tel, string $nomRep, string $prenomRep, string $description, DateTime $debutDate, DateTime $finDate, DateTime $debutHeure, DateTime $finHeure, string $photo, Categorie $categorie, string $nomCategorie
      * 
      * @return void
      */
     public function __construct(?int $evtId=null, ?string $titre=null, ?string $autorisation=null,?string $email=null, ?string $tel=null, ?string $nomRep=null, ?string $prenomRep=null, ?string $description=null, ?DateTime $debutDate=null, ?DateTime $finDate=null, ?DateTime $debutHeure=null, ?DateTime $finHeure=null, ?string $lieu=null, ?string $photo=null, ?Categorie $categorie=null, ?string $nomCategorie=null)
+
     {
         $this->evtId = $evtId;
         $this->titre = $titre;
@@ -301,9 +299,8 @@ class Evenement
     public function getFinHeure(): ?DateTime
     {
         return $this->finHeure;
-    }
-
-
+      
+      
     /***
      * @brief Getter du lieu
      * 
@@ -347,8 +344,8 @@ class Evenement
         return $this->nomCategorie;
     }
 
+      
     // Setters
-
 
     /***
      * @brief Setter de l'ID
@@ -501,6 +498,7 @@ class Evenement
      * @return void
      */
     public function setFinHeure(?DateTime $finHeure): void
+
     {
         $this->finHeure = $finHeure;
     }
