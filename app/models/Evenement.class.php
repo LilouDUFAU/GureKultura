@@ -84,7 +84,7 @@ class Evenement
      * 
      * @var DateTime
      */
-    private ?DateTime $debutDate;
+    private ?DateTime $dateDebut;
 
 
     /***
@@ -92,7 +92,7 @@ class Evenement
      * 
      * @var DateTime
      */
-    private ?DateTime $finDate;
+    private ?DateTime $dateFin;
 
 
     /***
@@ -100,7 +100,7 @@ class Evenement
      * 
      * @var DateTime
      */
-    private ?DateTime $debutHeure;
+    private ?DateTime $heureDebut;
 
 
     /***
@@ -108,23 +108,9 @@ class Evenement
      * 
      * @var DateTime
      */
-    private ?DateTime $finHeure;
+    private ?DateTime $heureFin;
 
 
-    /***
-     * @brief Lieu de l'événement
-     * 
-     * @var string
-     */
-    private ?string $lieu;
-
-
-    /***
-     * @brief Lieu de l'événement
-     * 
-     * @var string
-     */
-    private ?string $lieu;
 
      /* @brief Photo de l'événement
      * 
@@ -133,20 +119,19 @@ class Evenement
     private ?string $photo; 
      
 
-    /***
-     * @brief Catégorie de l'événement
-     * 
-     * @var Categorie
-     */
-    private ?Categorie $categorie;
-
-
-    /***
-     * @brief Nom de la catégorie
+     /* @brief Photo de l'événement
      * 
      * @var string
      */
-    private ?string $nomCategorie;
+    private ?int $userId; 
+     
+
+     /* @brief Photo de l'événement
+     * 
+     * @var string
+     */
+    private ?int $cateId; 
+     
 
 
     /***
