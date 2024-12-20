@@ -110,9 +110,14 @@ class Evenement
      */
     private ?DateTime $finHeure;
 
-
     /***
-     * @brief Photo de l'événement
+     * @brief Lieu de l'événement
+     * 
+     * @var string
+     */
+    private ?string $lieu;
+
+     /* @brief Photo de l'événement
      * 
      * @var string
      */
@@ -142,7 +147,8 @@ class Evenement
      * 
      * @return void
      */
-    public function __construct(?int $evtId=null, ?string $titre=null, ?string $autorisation=null,?string $email=null, ?string $tel=null, ?string $nomRep=null, ?string $prenomRep=null, ?string $description=null, ?DateTime $debutDate=null, ?DateTime $finDate=null, ?DateTime $debutHeure=null, ?DateTime $finHeure=null, ?string $photo=null, ?Categorie $categorie=null, ?string $nomCategorie=null)
+    public function __construct(?int $evtId=null, ?string $titre=null, ?string $autorisation=null,?string $email=null, ?string $tel=null, ?string $nomRep=null, ?string $prenomRep=null, ?string $description=null, ?DateTime $debutDate=null, ?DateTime $finDate=null, ?DateTime $debutHeure=null, ?DateTime $finHeure=null, ?string $lieu=null, ?string $photo=null, ?Categorie $categorie=null, ?string $nomCategorie=null)
+
     {
         $this->evtId = $evtId;
         $this->titre = $titre;
@@ -156,6 +162,7 @@ class Evenement
         $this->finDate = $finDate;
         $this->debutHeure = $debutHeure;
         $this->finHeure = $finHeure;
+        $this->lieu = $lieu;
         $this->photo = $photo;
         $this->categorie = $categorie;
         $this->nomCategorie = $nomCategorie;
@@ -292,6 +299,16 @@ class Evenement
     public function getFinHeure(): ?DateTime
     {
         return $this->finHeure;
+      
+      
+    /***
+     * @brief Getter du lieu
+     * 
+     * @return string
+     */
+    public function getLieu(): ?string
+    {
+        return $this->lieu;
     }
 
 
@@ -327,8 +344,8 @@ class Evenement
         return $this->nomCategorie;
     }
 
+      
     // Setters
-
 
     /***
      * @brief Setter de l'ID
@@ -481,8 +498,22 @@ class Evenement
      * @return void
      */
     public function setFinHeure(?DateTime $finHeure): void
+
     {
         $this->finHeure = $finHeure;
+    }
+
+
+    /***
+     * @brief Setter du lieu
+     * 
+     * @param string $lieu
+     * 
+     * @return void
+     */
+    public function setLieu(?string $lieu): void
+    {
+        $this->lieu = $lieu;
     }
 
     /***
