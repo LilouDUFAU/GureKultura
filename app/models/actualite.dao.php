@@ -16,7 +16,7 @@ class ActualiteDao {
     }
 
     public function find(?int $id): ?Actualite {
-        $sql="SELECT * FROM " . PREFIX_TABLE . "actu WHERE actuId = :id";
+        $sql="SELECT * FROM " . PREFIX_TABLE . "actualite WHERE actuId = :id";
         $pdoStatement = $this->pdo->prepare($sql);
         $pdoStatement->execute(array(':id' => $id));
         $pdoStatement->setFetchMode(PDO::FETCH_ASSOC);
@@ -26,7 +26,7 @@ class ActualiteDao {
     }
 
     public function findAll() {
-        $sql="SELECT * FROM " . PREFIX_TABLE . "actu";
+        $sql="SELECT * FROM " . PREFIX_TABLE . "actualite";
         $pdoStatement = $this->pdo->prepare($sql);
         $pdoStatement->execute();
         $pdoStatement->setFetchMode(PDO::FETCH_ASSOC);
@@ -36,7 +36,7 @@ class ActualiteDao {
     }
     
     public function findEnCours(?int $id) {
-        $sql="SELECT * FROM " . PREFIX_TABLE . "actu WHERE datePubli = CURRENT_DATE AND cateId =:id";
+        $sql="SELECT * FROM " . PREFIX_TABLE . "actualite WHERE datePubli = CURRENT_DATE AND cateId =:id";
         $pdoStatement = $this->pdo->prepare($sql);
         $pdoStatement->execute(array(':id' => $id));
         $pdoStatement->setFetchMode(PDO::FETCH_ASSOC);
@@ -46,7 +46,7 @@ class ActualiteDao {
     }
     
     public function findASuivre(?int $id) {
-        $sql="SELECT * FROM " . PREFIX_TABLE . "actu WHERE datePubli > CURRENT_DATE AND cateId =:id";
+        $sql="SELECT * FROM " . PREFIX_TABLE . "actualite WHERE datePubli > CURRENT_DATE AND cateId =:id";
         $pdoStatement = $this->pdo->prepare($sql);
         $pdoStatement->execute(array(':id' => $id));
         $pdoStatement->setFetchMode(PDO::FETCH_ASSOC);
@@ -56,7 +56,7 @@ class ActualiteDao {
     }
     
     public function findPasser(?int $id) {
-        $sql="SELECT * FROM " . PREFIX_TABLE . "actu WHERE datePubli < CURRENT_DATE AND cateId =:id";
+        $sql="SELECT * FROM " . PREFIX_TABLE . "actualite WHERE datePubli < CURRENT_DATE AND cateId =:id";
         $pdoStatement = $this->pdo->prepare($sql);
         $pdoStatement->execute(array(':id' => $id));
         $pdoStatement->setFetchMode(PDO::FETCH_ASSOC);
@@ -69,8 +69,8 @@ class ActualiteDao {
         $actualite = new Actualite();
         $actualite->setActuId($tab['actuId']);
         $actualite->setTitre($tab['titre']);
-        $actualite->setFicResume($tab['ficResume']);
-        $actualite->setFicContenu($tab['ficContenu']);
+        $actualite->setResume($tab['resume']);        
+        $actualite->setContenu($tab['contenu']);
         if (is_string($tab['datePubli'])) {
             $tab['datePubli'] = new DateTime($tab['datePubli']);
         }

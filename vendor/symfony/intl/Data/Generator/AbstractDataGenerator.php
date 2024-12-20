@@ -27,10 +27,13 @@ use Symfony\Component\Intl\Data\Util\LocaleScanner;
  */
 abstract class AbstractDataGenerator
 {
-    public function __construct(
-        private BundleCompilerInterface $compiler,
-        private string $dirName,
-    ) {
+    private BundleCompilerInterface $compiler;
+    private string $dirName;
+
+    public function __construct(BundleCompilerInterface $compiler, string $dirName)
+    {
+        $this->compiler = $compiler;
+        $this->dirName = $dirName;
     }
 
     public function generateData(GeneratorConfig $config): void

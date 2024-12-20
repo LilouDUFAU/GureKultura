@@ -15,7 +15,7 @@
                 <!-- Diapositives -->
                 {# <div class="bg-[url('#')]"> FOOTBALL </div> #}
                 {% for cateEvtSport in EvtSport %}
-                        <div style="background: url('../{{ cateEvtSport.img }}')" class="slide md:w-1/3 w-full flex-shrink-0 text-[#A23145] text-center py-16 rounded-lg relative">
+                        <div style="background: url('../asset/categorie/{{ cateEvtSport.img }}')" class="slide md:w-1/3 w-full flex-shrink-0 text-[#A23145] text-center py-16 rounded-lg relative">
                             <FORM ACTION="categorieEvtActu.php" METHOD="POST">
                                 <INPUT TYPE="hidden" NAME="nom" VALUE="{{cateEvtSport.nom}}">
                                 <INPUT TYPE="hidden" NAME="id" VALUE="{{cateEvtSport.cateId}}"> 
@@ -38,7 +38,7 @@
                 <!-- Diapositives -->
                 {# <div class="bg-[url('#')]"> FOOTBALL </div> #}
                 {% for cateEvtCult in EvtCult %}
-                        <div style="background: url('../{{ cateEvtCult.img }}')" class="slide md:w-1/3 w-full flex-shrink-0 text-[#A23145] text-center py-16 rounded-lg relative">
+                        <div style="background: url('../asset/categorie/{{ cateEvtCult.img }}')" class="slide md:w-1/3 w-full flex-shrink-0 text-[#A23145] text-center py-16 rounded-lg relative">
                             <FORM ACTION="categorieEvtActu.php" METHOD="POST">
                                 <INPUT TYPE="hidden" NAME="nom" VALUE="{{cateEvtCult.nom}}">
                                 <INPUT TYPE="hidden" NAME="id" VALUE="{{cateEvtCult.cateId}}"> 
@@ -64,7 +64,7 @@
                 <!-- Diapositives -->
                 {# <div class="bg-[url('#')]"> FOOTBALL </div> #}
                 {% for cateActuSport in ActuSport %}
-                        <div style="background: url('../{{ cateActuSport.img }}')" class="slide md:w-1/3 w-full flex-shrink-0 text-[#A23145] text-center py-16 rounded-lg relative">
+                        <div style="background: url('../asset/categorie/{{ cateActuSport.img }}')" class="slide md:w-1/3 w-full flex-shrink-0 text-[#A23145] text-center py-16 rounded-lg relative">
                             <FORM ACTION="categorieEvtActu.php" METHOD="POST">
                                 <INPUT TYPE="hidden" NAME="nom" VALUE="{{cateActuSport.nom}}">
                                 <INPUT TYPE="hidden" NAME="id" VALUE="{{cateActuSport.cateId}}"> 
@@ -87,7 +87,7 @@
                 <!-- Diapositives -->
                 {# <div class="bg-[url('#')]"> FOOTBALL </div> #}
                 {% for cateActuCult in ActuCult %}
-                        <div style="background: url('../{{ cateActuCult.img }}')" class="slide md:w-1/3 w-full flex-shrink-0 text-[#A23145] text-center py-16 rounded-lg relative">
+                        <div style="background: url('../asset/categorie/{{ cateActuCult.img }}')" class="slide md:w-1/3 w-full flex-shrink-0 text-[#A23145] text-center py-16 rounded-lg relative">
                             <FORM ACTION="categorieEvtActu.php" METHOD="POST">
                                 <INPUT TYPE="hidden" NAME="nom" VALUE="{{cateActuCult.nom}}">
                                 <INPUT TYPE="hidden" NAME="id" VALUE="{{cateActuCult.cateId}}"> 
