@@ -2,7 +2,7 @@
 
 // namespace App\Models;
 
-use DateTime;
+//use DateTime;
 
 
 /***
@@ -84,7 +84,7 @@ class Evenement
      * 
      * @var DateTime
      */
-    private ?DateTime $debutDate;
+    private ?DateTime $dateDebut;
 
 
     /***
@@ -92,7 +92,7 @@ class Evenement
      * 
      * @var DateTime
      */
-    private ?DateTime $finDate;
+    private ?DateTime $dateFin;
 
 
     /***
@@ -100,7 +100,7 @@ class Evenement
      * 
      * @var DateTime
      */
-    private ?DateTime $debutHeure;
+    private ?DateTime $heureDebut;
 
 
     /***
@@ -108,14 +108,9 @@ class Evenement
      * 
      * @var DateTime
      */
-    private ?DateTime $finHeure;
+    private ?DateTime $heureFin;
 
-    /***
-     * @brief Lieu de l'événement
-     * 
-     * @var string
-     */
-    private ?string $lieu;
+
 
      /* @brief Photo de l'événement
      * 
@@ -124,48 +119,59 @@ class Evenement
     private ?string $photo; 
      
 
-    /***
-     * @brief Catégorie de l'événement
-     * 
-     * @var Categorie
-     */
-    private ?Categorie $categorie;
-
-
-    /***
-     * @brief Nom de la catégorie
+     /* @brief Photo de l'événement
      * 
      * @var string
      */
-    private ?string $nomCategorie;
+    private ?int $userId; 
+     
+
+     /* @brief Photo de l'événement
+     * 
+     * @var string
+     */
+    private ?int $cateId; 
+     
 
 
     /***
      * @brief Constructeur de la classe Evenement
      * 
-     * @param int $evtId, string $titre,string $autorisation, string $email, string $tel, string $nomRep, string $prenomRep, string $description, DateTime $debutDate, DateTime $finDate, DateTime $debutHeure, DateTime $finHeure, string $photo, Categorie $categorie, string $nomCategorie
+     * @param int $evtId, string $titre,string $autorisation, string $email, string $tel, string $nomRep, string $prenomRep, string $description, DateTime $debutDate, DateTime $finDate, DateTime $debutHeure, DateTime $finHeure, string $lieu, string $photo, Categorie $categorie, string $nomCategorie
      * 
      * @return void
      */
-    public function __construct(?int $evtId=null, ?string $titre=null, ?string $autorisation=null,?string $email=null, ?string $tel=null, ?string $nomRep=null, ?string $prenomRep=null, ?string $description=null, ?DateTime $debutDate=null, ?DateTime $finDate=null, ?DateTime $debutHeure=null, ?DateTime $finHeure=null, ?string $lieu=null, ?string $photo=null, ?Categorie $categorie=null, ?string $nomCategorie=null)
-
+    public function __construct(?int $evtId=null, 
+    ?string $titre=null, 
+    ?string $autorisation=null,
+    ?string $description=null,
+    ?string $email=null, 
+    ?string $tel=null, 
+    ?string $nomRep=null, 
+    ?string $prenomRep=null, 
+    ?DateTime $dateDebut=null, 
+    ?DateTime $dateFin=null, 
+    ?DateTime $heureDebut=null, 
+    ?DateTime $heureFin=null, 
+    ?string $photo=null,
+    ?int $userId=null,
+    ?int $cateId=null)
     {
         $this->evtId = $evtId;
         $this->titre = $titre;
         $this->autorisation = $autorisation;
+        $this->description = $description;
         $this->email = $email;
         $this->tel = $tel;
         $this->nomRep = $nomRep;
         $this->prenomRep = $prenomRep;
-        $this->description = $description;
-        $this->debutDate = $debutDate;
-        $this->finDate = $finDate;
-        $this->debutHeure = $debutHeure;
-        $this->finHeure = $finHeure;
-        $this->lieu = $lieu;
+        $this->dateDebut = $dateDebut;
+        $this->dateFin = $dateFin;
+        $this->heureDebut = $heureDebut;
+        $this->heureFin = $heureFin;
         $this->photo = $photo;
-        $this->categorie = $categorie;
-        $this->nomCategorie = $nomCategorie;
+        $this->userId = $userId;
+        $this->cateId = $cateId;
     }
 
     // Getters
@@ -263,9 +269,9 @@ class Evenement
      * 
      * @return DateTime
      */
-    public function getDebutDate(): ?DateTime
+    public function getDateDebut(): ?DateTime
     {
-        return $this->debutDate;
+        return $this->dateDebut;
     }
 
 
@@ -274,9 +280,9 @@ class Evenement
      * 
      * @return DateTime
      */
-    public function getFinDate(): ?DateTime
+    public function getDateFin(): ?DateTime
     {
-        return $this->finDate;
+        return $this->dateFin;
     }
 
 
@@ -285,9 +291,9 @@ class Evenement
      * 
      * @return DateTime
      */
-    public function getDebutHeure(): ?DateTime
+    public function getHeureDebut(): ?DateTime
     {
-        return $this->debutHeure;
+        return $this->heureDebut;
     }
 
 
@@ -296,19 +302,9 @@ class Evenement
      * 
      * @return DateTime
      */
-    public function getFinHeure(): ?DateTime
+    public function getHeureFin(): ?DateTime
     {
-        return $this->finHeure;
-      
-      
-    /***
-     * @brief Getter du lieu
-     * 
-     * @return string
-     */
-    public function getLieu(): ?string
-    {
-        return $this->lieu;
+        return $this->heureFin;
     }
 
 
@@ -324,24 +320,23 @@ class Evenement
 
 
     /***
-     * @brief Getter de la catégorie
+     * @brief Getter de l'identifiant utilisateur
      * 
-     * @return Categorie
+     * @return int
      */
-    public function getCategorie(): ?Categorie
+    public function getUserId(): ?int
     {
-        return $this->categorie;
+        return $this->userId;
     }
 
-
     /***
-     * @brief Getter du nom de la catégorie
+     * @brief Getter de l'identifiant de la catégorie
      * 
-     * @return string
+     * @return int
      */
-    public function getNomCategorie(): ?string
+    public function getCateId(): ?int
     {
-        return $this->nomCategorie;
+        return $this->cateId;
     }
 
       
@@ -454,66 +449,52 @@ class Evenement
     /***
      * @brief Setter du début de la date
      * 
-     * @param DateTime $debutDate
+     * @param DateTime $dateDebut
      * 
      * @return void
      */
-    public function setDebutDate(?DateTime $debutDate): void
+    public function setDateDebut(?DateTime $dateDebut): void
     {
-        $this->debutDate = $debutDate;
+        $this->dateDebut = $dateDebut;
     }
 
 
     /***
      * @brief Setter de la fin de la date
      * 
-     * @param DateTime $finDate
+     * @param DateTime $dateFin
      * 
      * @return void
      */
-    public function setFinDate(?DateTime $finDate): void
+    public function setDateFin(?DateTime $dateFin): void
     {
-        $this->finDate = $finDate;
+        $this->dateFin = $dateFin;
     }
 
 
     /***
      * @brief Setter du début de l'heure
      * 
-     * @param DateTime $debutHeure
+     * @param DateTime $heureDebut
      * 
      * @return void
      */
-    public function setDebutHeure(?DateTime $debutHeure): void
+    public function setHeureDebut(?DateTime $heureDebut): void
     {
-        $this->debutHeure = $debutHeure;
+        $this->heureDebut = $heureDebut;
     }
 
 
     /***
      * @brief Setter de la fin de l'heure
      * 
-     * @param DateTime $finHeure
+     * @param DateTime $heureFin
      * 
      * @return void
      */
-    public function setFinHeure(?DateTime $finHeure): void
-
+    public function setHeureFin(?DateTime $heureFin): void
     {
-        $this->finHeure = $finHeure;
-    }
-
-
-    /***
-     * @brief Setter du lieu
-     * 
-     * @param string $lieu
-     * 
-     * @return void
-     */
-    public function setLieu(?string $lieu): void
-    {
-        $this->lieu = $lieu;
+        $this->heureFin = $heureFin;
     }
 
     /***
@@ -528,27 +509,29 @@ class Evenement
         $this->photo = $photo;
     }
 
-    /***
-     * @brief Setter de la catégorie
-     * 
-     * @param Categorie $categorie
-     * 
-     * @return void
-     */
-    public function setCategorie(?Categorie $categorie): void
-    {
-        $this->categorie = $categorie;
-    }
 
     /***
-     * @brief Setter du nom de la catégorie
+     * @brief Setter de l'identifiant de l'utilisateur
      * 
-     * @param string $nomCategorie
+     * @param int $userId
      * 
      * @return void
      */
-    public function setNomCategorie(?string $nomCategorie): void
+    public function setUserId(?int $userId): void
     {
-        $this->nomCategorie = $nomCategorie;
-    }
+        $this->userId = $userId;
+    }    
+    
+    
+    /***
+    * @brief Setter de l'identifiant de la catégorie
+    * 
+    * @param int $cateId
+    * 
+    * @return void
+    */
+   public function setCateId(?int $cateId): void
+   {
+       $this->cateId = $cateId;
+   }
 }
