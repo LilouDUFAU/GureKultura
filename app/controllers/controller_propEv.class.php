@@ -21,10 +21,14 @@ class ControllerPropEv extends Controller
         $managerActualite = new ActualiteDao($this->getPdo());
         $actualite = $managerActualite->findAll();
 
+        $managerCategorie = new CategorieDao($this->getPdo());
+        $categories = $managerCategorie->findAll();
+
         // Rendre le template Twig
         echo $this->getTwig()->render('propEv.html.twig', [
             'title' => 'Proposisition d\'événement',
-            'actualites' => $actualite
+            'actualites' => $actualite,
+            'categories' => $categories
         ]);
     }
 
@@ -135,36 +139,9 @@ class ControllerPropEv extends Controller
 
         // validation des donnees du formulaire
         $donneesValides = $validator->valider($donnees);
+
+        // recuperation des erreurs
         $messageErreurs = $validator->getMessageErreurs();
-
-
-        if (isset($_FILES['photo']) && $_FILES['photo']['error'] === UPLOAD_ERR_OK) {
-            /* Répertoire de destination pour l'enregistrement du fichier 
-            Attention : apache doit avoir des droits en écriture sur ce dossier */
-            $uploadDir = '../asset/evenement/';
-            /* Création d'un nom de fichier unique
-            Utilisation de time() pour ajouter un timestamp au nom d'origine du fichier.
-            Cela permet d'éviter les conflits lorsque plusieurs utilisateurs téléchargent des fichiers 
-            ayant le même nom (par exemple, plusieurs fichiers nommés "profil.jpg").
-            Sans un nom de fichier unique, chaque nouvel upload avec le même nom écraserait le fichier précédent, 
-            ce qui entraînerait la perte de l'image de profil d'autres utilisateurs.
-            Avec ce système, chaque fichier a un nom distinct basé sur le timestamp au moment du téléchargement. */
-            $fileName = time() . '_' . basename($_FILES['photo']['titre']);
-            /* Chemin complet de destination du fichier
-            Concatène le répertoire de destination (`uploads/`) avec le nom de fichier unique généré.
-            Cela crée le chemin complet où le fichier sera stocké sur le serveur.
-            Exemple : "uploads/1633024800_profil.jpg" */
-            $filePath = $uploadDir . $fileName;
-
-            // Déplacement du fichier téléchargé vers le répertoire de destination
-            if (move_uploaded_file($_FILES['photo']['tmp_name'], $filePath)) {
-                echo "Le fichier est valide, et a été téléchargé avec succès.\n";
-            } else {
-                echo "<strong>Erreur : Le fichieer n'a pas été téléchargé.</strong>";
-            }
-        } else {
-            // echo "<strong>Attention : Aucune photo téléchargée ou erreur lors du téléchargement.</strong>";
-        }
 
         //Récupérer les données du formulaire
         $titre = $_POST['titre'];
@@ -190,32 +167,62 @@ class ControllerPropEv extends Controller
         $managerActualite = new ActualiteDao($this->getPdo());
         $actualite = $managerActualite->findAll();
 
-        
+        $managerCategorie = new CategorieDao($this->getPdo());
+        $categories = $managerCategorie->findAll();
+
+
 
         if (!empty($messageErreurs)) {
-            $dataForm = $_POST;
-            // var_dump($messageErreurs);
+            // Les données ne sont pas valides, affichez les erreurs
             echo $this->getTwig()->render('propEv.html.twig', [
-                'title' => 'Proposisition d\'événement',
+                'title' => 'Proposition d\'événement',
+                'messageErreurs' => $messageErreurs,
+                'donnees' => $donnees,
                 'actualites' => $actualite,
-                'titre' => $titre,
-                'description' => $description,
-                'messageErreurs' => $messageErreurs
+                'categories' => $categories
+
             ]);
         } else {
-            $managerEvenement = new EvenementDao($this->getPdo());
-            $events = $managerEvenement->findAll();
-            $events = $managerEvenement->findAllWithCategorie();
             echo $this->getTwig()->render('propEv.html.twig', [
-                'title' => 'Proposisition d\'événement',
-                // 'description' => 'un site de gestion evenementielle au Pays Basque du Groupe 7'
-                'events' => $events,
-                'actualites' => $actualite
+                'title' => 'Proposition d\'événement',
+                'messageSucces' => 'Votre proposition d\'événement a bien été enregistrée',
+                'donnees' => $donnees,
+                'actualites' => $actualite,
+                'categories' => $categories
             ]);
 
-            // gestion d'envoie a la bd
 
+            // Les données sont valides, insérez-les dans la base de données
+            $this->insererDonneesDansLaBase($donnees);
         }
+    }
 
+    private function insererDonneesDansLaBase(array $donnees)
+    {
+        $pdo = Bd::getInstance()->getPdo();
+        $managerEvenement = new EvenementDao($pdo);
+
+        // Créez un nouvel objet Evenement avec les données du formulaire
+        $evenement = new Evenement(
+            null,
+            $donnees['titre'],
+            $donnees['autorisation'] ?? null,
+            $donnees['description'],
+            $donnees['email'],
+            $donnees['tel'],
+            $donnees['nomRep'],
+            $donnees['prenomRep'],
+            new DateTime($donnees['debutDate']),
+            new DateTime($donnees['finDate']),
+            new DateTime($donnees['debutHeure']),
+            new DateTime($donnees['finHeure']),
+            $donnees['lieu'],
+            $donnees['photo'] ?? null,
+            null,
+            $donnees['nomCategorie']
+        );
+
+        // Insérez l'événement dans la base de données
+        $managerEvenement->insert($evenement);
     }
 }

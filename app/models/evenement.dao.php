@@ -41,7 +41,7 @@ class EvenementDao
         return $evenement;
     }
 
-    
+
     public function findEnCours(?int $id)
     {
         $sql = "SELECT * FROM " . PREFIX_TABLE . "evenement WHERE dateDebut = CURRENT_DATE AND cateId =:id";
@@ -64,7 +64,7 @@ class EvenementDao
         $evenement = $this->hydrateAll($EvenementTab);
         return $evenement;
     }
-    
+
     public function findPasser(?int $id)
     {
         $sql = "SELECT * FROM " . PREFIX_TABLE . "evenement WHERE dateDebut < CURRENT_DATE AND cateId =:id";
@@ -75,7 +75,7 @@ class EvenementDao
         $evenement = $this->hydrateAll($EvenementTab);
         return $evenement;
     }
-    
+
     public function findAllWithCategorie(): array
     {
         $sql = "SELECT evt.evtId, evt.titre,evt.autorisation, evt.description, evt.email, evt.tel, evt.nomRep, evt.prenomRep, evt.dateDebut, evt.dateFin, evt.heureDebut, evt.heureFin, evt.lieu, evt.photo, cate.nom AS nomCategorie
@@ -120,7 +120,7 @@ class EvenementDao
         // Hydratation du nom de la catégorie
         if (isset($tab['userId'])) {
             $evenement->setUserId($tab['userId']);
-        }        
+        }
         if (isset($tab['cateId'])) {
             $evenement->setCateId($tab['cateId']);
         }
@@ -158,5 +158,30 @@ class EvenementDao
         $nomCategories = $stmt->fetch(PDO::FETCH_ASSOC);
         var_dump($nomCategories);
         return $nomCategories;
+    }
+
+
+
+    public function insert(Evenement $evenement): void
+    {
+        $sql = "INSERT INTO " . PREFIX_TABLE . "evenement (titre, autorisation, description, email, tel, nomRep, prenomRep, dateDebut, dateFin, heureDebut, heureFin, lieu, photo, cateId) 
+            VALUES (:titre, :autorisation, :description, :email, :tel, :nomRep, :prenomRep, :dateDebut, :dateFin, :heureDebut, :heureFin, :lieu, :photo, :cateId)";
+        $pdoStatement = $this->pdo->prepare($sql);
+        $pdoStatement->execute([
+            ':titre' => $evenement->getTitre(),
+            ':autorisation' => $evenement->getAutorisation(),
+            ':description' => $evenement->getDescription(),
+            ':email' => $evenement->getEmail(),
+            ':tel' => $evenement->getTel(),
+            ':nomRep' => $evenement->getNomRep(),
+            ':prenomRep' => $evenement->getPrenomRep(),
+            ':dateDebut' => $evenement->getDateDebut()->format('Y-m-d'),
+            ':dateFin' => $evenement->getDateFin()->format('Y-m-d'),
+            ':heureDebut' => $evenement->getHeureDebut()->format('H:i'),
+            ':heureFin' => $evenement->getHeureFin()->format('H:i'),
+            ':lieu' => $evenement->getLieu(),
+            ':photo' => $evenement->getPhoto(),
+            ':cateId' => $evenement->getCateId()
+        ]);
     }
 }

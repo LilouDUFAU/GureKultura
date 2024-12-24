@@ -35,8 +35,8 @@
 
 							<!-- Dropdown Menu -->
 							<div id="dropdownMenu" class="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg hidden">
-								{% for event in events %}
-									<a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">{{ event.nomCategorie }}</a>
+								{% for categorie in categories %}
+									<a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">{{ categorie.nom }}</a>
 								{% endfor %}
 							</div>
 						</div>
