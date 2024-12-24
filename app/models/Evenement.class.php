@@ -140,6 +140,12 @@ class Evenement
     private ?int $cateId; 
      
 
+    /**
+     * @brief Nom de la catégorie
+     * @var string
+     */
+    private ?string $nomCategorie;
+
 
     /***
      * @brief Constructeur de la classe Evenement
@@ -162,7 +168,8 @@ class Evenement
     ?DateTime $heureFin=null, 
     ?string $photo=null,
     ?int $userId=null,
-    ?int $cateId=null)
+    ?int $cateId=null,
+    ?string $nomCategorie=null)
     {
         $this->evtId = $evtId;
         $this->titre = $titre;
@@ -179,6 +186,7 @@ class Evenement
         $this->photo = $photo;
         $this->userId = $userId;
         $this->cateId = $cateId;
+        $this->nomCategorie = $nomCategorie;
     }
 
     // Getters
@@ -354,6 +362,16 @@ class Evenement
     public function getCateId(): ?int
     {
         return $this->cateId;
+    }
+
+    /***
+     * @brief Getter du nom de la catégorie
+     * 
+     * @return string
+     */
+    public function getNomCategorie(): ?string 
+    {
+        return $this->nomCategorie;
     }
 
       
@@ -551,4 +569,14 @@ class Evenement
    {
        $this->cateId = $cateId;
    }
+
+   /***
+    * @brief Setter du nom de la catégorie
+    *
+    * @param string $nomCategorie
+    */
+    public function setNomCategorie(?string $nomCategorie): void
+    {
+        $this->nomCategorie = $nomCategorie;
+    }
 }

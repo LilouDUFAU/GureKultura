@@ -7,13 +7,14 @@
 			class="bg-cover bg-no-repeat bg-[url('../asset/bg_img.svg')] gap-2 p-2 grid grid-cols-12 items-center">
 			{# titre de la page #}
 			<h1 class="col-span-12 text-white lg:font-bold lg:text-4xl text-2xl text-center bg-[#A23145] rounded-2xl p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] mb-10">Propose ton événement</h1>
-			<form action="index.php?controlleur=propEv&methode=validerFormulaire" method="post" novalidate enctype="multipart/form-data" class="lg:grid lg:grid-cols-subgrid col-start-1 col-span-12 flex flex-col gap-2">
+			<form
+				action="index.php?controlleur=propEv&methode=validerFormulaire" method="post" enctype="multipart/form-data" class="lg:grid lg:grid-cols-subgrid col-start-1 col-span-12 flex flex-col gap-2">
 				{# premiere ligne #}
 				<div class="{{ rouge }} grid grid-cols-subgrid row-start-2 row-span-1 col-start-1 col-span-12 bg-[#A23145] bg-opacity-75 rounded-2xl p-4 w-full drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] gap-2">
 					<label for="titre" class="text-white lg:col-span-4 col-span-12 lg:text-lg text-sm">
 						Quel est le titre de ton événement :
 					</label>
-					<input type="text" required minlength="5" maxlength="30" id="titre" name="titre" placeholder="EVENEMENT 1" value="{{ titre/default('')}}" title="Entrez le nom de votre événement, par exemple : foire au jambon" class="lg:col-span-8 lg:col-start-5 lg:row-start-1 row-start-2 col-span-12 border-2 border-[#A23145] rounded-lg lg:pl-2 pl-1 text-black w-auto drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] lg:py-2 py-1">
+					<input type="text" required minlength="5" maxlength="30" id="titre" name="titre" placeholder="EVENEMENT 1" title="Entrez le nom de votre événement, par exemple : foire au jambon" class="lg:col-span-8 lg:col-start-5 lg:row-start-1 row-start-2 col-span-12 border-2 border-[#A23145] rounded-lg lg:pl-2 pl-1 text-black w-auto drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] lg:py-2 py-1">
 					{% if messageErreurs['titre'] is defined and messageErreurs['titre']|length > 0 %}
 						<p class="text-white row-start-2 col-start-5 col-span-12">{{ messageErreurs['titre'][0] }}</p>
 					{% endif %}
@@ -21,180 +22,213 @@
 
 				{# deuxieme ligne #}
 				<div class="grid grid-cols-subgrid row-start-3 row-span-1 col-start-1 col-span-12 bg-[#A23145] bg-opacity-75 text-white rounded-2xl p-4 w-full drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] gap-2">
-					<label for="nomCategorie" class="text-white lg:col-span-4 col-span-12 lg:text-lg text-sm">Quel est le type de ton événement :</label>
-					<input type="text" required id="nomCategorie" minlenght="5" maxlenght="30" name="nomCategorie" placeholder="Fête, Cinéma, Concert, Sport ..." title="Entrez le type de votre événement, par exemple : Fête" class="lg:col-span-8 lg:col-start-5 lg:row-start-1 row-start-2 col-span-12 border-2 border-[#A23145] rounded-lg lg:pl-2 pl-1 text-black w-auto drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] lg:py-2 py-1" value="{% if type is defined %}{{ type }}{% endif %}">
-					{% if messageErreurs['nomCategorie'] is defined and messageErreurs['nomCategorie']|length > 0 %}
-						<p class="text-white row-start-2 col-start-5 col-span-12">{{ messageErreurs['type'][0] }}</p>
-					{% endif %}
-				</div>
+					<label for="nomCategorie" class="text-white lg:col-span-4 col-span-4 lg:text-lg text-sm">Quel est le type de ton événement :</label>
+					<!-- Dropdown Container -->
+					<div
+						class="relative row-start-1 col-start-5 col-span-3">
+						<!-- Dropdown Trigger -->
+						<button id="dropdownButton" class="col-start-5 flex items-center justify-center max-h-1 text-[#A23145] bg-[#ffffff] rounded-lg p-4 font-bold drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
+							Type de ton événement
+							<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewbox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+							</button>
 
-				{# colonne de gauche #}
-				<div class="lg:grid lg:grid-cols-subgrid lg:row-start-4 lg:col-start-1 lg:col-span-6 lg:w-full lg:gap-2 lg:h-full col-start-1 col-span-12 row-start-4 flex flex-col gap-2">
-					<div class="grid grid-cols-subgrid row-start-1 col-span-6 bg-[#A23145] bg-opacity-75 text-white rounded-2xl w-full p-4 items-center">
-						<label for="autorisation" class="row-start-1 text-white col-span-5">Joindre les autorisations essentielles (pdf, jpg, doc, ...)</label>
-						<button arial-label="b_insererAutorisation" id="autorisation" name="autorisation" accept=".pdf, .jpg, .docx" class="row-start-2 col-start-5 col-span-2 flex items-center justify-center max-h-1 text-[#A23145] bg-[#ffffff] rounded-lg p-4 font-bold drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">Insérer</button>
-						{% if messageErreurs['autorisation'] is defined and messageErreurs['autorisation']|length > 0 %}
-							<p class="text-white row-start-3 col-start-1 col-span-6">{{ messageErreurs['autorisation'][0] }}</p>
+							<!-- Dropdown Menu -->
+							<div id="dropdownMenu" class="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg hidden">
+								{% for event in events %}
+									<a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">{{ event.nomCategorie }}</a>
+								{% endfor %}
+							</div>
+						</div>
+						{% if messageErreurs['nomCategorie'] is defined and messageErreurs['nomCategorie']|length > 0 %}
+							<p class="text-white row-start-2 col-start-5 col-span-12">{{ messageErreurs['type'][0] }}</p>
 						{% endif %}
 					</div>
 
-					{# bloc #}
-					<div class="grid grid-cols-subgrid row-start-2 col-span-6 bg-[#A23145] bg-opacity-75 text-white rounded-2xl p-4 w-full gap-2 ">
-						<h1 class="row-start-1 col-span-6 text-xl">Tes coordonnées :</h1>
-						<div class="grid grid-cols-subgrid row-start-2 col-span-6  text-white rounded-2xl py-2 w-full items-center">
-							<label for="email" class="text-white col-span-2">Email :</label>
-							<input type="email" required id="email" minlenght="50" maxlenght="100" name="email" placeholder="Exemple@domaine.com" title="Entrez votre adresse mail, par exemple : gurekultura@gmail.com" class="col-start-3 col-span-2 border-2 border-[#A23145] rounded-lg pl-2 text-black w-full drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] py-2">
-							{% if messageErreurs['email'] is defined and messageErreurs['email']|length > 0 %}
-								<p class="text-white row-start-2 col-start-3 col-span-3">{{ messageErreurs['email'][0] }}</p>
+					{# colonne de gauche #}
+					<div class="lg:grid lg:grid-cols-subgrid lg:row-start-4 lg:col-start-1 lg:col-span-6 lg:w-full lg:gap-2 lg:h-full col-start-1 col-span-12 row-start-4 flex flex-col gap-2">
+						<div class="grid grid-cols-subgrid row-start-1 col-span-6 bg-[#A23145] bg-opacity-75 text-white rounded-2xl w-full p-4 items-center">
+							<label for="autorisation" class="row-start-1 text-white col-span-5">Joindre les autorisations essentielles (pdf, jpg, doc, ...)</label>
+							<button arial-label="b_insererAutorisation" id="autorisation" name="autorisation" accept=".pdf, .jpg, .docx" class="row-start-2 col-start-5 col-span-2 flex items-center justify-center max-h-1 text-[#A23145] bg-[#ffffff] rounded-lg p-4 font-bold drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">Insérer</button>
+							{% if messageErreurs['autorisation'] is defined and messageErreurs['autorisation']|length > 0 %}
+								<p class="text-white row-start-3 col-start-1 col-span-6">{{ messageErreurs['autorisation'][0] }}</p>
 							{% endif %}
 						</div>
 
-						<div class="grid grid-cols-subgrid row-start-3 col-span-6  text-white rounded-2xl py-2 w-full items-center">
-							<label for="tel" class="text-white col-span-2">Téléphone :</label>
-							<input type="tel" id="tel" required pattern="^0\d(\s|-|.)?(\d{2}(\s|-|.)?){4}$" name="tel" placeholder="06 07 08 09 10" title="Entrez votre numéro de téléphone, par exemple : 06 07 08 09 10" class="col-start-3 col-span-2 border-2 border-[#A23145] rounded-lg pl-2 text-black w-full drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] py-2">
-							{% if messageErreurs['tel'] is defined and messageErreurs['tel']|length > 0 %}
-								<p class="text-white row-start-2 col-start-3 col-span-3">{{ messageErreurs['tel'][0] }}</p>
-							{% endif %}
-						</div>
+						{# bloc #}
+						<div class="grid grid-cols-subgrid row-start-2 col-span-6 bg-[#A23145] bg-opacity-75 text-white rounded-2xl p-4 w-full gap-2 ">
+							<h1 class="row-start-1 col-span-6 text-xl">Tes coordonnées :</h1>
+							<div class="grid grid-cols-subgrid row-start-2 col-span-6  text-white rounded-2xl py-2 w-full items-center">
+								<label for="email" class="text-white col-span-2">Email :</label>
+								<input type="email" required id="email" minlenght="50" maxlenght="100" name="email" placeholder="Exemple@domaine.com" title="Entrez votre adresse mail, par exemple : gurekultura@gmail.com" class="col-start-3 col-span-2 border-2 border-[#A23145] rounded-lg pl-2 text-black w-full drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] py-2">
+								{% if messageErreurs['email'] is defined and messageErreurs['email']|length > 0 %}
+									<p class="text-white row-start-2 col-start-3 col-span-3">{{ messageErreurs['email'][0] }}</p>
+								{% endif %}
+							</div>
 
-						<div class="grid grid-cols-subgrid row-start-4 col-span-6  text-white rounded-2xl py-2 w-full items-center">
-							<label for="nomRep" class="text-white col-start-1 col-span-3 row-start-1">Nom du représentant de l'événement :</label>
-							<input type="text" id="nomRep" required minlenght="2" maxlenght="100" name="nomRep" placeholder="EXEMPLE" title="Entre le nom du représentant de l'événement, par exemple : FERREIRA" class="row-start-1 col-start-4 col-span-3 border-2 border-[#A23145] rounded-lg pl-2 text-black w-full drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] py-2">
-							{% if messageErreurs['nomRep'] is defined and messageErreurs['nomRep']|length > 0 %}
-								<p class="text-white row-start-2 col-start-4 col-span-3">{{ messageErreurs['nomRep'][0] }}</p>
-							{% endif %}
-						</div>
+							<div class="grid grid-cols-subgrid row-start-3 col-span-6  text-white rounded-2xl py-2 w-full items-center">
+								<label for="tel" class="text-white col-span-2">Téléphone :</label>
+								<input type="tel" id="tel" required pattern="^0\d(\s|-|.)?(\d{2}(\s|-|.)?){4}$" name="tel" placeholder="06 07 08 09 10" title="Entrez votre numéro de téléphone, par exemple : 06 07 08 09 10" class="col-start-3 col-span-2 border-2 border-[#A23145] rounded-lg pl-2 text-black w-full drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] py-2">
+								{% if messageErreurs['tel'] is defined and messageErreurs['tel']|length > 0 %}
+									<p class="text-white row-start-2 col-start-3 col-span-3">{{ messageErreurs['tel'][0] }}</p>
+								{% endif %}
+							</div>
 
-						<div class="grid grid-cols-subgrid row-start-5 col-span-6  text-white rounded-2xl py-2 w-full items-center">
-							<label for="prenomRep" class="text-white col-start-1 col-span-3 row-start-1">Prénom du représentant de l'événement :</label>
-							<input type="text" id="prenomRep" required minlenght="2" maxlenght="100" name="prenomRep" placeholder="Exemple" title="Entre le prénom du représentant de l'événement, par exemple : Hugo" class="row-start-1 col-start-4 col-span-3 border-2 border-[#A23145] rounded-lg pl-2 text-black w-full drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] py-2">
-							{% if messageErreurs['prenomRep'] is defined and messageErreurs['prenomRep']|length > 0 %}
-								<p class="text-white row-start-2 col-start-4 col-span-3">{{ messageErreurs['prenomRep'][0] }}</p>
-							{% endif %}
-						</div>
+							<div class="grid grid-cols-subgrid row-start-4 col-span-6  text-white rounded-2xl py-2 w-full items-center">
+								<label for="nomRep" class="text-white col-start-1 col-span-3 row-start-1">Nom du représentant de l'événement :</label>
+								<input type="text" id="nomRep" required minlenght="2" maxlenght="100" name="nomRep" placeholder="EXEMPLE" title="Entre le nom du représentant de l'événement, par exemple : FERREIRA" class="row-start-1 col-start-4 col-span-3 border-2 border-[#A23145] rounded-lg pl-2 text-black w-full drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] py-2">
+								{% if messageErreurs['nomRep'] is defined and messageErreurs['nomRep']|length > 0 %}
+									<p class="text-white row-start-2 col-start-4 col-span-3">{{ messageErreurs['nomRep'][0] }}</p>
+								{% endif %}
+							</div>
 
-						<div class="col-span-6 text-white rounded-2xl py-2 w-full items-center">
-							<label class="inline-flex items-center cursor-pointer col-span-6 justify-between w-full">
-								<span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300 max-w-md">Autorise-nous à pouvoir te contacter par mail ou téléphone si ton événement est retenus :</span>
-								<div>
-									<input type="checkbox" value="" class="sr-only peer">
-									<div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
-								</div>
-							</label>
+							<div class="grid grid-cols-subgrid row-start-5 col-span-6  text-white rounded-2xl py-2 w-full items-center">
+								<label for="prenomRep" class="text-white col-start-1 col-span-3 row-start-1">Prénom du représentant de l'événement :</label>
+								<input type="text" id="prenomRep" required minlenght="2" maxlenght="100" name="prenomRep" placeholder="Exemple" title="Entre le prénom du représentant de l'événement, par exemple : Hugo" class="row-start-1 col-start-4 col-span-3 border-2 border-[#A23145] rounded-lg pl-2 text-black w-full drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] py-2">
+								{% if messageErreurs['prenomRep'] is defined and messageErreurs['prenomRep']|length > 0 %}
+									<p class="text-white row-start-2 col-start-4 col-span-3">{{ messageErreurs['prenomRep'][0] }}</p>
+								{% endif %}
+							</div>
+
+							<div class="col-span-6 text-white rounded-2xl py-2 w-full items-center">
+								<label class="inline-flex items-center cursor-pointer col-span-6 justify-between w-full">
+									<span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300 max-w-md">Autorise-nous à pouvoir te contacter par mail ou téléphone si ton événement est retenus :</span>
+									<div>
+										<input type="checkbox" value="" class="sr-only peer">
+										<div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+									</div>
+								</label>
+							</div>
 						</div>
 					</div>
-				</div>
 
 
-				{# colonne de droite #}
-				<div class="lg:grid lg:grid-cols-subgrid lg:row-start-4 lg:col-start-7 lg:col-span-6 lg:w-full lg:gap-2 col-start-1 col-span-12 row-start-5 flex flex-col gap-2 ">
-					<div class="grid grid-cols-subgrid row-start-1 col-span-6 bg-[#A23145] bg-opacity-75 text-white rounded-2xl w-full p-4">
-						<label for="description" class="text-white col-span-3 pb-3">Décris ton événement :</label>
-						<textarea type="text" id="description" required minlenght="100" maxlenght="500" name="description" placeholder="Cet événement prend place chaque année ..." title="Entre une description de l'événement pour expliquer en quoi il consiste" class="col-start-1 col-span-6 border-2 border-[#A23145] rounded-lg pl-2 text-black w-full py-2"></textarea>
-						{% if messageErreurs['description'] is defined and messageErreurs['description']|length > 0 %}
+					{# colonne de droite #}
+					<div class="lg:grid lg:grid-cols-subgrid lg:row-start-4 lg:col-start-7 lg:col-span-6 lg:w-full lg:gap-2 col-start-1 col-span-12 row-start-5 flex flex-col gap-2 ">
+						<div class="grid grid-cols-subgrid row-start-1 col-span-6 bg-[#A23145] bg-opacity-75 text-white rounded-2xl w-full p-4">
+							<label for="description" class="text-white col-span-3 pb-3">Décris ton événement :</label>
+							<textarea type="text" id="description" required minlenght="100" maxlenght="500" name="description" placeholder="Cet événement prend place chaque année ..." title="Entre une description de l'événement pour expliquer en quoi il consiste" class="col-start-1 col-span-6 border-2 border-[#A23145] rounded-lg pl-2 text-black w-full py-2"></textarea>
+							{% if messageErreurs['description'] is defined and messageErreurs['description']|length > 0 %}
 								<p class="text-white row-start-3 col-start-1 col-span-6">{{ messageErreurs['description'][0] }}</p>
-						{% endif %}
+							{% endif %}
+						</div>
+
+						{# premier bloc #}
+						<div class="grid grid-cols-subgrid row-start-2 col-span-6 bg-[#A23145] bg-opacity-75 text-white rounded-2xl p-4 w-full">
+							<h1 class="row-start-1 col-span-6 text-xl">Informations de ton événement :</h1>
+							<div class="grid grid-cols-subgrid row-start-2 col-span-6  text-white rounded-2xl py-2 w-full items-center">
+								<label for="debutDate" class="text-white col-span-1">Du :</label>
+								<input type="date" id="debutDate" required name="debutDate" placeholder="Saisir date début" title="Entre la date de début de l'événement, par exemple : 06/05/2024" class="col-start-2 col-span-2 border-2 border-[#A23145] rounded-lg pl-2 text-black w-full py-2">
+								{% if messageErreurs['debutDate'] is defined and messageErreurs['debutDate']|length > 0 %}
+									<p class="text-white row-start-2 col-start-1 col-span-3">{{ messageErreurs['debutDate'][0] }}</p>
+								{% endif %}
+								<label for="finDate" class="text-white col-start-4 col-span-1">Au :</label>
+								<input type="date" id="finDate" required name="finDate" placeholder="Saisir date fin" title="Entre la date de fin de l'événement, par exemple : 06/05/2024" class="col-start-5 col-span-2 border-2 border-[#A23145] rounded-lg pl-2 text-black w-full py-2">
+								{% if messageErreurs['finDate'] is defined and messageErreurs['finDate']|length > 0 %}
+									<p class="text-white row-start-2 col-start-4 col-span-3">{{ messageErreurs['finDate'][0] }}</p>
+								{% endif %}
+							</div>
+
+							<div class="grid grid-cols-subgrid row-start-3 col-span-6  text-white rounded-2xl py-2 w-full items-center">
+								<label for="debutHeure" class="text-white col-span-1">Du :</label>
+								<input type="time" id="debutHeure" required name="debutHeure" placeholder="Saisir heure début" title="Entre l'heure de début de l'événement, par exemple : 10:28" class="col-start-2 col-span-2 border-2 border-[#A23145] rounded-lg pl-2 text-black w-full py-2">
+								{% if messageErreurs['debutHeure'] is defined and messageErreurs['debutHeure']|length > 0 %}
+									<p class="text-white row-start-2 col-start-1 col-span-3">{{ messageErreurs['debutHeure'][0] }}</p>
+								{% endif %}
+								<label for="finHeure" class="text-white col-start-4 col-span-1">Au :</label>
+								<input type="time" id="finHeure" required name="finHeure" placeholder="Saisir heure fin" title="Entre l'heure de fin de l'événement, par exemple : 10:28" class="col-start-5 col-span-2 border-2 border-[#A23145] rounded-lg pl-2 text-black w-full py-2">
+								{% if messageErreurs['finHeure'] is defined and messageErreurs['finHeure']|length > 0 %}
+									<p class="text-white row-start-2 col-start-4 col-span-3">{{ messageErreurs['finHeure'][0] }}</p>
+								{% endif %}
+							</div>
+
+							<div class="grid grid-cols-subgrid row-start-4 col-span-6  text-white rounded-2xl py-2 w-full">
+								<label for="lieu" class="text-white col-span-1">Lieu :</label>
+								<input type="text" id="lieu" required minlenght="50" maxlenght="500" name="lieu" placeholder="1 Rue de l'exemple, 64000 Pau, France" title="Entrez le lieu auquel prend place l'événement, par exemple : 2 Allée du parc Montaury, 64600 Anglet, FRANCE" class="col-start-2 col-span-3 border-2 border-[#A23145] rounded-lg pl-2 text-black w-full py-2">
+								{% if messageErreurs['lieu'] is defined and messageErreurs['lieu']|length > 0 %}
+									<p class="text-white row-start-2 col-start-2 col-span-3">{{ messageErreurs['lieu'][0] }}</p>
+								{% endif %}
+							</div>
+
+							<div class="grid grid-cols-subgrid row-start-5 col-span-6  text-white rounded-2xl w-full py-2">
+								<label for="photo" class="text-white col-span-1">Photos :</label>
+								<button arial-label="b_ajouterPhotoEv" id="photo" name="photo" accept=".jpg, .png" class="col-start-6 col-span-1 flex items-center justify-center max-h-1 text-[#A23145] bg-[#ffffff] rounded-lg p-4 font-bold drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">Ajouter</button>
+								{% if messageErreurs['photo'] is defined and messageErreurs['photo']|length > 0 %}
+									<p class="text-white row-start-2 col-start-1 col-span-6">{{ messageErreurs['photo'][0] }}</p>
+								{% endif %}
+							</div>
+
+						</div>
+
+						{# deuxieme bloc #}
+						<div class="grid grid-cols-subgrid row-start-3 col-start-1 col-span-6 bg-[#A23145] bg-opacity-75 text-white rounded-2xl p-4 w-full">
+							<button arial-label="b_annulerEv" type="reset" class="col-start-5 flex items-center justify-center max-h-1 text-[#A23145] bg-[#ffffff] rounded-lg p-4 font-bold drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">Annuler</button>
+							<button arial-label="b_validerEv" type="" class="col-start-6 flex items-center justify-center max-h-1 text-[#A23145] bg-[#ffffff] rounded-lg p-4 font-bold drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">Valider</button>
+						</div>
 					</div>
-
-					{# premier bloc #}
-					<div class="grid grid-cols-subgrid row-start-2 col-span-6 bg-[#A23145] bg-opacity-75 text-white rounded-2xl p-4 w-full">
-						<h1 class="row-start-1 col-span-6 text-xl">Informations de ton événement :</h1>
-						<div class="grid grid-cols-subgrid row-start-2 col-span-6  text-white rounded-2xl py-2 w-full items-center">
-							<label for="debutDate" class="text-white col-span-1">Du :</label>
-							<input type="date" id="debutDate" required name="debutDate" placeholder="Saisir date début" title="Entre la date de début de l'événement, par exemple : 06/05/2024" class="col-start-2 col-span-2 border-2 border-[#A23145] rounded-lg pl-2 text-black w-full py-2">
-							{% if messageErreurs['debutDate'] is defined and messageErreurs['debutDate']|length > 0 %}
-								<p class="text-white row-start-2 col-start-1 col-span-3">{{ messageErreurs['debutDate'][0] }}</p>
-							{% endif %}
-							<label for="finDate" class="text-white col-start-4 col-span-1">Au :</label>
-							<input type="date" id="finDate" required name="finDate" placeholder="Saisir date fin" title="Entre la date de fin de l'événement, par exemple : 06/05/2024" class="col-start-5 col-span-2 border-2 border-[#A23145] rounded-lg pl-2 text-black w-full py-2">
-							{% if messageErreurs['finDate'] is defined and messageErreurs['finDate']|length > 0 %}
-								<p class="text-white row-start-2 col-start-4 col-span-3">{{ messageErreurs['finDate'][0] }}</p>
-							{% endif %}
-						</div>
-
-						<div class="grid grid-cols-subgrid row-start-3 col-span-6  text-white rounded-2xl py-2 w-full items-center">
-							<label for="debutHeure" class="text-white col-span-1">Du :</label>
-							<input type="time" id="debutHeure" required name="debutHeure" placeholder="Saisir heure début" title="Entre l'heure de début de l'événement, par exemple : 10:28" class="col-start-2 col-span-2 border-2 border-[#A23145] rounded-lg pl-2 text-black w-full py-2">
-							{% if messageErreurs['debutHeure'] is defined and messageErreurs['debutHeure']|length > 0 %}
-								<p class="text-white row-start-2 col-start-1 col-span-3">{{ messageErreurs['debutHeure'][0] }}</p>
-							{% endif %}
-							<label for="finHeure" class="text-white col-start-4 col-span-1">Au :</label>
-							<input type="time" id="finHeure" required name="finHeure" placeholder="Saisir heure fin" title="Entre l'heure de fin de l'événement, par exemple : 10:28" class="col-start-5 col-span-2 border-2 border-[#A23145] rounded-lg pl-2 text-black w-full py-2">
-							{% if messageErreurs['finHeure'] is defined and messageErreurs['finHeure']|length > 0 %}
-								<p class="text-white row-start-2 col-start-4 col-span-3">{{ messageErreurs['finHeure'][0] }}</p>
-							{% endif %}
-						</div>
-
-						<div class="grid grid-cols-subgrid row-start-4 col-span-6  text-white rounded-2xl py-2 w-full">
-							<label for="lieu" class="text-white col-span-1">Lieu :</label>
-							<input type="text" id="lieu" required minlenght="50" maxlenght="500" name="lieu" placeholder="1 Rue de l'exemple, 64000 Pau, France" title="Entrez le lieu auquel prend place l'événement, par exemple : 2 Allée du parc Montaury, 64600 Anglet, FRANCE" class="col-start-2 col-span-3 border-2 border-[#A23145] rounded-lg pl-2 text-black w-full py-2">
-						{% if messageErreurs['lieu'] is defined and messageErreurs['lieu']|length > 0 %}
-								<p class="text-white row-start-2 col-start-2 col-span-3">{{ messageErreurs['lieu'][0] }}</p>
-							{% endif %}
-						</div>
-
-						<div class="grid grid-cols-subgrid row-start-5 col-span-6  text-white rounded-2xl w-full py-2">
-							<label for="photo" class="text-white col-span-1">Photos :</label>
-							<button arial-label="b_ajouterPhotoEv" id="photo" name="photo" accept=".jpg, .png" class="col-start-6 col-span-1 flex items-center justify-center max-h-1 text-[#A23145] bg-[#ffffff] rounded-lg p-4 font-bold drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">Ajouter</button>
-							{% if messageErreurs['photo'] is defined and messageErreurs['photo']|length > 0 %}
-								<p class="text-white row-start-2 col-start-1 col-span-6">{{ messageErreurs['photo'][0] }}</p>
-							{% endif %}
-						</div>
-
-					</div>
-
-					{# deuxieme bloc #}
-					<div class="grid grid-cols-subgrid row-start-3 col-start-1 col-span-6 bg-[#A23145] bg-opacity-75 text-white rounded-2xl p-4 w-full">
-						<button arial-label="b_annulerEv" type="reset" class="col-start-5 flex items-center justify-center max-h-1 text-[#A23145] bg-[#ffffff] rounded-lg p-4 font-bold drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">Annuler</button>
-						<button arial-label="b_validerEv" type="" class="col-start-6 flex items-center justify-center max-h-1 text-[#A23145] bg-[#ffffff] rounded-lg p-4 font-bold drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">Valider</button>
-					</div>
-				</div>
-			</form>
+				</form>
+			</div>
 		</div>
-	</div>
 
 
-	<script language="javascript">
-	function getXMLHttpRequest() {
-		var xhr = null;
-		if (window.XMLHttpRequest || window.ActiveXObject) {
-			if (window.ActiveXObject) {
-				try {
-					xhr = new ActiveXObject("Msxml2.XMLHTTP");
-				} catch (e) {
-					xhr = new ActiveXObject("Microsoft.XMLHTTP");
+		<script>
+			// JavaScript to handle dropdown toggle
+const dropdownButton = document.getElementById('dropdownButton');
+const dropdownMenu = document.getElementById('dropdownMenu');
+
+dropdownButton.addEventListener('click', () => {
+dropdownMenu.classList.toggle('hidden');
+});
+
+// Optional: Close dropdown when clicking outside
+document.addEventListener('click', (event) => {
+if (! dropdownButton.contains(event.target) && ! dropdownMenu.contains(event.target)) {
+dropdownMenu.classList.add('hidden');
+}
+});
+		</script>
+
+
+		{# <script language="javascript">
+				function getXMLHttpRequest() {
+					var xhr = null;
+					if (window.XMLHttpRequest || window.ActiveXObject) {
+						if (window.ActiveXObject) {
+							try {
+								xhr = new ActiveXObject("Msxml2.XMLHTTP");
+							} catch (e) {
+								xhr = new ActiveXObject("Microsoft.XMLHTTP");
+							}
+						} else {
+							xhr = new XMLHttpRequest();
+						}
+					} else {
+						alert("Votre navigateur ne supporte pas l'objet XMLHTTPRequest...");
+						return null;
+					}
+					return xhr;
 				}
-			} else {
-				xhr = new XMLHttpRequest();
-			}
-		} else {
-			alert("Votre navigateur ne supporte pas l'objet XMLHTTPRequest...");
-			return null;
-		}
-		return xhr;
-	}
-
-	function envoyerRequeteAjax(url, donnees) {
-		var xhr = getXMLHttpRequest();
-		xhr.onreadystatechange = function() {
-			// Si la requête est terminée
-			if(this.readyState == 4) {
-				// Si le serveur a renvoyé un code 200
-				if (this.status == 200) {
-					var resultat = JSON.parse(this.responseText);
-					document.getElementById("titre").innerHTML = "Titre : " + resultat.titre;
+			
+				function envoyerRequeteAjax(url, donnees) {
+					var xhr = getXMLHttpRequest();
+					xhr.onreadystatechange = function() {
+						// Si la requête est terminée
+						if(this.readyState == 4) {
+							// Si le serveur a renvoyé un code 200
+							if (this.status == 200) {
+								var resultat = JSON.parse(this.responseText);
+								document.getElementById("titre").innerHTML = "Titre : " + resultat.titre;
+							}
+							else {
+								alert("Erreur " + this.status);
+							}
+						}
+					}
+					xhr.open("POST", url, true);
+					xhr.send(donnees);
 				}
-				else {
-					alert("Erreur " + this.status);
-				}
-			}
-		}
-		xhr.open("POST", url, true);
-		xhr.send(donnees);
-	}
-	</script>
+				</script> #}
 
 
-
-{% endblock %}
+	{% endblock %}
 

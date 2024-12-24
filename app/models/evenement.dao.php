@@ -78,7 +78,7 @@ class EvenementDao
     
     public function findAllWithCategorie(): array
     {
-        $sql = "SELECT evt.evtId, evt.titre, evt.descr, evt.dateEvt, evt.loc, evt.statutEvt, evt.img, cate.nom AS nomCategorie
+        $sql = "SELECT evt.evtId, evt.titre,evt.autorisation, evt.description, evt.email, evt.tel, evt.nomRep, evt.prenomRep, evt.dateDebut, evt.dateFin, evt.heureDebut, evt.heureFin, evt.lieu, evt.photo, cate.nom AS nomCategorie
             FROM gk_evenement AS evt
             JOIN gk_categorie AS cate ON evt.cateId = cate.cateId";
 
