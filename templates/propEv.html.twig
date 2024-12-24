@@ -7,14 +7,13 @@
 			class="bg-cover bg-no-repeat bg-[url('../asset/bg_img.svg')] gap-2 p-2 grid grid-cols-12 items-center">
 			{# titre de la page #}
 			<h1 class="col-span-12 text-white lg:font-bold lg:text-4xl text-2xl text-center bg-[#A23145] rounded-2xl p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] mb-10">Propose ton événement</h1>
-			<form id="formPropEv"
-				action="index.php?controlleur=propEv&methode=validerFormulaire" method="post" novalidate enctype="multipart/form-data" class="lg:grid lg:grid-cols-subgrid col-start-1 col-span-12 flex flex-col gap-2">
+			<form action="index.php?controlleur=propEv&methode=validerFormulaire" method="post" novalidate enctype="multipart/form-data" class="lg:grid lg:grid-cols-subgrid col-start-1 col-span-12 flex flex-col gap-2">
 				{# premiere ligne #}
 				<div class="{{ rouge }} grid grid-cols-subgrid row-start-2 row-span-1 col-start-1 col-span-12 bg-[#A23145] bg-opacity-75 rounded-2xl p-4 w-full drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] gap-2">
 					<label for="titre" class="text-white lg:col-span-4 col-span-12 lg:text-lg text-sm">
 						Quel est le titre de ton événement :
 					</label>
-					<input type="text" required minlength="5" maxlength="30" id="titre" name="titre" placeholder="EVENEMENT 1" title="Entrez le nom de votre événement, par exemple : foire au jambon" class="lg:col-span-8 lg:col-start-5 lg:row-start-1 row-start-2 col-span-12 border-2 border-[#A23145] rounded-lg lg:pl-2 pl-1 text-black w-auto drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] lg:py-2 py-1">
+					<input type="text" required minlength="5" maxlength="30" id="titre" name="titre" placeholder="EVENEMENT 1" value="{{ titre/default('')}}" title="Entrez le nom de votre événement, par exemple : foire au jambon" class="lg:col-span-8 lg:col-start-5 lg:row-start-1 row-start-2 col-span-12 border-2 border-[#A23145] rounded-lg lg:pl-2 pl-1 text-black w-auto drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] lg:py-2 py-1">
 					{% if messageErreurs['titre'] is defined and messageErreurs['titre']|length > 0 %}
 						<p class="text-white row-start-2 col-start-5 col-span-12">{{ messageErreurs['titre'][0] }}</p>
 					{% endif %}

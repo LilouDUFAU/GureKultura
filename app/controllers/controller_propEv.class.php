@@ -1,5 +1,4 @@
 <?php
-
 // inclure la classe validator
 require_once '../app/controllers/validator.class.php';
 
@@ -191,15 +190,16 @@ class ControllerPropEv extends Controller
         $managerActualite = new ActualiteDao($this->getPdo());
         $actualite = $managerActualite->findAll();
 
+        
+
         if (!empty($messageErreurs)) {
             $dataForm = $_POST;
             // var_dump($messageErreurs);
-            // header('Content-Type: application/json');
-            json_encode($messageErreurs);
             echo $this->getTwig()->render('propEv.html.twig', [
                 'title' => 'Proposisition d\'événement',
                 'actualites' => $actualite,
-                'dataForm' => $dataForm,
+                'titre' => $titre,
+                'description' => $description,
                 'messageErreurs' => $messageErreurs
             ]);
         } else {
@@ -212,6 +212,9 @@ class ControllerPropEv extends Controller
                 'events' => $events,
                 'actualites' => $actualite
             ]);
+
+            // gestion d'envoie a la bd
+
         }
 
     }

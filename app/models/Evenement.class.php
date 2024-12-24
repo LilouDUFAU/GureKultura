@@ -110,6 +110,13 @@ class Evenement
      */
     private ?DateTime $heureFin;
 
+    /***
+     * @brief Lieu de l'événement
+     * 
+     * @var string
+     */
+    private ?string $lieu;
+
 
 
      /* @brief Photo de l'événement
@@ -305,7 +312,6 @@ class Evenement
     public function getHeureFin(): ?DateTime
     {
         return $this->heureFin;
-        return $this->finHeure;
     } 
       
     /***
