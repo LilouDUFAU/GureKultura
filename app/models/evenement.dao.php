@@ -2,8 +2,8 @@
 
 
 /**
- * @brief Classe EvenementDao
- * @details Cette classe permet de gérer les événements en base de données
+ * @brief Classe EvenementDao, permettant d'effectuer des requêtes sur la table evenement de la base de données.
+ * @details Cette classe utilise le pattern DAO (Data Access Object).
  */
 class EvenementDao
 {
