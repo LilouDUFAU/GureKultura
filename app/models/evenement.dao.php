@@ -1,24 +1,62 @@
 <?php
 
+
+/**
+ * @brief Classe EvenementDao
+ * @details Cette classe permet de gérer les événements en base de données
+ */
 class EvenementDao
 {
+
+    /**
+     * @brief Attribut permettant de stocker la connexion à la base de données
+     * @details Cet attribut est initialisé à null par défaut 
+     * @var PDO|null $pdo
+     */
     private ?PDO $pdo;
 
+
+    /**
+     * @brief Constructeur de la classe EvenementDao
+     * @details Permet d'instancier un objet EvenementDao
+     * @param mixed $pdo
+     * @return void
+     */
     public function __construct(?PDO $pdo = null)
     {
         $this->pdo = $pdo;
     }
 
+
+    /**
+     * @brief Getter de l'attribut pdo
+     * @details Permet de récupérer la connexion à la base de données
+     * @return PDO|null
+     */
     public function getPdo(): ?PDO
     {
         return $this->pdo;
     }
 
+
+    /**
+     * @brief Setter de l'attribut pdo
+     * @details Permet de modifier la connexion à la base de données
+     * @param PDO|null $pdo
+     * @return void
+     */
     public function setPdo(?PDO $pdo): void
     {
         $this->pdo = $pdo;
     }
 
+
+    /**
+     * @brief Fonction permettant de récupérer un événement en base de données
+     * @details Cette fonction permet de récupérer un événement en base de données en fonction de son identifiant
+     * @param int|null $id
+     * @return Evenement|null
+     */
     public function find(?int $id): ?Evenement
     {
         $sql = "SELECT * FROM " . PREFIX_TABLE . "evenement WHERE evtId = :id";
@@ -30,6 +68,12 @@ class EvenementDao
         return $evenement;
     }
 
+
+    /**
+     * @brief Fonction permettant de récupérer tous les événements en base de données
+     * @details Cette fonction permet de récupérer tous les événements en base de données
+     * @return array
+     */
     public function findAll()
     {
         $sql = "SELECT * FROM " . PREFIX_TABLE . "evenement";
@@ -42,6 +86,13 @@ class EvenementDao
     }
 
 
+
+    /**
+     * @brief Fonction permettant de récupérer les événements en cours en base de données
+     * @details Cette fonction permet de récupérer les événements en cours en base de données
+     * @param int|null $id
+     * @return array
+     */
     public function findEnCours(?int $id)
     {
         $sql = "SELECT * FROM " . PREFIX_TABLE . "evenement WHERE dateDebut = CURRENT_DATE AND cateId =:id";
@@ -54,6 +105,12 @@ class EvenementDao
     }
 
 
+    /**
+     * @brief Fonction permettant de récupérer les événements à venir en base de données
+     * @details Cette fonction permet de récupérer les événements à venir en base de données
+     * @param int|null $id
+     * @return array
+     */
     public function findASuivre(?int $id)
     {
         $sql = "SELECT * FROM " . PREFIX_TABLE . "evenement WHERE dateDebut > CURRENT_DATE AND cateId =:id";
@@ -65,6 +122,13 @@ class EvenementDao
         return $evenement;
     }
 
+
+    /**
+     * @brief Fonction permettant de récupérer les événements passés en base de données
+     * @details Cette fonction permet de récupérer les événements passés en base de données
+     * @param int|null $id
+     * @return array
+     */
     public function findPasser(?int $id)
     {
         $sql = "SELECT * FROM " . PREFIX_TABLE . "evenement WHERE dateDebut < CURRENT_DATE AND cateId =:id";
@@ -76,6 +140,12 @@ class EvenementDao
         return $evenement;
     }
 
+
+    /**
+     * @brief Fonction permettant de récupérer tous les événements avec leur catégorie en base de données
+     * @details Cette fonction permet de récupérer tous les événements avec leur catégorie en base de données
+     * @return array
+     */
     public function findAllWithCategorie(): array
     {
         $sql = "SELECT evt.evtId, evt.titre,evt.autorisation, evt.description, evt.email, evt.tel, evt.nomRep, evt.prenomRep, evt.dateDebut, evt.dateFin, evt.heureDebut, evt.heureFin, evt.lieu, evt.photo, cate.nom AS nomCategorie
@@ -91,6 +161,13 @@ class EvenementDao
     }
 
 
+
+    /**
+     * @brief Fonction permettant de récupérer un événement avec sa catégorie en base de données
+     * @details Cette fonction permet de récupérer un événement avec sa catégorie en base de données
+     * @param int|null $id
+     * @return Evenement|null
+     */
     public function hydrate(array $tab): Evenement
     {
         $evenement = new Evenement();
@@ -129,6 +206,12 @@ class EvenementDao
     }
 
 
+    /**
+     * @brief Fonction permettant de récupérer tous les événements avec leur catégorie en base de données
+     * @details Cette fonction permet de récupérer tous les événements avec leur catégorie en base de données
+     * @param array $tab
+     * @return array
+     */
     public function hydrateAll(array $tab): array
     {
         $evenements = [];
@@ -138,6 +221,13 @@ class EvenementDao
         return $evenements;
     }
 
+
+    /**
+     * @brief Fonction permettant de récupérer tous les événements avec leur catégorie en base de données
+     * @details Cette fonction permet de récupérer tous les événements avec leur catégorie en base de données
+     * @param array $tab
+     * @return array
+     */
     public function hydrateAllWithCategorie(array $tab): array
     {
         $evenements = [];
@@ -148,8 +238,11 @@ class EvenementDao
     }
 
 
-
-    // recuperer le nom de categorie associe a chaque evenement (pour la page d'accueil)
+    /**
+     * @brief Fonction permettant de récupérer le nom de la catégorie en base de données
+     * @details Cette fonction permet de récupérer le nom de la catégorie en base de données
+     * @return array
+     */
     public function findNomCategorie(): array
     {
         $stmt = $this->pdo->prepare("SELECT nom FROM " . PREFIX_TABLE . "categorie JOIN " . PREFIX_TABLE . "evenement ON " . PREFIX_TABLE . "categorie.cateId = " . PREFIX_TABLE . "evenement.cateId WHERE " . PREFIX_TABLE . "evenement.cateId = " . PREFIX_TABLE . "categorie.cateId");
@@ -161,7 +254,12 @@ class EvenementDao
     }
 
 
-
+    /**
+     * @brief Fonction permettant d'inserer un événement en base de données
+     * @details Cette fonction permet d'inserer un événement en base de données en fonction de son identifiant
+     * @param int|null $id
+     * @return void
+     */
     public function insert(Evenement $evenement): void
     {
         $sql = "INSERT INTO " . PREFIX_TABLE . "evenement (titre, autorisation, description, email, tel, nomRep, prenomRep, dateDebut, dateFin, heureDebut, heureFin, lieu, photo, cateId) 
