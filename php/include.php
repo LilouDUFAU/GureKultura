@@ -19,8 +19,6 @@ require_once '../app/controllers/controller_inscription.class.php';
 require_once '../app/controllers/controller_connexion.class.php';
 require_once '../app/controllers/controller_index.class.php';
 require_once '../app/controllers/controller_compte.class.php';
-require_once '../app/controllers/controller_calAvB.class.php';
-require_once '../app/controllers/controller_calBO.class.php';
 require_once '../app/controllers/controller_categorie.class.php';
 require_once '../app/controllers/controller_codeVerif.class.php';
 require_once '../app/controllers/controller_mdpOublie.class.php';
