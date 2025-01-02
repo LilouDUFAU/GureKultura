@@ -1,5 +1,6 @@
 <?php
-
+// inclure la classe validator
+require_once '../app/controllers/validator.class.php';
 
 /**
  * @brief Classe EvenementDao, permettant d'effectuer des requêtes sur la table evenement de la base de données.
@@ -148,7 +149,7 @@ class EvenementDao
      */
     public function findAllWithCategorie(): array
     {
-        $sql = "SELECT evt.evtId, evt.titre,evt.autorisation, evt.description, evt.email, evt.tel, evt.nomRep, evt.prenomRep, evt.dateDebut, evt.dateFin, evt.heureDebut, evt.heureFin, evt.lieu, evt.photo, cate.nom AS nomCategorie
+        $sql = "SELECT evt.evtId, evt.titre,evt.autorisation, evt.description, evt.email, evt.tel, evt.nomRep, evt.prenomRep, DATE(evt.dateDebut) AS dateDebut, DATE(evt.dateFin) AS dateFin, TIME(evt.heureDebut) AS heureDebut, TIME(evt.heureFin) AS heureFin, evt.lieu, evt.photo, cate.nom AS nomCategorie
             FROM gk_evenement AS evt
             JOIN gk_categorie AS cate ON evt.cateId = cate.cateId";
 
@@ -180,27 +181,38 @@ class EvenementDao
         $evenement->setNomRep($tab['nomRep']);
         $evenement->setPrenomRep($tab['prenomRep']);
 
-        if (is_string($tab['dateDebut'])) {
+        if (is_date($tab['dateDebut'])) {
             $tab['dateDebut'] = new DateTime($tab['dateDebut']);
+            $evenement->setDateDebut($tab['dateDebut']);
         }
-        if (is_string($tab['dateFin'])) {
+        if (is_date($tab['dateFin'])) {
             $tab['dateFin'] = new DateTime($tab['dateFin']);
+            $evenement->setDateFin($tab['dateFin']);
+
         }
-        if (is_string($tab['heureDebut'])) {
+        if (is_time($tab['heureDebut'])) {
             $tab['heureDebut'] = new DateTime($tab['heureDebut']);
+            $evenement->setHeureDebut($tab['heureDebut']);
+
         }
-        if (is_string($tab['heureFin'])) {
+        if (is_time($tab['heureFin'])) {
             $tab['heureFin'] = new DateTime($tab['heureFin']);
+            $evenement->setHeureFin($tab['heureFin']);
+
         }
+        $evenement->setLieu($tab['lieu']);
         $evenement->setPhoto($tab['photo']);
 
-        // Hydratation du nom de la catégorie
-        if (isset($tab['userId'])) {
-            $evenement->setUserId($tab['userId']);
-        }
-        if (isset($tab['cateId'])) {
-            $evenement->setCateId($tab['cateId']);
-        }
+        $evenement->setCateId($tab['cateId']);
+
+        // // Hydratation du nom de la catégorie
+        // if (isset($tab['userId'])) {
+        //     $evenement->setUserId($tab['userId']);
+        // }
+        // if (isset($tab['cateId'])) {
+        //     $evenement->setCateId($tab['cateId']);
+        // }
+        // $evenement->setNomCategorie($tab['nomCategorie']);
 
         return $evenement;
     }
