@@ -157,8 +157,6 @@ class ControllerPropEv extends Controller
 
         $managerCategorie = new CategorieDao($this->getPdo());
         $categories = $managerCategorie->findAll();
-        
-        echo"avant recuperation des erreurs";
 
         if (!empty($messageErreurs)) {
             // Les données ne sont pas valides, affichez les erreurs
@@ -170,7 +168,6 @@ class ControllerPropEv extends Controller
                 'categories' => $categories
 
             ]);
-            echo"pendant le test s'il y a des erreurs";
         } else {
             echo $this->getTwig()->render('propEv.html.twig', [
                 'title' => 'Proposition d\'événement',

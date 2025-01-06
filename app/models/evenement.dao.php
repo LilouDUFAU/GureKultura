@@ -203,16 +203,19 @@ class EvenementDao
         $evenement->setLieu($tab['lieu']);
         $evenement->setPhoto($tab['photo']);
 
-        $evenement->setCateId($tab['cateId']);
+        // On vérifie si la clé 'cateId' existe
+        if (isset($tab['cateld'])) {
+            $cateld = $tab['cateld'];
+        } else {
+            $cateld = null; // Ou une valeur par défaut
+        }
+        $evenement->setCateId($cateld);        
 
-        // // Hydratation du nom de la catégorie
+        // On vérifie si la clé 'userId' existe
         // if (isset($tab['userId'])) {
         //     $evenement->setUserId($tab['userId']);
         // }
-        // if (isset($tab['cateId'])) {
-        //     $evenement->setCateId($tab['cateId']);
-        // }
-        // $evenement->setNomCategorie($tab['nomCategorie']);
+        // $evenement->setUserId($tab['userId']);
 
         return $evenement;
     }
