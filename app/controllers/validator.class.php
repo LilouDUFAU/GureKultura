@@ -133,19 +133,20 @@ class Validator
                     } elseif ($parametre === 'int' && !is_int($valeur)) {
                         $this->messagesErreurs[$champ][] = "Le champ $champ doit être un entier.";
                         $estValide = false;
-                    } elseif ($parametre === 'file' && !$this->is_file($valeur)) {
-                        $this->messagesErreurs[$champ][] = "Le champ $champ doit être un fichier.";
-                        $estValide = false;
-                    } elseif ($parametre === 'image' && !$this->is_image($valeur)) {
+                    }elseif ($parametre === 'image' && !is_image($valeur)) {
                         $this->messagesErreurs[$champ][] = "Le champ $champ doit être une image.";
                         $estValide = false;
-                    } elseif ($parametre === 'date' && !$this->is_date($valeur)) {
+                    } elseif ($parametre === 'date' && !is_date($valeur)) {
                         $this->messagesErreurs[$champ][] = "Le champ $champ doit être une date valide (Y-m-d).";
                         $estValide = false;
-                    } elseif ($parametre === 'time' && !$this->is_time($valeur)) {
+                    } elseif ($parametre === 'time' && !is_time($valeur)) {
                         $this->messagesErreurs[$champ][] = "Le champ $champ doit être une heure valide (H:i).";
                         $estValide = false;
                     }
+                    //  elseif ($parametre === 'file' && !$this->is_file($valeur)) {
+                    //     $this->messagesErreurs[$champ][] = "Le champ $champ doit être un fichier.";
+                    //     $estValide = false;
+                    // }
                     break;
                 case 'longueurMin':
                     if (strlen($valeur) < $parametre) {

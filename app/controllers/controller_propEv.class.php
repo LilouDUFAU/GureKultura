@@ -33,7 +33,7 @@ class ControllerPropEv extends Controller
     }
 
 
-    public function validerFormulaire()
+    public function validerFormulairePropEv()
     {
         // definition des regles de validations que l'on souhaite verifier pour chaque champs du formulaire
         $regleValidation = [
@@ -58,7 +58,7 @@ class ControllerPropEv extends Controller
             ],
             'email' => [
                 'obligatoire' => true,
-                'type' => 'string',
+                'type' => 'email',
                 'longueurMin' => 10,
                 'longueurMax' => 100,
                 'format' => FILTER_VALIDATE_EMAIL
@@ -208,7 +208,7 @@ class ControllerPropEv extends Controller
                 new DateTime($donnees['finHeure']),
                 $donnees['lieu'],
                 $donnees['photo'] ?? null,
-                null,
+                $_SESSION['userId'] ?? null,
                 $donnees['cateId']
             );
     
