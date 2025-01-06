@@ -208,7 +208,7 @@ class ControllerPropEv extends Controller
                 new DateTime($donnees['finHeure']),
                 $donnees['lieu'],
                 $donnees['photo'] ?? null,
-                null,
+                $_SESSION['userId'] ?? null,
                 $donnees['cateId']
             );
     
