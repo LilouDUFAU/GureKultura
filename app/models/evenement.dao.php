@@ -217,6 +217,8 @@ class EvenementDao
         // }
         // $evenement->setUserId($tab['userId']);
 
+        $evenement->setNomCategorie($tab['nomCategorie']);
+
         return $evenement;
     }
 
