@@ -44,11 +44,11 @@ class ControllerPropEv extends Controller
                 'longueurMax' => 30,
                 'format' => '/^[a-zA-Z0-9\s]+$/'
             ],
-            'nomCategorie' => [
+            'cateId' => [
                 'obligatoire' => true,
-                'type' => 'string',
-                'longueurMin' => 4,
-                'longueurMax' => 30,
+                'type' => 'integer',
+                'longueurMin' => 1,
+                'longueurMax' => 100,
                 'format' => '/^[a-zA-Z0-9\s]+$/'
             ],
             'autorisation' => [
@@ -140,23 +140,11 @@ class ControllerPropEv extends Controller
         // validation des donnees du formulaire
         $donneesValides = $validator->valider($donnees);
 
-        // recuperation des erreurs
-        $messageErreurs = $validator->getMessageErreurs();
+        if(!$donneesValides){
+            $messageErreurs = $validator->getMessageErreurs();
+        }
 
-        //Récupérer les données du formulaire
-        $titre = $_POST['titre'];
-        $autorisation = $_POST['autorisation'] ?? '';
-        $email = $_POST['email'];
-        $tel = $_POST['tel'];
-        $nomRep = $_POST['nomRep'];
-        $prenomRep = $_POST['prenomRep'];
-        $description = $_POST['description'];
-        $debutDate = $_POST['debutDate'];
-        $finDate = $_POST['finDate'];
-        $debutHeure = $_POST['debutHeure'];
-        $finHeure = $_POST['finHeure'];
-        $lieu = $_POST['lieu'];
-        $photo = $_POST['photo'] ?? '';
+        // recuperation des erreurs
 
         // Rendre le template Twig
         $pdo = Bd::getInstance()->getPdo();
@@ -169,8 +157,6 @@ class ControllerPropEv extends Controller
 
         $managerCategorie = new CategorieDao($this->getPdo());
         $categories = $managerCategorie->findAll();
-
-
 
         if (!empty($messageErreurs)) {
             // Les données ne sont pas valides, affichez les erreurs
@@ -185,44 +171,56 @@ class ControllerPropEv extends Controller
         } else {
             echo $this->getTwig()->render('propEv.html.twig', [
                 'title' => 'Proposition d\'événement',
-                'messageSucces' => 'Votre proposition d\'événement a bien été enregistrée',
                 'donnees' => $donnees,
                 'actualites' => $actualite,
                 'categories' => $categories
+                
             ]);
+            echo"pendant le test s'il n'y a pas d'erreurs";
 
-
+            
             // Les données sont valides, insérez-les dans la base de données
             $this->insererDonneesDansLaBase($donnees);
+            
+            echo"apres envoie a la bd";
         }
     }
 
     private function insererDonneesDansLaBase(array $donnees)
     {
-        $pdo = Bd::getInstance()->getPdo();
-        $managerEvenement = new EvenementDao($pdo);
-
-        // Créez un nouvel objet Evenement avec les données du formulaire
-        $evenement = new Evenement(
-            null,
-            $donnees['titre'],
-            $donnees['autorisation'] ?? null,
-            $donnees['description'],
-            $donnees['email'],
-            $donnees['tel'],
-            $donnees['nomRep'],
-            $donnees['prenomRep'],
-            new DateTime($donnees['debutDate']),
-            new DateTime($donnees['finDate']),
-            new DateTime($donnees['debutHeure']),
-            new DateTime($donnees['finHeure']),
-            $donnees['lieu'],
-            $donnees['photo'] ?? null,
-            null,
-            $donnees['nomCategorie']
-        );
-
-        // Insérez l'événement dans la base de données
-        $managerEvenement->insert($evenement);
+        try {
+            $pdo = Bd::getInstance()->getPdo();
+            $managerEvenement = new EvenementDao($pdo);
+    
+            // Créez un nouvel objet Evenement avec les données du formulaire
+            $evenement = new Evenement(
+                null,
+                $donnees['titre'],
+                $donnees['autorisation'] ?? null,
+                $donnees['description'],
+                $donnees['email'],
+                $donnees['tel'],
+                $donnees['nomRep'],
+                $donnees['prenomRep'],
+                new DateTime($donnees['debutDate']),
+                new DateTime($donnees['finDate']),
+                new DateTime($donnees['debutHeure']),
+                new DateTime($donnees['finHeure']),
+                $donnees['lieu'],
+                $donnees['photo'] ?? null,
+                null,
+                $donnees['cateId']
+            );
+    
+            // Log the event data for debugging
+            error_log(print_r($evenement, true));
+    
+            // Insérez l'événement dans la base de données
+            $managerEvenement->insert($evenement);
+        } catch (Exception $e) {
+            // Log the error message
+            error_log("Error inserting event: " . $e->getMessage());
+            throw $e; // Re-throw the exception if needed
+        }
     }
 }
