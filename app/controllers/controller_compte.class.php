@@ -32,6 +32,7 @@ class ControllerCompte extends Controller {
 
 
     public function deconnexion() {
+        session_unset();
         session_destroy();
         header('Location: index.php?controlleur=index&methode=lister');
     }
