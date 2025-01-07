@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once '../app/controllers/validator.class.php';
 
 class ControllerInscription extends Controller {
@@ -148,4 +147,3 @@ class ControllerInscription extends Controller {
         }
     }
 }
-session_write_close();
