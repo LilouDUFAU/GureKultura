@@ -5,12 +5,10 @@ $loader = new \Twig\Loader\FilesystemLoader('../templates');
 $twig = new \Twig\Environment($loader,[
     'debug' => true,
 ]);
+$twig->addExtension(new \Twig\Extension\DebugExtension());
 
-// s'il n'y a pas de session alors une session se creee
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
-
+var_dump($_SESSION);
+$twig->addGlobal('user', $_SESSION['user'] ?? null);
 if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
     $utilisateur = unserialize($_SESSION['user']);
     $twig->addGlobal('user', $utilisateur);
