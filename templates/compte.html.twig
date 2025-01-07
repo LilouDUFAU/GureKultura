@@ -12,47 +12,47 @@
 
 			{# colonne de gauche #}
 			<div
-				class="lg:grid lg:grid-cols-subgrid lg:row-start-2 lg:col-start-1 lg:col-span-6 lg:w-full lg:h-full lg:gap-2 col-start-1 col-span-12 row-start-2 p-2">
+				class="lg:grid lg:grid-cols-subgrid lg:row-start-2 lg:col-start-1 lg:col-span-6 lg:w-full h-full lg:gap-2 col-start-1 col-span-12 row-start-2 p-2">
 				{# bloc #}
-				<div class="grid grid-cols-subgrid row-start-1 col-span-6 bg-[#A23145] bg-opacity-75 text-white rounded-2xl p-4 w-full gap-1 ">
+				<div class="grid grid-cols-subgrid row-start-1 col-span-6 bg-[#A23145] bg-opacity-75 text-white rounded-2xl p-4 w-full gap-1">
 					<h1 class="row-start-1 col-span-6 text-xl">Informations personnelles</h1>
 
 					<div class="grid grid-cols-subgrid row-start-2 col-span-6 text-white rounded-2xl py-2 w-full items-center">
 						<label class="text-white lg:col-span-2 lg:text-lg col-span-1 text-sm">Nom</label>
-						<label class="text-[#bfbfbf] col-start-2 col-span-2 lg:col-start-3 lg:col-span-2">{{ nom }}</label>
+						<label class="text-[#bfbfbf] col-start-2 col-span-2 lg:col-start-3 lg:col-span-2">{{ user.nom }}</label>
 						<button arial-label="b_modifierNom" class="lg:col-start-5 lg:col-span-2 flex items-center justify-center max-h-1 text-[#A23145] bg-white border-2 border-solid border-[#A23145] rounded-lg p-4 lg:font-normal drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] lg:text-lg col-start-4 col-span-3 text-sm">Modifier</button>
 					</div>
 
 					<div class="grid grid-cols-subgrid row-start-3 col-span-6 text-white rounded-2xl py-2 w-full items-center">
 						<label class="text-white lg:col-span-2 lg:text-lg col-span-1 text-sm ">Email</label>
-						<label class="text-[#bfbfbf] col-start-2 col-span-2 lg:col-start-3 lg:col-span-2">{{ email }}</label>
+						<label class="text-[#bfbfbf] col-start-2 col-span-2 lg:col-start-3 lg:col-span-2">{{ user.email }}</label>
 						<button arial-label="b_modifierEmail" class="lg:col-start-5 lg:col-span-2 flex items-center justify-center max-h-1 text-[#A23145] bg-white border-2 border-solid border-[#A23145] rounded-lg p-4 lg:font-normal drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] lg:text-lg col-start-4 col-span-3 text-sm">Modifier</button>
 					</div>
 
 					<div class="grid grid-cols-subgrid row-start-4 col-span-6 text-white rounded-2xl py-2 w-full items-center">
 						<label class="text-white lg:col-span-2 lg:text-lg col-span-1 text-sm ">Téléphone</label>
-						<label class="text-[#bfbfbf] col-start-2 col-span-2 lg:col-start-3 lg:col-span-2">{{ telephone}}</label>
+						<label class="text-[#bfbfbf] col-start-2 col-span-2 lg:col-start-3 lg:col-span-2">{{ user.telephone}}</label>
 						<button arial-label="b_modifierTel" class="lg:col-start-5 lg:col-span-2 flex items-center justify-center max-h-1 text-[#A23145] bg-white border-2 border-solid border-[#A23145] rounded-lg p-4 lg:font-normal drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] lg:text-lg col-start-4 col-span-3 text-sm">Modifier</button>
 					</div>
 
 					<div class="grid grid-cols-subgrid row-start-5 col-span-6 text-white rounded-2xl py-2 w-full items-center">
 						<label class="text-white lg:col-span-2 lg:text-lg col-span-1 text-sm ">Adresse</label>
-						<label class="text-[#bfbfbf] col-start-2 col-span-2 lg:col-start-3 lg:col-span-2">{{ adresse }}</label>
+						<label class="text-[#bfbfbf] col-start-2 col-span-2 lg:col-start-3 lg:col-span-2">{{ user.adresse }}</label>
 						<button arial-label="b_modifierAddresse" class="lg:col-start-5 lg:col-span-2 flex items-center justify-center max-h-1 text-[#A23145] bg-white border-2 border-solid border-[#A23145] rounded-lg p-4 lg:font-normal drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] lg:text-lg col-start-4 col-span-3 text-sm">Modifier</button>
 					</div>
 
 					<div class="grid grid-cols-subgrid row-start-6 col-span-6 text-white rounded-2xl py-2 w-full items-center">
 						<label class="text-white lg:col-span-2 lg:text-lg col-span-1 text-sm ">Photo de profil</label>
-						<img src="{{ photo }}" class="lg:col-start-3 lg:col-span-1 col-start-2 col-span-2 h-auto" /img>
+						<img src="{{ user.photo }}" class="lg:col-start-3 lg:col-span-1 col-start-2 col-span-2 h-auto" /img>
 						<button arial-label="b_modifierPfp" class="lg:col-start-5 lg:col-span-2 flex items-center justify-center max-h-1 text-[#A23145] bg-white border-2 border-solid border-[#A23145] rounded-lg p-4 lg:font-normal drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] lg:text-lg col-start-4 col-span-3 text-sm">Modifier</button>
 					</div>
 
 					<div class="grid grid-cols-subgrid row-start-7 col-span-6 text-white rounded-2xl py-2 w-full items-center">
-						<label class="text-white col-span-2 lg:text-lg text-sm">Supprimer mon compte</label>
+						<label class="text-white col-span-3 lg:text-lg text-sm">Supprimer mon compte</label>
 						<button arial-label="b_SupprCompte" class="lg:col-start-5 lg:col-span-2 flex items-center justify-center max-h-1 text-[#A23145] bg-white border-2 border-solid border-[#A23145] rounded-lg p-4 lg:font-normal drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] lg:text-lg col-start-4 col-span-3 text-sm">Supprimer</button>
 					</div>
 				</div>
-				<div class="grid grid-cols-subgrid row-start-2 col-span-6 bg-[#A23145] bg-opacity-75 text-white rounded-2xl p-4 w-full">
+				<div class="grid grid-cols-subgrid row-start-2 col-span-6 bg-[#A23145] bg-opacity-75 text-white rounded-2xl p-4 w-full h-fit ">
 				<button class="lg:col-start-1 lg:col-span-2 flex items-center justify-center max-h-1 text-[#A23145] bg-white border-2 border-solid border-[#A23145] rounded-lg p-4 lg:font-normal drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] lg:text-lg col-start-4 col-span-1 text-sm"> Déconnexion </button>
 				<button class="lg:col-start-4 lg:col-span-3 flex items-center justify-center max-h-1 text-[#A23145] bg-white border-2 border-solid border-[#A23145] rounded-lg p-4 lg:font-normal drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] lg:text-lg col-start-5 col-span-1 text-sm"> Supprimer mon compte </button>
 				</div>
