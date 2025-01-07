@@ -17,7 +17,12 @@
         {# Colonne de gauche #}
         <div class="grid grid-cols-6 row-start-3 col-start-1 col-span-12 xl:col-span-8 px-4">
             {# image de l'article #}
-            <img src="../{{ evtActus.img }}" alt="Image de l'événement" class="col-start-2 xl:col-start-2 col-span-4 row-start-1 rounded-lg mb-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
+            {% if type == "Evenements" %}
+                    <img src="../asset/evenement/{{ evtActus.photo }}" alt="Image de l'événement" class="col-start-2 xl:col-start-2 col-span-4 row-start-1 rounded-lg mb-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
+                {% endif %}
+                {% if type == "Actualites" %}
+                    <img src="../asset/actualite/{{ evtActus.img }}" alt="Image de l'événement" class="col-start-2 xl:col-start-2 col-span-4 row-start-1 rounded-lg mb-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
+                {% endif %}
             {# contenu de l'article #}
             <div class="col-start-1 row-start-2 col-span-6 text-white font-medium text-xs lg:text-base text-left break-words"> 
             
