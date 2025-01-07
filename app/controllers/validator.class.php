@@ -187,4 +187,49 @@ class Validator
     {
         return $this->messagesErreurs;
     }
+
+
+    ////////Partie inscription/////////
+    /**
+     * @brief Fonction permettant de vérifier si un enregistrement est disponible dans la table user
+     * @details Cette fonction permet de vérifier si un enregistrement passé en paramettre est déjà enregistré en base de données dans la table user
+     * @param string $champ
+     * @return bool
+     */
+    public function is_available(?string $champ): bool {
+        $pdo = Bd::getInstance()->getPdo();
+        $sql = "SELECT * FROM " . PREFIX_TABLE . "user WHERE pseudo = :champ OR email = :champ";
+        $pdoStatement = $pdo->prepare($sql);
+        $pdoStatement->execute(array(':champ' => $champ));
+        $pdoStatement->setFetchMode(PDO::FETCH_ASSOC);
+        $UserTab = $pdoStatement->fetch();
+        if ($UserTab) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    /**
+     * @brief Fonction permettant de vérifier la robustesse d'un mot de passe
+     * @details Cette fonction permet de vérifier si un mot de passe passé en paramettre est assez robuste
+     * @param string $password
+     * @return bool
+     */
+    public function is_strong(string $password): bool {
+        $regex = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/';
+
+        // La fonction preg_match retourne 1 si une correspondance est trouvée.
+        return preg_match($regex, $password) === 1;
+    }
+
+    /**
+     * @brief Fonction permettant de hasher un mot de passe
+     * @details Cette fonction permet de hasher un mot de passe passé en paramettre
+     * @param string $password
+     * @return string
+     */
+    public function hash_password(string $password): string {
+        return password_hash($password, PASSWORD_BCRYPT);
+    }
 }
