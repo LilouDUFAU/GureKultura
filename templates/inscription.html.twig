@@ -6,25 +6,25 @@
     <div class="flex flex-col items-center bg-cover bg-no-repeat bg-[url('../asset/bg_img.svg')] gap-2 p-2 py-24">
         <div class="flex flex-col gap-3 w-full max-w-xl p-8 bg-[#A23145] bg-opacity-70 rounded-lg drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
             <h1 class="text-3xl font-bold text-white text-center mb-6">Inscription</h1>
-            <form class="space-y-4 gap-2">
+            <form class="space-y-4 gap-2" action="index.php?controlleur=inscription&methode=validerFormulaireInscription" method="post" enctype="multipart/form-data">
                 <div>
-                    <input type="text" placeholder="Num. téléphone ou e-mail" 
+                    <input type="text" placeholder="E-mail" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{10,100}$" title="Veuillez entrer une adresse mail valide, exemple : user@exemple.com"
                         class="w-full p-3 rounded-md bg-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-400">
                 </div>
                 <div>
-                    <input type="text" placeholder="Nom complet" 
+                    <input type="text" placeholder="Nom complet" name="nom" required pattern="[A-Za-z]{2,100}" title="Veuillez entrer un nom valide, exemple : Dupont"
                         class="w-full items-center p-3 rounded-md bg-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-400">
                 </div>
                 <div>
-                    <input type="text" placeholder="Nom d'utilisateur" 
+                    <input type="text" placeholder="Nom d'utilisateur" name="pseudo" required pattern="[A-Za-z0-9]{2,30}" title="Veuillez entrer un nom d'utilisateur valide, exemple : user123"
                         class="w-full p-3 rounded-md bg-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-400">
                 </div>
                 <div>
-                    <input type="password" placeholder="Mot de passe" 
+                    <input type="password" placeholder="Mot de passe" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,30}$" name="mdp" required title="Le mot de passe doit contenir au moins 8 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial"
                         class="w-full p-3 rounded-md bg-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-400">
                 </div>
                 <div>
-                    <input type="password" placeholder="Confirmer le mot de passe" 
+                    <input type="password" placeholder="Confirmer le mot de passe" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,30}$" name="mdp2" required title="Le mot de passe de confirmation doit être le même que le mot de passe"
                         class="w-full p-3 rounded-md bg-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-400">
                 </div>
                 <div>

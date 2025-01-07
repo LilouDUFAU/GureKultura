@@ -1,4 +1,6 @@
 <?php
+session_start();
+require_once '../app/controllers/validator.class.php';
 
 class ControllerInscription extends Controller {
     public function __construct(\Twig\Environment $twig, \Twig\Loader\FileSystemLoader $loader) {
@@ -24,4 +26,126 @@ class ControllerInscription extends Controller {
             'actualites' => $actualite
         ]);
     }
+
+    public function validerFormulaireInscription() {
+        // definition des regles de validations que l'on souhaite verifier pour chaque champs du formulaire
+        $regleValidation = [
+            'email' => [
+                'obligatoire' => true,
+                'type' => 'email',
+                'longueurMin' => 10,
+                'longueurMax' => 100,
+                'format' => FILTER_VALIDATE_EMAIL
+            ],
+            'nom' => [
+                'obligatoire' => true,
+                'type' => 'string',
+                'longueurMin' => 2,
+                'longueurMax' => 100,
+                'format' => '/^[a-zA-Z0-9\s]+$/'
+            ],
+            'pseudo' => [
+                'obligatoire' => true,
+                'type' => 'string',
+                'longueurMin' => 2,
+                'longueurMax' => 30,
+                'format' => '/^[a-zA-Z0-9\s]+$/'
+            ],
+            'mdp' => [
+                'obligatoire' => true,
+                'type' => 'string',
+                'longueurMin' => 8,
+                'longueurMax' => 30,
+                'format' => '/^[a-zA-Z0-9\s]+$/'
+            ]
+        ];
+
+        // instanciation de la classe de validation
+        $validator = new Validator($regleValidation);
+
+        // recuperation des donnees du formulaire
+        $donnees = $_POST;
+        // validation des donnees du formulaire
+        $donneesValides = $validator->valider($donnees);
+        
+
+        // si les donnees sont valides
+        if ($donneesValides) {
+            //vérifier que le pseudo est disponible
+            if($validator->is_available($donnees['pseudo'])) {
+                $pseudoValide = true;
+            } else {
+                echo "Ce pseudo est déjà utilisé";
+                $pseudoValide = false;
+            }
+
+            //vérifier que l'email est disponible
+            if($validator->is_available($donnees['email'])) {
+                $emailValide = true;
+            } else {
+                echo "Cet email est déjà utilisé";
+                $emailValide = false;
+            }
+
+            //vérifier que le mot de passe est correct
+            if($validator->is_strong($donnees['mdp'])) {
+                if($donnees['mdp'] == $donnees['mdp2']) {
+                    $mdpValide = true;
+                } else {
+                    echo "Les mots de passe ne correspondent pas";
+                    $mdpValide = false;
+                }
+            } else {
+                echo "Le mot de passe n'est pas assez fort, il doit contenir au moins 8 caractères, une majuscule,un chiffre et un charactère spécial";
+            }
+            
+            if($pseudoValide && $emailValide && $mdpValide) {
+                //hasher le mot de passe
+                $donnees['mdp'] = $validator->hash_password($donnees['mdp']);
+
+                //enregistrer dans la basse données
+                $this->insererDonneesDansLaBase($donnees);
+            }
+
+        } else {
+            echo "Les données ne sont pas valides";
+        }
+    }
+
+    private function insererDonneesDansLaBase(array $donnees)
+    {
+        try {
+            $pdo = Bd::getInstance()->getPdo();
+            $managerUser = new UserDao($pdo);
+    
+            // Créez un nouvel objet Evenement avec les données du formulaire
+            $user = new User(
+                null,
+                $donnees['nom'],
+                $donnees['pseudo'],
+                $donnees['email'],
+                $donnees['mdp'],
+                null,
+                null,
+                null,
+                false
+            );
+    
+            // Log the event data for debugging
+            error_log(print_r($user, true));
+    
+            // Insérez l'événement dans la base de données
+            $managerUser->insert($user);
+
+            //enregistrer l'utilisateur dans la session
+            $donnees['userId'] = $managerUser->getActualUserId($donnees['pseudo']);
+            $_SESSION['userId'] = $donnees['userId'];
+            header('Location: index.php?controlleur=index&methode=lister');
+        } catch (Exception $e) {
+            // Log the error message
+            error_log("Error inserting event: " . $e->getMessage());
+            throw $e; // Re-throw the exception if needed
+        }
+    }
 }
+session_write_close();

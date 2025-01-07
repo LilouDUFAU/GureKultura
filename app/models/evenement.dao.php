@@ -11,8 +11,8 @@ class EvenementDao
 
     /**
      * @brief Attribut permettant de stocker la connexion à la base de données
-     * @details Cet attribut est initialisé à null par défaut 
-     * @var PDO|null $pdo
+     * @details Cet attribut est privé et ne peut être modifié que par les méthodes de la classe
+     * @var PDO
      */
     private ?PDO $pdo;
 
@@ -32,7 +32,7 @@ class EvenementDao
     /**
      * @brief Getter de l'attribut pdo
      * @details Permet de récupérer la connexion à la base de données
-     * @return PDO|null
+     * @return PDO
      */
     public function getPdo(): ?PDO
     {
@@ -42,8 +42,8 @@ class EvenementDao
 
     /**
      * @brief Setter de l'attribut pdo
-     * @details Permet de modifier la connexion à la base de données
-     * @param PDO|null $pdo
+     * @details Permet de modifier la connexion à la base de données        
+     * @param PDO $pdo
      * @return void
      */
     public function setPdo(?PDO $pdo): void
@@ -55,8 +55,8 @@ class EvenementDao
     /**
      * @brief Fonction permettant de récupérer un événement en base de données
      * @details Cette fonction permet de récupérer un événement en base de données en fonction de son identifiant
-     * @param int|null $id
-     * @return Evenement|null
+     * @param int $id
+     * @return Evenement
      */
     public function find(?int $id): ?Evenement
     {
@@ -188,17 +188,14 @@ class EvenementDao
         if (is_date($tab['dateFin'])) {
             $tab['dateFin'] = new DateTime($tab['dateFin']);
             $evenement->setDateFin($tab['dateFin']);
-
         }
         if (is_time($tab['heureDebut'])) {
             $tab['heureDebut'] = new DateTime($tab['heureDebut']);
             $evenement->setHeureDebut($tab['heureDebut']);
-
         }
         if (is_time($tab['heureFin'])) {
             $tab['heureFin'] = new DateTime($tab['heureFin']);
             $evenement->setHeureFin($tab['heureFin']);
-
         }
         $evenement->setLieu($tab['lieu']);
         $evenement->setPhoto($tab['photo']);
@@ -212,10 +209,10 @@ class EvenementDao
         $evenement->setCateId($cateld);        
 
         // On vérifie si la clé 'userId' existe
-        // if (isset($tab['userId'])) {
-        //     $evenement->setUserId($tab['userId']);
+        // if (isset($_SESSION['userId'])) {
+        //     $evenement->setUserId($_SESSION['userId']);
         // }
-        // $evenement->setUserId($tab['userId']);
+        // $evenement->setUserId($_SESSION['userId']);
 
         $evenement->setNomCategorie($tab['nomCategorie']);
 
@@ -224,7 +221,7 @@ class EvenementDao
 
 
     /**
-     * @brief Fonction permettant de récupérer tous les événements avec leur catégorie en base de données
+     * @brief Fonction permettant d'hydrater un tableau de données en objets Evenement
      * @details Cette fonction permet de récupérer tous les événements avec leur catégorie en base de données
      * @param array $tab
      * @return array

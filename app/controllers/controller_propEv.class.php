@@ -1,4 +1,6 @@
 <?php
+// ouvrire la session
+session_start();
 // inclure la classe validator
 require_once '../app/controllers/validator.class.php';
 
@@ -233,3 +235,5 @@ class ControllerPropEv extends Controller
         }
     }
 }
+// fermer la session
+session_write_close();

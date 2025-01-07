@@ -2,16 +2,12 @@
 
 // namespace App\Models;
 
-//use DateTime;
-
-
 /**
  * @brief Classe Evenement
  * @details Cette classe permet de gérer les événements
  */
 class Evenement
 {
-
     /**
      * @brief Identifiant de l'événement
      * @details Cet identifiant est généré automatiquement par la base de données
