@@ -156,4 +156,16 @@ class UserDao {
         $user = $this->hydrate($UserTab);
         return $user;
     }
+
+    /**
+     * @brief Fonction permettant de supprimer un utilisateur en base de données
+     * @details Cette fonction permet de supprimer un utilisateur en base de données si ce dernier sdouhaite supprimer son compte
+     * @param User $user
+     * @return void
+     */
+    public function delete(User $user): void {
+        $sql = "DELETE FROM " . PREFIX_TABLE . "user WHERE userId = :id";
+        $pdoStatement = $this->pdo->prepare($sql);
+        $pdoStatement->execute([':id' => $user->getUserId()]);
+    }
 }

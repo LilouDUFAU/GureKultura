@@ -24,5 +24,24 @@ class ControllerCompte extends Controller {
             'title' => 'Compte',
             'actualites' => $actualite
         ]);
-    }   
+    }  
+    
+    public function validerFormulaireCompte(){
+
+    }
+
+
+    public function deconnexion() {
+        session_destroy();
+        header('Location: index.php?controlleur=index&methode=lister');
+    }
+
+    public function supprimerCompte() {
+        $pdo = Bd::getInstance()->getPdo();
+        $managerUser = new UserDao($pdo);
+        $user = $managerUser->find($_SESSION['userId']);
+        $managerUser->delete($user);
+        session_destroy();
+        header('Location: index.php?controlleur=index&methode=lister');
+    }
 }
