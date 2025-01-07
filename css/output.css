@@ -1367,18 +1367,6 @@ video {
   font-weight: 600;
 }
 
-.font-thin {
-  font-weight: 100;
-}
-
-.font-normal {
-  font-weight: 400;
-}
-
-.font-light {
-  font-weight: 300;
-}
-
 .uppercase {
   text-transform: uppercase;
 }
@@ -1813,6 +1801,10 @@ video {
     grid-column: span 8 / span 8;
   }
 
+  .lg\:col-span-3 {
+    grid-column: span 3 / span 3;
+  }
+
   .lg\:col-start-1 {
     grid-column-start: 1;
   }
@@ -1827,6 +1819,14 @@ video {
 
   .lg\:col-start-7 {
     grid-column-start: 7;
+  }
+
+  .lg\:col-start-4 {
+    grid-column-start: 4;
+  }
+
+  .lg\:col-start-2 {
+    grid-column-start: 2;
   }
 
   .lg\:row-start-1 {
