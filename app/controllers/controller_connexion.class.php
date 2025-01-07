@@ -73,19 +73,6 @@ class ControllerConnexion extends Controller {
                 $pdo = Bd::getInstance()->getPdo();
                 $managerUser = new UserDao($pdo);
                 $user = $managerUser->findWithEmail($donnees['email']);
-                $utilisateur = new User(
-                    $user['userId'],
-                    $user['nom'],
-                    $user['pseudo'],
-                    $user['email'],
-                    $user['mdp'],
-                    $user['dateInscr'],
-                    $user['bio'],
-                    $user['pfp'],
-                    $user['estAdmin'],
-                );
-                $userId = $user->getUserId();
-                $pseudo = $user->getPseudo();
                 $_SESSION['user'] = serialize($user);
                 $this->getTwig()->addGlobal('utilisateurConnecte', $user);
                 header('Location: index.php?controlleur=index&methode=lister');
