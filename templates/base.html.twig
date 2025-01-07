@@ -47,7 +47,18 @@
 				</nav>
 
 				<!-- compte btn -->
-				<a href="index.php?controlleur=connexion&methode=lister" class="hidden md:flex items-center justify-center px-7 border-2 border-[#ffffff] p-2 rounded-lg">Compte</a>
+				{% if utilisateurConnecte is null %}
+					<div class="flex items-center space-x-4">
+						<span class="text-white"></span>
+						<a href="index.php?controlleur=compte&methode=lister" class="flex items-center justify-center px-7 border-2 border-[#ffffff] p-2 rounded-lg">
+							Compte
+						</a>
+					</div>
+				{% else %}
+					<a href="index.php?controlleur=connexion&methode=lister" class="flex items-center justify-center px-7 border-2 border-[#ffffff] p-2 rounded-lg">
+						Connexion
+					</a>
+				{% endif %}
 			</header>
 
 			<!-- Content -->

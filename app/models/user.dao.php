@@ -80,7 +80,7 @@ class UserDao {
      * @param array $tab
      * @return array
      */
-    public function hydrate(int $id): ?User {
+    public function hydrate(array $tab): ?User {
         $user = new User();
         $user->setUserId($tab['userId']);
         $user->setNom($tab['nom']);
@@ -114,13 +114,14 @@ class UserDao {
     /**
      * @brief Fonction permettant d'inserer un utilisateur en base de données
      * @details Cette fonction permet d'inserer un utilisateur en base de données en fonction de son identifiant
-     * @param int $id
+     * @param User $user
      * @return void
      */
     public function insert(User $user): void
     {
         $sql = "INSERT INTO " . PREFIX_TABLE . "user (nom, pseudo, email, mdp, dateInscr, bio, pfp) VALUES (:nom, :pseudo, :email, :mdp, :dateInscr, :bio, :pfp)";
         $pdoStatement = $this->pdo->prepare($sql);
+        var_dump($user->dateActuelle());
         $pdoStatement->execute([
             ':nom' => $user->getNom(),
             ':pseudo' => $user->getPseudo(),
@@ -144,5 +145,15 @@ class UserDao {
         $pdoStatement->execute([':pseudo' => $pseudo]);
         $row = $pdoStatement->fetch(\PDO::FETCH_ASSOC);
         return (int) $row['userId'];
+    }
+
+    public function findWithEmail(string $email): ?User {
+        $sql = "SELECT * FROM " . PREFIX_TABLE . "user WHERE email = :email";
+        $pdoStatement = $this->pdo->prepare($sql);
+        $pdoStatement->execute([':email' => $email]);
+        $pdoStatement->setFetchMode(PDO::FETCH_ASSOC);
+        $UserTab = $pdoStatement->fetch();
+        $user = $this->hydrate($UserTab);
+        return $user;
     }
 }
