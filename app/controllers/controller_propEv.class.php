@@ -2,6 +2,9 @@
 // inclure la classe validator
 require_once '../app/controllers/validator.class.php';
 
+/**
+ * 
+ */
 class ControllerPropEv extends Controller
 {
 
@@ -186,6 +189,12 @@ class ControllerPropEv extends Controller
         }
     }
 
+    /**
+     * @brief fonction ...
+     * @details cette fonction permet de ...
+     * @param array $donnees
+     * @return /
+     */
     private function insererDonneesDansLaBase(array $donnees)
     {
         try {
