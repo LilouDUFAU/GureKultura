@@ -45,9 +45,8 @@
 						</li>
 					</ul>
 				</nav>
-
 				<!-- compte btn -->
-				{% if utilisateurConnecte is null %}
+				{% if user != null %} 
 					<div class="flex items-center space-x-4">
 						<span class="text-white"></span>
 						<a href="index.php?controlleur=compte&methode=lister" class="flex items-center justify-center px-7 border-2 border-[#ffffff] p-2 rounded-lg">

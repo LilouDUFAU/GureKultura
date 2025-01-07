@@ -6,9 +6,6 @@ require_once '../vendor/autoload.php';
 //Ajout du fichier constantes qui permet de configurer le site
 require_once '../config/constantes.php';
 
-//Ajout du code pour initialiser Twig
-require_once '../config/twig.php';
-
 //Ajout du model qui gère la connexion mysql
 require_once '../app/models/bd.class.php';
 
@@ -37,4 +34,6 @@ require_once '../app/models/categorie.dao.php';
 require_once '../app/models/user.class.php';
 require_once '../app/models/user.dao.php';
 
-
+session_start();
+//Ajout du code pour initialiser Twig
+require_once '../config/twig.php';
