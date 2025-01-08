@@ -441,7 +441,7 @@ function twig_constant_is_defined($constant, $object = null)
 {
     trigger_deprecation('twig/twig', '3.9', 'Using the internal "%s" function is deprecated.', __FUNCTION__);
 
-    return CoreExtension::constant($constant, $object, true);
+    return CoreExtension::constantIsDefined($constant, $object);
 }
 
 /**
@@ -537,5 +537,5 @@ function twig_check_arrow_in_sandbox(Environment $env, $arrow, $thing, $type)
 {
     trigger_deprecation('twig/twig', '3.9', 'Using the internal "%s" function is deprecated.', __FUNCTION__);
 
-    CoreExtension::checkArrow($env, $arrow, $thing, $type);
+    return CoreExtension::checkArrowInSandbox($env, $arrow, $thing, $type);
 }

@@ -14,7 +14,6 @@ namespace Twig;
 use Twig\Cache\CacheInterface;
 use Twig\Cache\FilesystemCache;
 use Twig\Cache\NullCache;
-use Twig\Cache\RemovableCacheInterface;
 use Twig\Error\Error;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
@@ -44,11 +43,11 @@ use Twig\TokenParser\TokenParserInterface;
  */
 class Environment
 {
-    public const VERSION = '3.17.1';
-    public const VERSION_ID = 31701;
-    public const MAJOR_VERSION = 3;
-    public const MINOR_VERSION = 17;
-    public const RELEASE_VERSION = 1;
+    public const VERSION = '3.11.3';
+    public const VERSION_ID = 301103;
+    public const MAJOR_VERSION = 4;
+    public const MINOR_VERSION = 11;
+    public const RELEASE_VERSION = 3;
     public const EXTRA_VERSION = '';
 
     private $charset;
@@ -72,7 +71,6 @@ class Environment
     /** @var bool */
     private $useYield;
     private $defaultRuntimeLoader;
-    private array $hotCache = [];
 
     /**
      * Constructor.
@@ -105,11 +103,11 @@ class Environment
      *                   (default to -1 which means that all optimizations are enabled;
      *                   set it to 0 to disable).
      *
-     *  * use_yield: true: forces templates to exclusively use "yield" instead of "echo" (all extensions must be yield ready)
-     *               false (default): allows templates to use a mix of "yield" and "echo" calls to allow for a progressive migration
-     *               Switch to "true" when possible as this will be the only supported mode in Twig 4.0
+     *  * use_yield: Enable templates to exclusively use "yield" instead of "echo"
+     *               (default to "false", but switch it to "true" when possible
+     *               as this will be the only supported mode in Twig 4.0)
      */
-    public function __construct(LoaderInterface $loader, array $options = [])
+    public function __construct(LoaderInterface $loader, $options = [])
     {
         $this->setLoader($loader);
 
@@ -235,18 +233,6 @@ class Environment
         return $this->strictVariables;
     }
 
-    public function removeCache(string $name): void
-    {
-        $cls = $this->getTemplateClass($name);
-        $this->hotCache[$name] = $cls.'_'.bin2hex(random_bytes(16));
-
-        if ($this->cache instanceof RemovableCacheInterface) {
-            $this->cache->remove($name, $cls);
-        } else {
-            throw new \LogicException(\sprintf('The "%s" cache class does not support removing template cache as it does not implement the "RemovableCacheInterface" interface.', \get_class($this->cache)));
-        }
-    }
-
     /**
      * Gets the current cache implementation.
      *
@@ -301,7 +287,7 @@ class Environment
      */
     public function getTemplateClass(string $name, ?int $index = null): string
     {
-        $key = ($this->hotCache[$name] ?? $this->getLoader()->getCacheKey($name)).$this->optionsHash;
+        $key = $this->getLoader()->getCacheKey($name).$this->optionsHash;
 
         return '__TwigTemplate_'.hash(\PHP_VERSION_ID < 80100 ? 'sha256' : 'xxh128', $key).(null === $index ? '' : '___'.$index);
     }
@@ -393,10 +379,8 @@ class Environment
             if (!class_exists($cls, false)) {
                 $source = $this->getLoader()->getSourceContext($name);
                 $content = $this->compileSource($source);
-                if (!isset($this->hotCache[$name])) {
-                    $this->cache->write($key, $content);
-                    $this->cache->load($key);
-                }
+                $this->cache->write($key, $content);
+                $this->cache->load($key);
 
                 if (!class_exists($mainCls, false)) {
                     /* Last line of defense if either $this->bcWriteCacheFile was used,
@@ -829,6 +813,8 @@ class Environment
     }
 
     /**
+     * @internal
+     *
      * @return array<string, mixed>
      */
     public function getGlobals(): array
@@ -844,26 +830,23 @@ class Environment
         return array_merge($this->extensionSet->getGlobals(), $this->globals);
     }
 
-    public function resetGlobals(): void
-    {
-        $this->resolvedGlobals = null;
-        $this->extensionSet->resetGlobals();
-    }
-
-    /**
-     * @deprecated since Twig 3.14
-     */
     public function mergeGlobals(array $context): array
     {
-        trigger_deprecation('twig/twig', '3.14', 'The "%s" method is deprecated.', __METHOD__);
+        // we don't use array_merge as the context being generally
+        // bigger than globals, this code is faster.
+        foreach ($this->getGlobals() as $key => $value) {
+            if (!\array_key_exists($key, $context)) {
+                $context[$key] = $value;
+            }
+        }
 
-        return $context + $this->getGlobals();
+        return $context;
     }
 
     /**
      * @internal
      *
-     * @return array<string, array{precedence: int, precedence_change?: OperatorPrecedenceChange, class: class-string<AbstractUnary>}>
+     * @return array<string, array{precedence: int, class: class-string<AbstractUnary>}>
      */
     public function getUnaryOperators(): array
     {
@@ -873,7 +856,7 @@ class Environment
     /**
      * @internal
      *
-     * @return array<string, array{precedence: int, precedence_change?: OperatorPrecedenceChange, class: class-string<AbstractBinary>, associativity: ExpressionParser::OPERATOR_*}>
+     * @return array<string, array{precedence: int, class: class-string<AbstractBinary>, associativity: ExpressionParser::OPERATOR_*}>
      */
     public function getBinaryOperators(): array
     {

@@ -27,13 +27,16 @@ use Symfony\Component\Intl\Data\Util\LocaleScanner;
  */
 abstract class AbstractDataGenerator
 {
-    public function __construct(
-        private BundleCompilerInterface $compiler,
-        private string $dirName,
-    ) {
+    private $compiler;
+    private $dirName;
+
+    public function __construct(BundleCompilerInterface $compiler, string $dirName)
+    {
+        $this->compiler = $compiler;
+        $this->dirName = $dirName;
     }
 
-    public function generateData(GeneratorConfig $config): void
+    public function generateData(GeneratorConfig $config)
     {
         $filesystem = new Filesystem();
         $localeScanner = new LocaleScanner();
@@ -92,9 +95,9 @@ abstract class AbstractDataGenerator
      */
     abstract protected function scanLocales(LocaleScanner $scanner, string $sourceDir): array;
 
-    abstract protected function compileTemporaryBundles(BundleCompilerInterface $compiler, string $sourceDir, string $tempDir): void;
+    abstract protected function compileTemporaryBundles(BundleCompilerInterface $compiler, string $sourceDir, string $tempDir);
 
-    abstract protected function preGenerate(): void;
+    abstract protected function preGenerate();
 
     abstract protected function generateDataForLocale(BundleEntryReaderInterface $reader, string $tempDir, string $displayLocale): ?array;
 

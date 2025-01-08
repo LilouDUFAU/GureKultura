@@ -30,19 +30,9 @@ use Twig\TwigTest;
 abstract class IntegrationTestCase extends TestCase
 {
     /**
-     * @deprecated since Twig 3.13, use getFixturesDirectory() instead.
-     *
      * @return string
      */
-    protected function getFixturesDir()
-    {
-        throw new \BadMethodCallException('Not implemented.');
-    }
-
-    protected static function getFixturesDirectory(): string
-    {
-        throw new \BadMethodCallException('Not implemented.');
-    }
+    abstract protected function getFixturesDir();
 
     /**
      * @return RuntimeLoaderInterface[]
@@ -102,19 +92,9 @@ abstract class IntegrationTestCase extends TestCase
         $this->doIntegrationTest($file, $message, $condition, $templates, $exception, $outputs, $deprecation);
     }
 
-    /**
-     * @final since Twig 3.13
-     */
     public function getTests($name, $legacyTests = false)
     {
-        try {
-            $fixturesDir = static::getFixturesDirectory();
-        } catch (\BadMethodCallException) {
-            trigger_deprecation('twig/twig', '3.13', 'Not overriding "%s::getFixturesDirectory()" in "%s" is deprecated. This method will be abstract in 4.0.', self::class, static::class);
-            $fixturesDir = $this->getFixturesDir();
-        }
-
-        $fixturesDir = realpath($fixturesDir);
+        $fixturesDir = realpath($this->getFixturesDir());
         $tests = [];
 
         foreach (new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($fixturesDir), \RecursiveIteratorIterator::LEAVES_ONLY) as $file) {
@@ -146,10 +126,10 @@ abstract class IntegrationTestCase extends TestCase
                 throw new \InvalidArgumentException(\sprintf('Test "%s" is not valid.', str_replace($fixturesDir.'/', '', $file)));
             }
 
-            $tests[str_replace($fixturesDir.'/', '', $file)] = [str_replace($fixturesDir.'/', '', $file), $message, $condition, $templates, $exception, $outputs, $deprecation];
+            $tests[] = [str_replace($fixturesDir.'/', '', $file), $message, $condition, $templates, $exception, $outputs, $deprecation];
         }
 
-        if ($legacyTests && !$tests) {
+        if ($legacyTests && empty($tests)) {
             // add a dummy test to avoid a PHPUnit message
             return [['not', '-', '', [], '', []]];
         }
@@ -157,9 +137,6 @@ abstract class IntegrationTestCase extends TestCase
         return $tests;
     }
 
-    /**
-     * @final since Twig 3.13
-     */
     public function getLegacyTests()
     {
         return $this->getTests('testLegacyIntegration', true);
@@ -179,16 +156,13 @@ abstract class IntegrationTestCase extends TestCase
             }
         }
 
+        $loader = new ArrayLoader($templates);
+
         foreach ($outputs as $i => $match) {
             $config = array_merge([
                 'cache' => false,
                 'strict_variables' => true,
             ], $match[2] ? eval($match[2].';') : []);
-            // make sure that template are always compiled even if they are the same (useful when testing with more than one data/expect sections)
-            foreach ($templates as $j => $template) {
-                $templates[$j] = $template.str_repeat(' ', $i);
-            }
-            $loader = new ArrayLoader($templates);
             $twig = new Environment($loader, $config);
             $twig->addGlobal('global', 'global');
             foreach ($this->getRuntimeLoaders() as $runtimeLoader) {
@@ -245,7 +219,7 @@ abstract class IntegrationTestCase extends TestCase
                 $output = trim($template->render(eval($match[1].';')), "\n ");
             } catch (\Exception $e) {
                 if (false !== $exception) {
-                    $this->assertStringMatchesFormat(trim($exception), trim(\sprintf('%s: %s', \get_class($e), $e->getMessage())));
+                    $this->assertSame(trim($exception), trim(\sprintf('%s: %s', \get_class($e), $e->getMessage())));
 
                     return;
                 }

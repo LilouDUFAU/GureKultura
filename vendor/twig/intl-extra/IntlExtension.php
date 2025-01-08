@@ -156,7 +156,7 @@ final class IntlExtension extends AbstractExtension
         $this->numberFormatterPrototype = $numberFormatterPrototype;
     }
 
-    public function getFilters(): array
+    public function getFilters()
     {
         return [
             // internationalized names
@@ -177,7 +177,7 @@ final class IntlExtension extends AbstractExtension
         ];
     }
 
-    public function getFunctions(): array
+    public function getFunctions()
     {
         return [
             // internationalized names

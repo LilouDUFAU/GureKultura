@@ -24,9 +24,6 @@ function bailout(string $message)
     exit(1);
 }
 
-/**
- * @return string
- */
 function strip_minor_versions(string $version)
 {
     preg_match('/^(?P<version>[0-9]\.[0-9]|[0-9]{2,})/', $version, $matches);
@@ -34,9 +31,6 @@ function strip_minor_versions(string $version)
     return $matches['version'];
 }
 
-/**
- * @return string
- */
 function centered(string $text)
 {
     $padding = (int) ((LINE_WIDTH - strlen($text)) / 2);
@@ -44,14 +38,14 @@ function centered(string $text)
     return str_repeat(' ', $padding).$text;
 }
 
-function cd(string $dir): void
+function cd(string $dir)
 {
     if (false === chdir($dir)) {
         bailout("Could not switch to directory $dir.");
     }
 }
 
-function run(string $command): void
+function run(string $command)
 {
     exec($command, $output, $status);
 
@@ -63,9 +57,6 @@ function run(string $command): void
     }
 }
 
-/**
- * @return string|null
- */
 function get_icu_version_from_genrb(string $genrb)
 {
     exec($genrb.' --version - 2>&1', $output, $status);
@@ -84,7 +75,7 @@ function get_icu_version_from_genrb(string $genrb)
 error_reporting(\E_ALL);
 
 set_error_handler(function (int $type, string $msg, string $file, int $line) {
-    throw new ErrorException($msg, 0, $type, $file, $line);
+    throw new \ErrorException($msg, 0, $type, $file, $line);
 });
 
 set_exception_handler(function (Throwable $exception) {
@@ -98,7 +89,7 @@ set_exception_handler(function (Throwable $exception) {
             echo "Caused by\n";
         }
 
-        echo $cause::class.': '.$cause->getMessage()."\n";
+        echo get_class($cause).': '.$cause->getMessage()."\n";
         echo "\n";
         echo $cause->getFile().':'.$cause->getLine()."\n";
         echo $cause->getTraceAsString()."\n";

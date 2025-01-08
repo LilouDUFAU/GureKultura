@@ -24,9 +24,9 @@ use Twig\Node\Expression\AbstractExpression;
 #[YieldReady]
 class PrintNode extends Node implements NodeOutputInterface
 {
-    public function __construct(AbstractExpression $expr, int $lineno)
+    public function __construct(AbstractExpression $expr, int $lineno, ?string $tag = null)
     {
-        parent::__construct(['expr' => $expr], [], $lineno);
+        parent::__construct(['expr' => $expr], [], $lineno, $tag);
     }
 
     public function compile(Compiler $compiler): void

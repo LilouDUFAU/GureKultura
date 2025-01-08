@@ -45,7 +45,6 @@ class FileExtensionEscapingStrategy
 
         switch ($extension) {
             case 'js':
-            case 'json':
                 return 'js';
 
             case 'css':

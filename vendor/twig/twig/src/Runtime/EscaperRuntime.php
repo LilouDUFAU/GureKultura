@@ -26,9 +26,11 @@ final class EscaperRuntime implements RuntimeExtensionInterface
     /** @internal */
     public $safeLookup = [];
 
-    public function __construct(
-        private $charset = 'UTF-8',
-    ) {
+    private $charset;
+
+    public function __construct($charset = 'UTF-8')
+    {
+        $this->charset = $charset;
     }
 
     /**
@@ -52,9 +54,6 @@ final class EscaperRuntime implements RuntimeExtensionInterface
         return $this->escapers;
     }
 
-    /**
-     * @param array<class-string<\Stringable>, string[]> $safeClasses
-     */
     public function setSafeClasses(array $safeClasses = [])
     {
         $this->safeClasses = [];
@@ -64,10 +63,6 @@ final class EscaperRuntime implements RuntimeExtensionInterface
         }
     }
 
-    /**
-     * @param class-string<\Stringable> $class
-     * @param string[]                  $strategies
-     */
     public function addSafeClass(string $class, array $strategies)
     {
         $class = ltrim($class, '\\');
@@ -98,7 +93,7 @@ final class EscaperRuntime implements RuntimeExtensionInterface
         }
 
         if (!\is_string($string)) {
-            if ($string instanceof \Stringable) {
+            if (\is_object($string) && method_exists($string, '__toString')) {
                 if ($autoescape) {
                     $c = \get_class($string);
                     if (!isset($this->safeClasses[$c])) {

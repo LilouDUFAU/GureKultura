@@ -22,21 +22,24 @@ use Symfony\Component\Intl\Data\Bundle\Writer\BundleWriterInterface;
  */
 class GeneratorConfig
 {
+    private $sourceDir;
+    private $icuVersion;
+
     /**
      * @var BundleWriterInterface[]
      */
-    private array $bundleWriters = [];
+    private $bundleWriters = [];
 
-    public function __construct(
-        private string $sourceDir,
-        private string $icuVersion,
-    ) {
+    public function __construct(string $sourceDir, string $icuVersion)
+    {
+        $this->sourceDir = $sourceDir;
+        $this->icuVersion = $icuVersion;
     }
 
     /**
      * Adds a writer to be used during the data conversion.
      */
-    public function addBundleWriter(string $targetDir, BundleWriterInterface $writer): void
+    public function addBundleWriter(string $targetDir, BundleWriterInterface $writer)
     {
         $this->bundleWriters[$targetDir] = $writer;
     }

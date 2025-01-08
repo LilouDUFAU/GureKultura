@@ -60,9 +60,8 @@ final class EscaperExtension extends AbstractExtension
     /**
      * @deprecated since Twig 3.10
      */
-    public function setEnvironment(Environment $environment): void
+    public function setEnvironment(Environment $environment, bool $triggerDeprecation = true): void
     {
-        $triggerDeprecation = \func_num_args() > 1 ? func_get_arg(1) : true;
         if ($triggerDeprecation) {
             trigger_deprecation('twig/twig', '3.10', 'The "%s()" method is deprecated and not needed if you are using methods from "Twig\Runtime\EscaperRuntime".', __METHOD__);
         }

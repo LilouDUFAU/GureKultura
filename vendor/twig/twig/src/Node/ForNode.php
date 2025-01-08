@@ -15,7 +15,7 @@ namespace Twig\Node;
 use Twig\Attribute\YieldReady;
 use Twig\Compiler;
 use Twig\Node\Expression\AbstractExpression;
-use Twig\Node\Expression\Variable\AssignContextVariable;
+use Twig\Node\Expression\AssignNameExpression;
 
 /**
  * Represents a for node.
@@ -27,16 +27,16 @@ class ForNode extends Node
 {
     private $loop;
 
-    public function __construct(AssignContextVariable $keyTarget, AssignContextVariable $valueTarget, AbstractExpression $seq, ?Node $ifexpr, Node $body, ?Node $else, int $lineno)
+    public function __construct(AssignNameExpression $keyTarget, AssignNameExpression $valueTarget, AbstractExpression $seq, ?Node $ifexpr, Node $body, ?Node $else, int $lineno, ?string $tag = null)
     {
-        $body = new Nodes([$body, $this->loop = new ForLoopNode($lineno)]);
+        $body = new Node([$body, $this->loop = new ForLoopNode($lineno, $tag)]);
 
         $nodes = ['key_target' => $keyTarget, 'value_target' => $valueTarget, 'seq' => $seq, 'body' => $body];
         if (null !== $else) {
             $nodes['else'] = $else;
         }
 
-        parent::__construct($nodes, ['with_loop' => true], $lineno);
+        parent::__construct($nodes, ['with_loop' => true], $lineno, $tag);
     }
 
     public function compile(Compiler $compiler): void
@@ -101,14 +101,7 @@ class ForNode extends Node
         $compiler->write("\$_parent = \$context['_parent'];\n");
 
         // remove some "private" loop variables (needed for nested loops)
-        $compiler->write('unset($context[\'_seq\'], $context[\''.$this->getNode('key_target')->getAttribute('name').'\'], $context[\''.$this->getNode('value_target')->getAttribute('name').'\'], $context[\'_parent\']');
-        if ($this->hasNode('else')) {
-            $compiler->raw(', $context[\'_iterated\']');
-        }
-        if ($this->getAttribute('with_loop')) {
-            $compiler->raw(', $context[\'loop\']');
-        }
-        $compiler->raw(");\n");
+        $compiler->write('unset($context[\'_seq\'], $context[\'_iterated\'], $context[\''.$this->getNode('key_target')->getAttribute('name').'\'], $context[\''.$this->getNode('value_target')->getAttribute('name').'\'], $context[\'_parent\'], $context[\'loop\']);'."\n");
 
         // keep the values set in the inner context for variables defined in the outer context
         $compiler->write("\$context = array_intersect_key(\$context, \$_parent) + \$_parent;\n");
