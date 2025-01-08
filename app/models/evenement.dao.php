@@ -115,6 +115,13 @@ class EvenementDao
         if (is_string($tab['heureFin'])) {
             $tab['heureFin'] = new DateTime($tab['heureFin']);
         }
+        
+        $evenement->setDateDebut($tab['dateDebut']);
+        $evenement->setDateFin($tab['dateFin']);
+        $evenement->setHeureDebut($tab['heureDebut']);
+        $evenement->setHeureFin($tab['heureFin']);
+        $evenement->setLieu($tab['lieu']);
+
         $evenement->setPhoto($tab['photo']);
 
         // Hydratation du nom de la catégorie
