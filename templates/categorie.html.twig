@@ -11,10 +11,10 @@
 
         <div id="carousel1" class="row-span-3 col-span-12 relative w-full overflow-hidden mx-auto bg-[#A23145] opacity-75 rounded-lg" data-slides-default="1" data-slides-mobile="1">
             <!-- Conteneur du carrousel -->
-            <div  id="carousel" class="carousel flex transition-transform duration-500 ease-out gap-2 p-2">
+            <div  id="carousel1" class="carousel flex transition-transform duration-500 ease-out gap-2 p-2">
                 <!-- Diapositives -->
                 {% for cateEvtSport in EvtSport %}
-                        <div style="background: url('../asset/categorie/{{ cateEvtSport.img }}'); background-repeat: no-repeat;" class="slide md:w-1/3 w-full flex-shrink-0 text-[#A23145] text-center py-16 rounded-lg relative bg-norepeat">
+                        <div style="background-image: url('../asset/categorie/{{ cateEvtSport.img }}')" class="bg-cover bg-no-repeat slide md:w-1/3 w-full flex-shrink-0 text-[#A23145] text-center py-16 rounded-lg relative">
                             <FORM ACTION="categorieEvtActu.php" METHOD="POST">
                                 <INPUT TYPE="hidden" NAME="nom" VALUE="{{cateEvtSport.nom}}">
                                 <INPUT TYPE="hidden" NAME="id" VALUE="{{cateEvtSport.cateId}}"> 
@@ -33,11 +33,11 @@
 
         <div id="carousel2" class="row-span-6 col-span-12 relative w-full overflow-hidden mx-auto bg-[#A23145] opacity-75 rounded-lg" data-slides-default="1" data-slides-mobile="1">
             <!-- Conteneur du carrousel -->
-            <div  id="carousel" class="carousel flex transition-transform duration-500 ease-out gap-2 p-2">
+            <div  id="carousel2" class="carousel flex transition-transform duration-500 ease-out gap-2 p-2">
                 <!-- Diapositives -->
                 {# <div class="bg-[url('#')]"> FOOTBALL </div> #}
                 {% for cateEvtCult in EvtCult %}
-                        <div style="background: url('../asset/categorie/{{ cateEvtCult.img }}')" class="slide md:w-1/3 w-full flex-shrink-0 text-[#A23145] text-center py-16 rounded-lg relative">
+                        <div style="background-image: url('../asset/categorie/{{ cateEvtCult.img }}')" class="bg-cover bg-no-repeat slide md:w-1/3 w-full flex-shrink-0 text-[#A23145] text-center py-16 rounded-lg relative">
                             <FORM ACTION="categorieEvtActu.php" METHOD="POST">
                                 <INPUT TYPE="hidden" NAME="nom" VALUE="{{cateEvtCult.nom}}">
                                 <INPUT TYPE="hidden" NAME="id" VALUE="{{cateEvtCult.cateId}}"> 
@@ -59,11 +59,11 @@
         
         <div id="carousel3" class="row-span-6 col-span-12 relative w-full overflow-hidden mx-auto bg-[#A23145] opacity-75 rounded-lg" data-slides-default="1" data-slides-mobile="1">
             <!-- Conteneur du carrousel -->
-            <div  id="carousel" class="carousel flex transition-transform duration-500 ease-out gap-2 p-2">
+            <div  id="carousel3" class="carousel flex transition-transform duration-500 ease-out gap-2 p-2">
                 <!-- Diapositives -->
                 {# <div class="bg-[url('#')]"> FOOTBALL </div> #}
                 {% for cateActuSport in ActuSport %}
-                        <div style="background: url('../asset/categorie/{{ cateActuSport.img }}')" class="slide md:w-1/3 w-full flex-shrink-0 text-[#A23145] text-center py-16 rounded-lg relative">
+                        <div style="background-image: url('../asset/categorie/{{ cateActuSport.img }}')" class="bg-cover bg-no-repeat slide md:w-1/3 w-full flex-shrink-0 text-[#A23145] text-center py-16 rounded-lg relative">
                             <FORM ACTION="categorieEvtActu.php" METHOD="POST">
                                 <INPUT TYPE="hidden" NAME="nom" VALUE="{{cateActuSport.nom}}">
                                 <INPUT TYPE="hidden" NAME="id" VALUE="{{cateActuSport.cateId}}"> 
@@ -82,11 +82,11 @@
         
         <div id="carousel4" class="row-span-8 col-span-12 relative w-full overflow-hidden mx-auto bg-[#A23145] opacity-75 rounded-lg" data-slides-default="1" data-slides-mobile="1">
             <!-- Conteneur du carrousel -->
-            <div  id="carousel" class="carousel flex transition-transform duration-500 ease-out gap-2 p-2">
+            <div  id="carousel4" class="carousel flex transition-transform duration-500 ease-out gap-2 p-2">
                 <!-- Diapositives -->
                 {# <div class="bg-[url('#')]"> FOOTBALL </div> #}
                 {% for cateActuCult in ActuCult %}
-                        <div style="background: url('../asset/categorie/{{ cateActuCult.img }}')" class="slide md:w-1/3 w-full flex-shrink-0 text-[#A23145] text-center py-16 rounded-lg relative">
+                        <div style="background-image: url('../asset/categorie/{{ cateActuCult.img }}')" class="bg-cover bg-no-repeat slide md:w-1/3 w-full flex-shrink-0 text-[#A23145] text-center py-16 rounded-lg relative">
                             <FORM ACTION="categorieEvtActu.php" METHOD="POST">
                                 <INPUT TYPE="hidden" NAME="nom" VALUE="{{cateActuCult.nom}}">
                                 <INPUT TYPE="hidden" NAME="id" VALUE="{{cateActuCult.cateId}}"> 
