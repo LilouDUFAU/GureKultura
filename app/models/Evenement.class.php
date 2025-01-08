@@ -110,22 +110,6 @@ class Evenement
      */
     private ?string $lieu;
 
-
-
-     /* @brief Lieu de l'événement
-     * 
-     * @var string
-     */
-    private ?string $lieu; 
-     
-
-     /* @brief Photo de l'événement
-     * 
-     * @var string
-     */
-    private ?string $lieu; 
-     
-
      /**
      * @brief Photo de l'événement
      * @details Cette photo est donnée par l'utilisateur
@@ -190,8 +174,7 @@ class Evenement
     ?DateTime $dateDebut=null, 
     ?DateTime $dateFin=null, 
     ?DateTime $heureDebut=null, 
-    ?DateTime $heureFin=null, 
-    ?string $lieu=null,
+    ?DateTime $heureFin=null,
     ?string $lieu=null,
     ?string $photo=null,
     ?int $userId=null,
@@ -210,7 +193,6 @@ class Evenement
         $this->dateFin = $dateFin;
         $this->heureDebut = $heureDebut;
         $this->heureFin = $heureFin;
-        $this->lieu = $lieu;
         $this->lieu = $lieu;
         $this->photo = $photo;
         $this->userId = $userId;
@@ -373,17 +355,6 @@ class Evenement
     {
         return $this->photo;
     }
-
-    /***
-     * @brief Getter du lieu
-     * 
-     * @return string
-     */
-    public function getLieu(): ?string
-    {
-        return $this->lieu;
-    }
-
 
     /***
      * @brief Getter de l'identifiant utilisateur
