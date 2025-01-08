@@ -1,25 +1,28 @@
 <?php
 require_once 'ajouterUnCommentaire.php';
 
+header('Content-Type: application/json'); // Retourner du JSON
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $author = htmlspecialchars($_POST['author']); // Empêche les failles XSS
-    $text = htmlspecialchars($_POST['comment']); // Empêche les failles XSS
+    $data = json_decode(file_get_contents('php://input'), true);
 
-    if (!empty($author) && !empty($text)) {
+    $contenu = $data['contenu'] ?? '';
+    $actuId = $data['actuId'] ?? null; // Peut être null
+    $evtId = $data['evtId'] ?? null; // Peut être null
+    $userId = $_SESSION['userId'] ?? null; // Assure que l'utilisateur est connecté
+
+    if ($userId && !empty($contenu)) {
         $db = new PDO('mysql:host=lakartxela;dbname=ldufau007_pro', 'ldufau007_pro', 'ldufau007_pro');
         $commentManager = new CommentManager($db);
 
-        if ($commentManager->addComment($author, $text)) {
-            $_SESSION['message'] = 'Commentaire ajouté avec succès.';
+        if ($commentManager->addComment($contenu, $actuId, $evtId, $userId)) {
+            echo json_encode(['success' => true, 'message' => 'Commentaire ajouté avec succès.']);
         } else {
-            $_SESSION['error'] = 'Erreur lors de l’ajout du commentaire.';
+            echo json_encode(['success' => false, 'message' => 'Erreur lors de l’ajout du commentaire.']);
         }
     } else {
-        $_SESSION['error'] = 'Veuillez remplir tous les champs.';
+        echo json_encode(['success' => false, 'message' => 'Contenu ou utilisateur invalide.']);
     }
-
-    header('Location: page.php'); // Redirige vers la page des commentaires
     exit;
 }
