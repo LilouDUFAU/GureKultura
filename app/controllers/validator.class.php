@@ -232,4 +232,38 @@ class Validator
     public function hash_password(string $password): string {
         return password_hash($password, PASSWORD_BCRYPT);
     }
+
+    /**
+     * @brief Fonction permettant de vérifier si un email existent dans la base de données
+     * @details Cette fonction permet de vérifier si un email passé en paramettre existent dans la base de données
+     * @param string $champ
+     * @return bool
+     */
+    public function identifiantExist(string $champ): bool {
+        $pdo = Bd::getInstance()->getPdo();
+        $sql = "SELECT * FROM " . PREFIX_TABLE . "user WHERE email = :champ";
+        $pdoStatement = $pdo->prepare($sql);
+        $pdoStatement->execute(array(":champ"=> $champ));
+        $row = $pdoStatement->fetch();
+        if ($row) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * @brief Fonction permettant de vérifier si un mot de passe existe dans la base de données
+     * @details Cette fonction permet de vérifier si un mot de passe passé en paramettre existe dans la base de données
+     * @param string $password
+     * @return bool
+     */
+    public function passwordExist(string $password): bool {
+        $hashedPassword = $this->hash_password($password);
+        if (password_verify($password, $hashedPassword)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

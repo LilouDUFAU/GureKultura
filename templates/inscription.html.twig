@@ -8,7 +8,7 @@
             <h1 class="text-3xl font-bold text-white text-center mb-6">Inscription</h1>
             <form class="space-y-4 gap-2" action="index.php?controlleur=inscription&methode=validerFormulaireInscription" method="post" enctype="multipart/form-data">
                 <div>
-                    <input type="text" placeholder="E-mail" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{10,100}$" title="Veuillez entrer une adresse mail valide, exemple : user@exemple.com"
+                    <input type="email" placeholder="E-mail" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{10,100}$" title="Veuillez entrer une adresse mail valide, exemple : user@exemple.com"
                         class="w-full p-3 rounded-md bg-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-400">
                 </div>
                 <div>

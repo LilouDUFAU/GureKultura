@@ -1,22 +1,18 @@
 <?php
-
-// // s'il n'y a pas de session alors une session se creee
-// if (session_status() == PHP_SESSION_NONE) {
-//     session_start();
-// }
-
-// // 
-// if (isset($_SESSION['utilisateur']) && !empty($_SESSION['utilisateur'])) {
-//     $utilisateur = unserialize($_SESSION['utilisateur']);
-//     $twig->addGlobal('utilisateur', $utilisateur);
-// }
-// else {
-//     $twig->addGlobal('utilisateur', null);
-// }
-
 use Twig\Extra\Intl\IntlExtension;
 
 $loader = new \Twig\Loader\FilesystemLoader('../templates');
 $twig = new \Twig\Environment($loader,[
     'debug' => true,
 ]);
+$twig->addExtension(new \Twig\Extension\DebugExtension());
+
+var_dump($_SESSION);
+$twig->addGlobal('user', $_SESSION['user'] ?? null);
+if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
+    $utilisateur = unserialize($_SESSION['user']);
+    $twig->addGlobal('user', $utilisateur);
+}
+else {
+    $twig->addGlobal('user', null);
+}

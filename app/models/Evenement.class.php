@@ -110,8 +110,6 @@ class Evenement
      */
     private ?string $lieu;
 
-
-
      /**
      * @brief Photo de l'événement
      * @details Cette photo est donnée par l'utilisateur
@@ -176,7 +174,7 @@ class Evenement
     ?DateTime $dateDebut=null, 
     ?DateTime $dateFin=null, 
     ?DateTime $heureDebut=null, 
-    ?DateTime $heureFin=null, 
+    ?DateTime $heureFin=null,
     ?string $lieu=null,
     ?string $photo=null,
     ?int $userId=null,
@@ -358,8 +356,7 @@ class Evenement
         return $this->photo;
     }
 
-
-    /**
+    /***
      * @brief Getter de l'identifiant utilisateur
      * @details Cette fonction permet de récupérer l'identifiant de l'utilisateur
      * @return int
@@ -537,20 +534,20 @@ class Evenement
         $this->heureFin = $heureFin;
     }
 
-
-    /**
+    /***
      * @brief Setter du lieu
-     * @details Cette fonction permet de définir le lieu de l'événement
+     * 
      * @param string $lieu
+     * 
      * @return void
      */
     public function setLieu(?string $lieu): void
     {
         $this->lieu = $lieu;
     }
-    
 
-    /**
+
+    /***
      * @brief Setter de la photo
      * @details Cette fonction permet de définir la photo de l'événement
      * @param string $photo

@@ -5,13 +5,13 @@
     <div class="flex flex-col items-center bg-cover bg-no-repeat bg-[url('../asset/bg_img.svg')] gap-2 p-2 py-12 sm:py-24">
         <div class="flex flex-col gap-3 w-full max-w-xs sm:max-w-md p-6 sm:p-8 bg-[#A23145] bg-opacity-70 rounded-lg drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
             <h1 class="text-2xl sm:text-3xl font-bold text-white text-center mb-4 sm:mb-6">Connexion</h1>
-            <form class="space-y-4">
+            <form class="space-y-4" action="index.php?controlleur=connexion&methode=validerFormulaireConnexion" method="post" enctype="multipart/form-data">
                 <div>
-                    <input type="text" placeholder="Num. téléphone, nom d'utilisateur ou e-mail" name="identifiant"
+                    <input type="email" placeholder="Adresse e-mail" name="email"
                         class="w-full p-3 rounded-md bg-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-400">
                 </div>
                 <div>
-                    <input type="password" placeholder="Mot de passe" name="password"
+                    <input type="password" placeholder="Mot de passe" name="mdp"
                         class="w-full p-3 rounded-md bg-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-400">
                     <a href="index.php?controlleur=mdpOublie&methode=lister" class="text-sm text-white mt-2 block text-center hover:underline">Mot de passe oublié ?</a>
                 </div>
