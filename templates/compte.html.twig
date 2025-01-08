@@ -12,44 +12,51 @@
 
 			{# colonne de gauche #}
 			<div
-				class="lg:grid lg:grid-cols-subgrid lg:row-start-2 lg:col-start-1 lg:col-span-6 lg:w-full lg:h-full lg:gap-2 col-start-1 col-span-12 row-start-2 p-2">
+				class="lg:grid lg:grid-cols-subgrid lg:row-start-2 lg:col-start-1 lg:col-span-6 lg:w-full h-full lg:gap-2 col-start-1 col-span-12 row-start-2 p-2">
 				{# bloc #}
-				<div class="grid grid-cols-subgrid row-start-1 col-span-6 bg-[#A23145] bg-opacity-75 text-white rounded-2xl p-4 w-full gap-1 ">
+				<div class="grid grid-cols-subgrid row-start-1 col-span-6 bg-[#A23145] bg-opacity-75 text-white rounded-2xl p-4 w-full gap-1">
 					<h1 class="row-start-1 col-span-6 text-xl">Informations personnelles</h1>
 
 					<div class="grid grid-cols-subgrid row-start-2 col-span-6 text-white rounded-2xl py-2 w-full items-center">
 						<label class="text-white lg:col-span-2 lg:text-lg col-span-1 text-sm">Nom</label>
-						<label class="text-[#bfbfbf] col-start-2 col-span-2 lg:col-start-3 lg:col-span-2">Rémi Gentil</label>
-						<button arial-label="b_modifierNom" class="lg:col-start-5 lg:col-span-2 flex items-center justify-center max-h-1 text-white bg-[#DFABAB] opacity-64 border-2 border-solid border-[#621220] rounded-2xl p-4 lg:font-bold drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] lg:text-lg col-start-4 col-span-3 text-sm">Modifier</button>
+						<label class="text-[#bfbfbf] col-start-2 col-span-2 lg:col-start-3 lg:col-span-2">{{ user.nom }}</label>
+						<button arial-label="b_modifierNom" class="lg:col-start-5 lg:col-span-2 flex items-center justify-center max-h-1 text-[#A23145] bg-white border-2 border-solid border-[#A23145] rounded-lg p-4 lg:font-normal drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] lg:text-lg col-start-4 col-span-3 text-sm">Modifier</button>
 					</div>
 
 					<div class="grid grid-cols-subgrid row-start-3 col-span-6 text-white rounded-2xl py-2 w-full items-center">
 						<label class="text-white lg:col-span-2 lg:text-lg col-span-1 text-sm ">Email</label>
-						<label class="text-[#bfbfbf] col-start-2 col-span-2 lg:col-start-3 lg:col-span-2">remi.gentil@gmail.com</label>
-						<button arial-label="b_modifierEmail" class="lg:col-start-5 lg:col-span-2 flex items-center justify-center max-h-1 text-white bg-[#DFABAB] opacity-64 border-2 border-solid border-[#621220] rounded-2xl p-4 lg:font-bold drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] lg:text-lg col-start-4 col-span-3 text-sm">Modifier</button>
+						<label class="text-[#bfbfbf] col-start-2 col-span-2 lg:col-start-3 lg:col-span-2">{{ user.email }}</label>
+						<button arial-label="b_modifierEmail" class="lg:col-start-5 lg:col-span-2 flex items-center justify-center max-h-1 text-[#A23145] bg-white border-2 border-solid border-[#A23145] rounded-lg p-4 lg:font-normal drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] lg:text-lg col-start-4 col-span-3 text-sm">Modifier</button>
 					</div>
 
 					<div class="grid grid-cols-subgrid row-start-4 col-span-6 text-white rounded-2xl py-2 w-full items-center">
 						<label class="text-white lg:col-span-2 lg:text-lg col-span-1 text-sm ">Téléphone</label>
-						<label class="text-[#bfbfbf] col-start-2 col-span-2 lg:col-start-3 lg:col-span-2">08.51.62.27.46</label>
-						<button arial-label="b_modifierTel" class="lg:col-start-5 lg:col-span-2 flex items-center justify-center max-h-1 text-white bg-[#DFABAB] opacity-64 border-2 border-solid border-[#621220] rounded-2xl p-4 lg:font-bold drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] lg:text-lg col-start-4 col-span-3 text-sm">Modifier</button>
+						<label class="text-[#bfbfbf] col-start-2 col-span-2 lg:col-start-3 lg:col-span-2">{{ user.telephone}}</label>
+						<button arial-label="b_modifierTel" class="lg:col-start-5 lg:col-span-2 flex items-center justify-center max-h-1 text-[#A23145] bg-white border-2 border-solid border-[#A23145] rounded-lg p-4 lg:font-normal drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] lg:text-lg col-start-4 col-span-3 text-sm">Modifier</button>
 					</div>
 
 					<div class="grid grid-cols-subgrid row-start-5 col-span-6 text-white rounded-2xl py-2 w-full items-center">
 						<label class="text-white lg:col-span-2 lg:text-lg col-span-1 text-sm ">Adresse</label>
-						<label class="text-[#bfbfbf] col-start-2 col-span-2 lg:col-start-3 lg:col-span-2">non renseigné</label>
-						<button arial-label="b_modifierAddresse" class="lg:col-start-5 lg:col-span-2 flex items-center justify-center max-h-1 text-white bg-[#DFABAB] opacity-64 border-2 border-solid border-[#621220] rounded-2xl p-4 lg:font-bold drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] lg:text-lg col-start-4 col-span-3 text-sm">Modifier</button>
+						<label class="text-[#bfbfbf] col-start-2 col-span-2 lg:col-start-3 lg:col-span-2">{{ user.adresse }}</label>
+						<button arial-label="b_modifierAddresse" class="lg:col-start-5 lg:col-span-2 flex items-center justify-center max-h-1 text-[#A23145] bg-white border-2 border-solid border-[#A23145] rounded-lg p-4 lg:font-normal drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] lg:text-lg col-start-4 col-span-3 text-sm">Modifier</button>
 					</div>
 
 					<div class="grid grid-cols-subgrid row-start-6 col-span-6 text-white rounded-2xl py-2 w-full items-center">
 						<label class="text-white lg:col-span-2 lg:text-lg col-span-1 text-sm ">Photo de profil</label>
-						<img src="../asset/phpEx.png" class="lg:col-start-3 lg:col-span-1 col-start-2 col-span-2 h-auto" /img>
-						<button arial-label="b_modifierPfp" class="lg:col-start-5 lg:col-span-2 flex items-center justify-center max-h-1 text-white bg-[#DFABAB] opacity-64 border-2 border-solid border-[#621220] rounded-2xl p-4 lg:font-bold drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] lg:text-lg col-start-4 col-span-3 text-sm">Modifier</button>
+						<img src="{{ user.photo }}" class="lg:col-start-3 lg:col-span-1 col-start-2 col-span-2 h-auto" /img>
+						<button arial-label="b_modifierPfp" class="lg:col-start-5 lg:col-span-2 flex items-center justify-center max-h-1 text-[#A23145] bg-white border-2 border-solid border-[#A23145] rounded-lg p-4 lg:font-normal drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] lg:text-lg col-start-4 col-span-3 text-sm">Modifier</button>
 					</div>
 
-					<div class="grid grid-cols-subgrid row-start-7 col-span-6 text-white rounded-2xl py-2 w-full items-center">
-						<label class="text-white col-span-2 lg:text-lg text-sm">Supprimer mon compte</label>
-						<button arial-label="b_SupprCompte" class="lg:col-start-5 lg:col-span-2 flex items-center justify-center max-h-1 text-white bg-[#DFABAB] opacity-64 border-2 border-solid border-[#621220] rounded-2xl p-4 lg:font-bold drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] lg:text-lg col-start-4 col-span-3 text-sm">Supprimer</button>
+					
+				</div>
+				<div class="grid grid-cols-subgrid row-start-2 col-span-6 bg-[#A23145] bg-opacity-75 text-white rounded-2xl p-4 w-full h-fit ">
+					<div class="grid grid-cols-subgrid row-start-1 col-span-6 text-white rounded-2xl py-2 w-full items-center">
+					<label class="text-white row-start-1 col-start-1 col-span-3 lg:text-lg text-sm">Supprimer mon compte</label>
+					<button arial-label="b_SupprCompte" class="lg:col-start-5 row-start-1 lg:col-span-2 flex items-center justify-center max-h-1 text-[#A23145] bg-white border-2 border-solid border-[#A23145] rounded-lg p-4 lg:font-normal drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] lg:text-lg col-start-4 col-span-3 text-sm">Supprimer</button>
+					</div>
+					<div class="grid grid-cols-subgrid row-start-2 col-span-6 text-white rounded-2xl py-2 w-full items-center">
+						<label class="text-white col-start-1 col-span-3 row-start-1 lg:text-lg text-sm ">Souhaitez-vous vous déconnectez ?</label>
+						<button arial-label="b_SupprCompte" class="lg:col-start-5 lg:col-span-2 row-start-1 flex items-center justify-center max-h-1 text-[#A23145] bg-white border-2 border-solid border-[#A23145] rounded-lg p-4 lg:font-normal drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] lg:text-lg col-start-1 col-span-1 text-sm">Me déconnecter </button>
 					</div>
 				</div>
 			</div>
@@ -75,7 +82,7 @@
 
 						<div class="grid grid-cols-subgrid row-start-4 col-span-6  text-white rounded-2xl w-full py-2">
 							<a href="index.php?controlleur=mdpOublie&methode=lister" class="text-white col-span-3 lg:text-lg text-sm">Mot de passe oublié ?</a>
-							<button arial-label="b_MdpOublie" class="col-start-6 flex items-center justify-center max-h-1 text-[#A23145] bg-[#ffffff] rounded-lg lg:p-4 p-3 font-bold drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">Valider</button>
+							<button arial-label="b_MdpOublie" class="col-start-6 flex items-center justify-center max-h-1 text-[#A23145] bg-[#ffffff] rounded-lg lg:p-4 p-3 lg:font-normal lg:text-lg drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">Valider</button>
 						</div>
 					</form>
 				</div>

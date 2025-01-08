@@ -22,7 +22,6 @@ class ControllerIndex extends Controller
         $managerActualite = new ActualiteDao($this->getPdo());
         $actualite = $managerActualite->findAll();
         $managerEvenement = new EvenementDao($this->getPdo());
-        $events = $managerEvenement->findAll();
         $events = $managerEvenement->findAllWithCategorie();
 
         // Rendre le template Twig
@@ -31,6 +30,7 @@ class ControllerIndex extends Controller
             // 'description' => 'un site de gestion evenementielle au Pays Basque du Groupe 7'
             'events' => $events,
             'actualites' => $actualite,
+
 
         ]);
     }

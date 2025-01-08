@@ -5,7 +5,7 @@
 		<meta name="description" content="{% if description is defined %} {{description}} {% else %} {{constant('WEBSITE_DESCRIPTION')}} {% endif %}">
 		<title>{{constant('WEBSITE_TITLE')}} {{ title }}</title>
 		<script src="../js/aside.js"></script>
-		<link rel="icon" type="image/x-icon" href="../asset/logo.ico">
+		<link rel="icon" type="image/x-icon" href="../asset/PetitLogoGkSansFondRouge.ico">
 		<link href="../css/output.css" rel="stylesheet">
 		<link href="../css/scrollbar.css" rel="stylesheet">
 	</head>
@@ -45,9 +45,19 @@
 						</li>
 					</ul>
 				</nav>
-
 				<!-- compte btn -->
-				<a href="index.php?controlleur=connexion&methode=lister" class="hidden md:flex items-center justify-center px-7 border-2 border-[#ffffff] p-2 rounded-lg">Compte</a>
+				{% if user != null %} 
+					<div class="flex items-center space-x-4">
+						<span class="text-white"></span>
+						<a href="index.php?controlleur=compte&methode=lister" class="flex items-center justify-center px-7 border-2 border-[#ffffff] p-2 rounded-lg">
+							Compte
+						</a>
+					</div>
+				{% else %}
+					<a href="index.php?controlleur=connexion&methode=lister" class="flex items-center justify-center px-7 border-2 border-[#ffffff] p-2 rounded-lg">
+						Connexion
+					</a>
+				{% endif %}
 			</header>
 
 			<!-- Content -->

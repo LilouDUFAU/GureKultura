@@ -1,0 +1,30 @@
+POUR LA PAGE INDEX : 
+
+- pour l'affichage de l'heure sur le site le probleme est que c'est l'heure actuelle ainsi que le jour actuel qui sont afficher donc modifier la recuperation de l'heure de debut etc 
+
+- pour l'affichage de la categorie trouver le probleme 
+
+- pour l'affichage du lieu trouver le probleme 
+
+
+
+POUR LA PAGE PROPEV :
+
+
+
+POUR LA PAGE COMPTE :
+
+
+POUR LES COMMENTAIRES DES MODELS :
+- classe evenement fait + dao evenement fait 
+- classe actu pas fait 
+- dao actu pas fait
+- classe bd pas fait
+- classe ou dao idk userModel pas fait (voir ce que c'est)
+
+
+POUR LES COMMENTAIRES DES CONTROLLERS :
+- tout commenter 
+
+
+COMMENTER TOUT LE CODE RESTANT (#toutlereste)

@@ -1,5 +1,62 @@
 <?php
 
+/**
+ * @brief Methode qui permet de verifier si une valeur est une image.
+ * 
+ * @param string $valeur la valeur a verifier.
+ * 
+ * @return bool true si la valeur est une image, false sinon.
+ */
+function is_image($valeur): bool
+{
+    $extensions = array('.png', '.jpg', '.jpeg', '.svg');
+    $extension = strrchr($valeur, '.');
+    return in_array($extension, $extensions);
+}
+
+/**
+ * @brief Methode qui permet de verifier si une valeur est une date.
+ * 
+ * @param string $valeur la valeur a verifier.
+ * 
+ * @return bool true si la valeur est une date, false sinon.
+ */
+function is_date($valeur): bool
+{
+    $date = date_create_from_format('Y-m-d', $valeur);
+    return $date !== false;
+}
+
+
+/**
+ * @brief Methode qui permet de verifier si une valeur est une heure.
+ * 
+ * @param string $valeur la valeur a verifier.
+ * 
+ * @return bool true si la valeur est une heure, false sinon.
+ */
+function is_time($valeur): bool
+{
+    $time = date_create_from_format('H:i', $valeur);
+    return $time !== false;
+}
+
+
+/**
+ * @brief Methode qui permet de verifier si une valeur est un fichier.
+ * 
+ * @param string $valeur la valeur a verifier.
+ * 
+ * @return bool true si la valeur est un fichier, false sinon.
+ */
+// function is_file($valeur): bool
+// {
+//     return file_exists($valeur);
+// }
+
+
+
+
 class Validator
 {
     private array $regleValidation; // Les règles de validation à vérifier 
@@ -14,62 +71,6 @@ class Validator
     public function __construct(array $regleValidation)
     {
         $this->regleValidation = $regleValidation;
-    }
-
-
-    /***
-     * @brief Methode qui permet de verifier si une valeur est une image.
-     * 
-     * @param string $valeur la valeur a verifier.
-     * 
-     * @return bool true si la valeur est une image, false sinon.
-     */
-    public function is_image($valeur): bool
-    {
-        $extensions = array('.png', '.jpg', '.jpeg', '.svg');
-        $extension = strrchr($valeur, '.');
-        return in_array($extension, $extensions);
-    }
-
-
-    /***
-     * @brief Methode qui permet de verifier si une valeur est une date.
-     * 
-     * @param string $valeur la valeur a verifier.
-     * 
-     * @return bool true si la valeur est une date, false sinon.
-     */
-    public function is_date($valeur): bool
-    {
-        $date = date_create_from_format('Y-m-d', $valeur);
-        return $date !== false;
-    }
-
-
-    /***
-     * @brief Methode qui permet de verifier si une valeur est une heure.
-     * 
-     * @param string $valeur la valeur a verifier.
-     * 
-     * @return bool true si la valeur est une heure, false sinon.
-     */
-    public function is_time($valeur): bool
-    {
-        $time = date_create_from_format('H:i', $valeur);
-        return $time !== false;
-    }
-
-
-    /***
-     * @brief Methode qui permet de verifier si une valeur est un fichier.
-     * 
-     * @param string $valeur la valeur a verifier.
-     * 
-     * @return bool true si la valeur est un fichier, false sinon.
-     */
-    public function is_file($valeur): bool
-    {
-        return file_exists($valeur);
     }
 
 
@@ -132,19 +133,20 @@ class Validator
                     } elseif ($parametre === 'int' && !is_int($valeur)) {
                         $this->messagesErreurs[$champ][] = "Le champ $champ doit être un entier.";
                         $estValide = false;
-                    } elseif ($parametre === 'file' && !$this->is_file($valeur)) {
-                        $this->messagesErreurs[$champ][] = "Le champ $champ doit être un fichier.";
-                        $estValide = false;
-                    } elseif ($parametre === 'image' && !$this->is_image($valeur)) {
+                    }elseif ($parametre === 'image' && !is_image($valeur)) {
                         $this->messagesErreurs[$champ][] = "Le champ $champ doit être une image.";
                         $estValide = false;
-                    } elseif ($parametre === 'date' && !$this->is_date($valeur)) {
+                    } elseif ($parametre === 'date' && !is_date($valeur)) {
                         $this->messagesErreurs[$champ][] = "Le champ $champ doit être une date valide (Y-m-d).";
                         $estValide = false;
-                    } elseif ($parametre === 'time' && !$this->is_time($valeur)) {
+                    } elseif ($parametre === 'time' && !is_time($valeur)) {
                         $this->messagesErreurs[$champ][] = "Le champ $champ doit être une heure valide (H:i).";
                         $estValide = false;
                     }
+                    //  elseif ($parametre === 'file' && !$this->is_file($valeur)) {
+                    //     $this->messagesErreurs[$champ][] = "Le champ $champ doit être un fichier.";
+                    //     $estValide = false;
+                    // }
                     break;
                 case 'longueurMin':
                     if (strlen($valeur) < $parametre) {
@@ -184,5 +186,84 @@ class Validator
     public function getMessageErreurs(): array
     {
         return $this->messagesErreurs;
+    }
+
+
+    ////////Partie inscription/////////
+    /**
+     * @brief Fonction permettant de vérifier si un enregistrement est disponible dans la table user
+     * @details Cette fonction permet de vérifier si un enregistrement passé en paramettre est déjà enregistré en base de données dans la table user
+     * @param string $champ
+     * @return bool
+     */
+    public function is_available(?string $champ): bool {
+        $pdo = Bd::getInstance()->getPdo();
+        $sql = "SELECT * FROM " . PREFIX_TABLE . "user WHERE pseudo = :champ OR email = :champ";
+        $pdoStatement = $pdo->prepare($sql);
+        $pdoStatement->execute(array(':champ' => $champ));
+        $pdoStatement->setFetchMode(PDO::FETCH_ASSOC);
+        $UserTab = $pdoStatement->fetch();
+        if ($UserTab) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    /**
+     * @brief Fonction permettant de vérifier la robustesse d'un mot de passe
+     * @details Cette fonction permet de vérifier si un mot de passe passé en paramettre est assez robuste
+     * @param string $password
+     * @return bool
+     */
+    public function is_strong(string $password): bool {
+        $regex = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/';
+
+        // La fonction preg_match retourne 1 si une correspondance est trouvée.
+        return preg_match($regex, $password) === 1;
+    }
+
+    /**
+     * @brief Fonction permettant de hasher un mot de passe
+     * @details Cette fonction permet de hasher un mot de passe passé en paramettre
+     * @param string $password
+     * @return string
+     */
+    public function hash_password(string $password): string {
+        return password_hash($password, PASSWORD_BCRYPT);
+    }
+
+    /**
+     * @brief Fonction permettant de vérifier si un email existent dans la base de données
+     * @details Cette fonction permet de vérifier si un email passé en paramettre existent dans la base de données
+     * @param string $champ
+     * @return bool
+     */
+    public function identifiantExist(string $champ): bool {
+        $pdo = Bd::getInstance()->getPdo();
+        $sql = "SELECT * FROM " . PREFIX_TABLE . "user WHERE email = :champ";
+        $pdoStatement = $pdo->prepare($sql);
+        $pdoStatement->execute(array(":champ"=> $champ));
+        $row = $pdoStatement->fetch();
+        if ($row) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * @brief Fonction permettant de vérifier si un mot de passe existe dans la base de données
+     * @details Cette fonction permet de vérifier si un mot de passe passé en paramettre existe dans la base de données
+     * @param string $password
+     * @return bool
+     */
+    public function passwordExist(string $password): bool {
+        $hashedPassword = $this->hash_password($password);
+        if (password_verify($password, $hashedPassword)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
