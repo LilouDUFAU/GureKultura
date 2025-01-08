@@ -1,134 +1,204 @@
+
 {% extends "base.html.twig" %}
 
 {% block content %}
-<!-- Contenu spécifique de chaque page -->
-<div class="pt-2">
-    <div class="gap-2 p-2 grid grid-cols-12 items-center bg-[#A23145] rounded-lg">
-        {# titre de l'article #}
-        <h1 class="col-span-12 text-white font-bold text-2xl lg:text-5xl text-left mb-4 break-words col-start-1 row-start-1 px-4">{{ evtActus.titre }}</h1>
-        {# resume de l'article #}
-        {% if type == "Actualites" %}
-            <div class="col-span-12 text-white font-bold text-sm lg:text-lg text-left mb-4 break-words col-start-1 row-start-2 px-4">
-            {{ evtActus.resume }}
-            </div>
-        {% endif %}
-        {# contenu #}
 
-        {# Colonne de gauche #}
-        <div class="grid grid-cols-6 row-start-3 col-start-1 col-span-12 xl:col-span-8 px-4">
-            {# image de l'article #}
-            <img src="../{{ evtActus.img }}" alt="Image de l'événement" class="col-start-2 xl:col-start-2 col-span-4 row-start-1 rounded-lg mb-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
-            {# contenu de l'article #}
-            <div class="col-start-1 row-start-2 col-span-6 text-white font-medium text-xs lg:text-base text-left break-words"> 
-            
-                {% if type == "Evenements" %}
-                    {{ evtActus.description }}
-                {% endif %}
-                {% if type == "Actualites" %}
-                    {{ evtActus.contenu }}
-                {% endif %}
+{% if type == 'Evenements' %} 
+    <!-- Contenu spécifique de chaque page -->
+    <div class="h-full">
+        <div class="gap-2 p-2 grid grid-cols-12 items-center">
+            <h1 class="col-span-12 text-center font-bold text-4xl p-2">{{ evtActus.titre }}</h1>
+
+            <!-- colonne de gauche -->
+            <div class="grid grid-cols-12 gap-2 w-full col-span-12 lg:col-span-8">
+            <div id="carousel1" class="relative overflow-hidden col-span-12">
+                <div id="carousel" class="carousel flex transition-transform duration-500 ease-out p-2">
+                    <!-- Diapositives -->
+                    <div class="slide flex-shrink-0">
+                        <img src="../asset/evenement/{{ evtActus.photo }}" alt="Image de l'événement"
+                            class="w-full h-auto max-w-full max-h-full object-contain mx-auto border-2 border-black">
+                    </div>
+                </div>
+                <!-- Boutons de navigation -->
+                <button id="prev1" 
+                    class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-200 text-white p-2 rounded-full z-10">
+                    &lt;
+                </button>
+                <button id="next1" 
+                    class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-200 text-white p-2 rounded-full z-10">
+                    &gt;
+                </button>
+
+            </div>
+
+                
+                <!-- Bloc 2 (Informations sur l'événement) -->
+                <div class="grid grid-cols-12 gap-1 bg-white text-black p-4 w-full border-2 border-black col-span-12">
+                    <label class="col-span-12 text-black text-center">Du {{ evtActus.dateDebut | date("d/m/Y", "Europe/Paris") }} au {{ evtActus.dateFin | date("d/m/Y", "Europe/Paris") }} </label>
+                    <label class="col-span-12 text-center">lieu : {{ evtActus.lieu }}</label>
+                </div>
+            </div>
+
+            <!-- colonne de droite -->
+            <div class="grid grid-cols-12 gap-2 col-span-12 lg:col-span-4">
+                <div class="bg-[#A23145] text-white p-4 col-span-12">
+                    <label class="text-white p-2">{{ evtActus.description }}</label>
+                </div>
             </div>
         </div>
-        {# section commentaires #}
-        <div class="gap-2 grid grid-cols-12 items-center bg-[#ffffff] border-2 border-solid border-[#621220] rounded-lg p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] sm:col-start-1 xl:col-start-10 col-span-12 xl:col-span-3 sm:row-start-4 xl:row-start-3 sm:h-full xl:h-full">
-            {# texte commentaire #}
-            <div class="gap-2 grid grid-cols-12 items-center bg-[#A23145] rounded-xl p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] text-center justify-center mb-4 col-span-12 text-white text-lg lg:text-3xl font-medium">Commentaire</div>
-            {# un exemple de commentaire #}
-            <div class="gap-2 grid grid-cols-12 items-start p-2 mb-4 col-span-12">
-                {# pfp #}
-                <img src="../asset/pfp.svg" alt="pfp" class="col-start-1 col-span-2 row-span-2 row-start-1 w-full rounded-lg drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
-                {# nom #}
-                <div class="text-black text-base col-start-3 col-span-5 row-start-1 truncate">FABIEN</div>
-                {# temps #}
-                <div class="text-black text-xs col-start-8 col-span-3 row-start-1">il y a 2 heures</div>
-                {# ... #}
-                <img src="../asset/pointpointpoint.svg" alt="..." class="col-start-11 col-span-1 row-span-1 row-start-1">
-                {# texte #}
-                <div class="text-black text-base col-start-3 col-span-8 row-start-2 break-words">Pas de souci à la fin c'est toujours Bayonne qui gagne.</div>
-                {# like #}
-                <button type="button" id="like-button"  class="col-start-11 col-span-1 row-span-1 row-start-2" onclick="toggleLike()">
-                    <img id="like-icon" src="../asset/pouce_en_l_air_grand.svg" alt="Like"/>
-                </button>
-                {# compteur de nombre de likes #}
-                <img src="../asset/cercle_compteur_likes.svg" alt="bouton like" class="col-start-12 col-span-1 row-span-1 row-start-2">
+
+        <!-- Section Commentaires -->
+        <div class="mt-8 p-4 bg-[#f4f4f4] rounded-lg shadow-md">
+            <h2 class="text-2xl font-bold text-[#A23145] mb-4">Commentaires</h2>
+
+            <!-- Exemples de commentaires -->
+            <div class="mb-6">
+                <p class="font-semibold text-[#A23145]">John Doe :</p>
+                <p class="text-gray-700">"Un super match, la victoire de Bayonne était bien méritée. Hâte de voir la prochaine rencontre !"</p>
             </div>
-            {# un exemple de commentaire #}
-            <div class="gap-2 grid grid-cols-12 items-start p-2 mb-4 col-span-12">
-                {# pfp #}
-                <img src="../asset/pfp.svg" alt="pfp" class="col-start-1 col-span-2 row-span-2 row-start-1 w-full rounded-lg drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
-                {# nom #}
-                <div class="text-black text-base col-start-3 col-span-5 row-start-1 truncate">THOMAS</div>
-                {# temps #}
-                <div class="text-black text-xs col-start-8 col-span-3 row-start-1">il y a 10 heures</div>
-                {# ... #}
-                <img src="../asset/pointpointpoint.svg" alt="..." class="col-start-11 col-span-1 row-span-1 row-start-1">
-                {# texte #}
-                <img src="../asset/BO_logo.jpg" alt="photo"  class="text-black text-base col-start-3 col-span-8 row-start-2 break-words">
-                {# like #}
-                <button type="button" id="like-button"  class="col-start-11 col-span-1 row-span-1 row-start-2" onclick="toggleLike()">
-                    <img id="like-icon" src="../asset/pouce_en_l_air_grand.svg" alt="Like"/>
-                </button>
-                {# compteur de nombre de likes #}
-                <img src="../asset/cercle_compteur_likes.svg" alt="bouton like" class="col-start-12 col-span-1 row-span-1 row-start-2">
+            <div class="mb-6">
+                <p class="font-semibold text-[#A23145]">Marie Dupont :</p>
+                <p class="text-gray-700">"Clermont a bien joué, mais quelques erreurs ont coûté cher. Bravo à Bayonne pour leur performance."</p>
             </div>
-            {# barre d'interaction #}
-            <form action="../php/formulaires/formCommentaire.php" method="post" class="gap-2 grid grid-cols-12 items-start col-span-12" enctype="multipart/form-data" novalidate>
-                {# barre de texte #}
-                <div class="col-start-1 col-span-10 row-start-1 row-span-2 items-center rounded-lg border-2 border-solid border-black bg-[#ffffff]">
-                    <textarea placeholder="Ajouter un commentaire" name="commentaire" maxlength="500" class="placeholder-gray-500 p-4 text-[#000000] w-full resize-none overflow-auto" rows="1"></textarea>
-                </div>
-                {# Ajouter une image #}
-                <input type="file" id="image" name="image" accept=".jpg,.jpeg,.png,.svg,.webp" class="hidden" />
-                <label for="image" alt="Image" class="cursor-pointer col-start-11 col-span-1 row-start-1">
-                <img src="../asset/image_jointe.svg" alt="Choisir une image" class="w-24 h-auto" />
-                </label>
-                {# Ajouter un like #}
-                <img src="../asset/pouce_en_l_air_grand.svg" alt="Like" name="like" class="col-start-11 col-span-1 row-start-2">
 
-                <button type="button" id="like-button" class="col-start-11 col-span-1 row-start-2" onclick="toggleLike()">
-                    <img id="like-icon" src="../asset/pouce_en_l_air_grand.svg" alt="Like"/>
-                </button>
-
-                {# Envoyer le commentaire #}
-                <input type="submit" id="submit" class="hidden" />
-                <label for="submit" class="cursor-pointer col-start-12 col-span-1 row-start-2">
-                    <img src="../asset/envoyer_message.svg" alt="Publier" class="w-24 h-auto" />
-                </label>
-
-
-                {# <input type="image" id="image" alt="Login" src="/media/examples/login-button.png" /> #}
-            </form>
-
-            {# CETTE FONCTION SERA A MODIFIER GRANDEMENT LORSQUE LES LIKES SERONT IMPLEMENTES CORRECTEMENT DANS LA BASE DE DONNES #}
-            {#
-            <script>
-                // Fonction pour basculer l'état du like
-                function toggleLike() {
-                    const likeIcon = document.getElementById('like-icon');
-                    const isLiked = localStorage.getItem('liked') === 'true'; // Vérifie si le like a déjà été donné
-
-                    if (isLiked) {
-                        // Si le like a déjà été donné, on le retire
-                        localStorage.setItem('liked', 'false');
-                        likeIcon.src = '../asset/pouce_en_l_air_grand.svg'; // Remet l'icône par défaut
-                    } else {
-                        // Si le like n'a pas encore été donné, on l'ajoute
-                        localStorage.setItem('liked', 'true');
-                        likeIcon.src = '../asset/pouce_en_l_air_grand_active.svg'; // Change l'icône pour montrer que c'est aimé
-                    }
-                }
-
-                // Vérifier si l'utilisateur a déjà liké au chargement de la page
-                document.addEventListener('DOMContentLoaded', function() {
-                    const likeIcon = document.getElementById('like-icon');
-                    if (localStorage.getItem('liked') === 'true') {
-                        likeIcon.src = '../asset/pouce_en_l_air_grand_active.svg'; // L'icône de "like" actif
-                    }
-                });
-            </script>
-            #}
-
+            <!-- Formulaire pour ajouter un commentaire -->
+            <div class="mt-6">
+                <label for="comment" class="block text-[#A23145] font-semibold mb-2">Ajouter un commentaire :</label>
+                <textarea id="comment" name="comment" rows="3" class="w-full p-3 border-2 border-[#A23145] rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#A23145]"></textarea>
+                <button type="submit" class="mt-4 px-6 py-2 bg-[#A23145] text-white font-semibold rounded-lg hover:bg-[#8a1e36]">Envoyer</button>
+            </div>
         </div>
     </div>
-</div>
+
+{% endif %}
+
+
+{% if type == 'Actualites' %}
+    <!-- Contenu spécifique de chaque page -->
+    <div class="pt-2">
+        <div class="gap-2 p-2 grid grid-cols-12 items-center bg-[#A23145] rounded-lg">
+            {# titre de l'article #}
+            <h1 class="col-span-12 text-white font-bold text-2xl lg:text-5xl text-left mb-4 break-words col-start-1 row-start-1 px-4">{{ evtActus.titre }}</h1>
+            {# resume de l'article #}
+                <div class="col-span-12 text-white font-bold text-sm lg:text-lg text-left mb-4 break-words col-start-1 row-start-2 px-4">
+                {{ evtActus.resume }}
+                </div>
+            {# contenu #}
+
+            {# Colonne de gauche #}
+            <div class="grid grid-cols-6 row-start-3 col-start-1 col-span-12 xl:col-span-8 px-4">
+                {# image de l'article #}
+                        <img src="../asset/actualite/{{ evtActus.img }}" alt="Image de l'événement" class="col-start-2 xl:col-start-2 col-span-4 row-start-1 rounded-lg mb-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
+                {# contenu de l'article #}
+                <div class="col-start-1 row-start-2 col-span-6 text-white font-medium text-xs lg:text-base text-left break-words"> 
+                        {{ evtActus.contenu }}
+                </div>
+            </div>
+            {# section commentaires #}
+            <div class="gap-2 grid grid-cols-12 items-center bg-[#ffffff] border-2 border-solid border-[#621220] rounded-lg p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] sm:col-start-1 xl:col-start-10 col-span-12 xl:col-span-3 sm:row-start-4 xl:row-start-3 sm:h-full xl:h-full">
+                {# texte commentaire #}
+                <div class="gap-2 grid grid-cols-12 items-center bg-[#A23145] rounded-xl p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] text-center justify-center mb-4 col-span-12 text-white text-lg lg:text-3xl font-medium">Commentaire</div>
+                {# un exemple de commentaire #}
+                <div class="gap-2 grid grid-cols-12 items-start p-2 mb-4 col-span-12">
+                    {# pfp #}
+                    <img src="../asset/pfp.svg" alt="pfp" class="col-start-1 col-span-2 row-span-2 row-start-1 w-full rounded-lg drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
+                    {# nom #}
+                    <div class="text-black text-base col-start-3 col-span-5 row-start-1 truncate">FABIEN</div>
+                    {# temps #}
+                    <div class="text-black text-xs col-start-8 col-span-3 row-start-1">il y a 2 heures</div>
+                    {# ... #}
+                    <img src="../asset/pointpointpoint.svg" alt="..." class="col-start-11 col-span-1 row-span-1 row-start-1">
+                    {# texte #}
+                    <div class="text-black text-base col-start-3 col-span-8 row-start-2 break-words">Pas de souci à la fin c'est toujours Bayonne qui gagne.</div>
+                    {# like #}
+                    <button type="button" id="like-button"  class="col-start-11 col-span-1 row-span-1 row-start-2" onclick="toggleLike()">
+                        <img id="like-icon" src="../asset/pouce_en_l_air_grand.svg" alt="Like"/>
+                    </button>
+                    {# compteur de nombre de likes #}
+                    <img src="../asset/cercle_compteur_likes.svg" alt="bouton like" class="col-start-12 col-span-1 row-span-1 row-start-2">
+                </div>
+                {# un exemple de commentaire #}
+                <div class="gap-2 grid grid-cols-12 items-start p-2 mb-4 col-span-12">
+                    {# pfp #}
+                    <img src="../asset/pfp.svg" alt="pfp" class="col-start-1 col-span-2 row-span-2 row-start-1 w-full rounded-lg drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
+                    {# nom #}
+                    <div class="text-black text-base col-start-3 col-span-5 row-start-1 truncate">THOMAS</div>
+                    {# temps #}
+                    <div class="text-black text-xs col-start-8 col-span-3 row-start-1">il y a 10 heures</div>
+                    {# ... #}
+                    <img src="../asset/pointpointpoint.svg" alt="..." class="col-start-11 col-span-1 row-span-1 row-start-1">
+                    {# texte #}
+                    <img src="../asset/BO_logo.jpg" alt="photo"  class="text-black text-base col-start-3 col-span-8 row-start-2 break-words">
+                    {# like #}
+                    <button type="button" id="like-button"  class="col-start-11 col-span-1 row-span-1 row-start-2" onclick="toggleLike()">
+                        <img id="like-icon" src="../asset/pouce_en_l_air_grand.svg" alt="Like"/>
+                    </button>
+                    {# compteur de nombre de likes #}
+                    <img src="../asset/cercle_compteur_likes.svg" alt="bouton like" class="col-start-12 col-span-1 row-span-1 row-start-2">
+                </div>
+                {# barre d'interaction #}
+                <form action="../php/formulaires/formCommentaire.php" method="post" class="gap-2 grid grid-cols-12 items-start col-span-12" enctype="multipart/form-data" novalidate>
+                    {# barre de texte #}
+                    <div class="col-start-1 col-span-10 row-start-1 row-span-2 items-center rounded-lg border-2 border-solid border-black bg-[#ffffff]">
+                        <textarea placeholder="Ajouter un commentaire" name="commentaire" maxlength="500" class="placeholder-gray-500 p-4 text-[#000000] w-full resize-none overflow-auto" rows="1"></textarea>
+                    </div>
+                    {# Ajouter une image #}
+                    <input type="file" id="image" name="image" accept=".jpg,.jpeg,.png,.svg,.webp" class="hidden" />
+                    <label for="image" alt="Image" class="cursor-pointer col-start-11 col-span-1 row-start-1">
+                    <img src="../asset/image_jointe.svg" alt="Choisir une image" class="w-24 h-auto" />
+                    </label>
+                    {# Ajouter un like #}
+                    <img src="../asset/pouce_en_l_air_grand.svg" alt="Like" name="like" class="col-start-11 col-span-1 row-start-2">
+
+                    <button type="button" id="like-button" class="col-start-11 col-span-1 row-start-2" onclick="toggleLike()">
+                        <img id="like-icon" src="../asset/pouce_en_l_air_grand.svg" alt="Like"/>
+                    </button>
+
+                    {# Envoyer le commentaire #}
+                    <input type="submit" id="submit" class="hidden" />
+                    <label for="submit" class="cursor-pointer col-start-12 col-span-1 row-start-2">
+                        <img src="../asset/envoyer_message.svg" alt="Publier" class="w-24 h-auto" />
+                    </label>
+
+
+                    {# <input type="image" id="image" alt="Login" src="/media/examples/login-button.png" /> #}
+                </form>
+
+                {# CETTE FONCTION SERA A MODIFIER GRANDEMENT LORSQUE LES LIKES SERONT IMPLEMENTES CORRECTEMENT DANS LA BASE DE DONNES #}
+                {#
+                <script>
+                    // Fonction pour basculer l'état du like
+                    function toggleLike() {
+                        const likeIcon = document.getElementById('like-icon');
+                        const isLiked = localStorage.getItem('liked') === 'true'; // Vérifie si le like a déjà été donné
+
+                        if (isLiked) {
+                            // Si le like a déjà été donné, on le retire
+                            localStorage.setItem('liked', 'false');
+                            likeIcon.src = '../asset/pouce_en_l_air_grand.svg'; // Remet l'icône par défaut
+                        } else {
+                            // Si le like n'a pas encore été donné, on l'ajoute
+                            localStorage.setItem('liked', 'true');
+                            likeIcon.src = '../asset/pouce_en_l_air_grand_active.svg'; // Change l'icône pour montrer que c'est aimé
+                        }
+                    }
+
+                    // Vérifier si l'utilisateur a déjà liké au chargement de la page
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const likeIcon = document.getElementById('like-icon');
+                        if (localStorage.getItem('liked') === 'true') {
+                            likeIcon.src = '../asset/pouce_en_l_air_grand_active.svg'; // L'icône de "like" actif
+                        }
+                    });
+                </script>
+                #}
+
+            </div>
+        </div>
+    </div>
+
+{% endif %}
+{% endblock %}
+{% block script %}
+<script src="../js/caroussel.js"></script>
 {% endblock %}  
