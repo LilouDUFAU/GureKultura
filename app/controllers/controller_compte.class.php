@@ -204,7 +204,7 @@ class ControllerCompte extends Controller
             $pdo = Bd::getInstance()->getPdo();
             $managerUser = new UserDao($pdo);
 
-            $user = unserialize($_SESSION['user']);
+            $user = unserialize($_SESSION['user']); 
             $userId = $user->getUserId();
 
             // Insérez l'événement dans la base de données
