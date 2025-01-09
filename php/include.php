@@ -21,6 +21,7 @@ require_once '../app/controllers/controller_codeVerif.class.php';
 require_once '../app/controllers/controller_mdpOublie.class.php';
 require_once '../app/controllers/controller_propEv.class.php';
 require_once '../app/controllers/controller_reservation.class.php';
+require_once '../app/controllers/controller_propActu.class.php';
 
 
 
