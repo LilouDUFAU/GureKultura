@@ -168,4 +168,14 @@ class UserDao {
         $pdoStatement = $this->pdo->prepare($sql);
         $pdoStatement->execute([':id' => $user->getUserId()]);
     }
+
+    public function modify(string $donnees, string $champ, string $userId): void
+    {
+        $sql = "UPDATE " . PREFIX_TABLE . "user SET $champ = :valeur WHERE userId = :id";
+        $pdoStatement = $this->pdo->prepare($sql);
+        $pdoStatement->execute([
+            ':valeur' => $donnees,
+            ':id' => $userId
+        ]);
+    }
 }
