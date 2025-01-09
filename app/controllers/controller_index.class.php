@@ -20,7 +20,7 @@ class ControllerIndex extends Controller
         $twig = new \Twig\Environment($loader);
 
         $managerActualite = new ActualiteDao($this->getPdo());
-        $actualite = $managerActualite->findAll();
+        $actualite = $managerActualite->findAllWithCategorie();
         $managerEvenement = new EvenementDao($this->getPdo());
         $events = $managerEvenement->findAllWithCategorie();
 

@@ -17,7 +17,7 @@ class ControllerMdpOublie extends Controller {
         $twig = new \Twig\Environment($loader);
 
         $managerActualite = new ActualiteDao($this->getPdo());
-        $actualite = $managerActualite->findAll();
+        $actualite = $managerActualite->findAllWithCategorie();
 
         // Rendre le template Twig
         echo $this->getTwig()->render('mdpOublie.html.twig', [
