@@ -3,8 +3,8 @@
 //Ajout de l'autoloadd de Composer
 require_once '../vendor/autoload.php';
 
-//Ajout du fichier constantes qui permet de configurer le site
-require_once '../config/constantes.php';
+//Ajout du fichier de config pour définir les constantes à partir d'un fichier yaml
+require_once '../config/init.php';
 
 //Ajout du model qui gère la connexion mysql
 require_once '../app/models/bd.class.php';

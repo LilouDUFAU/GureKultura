@@ -1,0 +1,25 @@
+# Connexion à la base de données
+
+# Pour machines personnelles
+DB_:
+  HOST: localhost
+  NAME: gurekultura_bd
+  USER: root
+  PASS: ""
+
+# Pour Citrix
+# DB_:
+#   HOST: lakartxela
+#   NAME: ldufau007_pro
+#   USER: ldufau007_pro
+#   PASS: ldufau007_pro
+
+# Préfixe des tables de la base de données
+PREFIX_TABLE: gk_
+
+# Constantes pour la partie vue
+WEBSITE_:
+  TITLE: "GureKultura |"
+  # VERSION: "1.0"
+  DESCRIPTION: "un site de gestion événementielle au Pays Basque"
+  LANGUAGE: "fr"

@@ -67,5 +67,5 @@ if (carousel3) {
 }
 const carousel4 = document.getElementById('carousel4');
 if (carousel4) {
-  initCarousel(carousel2, 'next4', 'prev4');
+  initCarousel(carousel4, 'next4', 'prev4');
 }

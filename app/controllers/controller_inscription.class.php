@@ -137,8 +137,11 @@ class ControllerInscription extends Controller {
             $managerUser->insert($user);
 
             //enregistrer l'utilisateur dans la session
-            $donnees['userId'] = $managerUser->getActualUserId($donnees['pseudo']);
-            $_SESSION['userId'] = $donnees['userId'];
+            $pdo = Bd::getInstance()->getPdo();
+                $managerUser = new UserDao($pdo);
+                $user = $managerUser->findWithEmail($donnees['email']);
+                $_SESSION['user'] = serialize($user);
+                $this->getTwig()->addGlobal('utilisateurConnecte', $user);
             header('Location: index.php?controlleur=index&methode=lister');
         } catch (Exception $e) {
             // Log the error message
