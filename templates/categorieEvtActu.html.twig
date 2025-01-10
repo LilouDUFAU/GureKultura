@@ -21,7 +21,7 @@
                         {% if type == 'Actualites' %} 
                             <div style="background-image: url('../asset/actualite/{{ evtActuEnCours.img }}')" class="bg-cover bg-no-repeat slide md:w-1/3 w-full flex-shrink-0 text-[#A23145] text-center py-16 rounded-lg relative">
                         {% endif %}
-                            <FORM ACTION="evtActu.php" METHOD="POST">
+                            <FORM ACTION="index.php?controlleur=evtActu&methode=lister" METHOD="POST">
                                 <INPUT TYPE="hidden" NAME="nom" VALUE="{{evtActuEnCours.titre}}">
                                 {% if type == 'Evenements' %} 
                                     <INPUT TYPE="hidden" NAME="id" VALUE={{evtActuEnCours.evtId}}>
@@ -65,7 +65,7 @@
                         {% if type == 'Actualites' %} 
                             <div style="background-image: url('../asset/actualite/{{ evtActuASuivre.img }}')" class="bg-cover bg-no-repeat slide md:w-1/3 w-full flex-shrink-0 text-[#A23145] text-center py-16 rounded-lg relative">
                         {% endif %}
-                            <FORM ACTION="evtActu.php" METHOD="POST">
+                            <FORM ACTION="index.php?controlleur=evtActu&methode=lister" METHOD="POST">
                                 <INPUT TYPE="hidden" NAME="nom" VALUE="{{evtActuASuivre.titre}}"> 
                                 {% if type == 'Evenements' %} 
                                     <INPUT TYPE="hidden" NAME="id" VALUE={{evtActuASuivre.evtId}}>
@@ -109,7 +109,7 @@
                         {% if type == 'Actualites' %} 
                             <div style="background-image: url('../asset/actualite/{{ evtActuPasser.img }}')" class="bg-cover bg-no-repeat slide md:w-1/3 w-full flex-shrink-0 text-[#A23145] text-center py-16 rounded-lg relative">
                         {% endif %}
-                            <FORM ACTION="evtActu.php" METHOD="POST">
+                            <FORM ACTION="index.php?controlleur=evtActu&methode=lister" METHOD="POST">
                                 <INPUT TYPE="hidden" NAME="nom" VALUE="{{evtActuPasser.titre}}"> 
                                 {% if type == 'Evenements' %} 
                                     <INPUT TYPE="hidden" NAME="id" VALUE={{evtActuPasser.evtId}}>
