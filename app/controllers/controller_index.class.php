@@ -23,6 +23,7 @@ class ControllerIndex extends Controller
         $actualite = $managerActualite->findAllWithCategorie();
         $managerEvenement = new EvenementDao($this->getPdo());
         $events = $managerEvenement->findAllWithCategorie();
+        
 
         // Rendre le template Twig
         echo $this->getTwig()->render('index.html.twig', [

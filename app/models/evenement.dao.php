@@ -206,7 +206,8 @@ class EvenementDao
         } else {
             $cateld = null; // Ou une valeur par défaut
         }
-        $evenement->setCateId($cateld);        
+        $evenement->setCateId($cateld);      
+        $evenement->setNomCategorie($tab['nomCategorie']);
 
         // verifier si l'utilisateur est connecté
         if (isset($_SESSION['userId'])) {
