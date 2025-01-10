@@ -10,8 +10,7 @@ class Evenement
 {
     /**
      * @brief Identifiant de l'événement
-     * @details Cet identifiant est généré automatiquement par la base de données
-     * @var int 
+     * @details Cet identifiant est donné par l'utilisateur 
      */
     private ?int $evtId;
 

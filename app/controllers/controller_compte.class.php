@@ -1,18 +1,32 @@
 <?php
 
+/**
+ * @class ControllerCompte
+ * @extends parent<Controller>
+ * @details Permet de gérer les actions liées à la page "compte"
+ */
 class ControllerCompte extends Controller
 {
 
+    /**
+     * @constructor ControllerCompte
+     * @details Constructeur de la classe ControllerCompte
+     * @param \Twig\Environment $twig
+     * @param \Twig\Loader\FileSystemLoader $loader
+     * @return void
+     */
     public function __construct(\Twig\Environment $twig, \Twig\Loader\FileSystemLoader $loader)
     {
         parent::__construct($twig, $loader);
     }
 
-    public function afficher()
-    {
-        echo "afficher compte";
-    }
-
+    /**
+     * @function lister
+     * @details Fonction permettant d'afficher la page "compte"
+     * @uses ActualiteDao
+     * @uses Bd
+     * @return void
+     */
     public function lister()
     {
         $pdo = Bd::getInstance()->getPdo();
@@ -30,6 +44,18 @@ class ControllerCompte extends Controller
         ]);
     }
 
+    /**
+     * @function modifierInfo
+     * @details Fonction permettant de modifier les informations de l'utilisateur connecté
+     * @uses modifierDonneesDansLaBase
+     * @uses Validator
+     * @uses UserDao
+     * @uses Bd
+     * @uses findAllWithCategorie
+     * @uses findAll
+     * @uses is_available
+     * @return void
+     */
     public function modifierInfo()
     {
         // verifier
@@ -87,12 +113,14 @@ class ControllerCompte extends Controller
                 if ($donnees['pseudo'] != $user->getPseudo()) {
                     //vérifier que le pseudo est disponible
                     if ($validator->is_available($donnees['pseudo'])) {
-                        $pseudoValide = true;
+                        //$pseudoValide = true;
+                        $pseudoChange = true;
                     } else {
                         echo "Ce pseudo est déjà utilisé";
-                        $pseudoValide = false;
+                        //$pseudoValide = false;
+                        $pseudoChange = false;
                     }
-                    $pseudoChange = true;
+                    
                 } else {
                     $pseudoChange = false;
                 }
@@ -179,6 +207,14 @@ class ControllerCompte extends Controller
     }
 
 
+    /**
+     * @fuction deconnexion
+     * @details Fonction permettant de deconnecter l'utilisateur connecté
+     * @uses UserDao
+     * @uses Bd
+     * @uses delete
+     * @return void
+     */
     public function deconnexion()
     {
         session_unset();
@@ -186,6 +222,14 @@ class ControllerCompte extends Controller
         header('Location: index.php?controlleur=index&methode=lister');
     }
 
+    /**
+     * @function supprimerCompte
+     * @details Fonction permettant de supprimer le compte de l'utilisateur connecté
+     * @uses UserDao
+     * @uses Bd
+     * @uses delete
+     * @return void
+     */
     public function supprimerCompte()
     {
         $pdo = Bd::getInstance()->getPdo();
@@ -199,6 +243,16 @@ class ControllerCompte extends Controller
     }
 
 
+    /**
+     * @function modifierDonneesDansLaBase
+     * @details Fonction permettant de modifier les données de l'utilisateur connecté dans la base de données (utilisée par la fonction modifierInfo)
+     * @param string $donnees
+     * @param string $champ
+     * @uses UserDao
+     * @uses Bd
+     * @uses modify
+     * @return void
+     */
     private function modifierDonneesDansLaBase(string $donnees, string $champ)
     {
         try {
