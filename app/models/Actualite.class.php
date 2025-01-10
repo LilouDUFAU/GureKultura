@@ -188,6 +188,10 @@ class Actualite
         $this->img = $img;
     }
 
+    public function setUserId(?int $userId): void
+    {
+        $this->userId = $userId;
+    }
 
     public function setCateId(?int $cateId): void
     {
@@ -197,5 +201,10 @@ class Actualite
     public function setNomCategorie(?string $nomCategorie): void
     {
         $this->nomCategorie = $nomCategorie;
+    }
+
+    public function dateActuelle(): string {
+        $date = date("Y-m-d");
+        return $date;
     }
 }

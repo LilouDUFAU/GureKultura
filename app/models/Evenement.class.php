@@ -161,6 +161,7 @@ class Evenement
      * @param DateTime $finHeure
      * @param string $lieu
      * @param string $photo
+     * @param int $userId
      * @param Categorie $categorie
      * @param string $nomCategorie
      * @return void

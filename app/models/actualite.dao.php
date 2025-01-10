@@ -105,7 +105,12 @@ class ActualiteDao {
         if (is_string($tab['datePubli'])) {
             $tab['datePubli'] = new DateTime($tab['datePubli']);
         }
-        $actualite->setDatePubli($tab['datePubli']);
+
+        // if(is_date($tab['datePubli'])) {
+        //     $tab['dateInscr'] = new DateTime($tab['datePubli']);
+            $actualite->setDatePubli($tab['datePubli']);
+        // }
+        
         $actualite->setImg($tab['img']);
 
 
@@ -117,6 +122,11 @@ class ActualiteDao {
         }
         $actualite->setCateId($cateld); 
         $actualite->setNomCategorie($tab['nomCategorie']);
+        // verifier si l'utilisateur est connecté
+        if (isset($_SESSION['userId'])) {
+            $actualite->setUserId($_SESSION['userId']);
+            $actualite->setNomCategorie($tab['nomCategorie']);
+        }
         return $actualite;
     }
 
@@ -138,17 +148,17 @@ class ActualiteDao {
 
     public function insert(Actualite $actualite): void
     {
-        $sql = "INSERT INTO " . PREFIX_TABLE . "actualite (userId, titre, resume, contenu, datePubli, img, cateId, userId)
-            VALUES (:userId, :titre, :resume, :contenu, :datePubli, :img, :cateId, :userId)"; 
+        $sql = "INSERT INTO " . PREFIX_TABLE . "actualite (titre, resume, contenu, datePubli, img, cateId, userId)
+            VALUES (:titre, :resume, :contenu, :datePubli, :img, :cateId, :userId)"; 
             $pdoStatement = $this->pdo->prepare($sql);
         $pdoStatement->execute([
             ':titre' => $actualite->getTitre(),
             ':resume' => $actualite->getResume(),
             ':contenu' => $actualite->getContenu(),
-            ':datePubli' => $actualite->getDatePubli()->format('Y-m-d'),
-            ':img' => $actualite->getImg(),
+            ':datePubli' => $actualite->dateActuelle(),
+            ':img' => $actualite->getImg() ?? null,
             ':cateId' => $actualite->getCateId(),
-            ':userId' => $_SESSION['userId']
+            ':userId' => $actualite->getUserId()
         ]);
     }
 }
