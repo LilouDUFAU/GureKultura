@@ -17,7 +17,7 @@ class ControllerCategorie extends Controller {
         $twig = new \Twig\Environment($loader);
 
         $managerActualite = new ActualiteDao($this->getPdo());
-        $actualite = $managerActualite->findAll();    
+        $actualite = $managerActualite->findAllWithCategorie();    
 
         $managerCategorie = new CategorieDao($this->getPdo());
         $categorie = $managerCategorie->findAll();        

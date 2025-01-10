@@ -1,6 +1,4 @@
 <?php
-// ouvrire la session
-session_start();
 // inclure la classe validator
 require_once '../app/controllers/validator.class.php';
 
@@ -24,7 +22,7 @@ class ControllerPropEv extends Controller
         $twig = new \Twig\Environment($loader);
 
         $managerActualite = new ActualiteDao($this->getPdo());
-        $actualite = $managerActualite->findAll();
+        $actualite = $managerActualite->findAllWithCategorie();
 
         $managerCategorie = new CategorieDao($this->getPdo());
         $categories = $managerCategorie->findAll();
@@ -40,6 +38,11 @@ class ControllerPropEv extends Controller
 
     public function validerFormulairePropEv()
     {
+
+        // verifier si l'utilisateur est connecté
+        if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
+            
+       
         // definition des regles de validations que l'on souhaite verifier pour chaque champs du formulaire
         $regleValidation = [
             'titre' => [
@@ -141,6 +144,9 @@ class ControllerPropEv extends Controller
 
         // recuperation des donnees du formulaire
         $donnees = $_POST;
+        $user=unserialize($_SESSION['user']);
+        $donnees['userId'] = $user->getUserId();
+
 
         // validation des donnees du formulaire
         $donneesValides = $validator->valider($donnees);
@@ -158,7 +164,7 @@ class ControllerPropEv extends Controller
         $twig = new \Twig\Environment($loader);
 
         $managerActualite = new ActualiteDao($this->getPdo());
-        $actualite = $managerActualite->findAll();
+        $actualite = $managerActualite->findAllWithCategorie();
 
         $managerCategorie = new CategorieDao($this->getPdo());
         $categories = $managerCategorie->findAll();
@@ -181,14 +187,17 @@ class ControllerPropEv extends Controller
                 'categories' => $categories
                 
             ]);
-            echo"pendant le test s'il n'y a pas d'erreurs";
 
             
             // Les données sont valides, insérez-les dans la base de données
             $this->insererDonneesDansLaBase($donnees);
-            
-            echo"apres envoie a la bd";
+            // header('Location: index.php?controlleur=index&methode=lister');
         }
+    } else {
+        header('Location: index.php?controlleur=connexion&methode=lister');
+    
+    }
+
     }
 
     /**
@@ -219,7 +228,7 @@ class ControllerPropEv extends Controller
                 new DateTime($donnees['finHeure']),
                 $donnees['lieu'],
                 $donnees['photo'] ?? null,
-                $_SESSION['userId'] ?? null,
+                $donnees['userId'],
                 $donnees['cateId']
             );
     
@@ -235,5 +244,3 @@ class ControllerPropEv extends Controller
         }
     }
 }
-// fermer la session
-session_write_close();

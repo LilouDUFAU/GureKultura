@@ -156,4 +156,37 @@ class UserDao {
         $user = $this->hydrate($UserTab);
         return $user;
     }
+
+    /**
+     * @brief Fonction permettant de supprimer un utilisateur en base de données
+     * @details Cette fonction permet de supprimer un utilisateur en base de données si ce dernier sdouhaite supprimer son compte
+     * @param User $user
+     * @return void
+     */
+    public function delete(User $user): void {
+        // cette fonction permet de supprimer un utilisateur en base en supprimant dabord ses commentaires puis ses actualités puis ses evenement puis l'utilisateur
+        $sql = "DELETE FROM " . PREFIX_TABLE . "commentaire WHERE userId = :id";
+        $pdoStatement = $this->pdo->prepare($sql);
+        $pdoStatement->execute([':id' => $user->getUserId()]);
+        $sql = "DELETE FROM " . PREFIX_TABLE . "actualite WHERE userId = :id";
+        $pdoStatement = $this->pdo->prepare($sql);
+        $pdoStatement->execute([':id' => $user->getUserId()]);
+        $sql = "DELETE FROM " . PREFIX_TABLE . "evenement WHERE userId = :id";
+        $pdoStatement = $this->pdo->prepare($sql);
+        $pdoStatement->execute([':id' => $user->getUserId()]);
+        $sql = "DELETE FROM " . PREFIX_TABLE . "user WHERE userId = :id";
+        $pdoStatement = $this->pdo->prepare($sql);
+        $pdoStatement->execute([':id' => $user->getUserId()]);
+        
+    }
+
+    public function modify(string $donnees, string $champ, string $userId): void
+    {
+        $sql = "UPDATE " . PREFIX_TABLE . "user SET $champ = :valeur WHERE userId = :id";
+        $pdoStatement = $this->pdo->prepare($sql);
+        $pdoStatement->execute([
+            ':valeur' => $donnees,
+            ':id' => $userId
+        ]);
+    }
 }
