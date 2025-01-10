@@ -60,7 +60,9 @@ class EvenementDao
      */
     public function find(?int $id): ?Evenement
     {
-        $sql = "SELECT * FROM " . PREFIX_TABLE . "evenement WHERE evtId = :id";
+        $sql = "SELECT evt.evtId, evt.titre,evt.autorisation, evt.description, evt.email, evt.tel, evt.nomRep, evt.prenomRep, DATE(evt.dateDebut) AS dateDebut, DATE(evt.dateFin) AS dateFin, TIME(evt.heureDebut) AS heureDebut, TIME(evt.heureFin) AS heureFin, evt.lieu, evt.photo, cate.nom AS nomCategorie
+            FROM gk_evenement AS evt
+            JOIN gk_categorie AS cate ON evt.cateId = cate.cateId WHERE evt.evtId = :id";
         $pdoStatement = $this->pdo->prepare($sql);
         $pdoStatement->execute(array(':id' => $id));
         $pdoStatement->setFetchMode(PDO::FETCH_ASSOC);
@@ -96,7 +98,9 @@ class EvenementDao
      */
     public function findEnCours(?int $id)
     {
-        $sql = "SELECT * FROM " . PREFIX_TABLE . "evenement WHERE dateDebut = CURRENT_DATE AND cateId =:id";
+        $sql = "SELECT evt.evtId, evt.titre,evt.autorisation, evt.description, evt.email, evt.tel, evt.nomRep, evt.prenomRep, DATE(evt.dateDebut) AS dateDebut, DATE(evt.dateFin) AS dateFin, TIME(evt.heureDebut) AS heureDebut, TIME(evt.heureFin) AS heureFin, evt.lieu, evt.photo, cate.nom AS nomCategorie
+            FROM gk_evenement AS evt
+            JOIN gk_categorie AS cate ON evt.cateId = cate.cateId WHERE evt.dateDebut = CURRENT_DATE AND evt.cateId =:id";
         $pdoStatement = $this->pdo->prepare($sql);
         $pdoStatement->execute(array(':id' => $id));
         $pdoStatement->setFetchMode(PDO::FETCH_ASSOC);
@@ -114,7 +118,9 @@ class EvenementDao
      */
     public function findASuivre(?int $id)
     {
-        $sql = "SELECT * FROM " . PREFIX_TABLE . "evenement WHERE dateDebut > CURRENT_DATE AND cateId =:id";
+        $sql = "SELECT evt.evtId, evt.titre,evt.autorisation, evt.description, evt.email, evt.tel, evt.nomRep, evt.prenomRep, DATE(evt.dateDebut) AS dateDebut, DATE(evt.dateFin) AS dateFin, TIME(evt.heureDebut) AS heureDebut, TIME(evt.heureFin) AS heureFin, evt.lieu, evt.photo, cate.nom AS nomCategorie
+            FROM gk_evenement AS evt
+            JOIN gk_categorie AS cate ON evt.cateId = cate.cateId WHERE evt.dateDebut > CURRENT_DATE AND evt.cateId =:id";
         $pdoStatement = $this->pdo->prepare($sql);
         $pdoStatement->execute(array(':id' => $id));
         $pdoStatement->setFetchMode(PDO::FETCH_ASSOC);
@@ -132,7 +138,9 @@ class EvenementDao
      */
     public function findPasser(?int $id)
     {
-        $sql = "SELECT * FROM " . PREFIX_TABLE . "evenement WHERE dateDebut < CURRENT_DATE AND cateId =:id";
+        $sql = "SELECT evt.evtId, evt.titre,evt.autorisation, evt.description, evt.email, evt.tel, evt.nomRep, evt.prenomRep, DATE(evt.dateDebut) AS dateDebut, DATE(evt.dateFin) AS dateFin, TIME(evt.heureDebut) AS heureDebut, TIME(evt.heureFin) AS heureFin, evt.lieu, evt.photo, cate.nom AS nomCategorie
+            FROM gk_evenement AS evt
+            JOIN gk_categorie AS cate ON evt.cateId = cate.cateId WHERE evt.dateDebut < CURRENT_DATE AND evt.cateId =:id";
         $pdoStatement = $this->pdo->prepare($sql);
         $pdoStatement->execute(array(':id' => $id));
         $pdoStatement->setFetchMode(PDO::FETCH_ASSOC);

@@ -18,7 +18,9 @@ class ActualiteDao {
     }
 
     public function find(?int $id): ?Actualite {
-        $sql="SELECT * FROM " . PREFIX_TABLE . "actualite WHERE actuId = :id";
+        $sql="SELECT actu.actuId, actu.titre, actu.resume, actu.contenu, actu.datePubli, actu.img, cate.nom AS nomCategorie
+            FROM gk_actualite AS actu
+            JOIN gk_categorie AS cate ON actu.cateId = cate.cateId WHERE actu.actuId = :id";
         $pdoStatement = $this->pdo->prepare($sql);
         $pdoStatement->execute(array(':id' => $id));
         $pdoStatement->setFetchMode(PDO::FETCH_ASSOC);
@@ -52,7 +54,9 @@ class ActualiteDao {
     }
     
     public function findEnCours(?int $id) {
-        $sql="SELECT * FROM " . PREFIX_TABLE . "actualite WHERE datePubli = CURRENT_DATE AND cateId =:id";
+        $sql="SELECT actu.actuId, actu.titre, actu.resume, actu.contenu, actu.datePubli, actu.img, cate.nom AS nomCategorie
+            FROM gk_actualite AS actu
+            JOIN gk_categorie AS cate ON actu.cateId = cate.cateId WHERE actu.datePubli = CURRENT_DATE AND actu.cateId =:id";
         $pdoStatement = $this->pdo->prepare($sql);
         $pdoStatement->execute(array(':id' => $id));
         $pdoStatement->setFetchMode(PDO::FETCH_ASSOC);
@@ -62,7 +66,9 @@ class ActualiteDao {
     }
     
     public function findASuivre(?int $id) {
-        $sql="SELECT * FROM " . PREFIX_TABLE . "actualite WHERE datePubli > CURRENT_DATE AND cateId =:id";
+        $sql="SELECT actu.actuId, actu.titre, actu.resume, actu.contenu, actu.datePubli, actu.img, cate.nom AS nomCategorie
+            FROM gk_actualite AS actu
+            JOIN gk_categorie AS cate ON actu.cateId = cate.cateId WHERE actu.datePubli > CURRENT_DATE AND actu.cateId =:id";
         $pdoStatement = $this->pdo->prepare($sql);
         $pdoStatement->execute(array(':id' => $id));
         $pdoStatement->setFetchMode(PDO::FETCH_ASSOC);
@@ -72,7 +78,9 @@ class ActualiteDao {
     }
     
     public function findPasser(?int $id) {
-        $sql="SELECT * FROM " . PREFIX_TABLE . "actualite WHERE datePubli < CURRENT_DATE AND cateId =:id";
+        $sql="SELECT actu.actuId, actu.titre, actu.resume, actu.contenu, actu.datePubli, actu.img, cate.nom AS nomCategorie
+            FROM gk_actualite AS actu
+            JOIN gk_categorie AS cate ON actu.cateId = cate.cateId WHERE actu.datePubli < CURRENT_DATE AND actu.cateId =:id";
         $pdoStatement = $this->pdo->prepare($sql);
         $pdoStatement->execute(array(':id' => $id));
         $pdoStatement->setFetchMode(PDO::FETCH_ASSOC);

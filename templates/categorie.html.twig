@@ -15,7 +15,7 @@
                 <!-- Diapositives -->
                 {% for cateEvtSport in EvtSport %}
                         <div style="background-image: url('../asset/categorie/{{ cateEvtSport.img }}')" class="bg-cover bg-no-repeat slide md:w-1/3 w-full flex-shrink-0 text-[#A23145] text-center py-16 rounded-lg relative">
-                            <FORM ACTION="categorieEvtActu.php" METHOD="POST">
+                            <FORM ACTION="index.php?controlleur=categorieEvtActu&methode=lister" METHOD="POST">
                                 <INPUT TYPE="hidden" NAME="nom" VALUE="{{cateEvtSport.nom}}">
                                 <INPUT TYPE="hidden" NAME="id" VALUE="{{cateEvtSport.cateId}}"> 
                                 <INPUT TYPE="hidden" NAME="type" VALUE="Evenements"> 
@@ -38,7 +38,7 @@
                 {# <div class="bg-[url('#')]"> FOOTBALL </div> #}
                 {% for cateEvtCult in EvtCult %}
                         <div style="background-image: url('../asset/categorie/{{ cateEvtCult.img }}')" class="bg-cover bg-no-repeat slide md:w-1/3 w-full flex-shrink-0 text-[#A23145] text-center py-16 rounded-lg relative">
-                            <FORM ACTION="categorieEvtActu.php" METHOD="POST">
+                            <FORM ACTION="index.php?controlleur=categorieEvtActu&methode=lister" METHOD="POST">
                                 <INPUT TYPE="hidden" NAME="nom" VALUE="{{cateEvtCult.nom}}">
                                 <INPUT TYPE="hidden" NAME="id" VALUE="{{cateEvtCult.cateId}}"> 
                                 <INPUT TYPE="hidden" NAME="type" VALUE="Evenements"> 
@@ -64,7 +64,7 @@
                 {# <div class="bg-[url('#')]"> FOOTBALL </div> #}
                 {% for cateActuSport in ActuSport %}
                         <div style="background-image: url('../asset/categorie/{{ cateActuSport.img }}')" class="bg-cover bg-no-repeat slide md:w-1/3 w-full flex-shrink-0 text-[#A23145] text-center py-16 rounded-lg relative">
-                            <FORM ACTION="categorieEvtActu.php" METHOD="POST">
+                            <FORM ACTION="index.php?controlleur=categorieEvtActu&methode=lister" METHOD="POST">
                                 <INPUT TYPE="hidden" NAME="nom" VALUE="{{cateActuSport.nom}}">
                                 <INPUT TYPE="hidden" NAME="id" VALUE="{{cateActuSport.cateId}}"> 
                                 <INPUT TYPE="hidden" NAME="type" VALUE="Actualites"> 
@@ -87,7 +87,7 @@
                 {# <div class="bg-[url('#')]"> FOOTBALL </div> #}
                 {% for cateActuCult in ActuCult %}
                         <div style="background-image: url('../asset/categorie/{{ cateActuCult.img }}')" class="bg-cover bg-no-repeat slide md:w-1/3 w-full flex-shrink-0 text-[#A23145] text-center py-16 rounded-lg relative">
-                            <FORM ACTION="categorieEvtActu.php" METHOD="POST">
+                            <FORM ACTION="index.php?controlleur=categorieEvtActu&methode=lister" METHOD="POST">
                                 <INPUT TYPE="hidden" NAME="nom" VALUE="{{cateActuCult.nom}}">
                                 <INPUT TYPE="hidden" NAME="id" VALUE="{{cateActuCult.cateId}}"> 
                                 <INPUT TYPE="hidden" NAME="type" VALUE="Actualites"> 
