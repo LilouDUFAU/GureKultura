@@ -206,15 +206,14 @@ class EvenementDao
         } else {
             $cateld = null; // Ou une valeur par défaut
         }
-        $evenement->setCateId($cateld);        
-
-        // On vérifie si la clé 'userId' existe
-        // if (isset($_SESSION['userId'])) {
-        //     $evenement->setUserId($_SESSION['userId']);
-        // }
-        // $evenement->setUserId($_SESSION['userId']);
-
+        $evenement->setCateId($cateld);      
         $evenement->setNomCategorie($tab['nomCategorie']);
+
+        // verifier si l'utilisateur est connecté
+        if (isset($_SESSION['userId'])) {
+            $evenement->setUserId($_SESSION['userId']);
+            $evenement->setNomCategorie($tab['nomCategorie']);
+        }
 
         return $evenement;
     }
@@ -276,10 +275,11 @@ class EvenementDao
      */
     public function insert(Evenement $evenement): void
     {
-        $sql = "INSERT INTO " . PREFIX_TABLE . "evenement (titre, autorisation, description, email, tel, nomRep, prenomRep, dateDebut, dateFin, heureDebut, heureFin, lieu, photo, cateId) 
-            VALUES (:titre, :autorisation, :description, :email, :tel, :nomRep, :prenomRep, :dateDebut, :dateFin, :heureDebut, :heureFin, :lieu, :photo, :cateId)";
+        $sql = "INSERT INTO " . PREFIX_TABLE . "evenement (userId, titre, autorisation, description, email, tel, nomRep, prenomRep, dateDebut, dateFin, heureDebut, heureFin, lieu, photo, cateId) 
+            VALUES (:userId, :titre, :autorisation, :description, :email, :tel, :nomRep, :prenomRep, :dateDebut, :dateFin, :heureDebut, :heureFin, :lieu, :photo, :cateId)";
         $pdoStatement = $this->pdo->prepare($sql);
         $pdoStatement->execute([
+            ':userId' => $evenement->getUserId(),
             ':titre' => $evenement->getTitre(),
             ':autorisation' => $evenement->getAutorisation(),
             ':description' => $evenement->getDescription(),

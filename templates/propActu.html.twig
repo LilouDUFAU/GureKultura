@@ -1,0 +1,78 @@
+{% extends "base.html.twig" %}
+
+{% block content %}
+	<!-- Contenu spécifique de chaque page -->
+	<div class="lg:pt-2">
+		<div
+			class="bg-cover bg-no-repeat bg-[url('../asset/bg_img.svg')] gap-2 p-2 grid grid-cols-12 items-center">
+			{# titre de la page #}
+			<h1 class="col-span-12 text-white lg:font-bold lg:text-4xl text-2xl text-center bg-[#A23145] rounded-2xl p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] mb-10">Publie ton actualité</h1>
+			<form
+				action="index.php?controlleur=propActu&methode=validerFormulairePropActu" method="post" enctype="multipart/form-data" class="lg:grid lg:grid-cols-subgrid col-start-1 col-span-12 flex flex-col gap-2">
+				{# premiere ligne #}
+				<div class="grid grid-cols-subgrid row-start-2 row-span-1 col-start-1 col-span-12 bg-[#A23145] bg-opacity-75 rounded-2xl p-4 w-full drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] gap-2">
+					<label for="titre" class="text-white lg:col-span-4 col-span-12 lg:text-lg text-sm">
+						Quel est le titre de ton actualité :
+					</label>
+					<input type="text" required minlength="5" maxlength="30" id="titre" name="titre" placeholder="ACTUALITE 1" title="Entrez le nom de votre actualité, par exemple : foire au jambon" class="lg:col-span-8 lg:col-start-5 lg:row-start-1 row-start-2 col-span-12 border-2 border-[#A23145] rounded-lg lg:pl-2 pl-1 text-black w-auto drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] lg:py-2 py-1">
+					{% if messageErreurs['titre'] is defined and messageErreurs['titre']|length > 0 %}
+						<p class="text-white row-start-2 col-start-5 col-span-12">{{ messageErreurs['titre'][0] }}</p>
+					{% endif %}
+				</div>
+
+				{# deuxieme ligne #}
+				<div class="grid grid-cols-subgrid row-start-3 row-span-1 col-start-1 col-span-12 bg-[#A23145] bg-opacity-75 text-white rounded-2xl p-4 w-full drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] gap-2">
+					<label for="nomCategorie" class="text-white lg:col-span-4 col-span-4 lg:text-lg text-sm">Quel est le type de ton actualité :</label>
+					<!-- Dropdown Container -->
+					<select class="text-black row-start-1 col-start-5 col-span-8 border-2 border-solid border-[#A23145] rounded-lg p-2 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]" name='cateId'>
+						<option class="text-gray-400" value="" disabled selected>Selectionnez le type de votre actualité</option>
+						{% for categorie in categories %}
+							<option class="text-black" value="{{categorie.cateId}}">{{ categorie.nom }}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				{# troisieme ligne #}
+				<div class="lg:grid lg:grid-cols-subgrid lg:row-start-4 lg:col-start-1 lg:col-span-12 lg:w-full lg:gap-2 col-start-1 col-span-4 row-start-5 flex flex-col gap-2 ">
+					<div class="grid grid-cols-subgrid row-start-1 col-span-4 lg:col-span-12 bg-[#A23145] bg-opacity-75 text-white rounded-2xl w-full p-4">
+						<label for="description" class="text-white col-span-4 pb-3 lg:text-lg">Résume ton actualité :</label>
+						<textarea type="text" id="resume" required minlenght="100" maxlenght="500" name="resume" placeholder="Cette actualité prend place chaque année ..." title="Entre un résumé de l'actualité pour expliquer en quoi elle consiste" class="col-start-5 col-span-8 border-2 border-[#A23145] rounded-lg pl-2 text-black w-full py-2"></textarea>
+						{% if messageErreurs['resume'] is defined and messageErreurs['resume']|length > 0 %}
+							<p class="text-white row-start-2 col-start-5 col-span-6">{{ messageErreurs['description'][0] }}</p>
+						{% endif %}
+					</div>
+                </div>
+
+					{# quatrieme ligne #}
+                    <div class="grid grid-cols-subgrid row-start-5 col-span-4 lg:col-span-12 bg-[#A23145] bg-opacity-75 text-white rounded-2xl w-full p-4">
+                        <label for="contenu" class="text-white col-span-4 pb-3 lg:text-lg">Entre le contenu de ton actualité :</label>
+                        <textarea type="text" id="contenu" required minlenght="100" maxlenght="5000" name="contenu" placeholder="Lors de cette actualité il s'est passé ..." title="Entre un contenu de l'actualité pour expliquer ce qui s'est passé pendant l'évenement" class="col-start-5 col-span-8 border-2 border-[#A23145] rounded-lg pl-2 text-black w-full py-2"></textarea>
+                        {% if messageErreurs['contenu'] is defined and messageErreurs['contenu']|length > 0 %}
+                            <p class="text-white row-start-2 col-start-5 col-span-6">{{ messageErreurs['description'][0] }}</p>
+                        {% endif %}
+                    </div>
+
+                    {# cinquieme ligne #}
+                    <div class="grid grid-cols-subgrid row-start-6 col-span-12 text-white rounded-2xl w-full py-2">
+                        {# premier bloc #}
+                        <div class="grid grid-cols-subgrid row-start-1 col-span-7 bg-[#A23145] bg-opacity-75 text-white rounded-2xl p-4 w-full">
+                            <label for="image" class="text-white col-span-1 lg:text-lg">Photos :</label>
+                            <input type="file" id="image" name="image" accept=".jpg, .png" class="col-start-3 col-span-5 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]"/>
+                            {% if messageErreurs['photo'] is defined and messageErreurs['photo']|length > 0 %}
+                                <p class="text-white row-start-2 col-start-1 col-span-6">{{ messageErreurs['photo'][0] }}</p>
+                            {% endif %}
+                        </div>
+
+                        {# deuxieme bloc #}
+                        <div class="grid grid-cols-subgrid row-start-1 col-start-8 col-span-5 bg-[#A23145] bg-opacity-75 text-white rounded-2xl p-4 w-full">
+                            <button arial-label="b_annulerEv" type="reset" class="col-start-4 flex items-center justify-center max-h-1 text-[#A23145] bg-[#ffffff] rounded-lg p-4 font-bold drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">Annuler</button>
+                            <button arial-label="b_validerEv" type="" class="col-start-5 flex items-center justify-center max-h-1 text-[#A23145] bg-[#ffffff] rounded-lg p-4 font-bold drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">Valider</button>
+                        </div>
+                    </div>
+            </form>
+        </div>
+    </div>
+
+
+	{% endblock %}
+

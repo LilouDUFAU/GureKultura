@@ -13,51 +13,59 @@
 			{# colonne de gauche #}
 			<div
 				class="lg:grid lg:grid-cols-subgrid lg:row-start-2 lg:col-start-1 lg:col-span-6 lg:w-full h-full lg:gap-2 col-start-1 col-span-12 row-start-2 p-2">
-				{# bloc #}
-				<div class="grid grid-cols-subgrid row-start-1 col-span-6 bg-[#A23145] bg-opacity-75 text-white rounded-2xl p-4 w-full gap-1">
-					<h1 class="row-start-1 col-span-6 text-xl">Informations personnelles</h1>
-
-					<div class="grid grid-cols-subgrid row-start-2 col-span-6 text-white rounded-2xl py-2 w-full items-center">
-						<label class="text-white lg:col-span-2 lg:text-lg col-span-1 text-sm">Nom</label>
-						<label class="text-[#bfbfbf] col-start-2 col-span-2 lg:col-start-3 lg:col-span-2">{{ user.nom }}</label>
-						<button arial-label="b_modifierNom" class="lg:col-start-5 lg:col-span-2 flex items-center justify-center max-h-1 text-[#A23145] bg-white border-2 border-solid border-[#A23145] rounded-lg p-4 lg:font-normal drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] lg:text-lg col-start-4 col-span-3 text-sm">Modifier</button>
+				{# premier bloc #}
+				<form class="grid grid-cols-subgrid row-start-1 col-span-6 bg-[#A23145] bg-opacity-75 text-white rounded-2xl p-4 w-full gap-1 h-full" action="index.php?controlleur=compte&methode=modifierInfo" method="POST" enctype="multipart/form-data">
+					<h1 class="row-start-1 col-span-6 text-xl font-bold">Informations personnelles</h1>
+					<div class="grid grid-cols-subgrid row-start-2 col-span-6 py-2 w-full items-center">
+						<label for="nom" class="text-white lg:col-span-2 lg:text-lg col-span-1 text-sm">Nom</label>
+						<input name="nom" id="nom" class="text-gray-400 col-start-2 col-span-2 lg:col-start-4 lg:col-span-3 rounded-md px-2" value="{{ user.getNom }}"></input>
 					</div>
 
-					<div class="grid grid-cols-subgrid row-start-3 col-span-6 text-white rounded-2xl py-2 w-full items-center">
-						<label class="text-white lg:col-span-2 lg:text-lg col-span-1 text-sm ">Email</label>
-						<label class="text-[#bfbfbf] col-start-2 col-span-2 lg:col-start-3 lg:col-span-2">{{ user.email }}</label>
-						<button arial-label="b_modifierEmail" class="lg:col-start-5 lg:col-span-2 flex items-center justify-center max-h-1 text-[#A23145] bg-white border-2 border-solid border-[#A23145] rounded-lg p-4 lg:font-normal drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] lg:text-lg col-start-4 col-span-3 text-sm">Modifier</button>
+					<div class="grid grid-cols-subgrid row-start-3 col-span-6 py-2 w-full items-center">
+						<label for="email" class="text-white lg:col-span-2 lg:text-lg col-span-1 text-sm">Email</label>
+						<input name="email" id="email" class="text-gray-400 col-start-2 col-span-2 lg:col-start-4 lg:col-span-3 rounded-md px-2 bg-white" disabled value="{{ user.getEmail }}"></input>
 					</div>
 
-					<div class="grid grid-cols-subgrid row-start-4 col-span-6 text-white rounded-2xl py-2 w-full items-center">
-						<label class="text-white lg:col-span-2 lg:text-lg col-span-1 text-sm ">Téléphone</label>
-						<label class="text-[#bfbfbf] col-start-2 col-span-2 lg:col-start-3 lg:col-span-2">{{ user.telephone}}</label>
-						<button arial-label="b_modifierTel" class="lg:col-start-5 lg:col-span-2 flex items-center justify-center max-h-1 text-[#A23145] bg-white border-2 border-solid border-[#A23145] rounded-lg p-4 lg:font-normal drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] lg:text-lg col-start-4 col-span-3 text-sm">Modifier</button>
+					<div class="grid grid-cols-subgrid row-start-4 col-span-6 py-2 w-full items-center">
+						<label for="pseudo" class="text-white lg:col-span-2 lg:text-lg col-span-1 text-sm">Pseudo</label>
+						<input name="pseudo" id="pseudo" class="text-gray-400 col-start-2 col-span-2 lg:col-start-4 lg:col-span-3 rounded-md px-2" value="{{ user.getPseudo }}"></input>
 					</div>
 
-					<div class="grid grid-cols-subgrid row-start-5 col-span-6 text-white rounded-2xl py-2 w-full items-center">
-						<label class="text-white lg:col-span-2 lg:text-lg col-span-1 text-sm ">Adresse</label>
-						<label class="text-[#bfbfbf] col-start-2 col-span-2 lg:col-start-3 lg:col-span-2">{{ user.adresse }}</label>
-						<button arial-label="b_modifierAddresse" class="lg:col-start-5 lg:col-span-2 flex items-center justify-center max-h-1 text-[#A23145] bg-white border-2 border-solid border-[#A23145] rounded-lg p-4 lg:font-normal drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] lg:text-lg col-start-4 col-span-3 text-sm">Modifier</button>
+					<div class="grid grid-cols-subgrid row-start-5 col-span-6 py-2 w-full items-center">
+						<label for="bio" class="text-white lg:col-span-2 lg:text-lg col-span-1 text-sm">Bio</label>
+						<input name="bio" id="bio" class="text-gray-400 col-start-2 col-span-2 lg:col-start-4 lg:col-span-3 rounded-md px-2 row-start-1" value="{{ user.getBio }}"></input>
 					</div>
 
-					<div class="grid grid-cols-subgrid row-start-6 col-span-6 text-white rounded-2xl py-2 w-full items-center">
-						<label class="text-white lg:col-span-2 lg:text-lg col-span-1 text-sm ">Photo de profil</label>
-						<img src="{{ user.photo }}" class="lg:col-start-3 lg:col-span-1 col-start-2 col-span-2 h-auto" /img>
-						<button arial-label="b_modifierPfp" class="lg:col-start-5 lg:col-span-2 flex items-center justify-center max-h-1 text-[#A23145] bg-white border-2 border-solid border-[#A23145] rounded-lg p-4 lg:font-normal drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] lg:text-lg col-start-4 col-span-3 text-sm">Modifier</button>
+					<div class="grid grid-cols-subgrid row-start-6 col-span-6 py-2 w-full items-center">
+						<label for="pfp" class="text-white lg:col-span-2 lg:text-lg col-span-1 text-sm row-start-1">Photo de profil</label>
+						<input name="pfp" type="file" id="pfp" class="text-[#bfbfbf] col-start-2 col-span-2 lg:col-start-4 lg:col-span-3" value="{{ user.getPfp }}"></input>
 					</div>
+					<button type="submit" id="button-valider" class="modifier lg:col-start-5 lg:col-span-2 flex items-center justify-center max-h-1 text-[#A23145] bg-white border-2 border-solid border-[#A23145] rounded-lg p-4 lg:font-normal drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] lg:text-lg col-start-4 col-span-3 text-sm" data-champ="nom">Modifier</button>
+				</form>
 
-					
-				</div>
-				<div class="grid grid-cols-subgrid row-start-2 col-span-6 bg-[#A23145] bg-opacity-75 text-white rounded-2xl p-4 w-full h-fit ">
-					<div class="grid grid-cols-subgrid row-start-1 col-span-6 text-white rounded-2xl py-2 w-full items-center">
-					<label class="text-white row-start-1 col-start-1 col-span-3 lg:text-lg text-sm">Supprimer mon compte</label>
-					<button arial-label="b_SupprCompte" class="lg:col-start-5 row-start-1 lg:col-span-2 flex items-center justify-center max-h-1 text-[#A23145] bg-white border-2 border-solid border-[#A23145] rounded-lg p-4 lg:font-normal drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] lg:text-lg col-start-4 col-span-3 text-sm">Supprimer</button>
+
+				{# deuxieme bloc #}
+				<div class="grid grid-cols-subgrid lg:row-start-2 lg:col-span-6 bg-[#A23145] bg-opacity-75 text-white rounded-2xl lg:p-4 w-full h-fit ">
+					<div class="grid grid-cols-subgrid row-start-1 col-span-6 text-white rounded-2xl px-2 w-full items-center">
+						<form action="index.php?controlleur=compte&methode=supprimerCompte" method="post" class="grid grid-cols-subgrid row-start-1 col-span-6 text-white rounded-2xl py-2 w-full items-center">
+							<label class="text-white row-start-1 col-start-1 col-span-3 lg:text-lg text-sm">Supprimer mon compte</label>
+							<button arial-label="b_SupprCompte" class="lg:col-start-5 row-start-1 lg:col-span-2 flex items-center justify-center max-h-1 text-[#A23145] bg-white border-2 border-solid border-[#A23145] rounded-lg p-4 lg:font-normal drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] lg:text-lg col-start-4 col-span-3 text-sm">Supprimer</button>
+						</form>
 					</div>
-					<div class="grid grid-cols-subgrid row-start-2 col-span-6 text-white rounded-2xl py-2 w-full items-center">
-						<label class="text-white col-start-1 col-span-3 row-start-1 lg:text-lg text-sm ">Souhaitez-vous vous déconnectez ?</label>
-						<button arial-label="b_SupprCompte" class="lg:col-start-5 lg:col-span-2 row-start-1 flex items-center justify-center max-h-1 text-[#A23145] bg-white border-2 border-solid border-[#A23145] rounded-lg p-4 lg:font-normal drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] lg:text-lg col-start-1 col-span-1 text-sm">Me déconnecter </button>
+					<div class="grid grid-cols-subgrid row-start-2 col-span-6 text-white rounded-2xl px-2 w-full items-center">
+						<form action="index.php?controlleur=compte&methode=deconnexion" method="post" class="grid grid-cols-subgrid row-start-2 col-span-6 text-white rounded-2xl py-2 w-full items-center">
+							<label class="text-white col-start-1 col-span-3 row-start-1 lg:text-lg text-sm ">Souhaitez-vous vous déconnectez ?</label>
+							<button arial-label="b_SupprCompte" type="" class="lg:col-start-5 lg:col-span-2 lg:row-start-1 flex items-center justify-center max-h-1 text-[#A23145] bg-white border-2 border-solid border-[#A23145] rounded-lg p-4 lg:font-normal drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] lg:text-lg col-start-1 col-span-1 text-sm">Me déconnecter </button>
+						</form>
 					</div>
+					{% if user.estAdmin %}
+					<div class="grid grid-cols-subgrid row-start-3 col-span-6 text-white rounded-2xl px-2 w-full items-center">
+							<label class="text-white col-start-1 col-span-3 row-start-1 lg:text-lg text-sm ">Postez une actualité</label>
+							<a href="index.php?controlleur=propActu&methode=lister " type="" class="lg:col-start-5 lg:col-span-2 lg:row-start-1 flex items-center justify-center max-h-1 text-[#A23145] bg-white border-2 border-solid border-[#A23145] rounded-lg p-4 lg:font-normal drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] lg:text-lg col-start-1 col-span-1 text-sm">Poster</a>
+
+					</div>
+					{% endif %}
+
 				</div>
 			</div>
 
@@ -67,29 +75,33 @@
 				class="lg:grid lg:grid-cols-subgrid lg:row-start-2 lg:col-start-7 lg:col-span-6 lg:w-full lg:gap-2 lg:h-full col-start-1 col-span-12 row-start-3 flex flex-col gap-2 p-2">
 				{# premier bloc #}
 				<div class="grid grid-cols-subgrid row-start-1 col-span-6 bg-[#A23145] bg-opacity-75 text-white rounded-2xl p-4 w-full">
-					<h1 class="row-start-1 col-span-6 text-xl">
+					<form action="" method="post" enctype="" class="grid grid-cols-subgrid row-start-1 col-span-6 text-white rounded-2xl p-4 w-full">
+					<h1 class="row-start-1 col-span-6 text-xl font-bold">
 						Changer mon mot de passse</h1>
-					<form action="" class="lg:col-start-1 lg:col-span-6 col-start-1 col-span-12 flex flex-col gap-2">
-						<div class="grid grid-cols-subgrid row-start-2 col-span-6  text-white rounded-2xl py-2 w-full">
+						<div class="grid grid-cols-subgrid row-start-2 col-span-6  text-white rounded-2xl py-2">
 							<label class="text-white col-span-3 lg:text-lg text-sm">Mot de passe actuel :</label>
-							<input type="text" id="lieu" name="lieu" class="col-start-4 col-span-3 border-2 border-[#A23145] rounded-lg lg:pl-2 pl-1 text-[#bfbfbf] w-full lg:py-2 py-1 lg:text-lg text-sm" placeholder="Saisir votre mot de passe ...">
+							<input type="password" id="mdp" name="mdpx" class="col-start-4 col-span-3 rounded-lg lg:pl-2 pl-1 text-[#bfbfbf] w-full lg:px-2 px-1 text-sm" placeholder="Saisir votre mot de passe ...">
+							<a href="index.php?controlleur=mdpOublie&methode=lister" class="text-white col-start-4 col-span-2 lg:row-start-2 lg:text-sm text-sm">Mot de passe oublié ?</a>
 						</div>
 
-						<div class="grid grid-cols-subgrid row-start-3 col-span-6  text-white rounded-2xl py-2 w-full">
+						<div class="grid grid-cols-subgrid row-start-3 col-span-6  text-white rounded-2xl py-2">
 							<label class="text-white col-span-3 lg:text-lg text-sm">Nouveau mot de passe :</label>
-							<input type="text" id="lieu" name="lieu" class="col-start-4 col-span-3 border-2 border-[#A23145] rounded-lg lg:pl-2 pl-1 text-[#bfbfbf] w-full lg:py-2 py-1 lg:text-lg text-sm" placeholder="Saisir nouveau mot de passe ...">
+							<input type="password" id="nouvMdp" name="nouvMdp" class="col-start-4 col-span-3 rounded-lg lg:pl-2 pl-1 text-[#bfbfbf] w-full lg:px-2 px-1 text-sm" placeholder="Saisir nouveau mot de passe ...">
 						</div>
 
-						<div class="grid grid-cols-subgrid row-start-4 col-span-6  text-white rounded-2xl w-full py-2">
-							<a href="index.php?controlleur=mdpOublie&methode=lister" class="text-white col-span-3 lg:text-lg text-sm">Mot de passe oublié ?</a>
-							<button arial-label="b_MdpOublie" class="col-start-6 flex items-center justify-center max-h-1 text-[#A23145] bg-[#ffffff] rounded-lg lg:p-4 p-3 lg:font-normal lg:text-lg drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">Valider</button>
+						<div class="grid grid-cols-subgrid row-start-4 col-span-6  text-white rounded-2xl py-2">
+							<label class="text-white col-span-3 lg:text-lg text-sm">Confirmer mot de passe :</label>
+							<input type="password" id="confNouvMdp" name="confNouvMdp" class="col-start-4 col-span-3 rounded-lg lg:pl-2 pl-1 text-[#bfbfbf] w-full lg:px-2 px-1 text-sm" placeholder="Saisir nouveau mot de passe ...">
 						</div>
+
+						<button arial-label="b_MdpOublie" class=" col-start-5 col-span-2 row-start-5 flex items-center justify-center max-h-1 text-[#A23145] bg-[#ffffff] rounded-lg lg:p-4 p-3 lg:font-normal lg:text-lg drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">Valider</button>
+						
 					</form>
 				</div>
 
 				{# deuxieme bloc #}
 				<div class="grid grid-cols-subgrid row-start-2 col-span-6 bg-[#A23145] bg-opacity-75 text-white rounded-2xl p-4 w-full">
-					<h1 class="row-start-1 col-span-6 text-xl">Mes autorisations</h1>
+					<h1 class="row-start-1 col-span-6 text-xl font-bold">Mes autorisations</h1>
 
 					<div class="grid grid-cols-subgrid row-start-2 col-span-6  text-white rounded-2xl py-2 w-full items-center">
 						<label class="inline-flex items-center cursor-pointer col-span-6 justify-between w-full">
@@ -114,4 +126,5 @@
 			</div>
 		</div>
 	</div>
+
 {% endblock %}

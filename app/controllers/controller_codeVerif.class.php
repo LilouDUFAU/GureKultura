@@ -16,7 +16,7 @@ class ControllerCodeVerif extends Controller {
         $twig = new \Twig\Environment($loader);
 
         $managerActualite = new ActualiteDao($this->getPdo());
-        $actualite = $managerActualite->findAll();
+        $actualite = $managerActualite->findAllWithCategorie();
 
         // Rendre le template Twig
         echo $this->getTwig()->render('codeVerif.html.twig', [
