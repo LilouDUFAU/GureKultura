@@ -190,7 +190,8 @@ class ControllerCompte extends Controller
     {
         $pdo = Bd::getInstance()->getPdo();
         $managerUser = new UserDao($pdo);
-        $user = $managerUser->find($_SESSION['userId']);
+        $user = unserialize($_SESSION['user']); 
+        $userId = $user->getUserId();
         $managerUser->delete($user);
         session_unset();
         session_destroy();
@@ -214,10 +215,12 @@ class ControllerCompte extends Controller
             if ($champ == 'pseudo') {
                 $user->setPseudo($donnees);
                 $this->getTwig()->addGlobal('user', $user);
-            } elseif ($champ == 'nom') {
+            } 
+            elseif ($champ == 'nom') {
                 $user->setNom($donnees);
                 $this->getTwig()->addGlobal('user', $user);
-            } elseif ($champ == 'bio') {
+            } 
+            elseif ($champ == 'bio') {
                 $user->setBio($donnees);
                 $this->getTwig()->addGlobal('user', $user);
             }
