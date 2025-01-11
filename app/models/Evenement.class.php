@@ -2,165 +2,137 @@
 
 // namespace App\Models;
 
+
 /**
- * @brief Classe Evenement
- * @details Cette classe permet de gérer les événements
+ * @class Evenement
+ * @details Permet de gérer les événements
  */
 class Evenement
 {
+
     /**
-     * @brief Identifiant de l'événement
-     * @details Cet identifiant est donné par l'utilisateur 
+     * @brief id de l'événement
+     * @var int|null
      */
     private ?int $evtId;
 
-
     /**
-     * @brief Titre de l'événement
-     * @details Ce titre est donné par l'utilisateur
-     * @var string
+     * @brief titre de l'événement
+     * @var string|null
      */
     private ?string $titre;
 
-
     /**
-     * @brief Autorisation de l'événement
-     * @details Cette autorisation est donnée par l'utilisateur
-     * @var string
+     * @brief autorisation de l'événement
+     * @var string|null
      */
     private ?string $autorisation;
 
-
     /**
-     * @brief Email de l'événement
-     * @details Cet email est donné par l'utilisateur
-     * @var string
+     * @brief email du responsable de l'événement
+     * @var string|null
      */
     private ?string $email;
 
-
     /**
-     * @brief Téléphone de l'événement
-     * @details Ce téléphone est donné par l'utilisateur
-     * @var string
+     * @brief téléphone du responsable de l'événement
+     * @var string|null
      */
     private ?string $tel;
 
-
     /**
-     * @brief Nom du représentant
-     * @details Ce nom est donné par l'utilisateur
-     * @var string
+     * @brief nom du responsable de l'événement
+     * @var string|null
      */
     private ?string $nomRep;
 
-
     /**
-     * @brief Prénom du représentant
-     * @details Ce prénom est donné par l'utilisateur
-     * @var string
+     * @brief prénom du responsable de l'événement
+     * @var string|null
      */
     private ?string $prenomRep;
 
-
     /**
-     * @brief Description de l'événement
-     * @details Cette description est donnée par l'utilisateur
-     * @var string
+     * @brief description de l'événement
+     * @var string|null
      */
     private ?string $description;
 
-
     /**
-     * @brief Début de la date
-     * @details Cette date est donnée par l'utilisateur
-     * @var DateTime
+     * @brief date de début de l'événement
+     * @var DateTime|null
      */
     private ?DateTime $dateDebut;
 
-
     /**
-     * @brief Fin de la date
-     * @details Cette date est donnée par l'utilisateur
-     * @var DateTime
+     * @brief date de fin de l'événement
+     * @var DateTime|null
      */
     private ?DateTime $dateFin;
 
-
     /**
-     * @brief Début de l'heure
-     * @details Cette heure est donnée par l'utilisateur
-     * @var DateTime
+     * @brief heure de début de l'événement
+     * @var DateTime|null
      */
     private ?DateTime $heureDebut;
 
-
     /**
-     * @brief Fin de l'heure
-     * @details Cette heure est donnée par l'utilisateur
-     * @var DateTime
+     * @brief heure de fin de l'événement
+     * @var DateTime|null
      */
     private ?DateTime $heureFin;
 
     /**
-     * @brief Lieu de l'événement
-     * @details Ce lieu est donné par l'utilisateur
-     * @var string
+     * @brief lieu de l'événement
+     * @var string|null
      */
     private ?string $lieu;
 
-     /**
-     * @brief Photo de l'événement
-     * @details Cette photo est donnée par l'utilisateur
-     * @var string
+    /**
+     * @brief photo de l'événement
+     * @var string|null
      */
     private ?string $photo; 
-     
 
-     /**
-     * @brief Id de l'utilisateur qui propose l'evenement
-     * @details Cet id est recuperer par la session
-     * @var string
+    /**
+     * @brief id de l'utilisateur ajoutant l'evenement
+     * @var int|null
      */
     private ?int $userId; 
-     
 
     /**
-     * @brief Id de la catégorie de l'evenement
-     * @details Cet id est recuperer par la session
-     * @var string
+     * @brief id de la catégorie de l'événement
+     * @var int|null
      */
     private ?int $cateId; 
-     
 
     /**
-     * @brief Nom de la catégorie
-     * @details Ce nom est selectionne par l'utilisateur
-     * @var string 
+     * @brief nom de la catégorie de l'événement
+     * @var string|null
      */
     private ?string $nomCategorie;
 
 
     /**
-     * @brief Constructeur de la classe Evenement
-     * @details Ce constructeur permet de créer un nouvel événement
-     * @param int $evtId
-     * @param string $titre
-     * @param string $autorisation
-     * @param string $email
-     * @param string $tel
-     * @param string $nomRep
-     * @param string $prenomRep
-     * @param string $description
-     * @param DateTime $debutDate
-     * @param DateTime $finDate
-     * @param DateTime $debutHeure
-     * @param DateTime $finHeure
-     * @param string $lieu
-     * @param string $photo
-     * @param int $userId
-     * @param Categorie $categorie
-     * @param string $nomCategorie
+     * @constructor Evenement
+     * @details Constructeur de la classe Evenement
+     * @param int|null $evtId
+     * @param string|null $titre
+     * @param string|null $autorisation
+     * @param string|null $description
+     * @param string|null $email
+     * @param string|null $tel
+     * @param string|null $nomRep
+     * @param string|null $prenomRep
+     * @param DateTime|null $dateDebut
+     * @param DateTime|null $dateFin
+     * @param DateTime|null $heureDebut
+     * @param DateTime|null $heureFin
+     * @param string|null $lieu
+     * @param string|null $photo
+     * @param int|null $userId
+     * @param int|null $cateId
+     * @param string|null $nomCategorie
      * @return void
      */
     public function __construct(?int $evtId=null, 
@@ -204,162 +176,151 @@ class Evenement
     ////////// Getters //////////
     /////////////////////////////
 
+
     /**
-     * @brief Getter de l'ID
-     * @details Cette fonction permet de récupérer l'identifiant de l'événement
-     * @return int
+     * @function getEvtId
+     * @details Cette fonction permet de récupérer l'id de l'événement
+     * @return int|null
      */
     public function getEvtId(): ?int
     {
         return $this->evtId;
     }
 
-
     /**
-     * @brief Getter du titre
+     * @function getTitre
      * @details Cette fonction permet de récupérer le titre de l'événement
-     * @return string
+     * @return string|null
      */
     public function getTitre(): ?string
     {
         return $this->titre;
     }
 
-
     /**
-     * @brief Getter de l'autorisation
+     * @function getAutorisation
      * @details Cette fonction permet de récupérer l'autorisation de l'événement
-     * @return string
+     * @return string|null
      */
     public function getAutorisation(): ?string
     {
         return $this->autorisation;
     }
 
-
     /**
-     * @brief Getter de l'email
-     * @details Cette fonction permet de récupérer l'email de l'événement
-     * @return string
+     * @function getEmail
+     * @details Cette fonction permet de récupérer l'email du responsable de l'événement
+     * @return string|null
      */
     public function getEmail(): ?string
     {
         return $this->email;
     }
 
-
     /**
-     * @brief Getter du téléphone
-     * @details Cette fonction permet de récupérer le téléphone de l'événement
-     * @return string
+     * @function getTel
+     * @details Cette fonction permet de récupérer le téléphone du responsable de l'événement
+     * @return string|null
      */
     public function getTel(): ?string
     {
         return $this->tel;
     }
 
-
     /**
-     * @brief Getter du nom du représentant
-     * @details Cette fonction permet de récupérer le nom du représentant
-     * @return string
+     * @function getNomRep
+     * @details Cette fonction permet de récupérer le nom du responsable de l'événement
+     * @return string|null
      */
     public function getNomRep(): ?string
     {
         return $this->nomRep;
     }
 
-
     /**
-     * @brief Getter du prénom du représentant
-     * @details Cette fonction permet de récupérer le prénom du représentant
-     * @return string
+     * @function getPrenomRep
+     * @details Cette fonction permet de récupérer le prénom du responsable de l'événement
+     * @return string|null
      */
     public function getPrenomRep(): ?string
     {
         return $this->prenomRep;
     }
 
-
     /**
-     * @brief Getter de la description
+     * @function getDescription
      * @details Cette fonction permet de récupérer la description de l'événement
-     * @return string
+     * @return string|null
      */
     public function getDescription(): ?string
     {
         return $this->description;
     }
 
-
     /**
-     * @brief Getter du début de la date
-     * @details Cette fonction permet de récupérer le début de la date de l'événement
-     * @return DateTime
+     * @function getDateDebut
+     * @details Cette fonction permet de récupérer la date de début de l'événement
+     * @return DateTime|null
      */
     public function getDateDebut(): ?DateTime
     {
         return $this->dateDebut;
     }
 
-
     /**
-     * @brief Getter de la fin de la date
-     * @details Cette fonction permet de récupérer la fin de la date de l'événement
-     * @return DateTime
+     * @function getDateFin
+     * @details Cette fonction permet de récupérer la date de fin de l'événement
+     * @return DateTime|null
      */
     public function getDateFin(): ?DateTime
     {
         return $this->dateFin;
     }
 
-
     /**
-     * @brief Getter du début de l'heure
-     * @details Cette fonction permet de récupérer le début de l'heure de l'événement
-     * @return DateTime
+     * @function getHeureDebut
+     * @details Cette fonction permet de récupérer l'heure de début de l'événement
+     * @return DateTime|null
      */
     public function getHeureDebut(): ?DateTime
     {
         return $this->heureDebut;
     }
 
-
     /**
-     * @brief Getter de la fin de l'heure
-     * @details Cette fonction permet de récupérer la fin de l'heure de l'événement
-     * @return DateTime
+     * @function getHeureFin
+     * @details Cette fonction permet de récupérer l'heure de fin de l'événement
+     * @return DateTime|null
      */
     public function getHeureFin(): ?DateTime
     {
         return $this->heureFin;
     } 
-      
+
     /**
-     * @brief Getter du lieu
+     * @function getLieu
      * @details Cette fonction permet de récupérer le lieu de l'événement
-     * @return string
+     * @return string|null
      */
     public function getLieu(): ?string
     {
         return $this->lieu;
     }
 
-
     /**
-     * @brief Getter de la photo
+     * @function getPhoto
      * @details Cette fonction permet de récupérer la photo de l'événement
-     * @return string
+     * @return string|null
      */
     public function getPhoto(): ?string
     {
         return $this->photo;
     }
 
-    /***
-     * @brief Getter de l'identifiant utilisateur
-     * @details Cette fonction permet de récupérer l'identifiant de l'utilisateur
-     * @return int
+    /**
+     * @function getUserId
+     * @details Cette fonction permet de récupérer l'id de l'utilisateur ajoutant l'evenement
+     * @return int|null
      */
     public function getUserId(): ?int
     {
@@ -367,9 +328,9 @@ class Evenement
     }
 
     /**
-     * @brief Getter de l'identifiant de la catégorie
-     * @details Cette fonction permet de récupérer l'identifiant de la catégorie
-     * @return int
+     * @function getCateId
+     * @details Cette fonction permet de récupérer l'id de la catégorie de l'événement
+     * @return int|null
      */
     public function getCateId(): ?int
     {
@@ -377,9 +338,9 @@ class Evenement
     }
 
     /**
-     * @brief Getter du nom de la catégorie
-     * @details Cette fonction permet de récupérer le nom de la catégorie
-     * @return string
+     * @function getNomCategorie
+     * @details Cette fonction permet de récupérer le nom de la catégorie de l'événement
+     * @return string|null
      */
     public function getNomCategorie(): ?string 
     {
@@ -391,10 +352,11 @@ class Evenement
     ////////// Setters //////////
     /////////////////////////////
 
+
     /**
-     * @brief Setter de l'ID
-     * @details Cette fonction permet de définir l'identifiant de l'événement
-     * @param int $evtId
+     * @function setEvtId
+     * @details Cette fonction permet de définir l'id de l'événement
+     * @param int|null $evtId
      * @return void
      */
     public function setEvtId(?int $evtId): void
@@ -402,11 +364,10 @@ class Evenement
         $this->evtId = $evtId;
     }
 
-
     /**
-     * @brief Setter du titre
+     * @function setTitre
      * @details Cette fonction permet de définir le titre de l'événement
-     * @param string $titre
+     * @param string|null $titre
      * @return void
      */
     public function setTitre(?string $titre): void
@@ -414,11 +375,10 @@ class Evenement
         $this->titre = $titre;
     }
 
-
     /**
-     * @brief Setter de l'autorisation
+     * @function setAutorisation
      * @details Cette fonction permet de définir l'autorisation de l'événement
-     * @param string $autorisation
+     * @param string|null $autorisation
      * @return void
      */
     public function setAutorisation(?string $autorisation): void
@@ -426,11 +386,10 @@ class Evenement
         $this->autorisation = $autorisation;
     }
 
-
     /**
-     * @brief Setter de l'email
-     * @details Cette fonction permet de définir l'email de l'événement
-     * @param string $email
+     * @function setEmail
+     * @details Cette fonction permet de définir l'email du responsable de l'événement
+     * @param string|null $email
      * @return void
      */
     public function setEmail(?string $email): void
@@ -438,11 +397,10 @@ class Evenement
         $this->email = $email;
     }
 
-
     /**
-     * @brief Setter du téléphone
-     * @details Cette fonction permet de définir le téléphone de l'événement
-     * @param string $tel
+     * @function setTel
+     * @details Cette fonction permet de définir le téléphone du responsable de l'événement
+     * @param string|null $tel
      * @return void
      */
     public function setTel(?string $tel): void
@@ -450,11 +408,10 @@ class Evenement
         $this->tel = $tel;
     }
 
-
     /**
-     * @brief Setter du nom du représentant
-     * @details Cette fonction permet de définir le nom du représentant
-     * @param string $nomRep
+     * @function setNomRep
+     * @details Cette fonction permet de définir le nom du responsable de l'événement
+     * @param string|null $nomRep
      * @return void
      */
     public function setNomRep(?string $nomRep): void
@@ -462,11 +419,10 @@ class Evenement
         $this->nomRep = $nomRep;
     }
 
-
     /**
-     * @brief Setter du prénom du représentant
-     * @details Cette fonction permet de définir le prénom du représentant
-     * @param string $prenomRep
+     * @function setPrenomRep
+     * @details Cette fonction permet de définir le prénom du responsable de l'événement
+     * @param string|null $prenomRep
      * @return void
      */
     public function setPrenomRep(?string $prenomRep): void
@@ -474,11 +430,10 @@ class Evenement
         $this->prenomRep = $prenomRep;
     }
 
-
     /**
-     * @brief Setter de la description
+     * @function setDescription
      * @details Cette fonction permet de définir la description de l'événement
-     * @param string $description
+     * @param string|null $description
      * @return void
      */
     public function setDescription(?string $description): void
@@ -486,11 +441,10 @@ class Evenement
         $this->description = $description;
     }
 
-
     /**
-     * @brief Setter du début de la date
-     * @details Cette fonction permet de définir le début de la date de l'événement
-     * @param DateTime $dateDebut
+     * @function setDateDebut
+     * @details Cette fonction permet de définir la date de début de l'événement
+     * @param DateTime|null $dateDebut
      * @return void
      */
     public function setDateDebut(?DateTime $dateDebut): void
@@ -498,11 +452,10 @@ class Evenement
         $this->dateDebut = $dateDebut;
     }
 
-
     /**
-     * @brief Setter de la fin de la date
-     * @details Cette fonction permet de définir la fin de la date de l'événement
-     * @param DateTime $dateFin
+     * @function setDateFin
+     * @details Cette fonction permet de définir la date de fin de l'événement
+     * @param DateTime|null $dateFin
      * @return void
      */
     public function setDateFin(?DateTime $dateFin): void
@@ -510,11 +463,10 @@ class Evenement
         $this->dateFin = $dateFin;
     }
 
-
     /**
-     * @brief Setter du début de l'heure
-     * @details Cette fonction permet de définir le début de l'heure de l'événement
-     * @param DateTime $heureDebut
+     * @function setHeureDebut
+     * @details Cette fonction permet de définir l'heure de début de l'événement
+     * @param DateTime|null $heureDebut
      * @return void
      */
     public function setHeureDebut(?DateTime $heureDebut): void
@@ -522,11 +474,10 @@ class Evenement
         $this->heureDebut = $heureDebut;
     }
 
-
     /**
-     * @brief Setter de la fin de l'heure
-     * @details Cette fonction permet de définir la fin de l'heure de l'événement
-     * @param DateTime $heureFin
+     * @function setHeureFin
+     * @details Cette fonction permet de définir l'heure de fin de l'événement
+     * @param DateTime|null $heureFin
      * @return void
      */
     public function setHeureFin(?DateTime $heureFin): void
@@ -534,11 +485,10 @@ class Evenement
         $this->heureFin = $heureFin;
     }
 
-    /***
-     * @brief Setter du lieu
-     * 
-     * @param string $lieu
-     * 
+    /**
+     * @function setLieu
+     * @details Cette fonction permet de définir le lieu de l'événement
+     * @param string|null $lieu
      * @return void
      */
     public function setLieu(?string $lieu): void
@@ -546,11 +496,10 @@ class Evenement
         $this->lieu = $lieu;
     }
 
-
-    /***
-     * @brief Setter de la photo
+    /**
+     * @function setPhoto
      * @details Cette fonction permet de définir la photo de l'événement
-     * @param string $photo
+     * @param string|null $photo
      * @return void
      */
     public function setPhoto(?string $photo): void
@@ -558,37 +507,34 @@ class Evenement
         $this->photo = $photo;
     }
 
-
     /**
-     * @brief Setter de l'identifiant de l'utilisateur
-     * @details Cette fonction permet de définir l'identifiant de l'utilisateur
-     * @param int $userId
+     * @function setUserId
+     * @details Cette fonction permet de définir l'id de l'utilisateur ajoutant l'evenement
+     * @param int|null $userId
      * @return void
      */
     public function setUserId(?int $userId): void
     {
         $this->userId = $userId;
-    }    
-    
-    
+    } 
+
     /**
-    * @brief Setter de l'identifiant de la catégorie
-    * @details Cette fonction permet de définir l'identifiant de la catégorie
-    * @param int $cateId
-    * @return void
-    */
+     * @function setCateId
+     * @details Cette fonction permet de définir l'id de la catégorie de l'événement
+     * @param int|null $cateId
+     * @return void
+     */
    public function setCateId(?int $cateId): void
    {
        $this->cateId = $cateId;
    }
 
-
-   /**
-    * @brief Setter du nom de la catégorie
-    * @details Cette fonction permet de définir le nom de la catégorie 
-    * @param string $nomCategorie
-    * @return void
-    */
+    /**
+     * @function setNomCategorie
+     * @details Cette fonction permet de définir le nom de la catégorie de l'événement
+     * @param string|null $nomCategorie
+     * @return void
+     */
     public function setNomCategorie(?string $nomCategorie): void
     {
         $this->nomCategorie = $nomCategorie;
