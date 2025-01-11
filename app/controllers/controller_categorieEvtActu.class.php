@@ -1,15 +1,36 @@
 <?php 
 
+/**
+ * @class ControllerCategorieEvtActu
+ * @extends parent<Controller>
+ * @details Permet de gérer les actions liées à la page "categorieEvtActu"
+ */
 class ControllerCategorieEvtActu extends Controller {
 
+    /**
+     * @constructor ControllerCategorieEvtActu
+     * @details Constructeur de la classe ControllerCategorieEvtActu
+     * @param Twig\Environment $twig
+     * @param Twig\Loader\FileSystemLoader $loader
+     * @return void
+     */
     public function __construct(\Twig\Environment $twig, \Twig\Loader\FileSystemLoader $loader) {
         parent::__construct($twig, $loader);
     }
 
-    public function afficher() {
-        echo "afficher categorie de l'evenement ou de l'actualite";
-    }
 
+    /**
+     * @function lister
+     * @details Fonction permettant d'afficher la page "CategorieEvtActu"
+     * @uses Bd
+     * @uses ActualiteDao
+     * @uses EvenementDao
+     * @uses findAllWithCategorie
+     * @uses findEnCours
+     * @uses findAsuivre
+     * @uses findPasser
+     * @return void
+     */
     public function lister() {
         $pdo = Bd::getInstance()->getPdo();
 

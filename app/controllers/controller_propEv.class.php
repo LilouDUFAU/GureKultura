@@ -2,18 +2,38 @@
 // inclure la classe validator
 require_once '../app/controllers/validator.class.php';
 
+
 /**
- * 
+ * @class ControllerPropEv
+ * @extends parent<Controller>
+ * @details Permet de gérer les actions liées à la page "Proposition d'événement"
  */
 class ControllerPropEv extends Controller
 {
 
+    /**
+     * @constructor ControllerPropEv
+     * @details Constructeur de la classe ControllerPropEv
+     * @param Twig\Environment $twig
+     * @param Twig\Loader\FileSystemLoader $loader
+     * @return void
+     */
     public function __construct(\Twig\Environment $twig, \Twig\Loader\FileSystemLoader $loader)
     {
         parent::__construct($twig, $loader);
     }
 
 
+    /**
+     * @function lister
+     * @details Fonction permettant d'afficher la page "Proposition d'événement" de base
+     * @uses ActualiteDao
+     * @uses CategorieDao
+     * @uses Bd
+     * @uses findAllWithCategorie
+     * @uses findAll
+     * @return void
+     */
     public function lister()
     {
         $pdo = Bd::getInstance()->getPdo();
@@ -36,6 +56,18 @@ class ControllerPropEv extends Controller
     }
 
 
+    /**
+     * @function validerFormulairePropEv
+     * @details Fonction permettant de valider les données du formulaire de la page "Proposition d'événement"
+     * @uses Validator
+     * @uses ActualiteDao
+     * @uses CategorieDao
+     * @uses Bd
+     * @uses findAllWithCategorie
+     * @uses findAll
+     * @uses insererDonneesDansLaBase
+     * @return void
+     */
     public function validerFormulairePropEv()
     {
 
@@ -180,18 +212,18 @@ class ControllerPropEv extends Controller
 
             ]);
         } else {
-            echo $this->getTwig()->render('propEv.html.twig', [
-                'title' => 'Proposition d\'événement',
-                'donnees' => $donnees,
-                'actualites' => $actualite,
-                'categories' => $categories
-                
-            ]);
-
+            // echo $this->getTwig()->render('propEv.html.twig', [
+            //     'title' => 'Proposition d\'événement',
+            //     'donnees' => $donnees,
+            //     'actualites' => $actualite,
+            //     'categories' => $categories
             
+            // ]);
+            
+            
+            header('Location: index.php?controlleur=index&methode=lister');
             // Les données sont valides, insérez-les dans la base de données
             $this->insererDonneesDansLaBase($donnees);
-            // header('Location: index.php?controlleur=index&methode=lister');
         }
     } else {
         header('Location: index.php?controlleur=connexion&methode=lister');
@@ -201,10 +233,14 @@ class ControllerPropEv extends Controller
     }
 
     /**
-     * @brief fonction ...
-     * @details cette fonction permet de ...
+     * @function insererDonneesDansLaBase
+     * @details Fonction permettant d'insérer les données du formulaire de la page "Proposition d'événement" dans la base de données
      * @param array $donnees
-     * @return /
+     * @uses EvenementDao
+     * @uses Bd
+     * @uses Evenement
+     * @uses insert 
+     * @return void
      */
     private function insererDonneesDansLaBase(array $donnees)
     {

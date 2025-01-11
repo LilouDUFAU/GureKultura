@@ -1,12 +1,6 @@
 <?php
 
-/**
- * @brief Methode qui permet de verifier si une valeur est une image.
- * 
- * @param string $valeur la valeur a verifier.
- * 
- * @return bool true si la valeur est une image, false sinon.
- */
+
 function is_image($valeur): bool
 {
     $extensions = array('.png', '.jpg', '.jpeg', '.svg');
@@ -14,13 +8,7 @@ function is_image($valeur): bool
     return in_array($extension, $extensions);
 }
 
-/**
- * @brief Methode qui permet de verifier si une valeur est une date.
- * 
- * @param string $valeur la valeur a verifier.
- * 
- * @return bool true si la valeur est une date, false sinon.
- */
+
 function is_date($valeur): bool
 {
     $date = date_create_from_format('Y-m-d', $valeur);
@@ -28,13 +16,7 @@ function is_date($valeur): bool
 }
 
 
-/**
- * @brief Methode qui permet de verifier si une valeur est une heure.
- * 
- * @param string $valeur la valeur a verifier.
- * 
- * @return bool true si la valeur est une heure, false sinon.
- */
+
 function is_time($valeur): bool
 {
     $time = date_create_from_format('H:i', $valeur);
@@ -42,13 +24,7 @@ function is_time($valeur): bool
 }
 
 
-/**
- * @brief Methode qui permet de verifier si une valeur est un fichier.
- * 
- * @param string $valeur la valeur a verifier.
- * 
- * @return bool true si la valeur est un fichier, false sinon.
- */
+
 // function is_file($valeur): bool
 // {
 //     return file_exists($valeur);
@@ -98,13 +74,12 @@ class Validator
 
 
     /**
-     * @brief Methode qui permet de verifier si une valeur respecte les regles de validation definies pour un champ.
-     *
-     * @param string $champ le nom du champ a valider.
-     * @param mixed $valeur la valeur du champ a valider.
-     * @param array $regles les regles de validation a verifier pour le champ.
-     *
-     * @return bool true si la valeur respecte les regles de validation, false sinon.
+     * @function validerChamp
+     * @brief Methode qui permet de valider un champ en fonction des regles de validation definies.
+     * @param string $champ
+     * @param mixed $valeur
+     * @param array $regleValidation
+     * @return bool
      */
     private function validerChamp(string $champ, mixed $valeur, array $regleValidation): bool
     {
@@ -178,10 +153,10 @@ class Validator
     }
 
 
-    /***
-     * @brief Methode qui permet de recuperer les erreurs de validation rencontrees lors de la derniere validation.
-     * 
-     * @return array un tableau associatif contenant les erreurs de validation rencontrees.
+    /**
+     * @function getMessageErreurs
+     * @brief Methode qui permet de retourner les messages d'erreurs de validation.
+     * @return array
      */
     public function getMessageErreurs(): array
     {
@@ -189,9 +164,8 @@ class Validator
     }
 
 
-    ////////Partie inscription/////////
     /**
-     * @brief Fonction permettant de vérifier si un enregistrement est disponible dans la table user
+     * @function is_available
      * @details Cette fonction permet de vérifier si un enregistrement passé en paramettre est déjà enregistré en base de données dans la table user
      * @param string $champ
      * @return bool
@@ -211,7 +185,7 @@ class Validator
     }
 
     /**
-     * @brief Fonction permettant de vérifier la robustesse d'un mot de passe
+     * @function is_strong
      * @details Cette fonction permet de vérifier si un mot de passe passé en paramettre est assez robuste
      * @param string $password
      * @return bool
@@ -224,7 +198,7 @@ class Validator
     }
 
     /**
-     * @brief Fonction permettant de hasher un mot de passe
+     * @function hash_password
      * @details Cette fonction permet de hasher un mot de passe passé en paramettre
      * @param string $password
      * @return string
@@ -234,7 +208,7 @@ class Validator
     }
 
     /**
-     * @brief Fonction permettant de vérifier si un email existent dans la base de données
+     * @function identifiantExist
      * @details Cette fonction permet de vérifier si un email passé en paramettre existent dans la base de données
      * @param string $champ
      * @return bool
@@ -253,7 +227,7 @@ class Validator
     }
 
     /**
-     * @brief Fonction permettant de vérifier si un mot de passe existe dans la base de données
+     * @function passwordExist
      * @details Cette fonction permet de vérifier si un mot de passe passé en paramettre existe dans la base de données
      * @param string $password
      * @return bool

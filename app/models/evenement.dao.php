@@ -2,25 +2,21 @@
 // inclure la classe validator
 require_once '../app/controllers/validator.class.php';
 
+
 /**
- * @brief Classe EvenementDao, permettant d'effectuer des requêtes sur la table evenement de la base de données.
- * @details Cette classe utilise le pattern DAO (Data Access Object).
+ * @class EvenementDao
+ * @details Permet de lier la base de données à la classe Evenement
  */
 class EvenementDao
 {
-
     /**
-     * @brief Attribut permettant de stocker la connexion à la base de données
-     * @details Cet attribut est privé et ne peut être modifié que par les méthodes de la classe
      * @var PDO
      */
     private ?PDO $pdo;
 
-
     /**
-     * @brief Constructeur de la classe EvenementDao
-     * @details Permet d'instancier un objet EvenementDao
-     * @param mixed $pdo
+     * @constructor EvenementDao
+     * @param PDO|null $pdo
      * @return void
      */
     public function __construct(?PDO $pdo = null)
@@ -30,9 +26,8 @@ class EvenementDao
 
 
     /**
-     * @brief Getter de l'attribut pdo
-     * @details Permet de récupérer la connexion à la base de données
-     * @return PDO
+     * @function getPdo
+     * @return PDO|null
      */
     public function getPdo(): ?PDO
     {
@@ -41,9 +36,8 @@ class EvenementDao
 
 
     /**
-     * @brief Setter de l'attribut pdo
-     * @details Permet de modifier la connexion à la base de données        
-     * @param PDO $pdo
+     * @function setPdo
+     * @param PDO|null $pdo
      * @return void
      */
     public function setPdo(?PDO $pdo): void
@@ -53,10 +47,11 @@ class EvenementDao
 
 
     /**
-     * @brief Fonction permettant de récupérer un événement en base de données
-     * @details Cette fonction permet de récupérer un événement en base de données en fonction de son identifiant
-     * @param int $id
-     * @return Evenement
+     * @function find
+     * @details Permet de trouver un événement et par son id
+     * @param int|null $id
+     * @uses hydrate
+     * @return Evenement|null
      */
     public function find(?int $id): ?Evenement
     {
@@ -73,8 +68,9 @@ class EvenementDao
 
 
     /**
-     * @brief Fonction permettant de récupérer tous les événements en base de données
-     * @details Cette fonction permet de récupérer tous les événements en base de données
+     * @function findAll
+     * @details Permet de trouver tous les événements
+     * @uses hydrateAll
      * @return array
      */
     public function findAll()
@@ -88,12 +84,11 @@ class EvenementDao
         return $evenement;
     }
 
-
-
     /**
-     * @brief Fonction permettant de récupérer les événements en cours en base de données
-     * @details Cette fonction permet de récupérer les événements en cours en base de données
+     * @function findEnCours
+     * @details Permet de trouver les événements en cours
      * @param int|null $id
+     * @uses hydrateAll
      * @return array
      */
     public function findEnCours(?int $id)
@@ -109,11 +104,11 @@ class EvenementDao
         return $evenement;
     }
 
-
     /**
-     * @brief Fonction permettant de récupérer les événements à venir en base de données
-     * @details Cette fonction permet de récupérer les événements à venir en base de données
+     * @function findASuivre
+     * @details Permet de trouver les événements à suivre
      * @param int|null $id
+     * @uses hydrateAll
      * @return array
      */
     public function findASuivre(?int $id)
@@ -129,11 +124,11 @@ class EvenementDao
         return $evenement;
     }
 
-
     /**
-     * @brief Fonction permettant de récupérer les événements passés en base de données
-     * @details Cette fonction permet de récupérer les événements passés en base de données
+     * @function findPasser
+     * @details Permet de trouver les événements passés
      * @param int|null $id
+     * @uses hydrateAll
      * @return array
      */
     public function findPasser(?int $id)
@@ -149,10 +144,10 @@ class EvenementDao
         return $evenement;
     }
 
-
     /**
-     * @brief Fonction permettant de récupérer tous les événements avec leur catégorie en base de données
-     * @details Cette fonction permet de récupérer tous les événements avec leur catégorie en base de données
+     * @function findAllWithCategorie
+     * @details Permet de trouver tous les événements avec leur catégorie
+     * @uses hydrateAllWithCategorie
      * @return array
      */
     public function findAllWithCategorie(): array
@@ -169,13 +164,12 @@ class EvenementDao
         return $this->hydrateAllWithCategorie($evenementTab);
     }
 
-
-
+    
     /**
-     * @brief Fonction permettant de récupérer un événement avec sa catégorie en base de données
-     * @details Cette fonction permet de récupérer un événement avec sa catégorie en base de données
-     * @param int|null $id
-     * @return Evenement|null
+     * @function hydrate
+     * @details Permet d'hydrater un tableau de données pour créer un objet Evenement
+     * @param array $tab
+     * @return Evenement
      */
     public function hydrate(array $tab): Evenement
     {
@@ -226,11 +220,11 @@ class EvenementDao
         return $evenement;
     }
 
-
     /**
-     * @brief Fonction permettant d'hydrater un tableau de données en objets Evenement
-     * @details Cette fonction permet de récupérer tous les événements avec leur catégorie en base de données
+     * @function hydrateAll
+     * @details Permet d'hydrater un tableau de données pour créer un tableau d'objets Evenement
      * @param array $tab
+     * @uses hydrate
      * @return array
      */
     public function hydrateAll(array $tab): array
@@ -244,9 +238,10 @@ class EvenementDao
 
 
     /**
-     * @brief Fonction permettant de récupérer tous les événements avec leur catégorie en base de données
-     * @details Cette fonction permet de récupérer tous les événements avec leur catégorie en base de données
+     * @function hydrateAllWithCategorie
+     * @details Permet d'hydrater un tableau de données pour créer un tableau d'objets Evenement avec leur catégorie
      * @param array $tab
+     * @uses hydrate
      * @return array
      */
     public function hydrateAllWithCategorie(array $tab): array
@@ -260,25 +255,9 @@ class EvenementDao
 
 
     /**
-     * @brief Fonction permettant de récupérer le nom de la catégorie en base de données
-     * @details Cette fonction permet de récupérer le nom de la catégorie en base de données
-     * @return array
-     */
-    public function findNomCategorie(): array
-    {
-        $stmt = $this->pdo->prepare("SELECT nom FROM " . PREFIX_TABLE . "categorie JOIN " . PREFIX_TABLE . "evenement ON " . PREFIX_TABLE . "categorie.cateId = " . PREFIX_TABLE . "evenement.cateId WHERE " . PREFIX_TABLE . "evenement.cateId = " . PREFIX_TABLE . "categorie.cateId");
-        $stmt->execute();
-
-        $nomCategories = $stmt->fetch(PDO::FETCH_ASSOC);
-        var_dump($nomCategories);
-        return $nomCategories;
-    }
-
-
-    /**
-     * @brief Fonction permettant d'inserer un événement en base de données
-     * @details Cette fonction permet d'inserer un événement en base de données en fonction de son identifiant
-     * @param int|null $id
+     * @function insert
+     * @details Permet d'insérer un événement dans la base de données
+     * @param Evenement $evenement
      * @return void
      */
     public function insert(Evenement $evenement): void
