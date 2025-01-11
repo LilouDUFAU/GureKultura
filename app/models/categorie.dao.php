@@ -1,21 +1,19 @@
 <?php 
 
 /**
- * @brief Classe CategorieDao, permettant d'effectuer des requêtes sur la table categorie de la base de données.
- * @details Cette classe utilise le pattern DAO (Data Access Object).
+ * @Class CategorieDao
+ * @details Classe CategorieDao, permettant d'effectuer des requêtes sur la table categorie de la base de données. Utilise le pattern DAO (Data Access Object).
  */
 class CategorieDao {
 
     /**
-     * @brief Attribut permettant de stocker la connexion à la base de données
-     * @details Cet attribut est privé et ne peut être modifié que par les méthodes de la classe
+     * @var PDO
      */
     private ?PDO $pdo;
 
     /**
      * @constructor CategorieDao
-     * @brief Constructeur de la classe EvenementDao
-     * @details Permet d'instancier un objet EvenementDao
+     * @param PDO|null $pdo
      * @return void
      */
     public function __construct(?PDO $pdo=null) {
@@ -24,19 +22,15 @@ class CategorieDao {
 
     /**
      * @function getPDO
-     * @brief Getter de l'attribut pdo
-     * @details Permet de récupérer la connexion à la base de données
-     * @return PDO
+     * @return PDO|null
      */
     public function getPdo(): ?PDO {
         return $this->pdo;
     }   
 
     /**
-     * @function setPDO
-     * @brief Setter de l'attribut pdo
-     * @details Permet de modifier la connexion à la base de données        
-     * @param PDO $pdo
+     * @function setPDO     
+     * @param PDO|null $pdo
      * @return void
      */
     public function setPdo(?PDO $pdo): void {
@@ -45,10 +39,10 @@ class CategorieDao {
 
     /**
      * @function find
-     * @brief Fonction permettant de récupérer une catégorie en base de données
      * @details Cette fonction permet de récupérer une catégorie en base de données en fonction de son identifiant
-     * @param int $id
-     * @return Categorie
+     * @param int|null $id
+     * @uses hydrate
+     * @return Categorie|null
      */
     public function find(?int $id): ?Categorie {
         $sql="SELECT * FROM " . PREFIX_TABLE . "categorie WHERE cateId = :id";
@@ -62,8 +56,8 @@ class CategorieDao {
 
     /**
      * @function findAll
-     * @brief Fonction permettant de récupérer toutes les catégories en base de données
      * @details Cette fonction permet de récupérer toutes les catégories en base de données
+     * @uses hydrateAll
      * @return array
      */
     public function findAll() {
@@ -78,8 +72,8 @@ class CategorieDao {
 
     /**
      * @function findEvtSport
-     * @brief Fonction permettant de récupérer les catégories d'événements sportifs en base de données
      * @details Cette fonction permet de récupérer les catégories d'événements sportifs en base de données
+     * @uses hydrateAll
      * @return array
      */
     public function findEvtSport() {
@@ -97,8 +91,8 @@ class CategorieDao {
 
     /**
      * @function findEvtCult
-     * @brief Fonction permettant de récupérer les catégories d'événements culturels en base de données
      * @details Cette fonction permet de récupérer les catégories d'événements culturels en base de données
+     * @uses hydrateAll
      * @return array
      */
     public function findEvtCult() {
@@ -116,8 +110,8 @@ class CategorieDao {
 
     /**
      * @function findActuSport
-     * @brief Fonction permettant de récupérer les catégories d'actualités sportives en base de données
      * @details Cette fonction permet de récupérer les catégories d'actualités sportives en base de données
+     * @uses hydrateAll
      * @return array
      */
     public function findActuSport() {
@@ -135,8 +129,8 @@ class CategorieDao {
 
     /**
      * @function findActuCult
-     * @brief Fonction permettant de récupérer les catégories d'actualités culturelles en base de données
      * @details Cette fonction permet de récupérer les catégories d'actualités culturelles en base de données
+     * @uses hydrateAll
      * @return array
      */
     public function findActuCult() {
@@ -154,10 +148,9 @@ class CategorieDao {
 
     /**
      * @function hydrate
-     * @brief Fonction permettant d'hydrater une catégorie en base de données
      * @details Cette fonction permet d'hydrater une catégorie en base de données
-     * @param int|null $id
-     * @return Evenement|null
+     * @param array $tab
+     * @return Evenement
      */
     public function hydrate(array $tab): Categorie {
         $categorie = new Categorie();
@@ -170,9 +163,9 @@ class CategorieDao {
 
     /**
      * function hydrateAll
-     * @brief Fonction permettant d'hydrater un tableau de données en objets Categorie
-     * @details Cette fonction permet d'hydrater toutes les catégories
+     * @details Cette fonction permettant d'hydrater un tableau de données en objets Categorie
      * @param array $tab
+     * @uses hydrate
      * @return array
      */
     public function hydrateAll(array $tab): array {
@@ -185,7 +178,6 @@ class CategorieDao {
 
     /**
      * function findCateOriSportEvt
-     * @brief Fonction permettant de récupérer tout des catégories appartenant à la catégorie originale sport pour chaque evenement
      * @details Cette fonction permet de récupérer tout des catégories appartenant à la catégorie originale sport pour chaque evenement
      * @return array
      */
@@ -201,7 +193,6 @@ class CategorieDao {
 
     /**
      * function findCateOriCultureEvt
-     * @brief Fonction permettant de récupérer tout des catégories appartenant à la catégorie originale culture pour chaque evenement
      * @details Cette fonction permet de récupérer tout des catégories appartenant à la catégorie originale culture pour chaque evenement
      * @return array
      */
@@ -217,7 +208,6 @@ class CategorieDao {
 
     /**
      * function findCateOriSportActu
-     * @brief Fonction permettant de récupérer tout des catégories appartenant à la catégorie originale sport pour chaque actualité
      * @details Cette fonction permet de récupérer tout des catégories appartenant à la catégorie originale sport pour chaque actualité
      * @return array
      */
@@ -231,10 +221,8 @@ class CategorieDao {
     }
 
 
-    // récupere tout des catégories appartenant a la catégorie originale culture pour chaque actualité
     /**
      * function findCateOriCultureActu
-     * @brief Fonction permettant de récupérer tout des catégories appartenant a la catégorie originale culture pour chaque actualité
      * @details Cette fonction permet de récupérer tout des catégories appartenant a la catégorie originale culture pour chaque actualité
      * @return array
      */

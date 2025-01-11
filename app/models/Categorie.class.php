@@ -3,43 +3,42 @@
 // namespace App\Models;
 
 /**
- * @brief Classe Categorie
+ * @class Categorie
  * @details Cette classe permet de gérer les catégories
  */
 class Categorie 
 {
     /**
      * @brief cateId
-     * @details Identifiant de la catégorie
+     * @var int|null
      */
     private ?int $cateId;
 
     /**
      * @brief nom
-     * @details nom de la catégorie
+     * @var string|null
      */
     private ?string $nom;
 
     /**
      * @brief categorieOriginale
-     * @details Catégorie originale de la catégorie (si elle en possède une)
+     * @var int|null
      */
     private ?int $categorieOriginale;
 
     /**
      * @brief img
-     * @details Image représentant la catégorie
+     * @var string|null
      */
     private ?string $img;
 
     /**
-     * @constructor
-     * @brief Constructeur de la classe Categorie
+     * @constructor Categorie
      * @details Ce constructeur permet de créer une nouvelle catégorie
-     * @param int $cateId
-     * @param string $nom
-     * @param int $categorieOriginale
-     * @param string $img
+     * @param int|null $cateId
+     * @param string|null $nom
+     * @param int|null $categorieOriginale
+     * @param string|null $img
      * @return void
      */
     public function __construct(?int $cateId=null, ?string $nom=null, ?int $categorieOriginale=null, ?string $img=null)
@@ -56,9 +55,8 @@ class Categorie
 
     /**
      * @function getCateId
-     * @brief Getter de l'ID
      * @details Cette fonction permet de récupérer l'identifiant de la catégorie
-     * @return int
+     * @return int|null
      */
     public function getCateId(): ?int
     {
@@ -67,9 +65,8 @@ class Categorie
 
     /**
      * @function getNom
-     * @brief Getter du nom
      * @details Cette fonction permet de récupérer le nom de la catégorie
-     * @return int
+     * @return int|null
      */
     public function getNom(): ?string
     {
@@ -78,9 +75,8 @@ class Categorie
 
     /**
      * @function getCategorieOriginale
-     * @brief Getter de la catégorie originale
      * @details Cette fonction permet de récupérer la catégorie originale de la catégorie
-     * @return int
+     * @return int|null
      */
     public function getCategorieOriginale(): ?int
     {
@@ -89,9 +85,8 @@ class Categorie
 
     /**
      * @function getImg
-     * @brief Getter de l'image
      * @details Cette fonction permet de récupérer l'image de la catégorie
-     * @return int
+     * @return int|null
      */
     public function getImg(): ?string
     {
@@ -104,9 +99,8 @@ class Categorie
 
     /**
      * @function setCateId
-     * @brief Setter de l'identifiant
      * @details Cette fonction permet de définir l'identifiant de la catégorie
-     * @param int $cateId
+     * @param int|null $cateId
      * @return void
      */
     public function setCateId(?int $cateId): void
@@ -116,9 +110,8 @@ class Categorie
 
     /**
      * @function setNom
-     * @brief Setter du nom
      * @details Cette fonction permet de définir le nom de la catégorie
-     * @param string $nom
+     * @param string|null $nom
      * @return void
      */
     public function setNom(?string $nom): void
@@ -128,9 +121,8 @@ class Categorie
 
     /**
      * @function setCategorieOriginale
-     * @brief Setter de la catégorie originale
      * @details Cette fonction permet de définir la catégorie originale de la catégorie
-     * @param int $categorieOriginale
+     * @param int|null $categorieOriginale
      * @return void
      */
     public function setCategorieOriginale(?int $categorieOriginale): void
@@ -140,9 +132,8 @@ class Categorie
 
     /**
      * @function setImg
-     * @brief Setter de l'image
      * @details Cette fonction permet de définir l'image de la catégorie
-     * @param string $img
+     * @param string|null $img
      * @return void
      */
     public function setImg(?string $img): void
