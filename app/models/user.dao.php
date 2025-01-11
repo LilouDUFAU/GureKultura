@@ -121,7 +121,6 @@ class UserDao {
     {
         $sql = "INSERT INTO " . PREFIX_TABLE . "user (nom, pseudo, email, mdp, dateInscr, bio, pfp) VALUES (:nom, :pseudo, :email, :mdp, :dateInscr, :bio, :pfp)";
         $pdoStatement = $this->pdo->prepare($sql);
-        var_dump($user->dateActuelle());
         $pdoStatement->execute([
             ':nom' => $user->getNom(),
             ':pseudo' => $user->getPseudo(),
