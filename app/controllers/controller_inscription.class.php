@@ -1,15 +1,32 @@
 <?php
 require_once '../app/controllers/validator.class.php';
 
+/**
+ * @class ControllerInscription
+ * @exteds parent <Controller>
+ * @details Gère les actions liées à la page "inscription"
+ */
 class ControllerInscription extends Controller {
+
+    /**
+     * @constructor ControllerInscription
+     * @details Constructeur de la classe ControllerInscription
+     * @param Twig\Environment $twig
+     * @param Twig\Loader\FileSystemLoader $loader
+     * @return void
+     */ 
     public function __construct(\Twig\Environment $twig, \Twig\Loader\FileSystemLoader $loader) {
         parent::__construct($twig, $loader);
     }
 
-    public function afficher() {
-        echo "afficher inscription";
-    }
-
+    /**
+     * @function lister
+     * @details Fonction permettant d'afficher la page "Inscription" de base
+     * @uses ActualiteDao
+     * @uses Bd
+     * @uses findAllWithCategorie
+     * @return void
+     */
     public function lister() {
         $pdo = Bd::getInstance()->getPdo();
 
@@ -26,6 +43,16 @@ class ControllerInscription extends Controller {
         ]);
     }
 
+    /**
+     * @function validerFormulaireInscription
+     * @details Fonction permettant de valider les données du formulaire d'inscription
+     * @uses Validator
+     * @uses UserDao
+     * @uses findWithEmail
+     * @uses insert
+     * @uses User
+     * @return void
+     */
     public function validerFormulaireInscription() {
         // definition des regles de validations que l'on souhaite verifier pour chaque champs du formulaire
         $regleValidation = [
@@ -111,6 +138,15 @@ class ControllerInscription extends Controller {
         }
     }
 
+
+    /**
+     * @function insererDonneesDansLaBase
+     * @details Fonction permettant d'insérer les données du formulaire d'inscription dans la base de données
+     * @param array $donnees
+     * @uses UserDao
+     * @uses User
+     * @return void
+     */
     private function insererDonneesDansLaBase(array $donnees)
     {
         try {

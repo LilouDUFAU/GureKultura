@@ -1,15 +1,34 @@
 <?php
 require_once '../app/controllers/validator.class.php';
 
+/**
+ * @class ControllerConnexion
+ * @extends parent <Controller>
+ * @details Permet de gérer les actions liées à la page "connexion"
+ */
 class ControllerConnexion extends Controller {
+
+    /**
+     * @constructor ControllerConnexion
+     * @details Constructeur de la classe ControllerConnexion
+     * @param \Twig\Environment $twig
+     * @param \Twig\Loader\FileSystemLoader $loader
+     * @return void
+     */
     public function __construct(\Twig\Environment $twig, \Twig\Loader\FileSystemLoader $loader) {
         parent::__construct($twig, $loader);
     }
 
-    public function afficher() {
-        echo "afficher connexion";
-    }
-
+    /**
+     * @function lister
+     * @details Fonction permettant d'afficher la page "connexion" de base
+     * @uses Bd
+     * @uses \Twig\Loader\FilesystemLoader
+     * @uses \Twig\Environment
+     * @uses ActualiteDao
+     * @uses findAllWithCategorie
+     * @return void
+     */
     public function lister() {
         $pdo = Bd::getInstance()->getPdo();
 
@@ -26,6 +45,24 @@ class ControllerConnexion extends Controller {
         ]);
     }
 
+
+    /**
+     * @function validerFormulaireConnexion
+     * @details Fonction permettant de valider les informations de connexion de l'utilisateur
+     * @uses Validator
+     * @uses UserDao
+     * @uses Bd
+     * @uses $_POST
+     * @uses $_SESSION
+     * @uses serialize
+     * @uses header
+     * @uses getTwig
+     * @uses addGlobal
+     * @uses findWithEmail
+     * @uses identifiantExist
+     * @uses passwordExist
+     * @return void
+     */
     public function validerFormulaireConnexion() {
         // definition des regles de validations que l'on souhaite verifier pour chaque champs du formulaire
         $regleValidation = [
