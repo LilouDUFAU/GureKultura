@@ -212,18 +212,18 @@ class ControllerPropEv extends Controller
 
             ]);
         } else {
-            echo $this->getTwig()->render('propEv.html.twig', [
-                'title' => 'Proposition d\'événement',
-                'donnees' => $donnees,
-                'actualites' => $actualite,
-                'categories' => $categories
-                
-            ]);
-
+            // echo $this->getTwig()->render('propEv.html.twig', [
+            //     'title' => 'Proposition d\'événement',
+            //     'donnees' => $donnees,
+            //     'actualites' => $actualite,
+            //     'categories' => $categories
             
+            // ]);
+            
+            
+            header('Location: index.php?controlleur=index&methode=lister');
             // Les données sont valides, insérez-les dans la base de données
             $this->insererDonneesDansLaBase($donnees);
-            // header('Location: index.php?controlleur=index&methode=lister');
         }
     } else {
         header('Location: index.php?controlleur=connexion&methode=lister');
