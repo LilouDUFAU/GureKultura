@@ -9,31 +9,31 @@
 class Categorie 
 {
     /**
-     * @brief cateId
+     * @brief Identifiant de la catégorie
      * @var int|null
      */
     private ?int $cateId;
 
     /**
-     * @brief nom
+     * @brief Nom de la catégorie
      * @var string|null
      */
     private ?string $nom;
 
     /**
-     * @brief categorieOriginale
+     * @brief Categorie originale de la catégorie
      * @var int|null
      */
     private ?int $categorieOriginale;
 
     /**
-     * @brief img
+     * @brief Image de la catégorie
      * @var string|null
      */
     private ?string $img;
 
     /**
-     * @constructor Categorie
+     * @constructor Constructeur de la classe Categorie
      * @details Ce constructeur permet de créer une nouvelle catégorie
      * @param int|null $cateId
      * @param string|null $nom

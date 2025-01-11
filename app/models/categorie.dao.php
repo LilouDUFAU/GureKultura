@@ -2,7 +2,7 @@
 
 /**
  * @Class CategorieDao
- * @details Classe CategorieDao, permettant d'effectuer des requêtes sur la table categorie de la base de données. Utilise le pattern DAO (Data Access Object).
+ * @details Permet de lier la classe Categorie à la base de données
  */
 class CategorieDao {
 
