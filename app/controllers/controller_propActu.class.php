@@ -3,15 +3,37 @@
 require_once '../app/controllers/validator.class.php';
 
 
+/**
+ * @class ControllerPropActu
+ * @extends parent<Controller>
+ * @details Permet de gérer les actions liées à la page "Proposition d'actualité"
+ */
 class ControllerPropActu extends Controller
 {
 
+    /**
+     * @constructor ControllerPropActu
+     * @details Constructeur de la classe ControllerPropActu
+     * @param Twig\Environment $twig
+     * @param Twig\Loader\FileSystemLoader $loader
+     * @return void
+     */
     public function __construct(\Twig\Environment $twig, \Twig\Loader\FileSystemLoader $loader)
     {
         parent::__construct($twig, $loader);
     }
 
 
+    /**
+     * @function lister
+     * @details Fonction permettant d'afficher la page "Proposition d'actualité" de base
+     * @uses ActualiteDao
+     * @uses CategorieDao
+     * @uses Bd
+     * @uses findAllWithCategorie
+     * @uses findAll
+     * @return void
+     */
     public function lister()
     {
         $pdo = Bd::getInstance()->getPdo();
@@ -33,7 +55,18 @@ class ControllerPropActu extends Controller
         ]);
     }
 
-
+    /**
+     * @function validerFormulairePropActu
+     * @details Fonction permettant de valider le formulaire de proposition d'actualité
+     * @uses Validator
+     * @uses ActualiteDao
+     * @uses CategorieDao
+     * @uses Bd
+     * @uses findAllWithCategorie
+     * @uses findAll
+     * @uses insererDonneesDansLaBase
+     * @return void
+     */
     public function validerFormulairePropActu()
     {
         $userCo = unserialize($_SESSION['user']);
@@ -136,6 +169,17 @@ class ControllerPropActu extends Controller
 
     }
 
+
+    /**
+     * @function insererDonneesDansLaBase
+     * @details Fonction permettant d'insérer les données du formulaire dans la base de données
+     * @param array $donnees
+     * @uses ActualiteDao
+     * @uses Bd
+     * @uses Actualite
+     * @uses insert
+     * @return void
+     */
     private function insererDonneesDansLaBase(array $donnees)
     {
         try {

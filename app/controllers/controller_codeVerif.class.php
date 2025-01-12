@@ -1,14 +1,32 @@
 <?php
 
+/**
+ * @class ControllerCodeVerif
+ * @extends parent <Controller>
+ * @details Permet de gérer les actions liées à la page "codeVerif"
+ */
 class ControllerCodeVerif extends Controller {
+
+    /**
+     * @constructor ControllerCodeVerif
+     * @details Constructeur de la classe ControllerCodeVerif
+     * @param Twig\Environment $twig
+     * @param Twig\Loader\FileSystemLoader $loader
+     * @return void
+     */
     public function __construct(\Twig\Environment $twig, \Twig\Loader\FileSystemLoader $loader) {
         parent::__construct($twig, $loader);
     }
 
-    public function afficher() {
-        echo "afficher codeVerif";
-    }
 
+    /**
+     * @function lister
+     * @details Fonction permettant d'afficher la page "codeVerif"
+     * @uses ActualiteDao
+     * @uses Bd
+     * @uses findAllWithCategorie
+     * @return void
+     */
     public function lister() {
         $pdo = Bd::getInstance()->getPdo();
 
