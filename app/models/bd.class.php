@@ -1,10 +1,20 @@
 <?php
 
 class Bd {
+    /**
+     * @var Bd|null
+     */
     private static ?Bd $instance = null;
 
+    /**
+     * @var PDO|null
+     */
     private ?PDO $pdo;
 
+    /**
+     * @constructor EvenementDao
+     * @return void
+     */
     public function __construct() {
         try {
             $this->pdo = new PDO('mysql:host='. DB_HOST .'; dbname='. DB_NAME, DB_USER, DB_PASS);
@@ -17,6 +27,9 @@ class Bd {
         }
     }
 
+    /**
+     * @return Bd
+     */
     public static function getInstance(): Bd {
         if (self::$instance === null) {
             self::$instance = new Bd();
@@ -24,6 +37,9 @@ class Bd {
         return self::$instance;
     }
 
+    /**
+     * @return PDO|null
+     */
     public function getPdo(): ?PDO {
         return $this->pdo;
     }
