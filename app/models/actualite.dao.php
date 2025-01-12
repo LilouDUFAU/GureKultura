@@ -3,20 +3,37 @@
 require_once '../app/controllers/validator.class.php';
 
 class ActualiteDao {
+    /**
+     * @var PDO|null
+     */
     private ?PDO $pdo;
 
+    /**
+     * @param PDO|null $pdo
+     */
     public function __construct(?PDO $pdo=null) {
         $this->pdo = $pdo;
     }
 
+    /**
+     * @return PDO|null
+     */
     public function getPdo(): ?PDO {
         return $this->pdo;
     }
 
+    /**
+     * @param PDO|null $pdo
+     * @return void
+     */
     public function setPdo(?PDO $pdo): void {
         $this->pdo = $pdo;
     }
 
+    /**
+     * @param integer|null $id
+     * @return Actualite|null
+     */
     public function find(?int $id): ?Actualite {
         $sql="SELECT actu.actuId, actu.titre, actu.resume, actu.contenu, actu.datePubli, actu.img, cate.nom AS nomCategorie
             FROM gk_actualite AS actu
@@ -29,6 +46,9 @@ class ActualiteDao {
         return $actualite;
     }
 
+    /**
+     * @return void
+     */
     public function findAll() {
         $sql="SELECT * FROM " . PREFIX_TABLE . "actualite";
         $pdoStatement = $this->pdo->prepare($sql);
@@ -39,6 +59,9 @@ class ActualiteDao {
         return $actualite;
     }
 
+    /**
+     * @return array
+     */
     public function findAllWithCategorie(): array
     {
         $sql = "SELECT actu.actuId, actu.titre, actu.resume, actu.contenu, actu.datePubli, actu.img, cate.nom AS nomCategorie
@@ -53,6 +76,10 @@ class ActualiteDao {
         return $this->hydrateAllWithCategorie($actualiteTab);
     }
     
+    /**
+     * @param integer|null $id
+     * @return void
+     */
     public function findEnCours(?int $id) {
         $sql="SELECT actu.actuId, actu.titre, actu.resume, actu.contenu, actu.datePubli, actu.img, cate.nom AS nomCategorie
             FROM gk_actualite AS actu
@@ -65,6 +92,10 @@ class ActualiteDao {
         return $actualite;
     }
     
+    /**
+     * @param integer|null $id
+     * @return void
+     */
     public function findASuivre(?int $id) {
         $sql="SELECT actu.actuId, actu.titre, actu.resume, actu.contenu, actu.datePubli, actu.img, cate.nom AS nomCategorie
             FROM gk_actualite AS actu
@@ -77,6 +108,10 @@ class ActualiteDao {
         return $actualite;
     }
     
+    /**
+     * @param integer|null $id
+     * @return void
+     */
     public function findPasser(?int $id) {
         $sql="SELECT actu.actuId, actu.titre, actu.resume, actu.contenu, actu.datePubli, actu.img, cate.nom AS nomCategorie
             FROM gk_actualite AS actu
@@ -104,6 +139,10 @@ class ActualiteDao {
         return $nomCategories;
     }
 
+    /**
+     * @param array $tab
+     * @return Actualite
+     */
     public function hydrate(array $tab): Actualite {
         $actualite = new Actualite();
         $actualite->setActuId($tab['actuId']);
@@ -138,6 +177,10 @@ class ActualiteDao {
         return $actualite;
     }
 
+    /**
+     * @param array $tab
+     * @return array
+     */
     public function hydrateAll(array $tab): array {
         $actualites = [];
         foreach ($tab as $actualite) {
@@ -146,6 +189,10 @@ class ActualiteDao {
         return $actualites;
     }
 
+    /**
+     * @param array $tab
+     * @return array
+     */
     public function hydrateAllWithCategorie(array $tab): array {
         $actualites = [];
         foreach ($tab as $actualite) {
@@ -154,6 +201,10 @@ class ActualiteDao {
         return $actualites;
     }
 
+    /**
+     * @param Actualite $actualite
+     * @return void
+     */
     public function insert(Actualite $actualite): void
     {
         $sql = "INSERT INTO " . PREFIX_TABLE . "actualite (titre, resume, contenu, datePubli, img, cateId, userId)

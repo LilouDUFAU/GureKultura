@@ -112,97 +112,163 @@ class Actualite
     }
 
     //getters
+    /**
+     * @return integer|null
+     */
     public function getActuId(): ?int
     {
         return $this->actuId;
     }
 
+    /**
+     * @return string|null
+     */
     public function getTitre(): ?string
     {
         return $this->titre;
     }
 
+    /**
+     * @return string|null
+     */
     public function getResume(): ?string
     {
         return $this->resume;
     }
 
+    /**
+     * @return string|null
+     */
     public function getContenu(): ?string
     {
         return $this->contenu;
     }
 
+    /**
+     * @return DateTime|null
+     */
     public function getDatePubli(): ?DateTime
     {
         return $this->datePubli;
     }
 
+    /**
+     * @return string|null
+     */
     public function getImg(): ?string
     {
         return $this->img;
     }
 
+    /**
+     * @return integer|null
+     */
     public function getUserId(): ?int
     {
         return $this->userId;
     }
 
+    /**
+     * @return integer|null
+     */
     public function getCateId(): ?int
     {
         return $this->cateId;
     }
 
+    /**
+     * @return string|null
+     */
     public function getNomCategorie(): ?string
     {
         return $this->nomCategorie;
     }
 
     //setters
+    /**
+     * @param integer|null $actuId
+     * @return void
+     */
     public function setActuId(?int $actuId): void
     {
         $this->actuId = $actuId;
     }
 
+    /**
+     * @param string|null $titre
+     * @return void
+     */
     public function setTitre(?string $titre): void
     {
         $this->titre = $titre;
     }
 
+    /**
+     * @param string|null $resume
+     * @return void
+     */
     public function setResume(?string $resume): void
     {
         $this->resume = $resume;
     }
 
+    /**
+     * @param string|null $contenu
+     * @return void
+     */
     public function setContenu(?string $contenu): void
     {
         $this->contenu = $contenu;
     }
 
+    /**
+     * @param DateTime|null $datePubli
+     * @return void
+     */
     public function setDatePubli(?DateTime $datePubli): void
     {
         $this->datePubli = $datePubli;
     }
 
+    /**
+     * @param string|null $img
+     * @return void
+     */
     public function setImg(?string $img): void
     {
         $this->img = $img;
     }
 
+    /**
+     * @param integer|null $userId
+     * @return void
+     */
     public function setUserId(?int $userId): void
     {
         $this->userId = $userId;
     }
 
+    /**
+     * @param integer|null $cateId
+     * @return void
+     */
     public function setCateId(?int $cateId): void
     {
         $this->cateId = $cateId;
     }
 
+    /**
+     * @param string|null $nomCategorie
+     * @return void
+     */
     public function setNomCategorie(?string $nomCategorie): void
     {
         $this->nomCategorie = $nomCategorie;
     }
 
+    /**
+     * @return string
+     */
     public function dateActuelle(): string {
         $date = date("Y-m-d");
         return $date;
