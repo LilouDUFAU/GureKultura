@@ -97,6 +97,10 @@ class ControllerCompte extends Controller
 
             // recuperation des donnees du formulaire
             $donnees = $_POST;
+            // boucle de nettoyage des donnees
+            foreach ($donnees as $key => $value) {
+                $donnees[$key] = htmlentities($value);
+            }
             $user = unserialize($_SESSION['user']);
             $donnees['userId'] = $user->getUserId();
 
