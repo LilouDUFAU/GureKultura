@@ -95,6 +95,12 @@ class Evenement
     private ?string $photo; 
 
     /**
+     * @brief validation de l'evenement
+     * @var bool|null
+     */
+    private ?bool $is_valide;
+
+    /**
      * @brief id de l'utilisateur ajoutant l'evenement
      * @var int|null
      */
@@ -130,6 +136,7 @@ class Evenement
      * @param DateTime|null $heureFin
      * @param string|null $lieu
      * @param string|null $photo
+     * @param bool|null $is_valide
      * @param int|null $userId
      * @param int|null $cateId
      * @param string|null $nomCategorie
@@ -149,6 +156,7 @@ class Evenement
     ?DateTime $heureFin=null,
     ?string $lieu=null,
     ?string $photo=null,
+    ?bool $is_valide=null,
     ?int $userId=null,
     ?int $cateId=null,
     ?string $nomCategorie=null)
@@ -167,6 +175,7 @@ class Evenement
         $this->heureFin = $heureFin;
         $this->lieu = $lieu;
         $this->photo = $photo;
+        $this->is_valide = $is_valide;
         $this->userId = $userId;
         $this->cateId = $cateId;
         $this->nomCategorie = $nomCategorie;
@@ -315,6 +324,16 @@ class Evenement
     public function getPhoto(): ?string
     {
         return $this->photo;
+    }
+
+    /**
+     * @function getIsValide
+     * @details Cette fonction permet de récupérer la validation de l'evenement
+     * @return bool|null
+     */
+    public function getIsValide(): ?bool
+    {
+        return $this->is_valide;
     }
 
     /**
@@ -505,6 +524,17 @@ class Evenement
     public function setPhoto(?string $photo): void
     {
         $this->photo = $photo;
+    }
+
+    /**
+     * @function setIsValide
+     * @details Cette fonction permet de définir la validation de l'evenement
+     * @param bool|null $is_valide
+     * @return void
+     */
+    public function setIsValide(?bool $is_valide): void
+    {
+        $this->is_valide = $is_valide;
     }
 
     /**
