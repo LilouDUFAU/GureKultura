@@ -92,10 +92,17 @@
 						<p class="hidden lg:block">Catégorie</p>
 					</div>
 
+					{% if user.estAdmin == False %}
 					<div class="flex flex-col items-center">
 						<a href="index.php?controlleur=propEv&methode=lister" class=""><img src="../asset/icones/file-plus.svg" alt="home" class="h-6 w-6"></a>
 						<p class="hidden lg:block">Proposition</p>
 					</div>
+					{% else %}
+					<div class="flex flex-col items-center">
+						<a href="index.php?controlleur=propActu&methode=lister" class=""><img src="../asset/icones/file-plus.svg" alt="home" class="h-6 w-6"></a>
+						<p class="hidden lg:block">Proposition</p>
+					</div>
+					{% endif %}
 
 					<div class="flex flex-col items-center">
 						<a href="/" class=""><img src="../asset/icones/funnel.svg" alt="home" class="h-6 w-6"></a>
