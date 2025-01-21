@@ -22,10 +22,10 @@
 
 				{# deuxieme ligne #}
 				<div class="grid grid-cols-subgrid row-start-3 row-span-1 col-start-1 col-span-12 bg-[#A23145] bg-opacity-75 text-white rounded-2xl p-4 w-full drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] gap-2">
-					<label for="nomCategorie" class="text-white lg:col-span-4 col-span-8 lg:text-lg text-sm">Quel est le type de ton actualité </label>
+					<label for="nomCategorie" class="text-white lg:col-span-4 col-span-8 lg:text-lg text-sm">Quel est le type de ton événement </label>
 					<!-- Dropdown Container -->
 					<select class="text-black lg:row-start-1 row-start-2 lg:col-start-5 col-span-6 lg:col-span-8 border-2 border-solid border-[#A23145] rounded-lg p-2 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] lg:text-lg text-sm" name='cateId'>
-						<option class="text-gray-400" value="" disabled selected>Selectionnez le type de votre actualité</option>
+						<option class="text-gray-400" value="" disabled selected>Selectionnez le type de votre événement</option>
 						{% for categorie in categories %}
 							<option class="text-black" value="{{categorie.cateId}}">{{ categorie.nom }}</option>
 						{% endfor %}

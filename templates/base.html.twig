@@ -1,4 +1,5 @@
 <html lang="fr">
+<<<<<<< HEAD
 	<head>
 		<!-- Google tag (gtag.js) -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=G-0JNCX3EJJN"></script>
@@ -9,6 +10,69 @@
 
 		gtag('config', 'G-0JNCX3EJJN');
 		</script>
+=======
+	<head>    
+	<script src="../tarteaucitron/tarteaucitron.js"></script>
+
+    <script type="text/javascript">
+		tarteaucitron.init({
+		"privacyUrl": "", /* Privacy policy url */
+		"bodyPosition": "bottom", /* or top to bring it as first element for accessibility */
+
+		"hashtag": "#tarteaucitron", /* Open the panel with this hashtag */
+		"cookieName": "tarteaucitron", /* Cookie name */
+
+		"orientation": "middle", /* Banner position (top - bottom) */
+	
+		"groupServices": false, /* Group services by category */
+		"showDetailsOnClick": true, /* Click to expand the description */
+		"serviceDefaultState": "wait", /* Default state (true - wait - false) */
+						
+		"showAlertSmall": false, /* Show the small banner on bottom right */
+		"cookieslist": false, /* Show the cookie list */
+						
+		"closePopup": false, /* Show a close X on the banner */
+
+		"showIcon": true, /* Show cookie icon to manage cookies */
+		//"iconSrc": "", /* Optionnal: URL or base64 encoded image */
+		"iconPosition": "BottomRight", /* BottomRight, BottomLeft, TopRight and TopLeft */
+
+		"adblocker": false, /* Show a Warning if an adblocker is detected */
+						
+		"DenyAllCta" : true, /* Show the deny all button */
+		"AcceptAllCta" : true, /* Show the accept all button when highPrivacy on */
+		"highPrivacy": true, /* HIGHLY RECOMMANDED Disable auto consent */
+		"alwaysNeedConsent": false, /* Ask the consent for "Privacy by design" services */
+						
+		"handleBrowserDNTRequest": false, /* If Do Not Track == 1, disallow all */
+
+		"removeCredit": false, /* Remove credit link */
+		"moreInfoLink": true, /* Show more info link */
+
+		"useExternalCss": false, /* If false, the tarteaucitron.css file will be loaded */
+		"useExternalJs": false, /* If false, the tarteaucitron.js file will be loaded */
+
+		//"cookieDomain": ".my-multisite-domaine.fr", /* Shared cookie for multisite */
+						
+		"readmoreLink": "", /* Change the default readmore link */
+
+		"mandatory": true, /* Show a message about mandatory cookies */
+		"mandatoryCta": true, /* Show the disabled accept button when mandatory on */
+
+		//"customCloserId": "", /* Optional a11y: Custom element ID used to open the panel */
+		
+		"googleConsentMode": true, /* Enable Google Consent Mode v2 for Google ads and GA4 */
+		
+		"partnersList": false /* Show the number of partners on the popup/middle banner */
+		});
+    </script>
+    <script type="text/javascript">
+        tarteaucitron.user.gtagUa = 'G-F8JJG36965';
+        // tarteaucitron.user.gtagCrossdomain = ['example.com', 'example2.com'];
+        tarteaucitron.user.gtagMore = function () { /* add here your optionnal gtag() */ };
+        (tarteaucitron.job = tarteaucitron.job || []).push('gtag');
+    </script>
+>>>>>>> 9f5726261fa4e7608ee17e8557f8518ebafbe53d
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="description" content="{% if description is defined %} {{description}} {% else %} {{constant('WEBSITE_DESCRIPTION')}} {% endif %}">
@@ -78,10 +142,18 @@
 						<h1 class="text-xl text-white text-center">ACTUS</h1>
 
 						{% for actualite in actualites %}
-							<div class="p-2 grid grid-cols-1 items-center rounded-lg bg-white drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
-								<h1 class="text-black text-center">{{ actualite.titre }}</h1>
-								<img src="../asset/actualite/{{ actualite.img }}" alt="illustration" class="h-full w-full object-cover rounded-lg">
-							</div>
+						
+                            <FORM ACTION="index.php?controlleur=evtActu&methode=lister" METHOD="POST">
+								<INPUT TYPE="hidden" NAME="nom" VALUE="{{actualite.titre}}">
+								<INPUT TYPE="hidden" NAME="id" VALUE={{actualite.ActuId}}>
+								<INPUT TYPE="hidden" NAME="type" VALUE="Actualites"> 
+									<div class="p-2 grid grid-cols-1 items-center rounded-lg bg-white drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
+										
+											<INPUT TYPE="SUBMIT" VALUE="{{ actualite.titre }}" class="text-black text-center break-words">
+										
+										<img src="../asset/actualite/{{ actualite.img }}" alt="illustration" class="h-full w-full object-cover rounded-lg">
+									</div>
+                            </FORM>
 						{% endfor %}
 					</aside>
 				</div>

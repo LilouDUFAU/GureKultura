@@ -41,9 +41,9 @@ class ControllerCategorieEvtActu extends Controller {
         $actualite = $managerActualite->findAllWithCategorie();    
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $nom = $_POST['nom'];
-            $type = $_POST['type'];
-            $id = $_POST['id'];
+            $nom = htmlentities($_POST['nom']);
+            $type = htmlentities($_POST['type']);
+            $id = htmlentities($_POST['id']);
         }
         
         if ($type == "Evenements"){

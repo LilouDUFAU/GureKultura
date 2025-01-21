@@ -146,6 +146,12 @@ class UserDao {
         return (int) $row['userId'];
     }
 
+    /**
+     * @brief Fonction permettant de récupérer un utilisateur en base de données en fonction de son email
+     * @details Cette fonction permet de récupérer un utilisateur en base de données en fonction de son email
+     * @param string $email
+     * @return User|null
+     */
     public function findWithEmail(string $email): ?User {
         $sql = "SELECT * FROM " . PREFIX_TABLE . "user WHERE email = :email";
         $pdoStatement = $this->pdo->prepare($sql);
@@ -179,6 +185,14 @@ class UserDao {
         
     }
 
+    /**
+     * @brief Fonction permettant de modifier un utilisateur en base de données
+     * @details Cette fonction permet de modifier un utilisateur en base de données
+     * @param string $donnees
+     * @param string $champ
+     * @param string $userId
+     * @return void
+     */
     public function modify(string $donnees, string $champ, string $userId): void
     {
         $sql = "UPDATE " . PREFIX_TABLE . "user SET $champ = :valeur WHERE userId = :id";
