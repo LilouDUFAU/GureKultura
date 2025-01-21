@@ -77,45 +77,48 @@
 				
 				<!-- logo -->
 				<a href="index.php?controlleur=index&methode=lister">
-					<img src="../asset/GrandLogoGk.svg" alt="logo" class="h-16 w-48">
+					<img src="../asset/PetitLogoGkSansFondBlanc.svg" alt="logo" class="max-w-10 max-h-10">
 				</a>
 
-				<!-- Burger Menu -->
-				<div class="block md:hidden">
-					<button id="burger-menu" class="text-white focus:outline-none">
-						<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-						</svg>
-					</button>
-				</div>
-
 				<!-- navbar -->
-				<nav id="menu" class="hidden absolute top-full left-0 w-full bg-[#A23145] md:static md:block md:w-auto">
-					<ul class="flex flex-col md:flex-row md:space-x-6 text-center md:text-left">
-						<li class="py-4">
-							<a class="text-xl block md:inline" href="index.php?controlleur=index&methode=lister">ACCUEIL</a>
-						</li>
+				<nav id="menu" class="flex flex-row justify-between gap-4 bg-[#A23145]">
+					<div class="flex flex-col items-center">
+						<a href="index.php?controlleur=index&methode=lister" class=""><img src="../asset/icones/house.svg" alt="home" class="h-6 w-6"></a>
+						<p class="hidden lg:block">Accueil</p>
+					</div>
 
-						<li class="border-t md:border-t-0 md:border-l-2 md:border-r-2 border-[#ffffff] p-4">
-							<a class="text-xl block md:inline" href="index.php?controlleur=categorie&methode=lister">CATEGORIE</a>
-						</li>
+					<div class="flex flex-col items-center">
+						<a href="index.php?controlleur=categorie&methode=lister" class=""><img src="../asset/icones/ui-checks-grid.svg" alt="cate" class="h-6 w-6"></a>
+						<p class="hidden lg:block">Catégorie</p>
+					</div>
 
-						<li class="py-4">
-							<a class="text-xl block md:inline" href="index.php?controlleur=propEv&methode=lister">PROPOSITION D'EVENEMENT</a>
-						</li>
-					</ul>
+					<div class="flex flex-col items-center">
+						<a href="index.php?controlleur=propEv&methode=lister" class=""><img src="../asset/icones/file-plus.svg" alt="home" class="h-6 w-6"></a>
+						<p class="hidden lg:block">Proposition</p>
+					</div>
+
+					<div class="flex flex-col items-center">
+						<a href="/" class=""><img src="../asset/icones/funnel.svg" alt="home" class="h-6 w-6"></a>
+						<p class="hidden lg:block">Trie</p>
+					</div>
+
+					<div class="flex gap-2 items-center border-2 border-solid border-white rounded-full px-2 py-1">
+						<img src="../asset/icones/search.svg" alt="serach" class="h-6 w-6">
+						<input type="search" name="search" id="search" placeholder="Search" class="bg-transparent md:block hidden">
+					</div>
+					
 				</nav>
 				<!-- compte btn -->
 				{% if user != null %} 
 					<div class="flex items-center space-x-4">
 						<span class="text-white"></span>
-						<a href="index.php?controlleur=compte&methode=lister" class="flex items-center justify-center px-7 border-2 border-[#ffffff] p-2 rounded-lg">
-							Compte
+						<a href="index.php?controlleur=compte&methode=lister" class="flex items-center justify-center border-2 border-solid border-white rounded-full p-2">
+							<img src="../asset/icones/person.svg" alt="profil" class="h-6 w-6">
 						</a>
 					</div>
 				{% else %}
-					<a href="index.php?controlleur=connexion&methode=lister" class="flex items-center justify-center px-7 border-2 border-[#ffffff] p-2 rounded-lg">
-						Connexion
+					<a href="index.php?controlleur=connexion&methode=lister" class="flex items-center justify-center border-2 border-solid border-white rounded-full p-2">
+						<img src="../asset/icones/person.svg" alt="profil" class="h-6 w-6">
 					</a>
 				{% endif %}
 			</header>
@@ -217,17 +220,5 @@
 				</div>
 			</footer>
 		</main>
-
-		{% block script %}
-		<script>
-			// Toggle Burger Menu
-			const burgerMenu = document.getElementById('burger-menu');
-			const menu = document.getElementById('menu');
-			burgerMenu.addEventListener('click', () => {
-				menu.classList.toggle('hidden');
-			});
-		</script>
-			<script src="../js/aside.js"></script>
-		{% endblock %}
 	</body>
 </html>
