@@ -649,10 +649,6 @@ video {
   z-index: 10;
 }
 
-.z-50 {
-  z-index: 50;
-}
-
 .col-span-1 {
   grid-column: span 1 / span 1;
 }
@@ -789,14 +785,6 @@ video {
   margin: 0px;
 }
 
-.m-0\.5 {
-  margin: 0.125rem;
-}
-
-.m-2\.5 {
-  margin: 0.625rem;
-}
-
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -887,10 +875,6 @@ video {
   display: none;
 }
 
-.h-16 {
-  height: 4rem;
-}
-
 .h-5 {
   height: 1.25rem;
 }
@@ -924,12 +908,16 @@ video {
   max-height: 100%;
 }
 
-.min-h-24 {
-  min-height: 6rem;
+.min-h-12 {
+  min-height: 3rem;
 }
 
 .min-h-dvh {
   min-height: 100dvh;
+}
+
+.min-h-16 {
+  min-height: 4rem;
 }
 
 .w-11 {
@@ -938,10 +926,6 @@ video {
 
 .w-24 {
   width: 6rem;
-}
-
-.w-48 {
-  width: 12rem;
 }
 
 .w-5 {
@@ -1084,12 +1068,6 @@ video {
   margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
-.space-x-3 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-x-reverse: 0;
-  margin-right: calc(0.75rem * var(--tw-space-x-reverse));
-  margin-left: calc(0.75rem * calc(1 - var(--tw-space-x-reverse)));
-}
-
 .space-x-4 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(1rem * var(--tw-space-x-reverse));
@@ -1173,11 +1151,6 @@ video {
 .border-\[\#B96574\] {
   --tw-border-opacity: 1;
   border-color: rgb(185 101 116 / var(--tw-border-opacity, 1));
-}
-
-.border-\[\#ffffff\] {
-  --tw-border-opacity: 1;
-  border-color: rgb(255 255 255 / var(--tw-border-opacity, 1));
 }
 
 .border-black {
@@ -1283,11 +1256,6 @@ video {
   padding-right: 0.5rem;
 }
 
-.px-3 {
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-}
-
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
@@ -1346,10 +1314,6 @@ video {
 
 .pr-2 {
   padding-right: 0.5rem;
-}
-
-.pr-3 {
-  padding-right: 0.75rem;
 }
 
 .pt-2 {
@@ -1827,10 +1791,6 @@ video {
     }
   }
 
-  .lg\:relative {
-    position: relative;
-  }
-
   .lg\:col-span-1 {
     grid-column: span 1 / span 1;
   }
@@ -2001,22 +1961,6 @@ video {
 
   .lg\:overflow-hidden {
     overflow: hidden;
-  }
-
-  .lg\:bg-\[url\(\'\.\.\/asset\/bg_footer\.svg\'\)\] {
-    background-image: url('../asset/bg_footer.svg');
-  }
-
-  .lg\:bg-cover {
-    background-size: cover;
-  }
-
-  .lg\:bg-center {
-    background-position: center;
-  }
-
-  .lg\:bg-no-repeat {
-    background-repeat: no-repeat;
   }
 
   .lg\:object-contain {
