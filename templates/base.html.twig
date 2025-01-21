@@ -129,10 +129,18 @@
 						<h1 class="text-xl text-white text-center">ACTUS</h1>
 
 						{% for actualite in actualites %}
-							<div class="p-2 grid grid-cols-1 items-center rounded-lg bg-white drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
-								<h1 class="text-black text-center">{{ actualite.titre }}</h1>
-								<img src="../asset/actualite/{{ actualite.img }}" alt="illustration" class="h-full w-full object-cover rounded-lg">
-							</div>
+						
+                            <FORM ACTION="index.php?controlleur=evtActu&methode=lister" METHOD="POST">
+								<INPUT TYPE="hidden" NAME="nom" VALUE="{{actualite.titre}}">
+								<INPUT TYPE="hidden" NAME="id" VALUE={{actualite.ActuId}}>
+								<INPUT TYPE="hidden" NAME="type" VALUE="Actualites"> 
+									<div class="p-2 grid grid-cols-1 items-center rounded-lg bg-white drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
+										
+											<INPUT TYPE="SUBMIT" VALUE="{{ actualite.titre }}" class="text-black text-center break-words">
+										
+										<img src="../asset/actualite/{{ actualite.img }}" alt="illustration" class="h-full w-full object-cover rounded-lg">
+									</div>
+                            </FORM>
 						{% endfor %}
 					</aside>
 				</div>
