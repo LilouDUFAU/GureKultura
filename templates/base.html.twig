@@ -1,57 +1,58 @@
 <html lang="fr">
-	<head>    <script src="../tarteaucitron/tarteaucitron.js"></script>
+	<head>
+	<script src="../tarteaucitron/tarteaucitron.js"></script>
 
     <script type="text/javascript">
-    tarteaucitron.init({
-      "privacyUrl": "", /* Privacy policy url */
-      "bodyPosition": "bottom", /* or top to bring it as first element for accessibility */
+		tarteaucitron.init({
+		"privacyUrl": "", /* Privacy policy url */
+		"bodyPosition": "bottom", /* or top to bring it as first element for accessibility */
 
-      "hashtag": "#tarteaucitron", /* Open the panel with this hashtag */
-      "cookieName": "tarteaucitron", /* Cookie name */
+		"hashtag": "#tarteaucitron", /* Open the panel with this hashtag */
+		"cookieName": "tarteaucitron", /* Cookie name */
 
-      "orientation": "middle", /* Banner position (top - bottom) */
-   
-      "groupServices": false, /* Group services by category */
-      "showDetailsOnClick": true, /* Click to expand the description */
-      "serviceDefaultState": "wait", /* Default state (true - wait - false) */
-                       
-      "showAlertSmall": false, /* Show the small banner on bottom right */
-      "cookieslist": false, /* Show the cookie list */
-                       
-      "closePopup": false, /* Show a close X on the banner */
+		"orientation": "middle", /* Banner position (top - bottom) */
+	
+		"groupServices": false, /* Group services by category */
+		"showDetailsOnClick": true, /* Click to expand the description */
+		"serviceDefaultState": "wait", /* Default state (true - wait - false) */
+						
+		"showAlertSmall": false, /* Show the small banner on bottom right */
+		"cookieslist": false, /* Show the cookie list */
+						
+		"closePopup": false, /* Show a close X on the banner */
 
-      "showIcon": true, /* Show cookie icon to manage cookies */
-      //"iconSrc": "", /* Optionnal: URL or base64 encoded image */
-      "iconPosition": "BottomRight", /* BottomRight, BottomLeft, TopRight and TopLeft */
+		"showIcon": true, /* Show cookie icon to manage cookies */
+		//"iconSrc": "", /* Optionnal: URL or base64 encoded image */
+		"iconPosition": "BottomRight", /* BottomRight, BottomLeft, TopRight and TopLeft */
 
-      "adblocker": false, /* Show a Warning if an adblocker is detected */
-                       
-      "DenyAllCta" : true, /* Show the deny all button */
-      "AcceptAllCta" : true, /* Show the accept all button when highPrivacy on */
-      "highPrivacy": true, /* HIGHLY RECOMMANDED Disable auto consent */
-      "alwaysNeedConsent": false, /* Ask the consent for "Privacy by design" services */
-                       
-      "handleBrowserDNTRequest": false, /* If Do Not Track == 1, disallow all */
+		"adblocker": false, /* Show a Warning if an adblocker is detected */
+						
+		"DenyAllCta" : true, /* Show the deny all button */
+		"AcceptAllCta" : true, /* Show the accept all button when highPrivacy on */
+		"highPrivacy": true, /* HIGHLY RECOMMANDED Disable auto consent */
+		"alwaysNeedConsent": false, /* Ask the consent for "Privacy by design" services */
+						
+		"handleBrowserDNTRequest": false, /* If Do Not Track == 1, disallow all */
 
-      "removeCredit": false, /* Remove credit link */
-      "moreInfoLink": true, /* Show more info link */
+		"removeCredit": false, /* Remove credit link */
+		"moreInfoLink": true, /* Show more info link */
 
-      "useExternalCss": false, /* If false, the tarteaucitron.css file will be loaded */
-      "useExternalJs": false, /* If false, the tarteaucitron.js file will be loaded */
+		"useExternalCss": false, /* If false, the tarteaucitron.css file will be loaded */
+		"useExternalJs": false, /* If false, the tarteaucitron.js file will be loaded */
 
-      //"cookieDomain": ".my-multisite-domaine.fr", /* Shared cookie for multisite */
-                      
-      "readmoreLink": "", /* Change the default readmore link */
+		//"cookieDomain": ".my-multisite-domaine.fr", /* Shared cookie for multisite */
+						
+		"readmoreLink": "", /* Change the default readmore link */
 
-      "mandatory": true, /* Show a message about mandatory cookies */
-      "mandatoryCta": true, /* Show the disabled accept button when mandatory on */
+		"mandatory": true, /* Show a message about mandatory cookies */
+		"mandatoryCta": true, /* Show the disabled accept button when mandatory on */
 
-      //"customCloserId": "", /* Optional a11y: Custom element ID used to open the panel */
-      
-      "googleConsentMode": true, /* Enable Google Consent Mode v2 for Google ads and GA4 */
-      
-      "partnersList": false /* Show the number of partners on the popup/middle banner */
-    });
+		//"customCloserId": "", /* Optional a11y: Custom element ID used to open the panel */
+		
+		"googleConsentMode": true, /* Enable Google Consent Mode v2 for Google ads and GA4 */
+		
+		"partnersList": false /* Show the number of partners on the popup/middle banner */
+		});
     </script>
     <script type="text/javascript">
         tarteaucitron.user.gtagUa = 'G-F8JJG36965';
@@ -72,49 +73,52 @@
 		<main class="flex flex-col">
 			<!-- Header -->
 			<header
-				class="flex justify-between items-center min-h-24 px-7 bg-[#A23145] text-[#ffffff] relative z-50">
+				class="flex justify-between items-center min-h-16 px-7 bg-[#A23145] text-white">
 				
 				<!-- logo -->
 				<a href="index.php?controlleur=index&methode=lister">
-					<img src="../asset/GrandLogoGk.svg" alt="logo" class="h-16 w-48">
+					<img src="../asset/PetitLogoGkSansFondBlanc.svg" alt="logo" class="max-w-10 max-h-10">
 				</a>
 
-				<!-- Burger Menu -->
-				<div class="block md:hidden">
-					<button id="burger-menu" class="text-white focus:outline-none">
-						<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-						</svg>
-					</button>
-				</div>
-
 				<!-- navbar -->
-				<nav id="menu" class="hidden absolute top-full left-0 w-full bg-[#A23145] md:static md:block md:w-auto">
-					<ul class="flex flex-col md:flex-row md:space-x-6 text-center md:text-left">
-						<li class="py-4">
-							<a class="text-xl block md:inline" href="index.php?controlleur=index&methode=lister">ACCUEIL</a>
-						</li>
+				<nav id="menu" class="flex flex-row justify-between items-center gap-4 md:gap-8 bg-[#A23145]">
+					<div class="hidden md:flex md:flex-col md:items-center">
+						<a href="index.php?controlleur=index&methode=lister" class=""><img src="../asset/icones/house.svg" alt="home" class="h-6 w-6"></a>
+						<p class="hidden lg:block">Accueil</p>
+					</div>
 
-						<li class="border-t md:border-t-0 md:border-l-2 md:border-r-2 border-[#ffffff] p-4">
-							<a class="text-xl block md:inline" href="index.php?controlleur=categorie&methode=lister">CATEGORIE</a>
-						</li>
+					<div class="flex flex-col items-center">
+						<a href="index.php?controlleur=categorie&methode=lister" class=""><img src="../asset/icones/ui-checks-grid.svg" alt="cate" class="h-6 w-6"></a>
+						<p class="hidden lg:block">Catégorie</p>
+					</div>
 
-						<li class="py-4">
-							<a class="text-xl block md:inline" href="index.php?controlleur=propEv&methode=lister">PROPOSITION D'EVENEMENT</a>
-						</li>
-					</ul>
+					<div class="flex flex-col items-center">
+						<a href="index.php?controlleur=propEv&methode=lister" class=""><img src="../asset/icones/file-plus.svg" alt="home" class="h-6 w-6"></a>
+						<p class="hidden lg:block">Proposition</p>
+					</div>
+
+					<div class="flex flex-col items-center">
+						<a href="/" class=""><img src="../asset/icones/funnel.svg" alt="home" class="h-6 w-6"></a>
+						<p class="hidden lg:block">Trie</p>
+					</div>
+
+					<div class="flex gap-2 items-center border-2 border-solid border-white rounded-full px-2 py-1">
+						<img src="../asset/icones/search.svg" alt="serach" class="h-6 w-6">
+						<input type="search" name="search" id="search" placeholder="Search" class="bg-transparent md:block hidden">
+					</div>
+					
 				</nav>
 				<!-- compte btn -->
 				{% if user != null %} 
 					<div class="flex items-center space-x-4">
 						<span class="text-white"></span>
-						<a href="index.php?controlleur=compte&methode=lister" class="flex items-center justify-center px-7 border-2 border-[#ffffff] p-2 rounded-lg">
-							Compte
+						<a href="index.php?controlleur=compte&methode=lister" class="flex items-center justify-center border-2 border-solid border-white rounded-full p-2">
+							<img src="../asset/icones/person.svg" alt="profil" class="h-6 w-6">
 						</a>
 					</div>
 				{% else %}
-					<a href="index.php?controlleur=connexion&methode=lister" class="flex items-center justify-center px-7 border-2 border-[#ffffff] p-2 rounded-lg">
-						Connexion
+					<a href="index.php?controlleur=connexion&methode=lister" class="flex items-center justify-center border-2 border-solid border-white rounded-full p-2">
+						<img src="../asset/icones/person.svg" alt="profil" class="h-6 w-6">
 					</a>
 				{% endif %}
 			</header>
@@ -128,10 +132,18 @@
 						<h1 class="text-xl text-white text-center">ACTUS</h1>
 
 						{% for actualite in actualites %}
-							<div class="p-2 grid grid-cols-1 items-center rounded-lg bg-white drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
-								<h1 class="text-black text-center">{{ actualite.titre }}</h1>
-								<img src="../asset/actualite/{{ actualite.img }}" alt="illustration" class="h-full w-full object-cover rounded-lg">
-							</div>
+						
+                            <FORM ACTION="index.php?controlleur=evtActu&methode=lister" METHOD="POST">
+								<INPUT TYPE="hidden" NAME="nom" VALUE="{{actualite.titre}}">
+								<INPUT TYPE="hidden" NAME="id" VALUE={{actualite.ActuId}}>
+								<INPUT TYPE="hidden" NAME="type" VALUE="Actualites"> 
+									<div class="p-2 grid grid-cols-1 items-center rounded-lg bg-white drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
+										
+											<INPUT TYPE="SUBMIT" VALUE="{{ actualite.titre }}" class="text-black text-center break-words">
+										
+										<img src="../asset/actualite/{{ actualite.img }}" alt="illustration" class="h-full w-full object-cover rounded-lg">
+									</div>
+                            </FORM>
 						{% endfor %}
 					</aside>
 				</div>
@@ -152,73 +164,6 @@
 				</div>
 
 			</div>
-
-			
-			<!-- Footer -->
-			<footer class="hidden lg:flex lg:justify-center lg:items-center lg:bg-[url('../asset/bg_footer.svg')] lg:bg-cover lg:bg-center lg:bg-no-repeat text-[#ffffff] lg:py-4 lg:relative">
-				<!-- Contenu du footer (Visible uniquement sur PC) -->
-				<div class="flex w-full justify-between px-7">
-					<!-- logo -->
-					<a href="index.php?controlleur=index&methode=lister" class="flex items-center">
-						<img src="../asset/GrandLogoGkSansFond.svg" alt="logo" class="h-16 w-48">
-					</a>
-
-					<!-- adresse -->
-					<ul>
-						<li class="m-2.5 text-2xl">ADRESSE</li>
-						<li class="m-2.5">2 Allée du Parc Montaury,</li>
-						<li class="m-2.5">64600 Anglet</li>
-					</ul>
-
-					<!-- contact -->
-					<ul>
-						<li class="m-2.5 text-2xl">CONTACT</li>
-						<li class="m-2.5">05 59 57 43 03</li>
-						<li class="m-2.5">gurekultura@gmail.com</li>
-					</ul>
-
-					<!-- reseaux sociaux -->
-					<ul class="text-left">
-						<li class="m-2.5 text-2xl pb-6">SUIVEZ-NOUS</li>
-						<li class="m-2.5 flex space-x-3">
-							<a href="#" class="pr-3">
-								<svg width="33" height="33" viewbox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-										<path d="M16.5015 0C12.0204 0 11.458 0.0195943 9.69798 0.0996889C7.9414 0.180127 6.74238 0.458224 5.69325 0.866259C4.60802 1.2877 3.68744 1.85146 2.77031 2.76894C1.85249 3.68607 1.28873 4.60664 0.865915 5.69153C0.456848 6.74101 0.178408 7.94036 0.0993446 9.69626C0.0206251 11.4563 0 12.019 0 16.5002C0 20.9813 0.019938 21.542 0.0996889 23.302C0.180471 25.0586 0.458567 26.2576 0.866259 27.3068C1.28804 28.392 1.8518 29.3126 2.76928 30.2297C3.68607 31.1475 4.60664 31.7126 5.69118 32.1341C6.74101 32.5421 7.94036 32.8202 9.6966 32.9007C11.4566 32.9807 12.0187 33.0003 16.4995 33.0003C20.981 33.0003 21.5417 32.9807 23.3017 32.9007C25.0583 32.8202 26.2586 32.5421 27.3085 32.1341C28.3934 31.7126 29.3126 31.1475 30.2293 30.2297C31.1472 29.3126 31.7109 28.392 32.1337 27.3071C32.5394 26.2576 32.8178 25.0583 32.9003 23.3024C32.9794 21.5423 33 20.9813 33 16.5002C33 12.019 32.9794 11.4566 32.9003 9.6966C32.8178 7.94002 32.5394 6.74101 32.1337 5.69187C31.7109 4.60664 31.1472 3.68607 30.2293 2.76894C29.3115 1.85111 28.3937 1.28736 27.3074 0.866259C26.2556 0.458224 25.0559 0.180127 23.2993 0.0996889C21.5393 0.0195943 20.9789 0 16.4964 0H16.5015ZM15.0213 2.97347C15.4607 2.97278 15.9509 2.97347 16.5015 2.97347C20.9071 2.97347 21.4293 2.98928 23.169 3.06834C24.7778 3.14191 25.6509 3.41072 26.2325 3.63657C27.0025 3.93563 27.5515 4.29314 28.1287 4.87064C28.7062 5.44815 29.0637 5.99816 29.3634 6.76816C29.5893 7.34911 29.8584 8.22224 29.9317 9.83101C30.0107 11.5704 30.0279 12.0929 30.0279 16.4964C30.0279 20.8999 30.0107 21.4224 29.9317 23.1618C29.8581 24.7705 29.5893 25.6437 29.3634 26.2246C29.0644 26.9946 28.7062 27.5429 28.1287 28.1201C27.5512 28.6976 27.0029 29.0551 26.2325 29.3541C25.6516 29.581 24.7778 29.8492 23.169 29.9227C21.4296 30.0018 20.9071 30.019 16.5015 30.019C12.0957 30.019 11.5735 30.0018 9.8341 29.9227C8.22534 29.8485 7.3522 29.5797 6.77023 29.3538C6.00022 29.0547 5.45021 28.6972 4.87271 28.1197C4.2952 27.5422 3.9377 26.9936 3.63794 26.2232C3.4121 25.6423 3.14294 24.7692 3.06972 23.1604C2.99066 21.421 2.97484 20.8985 2.97484 16.4923C2.97484 12.086 2.99066 11.5663 3.06972 9.82688C3.14328 8.21812 3.4121 7.34498 3.63794 6.76335C3.93701 5.99334 4.2952 5.44334 4.87271 4.86583C5.45021 4.28833 6.00022 3.93082 6.77023 3.63107C7.35186 3.40419 8.22534 3.13606 9.8341 3.06216C11.3562 2.99341 11.9461 2.97278 15.0213 2.96934V2.97347ZM25.3092 5.71318C24.2161 5.71318 23.3292 6.59904 23.3292 7.69252C23.3292 8.78565 24.2161 9.67254 25.3092 9.67254C26.4023 9.67254 27.2892 8.78565 27.2892 7.69252C27.2892 6.59938 26.4023 5.7125 25.3092 5.7125V5.71318ZM16.5015 8.02665C11.822 8.02665 8.02802 11.8207 8.02802 16.5002C8.02802 21.1797 11.822 24.972 16.5015 24.972C21.1811 24.972 24.9737 21.1797 24.9737 16.5002C24.9737 11.8207 21.1807 8.02665 16.5012 8.02665H16.5015ZM16.5015 11.0001C19.539 11.0001 22.0016 13.4624 22.0016 16.5002C22.0016 19.5376 19.539 22.0002 16.5015 22.0002C13.4638 22.0002 11.0015 19.5376 11.0015 16.5002C11.0015 13.4624 13.4638 11.0001 16.5015 11.0001V11.0001Z" fill="white"/>
-								</svg>
-							</a>
-							<a href="#" class="px-3">
-								<svg width="33" height="33" viewbox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-										<path d="M32.9999 16.6001C32.9999 7.43139 25.6122 -0.00134277 16.499 -0.00134277C7.38571 -0.00134277 -0.00201416 7.43139 -0.00201416 16.6001C-0.00201416 24.8864 6.03215 31.7545 13.9207 33V21.399H9.73098V16.6001H13.9207V12.9426C13.9207 8.78188 16.3842 6.48361 20.1533 6.48361C21.9587 6.48361 23.847 6.80786 23.847 6.80786V10.8934H21.7663C19.7165 10.8934 19.0772 12.1731 19.0772 13.486V16.6001H23.6537L22.9221 21.399H19.0772V33C26.9658 31.7545 32.9999 24.8864 32.9999 16.6001Z" fill="white"/>
-								</svg>
-							</a>
-							<a href="#" class="px-3">
-								<svg width="33" height="33" viewbox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-										<path d="M25.9894 1.54688H31.0496L19.9946 14.2149L33 31.4531H22.8169L14.8411 20.9982L5.71492 31.4531H0.651648L12.4762 17.9033L0 1.54688H10.4417L17.6511 11.1031L25.9894 1.54688ZM24.2135 28.4165H27.0174L8.91809 4.42401H5.90919L24.2135 28.4165Z" fill="white"/>
-								</svg>
-							</a>
-						</li>
-					</ul>
-
-					<!-- proposition -->
-					<ul>
-						<li class="m-0.5 text-2xl">PROPOSEZ-NOUS</li>
-						<li class="m-0.5 text-2xl">DES EVENEMENTS</li>
-						<a href="index.php?controlleur=propEv&methode=lister" class="flex items-center justify-center border-2 border-[#ffffff] p-2 rounded-lg">Formulaire</a>
-					</ul>
-				</div>
-			</footer>
 		</main>
-
-		{% block script %}
-		<script>
-			// Toggle Burger Menu
-			const burgerMenu = document.getElementById('burger-menu');
-			const menu = document.getElementById('menu');
-			burgerMenu.addEventListener('click', () => {
-				menu.classList.toggle('hidden');
-			});
-		</script>
-			<script src="../js/aside.js"></script>
-		{% endblock %}
 	</body>
 </html>

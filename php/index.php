@@ -7,12 +7,14 @@ require_once 'include.php';
 try {
     if (isset($_GET['controlleur'])) {
         $controlleurName = $_GET['controlleur'];
+        $controlleurName = htmlentities($controlleurName);
     } else {
         $controlleurName = '';
     }
 
     if (isset($_GET['methode'])) {
         $methode = $_GET['methode'];
+        $methode = htmlentities($methode);
     } else {
         $methode = '';
     }
