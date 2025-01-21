@@ -164,6 +164,27 @@ class EvenementDao
         return $this->hydrateAllWithCategorie($evenementTab);
     }
 
+
+    /**
+     * @function findEventByUser
+     * @details Permet de trouver les événements de l'utilisateur connecté
+     * @param int|null $id
+     * @uses hydrateAll
+     * @return array
+     */
+    public function findEventByUser (?int $id)
+    {
+        $sql = "SELECT evt.evtId, evt.titre,evt.autorisation, evt.description, evt.email, evt.tel, evt.nomRep, evt.prenomRep, DATE(evt.dateDebut) AS dateDebut, DATE(evt.dateFin) AS dateFin, TIME(evt.heureDebut) AS heureDebut, TIME(evt.heureFin) AS heureFin, evt.lieu, evt.photo, cate.nom AS nomCategorie
+            FROM gk_evenement AS evt
+            JOIN gk_categorie AS cate ON evt.cateId = cate.cateId WHERE evt.userId = :id";
+        $pdoStatement = $this->pdo->prepare($sql);
+        $pdoStatement->execute(array(':id' => $id));
+        $pdoStatement->setFetchMode(PDO::FETCH_ASSOC);
+        $EvenementTab = $pdoStatement->fetchAll();
+        $evenement = $this->hydrateByUser($EvenementTab);
+        return $evenement;
+    }
+
     
     /**
      * @function hydrate
@@ -253,6 +274,22 @@ class EvenementDao
         return $evenements;
     }
 
+    /**
+     * @function hydrateByUser
+     * @details Permet d'hydrater un tableau de données pour créer un tableau d'objets Evenement
+     * @param array $tab
+     * @uses hydrate
+     * @return array
+     */
+    public function hydrateByUser(array $tab): array
+    {
+        $evenements = [];
+        foreach ($tab as $evenement) {
+            $evenements[] = $this->hydrate($evenement);
+        }
+        return $evenements;
+    }
+
 
     /**
      * @function insert
@@ -282,5 +319,18 @@ class EvenementDao
             ':photo' => $evenement->getPhoto(),
             ':cateId' => $evenement->getCateId()
         ]);
+    }
+
+    /**
+     * @brief Fonction permettant de supprimer un evenement en base de données
+     * @details Cette fonction permet de supprimer un utilisateur en base de données si ce dernier sdouhaite supprimer son compte
+     * @param Evenement $evenement
+     * @return void
+     */
+    public function delete(Evenement $evenement): void {
+        // cette fonction permet de supprimer un utilisateur en base en supprimant dabord ses commentaires puis ses actualités puis ses evenement puis l'utilisateur
+        $sql = "DELETE FROM " . PREFIX_TABLE . "evenement WHERE evtId = :evtId";
+        $pdoStatement = $this->pdo->prepare($sql);
+        $pdoStatement->execute([':evtId' => $evenement->getEvtId()]);       
     }
 }
