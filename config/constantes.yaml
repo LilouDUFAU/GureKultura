@@ -5,7 +5,7 @@ DB_:
   HOST: localhost
   NAME: gurekultura_bd
   USER: root
-  PASS: "root"
+  PASS: ""
 
 # Pour Citrix
 # DB_:
