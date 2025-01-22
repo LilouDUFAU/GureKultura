@@ -2,7 +2,6 @@
 // inclure la classe validator
 require_once '../app/controllers/validator.class.php';
 
-
 /**
  * @class EvenementDao
  * @details Permet de lier la base de données à la classe Evenement
@@ -185,6 +184,26 @@ class EvenementDao
         return $evenement;
     }
 
+
+    /**
+     * @function findEventById
+     * @details Permet de trouver un événement par son id
+     * @param int|null $id
+     * @uses hydrateById
+     * @return Evenement|null
+     */
+    public function findEventById (?int $id)
+    {
+        $sql = "SELECT evt.evtId, evt.titre,evt.autorisation, evt.description, evt.email, evt.tel, evt.nomRep, evt.prenomRep, DATE(evt.dateDebut) AS dateDebut, DATE(evt.dateFin) AS dateFin, TIME(evt.heureDebut) AS heureDebut, TIME(evt.heureFin) AS heureFin, evt.lieu, evt.photo, cate.nom AS nomCategorie
+            FROM gk_evenement AS evt
+            JOIN gk_categorie AS cate ON evt.cateId = cate.cateId WHERE evt.evtId = :id";
+        $pdoStatement = $this->pdo->prepare($sql);
+        $pdoStatement->execute(array(':id' => $id));
+        $pdoStatement->setFetchMode(PDO::FETCH_ASSOC);
+        $EvenementTab = $pdoStatement->fetchAll();
+        $evenement = $this->hydrateById($EvenementTab);
+        return $evenement;
+    }
     
     /**
      * @function hydrate
@@ -202,24 +221,11 @@ class EvenementDao
         $evenement->setEmail($tab['email']);
         $evenement->setTel($tab['tel']);
         $evenement->setNomRep($tab['nomRep']);
-        $evenement->setPrenomRep($tab['prenomRep']);
-
-        if (is_date($tab['dateDebut'])) {
-            $tab['dateDebut'] = new DateTime($tab['dateDebut']);
-            $evenement->setDateDebut($tab['dateDebut']);
-        }
-        if (is_date($tab['dateFin'])) {
-            $tab['dateFin'] = new DateTime($tab['dateFin']);
-            $evenement->setDateFin($tab['dateFin']);
-        }
-        if (is_time($tab['heureDebut'])) {
-            $tab['heureDebut'] = new DateTime($tab['heureDebut']);
-            $evenement->setHeureDebut($tab['heureDebut']);
-        }
-        if (is_time($tab['heureFin'])) {
-            $tab['heureFin'] = new DateTime($tab['heureFin']);
-            $evenement->setHeureFin($tab['heureFin']);
-        }
+        $evenement->setPrenomRep($tab['prenomRep']);;
+        $evenement->setDateDebut($tab['dateDebut']);
+        $evenement->setDateFin($tab['dateFin']);
+        $evenement->setHeureDebut($tab['heureDebut']);
+        $evenement->setHeureFin($tab['heureFin']);
         $evenement->setLieu($tab['lieu']);
         $evenement->setPhoto($tab['photo']);
 
@@ -290,6 +296,22 @@ class EvenementDao
         return $evenements;
     }
 
+    /**
+     * @function hydrateById
+     * @details Permet d'hydrater un tableau de données pour créer un objet Evenement
+     * @param array $tab
+     * @uses hydrate
+     * @return array
+     */
+    public function hydrateById(array $tab): array
+    {
+        $evenements = [];
+        foreach ($tab as $evenement) {
+            $evenements[] = $this->hydrate($evenement);
+        }
+        return $evenements;
+    }
+
 
     /**
      * @function insert
@@ -311,10 +333,10 @@ class EvenementDao
             ':tel' => $evenement->getTel(),
             ':nomRep' => $evenement->getNomRep(),
             ':prenomRep' => $evenement->getPrenomRep(),
-            ':dateDebut' => $evenement->getDateDebut()->format('Y-m-d'),
-            ':dateFin' => $evenement->getDateFin()->format('Y-m-d'),
-            ':heureDebut' => $evenement->getHeureDebut()->format('H:i'),
-            ':heureFin' => $evenement->getHeureFin()->format('H:i'),
+            ':dateDebut' => $evenement->getDateDebut(),
+            ':dateFin' => $evenement->getDateFin(),
+            ':heureDebut' => $evenement->getHeureDebut(),
+            ':heureFin' => $evenement->getHeureFin(),
             ':lieu' => $evenement->getLieu(),
             ':photo' => $evenement->getPhoto(),
             ':cateId' => $evenement->getCateId()
@@ -332,5 +354,24 @@ class EvenementDao
         $sql = "DELETE FROM " . PREFIX_TABLE . "evenement WHERE evtId = :evtId";
         $pdoStatement = $this->pdo->prepare($sql);
         $pdoStatement->execute([':evtId' => $evenement->getEvtId()]);       
+    }
+
+
+    /**
+     * @brief Fonction permettant de modifier un evenement en base de données
+     * @details Cette fonction permet de modifier un evenement en base de données
+     * @param string $donnees
+     * @param string $champ
+     * @param string $eventId
+     * @return void
+     */
+    public function modify(string $donnees, string $champ, string $eventId): void
+    {
+        $sql = "UPDATE " . PREFIX_TABLE . "user SET $champ = :valeur WHERE userId = :id";
+        $pdoStatement = $this->pdo->prepare($sql);
+        $pdoStatement->execute([
+            ':valeur' => $donnees,
+            ':id' => $eventId
+        ]);
     }
 }

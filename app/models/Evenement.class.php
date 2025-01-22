@@ -62,25 +62,25 @@ class Evenement
      * @brief date de début de l'événement
      * @var DateTime|null
      */
-    private ?DateTime $dateDebut;
+    private ?string $dateDebut;
 
     /**
      * @brief date de fin de l'événement
      * @var DateTime|null
      */
-    private ?DateTime $dateFin;
+    private ?string $dateFin;
 
     /**
      * @brief heure de début de l'événement
      * @var DateTime|null
      */
-    private ?DateTime $heureDebut;
+    private ?string $heureDebut;
 
     /**
      * @brief heure de fin de l'événement
      * @var DateTime|null
      */
-    private ?DateTime $heureFin;
+    private ?string $heureFin;
 
     /**
      * @brief lieu de l'événement
@@ -150,10 +150,10 @@ class Evenement
     ?string $tel=null, 
     ?string $nomRep=null, 
     ?string $prenomRep=null, 
-    ?DateTime $dateDebut=null, 
-    ?DateTime $dateFin=null, 
-    ?DateTime $heureDebut=null, 
-    ?DateTime $heureFin=null,
+    ?string $dateDebut=null, 
+    ?string $dateFin=null, 
+    ?string $heureDebut=null, 
+    ?string $heureFin=null,
     ?string $lieu=null,
     ?string $photo=null,
     ?bool $is_valide=null,
@@ -271,9 +271,9 @@ class Evenement
      * @details Cette fonction permet de récupérer la date de début de l'événement
      * @return DateTime|null
      */
-    public function getDateDebut(): ?DateTime
+    public function getDateDebut(): ?string
     {
-        return $this->dateDebut;
+        return $this->dateDebut; //?->format('Y-m-d'); 
     }
 
     /**
@@ -281,9 +281,9 @@ class Evenement
      * @details Cette fonction permet de récupérer la date de fin de l'événement
      * @return DateTime|null
      */
-    public function getDateFin(): ?DateTime
+    public function getDateFin(): ?string
     {
-        return $this->dateFin;
+        return $this->dateFin; //?->format('Y-m-d'); 
     }
 
     /**
@@ -291,9 +291,9 @@ class Evenement
      * @details Cette fonction permet de récupérer l'heure de début de l'événement
      * @return DateTime|null
      */
-    public function getHeureDebut(): ?DateTime
+    public function getHeureDebut(): ?string
     {
-        return $this->heureDebut;
+        return $this->heureDebut;//?->format('H:i:s'); 
     }
 
     /**
@@ -301,9 +301,9 @@ class Evenement
      * @details Cette fonction permet de récupérer l'heure de fin de l'événement
      * @return DateTime|null
      */
-    public function getHeureFin(): ?DateTime
+    public function getHeureFin(): ?string
     {
-        return $this->heureFin;
+        return $this->heureFin;//?->format('H:i:s');
     } 
 
     /**
@@ -466,7 +466,7 @@ class Evenement
      * @param DateTime|null $dateDebut
      * @return void
      */
-    public function setDateDebut(?DateTime $dateDebut): void
+    public function setDateDebut(?string $dateDebut): void
     {
         $this->dateDebut = $dateDebut;
     }
@@ -477,7 +477,7 @@ class Evenement
      * @param DateTime|null $dateFin
      * @return void
      */
-    public function setDateFin(?DateTime $dateFin): void
+    public function setDateFin(?string $dateFin): void
     {
         $this->dateFin = $dateFin;
     }
@@ -488,7 +488,7 @@ class Evenement
      * @param DateTime|null $heureDebut
      * @return void
      */
-    public function setHeureDebut(?DateTime $heureDebut): void
+    public function setHeureDebut(?string $heureDebut): void
     {
         $this->heureDebut = $heureDebut;
     }
@@ -499,7 +499,7 @@ class Evenement
      * @param DateTime|null $heureFin
      * @return void
      */
-    public function setHeureFin(?DateTime $heureFin): void
+    public function setHeureFin(?string $heureFin): void
     {
         $this->heureFin = $heureFin;
     }
