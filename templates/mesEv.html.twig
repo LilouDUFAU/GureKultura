@@ -31,13 +31,16 @@
                     </td>
                     {# bouton de modification #}
                     <td class="p-1 flex justify-center items-center">
-                        <a href=""><img src="../asset/icones/pencil-square.svg" alt="modification"></a>
+                        <form action="index.php?controlleur=modifEv&methode=modifierEv" method="post">
+                            <input type="hidden" name="evtId" value={{ evenement.evtId}}>
+                            <button type="submit" class="p-1 rounded-lg h-6 w-6"><img src="../asset/icones/pencil-square.svg" alt="modification"></button>
+                        </form>
                     </td>
                     {# bouton de suppression #}
                     <td class="p-1 flex justify-center items-center">
                         <form action="index.php?controlleur=mesEv&methode=supprimerEvent" method="post">
                             <input type="hidden" name="evtId" value={{ evenement.evtId}}>
-                            <button type="submit" class="bg-[#A23145] text-white p-1 rounded-lg"><img src="../asset/icones/trash3.svg" alt="suppression"></button>
+                            <button type="submit" class="bg-[#A23145] text-white p-1 rounded-lg h-6 w-6"><img src="../asset/icones/trash3.svg" alt="suppression"></button>
                         </form>
                     </td>
                         
