@@ -95,20 +95,19 @@
 					{% if user.estAdmin == False %}
 					<div class="flex flex-col items-center">
 						<a href="index.php?controlleur=propEv&methode=lister" class=""><img src="../asset/icones/file-plus.svg" alt="propEv" class="h-6 w-6"></a>
-						<p class="hidden lg:block">Proposition</p>
+						<p class="hidden lg:block">Créer</p>
 					</div>
 					{% else %}
 					<div class="flex flex-col items-center">
 						<a href="index.php?controlleur=propActu&methode=lister" class=""><img src="../asset/icones/file-plus.svg" alt="propActu" class="h-6 w-6"></a>
-						<p class="hidden lg:block">Proposition</p>
+						<p class="hidden lg:block">Créer</p>
 					</div>
-					{% endif %}
-
-					{% if user.estAdmin == True %}
+					
 					<div class="flex flex-col items-center">
 						<a href="index.php?controlleur=listeEv&methode=lister" class=""><img src="../asset/icones/layout-text-sidebar-reverse.svg" alt="listEv" class="h-6 w-6"></a>
 						<p class="hidden lg:block">Proposition</p>
 					</div>
+					
 					{% endif %}
 
 					<div class="flex flex-col items-center">
