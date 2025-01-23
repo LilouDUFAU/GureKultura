@@ -54,7 +54,6 @@ class ControllerConnexion extends Controller {
      * @uses Bd
      * @uses $_POST
      * @uses $_SESSION
-     * @uses serialize
      * @uses header
      * @uses getTwig
      * @uses addGlobal
@@ -121,7 +120,7 @@ class ControllerConnexion extends Controller {
                 } else {
                     $user->setRole('user');
                 }
-                $_SESSION['user'] = serialize($user);
+                $_SESSION['user'] =$user;
                 $this->getTwig()->addGlobal('utilisateurConnecte', $user);
                 header('Location: index.php?controlleur=index&methode=lister');
             }
