@@ -1,47 +1,53 @@
 {% extends "base.html.twig" %}
 
 {% block content %}
-<!-- Contenu spécifique de chaque page -->
-<div class="lg:pt-2">
-    <div class="gap-2 p-2 grid grid-cols-12 items-center">
-        
-        {# titre de la page #}
-        <h1 class="col-span-12 text-white lg:font-bold lg:text-4xl text-2xl text-center bg-[#A23145] rounded-2xl p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] mb-10">Evénements du moment</h1>
+	<!-- Contenu spécifique de chaque page -->
+	<div class="lg:pt-2">
+		<div
+			class="gap-2 p-2 grid grid-cols-12 items-center">
 
-        {# contenu #}
+			{# titre de la page #}
+			<h1 class="col-span-12 text-white lg:font-bold lg:text-4xl text-2xl text-center bg-[#A23145] rounded-2xl p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] mb-10">Evénements du moment</h1>
 
-        <div class="lg:grid lg:grid-cols-2 lg:auto-rows-fr lg:gap-4 col-start-1 col-span-12 flex flex-col gap-2 md:grid md:grid-cols-2 md:auto-rows-fr md:gap-4 p-4">  
-            {% for event in events %}
-            <div class="flex gap-4 flex-col h-full lg:px-4 lg:grid lg:grid-cols-6 lg:auto-cols-min lg:items-center rounded-2xl bg-[#A23145] drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] p-4">
-                {# Image de l'événement #}
-                <div class="flex-1 lg:row-start-1 lg:col-start-1 lg:col-span-2 lg:w-full row-start-1 col-start-1 col-span-12 lg:m-2 w-full md:row-start-1 md:col-start-1 md:col-span-12 md:w-full lg:object-contain">
-                    <img src="../asset/evenement/{{ event.photo }}" alt="Image de l'événement" class="rounded-lg"  >
-                </div>
+			{# contenu #}
 
-                
-                {# Infos de l'événement #}
-                <div class="lg:grid lg:grid-cols-subgrid lg:col-start-3 lg:col-span-2 lg:flex-col lg:w-[250px] text-white lg:gap-2 lg:p-4">
-                    <h3 class="lg:font-bold lg:text-xl lg:row-start-1 lg:col-span-2 lg:text-left break-words row-start-1 col-start-1 col-span-12 text-center text-lg md:row-start-1 md:col-start-1 md:col-span-12 md:text-center">{{ event.titre }}</h3>
-                    <p class="lg:text-md lg:row-start-2 lg:col-span-2 lg:text-left break-words row-start-2 col-start-1 col-span-12 text-center md:row-start-2 md:col-start-1 md:col-span-12 md:text-center text-sm">{{ event.dateDebut|date("d-m-Y") }} {{ event.heureDebut|date("H:i") }}</p>
-                    <p class="lg:text-md lg:row-start-3 lg:col-span-2 lg:text-left break-words row-start-3 col-start-1 col-span-12 text-center md:row-start-3 md:col-start-1 md:col-span-12 md:text-center text-sm">{{ event.dateFin|date("d-m-Y") }} {{ event.heureFin|date("H:i") }}</p>
-                    <p class="lg:text-md lg:row-start-4 lg:col-span-2 lg:text-left break-words row-start-4 col-start-1 col-span-12 text-center md:row-start-4 md:col-start-1 md:col-span-12 md:text-center text-sm"> {{ event.lieu }} </p>
-                </div>
-                
-                
-                <div class="lg:col-start-5 lg:col-span-2 lg:flex lg:flex-col lg:items-center lg:justify-center lg:gap-10 grid grid-cols-2 justify-between mg:grid mg:grid-cols-2 md:justify-between">
-                    <p class="bg-white text-[#A23145] rounded-2xl text-sm p-2 font-bold lg:row-start-3 lg:col-start-1 lg:col-span-2  row-start-3 col-start-1 col-span-1 flex justify-center items-center text-center w-full">{{ event.nomCategorie }}</p>
+			<div class="lg:grid lg:grid-cols-2 lg:auto-rows-fr lg:gap-4 col-start-1 col-span-12 flex flex-col gap-2 md:grid md:grid-cols-2 md:auto-rows-fr md:gap-4 p-4">
+				{% for event in events %}
+					<div
+						class="flex gap-4 flex-col h-full lg:px-4 lg:grid lg:grid-cols-6 lg:auto-cols-min lg:items-center rounded-2xl bg-[#A23145] drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] p-4">
+						{# Image de l'événement #}
+						<div class="flex-1 lg:row-start-1 lg:col-start-1 lg:col-span-2 lg:w-full row-start-1 col-start-1 col-span-12 lg:m-2 w-full md:row-start-1 md:col-start-1 md:col-span-12 md:w-full lg:object-contain">
+							<img src="../asset/evenement/{{ event.photo }}" alt="Image de l'événement" class="rounded-lg">
+						</div>
 
-                    {# Voir video moulin pour faire comme quand il clique sur une recette #}
-                            <FORM ACTION="index.php?controlleur=evtActu&methode=lister" METHOD="POST">
-                                <INPUT TYPE="hidden" NAME="nom" VALUE="{{event.titre}}">
-                                <INPUT TYPE="hidden" NAME="id" VALUE={{event.evtId}}>
-                                <INPUT TYPE="hidden" NAME="type" VALUE="Evenements"> 
-                                <INPUT TYPE="SUBMIT" NAME="{{ event.titre }}" VALUE="EN SAVOIR PLUS" class="text-white  text-sm  lg:text-md  font-bold row-start-3 flex justify-center items-center md:font-bold md:row-start-3 md:col-start-2 md:col-span-2 md:flex md:justify-center md:items-center">
-                            </FORM>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-</div>
+
+						{# Infos de l'événement #}
+						<div class="lg:grid lg:grid-cols-subgrid lg:col-start-3 lg:col-span-2 lg:flex-col lg:w-[250px] text-white lg:gap-2 lg:p-4">
+							<h3 class="lg:font-bold lg:text-xl lg:row-start-1 lg:col-span-2 lg:text-left break-words row-start-1 col-start-1 col-span-12 text-center text-lg md:row-start-1 md:col-start-1 md:col-span-12 md:text-center">{{ event.titre }}</h3>
+							<p class="lg:text-md lg:row-start-2 lg:col-span-2 lg:text-left break-words row-start-2 col-start-1 col-span-12 text-center md:row-start-2 md:col-start-1 md:col-span-12 md:text-center text-sm">{{ event.dateDebut|date("d-m-Y") }}
+								{{ event.heureDebut|date("H:i") }}</p>
+							<p class="lg:text-md lg:row-start-3 lg:col-span-2 lg:text-left break-words row-start-3 col-start-1 col-span-12 text-center md:row-start-3 md:col-start-1 md:col-span-12 md:text-center text-sm">{{ event.dateFin|date("d-m-Y") }}
+								{{ event.heureFin|date("H:i") }}</p>
+							<p class="lg:text-md lg:row-start-4 lg:col-span-2 lg:text-left break-words row-start-4 col-start-1 col-span-12 text-center md:row-start-4 md:col-start-1 md:col-span-12 md:text-center text-sm">
+								{{ event.lieu }}
+							</p>
+						</div>
+
+
+						<div class="lg:col-start-5 lg:col-span-2 lg:flex lg:flex-col lg:items-center lg:justify-center lg:gap-10 flex flex-row justify-between items-center">
+							<p class="bg-white text-[#A23145] rounded-2xl text-sm p-2 font-bold lg:row-start-3 lg:col-start-1 lg:col-span-2  row-start-3 col-start-1 col-span-1 flex justify-center items-center text-center">{{ event.nomCategorie }}</p>
+
+
+							<FORM action="index.php?controlleur=evtActu&methode=lister" method="POST">
+								<INPUT type="hidden" name="nom" value="{{event.titre}}">
+								<INPUT type="hidden" name="id" value={{event.evtId}}>
+								<INPUT type="hidden" name="type" value="Evenements">
+								<INPUT type="SUBMIT" name="{{ event.titre }}" value="EN SAVOIR PLUS" class="text-white  text-sm  lg:text-md  font-bold row-start-3 flex justify-center items-center md:font-bold md:row-start-3 md:col-start-2 md:col-span-2 md:flex md:justify-center md:items-center">
+							</FORM>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
 {% endblock %}
