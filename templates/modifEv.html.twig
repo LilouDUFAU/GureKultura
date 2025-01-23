@@ -6,8 +6,8 @@
 
     <h1 class="text-3xl font-bold text-center text-[#A23145]">Modifier mon évènement</h1>
 
-	<form action="index.php?controlleur=modifEv&methode=modifierEvent" method="post" class="grid grid-cols-6 gap-2 bg-[#A23145] bg-opacity-55 text-white rounded-xl">
-		<input type="hidden" name="evtId" value={{ evenement.evtId }}>
+	<form action="index.php?controlleur=modifEv&methode=validerFormModifEv" method="post" class="grid grid-cols-6 gap-2 bg-[#A23145] bg-opacity-55 text-white rounded-xl">
+		<input type="hidden" name="evtId" value={{ evenementActuel.id }}>
 
 		{# titre evenement #}
 		<div class="grid grid-cols-subgrid row-start-1 col-start-1 col-span-6 p-2">
@@ -19,11 +19,11 @@
 			<label for="nomCategorie" class="col-start-1 col-span-2">Type</label>
 			<!-- Dropdown Container -->
 			<select name="cateId" id="nomCategorie" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg">
-			<option class="text-gray-400" value="" disabled selected>{{ evenementActuel.categorie}}</option>
+				<option class="text-gray-400" value="{{ evenementActuel.cateId }}" selected>{{ evenementActuel.categorie}}</option>
 				{% for categorie in categories %}
-					<option class="text-black" value="{{categorie.cateId}}" {% if evenement.cateId == categorie.cateId %} selected {% endif %}>{{ categorie.nom }}</option>
+					<option class="text-black" value="{{categorie.cateId}}" {% if evenementActuel.cateId == categorie.cateId %} selected {% endif %}>{{ categorie.nom }}</option>
 				{% endfor %}
-			</select>						
+			</select>			
 		</div>
 
 		{# autorisations #}
@@ -41,19 +41,19 @@
 		{# telephone #}
 		<div class="grid grid-cols-subgrid row-start-5 col-start-1 col-span-6 p-2">
 			<label for="telephone" class="col-start-1 col-span-2">Téléphone</label>
-			<input type="tel" name="telephone" id="telephone" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.tel }}">
+			<input type="tel" name="tel" id="tel" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.tel }}">
 		</div>
 
 		{# nomResp #}
 		<div class="grid grid-cols-subgrid row-start-6 col-start-1 col-span-6 p-2">
 			<label for="nomResp" class="col-start-1 col-span-2">Nom du responsable</label>
-			<input type="text" name="nomResp" id="nomResp" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.nomRep }}">
+			<input type="text" name="nomRep" id="nomRep" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.nomRep }}">
 		</div>
 
 		{# prenomResp #}
 		<div class="grid grid-cols-subgrid row-start-7 col-start-1 col-span-6 p-2">
 			<label for="prenomResp" class="col-start-1 col-span-2">Prénom du responsable</label>
-			<input type="text" name="prenomResp" id="prenomResp" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.prenomRep }}">
+			<input type="text" name="prenomRep" id="prenomRep" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.prenomRep }}">
 		</div>
 
 		{# description #}
@@ -66,31 +66,31 @@
 		{# dateDebut #}
 		<div class="grid grid-cols-subgrid row-start-9 col-start-1 col-span-6 p-2">
 			<label for="dateDebut" class="col-start-1 col-span-2">Date de début</label>
-			<input type="date" name="dateDebut" id="dateDebut" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.dateDebut}}">
+			<input type="date" name="debutDate" id="debutDate" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.dateDebut}}">
 		</div>
 
 		{# HeureDebut #}
 		<div class="grid grid-cols-subgrid row-start-10 col-start-1 col-span-6 p-2">
 			<label for="heureDebut" class="col-start-1 col-span-2">Heure de début</label>
-			<input type="time" name="heureDebut" id="heureDebut" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.heureDebut }}">
+			<input type="time" name="debutHeure" id="debutHeure" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.heureDebut }}">
 		</div>
 
 		{# dateFin #}
 		<div class="grid grid-cols-subgrid row-start-11 col-start-1 col-span-6 p-2">
 			<label for="dateFin" class="col-start-1 col-span-2">Date de fin</label>
-			<input type="date" name="dateFin" id="dateFin" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.dateFin }}">
+			<input type="date" name="finDate" id="finDate" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.dateFin }}">
 		</div>
 
 		{# HeureFin #}
 		<div class="grid grid-cols-subgrid row-start-12 col-start-1 col-span-6 p-2">
 			<label for="heureFin" class="col-start-1 col-span-2">Heure de fin</label>
-			<input type="time" name="heureFin" id="heureFin" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.heureFin }}">
+			<input type="time" name="finHeure" id="finHeure" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.heureFin }}">
 		</div>
 
 		{# Lieu #}
 		<div class="grid grid-cols-subgrid row-start-13 col-start-1 col-span-6 p-2">
 			<label for="lieu" class="col-start-1 col-span-2">Lieu</label>
-			<textera type="text" name="lieu" id="lieu" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2"> {{ evenementActuel.lieu }}</textera>
+			<textarea name="lieu" id="lieu" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2">{{ evenementActuel.lieu }}</textarea>
 		</div>
 
 		{# Photo #}
