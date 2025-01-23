@@ -604,10 +604,6 @@ video {
   visibility: visible;
 }
 
-.invisible {
-  visibility: hidden;
-}
-
 .static {
   position: static;
 }
@@ -908,16 +904,12 @@ video {
   max-height: 100%;
 }
 
-.min-h-12 {
-  min-height: 3rem;
+.min-h-16 {
+  min-height: 4rem;
 }
 
 .min-h-dvh {
   min-height: 100dvh;
-}
-
-.min-h-16 {
-  min-height: 4rem;
 }
 
 .w-11 {
@@ -1120,10 +1112,6 @@ video {
 
 .rounded-xl {
   border-radius: 0.75rem;
-}
-
-.border {
-  border-width: 1px;
 }
 
 .border-2 {
