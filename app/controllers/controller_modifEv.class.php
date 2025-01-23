@@ -25,56 +25,6 @@ class ControllerModifEv extends Controller
 
 
     /**
-     * @function lister
-     * @details Fonction permettant d'afficher la page "modif ev" de base
-     * @uses ActualiteDao
-     * @uses CategorieDao
-     * @uses EvenementDao
-     * @uses Bd
-     * @uses findAllWithCategorie
-     * @uses findAll
-     * @return void
-     */
-    public function lister()
-    {
-        $pdo = Bd::getInstance()->getPdo();
-
-        $loader = new \Twig\Loader\FilesystemLoader('../templates');
-        $twig = new \Twig\Environment($loader);
-
-        $managerActualite = new ActualiteDao($this->getPdo());
-        $actualite = $managerActualite->findAllWithCategorie();
-
-        $managerCategorie = new CategorieDao($this->getPdo());
-        $categories = $managerCategorie->findAll();
-
-        $managerEvenement = new EvenementDao($this->getPdo());
-        $evenement = $managerEvenement->findAllWithCategorie();
-
-        // Rendre le template Twig
-        echo $this->getTwig()->render('modifEv.html.twig', [
-            'title' => 'Modifier mon événement',
-            'actualites' => $actualite,
-            'categories' => $categories,
-            'evenements' => $evenement
-        ]);
-    }
-
-    /**
-     * @function modifier
-     * @details Fonction permettant de modifier un événement
-     * @uses EvenementDao
-     * @uses Bd
-     * @uses update
-     * @return void
-     */
-    public function modifier()
-    {
-
-    }
-
-
-    /**
      * @function modifierEv
      * @details Fonction permettant de modifier un événement
      * @uses EvenementDao
@@ -82,7 +32,7 @@ class ControllerModifEv extends Controller
      * @uses update
      * @return void
      */
-    public function modifierEv()
+    public function lister()
     {
         $pdo = Bd::getInstance()->getPdo();
 
@@ -115,6 +65,8 @@ class ControllerModifEv extends Controller
         $evenementActuel['categorie'] = $evenement[0]->getNomCategorie();
         $evenementActuel['categorieId'] = $evenement[0]->getCateId();
 
+        $_SESSION['evtActuel'] = $evenementActuel;
+
         // Rendre le template Twig
         echo $this->getTwig()->render('modifEv.html.twig', [
             'title' => 'Mes événements',
@@ -122,5 +74,330 @@ class ControllerModifEv extends Controller
             'categories' => $categories,
             'evenementActuel' => $evenementActuel
         ]);
+    }
+
+
+    public function validerFormModifEv()
+    {
+        // Vérifier si l'utilisateur est connecté
+        if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
+        
+            // definition des regles de validations que l'on souhaite verifier pour chaque champs du formulaire
+            $regleValidation = [
+                'titre' => [
+                    'obligatoire' => true,
+                    'type' => 'string',
+                    'longueurMin' => 5,
+                    'longueurMax' => 30,
+                    'format' => '/^[a-zA-Z0-9\s]+$/'
+                ],
+                'cateId' => [
+                    'obligatoire' => true,
+                    'type' => 'integer',
+                    'longueurMin' => 1,
+                    'longueurMax' => 100,
+                    'format' => '/^[a-zA-Z0-9\s]+$/'
+                ],
+                'autorisation' => [
+                    'obligatoire' => false,
+                    'type' => '.pdf ,.jpg, .jpeg, .png',
+                    'format' => '/^[a-zA-Z0-9\s]+$/'
+                ],
+                'email' => [
+                    'obligatoire' => true,
+                    'type' => 'email',
+                    'longueurMin' => 10,
+                    'longueurMax' => 100,
+                    'format' => FILTER_VALIDATE_EMAIL
+                ],
+                'tel' => [
+                    'obligatoire' => true,
+                    'type' => 'string',
+                    'longueurMin' => 10,
+                    'longueurMax' => 14,
+                    'format' => '^0\d(\s|-)?(\d{2}(\s|-)?){4}$'
+                ],
+                'nomRep' => [
+                    'obligatoire' => true,
+                    'type' => 'string',
+                    'longueurMin' => 2,
+                    'longueurMax' => 100,
+                    'format' => '/^[a-zA-Z0-9\s]+$/'
+                ],
+                'prenomRep' => [
+                    'obligatoire' => true,
+                    'type' => 'string',
+                    'longueurMin' => 2,
+                    'longueurMax' => 100,
+                    'format' => '/^[a-zA-Z0-9\s]+$/'
+                ],
+                'description' => [
+                    'obligatoire' => true,
+                    'type' => 'string',
+                    'longueurMin' => 30,
+                    'longueurMax' => 500,
+                    'format' => '/^[a-zA-Z0-9\s]+$/'
+                ],
+                'debutDate' => [
+                    'obligatoire' => true,
+                    'type' => 'string',
+                    'longueurExacte' => 10,
+                    'format' => '/^\d{4}-\d{2}-\d{2}$/'
+                ],
+                'finDate' => [
+                    'obligatoire' => true,
+                    'type' => 'string',
+                    'longueurExacte' => 10,
+                    'format' => '/^\d{4}-\d{2}-\d{2}$/'
+                ],
+                'debutHeure' => [
+                    'obligatoire' => true,
+                    'type' => 'string',
+                    'longueurExacte' => 5,
+                    'format' => '/^\d{2}:\d{2}$/'
+                ],
+                'finHeure' => [
+                    'obligatoire' => true,
+                    'type' => 'string',
+                    'longueurExacte' => 5,
+                    'format' => '/^\d{2}:\d{2}$/'
+                ],
+                'lieu' => [
+                    'obligatoire' => true,
+                    'type' => 'string',
+                    'longueurMin' => 5,
+                    'longueurMax' => 100,
+                    'format' => '/^[a-zA-Z0-9\s]+$/'
+                ],
+                'photo' => [
+                    'obligatoire' => false,
+                    'type' => 'string',
+                    'longueurMin' => 5,
+                    'longueurMax' => 100,
+                    'format' => '/^[a-zA-Z0-9\s]+$/'
+                ]
+            ];
+
+            // instanciation de la classe de validation
+            $validator = new Validator($regleValidation);
+
+            // recuperation des donnees du formulaire
+            $donnees = $_POST;
+            // recuperer seulement les 5 premiers caracteres de heure debut et fin
+            $donnees['debutHeure'] = substr($donnees['debutHeure'], 0, 5);
+            $donnees['finHeure'] = substr($donnees['finHeure'], 0, 5);
+
+            // si l'id de la categorie n'est pas defini, alors on recupere celui de la variable de session evenementActuel
+            if (empty($donnees['cateId'])) {
+                $donnees['cateId'] = $_SESSION['evtActuel']['categorieId'];
+            }
+
+            // boucle de nettoyage des donnees 
+            foreach ($donnees as $key => $value) {
+                $donnees[$key] = htmlentities($value);
+            }
+            $user = $_SESSION['user'];
+            $donnees['userId'] = $user->getUserId();
+
+
+            // validation des donnees du formulaire
+            $donneesValides = $validator->valider($donnees);
+
+            if (!$donneesValides) {
+                var_dump($donneesValides);
+                $messageErreurs = $validator->getMessageErreurs();
+            }
+            else{
+                // verifier quel champ a ete modifie + recuperer la valeur du champ modifie avec un switch case
+                if ($donnees['titre'] != $_SESSION['evtActuel']['titre']) {
+                    $titreModifie = true;
+                }
+                else{
+                    $titreModifie = false;
+                }
+
+                if ($donnees['cateId'] != $_SESSION['evtActuel']['categorieId']) {
+                    $categorieModifie = true;
+                }
+                else{
+                    $categorieModifie = false;
+                }
+
+                if ($donnees['autorisation'] != $_SESSION['evtActuel']['autorisation']) {
+                    $autorisationModifie = true;
+                }
+                else{
+                    $autorisationModifie = false;
+                }
+
+                if ($donnees['email'] != $_SESSION['evtActuel']['email']) {
+                    $emailModifie = true;
+                }
+                else{
+                    $emailModifie = false;
+                }
+
+                if ($donnees['tel'] != $_SESSION['evtActuel']['tel']) {
+                    $telModifie = true;
+                }
+                else{
+                    $telModifie = false;
+                }
+
+                if ($donnees['nomRep'] != $_SESSION['evtActuel']['nomRep']) {
+                    $nomRepModifie = true;
+                }
+                else{
+                    $nomRepModifie = false;
+                }
+
+                if ($donnees['prenomRep'] != $_SESSION['evtActuel']['prenomRep']) {
+                    $prenomRepModifie = true;
+                }
+                else{
+                    $prenomRepModifie = false;
+                }
+
+                if ($donnees['description'] != $_SESSION['evtActuel']['description']) {
+                    $descriptionModifie = true;
+                }
+                else{
+                    $descriptionModifie = false;
+                }
+
+                if ($donnees['debutDate'] != $_SESSION['evtActuel']['dateDebut']) {
+                    $debutDateModifie = true;
+                }
+                else{
+                    $debutDateModifie = false;
+                }
+
+                if ($donnees['finDate'] != $_SESSION['evtActuel']['dateFin']) {
+                    $finDateModifie = true;
+                }
+                else{
+                    $finDateModifie = false;
+                }
+
+                if ($donnees['debutHeure'] != $_SESSION['evtActuel']['heureDebut']) {
+                    $debutHeureModifie = true;
+                }
+                else{
+                    $debutHeureModifie = false;
+                }
+
+                if ($donnees['finHeure'] != $_SESSION['evtActuel']['heureFin']) {
+                    $finHeureModifie = true;
+                }
+                else{
+                    $finHeureModifie = false;
+                }
+
+                if ($donnees['lieu'] != $_SESSION['evtActuel']['lieu']) {
+                    $lieuModifie = true;
+                }
+                else{
+                    $lieuModifie = false;
+                }
+
+                if ($donnees['photo'] != $_SESSION['evtActuel']['photo']) {
+                    $photoModifie = true;
+                }
+                else{
+                    $photoModifie = false;
+                }  
+            }
+
+            // recuperation des erreurs
+
+            // Rendre le template Twig
+            $pdo = Bd::getInstance()->getPdo();
+
+            $loader = new \Twig\Loader\FilesystemLoader('../templates');
+            $twig = new \Twig\Environment($loader);
+
+            $managerActualite = new ActualiteDao($this->getPdo());
+            $actualite = $managerActualite->findAllWithCategorie();
+
+            $managerCategorie = new CategorieDao($this->getPdo());
+            $categories = $managerCategorie->findAll();
+
+            if (!empty($messageErreurs)) {
+                var_dump($messageErreurs);
+                // Les données ne sont pas valides, affichez les erreurs
+                echo $this->getTwig()->render('modifEv.html.twig', [
+                    'title' => 'Proposition d\'événement',
+                    'messageErreurs' => $messageErreurs,
+                    'donnees' => $donnees,
+                    'actualites' => $actualite,
+                    'categories' => $categories
+
+                ]);
+            } else {
+                if ($titreModifie) {
+                    $this->modifierDonneesDansLaBase($donnees['titre'], 'titre');
+                }
+                if ($categorieModifie) {
+                    $this->modifierDonneesDansLaBase($donnees['cateId'], 'cateId');
+                }
+                if ($autorisationModifie) {
+                    $this->modifierDonneesDansLaBase($donnees['autorisation'], 'autorisation');
+                }
+                if ($emailModifie) {
+                    $this->modifierDonneesDansLaBase($donnees['email'], 'email');
+                }
+                if ($telModifie) {
+                    $this->modifierDonneesDansLaBase($donnees['tel'], 'tel');
+                }
+                if ($nomRepModifie) {
+                    $this->modifierDonneesDansLaBase($donnees['nomRep'], 'nomRep');
+                }
+                if ($prenomRepModifie) {
+                    $this->modifierDonneesDansLaBase($donnees['prenomRep'], 'prenomRep');
+                }
+                if ($descriptionModifie) {
+                    $this->modifierDonneesDansLaBase($donnees['description'], 'description');
+                }
+                if ($debutDateModifie) {
+                    $this->modifierDonneesDansLaBase($donnees['debutDate'], 'dateDebut');
+                }
+                if ($finDateModifie) {
+                    $this->modifierDonneesDansLaBase($donnees['finDate'], 'dateFin');
+                }
+                if ($debutHeureModifie) {
+                    $this->modifierDonneesDansLaBase($donnees['debutHeure'], 'heureDebut');
+                }
+                if ($finHeureModifie) {
+                    $this->modifierDonneesDansLaBase($donnees['finHeure'], 'heureFin');
+                }
+                if ($lieuModifie) {
+                    $this->modifierDonneesDansLaBase($donnees['lieu'], 'lieu');
+                }
+                if ($photoModifie) {
+                    $this->modifierDonneesDansLaBase($donnees['photo'], 'photo');
+                }
+
+                $manager = new EvenementDao($pdo);
+                $evenement = $manager->findEventById($_SESSION['evtActuel']['id']);
+
+                header('Location: index.php?controlleur=mesEv&methode=lister');
+            }
+        } else {
+            header('Location: index.php?controlleur=connexion&methode=lister');
+        }
+    }
+
+    public function modifierDonneesDansLaBase(string $donnees, string $champ){
+        try{
+            $pdo = Bd::getInstance()->getPdo();
+            $managerEvenement = new EvenementDao($pdo);
+
+            $managerEvenement->update($donnees, $champ, $_SESSION['evtActuel']['id']);
+
+            // redirection vers la page de l'événement
+            // header('Location: index.php?controlleur=mesEv&methode=lister');:
+        }catch(Exception $e){
+            echo $e->getMessage();
+        }
     }
 }

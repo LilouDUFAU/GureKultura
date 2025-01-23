@@ -44,10 +44,9 @@
         $categories = $managerCategorie->findAll();
 
         $managerEvenement = new EvenementDao($this->getPdo());
-        $evenement = $managerEvenement->findAllWithCategorie();
 
         // recuperer les evenements de l'utilisateur connecte
-        $user=unserialize($_SESSION['user']);
+        $user=$_SESSION['user'];
         $evenement = $managerEvenement->findEventByUser($user->getUserId());
 
 
