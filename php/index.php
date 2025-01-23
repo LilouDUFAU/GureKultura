@@ -33,7 +33,6 @@ try {
         throw new Exception("La méthode n'est pas définie");
     }
     
-    // Assurez-vous que le contrôleur est bien "evtActu" et que la méthode 'inscrire' est appelée
     if ($controlleurName == 'evtActu' && $methode == 'inscrire') {
         $controller = new ControllerEvtActu($twig, $loader); // Création de l'objet ControllerEvtActu
         $controller->inscrire(); // Appel de la méthode 'inscrire' pour inscrire l'utilisateur

@@ -68,9 +68,6 @@ class ControllerEvtActu extends Controller {
             return;
         }
     
-        // Ajoutez une ligne de débogage pour vérifier que la méthode est bien appelée
-        error_log("Méthode inscrire appelée!");
-    
         $eventId = $_POST['evtId'];
         $userId = $_SESSION['userId'];
     
