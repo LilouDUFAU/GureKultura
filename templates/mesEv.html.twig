@@ -31,7 +31,7 @@
                     </td>
                     {# bouton de modification #}
                     <td class="p-1 flex justify-center items-center">
-                        <form action="index.php?controlleur=modifEv&methode=modifierEv" method="post">
+                        <form action="index.php?controlleur=modifEv&methode=lister" method="post">
                             <input type="hidden" name="evtId" value={{ evenement.evtId}}>
                             <button type="submit" class="p-1 rounded-lg h-6 w-6"><img src="../asset/icones/pencil-square.svg" alt="modification"></button>
                         </form>
