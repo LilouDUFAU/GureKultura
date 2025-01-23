@@ -46,7 +46,7 @@
         $managerEvenement = new EvenementDao($this->getPdo());
 
         // recuperer les evenements de l'utilisateur connecte
-        $user=$_SESSION['user'];
+        $user=unserialize($_SESSION['user']);
         $evenement = $managerEvenement->findEventByUser($user->getUserId());
 
 

@@ -185,7 +185,7 @@ class ControllerInscription extends Controller {
                 } else {
                     $user->setRole('user');
                 }
-                $_SESSION['user'] = serialize($user);
+                $_SESSION['user'] = $user;
                 $this->getTwig()->addGlobal('utilisateurConnecte', $user);
             header('Location: index.php?controlleur=index&methode=lister');
         } catch (Exception $e) {

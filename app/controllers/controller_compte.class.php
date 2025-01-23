@@ -102,7 +102,7 @@ class ControllerCompte extends Controller
                 $donnees[$key] = htmlentities($value);
             }
                 
-            $user = $_SESSION['user'];
+            $user = unserialize($_SESSION['user']);
             $donnees['userId'] = $user->getUserId();
 
 
@@ -301,7 +301,7 @@ class ControllerCompte extends Controller
     }
 
     public function switchRole() {
-        $_SESSION['user_role'] = unserialize($_SESSION['user'])->getRole();
+        $_SESSION['user_role'] = $_SESSION['user']->getRole();
         if ($_SESSION['user_role'] === 'user') {
             $_SESSION['user_role'] = 'admin';
         } else {
@@ -309,9 +309,9 @@ class ControllerCompte extends Controller
         }
 
         // Update the user object in the session
-        $user = unserialize($_SESSION['user']);
+        $user = $_SESSION['user'];
         $user->setRole($_SESSION['user_role']);
-        $_SESSION['user'] = serialize($user);
+        $_SESSION['user'] = $user;
 
         // Redirect to the appropriate page
         header('Location: index.php?controlleur=index&methode=lister');

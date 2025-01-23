@@ -69,7 +69,7 @@ class ControllerPropActu extends Controller
      */
     public function validerFormulairePropActu()
     {
-        $userCo = unserialize($_SESSION['user']);
+        $userCo = $_SESSION['user'];
         if (isset($userCo) && !empty($userCo) && $userCo->getEstAdmin() == true) {
             // L'utilisateur est connecté, continuez
             // definition des regles de validations que l'on souhaite verifier pour chaque champs du formulaire
