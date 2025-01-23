@@ -180,6 +180,11 @@ class ControllerInscription extends Controller {
             $pdo = Bd::getInstance()->getPdo();
                 $managerUser = new UserDao($pdo);
                 $user = $managerUser->findWithEmail($donnees['email']);
+                if ($user->getEstAdmin() == 1) {
+                    $user->setRole('admin');
+                } else {
+                    $user->setRole('user');
+                }
                 $_SESSION['user'] = serialize($user);
                 $this->getTwig()->addGlobal('utilisateurConnecte', $user);
             header('Location: index.php?controlleur=index&methode=lister');
