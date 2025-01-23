@@ -2,7 +2,6 @@
 // inclure la classe validator
 require_once '../app/controllers/validator.class.php';
 
-
 /**
  * @class EvenementDao
  * @details Permet de lier la base de données à la classe Evenement
@@ -55,7 +54,7 @@ class EvenementDao
      */
     public function find(?int $id): ?Evenement
     {
-        $sql = "SELECT evt.evtId, evt.titre,evt.autorisation, evt.description, evt.email, evt.tel, evt.nomRep, evt.prenomRep, DATE(evt.dateDebut) AS dateDebut, DATE(evt.dateFin) AS dateFin, TIME(evt.heureDebut) AS heureDebut, TIME(evt.heureFin) AS heureFin, evt.lieu, evt.photo, cate.nom AS nomCategorie
+        $sql = "SELECT evt.evtId, evt.titre,evt.autorisation, evt.description, evt.email, evt.tel, evt.nomRep, evt.prenomRep, DATE(evt.dateDebut) AS dateDebut, DATE(evt.dateFin) AS dateFin, TIME(evt.heureDebut) AS heureDebut, TIME(evt.heureFin) AS heureFin, evt.lieu, evt.photo, evt.cateId, evt.userId, evt.is_valide , cate.nom AS nomCategorie
             FROM gk_evenement AS evt
             JOIN gk_categorie AS cate ON evt.cateId = cate.cateId WHERE evt.evtId = :id";
         $pdoStatement = $this->pdo->prepare($sql);
@@ -93,7 +92,7 @@ class EvenementDao
      */
     public function findEnCours(?int $id)
     {
-        $sql = "SELECT evt.evtId, evt.titre,evt.autorisation, evt.description, evt.email, evt.tel, evt.nomRep, evt.prenomRep, DATE(evt.dateDebut) AS dateDebut, DATE(evt.dateFin) AS dateFin, TIME(evt.heureDebut) AS heureDebut, TIME(evt.heureFin) AS heureFin, evt.lieu, evt.photo, cate.nom AS nomCategorie
+        $sql = "SELECT evt.evtId, evt.titre,evt.autorisation, evt.description, evt.email, evt.tel, evt.nomRep, evt.prenomRep, DATE(evt.dateDebut) AS dateDebut, DATE(evt.dateFin) AS dateFin, TIME(evt.heureDebut) AS heureDebut, TIME(evt.heureFin) AS heureFin, evt.lieu, evt.photo,evt.cateId, evt.userId, evt.is_valide , cate.nom AS nomCategorie
             FROM gk_evenement AS evt
             JOIN gk_categorie AS cate ON evt.cateId = cate.cateId WHERE evt.dateDebut = CURRENT_DATE AND evt.cateId =:id";
         $pdoStatement = $this->pdo->prepare($sql);
@@ -113,7 +112,7 @@ class EvenementDao
      */
     public function findASuivre(?int $id)
     {
-        $sql = "SELECT evt.evtId, evt.titre,evt.autorisation, evt.description, evt.email, evt.tel, evt.nomRep, evt.prenomRep, DATE(evt.dateDebut) AS dateDebut, DATE(evt.dateFin) AS dateFin, TIME(evt.heureDebut) AS heureDebut, TIME(evt.heureFin) AS heureFin, evt.lieu, evt.photo, cate.nom AS nomCategorie
+        $sql = "SELECT evt.evtId, evt.titre,evt.autorisation, evt.description, evt.email, evt.tel, evt.nomRep, evt.prenomRep, DATE(evt.dateDebut) AS dateDebut, DATE(evt.dateFin) AS dateFin, TIME(evt.heureDebut) AS heureDebut, TIME(evt.heureFin) AS heureFin, evt.lieu, evt.photo,evt.cateId, evt.userId, evt.is_valide , cate.nom AS nomCategorie
             FROM gk_evenement AS evt
             JOIN gk_categorie AS cate ON evt.cateId = cate.cateId WHERE evt.dateDebut > CURRENT_DATE AND evt.cateId =:id";
         $pdoStatement = $this->pdo->prepare($sql);
@@ -133,7 +132,7 @@ class EvenementDao
      */
     public function findPasser(?int $id)
     {
-        $sql = "SELECT evt.evtId, evt.titre,evt.autorisation, evt.description, evt.email, evt.tel, evt.nomRep, evt.prenomRep, DATE(evt.dateDebut) AS dateDebut, DATE(evt.dateFin) AS dateFin, TIME(evt.heureDebut) AS heureDebut, TIME(evt.heureFin) AS heureFin, evt.lieu, evt.photo, cate.nom AS nomCategorie
+        $sql = "SELECT evt.evtId, evt.titre,evt.autorisation, evt.description, evt.email, evt.tel, evt.nomRep, evt.prenomRep, DATE(evt.dateDebut) AS dateDebut, DATE(evt.dateFin) AS dateFin, TIME(evt.heureDebut) AS heureDebut, TIME(evt.heureFin) AS heureFin, evt.lieu, evt.photo, evt.cateId, evt.userId, evt.is_valide ,cate.nom AS nomCategorie
             FROM gk_evenement AS evt
             JOIN gk_categorie AS cate ON evt.cateId = cate.cateId WHERE evt.dateDebut < CURRENT_DATE AND evt.cateId =:id";
         $pdoStatement = $this->pdo->prepare($sql);
@@ -152,7 +151,7 @@ class EvenementDao
      */
     public function findAllWithCategorie(): array
     {
-        $sql = "SELECT evt.evtId, evt.titre,evt.autorisation, evt.description, evt.email, evt.tel, evt.nomRep, evt.prenomRep, DATE(evt.dateDebut) AS dateDebut, DATE(evt.dateFin) AS dateFin, TIME(evt.heureDebut) AS heureDebut, TIME(evt.heureFin) AS heureFin, evt.lieu, evt.photo, cate.nom AS nomCategorie
+        $sql = "SELECT evt.evtId, evt.titre,evt.autorisation, evt.description, evt.email, evt.tel, evt.nomRep, evt.prenomRep, DATE(evt.dateDebut) AS dateDebut, DATE(evt.dateFin) AS dateFin, TIME(evt.heureDebut) AS heureDebut, TIME(evt.heureFin) AS heureFin, evt.lieu, evt.photo, evt.cateId, evt.userId, evt.is_valide , cate.nom AS nomCategorie
             FROM gk_evenement AS evt
             JOIN gk_categorie AS cate ON evt.cateId = cate.cateId";
 
@@ -164,6 +163,47 @@ class EvenementDao
         return $this->hydrateAllWithCategorie($evenementTab);
     }
 
+
+    /**
+     * @function findEventByUser
+     * @details Permet de trouver les événements de l'utilisateur connecté
+     * @param int|null $id
+     * @uses hydrateAll
+     * @return array
+     */
+    public function findEventByUser (?int $id)
+    {
+        $sql = "SELECT evt.evtId, evt.titre,evt.autorisation, evt.description, evt.email, evt.tel, evt.nomRep, evt.prenomRep, DATE(evt.dateDebut) AS dateDebut, DATE(evt.dateFin) AS dateFin, TIME(evt.heureDebut) AS heureDebut, TIME(evt.heureFin) AS heureFin, evt.lieu, evt.photo, evt.cateId, evt.userId, evt.is_valide, cate.nom AS nomCategorie
+            FROM gk_evenement AS evt
+            JOIN gk_categorie AS cate ON evt.cateId = cate.cateId WHERE evt.userId = :id";
+        $pdoStatement = $this->pdo->prepare($sql);
+        $pdoStatement->execute(array(':id' => $id));
+        $pdoStatement->setFetchMode(PDO::FETCH_ASSOC);
+        $EvenementTab = $pdoStatement->fetchAll();
+        $evenement = $this->hydrateByUser($EvenementTab);
+        return $evenement;
+    }
+
+
+    /**
+     * @function findEventById
+     * @details Permet de trouver un événement par son id
+     * @param int|null $id
+     * @uses hydrateById
+     * @return Evenement|null
+     */
+    public function findEventById (?int $id): array
+    {
+        $sql = "SELECT evt.evtId, evt.titre,evt.autorisation, evt.description, evt.email, evt.tel, evt.nomRep, evt.prenomRep, DATE(evt.dateDebut) AS dateDebut, DATE(evt.dateFin) AS dateFin, TIME(evt.heureDebut) AS heureDebut, TIME(evt.heureFin) AS heureFin, evt.lieu, evt.photo, evt.cateId, evt.userId, evt.is_valide, cate.nom AS nomCategorie
+            FROM gk_evenement AS evt
+            JOIN gk_categorie AS cate ON evt.cateId = cate.cateId WHERE evt.evtId = :id";
+        $pdoStatement = $this->pdo->prepare($sql);
+        $pdoStatement->execute(array(':id' => $id));
+        $pdoStatement->setFetchMode(PDO::FETCH_ASSOC);
+        $EvenementTab = $pdoStatement->fetchAll();
+        $evenement = $this->hydrateById($EvenementTab);
+        return $evenement;
+    }
     
     /**
      * @function hydrate
@@ -181,42 +221,17 @@ class EvenementDao
         $evenement->setEmail($tab['email']);
         $evenement->setTel($tab['tel']);
         $evenement->setNomRep($tab['nomRep']);
-        $evenement->setPrenomRep($tab['prenomRep']);
-
-        if (is_date($tab['dateDebut'])) {
-            $tab['dateDebut'] = new DateTime($tab['dateDebut']);
-            $evenement->setDateDebut($tab['dateDebut']);
-        }
-        if (is_date($tab['dateFin'])) {
-            $tab['dateFin'] = new DateTime($tab['dateFin']);
-            $evenement->setDateFin($tab['dateFin']);
-        }
-        if (is_time($tab['heureDebut'])) {
-            $tab['heureDebut'] = new DateTime($tab['heureDebut']);
-            $evenement->setHeureDebut($tab['heureDebut']);
-        }
-        if (is_time($tab['heureFin'])) {
-            $tab['heureFin'] = new DateTime($tab['heureFin']);
-            $evenement->setHeureFin($tab['heureFin']);
-        }
+        $evenement->setPrenomRep($tab['prenomRep']);;
+        $evenement->setDateDebut($tab['dateDebut']);
+        $evenement->setDateFin($tab['dateFin']);
+        $evenement->setHeureDebut($tab['heureDebut']);
+        $evenement->setHeureFin($tab['heureFin']);
         $evenement->setLieu($tab['lieu']);
         $evenement->setPhoto($tab['photo']);
-
-        // On vérifie si la clé 'cateId' existe
-        if (isset($tab['cateld'])) {
-            $cateld = $tab['cateld'];
-        } else {
-            $cateld = null; // Ou une valeur par défaut
-        }
-        $evenement->setCateId($cateld);      
+        $evenement->setCateId($tab['cateId']);     
+        $evenement->setUserId($tab['userId']); 
         $evenement->setNomCategorie($tab['nomCategorie']);
-
-        // verifier si l'utilisateur est connecté
-        if (isset($_SESSION['userId'])) {
-            $evenement->setUserId($_SESSION['userId']);
-            $evenement->setNomCategorie($tab['nomCategorie']);
-        }
-
+        $evenement->setIsValide($tab['is_valide']);
         return $evenement;
     }
 
@@ -253,6 +268,38 @@ class EvenementDao
         return $evenements;
     }
 
+    /**
+     * @function hydrateByUser
+     * @details Permet d'hydrater un tableau de données pour créer un tableau d'objets Evenement
+     * @param array $tab
+     * @uses hydrate
+     * @return array
+     */
+    public function hydrateByUser(array $tab): array
+    {
+        $evenements = [];
+        foreach ($tab as $evenement) {
+            $evenements[] = $this->hydrate($evenement);
+        }
+        return $evenements;
+    }
+
+    /**
+     * @function hydrateById
+     * @details Permet d'hydrater un tableau de données pour créer un objet Evenement
+     * @param array $tab
+     * @uses hydrate
+     * @return array
+     */
+    public function hydrateById(array $tab): array
+    {
+        $evenements = [];
+        foreach ($tab as $evenement) {
+            $evenements[] = $this->hydrate($evenement);
+        }
+        return $evenements;
+    }
+
 
     /**
      * @function insert
@@ -274,13 +321,39 @@ class EvenementDao
             ':tel' => $evenement->getTel(),
             ':nomRep' => $evenement->getNomRep(),
             ':prenomRep' => $evenement->getPrenomRep(),
-            ':dateDebut' => $evenement->getDateDebut()->format('Y-m-d'),
-            ':dateFin' => $evenement->getDateFin()->format('Y-m-d'),
-            ':heureDebut' => $evenement->getHeureDebut()->format('H:i'),
-            ':heureFin' => $evenement->getHeureFin()->format('H:i'),
+            ':dateDebut' => $evenement->getDateDebut(),
+            ':dateFin' => $evenement->getDateFin(),
+            ':heureDebut' => $evenement->getHeureDebut(),
+            ':heureFin' => $evenement->getHeureFin(),
             ':lieu' => $evenement->getLieu(),
             ':photo' => $evenement->getPhoto(),
             ':cateId' => $evenement->getCateId()
         ]);
     }
+
+    /**
+     * @function update
+     * @details Permet de mettre à jour un événement dans la base de données
+     * @param integer $id
+     * @return void
+     */
+    public function update($donnees, $champ, $id){
+        $sql = "UPDATE " . PREFIX_TABLE . "evenement SET $champ = :donnees WHERE evtId = :id";
+        $pdoStatement = $this->pdo->prepare($sql);
+        $pdoStatement->execute([':donnees' => $donnees, ':id' => $id]);
+    }
+
+    /**
+     * @brief Fonction permettant de supprimer un evenement en base de données
+     * @details Cette fonction permet de supprimer un utilisateur en base de données si ce dernier sdouhaite supprimer son compte
+     * @param Evenement $evenement
+     * @return void
+     */
+    public function delete(Evenement $evenement): void {
+        // cette fonction permet de supprimer un utilisateur en base en supprimant dabord ses commentaires puis ses actualités puis ses evenement puis l'utilisateur
+        $sql = "DELETE FROM " . PREFIX_TABLE . "evenement WHERE evtId = :evtId";
+        $pdoStatement = $this->pdo->prepare($sql);
+        $pdoStatement->execute([':evtId' => $evenement->getEvtId()]);       
+    }
+
 }

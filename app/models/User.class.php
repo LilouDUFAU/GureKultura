@@ -46,7 +46,7 @@ class User {
      * @details cette date est générer automatiquement par la base de données
      * @var DateTime
      */
-    private ?DateTime $dateInscr;
+    private ?string $dateInscr;
 
     /**
      * @brief biographie de l'utilisateur
@@ -95,7 +95,7 @@ class User {
     ?string $pseudo = null,
     ?string $email = null,
     ?string $mdp = null,
-    ?DateTime $dateInscr = null,
+    ?string $dateInscr = null,
     ?string $bio = null,
     ?string $pfp = null,
     bool $estAdmin = false,
@@ -164,7 +164,7 @@ class User {
      * @details Permet de récupérer la date d'inscription de l'utilisateur
      * @return string
      */
-    public function getDateInscr(): ?DateTime {
+    public function getDateInscr(): ?string {
         return $this->dateInscr;
     }
 
@@ -253,7 +253,7 @@ class User {
      * @param string $dateInscr
      * @return void
      */
-    public function setDateInscr(?DateTime $dateInscr): void {
+    public function setDateInscr(?string $dateInscr): void {
         $this->dateInscr = $dateInscr;
     }
 
