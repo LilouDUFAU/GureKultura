@@ -127,7 +127,7 @@ class ControllerPropEv extends Controller
             'description' => [
                 'obligatoire' => true,
                 'type' => 'string',
-                'longueurMin' => 100,
+                'longueurMin' => 30,
                 'longueurMax' => 500,
                 'format' => '/^[a-zA-Z0-9\s]+$/'
             ],
@@ -181,7 +181,7 @@ class ControllerPropEv extends Controller
         foreach ($donnees as $key => $value) {
             $donnees[$key] = htmlentities($value);
         }
-        $user=unserialize($_SESSION['user']);
+        $user=$_SESSION['user'];
         $donnees['userId'] = $user->getUserId();
 
 

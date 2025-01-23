@@ -101,7 +101,8 @@ class ControllerCompte extends Controller
             foreach ($donnees as $key => $value) {
                 $donnees[$key] = htmlentities($value);
             }
-            $user = unserialize($_SESSION['user']);
+                
+            $user = $_SESSION['user'];
             $donnees['userId'] = $user->getUserId();
 
 
@@ -150,7 +151,7 @@ class ControllerCompte extends Controller
                 // }
 
             }
-
+ 
             // recuperation des erreurs
             // Rendre le template Twig
             $pdo = Bd::getInstance()->getPdo();
@@ -190,19 +191,21 @@ class ControllerCompte extends Controller
                 if ($bioChange) {
                     $this->modifierDonneesDansLaBase($donnees['bio'], 'bio');
                 }
+
+                // if ($pfpChange) {
+                //     $this->modifierDonneesDansLaBase($donnees['pfp'], 'pfp');
+                // }
                 
+                $manager = new UserDao($pdo);
+                $_SESSION['user'] = $manager->find($user->getUserId());
+
                 echo $this->getTwig()->render('compte.html.twig', [
-                        'title' => 'Compte',
+                    'title' => 'Compte',
                     'donnees' => $donnees,
                     'actualites' => $actualite,
                     'categories' => $categories
 
                 ]);
-                // if($pfpChange){
-                //     $this->modifierDonneesDansLaBase($donnees['pfp'] ,'pfp');
-                // }
-                // mettre a jour
-                // header('Location: index.php?controlleur=compte&methode=lister');
             }
         } else {
             header('Location: index.php?controlleur=connexion&methode=lister');
@@ -238,7 +241,7 @@ class ControllerCompte extends Controller
     {
         $pdo = Bd::getInstance()->getPdo();
         $managerUser = new UserDao($pdo);
-        $user = unserialize($_SESSION['user']); 
+        $user = $_SESSION['user']; 
         $userId = $user->getUserId();
         $managerUser->delete($user);
         session_unset();
@@ -263,7 +266,7 @@ class ControllerCompte extends Controller
             $pdo = Bd::getInstance()->getPdo();
             $managerUser = new UserDao($pdo);
 
-            $user = unserialize($_SESSION['user']); 
+            $user = $_SESSION['user']; 
             $userId = $user->getUserId();
 
             // Insérez l'événement dans la base de données

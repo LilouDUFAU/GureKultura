@@ -122,7 +122,7 @@ class ControllerPropActu extends Controller
                 $donnees[$key] = htmlentities($value);
             }
 
-            $user = unserialize($_SESSION['user']);
+            $user = $_SESSION['user'];
             $donnees['userId'] = $user->getUserId();
 
             // validation des donnees du formulaire
