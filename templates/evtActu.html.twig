@@ -67,19 +67,17 @@
                 <textarea id="comment" name="comment" rows="3" class="w-full p-3 border-2 border-[#A23145] rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#A23145]"></textarea>
                 <button type="submit" class="mt-4 px-6 py-2 bg-[#A23145] text-white font-semibold rounded-lg hover:bg-[#8a1e36]">Envoyer</button>
             </div>
-            <!-- Formulaire d'inscription -->
-            <form action="../php/inscription_event.php" method="post">
-                <input type="hidden" name="event_id" value="{{ evtActus.id }}">
-                <button type="submit"
-                        class="px-6 py-2 bg-[#A23145] text-white font-semibold rounded-lg hover:bg-[#8a1e36]">
-                    S'inscrire
-                </button>
+            
+            <form method="POST" action="index.php?controlleur=evtActu&methode=inscrire">
+                <input type="hidden" name="evtId" value="{{ evtActus.evtId }}">
+                <button type="submit" class="px-6 py-2 bg-[#A23145] text-white font-semibold rounded-lg hover:bg-[#8a1e36]">S'inscrire</button>
             </form>
 
         </div>
     </div>
 
 {% endif %}
+
 
 
 {% if type == 'Actualites' %}

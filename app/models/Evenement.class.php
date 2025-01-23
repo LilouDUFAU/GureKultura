@@ -539,4 +539,24 @@ class Evenement
     {
         $this->nomCategorie = $nomCategorie;
     }
+
+
+
+    public function inscrireUtilisateur($userId) {
+        $query = "SELECT * FROM participer WHERE evtId = ? AND userId = ?";
+        $stmt = Bd::getInstance()->getPdo()->prepare($query);
+        $stmt->execute([$this->evtId, $userId]);
+
+        if ($stmt->rowCount() > 0) {
+            return false;  
+        }
+
+        $query = "INSERT INTO participer (userId, evtId, dateInscr) VALUES (?, ?, NOW())";
+        $stmt = Bd::getInstance()->getPdo()->prepare($query);
+        $stmt->execute([$userId, $this->evtId]);
+
+        return true; 
+    }
+
+    
 }

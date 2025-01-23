@@ -59,4 +59,32 @@ class ControllerEvtActu extends Controller {
             'evtActus' => $evtActu,
         ]);
     }   
+
+
+
+    public function inscrire() {
+        if (!isset($_POST['evtId']) || !isset($_SESSION['userId'])) {
+            $_SESSION['message'] = "Événement ou utilisateur non spécifié.";
+            return;
+        }
+    
+        // Ajoutez une ligne de débogage pour vérifier que la méthode est bien appelée
+        error_log("Méthode inscrire appelée!");
+    
+        $eventId = $_POST['evtId'];
+        $userId = $_SESSION['userId'];
+    
+        $evt = new Evenement();
+        $evt->setEvtId($eventId);
+    
+        $inscriptionReussie = $evt->inscrireUtilisateur($userId);
+    
+        if ($inscriptionReussie) {
+            $_SESSION['message'] = "Inscription réussie à l'événement !";
+        } else {
+            $_SESSION['message'] = "Vous êtes déjà inscrit à cet événement.";
+        }
+    }
+    
+    
 }
