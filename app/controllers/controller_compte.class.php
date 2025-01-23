@@ -299,4 +299,21 @@ class ControllerCompte extends Controller
             throw $e; // Re-throw the exception if needed
         }
     }
+
+    public function switchRole() {
+        $_SESSION['user_role'] = unserialize($_SESSION['user'])->getRole();
+        if ($_SESSION['user_role'] === 'user') {
+            $_SESSION['user_role'] = 'admin';
+        } else {
+            $_SESSION['user_role'] = 'user';
+        }
+
+        // Update the user object in the session
+        $user = unserialize($_SESSION['user']);
+        $user->setRole($_SESSION['user_role']);
+        $_SESSION['user'] = serialize($user);
+
+        // Redirect to the appropriate page
+        header('Location: index.php?controlleur=index&methode=lister');
+    }
 }
