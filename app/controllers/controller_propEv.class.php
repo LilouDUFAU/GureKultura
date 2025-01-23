@@ -176,7 +176,7 @@ class ControllerPropEv extends Controller
 
         // recuperation des donnees du formulaire
         $donnees = $_POST;
-        
+        var_dump($donnees);
         // boucle de nettoyage des donnees
         foreach ($donnees as $key => $value) {
             $donnees[$key] = htmlentities($value);
@@ -216,9 +216,7 @@ class ControllerPropEv extends Controller
                 'categories' => $categories
 
             ]);
-        } else {
-            
-            
+        } else {            
             header('Location: index.php?controlleur=index&methode=lister');
             // Les données sont valides, insérez-les dans la base de données
             $this->insererDonneesDansLaBase($donnees);
@@ -256,10 +254,10 @@ class ControllerPropEv extends Controller
                 $donnees['tel'],
                 $donnees['nomRep'],
                 $donnees['prenomRep'],
-                new DateTime($donnees['debutDate']),
-                new DateTime($donnees['finDate']),
-                new DateTime($donnees['debutHeure']),
-                new DateTime($donnees['finHeure']),
+                $donnees['debutDate'],
+                $donnees['finDate'],
+                $donnees['debutHeure'],
+                $donnees['finHeure'],
                 $donnees['lieu'],
                 $donnees['photo'] ?? null,
                 false,

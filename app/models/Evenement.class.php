@@ -269,7 +269,7 @@ class Evenement
     /**
      * @function getDateDebut
      * @details Cette fonction permet de récupérer la date de début de l'événement
-     * @return DateTime|null
+     * @return string|null
      */
     public function getDateDebut(): ?string
     {
@@ -279,7 +279,7 @@ class Evenement
     /**
      * @function getDateFin
      * @details Cette fonction permet de récupérer la date de fin de l'événement
-     * @return DateTime|null
+     * @return string|null
      */
     public function getDateFin(): ?string
     {
@@ -289,7 +289,7 @@ class Evenement
     /**
      * @function getHeureDebut
      * @details Cette fonction permet de récupérer l'heure de début de l'événement
-     * @return DateTime|null
+     * @return string|null
      */
     public function getHeureDebut(): ?string
     {
@@ -299,7 +299,7 @@ class Evenement
     /**
      * @function getHeureFin
      * @details Cette fonction permet de récupérer l'heure de fin de l'événement
-     * @return DateTime|null
+     * @return string|null
      */
     public function getHeureFin(): ?string
     {
