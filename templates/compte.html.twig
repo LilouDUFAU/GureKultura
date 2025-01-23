@@ -44,18 +44,26 @@
 
 				{# deuxieme bloc #}
 				<div class="grid grid-cols-subgrid row-start-5 lg:row-start-3 col-start-1 col-span-6 bg-[#A23145] bg-opacity-75 text-white rounded-2xl p-4 w-full h-full ">
+					{% if user.estAdmin %}
 					<div class="grid grid-cols-subgrid row-start-1 col-span-6 text-white rounded-2xl px-2 w-full items-center">
-						<form action="index.php?controlleur=compte&methode=supprimerCompte" method="post" class="grid grid-cols-subgrid row-start-1 col-span-6 text-white rounded-2xl py-2 w-full items-center">
-							<label class="text-white row-start-1 col-start-1 col-span-3 lg:text-lg text-sm">Supprimer mon compte</label>
-							<button arial-label="b_SupprCompte" class="lg:col-start-4 row-start-1 lg:col-span-3 flex items-center justify-center max-h-1 text-[#A23145] bg-white border-2 border-solid border-[#A23145] rounded-lg p-4 lg:font-normal drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] lg:text-lg col-start-4 col-span-3 text-sm">Supprimer</button>
-						</form>
+							<label class="text-white col-start-1 col-span-3 row-start-1 lg:text-lg text-sm ">Postez une actualité</label>
+							<a href="index.php?controlleur=propActu&methode=lister " type="" class="col-start-4 col-span-3 lg:row-start-1 flex items-center justify-center max-h-1 text-[#A23145] bg-white border-2 border-solid border-[#A23145] rounded-lg p-4 lg:font-normal drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] lg:text-lg text-sm">Poster</a>
 					</div>
 					<div class="grid grid-cols-subgrid row-start-2 col-span-6 text-white rounded-2xl px-2 w-full items-center">
+							<form action="index.php?controlleur=compte&methode=switchRole" method="post" class="grid grid-cols-subgrid row-start-4 col-span-6 text-white rounded-2xl py-2 w-full items-center">
+								<label for="role" class="text-white col-start-1 col-span-3 row-start-1 lg:text-lg text-sm " >Changer de rôle</label>
+								<button type="submit" name="role" class="col-start-4 col-span-3 lg:row-start-1 flex items-center justify-center max-h-1 text-[#A23145] bg-white border-2 border-solid border-[#A23145] rounded-lg p-4 lg:font-normal drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] lg:text-lg text-sm">Changer de rôle</button>
+								<label for="role" class="text-white col-start-1 col-span-3 row-start-2 lg:text-lg text-sm " >Rôle actuel : {{ user.role }}</label>
+							</form>
+					</div>
+					{% endif %}
+					<div class="grid grid-cols-subgrid row-start-3 col-span-6 text-white rounded-2xl px-2 w-full items-center">
 						<form action="index.php?controlleur=compte&methode=deconnexion" method="post" class="grid grid-cols-subgrid row-start-2 col-span-6 text-white rounded-2xl py-2 w-full items-center">
 							<label class="text-white col-start-1 col-span-3 row-start-1 lg:text-lg text-sm ">Souhaitez-vous vous déconnectez ?</label>
 							<button arial-label="b_SupprCompte" type="" class="col-start-4 col-span-3 lg:row-start-1 flex items-center justify-center max-h-1 text-[#A23145] bg-white border-2 border-solid border-[#A23145] rounded-lg p-4 lg:font-normal drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] lg:text-lg text-sm">Me déconnecter </button>
 						</form>
 					</div>
+
 					{% if user.estAdmin %}
 					<div class="grid grid-cols-subgrid row-start-3 col-span-6 text-white rounded-2xl px-2 w-full items-center">
 							<label class="text-white col-start-1 col-span-3 row-start-1 lg:text-lg text-sm ">Souhaitez-vous accéder à vos actualités ?</label>
@@ -71,7 +79,13 @@
 					</div>
 
 					{% endif %}
-
+					<br>
+					<div class="grid grid-cols-subgrid row-start-4 col-span-6 text-white rounded-2xl px-2 w-full items-center">
+						<form action="index.php?controlleur=compte&methode=supprimerCompte" method="post" class="grid grid-cols-subgrid row-start-1 col-span-6 text-white rounded-2xl py-2 w-full items-center">
+							<label class="text-white row-start-1 col-start-1 col-span-3 lg:text-lg text-sm">Supprimer mon compte</label>
+							<button arial-label="b_SupprCompte" class="lg:col-start-4 row-start-1 lg:col-span-3 flex items-center justify-center max-h-1 text-[#A23145] bg-white border-2 border-solid border-[#A23145] rounded-lg p-4 lg:font-normal drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] lg:text-lg col-start-4 col-span-3 text-sm">Supprimer</button>
+						</form>
+					</div>
 				</div>
 
 

@@ -70,6 +70,13 @@ class User {
     private ?bool $estAdmin;
 
     /**
+     * @brief Savoir le rôle actuel de l'utilisateur
+     * @details Permettra à un modérateur de pouvoir changer son rôle dans l'application
+     * @var string
+     */
+    private ?string $role;
+
+    /**
      * @brief Constructeur de la classe User
      * @details Permet de créer un nouvel utilisateur
      * @param int $userId Identifiant de l'utilisateur
@@ -91,7 +98,8 @@ class User {
     ?string $dateInscr = null,
     ?string $bio = null,
     ?string $pfp = null,
-    bool $estAdmin = false)
+    bool $estAdmin = false,
+    ?string $role = 'user')
     {
         $this->userId = $userId;
         $this->nom = $nom;
@@ -278,8 +286,33 @@ class User {
         $this->estAdmin = $estAdmin;
     }
 
+    /**
+     * @return string
+     */
     public function dateActuelle(): string {
         $date = date("Y-m-d");
         return $date;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRole(): string {
+        return $this->role;
+    }
+
+    /**
+     * @param string $role
+     * @return void
+     */
+    public function setRole($role): void {
+        $this->role = $role;
+    }
+
+    /**
+     * @return string
+     */
+    public function isModerator(): string {
+        return $this->role === 'moderator';
     }
 }
