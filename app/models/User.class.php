@@ -314,6 +314,10 @@ class User {
      * @return string
      */
     public function isModerator(): string {
-        return $this->role === 'moderator';
+        if ($this->getEstAdmin() == 1) {
+            return 'moderateur';
+        } else {
+            return 'user';
+        }
     }
 }

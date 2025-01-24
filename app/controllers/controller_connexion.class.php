@@ -116,7 +116,7 @@ class ControllerConnexion extends Controller {
                 $managerUser = new UserDao($pdo);
                 $user = $managerUser->findWithEmail($donnees['email']);
                 if ($user->getEstAdmin() == 1) {
-                    $user->setRole('admin');
+                    $user->setRole('moderateur');
                 } else {
                     $user->setRole('user');
                 }
