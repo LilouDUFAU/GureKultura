@@ -103,6 +103,7 @@ class ControllerCompte extends Controller
             }
                 
             $user = $_SESSION['user'];
+            var_dump($user);
             $donnees['userId'] = $user->getUserId();
             
 
@@ -199,7 +200,9 @@ class ControllerCompte extends Controller
                 
 
                 $manager = new UserDao($pdo);
-                $_SESSION['user'] = $manager->find($user->getUserId());
+                $user = $manager->find($user->getUserId());
+                $user->setRole('moderateur');
+                $_SESSION['user'] = $user;
 
                 echo $this->getTwig()->render('compte.html.twig', [
                     'title' => 'Compte',
@@ -303,19 +306,21 @@ class ControllerCompte extends Controller
     }
 
     public function switchRole() {
-        $_SESSION['user_role'] = $_SESSION['user']->getRole();
-        if ($_SESSION['user_role'] === 'user') {
-            $_SESSION['user_role'] = 'admin';
-        } else {
-            $_SESSION['user_role'] = 'user';
+        $user = $_SESSION['user'];
+        if ($user->isModerator()) {
+            $_SESSION['user_role'] = $user->getRole();
+            if ($_SESSION['user_role'] === 'user') {
+                $_SESSION['user_role'] = 'moderateur';
+            } else {
+                $_SESSION['user_role'] = 'user';
+            }
+
+            // Update the user object in the session
+            $user->setRole($_SESSION['user_role']);
+            $_SESSION['user'] = $user;
         }
 
-        // Update the user object in the session
-        $user = $_SESSION['user'];
-        $user->setRole($_SESSION['user_role']);
-        $_SESSION['user'] = $user;
-
         // Redirect to the appropriate page
-        header('Location: index.php?controlleur=index&methode=lister');
+        header('Location: index.php?controlleur=compte&methode=lister');
     }
 }
