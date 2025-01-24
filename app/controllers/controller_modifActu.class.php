@@ -55,11 +55,12 @@ class ControllerModifActu extends Controller
         $actuActuel['categorieId'] = $actualite[0]->getCateId();
 
         $_SESSION['actuActuel'] = $actuActuel;
+        var_dump($actuActuel);
 
         // Rendre le template Twig
         echo $this->getTwig()->render('modifActu.html.twig', [
             'title' => 'Mes actualités',
-            'actualitesActuel' => $actualiteActuel,
+            'actuActuel' => $actuActuel,
             'categories' => $categories,
         ]);
     }
@@ -114,8 +115,6 @@ class ControllerModifActu extends Controller
 
             // recuperation des donnees du formulaire
             $donnees = $_POST;
-            // recuperer seulement les 5 premiers caracteres de heure debut et fin
-            $donnees['datePubli'] = substr($donnees['datePubli'], 0, 5);
 
             // si l'id de la categorie n'est pas defini, alors on recupere celui de la variable de session evenementActuel
             if (empty($donnees['cateId'])) {
@@ -216,7 +215,7 @@ class ControllerModifActu extends Controller
                 }
 
                 $manager = new ActualiteDao($pdo);
-                $actualite = $manager->findActuById($_SESSION['actuActuelle']['id']);
+                $actualite = $manager->findActuById($_SESSION['actuActuel']['id']);
 
                 header('Location: index.php?controlleur=mesActu&methode=lister');
             }
@@ -230,7 +229,7 @@ class ControllerModifActu extends Controller
             $pdo = Bd::getInstance()->getPdo();
             $managerActualite = new ActualiteDao($pdo);
 
-            $managerActualite->update($donnees, $champ, $_SESSION['actuActuelle']['id']);
+            $managerActualite->update($donnees, $champ, $_SESSION['actuActuel']['id']);
 
             // redirection vers la page de l'événement
             // header('Location: index.php?controlleur=mesEv&methode=lister');:

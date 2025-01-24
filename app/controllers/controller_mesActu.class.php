@@ -38,7 +38,6 @@
         $twig = new \Twig\Environment($loader);
 
         $managerActualite = new ActualiteDao($this->getPdo());
-        $actualite = $managerActualite->findAllWithCategorie();
 
         $managerCategorie = new CategorieDao($this->getPdo());
         $categories = $managerCategorie->findAll();
@@ -47,6 +46,7 @@
         $user=$_SESSION['user'];
         $actualite = $managerActualite->findActuByUser($user->getUserId());
 
+        // $actuAside = $managerActualite->findAllWithCategorie();
 
         // Rendre le template Twig
         echo $this->getTwig()->render('mesActu.html.twig', [
