@@ -139,6 +139,53 @@ class ActualiteDao {
         return $nomCategories;
     }
 
+
+    public function findActuByUser(?int $id){
+        $sql = "SELECT A.actuId, A.titre, A.resume, A.contenu,DATE(A.datePubli) AS datePubli, A.img, A.userId, A.cateId, cate.nom AS nomCategorie
+        FROM gk_actualite AS A
+        JOIN gk_categorie AS cate
+        ON A.cateId = cate.cateId
+        WHERE A.userId = :id";
+        $pdoStatement = $this->pdo->prepare($sql);
+        $pdoStatement->execute(array(':id' => $id));
+        $pdoStatement->setFetchMode(PDO::FETCH_ASSOC);
+        $ActualiteTab = $pdoStatement->fetchAll();
+        $actualite = $this->hydrateByUser($ActualiteTab);
+        return $actualite;
+    }
+
+    public function hydrateByUser(array $tab){
+        $actualites = [];
+        foreach ($tab as $actualite) {
+            $actualites[]=$this->hydrate($actualite);
+        }
+        return $actualites;
+    }
+
+
+    public function findActById(?int $id){
+        $sql = "SELECT A.actuId, A.titre, A.resume, A.contenu,DATE(A.datePubli) AS datePubli, A.img, A.userId, A.cateId, cate.nom AS nomCategorie
+        FROM gk_actualite AS A
+        JOIN gk_categorie AS cate
+        ON A.cateId = cate.cateId
+        WHERE A.actuId = :id";
+        $pdoStatement = $this->pdo->prepare($sql);
+        $pdoStatement->execute(array(':id' => $id));
+        $pdoStatement->setFetchMode(PDO::FETCH_ASSOC);
+        $ActualiteTab = $pdoStatement->fetchAll();
+        $actualite = $this->hydrateById($ActualiteTab);
+        return $actualite;
+    }
+
+    public function hydrateById(array $tab){
+        $actualites = [];
+        foreach ($tab as $actualite) {
+            $actualites[]=$this->hydrate($actualite);
+        }
+        return $actualites;
+    }
+
+
     /**
      * @param array $tab
      * @return Actualite
@@ -219,5 +266,17 @@ class ActualiteDao {
             ':cateId' => $actualite->getCateId(),
             ':userId' => $actualite->getUserId()
         ]);
+    }
+
+    public function delete(Actualite $actualite){
+        $sql = "DELETE FROM ".PREFIX_TABLE."actualite WHERE actuId = :actuId";
+        $pdoStatement= $this->pdo->prepare($sql);
+        $pdoStatement->execute([':actuId' => $actualite->getActuId()]);
+    }
+
+    public function update($donnees, $champ, $id){
+    $sql = " UPDATE " . PREFIXE_TABLE . "evenement SET $champ = :donnees WHERE actuId = :id";
+    $pdoStatement= $this->pdo->prepare($sql);
+    $pdoStatement->execute([':donnees' => $donnees, ':id'=>$id]);
     }
 }
