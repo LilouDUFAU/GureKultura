@@ -216,17 +216,18 @@ class ControllerPropEv extends Controller
                 'categories' => $categories
 
             ]);
-        } else {            
+        } else {
+            if(!$this->insererDonneesDansLaBase($donnees)){
+                echo '<script>alert("Erreur lors de l\'insertion des données dans la base de données")</script>';
+            }            
             header('Location: index.php?controlleur=index&methode=lister');
             // Les données sont valides, insérez-les dans la base de données
-            $this->insererDonneesDansLaBase($donnees);
-        }
-    } else {
-        header('Location: index.php?controlleur=connexion&methode=lister');
-    
-    }
+             
 
+        }
+        } 
     }
+    
 
     /**
      * @function insererDonneesDansLaBase
@@ -236,9 +237,9 @@ class ControllerPropEv extends Controller
      * @uses Bd
      * @uses Evenement
      * @uses insert 
-     * @return void
+     * @return bool
      */
-    private function insererDonneesDansLaBase(array $donnees)
+    private function insererDonneesDansLaBase(array $donnees): bool
     {
         try {
             $pdo = Bd::getInstance()->getPdo();
@@ -270,10 +271,13 @@ class ControllerPropEv extends Controller
     
             // Insérez l'événement dans la base de données
             $managerEvenement->insert($evenement);
+            return true;
         } catch (Exception $e) {
             // Log the error message
             error_log("Error inserting event: " . $e->getMessage());
-            throw $e; // Re-throw the exception if needed
+            error_log("Je vais retourner false");
+            return false;
+            
         }
     }
 }
