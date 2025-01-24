@@ -104,6 +104,7 @@ class ControllerCompte extends Controller
                 
             $user = $_SESSION['user'];
             $donnees['userId'] = $user->getUserId();
+            
 
 
 
@@ -196,6 +197,7 @@ class ControllerCompte extends Controller
                 //     $this->modifierDonneesDansLaBase($donnees['pfp'], 'pfp');
                 // }
                 
+
                 $manager = new UserDao($pdo);
                 $_SESSION['user'] = $manager->find($user->getUserId());
 
