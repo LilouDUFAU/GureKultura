@@ -1,0 +1,12 @@
+DB_:
+  HOST: localhost
+  NAME: gurekultura_bd
+  USER: "root"
+  PASS: ""
+PREFIX_TABLE: gk_
+
+WEBSITE_:
+  TITLE: "GureKultura |"
+  # VERSION: "1.0"
+  DESCRIPTION: "un site de gestion événementielle au Pays Basque"
+  LANGUAGE: "fr"
