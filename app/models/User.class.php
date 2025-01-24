@@ -110,6 +110,7 @@ class User {
         $this->bio = $bio;
         $this->pfp = $pfp;
         $this->estAdmin = $estAdmin;
+        $this->role = $role;
     }
 
     ///////////GETTERS///////////

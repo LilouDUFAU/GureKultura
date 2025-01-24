@@ -78,7 +78,7 @@ class ControllerPropActu extends Controller
                     'obligatoire' => true,
                     'type' => 'string',
                     'longueurMin' => 5,
-                    'longueurMax' => 30,
+                    'longueurMax' => 50,
                     'format' => '/^[a-zA-Z0-9\s]+$/'
                 ],
                 'cateId' => [
@@ -91,14 +91,14 @@ class ControllerPropActu extends Controller
                 'resume' => [
                     'obligatoire' => true,
                     'type' => 'string',
-                    'longueurMin' => 100,
+                    'longueurMin' => 30,
                     'longueurMax' => 500,
                     'format' => '/^[a-zA-Z0-9\s]+$/'
                 ],
                 'contenu' => [
                     'obligatoire' => true,
                     'type' => 'string',
-                    'longueurMin' => 100,
+                    'longueurMin' => 30,
                     'longueurMax' => 500,
                     'format' => '/^[a-zA-Z0-9\s]+$/'
                 ],
