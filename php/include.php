@@ -25,8 +25,9 @@ require_once '../app/controllers/controller_propActu.class.php';
 require_once '../app/controllers/controller_categorieEvtActu.class.php';
 require_once '../app/controllers/controller_evtActu.class.php';
 require_once '../app/controllers/controller_mesEv.class.php';
-// require_once '../app/controllers/controller_mesActu.class.php';
+require_once '../app/controllers/controller_mesActu.class.php';
 require_once '../app/controllers/controller_modifEv.class.php';
+require_once '../app/controllers/controller_modifActu.class.php';
 
 
 
