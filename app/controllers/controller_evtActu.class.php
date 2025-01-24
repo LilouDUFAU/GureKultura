@@ -63,6 +63,11 @@ class ControllerEvtActu extends Controller {
 
 
     public function inscrire() {
+        $pdo = Bd::getInstance()->getPdo();
+
+        $loader = new \Twig\Loader\FilesystemLoader('../templates');
+        $twig = new \Twig\Environment($loader);
+        
         if (!isset($_POST['evtId']) || !isset($_SESSION['userId'])) {
             $_SESSION['message'] = "Événement ou utilisateur non spécifié.";
             return;
@@ -81,6 +86,12 @@ class ControllerEvtActu extends Controller {
         } else {
             $_SESSION['message'] = "Vous êtes déjà inscrit à cet événement.";
         }
+
+        // Rendre le template Twig
+        echo $this->getTwig()->render('evtActu.html.twig', [
+            'title' => 'InscriptionEvt',
+            'actualites' => $actualite
+        ]);
     }
     
     
