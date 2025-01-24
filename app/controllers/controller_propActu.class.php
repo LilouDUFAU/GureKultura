@@ -117,6 +117,20 @@ class ControllerPropActu extends Controller
             // recuperation des donnees du formulaire
             $donnees = $_POST;
 
+            // Gestion du fichier image
+            if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
+                // Vérification de la validité du fichier
+                $imageTmpName = $_FILES['image']['tmp_name'];
+                $imageName = $_FILES['image']['name'];
+
+                // Ajouter un timestamp au nom de l'image pour s'assurer qu'elle ait un nom unique
+                $timestamp = time();
+                $imageName = pathinfo($imageName, PATHINFO_FILENAME) . '_' . $timestamp . '.' . pathinfo($imageName, PATHINFO_EXTENSION);
+
+                // Ajoute les données de l'image dans $donnees
+                $donnees['imageName'] = $imageName;
+            }
+
             // boucle de nettoyage des donnees
             foreach ($donnees as $key => $value) {
                 $donnees[$key] = htmlentities($value);
@@ -164,6 +178,12 @@ class ControllerPropActu extends Controller
 
                 ]);
 
+                if (isset($_FILES['image']) && $_FILES['image']['error'] == 0){
+                    // L'image est valide, et est donc uploadée dans asset/actualite
+                    $cheminImage = '../asset/actualite/' . basename($imageName);
+                    move_uploaded_file($imageTmpName, $cheminImage);
+                    }
+
 
                 // Les données sont valides, insérez-les dans la base de données
                 $this->insererDonneesDansLaBase($donnees);
@@ -199,7 +219,7 @@ class ControllerPropActu extends Controller
                 $donnees['resume'],
                 $donnees['contenu'],
                 null,
-                $donnees['image'] ?? null,
+                $donnees['imageName'] ?? null,
                 $donnees['userId'],
                 $donnees['cateId']
             );
