@@ -53,7 +53,7 @@ class Mail
         $this->mail->Subject = $objet;          //Le sujet du mail
         $this->mail->WordWrap = 50; 		    //Nombre de caracteres pour le retour a la ligne automatique
         $this->mail->IsHTML(true);              //Préciser qu'il faut utiliser le texte brut
-        $this->mail->MsgHTML($corp);            //Forcer le contenu du body html pour ne pas avoir l'erreur "body is empty' même si on utilise l'email en contenu alternatif
+        $this->mail->MsgHTML("Madame, Monsieur<br><br>".$corp."<br> Cordialement. <br> L'équipe GureKultura | Groupe 7 ");            //Forcer le contenu du body html pour ne pas avoir l'erreur "body is empty' même si on utilise l'email en contenu alternatif
         if (!$this->mail->send()) {
             echo $this->mail->ErrorInfo;
         } else{

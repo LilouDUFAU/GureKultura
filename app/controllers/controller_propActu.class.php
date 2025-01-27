@@ -182,8 +182,7 @@ class ControllerPropActu extends Controller
                     // L'image est valide, et est donc uploadée dans asset/actualite
                     $cheminImage = '../asset/actualite/' . basename($imageName);
                     move_uploaded_file($imageTmpName, $cheminImage);
-                    }
-
+                }
 
                 // Les données sont valides, insérez-les dans la base de données
                 $this->insererDonneesDansLaBase($donnees);

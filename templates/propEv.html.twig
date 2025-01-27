@@ -36,7 +36,7 @@
 					<div class="lg:grid lg:grid-cols-subgrid lg:row-start-4 lg:col-start-1 lg:col-span-6 lg:w-full lg:gap-2 lg:h-full col-start-1 col-span-12 row-start-4 flex flex-col gap-2">
 						<div class="grid grid-cols-subgrid row-start-1 col-span-6 bg-[#A23145] bg-opacity-75 text-white rounded-2xl w-full p-4 items-center">
 							<label for="autorisation" class="row-start-1 col-span-12 text-white lg:col-span-2 lg:text-lg text-sm">Autorisations essentielles</label>
-							<input type="file" id="autorisation" name="autorisation" class="lg:row-start-1 row-start-2 lg:col-start-3 col-span-12 lg:text-lg text-sm" accept=".pdf, .jpg, .docx"/>
+							<input type="file" id="autorisation" name="autorisation" class="lg:row-start-1 row-start-2 lg:col-start-3 col-span-12 lg:text-lg text-sm" accept=".pdf"/>
 							{% if messageErreurs['autorisation'] is defined and messageErreurs['autorisation']|length > 0 %}
 								<p class="text-white font-xl row-start-3 col-start-1 col-span-6">{{ messageErreurs['autorisation'][0] }}</p>
 							{% endif %}
