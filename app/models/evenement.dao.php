@@ -344,6 +344,18 @@ class EvenementDao
     }
 
     /**
+     * @function updateValid
+     * @details Permet de mettre à jour un événement dans la base de données
+     * @param Evenement $evenement
+     * @return void
+     */
+    public function updateValid(Evenement $evenement): void {
+        $sql = "UPDATE " . PREFIX_TABLE . "evenement SET is_valide = :is_valide WHERE evtId = :evtId";
+        $pdoStatement = $this->pdo->prepare($sql);
+        $pdoStatement->execute([':is_valide' => $evenement->getIsValide(), ':evtId' => $evenement->getEvtId()]);
+    }
+
+    /**
      * @brief Fonction permettant de supprimer un evenement en base de données
      * @details Cette fonction permet de supprimer un utilisateur en base de données si ce dernier sdouhaite supprimer son compte
      * @param Evenement $evenement
@@ -354,6 +366,19 @@ class EvenementDao
         $sql = "DELETE FROM " . PREFIX_TABLE . "evenement WHERE evtId = :evtId";
         $pdoStatement = $this->pdo->prepare($sql);
         $pdoStatement->execute([':evtId' => $evenement->getEvtId()]);       
+    }
+
+    public function findNotValid()
+    {
+        $sql = "SELECT evt.evtId, evt.titre,evt.autorisation, evt.description, evt.email, evt.tel, evt.nomRep, evt.prenomRep, DATE(evt.dateDebut) AS dateDebut, DATE(evt.dateFin) AS dateFin, TIME(evt.heureDebut) AS heureDebut, TIME(evt.heureFin) AS heureFin, evt.lieu, evt.photo, evt.cateId, evt.userId, evt.is_valide , cate.nom AS nomCategorie
+            FROM gk_evenement AS evt
+            JOIN gk_categorie AS cate ON evt.cateId = cate.cateId WHERE evt.is_valide = 0";
+        $pdoStatement = $this->pdo->prepare($sql);
+        $pdoStatement->execute();
+        $pdoStatement->setFetchMode(PDO::FETCH_ASSOC);
+        $EvenementTab = $pdoStatement->fetchAll();
+        $evenement = $this->hydrateAll($EvenementTab);
+        return $evenement;
     }
 
 }
