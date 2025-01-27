@@ -93,7 +93,7 @@ class ControllerPropEv extends Controller
                 ],
                 'autorisation' => [
                     'obligatoire' => false,
-                    'type' => '.pdf ,.jpg, .jpeg, .png',
+                    'type' => '.pdf',
                     'format' => '/^[a-zA-Z0-9\s]+$/'
                 ],
                 'email' => [
