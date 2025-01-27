@@ -330,7 +330,7 @@ class ControllerCompte extends Controller
                 
                 $mail = new Mail();
                 $objet = "Confirmation de changement de mot de passe";
-                $corp = "<h1> Votre mot de passe as correctement était réinitialisser </h1>";
+                $corp = "<p> Votre mot de passe a correctement été réinitialiser </p>";
                 $mailEnvoyer = $mail->envoieMail($user->getEmail(), $objet, $corp);
 
                 echo $this->getTwig()->render('compte.html.twig', [
