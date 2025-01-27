@@ -1216,6 +1216,11 @@ video {
   background-color: rgb(31 41 55 / var(--tw-bg-opacity, 1));
 }
 
+.bg-red-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(239 68 68 / var(--tw-bg-opacity, 1));
+}
+
 .bg-transparent {
   background-color: transparent;
 }
@@ -1453,6 +1458,11 @@ video {
 .text-\[\#A23145\] {
   --tw-text-opacity: 1;
   color: rgb(162 49 69 / var(--tw-text-opacity, 1));
+}
+
+.text-\[\#FF2400\] {
+  --tw-text-opacity: 1;
+  color: rgb(255 36 0 / var(--tw-text-opacity, 1));
 }
 
 .text-\[\#bfbfbf\] {

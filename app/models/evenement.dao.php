@@ -328,6 +328,7 @@ class EvenementDao
             ':lieu' => $evenement->getLieu(),
             ':photo' => $evenement->getPhoto(),
             ':cateId' => $evenement->getCateId()
+            
         ]);
     }
 
