@@ -7,48 +7,34 @@
     <!-- Contenu spécifique de chaque page -->
     <div class="h-full">
         <div class="gap-2 p-2 grid grid-cols-12 items-center">
-            <h1 class="col-span-12 text-center font-bold text-4xl p-2">{{ evtActus.titre }}</h1>
+            <h1 class="row-start-1 col-span-12 text-center font-bold text-4xl p-2">{{ evtActus.titre }}</h1>
 
-            <!-- colonne de gauche -->
-            <div class="grid grid-cols-12 gap-2 w-full col-span-12 lg:col-span-8">
-            <div id="carousel1" class="relative overflow-hidden col-span-12">
-                <div id="carousel" class="carousel flex transition-transform duration-500 ease-out p-2">
-                    <!-- Diapositives -->
-                    <div class="slide flex-shrink-0">
-                        <img src="../asset/evenement/{{ evtActus.photo }}" alt="Image de l'événement"
-                            class="w-full h-auto max-w-full max-h-full object-contain mx-auto border-2 border-black">
-                    </div>
-                </div>
-                <!-- Boutons de navigation -->
-                <button id="prev1" 
-                    class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-200 text-white p-2 rounded-full z-10">
-                    &lt;
-                </button>
-                <button id="next1" 
-                    class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-200 text-white p-2 rounded-full z-10">
-                    &gt;
-                </button>
+            <!-- Colonne de gauche -->
+            <div class="grid grid-cols-subgrid col-start-1 col-span-12 row-start-2 lg:col-span-6 lg:row-start-2 h-full">
+                <img src="../asset/evenement/{{ evtActus.photo }}" alt="photo evenement" class="row-start-1 col-start-1 col-span-12 lg:col-span-6 rounded-lg">
+                <p class="row-start-2 col-start-1 col-span-12 lg:col-span-6 text-justify">{{ evtActus.description }}</p>
 
-            </div>
-
-                
-                <!-- Bloc 2 (Informations sur l'événement) -->
-                <div class="grid grid-cols-12 gap-1 bg-white text-black p-4 w-full border-2 border-black col-span-12">
-                    <label class="col-span-12 text-black text-center">Du {{ evtActus.dateDebut | date("d/m/Y", "Europe/Paris") }} au {{ evtActus.dateFin | date("d/m/Y", "Europe/Paris") }} </label>
-                    <label class="col-span-12 text-center">lieu : {{ evtActus.lieu }}</label>
+                <div class="row-start-3 col-start-1 col-span-12 lg:col-span-6 grid grid-cols-subgrid border-2 border-solid border-[#A23145] rounded-lg bg-[#A23145] bg-opacity-55 p-2">
+                    <p class="row-start-1 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold text-center">Date début : {{ evtActus.dateDebut }}  {{ evtActus.heureDebut }}</p>
+                    <p class="row-start-2 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold text-center">Date fin : {{ evtActus.dateFin }}  {{ evtActus.heureFin }}</p>
+                    <p class="row-start-3 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold text-center">Lieu : {{ evtActus.lieu }}</p>
                 </div>
             </div>
+            
 
-            <!-- colonne de droite -->
-            <div class="grid grid-cols-12 gap-2 col-span-12 lg:col-span-4">
-                <div class="bg-[#A23145] text-white p-4 col-span-12">
-                    <label class="text-white p-2">{{ evtActus.description }}</label>
-                </div>
+            <!-- Colonne de droite -->
+            <div class="grid grid-cols-subgrid col-start-1 col-span-12 row-start-3 lg:col-start-7 lg:col-span-6 lg:row-start-2 border-2 border-solid border-[#A23145] bg-[#A23145] bg-opacity-55 rounded-lg p-2 h-full">
+                <h2 class="row-start-1 col-start-1 col-span-6 text-2xl font-bold text-center text-white">Fiche Responsable</h2>
+                <p class="row-start-2 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Nom : {{ evtActus.nomRep }}</p>
+                <p class="row-start-3 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Prénom : {{ evtActus.prenomRep }}</p>
+                <p class="row-start-4 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Mail : {{ evtActus.email }}</p>
+                <p class="row-start-5 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Téléphone : {{ evtActus.tel }}</p>
+                <img src="../asset/evenement/ {{ evtActus.autorisation}}" alt="autorisation evenment" class="row-start-6 col-start-1 col-span-6 rounded-lg">
             </div>
-        </div>
+            </div>
 
         <!-- Section Commentaires -->
-        <div class="mt-8 p-4 bg-[#f4f4f4] rounded-lg shadow-md">
+        <div class="row-start-4 lg:row-start-3 col-span-12 m-2 p-4 bg-[#f4f4f4] rounded-lg shadow-md">
             <h2 class="text-2xl font-bold text-[#A23145] mb-4">Commentaires</h2>
 
             <!-- Exemples de commentaires -->
