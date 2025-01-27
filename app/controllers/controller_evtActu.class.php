@@ -70,10 +70,8 @@ class ControllerEvtActu extends Controller {
     
         // Vérification de l'événement et de l'utilisateur
         if (!isset($_POST['evtId']) || !isset($_SESSION['userId'])) {
-            $_SESSION['message'] = "Événement ou utilisateur non spécifié.";
             // Vous pouvez rediriger ou rendre la page sans inscription ici
-           
-//            header('Location: index.php?controlleur=index&methode=lister');  // Rediriger vers la page de l'événement
+            header('Location: index.php?controlleur=index&methode=lister');  // Rediriger vers la page de l'événement
             error_log("evtId: " . (isset($_POST['evtId']) ? $_POST['evtId'] : "Non défini"));
             error_log("userId: " . (isset($_SESSION['userId']) ? $_SESSION['userId'] : "Non défini"));
 
@@ -103,7 +101,6 @@ class ControllerEvtActu extends Controller {
             'actualites' => isset($actualite) ? $actualite : null,
         ]);
     }
-    
-    
+
     
 }

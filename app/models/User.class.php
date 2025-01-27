@@ -294,9 +294,6 @@ class User {
         $date = date("Y-m-d");
         return $date;
     }
-<<<<<<< HEAD
-    
-=======
 
     /**
      * @return string
@@ -323,5 +320,4 @@ class User {
             return 'user';
         }
     }
->>>>>>> 16276bd5499edf2934a7827c0cabf595c7bb22c6
 }
