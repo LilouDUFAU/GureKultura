@@ -41,6 +41,8 @@ require_once '../app/models/categorie.class.php';
 require_once '../app/models/categorie.dao.php';
 require_once '../app/models/user.class.php';
 require_once '../app/models/user.dao.php';
+require_once '../app/models/token.class.php';
+require_once '../app/models/token.dao.php';
 
 session_start();
 //Ajout du code pour initialiser Twig

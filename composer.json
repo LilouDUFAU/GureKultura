@@ -5,8 +5,8 @@
         }
     },
     "require": {
-        "twig/twig": "^3.17",
-        "twig/intl-extra": "^3.17",
-        "symfony/yaml": "^6.4"
+        "symfony/yaml": "^6.4",
+        "phpmailer/phpmailer": "^6.9",
+        "twig/twig": "^3.18"
     }
 }
