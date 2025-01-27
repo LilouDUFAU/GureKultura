@@ -218,6 +218,131 @@ class ControllerCompte extends Controller
         }
     }
 
+    public function modifierMdp() {
+
+        // verifier
+        if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
+            // definition des regles de validations que l'on souhaite verifier pour chaque champs du formulaire
+            $regleValidation = [
+                'mdp' => [
+                'obligatoire' => true,
+                'type' => 'string',
+                'longueurMin' => 8,
+                'longueurMax' => 30,
+                'format' => '/^[a-zA-Z0-9\s]+$/'
+            ]
+            ];
+
+            // instanciation de la classe de validation
+            $validator = new Validator($regleValidation);
+
+            // recuperation des donnees du formulaire
+            $donnees = $_POST;
+            // boucle de nettoyage des donnees
+            foreach ($donnees as $key => $value) {
+                $donnees[$key] = htmlentities($value);
+            }
+                
+            $user = $_SESSION['user'];
+            $donnees['userId'] = $user->getUserId();
+            
+
+
+
+            // validation des donnees du formulaire
+            $donneesValides = $validator->valider($donnees);
+            if (!$donneesValides) {
+                $messageErreurs = $validator->getMessageErreurs();
+                var_dump($messageErreurs);
+            } else {
+
+                if ($donnees['mdp'] != $user->getMdp()) {
+
+                    $mdpChange = true;
+
+
+                    if($validator->passwordExist($donnees['mdp'])){            //vérifier que le mot de passe est correct
+                        if($validator->is_strong($donnees['nouvMdp'])) {
+                            if($donnees['nouvMdp'] == $donnees['confNouvMdp']) {
+                                $mdpValide = true;
+                            } else {
+                                echo "Les mots de passe ne correspondent pas";
+                                $mdpValide = false;
+                            }
+                        } else {
+                            echo "Le mot de passe n'est pas assez fort, il doit contenir au moins 8 caractères, une majuscule,un chiffre et un charactère spécial";
+                        }
+                    } else {
+                        echo "Le mot de passe est incorrect";
+                    }
+                    
+                } else {
+                    $mdpChange = false;
+                }
+
+            }
+ 
+            // recuperation des erreurs
+            // Rendre le template Twig
+            $pdo = Bd::getInstance()->getPdo();
+
+            $loader = new \Twig\Loader\FilesystemLoader('../templates');
+            $twig = new \Twig\Environment($loader);
+
+            $managerActualite = new ActualiteDao($this->getPdo());
+            $actualite = $managerActualite->findAllWithCategorie();
+
+            $managerCategorie = new CategorieDao($this->getPdo());
+            $categories = $managerCategorie->findAll();
+
+            if (!empty($messageErreurs)) {
+                // Les données ne sont pas valides, affichez les erreurs
+                echo $this->getTwig()->render('compte.html.twig', [
+                    'title' => 'Compte',
+                    'messageErreurs' => $messageErreurs,
+                    'donnees' => $donnees,
+                    'actualites' => $actualite,
+                    'categories' => $categories
+
+                ]);
+            } else {
+                
+                // modifier
+                // Les données sont valides, modifiz-les dans la base de données
+
+                
+
+                $managerUser = new UserDao($pdo);
+                $user = $managerUser->find($user->getUserId());
+                $user->setRole('moderateur');
+                $_SESSION['user'] = $user;
+
+                if ($mdpChange) {
+                    
+                    //hasher le mot de passe
+                    $donnees['nouvMdp'] = $validator->hash_password($donnees['nouvMdp']);
+    
+                    //enregistrer dans la basse données
+                    $managerUser->modify($donnees['nouvMdp'],"mdp",$user->getUserId());
+            
+                }
+
+                
+                $mail = new Mail();
+                $objet = "Confirmation de changement de mot de passe";
+                $corp = "<h1> Votre mot de passe as correctement était réinitialisser </h1>";
+                $mailEnvoyer = $mail->envoieMail($user->getEmail(), $objet, $corp);
+
+                echo $this->getTwig()->render('compte.html.twig', [
+                    'title' => 'Compte',
+                    'donnees' => $donnees,
+                    'actualites' => $actualite,
+                    'categories' => $categories
+
+                ]);
+            }
+        }
+    }
 
     /**
      * @fuction deconnexion

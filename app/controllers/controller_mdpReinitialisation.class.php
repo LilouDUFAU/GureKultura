@@ -148,7 +148,11 @@ class ControllermdpReinitialisation extends Controller {
             $tokenExist = $managerToken->findUserId($user->getUserId());
             $managerToken->delete($tokenExist);
 
-            
+            $mail = new Mail();
+            $objet = "Confirmation de changement de mot de passe";
+            $corp = "<h1> Votre mot de passe as correctement était réinitialisser </h1>";
+            $mailEnvoyer = $mail->envoieMail($user->getEmail(), $objet, $corp); 
+
             header('Location: index.php?controlleur=index&methode=lister');
         } else {
             echo "Les données ne sont pas valides";
