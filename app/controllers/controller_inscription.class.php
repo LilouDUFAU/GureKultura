@@ -135,6 +135,11 @@ class ControllerInscription extends Controller {
 
                 //enregistrer dans la basse données
                 $this->insererDonneesDansLaBase($donnees);
+                $mail = new Mail();
+                $objet = "Confirmation d'inscription";
+                $corp = "<p> Bienvenue sur GureKultura ! </p>";
+                $mailEnvoyer = $mail->envoieMail($donnees['email'], $objet, $corp);
+
             }
 
         } else {
