@@ -1,7 +1,6 @@
 {% extends "base.html.twig" %}
 
 {% block content %}
-<!-- Contenu spécifique de chaque page -->
 <div class="h-full m-2">
     <h1 class="text-3xl font-bold text-center text-[#A23145]"> Événements non valides </h1>
 
@@ -23,41 +22,71 @@
                     <td class="p-1">{{ evenement.dateFin }}</td>
                     <td class="p-1">{{ evenement.lieu }}</td>
                     <td class="p-1">
-                    {# chemin pour voir la page #}
-                    <form action="index.php?controlleur=evtActu&methode=lister" method="post" class="flex flex-col justify-center items-center">
-                        <input type="hidden" name="id" value={{ evenement.evtId}}>
-                        <input type="hidden" name="nom" value={{ evenement.nom}}>
-                        <input type="hidden" name="type" value= "Evenements">
-                        <img src="../asset/icones/eye.svg" alt="visualisation" class="h-10 w-10">
-                        <input type="submit" value="Voir la page">
-                    </form>
+                        <form action="index.php?controlleur=evtActu&methode=lister" method="post" class="flex flex-col justify-center items-center">
+                            <input type="hidden" name="id" value={{ evenement.evtId}}>
+                            <input type="hidden" name="nom" value={{ evenement.nom}}>
+                            <input type="hidden" name="type" value= "Evenements">
+                            <img src="../asset/icones/eye.svg" alt="visualisation" class="h-10 w-10">
+                            <input type="submit" value="Voir la page">
+                        </form>
                     </td>
-                    {# bouton de validation #}
                     <td class="p-1 flex justify-center items-center">
                         <form action="index.php?controlleur=validPropEv&methode=valider" method="post">
-                            <input type="hidden" name="evtId" value={{ evenement.evtId}}>
+                            <input type="hidden" name="evtId" value="{{ evenement.evtId }}">
                             <button type="submit" class="p-1 rounded-lg h-6 w-6 bg-[#A23145]"><img src="../asset/icones/file-plus.svg" alt="validation"></button>
                         </form>
                     </td>
-                    {# bouton de mise en attente + evoie de mail explicatif #}
                     <td class="p-1 flex justify-center items-center">
-                        <form action="index.php?controlleur=validPropEv&methode=attente" method="post">
-                            <input type="hidden" name="evtId" value={{ evenement.evtId}}>
-                            <button type="submit" class="p-1 rounded-lg h-6 w-6 bg-[#A23145]"><img src="../asset/icones/file-break.svg" alt="attente"></button>
-                        </form>
+                        <!-- Bouton qui déclenche le popup -->
+                        <button 
+                            type="button" 
+                            class="p-1 rounded-lg h-6 w-6 bg-[#A23145]"
+                            onclick="openPopup('{{ evenement.evtId }}')">
+                            <img src="../asset/icones/file-break.svg" alt="attente">
+                        </button>
                     </td>
-                    {# bouton de suppression #}
                     <td class="p-1 flex justify-center items-center">
                         <form action="index.php?controlleur=validPropEv&methode=supprimer" method="post">
-                            <input type="hidden" name="evtId" value={{ evenement.evtId}}>
+                            <input type="hidden" name="evtId" value="{{ evenement.evtId }}">
                             <button type="submit" class="p-1 rounded-lg h-6 w-6 bg-[#A23145]"><img src="../asset/icones/file-minus.svg" alt="suppression"></button>
                         </form>
                     </td>
-            
+                </tr>
             {% endfor %}
-
         </tbody>
     </table>
 </div>
 
+<!-- Popup -->
+<div id="popup" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden z-50">
+    <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+        <h2 class="text-xl font-bold text-center mb-4">Mise en attente</h2>
+        <form action="index.php?controlleur=validPropEv&methode=attente" method="post">
+            <input type="hidden" id="popupEvtId" name="evtId" value="">
+            <div class="mb-4">
+                <label for="objet" class="block text-sm font-medium text-gray-700">Objet</label>
+                <input type="text" id="objet" name="objet" class="w-full p-2 border rounded-lg" required>
+            </div>
+            <div class="mb-4">
+                <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+                <textarea id="message" name="message" class="w-full p-2 border rounded-lg" rows="4" required></textarea>
+            </div>
+            <div class="flex justify-end">
+                <button type="button" onclick="closePopup()" class="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg mr-2">Annuler</button>
+                <button type="submit" class="px-4 py-2 bg-[#A23145] text-white rounded-lg">Envoyer</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    function openPopup(evtId) {
+        document.getElementById("popupEvtId").value = evtId;
+        document.getElementById("popup").classList.remove("hidden");
+    }
+
+    function closePopup() {
+        document.getElementById("popup").classList.add("hidden");
+    }
+</script>
 {% endblock %}

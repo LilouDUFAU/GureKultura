@@ -95,4 +95,23 @@ class ControllerValidPropEv extends Controller
         $managerEvenement->updateValid($evenement);
         header('Location: index.php?controlleur=validPropEv&methode=lister');
     }
+
+    /**
+     * @function Attente
+     * @details Fonction permettant de mettre en attente l'evenement propose
+     * 
+     */
+    public function Attente()
+    {
+        $pdo = Bd::getInstance()->getPdo();
+        $managerEvenement = new EvenementDao($pdo);
+        $evenement=$managerEvenement->find($_POST['evtId']);
+        $managerUser = new UserDao($pdo);
+        $user=$managerUser->find($evenement->getUserId());
+        $user->getEmail();
+        $donnees = $_POST;
+        $mail = new Mail();
+        $mail->envoieMail($user->getEmail(), $donnees['objet'],$donnees['message']);
+
+    }
 }
