@@ -1,0 +1,63 @@
+{% extends "base.html.twig" %}
+
+{% block content %}
+<!-- Contenu spécifique de chaque page -->
+<div class="h-full m-2">
+    <h1 class="text-3xl font-bold text-center text-[#A23145]"> Évènements non valides </h1>
+
+    <table class="w-full mt-5 rounded-lg text-white text-sm lg:text-md">
+        <thead>
+            <tr class="bg-[#A23145]">
+                <th class="p-2 text-left">Nom</th>
+                <th class="p-2 text-left">Date début</th>
+                <th class="p-2 text-left">Date fin</th>
+                <th class="p-2 text-left">Lieu</th>
+                <th class="p-2 text-left">Visualisation</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for evenement in evenements %}
+                <tr class="odd:bg-[#A23145] odd:bg-opacity-35 even:bg-[#A23145] even:bg-opacity-75">
+                    <td class="p-1">{{ evenement.titre }}</td>
+                    <td class="p-1">{{ evenement.dateDebut }}</td>
+                    <td class="p-1">{{ evenement.dateFin }}</td>
+                    <td class="p-1">{{ evenement.lieu }}</td>
+                    <td class="p-1">
+                    {# chemin pour voir la page #}
+                    <form action="index.php?controlleur=evtActu&methode=lister" method="post" class="flex flex-col justify-center items-center">
+                        <input type="hidden" name="id" value={{ evenement.evtId}}>
+                        <input type="hidden" name="nom" value={{ evenement.nom}}>
+                        <input type="hidden" name="type" value= "Evenements">
+                        <img src="../asset/icones/eye.svg" alt="visualisation" class="h-10 w-10">
+                        <input type="submit" value="Voir la page">
+                    </form>
+                    </td>
+                    {# bouton de validation #}
+                    <td class="p-1 flex justify-center items-center">
+                        <form action="index.php?controlleur=validPropEv&methode=valider" method="post">
+                            <input type="hidden" name="evtId" value={{ evenement.evtId}}>
+                            <button type="submit" class="p-1 rounded-lg h-6 w-6 bg-[#A23145]"><img src="../asset/icones/file-plus.svg" alt="validation"></button>
+                        </form>
+                    </td>
+                    {# bouton de mise en attente + evoie de mail explicatif #}
+                    <td class="p-1 flex justify-center items-center">
+                        <form action="index.php?controlleur=validPropEv&methode=attente" method="post">
+                            <input type="hidden" name="evtId" value={{ evenement.evtId}}>
+                            <button type="submit" class="p-1 rounded-lg h-6 w-6 bg-[#A23145]"><img src="../asset/icones/file-break.svg" alt="attente"></button>
+                        </form>
+                    </td>
+                    {# bouton de suppression #}
+                    <td class="p-1 flex justify-center items-center">
+                        <form action="index.php?controlleur=validPropEv&methode=supprimer" method="post">
+                            <input type="hidden" name="evtId" value={{ evenement.evtId}}>
+                            <button type="submit" class="p-1 rounded-lg h-6 w-6 bg-[#A23145]"><img src="../asset/icones/file-minus.svg" alt="suppression"></button>
+                        </form>
+                    </td>
+            
+            {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
