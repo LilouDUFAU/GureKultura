@@ -64,13 +64,19 @@ class ControllerEvtActu extends Controller {
 
     public function inscrire() {
         $pdo = Bd::getInstance()->getPdo();
-
+    
         $loader = new \Twig\Loader\FilesystemLoader('../templates');
         $twig = new \Twig\Environment($loader);
-        
+    
+        // Vérification de l'événement et de l'utilisateur
         if (!isset($_POST['evtId']) || !isset($_SESSION['userId'])) {
             $_SESSION['message'] = "Événement ou utilisateur non spécifié.";
-            return;
+            // Vous pouvez rediriger ou rendre la page sans inscription ici
+            header('Location: index.php?controlleur=index&methode=lister');  // Rediriger vers la page de l'événement
+            error_log("evtId: " . (isset($_POST['evtId']) ? $_POST['evtId'] : "Non défini"));
+            error_log("userId: " . (isset($_SESSION['userId']) ? $_SESSION['userId'] : "Non défini"));
+
+            exit;
         }
     
         $eventId = $_POST['evtId'];
@@ -79,6 +85,7 @@ class ControllerEvtActu extends Controller {
         $evt = new Evenement();
         $evt->setEvtId($eventId);
     
+        // Essayer d'inscrire l'utilisateur à l'événement
         $inscriptionReussie = $evt->inscrireUtilisateur($userId);
     
         if ($inscriptionReussie) {
@@ -86,13 +93,16 @@ class ControllerEvtActu extends Controller {
         } else {
             $_SESSION['message'] = "Vous êtes déjà inscrit à cet événement.";
         }
-
+    
         // Rendre le template Twig
-        echo $this->getTwig()->render('evtActu.html.twig', [
+        // Vérifiez si vous avez besoin d'afficher des actualités (ici on laisse $actualite vide)
+        echo $twig->render('evtActu.html.twig', [
             'title' => 'InscriptionEvt',
-            'actualites' => $actualite
+            // Si vous avez des actualités à afficher, définissez la variable $actualite avant
+            'actualites' => isset($actualite) ? $actualite : null,
         ]);
     }
+    
     
     
 }
