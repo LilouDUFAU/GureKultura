@@ -300,7 +300,7 @@ class ControllerModifEv extends Controller
                     $lieuModifie = false;
                 }
 
-                if ($donnees['photo'] != $_SESSION['evtActuel']['photo']) {
+                if ($donnees['photo'] != $_SESSION['evtActuel']['photo'] && $donnees['photo'] != null) {
                     $photoModifie = true;
                 }
                 else{

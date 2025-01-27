@@ -241,8 +241,8 @@ class ControllerPropEv extends Controller
                     exit();
                 }else{
                     if (isset($_FILES['photo']) && $_FILES['photo']['error'] == 0){
-                        // La photo est valide, et est donc uploadée dans asset/evenement/photo
-                        $cheminPhoto = '../asset/evenement/photo' . basename($photoName);
+                        // La photo est valide, et est donc uploadée dans asset/evenement/photo/
+                        $cheminPhoto = '../asset/evenement/photo/' . basename($photoName);
                         move_uploaded_file($photoTmpName, $cheminPhoto);
                     }
                 }
