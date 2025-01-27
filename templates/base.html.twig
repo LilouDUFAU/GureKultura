@@ -23,7 +23,7 @@
 
 		"showIcon": true, /* Show cookie icon to manage cookies */
 		//"iconSrc": "", /* Optionnal: URL or base64 encoded image */
-		"iconPosition": "BottomRight", /* BottomRight, BottomLeft, TopRight and TopLeft */
+		"iconPosition": "BottomLeft", /* BottomRight, BottomLeft, TopRight and TopLeft */
 
 		"adblocker": false, /* Show a Warning if an adblocker is detected */
 						
@@ -73,7 +73,7 @@
 		<main class="flex flex-col">
 			<!-- Header -->
 			<header
-				class="flex justify-between items-center min-h-24 px-7 bg-[#A23145] text-[#ffffff] relative z-50">
+				class="flex justify-between items-center min-h-16 px-7 bg-[#A23145] text-white">
 				
 				<!-- logo -->
 				<a href="index.php?controlleur=index&methode=lister">
@@ -92,14 +92,27 @@
 						<p class="hidden lg:block">Catégorie</p>
 					</div>
 
+					{% if user.estAdmin == False or user.role == 'user' %}
 					<div class="flex flex-col items-center">
-						<a href="index.php?controlleur=propEv&methode=lister" class=""><img src="../asset/icones/file-plus.svg" alt="home" class="h-6 w-6"></a>
+						<a href="index.php?controlleur=propEv&methode=lister" class=""><img src="../asset/icones/file-plus.svg" alt="propEv" class="h-6 w-6"></a>
+						<p class="hidden lg:block">Créer</p>
+					</div>
+					{% elseif user.role == 'moderateur' %}
+					<div class="flex flex-col items-center">
+						<a href="index.php?controlleur=propActu&methode=lister" class=""><img src="../asset/icones/file-plus.svg" alt="propActu" class="h-6 w-6"></a>
+						<p class="hidden lg:block">Créer</p>
+					</div>
+					
+					<div class="flex flex-col items-center">
+						<a href="index.php?controlleur=validPropEv&methode=lister" class=""><img src="../asset/icones/layout-text-sidebar-reverse.svg" alt="listEv" class="h-6 w-6"></a>
 						<p class="hidden lg:block">Proposition</p>
 					</div>
+					
+					{% endif %}
 
 					<div class="flex flex-col items-center">
 						<a href="/" class=""><img src="../asset/icones/funnel.svg" alt="home" class="h-6 w-6"></a>
-						<p class="hidden lg:block">Trie</p>
+						<p class="hidden lg:block">Trier</p>
 					</div>
 
 					<div class="flex gap-2 items-center border-2 border-solid border-white rounded-full px-2 py-1">
@@ -139,7 +152,7 @@
 								<INPUT TYPE="hidden" NAME="type" VALUE="Actualites"> 
 									<div class="p-2 grid grid-cols-1 items-center rounded-lg bg-white drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
 										
-											<INPUT TYPE="SUBMIT" VALUE="{{ actualite.titre }}" class="text-black text-center break-words">
+											<INPUT TYPE="SUBMIT" VALUE="{{ actualite.titre }}" class="text-black text-center text-wrap">
 										
 										<img src="../asset/actualite/{{ actualite.img }}" alt="illustration" class="h-full w-full object-cover rounded-lg">
 									</div>

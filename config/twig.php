@@ -9,7 +9,7 @@ $twig->addExtension(new \Twig\Extension\DebugExtension());
 
 $twig->addGlobal('user', $_SESSION['user'] ?? null);
 if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
-    $utilisateur = unserialize($_SESSION['user']);
+    $utilisateur = $_SESSION['user'];
     $twig->addGlobal('user', $utilisateur);
 }
 else {

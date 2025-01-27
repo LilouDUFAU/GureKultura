@@ -54,7 +54,6 @@ class ControllerConnexion extends Controller {
      * @uses Bd
      * @uses $_POST
      * @uses $_SESSION
-     * @uses serialize
      * @uses header
      * @uses getTwig
      * @uses addGlobal
@@ -116,7 +115,12 @@ class ControllerConnexion extends Controller {
                 $pdo = Bd::getInstance()->getPdo();
                 $managerUser = new UserDao($pdo);
                 $user = $managerUser->findWithEmail($donnees['email']);
-                $_SESSION['user'] = serialize($user);
+                if ($user->getEstAdmin() == 1) {
+                    $user->setRole('moderateur');
+                } else {
+                    $user->setRole('user');
+                }
+                $_SESSION['user'] =$user;
                 $this->getTwig()->addGlobal('utilisateurConnecte', $user);
                 header('Location: index.php?controlleur=index&methode=lister');
             }

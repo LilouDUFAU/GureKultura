@@ -87,10 +87,7 @@ class UserDao {
         $user->setPseudo($tab['pseudo']);
         $user->setEmail($tab['email']);
         $user->setMdp($tab['mdp']);
-        if(is_date($tab['dateInscr'])) {
-            $tab['dateInscr'] = new DateTime($tab['dateInscr']);
-            $user->setDateInscr($tab['dateInscr']);
-        }
+        $user->setDateInscr($tab['dateInscr']);
         $user->setBio($tab['bio']);
         $user->setPfp($tab['pfp']);
         $user->setEstAdmin($tab['estAdmin']);
@@ -201,5 +198,15 @@ class UserDao {
             ':valeur' => $donnees,
             ':id' => $userId
         ]);
+    }
+
+    public function RecupererUser(int $id): ?User {
+        $sql = "SELECT * FROM " . PREFIX_TABLE . "user WHERE userId = :id";
+        $pdoStatement = $this->pdo->prepare($sql);
+        $pdoStatement->execute(array(':id' => $id));
+        $pdoStatement->setFetchMode(PDO::FETCH_ASSOC);
+        $UserTab = $pdoStatement->fetch();
+        $user = $this->hydrate($UserTab);
+        return $user;
     }
 }

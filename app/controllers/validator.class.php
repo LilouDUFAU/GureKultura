@@ -1,38 +1,5 @@
 <?php
 
-
-function is_image($valeur): bool
-{
-    $extensions = array('.png', '.jpg', '.jpeg', '.svg');
-    $extension = strrchr($valeur, '.');
-    return in_array($extension, $extensions);
-}
-
-
-function is_date($valeur): bool
-{
-    $date = date_create_from_format('Y-m-d', $valeur);
-    return $date !== false;
-}
-
-
-
-function is_time($valeur): bool
-{
-    $time = date_create_from_format('H:i', $valeur);
-    return $time !== false;
-}
-
-
-
-// function is_file($valeur): bool
-// {
-//     return file_exists($valeur);
-// }
-
-
-
-
 class Validator
 {
     private array $regleValidation; // Les règles de validation à vérifier 
@@ -240,4 +207,19 @@ class Validator
             return false;
         }
     }
+
+
+    static public function is_image($valeur): bool
+    {
+        $extensions = array('.png', '.jpg', '.jpeg', '.svg');
+        $extension = strrchr($valeur, '.');
+        return in_array($extension, $extensions);
+    }
+
+
+
+    // function is_file($valeur): bool
+    // {
+    //     return file_exists($valeur);
+    // }
 }

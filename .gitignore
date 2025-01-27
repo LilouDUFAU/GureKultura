@@ -142,5 +142,6 @@ dist
 .svelte-kit
 
 # End of https://www.toptal.com/developers/gitignore/api/node
-# vendor/
-# config/
+vendor/
+node_modules/
+config/constantes.yaml

@@ -62,25 +62,25 @@ class Evenement
      * @brief date de début de l'événement
      * @var DateTime|null
      */
-    private ?DateTime $dateDebut;
+    private ?string $dateDebut;
 
     /**
      * @brief date de fin de l'événement
      * @var DateTime|null
      */
-    private ?DateTime $dateFin;
+    private ?string $dateFin;
 
     /**
      * @brief heure de début de l'événement
      * @var DateTime|null
      */
-    private ?DateTime $heureDebut;
+    private ?string $heureDebut;
 
     /**
      * @brief heure de fin de l'événement
      * @var DateTime|null
      */
-    private ?DateTime $heureFin;
+    private ?string $heureFin;
 
     /**
      * @brief lieu de l'événement
@@ -93,6 +93,12 @@ class Evenement
      * @var string|null
      */
     private ?string $photo; 
+
+    /**
+     * @brief validation de l'evenement
+     * @var bool|null
+     */
+    private ?bool $is_valide;
 
     /**
      * @brief id de l'utilisateur ajoutant l'evenement
@@ -130,6 +136,7 @@ class Evenement
      * @param DateTime|null $heureFin
      * @param string|null $lieu
      * @param string|null $photo
+     * @param bool|null $is_valide
      * @param int|null $userId
      * @param int|null $cateId
      * @param string|null $nomCategorie
@@ -143,12 +150,13 @@ class Evenement
     ?string $tel=null, 
     ?string $nomRep=null, 
     ?string $prenomRep=null, 
-    ?DateTime $dateDebut=null, 
-    ?DateTime $dateFin=null, 
-    ?DateTime $heureDebut=null, 
-    ?DateTime $heureFin=null,
+    ?string $dateDebut=null, 
+    ?string $dateFin=null, 
+    ?string $heureDebut=null, 
+    ?string $heureFin=null,
     ?string $lieu=null,
     ?string $photo=null,
+    ?bool $is_valide=null,
     ?int $userId=null,
     ?int $cateId=null,
     ?string $nomCategorie=null)
@@ -167,6 +175,7 @@ class Evenement
         $this->heureFin = $heureFin;
         $this->lieu = $lieu;
         $this->photo = $photo;
+        $this->is_valide = $is_valide;
         $this->userId = $userId;
         $this->cateId = $cateId;
         $this->nomCategorie = $nomCategorie;
@@ -260,41 +269,41 @@ class Evenement
     /**
      * @function getDateDebut
      * @details Cette fonction permet de récupérer la date de début de l'événement
-     * @return DateTime|null
+     * @return string|null
      */
-    public function getDateDebut(): ?DateTime
+    public function getDateDebut(): ?string
     {
-        return $this->dateDebut;
+        return $this->dateDebut; //?->format('Y-m-d'); 
     }
 
     /**
      * @function getDateFin
      * @details Cette fonction permet de récupérer la date de fin de l'événement
-     * @return DateTime|null
+     * @return string|null
      */
-    public function getDateFin(): ?DateTime
+    public function getDateFin(): ?string
     {
-        return $this->dateFin;
+        return $this->dateFin; //?->format('Y-m-d'); 
     }
 
     /**
      * @function getHeureDebut
      * @details Cette fonction permet de récupérer l'heure de début de l'événement
-     * @return DateTime|null
+     * @return string|null
      */
-    public function getHeureDebut(): ?DateTime
+    public function getHeureDebut(): ?string
     {
-        return $this->heureDebut;
+        return $this->heureDebut;//?->format('H:i:s'); 
     }
 
     /**
      * @function getHeureFin
      * @details Cette fonction permet de récupérer l'heure de fin de l'événement
-     * @return DateTime|null
+     * @return string|null
      */
-    public function getHeureFin(): ?DateTime
+    public function getHeureFin(): ?string
     {
-        return $this->heureFin;
+        return $this->heureFin;//?->format('H:i:s');
     } 
 
     /**
@@ -315,6 +324,16 @@ class Evenement
     public function getPhoto(): ?string
     {
         return $this->photo;
+    }
+
+    /**
+     * @function getIsValide
+     * @details Cette fonction permet de récupérer la validation de l'evenement
+     * @return bool|null
+     */
+    public function getIsValide(): ?bool
+    {
+        return $this->is_valide;
     }
 
     /**
@@ -447,7 +466,7 @@ class Evenement
      * @param DateTime|null $dateDebut
      * @return void
      */
-    public function setDateDebut(?DateTime $dateDebut): void
+    public function setDateDebut(?string $dateDebut): void
     {
         $this->dateDebut = $dateDebut;
     }
@@ -458,7 +477,7 @@ class Evenement
      * @param DateTime|null $dateFin
      * @return void
      */
-    public function setDateFin(?DateTime $dateFin): void
+    public function setDateFin(?string $dateFin): void
     {
         $this->dateFin = $dateFin;
     }
@@ -469,7 +488,7 @@ class Evenement
      * @param DateTime|null $heureDebut
      * @return void
      */
-    public function setHeureDebut(?DateTime $heureDebut): void
+    public function setHeureDebut(?string $heureDebut): void
     {
         $this->heureDebut = $heureDebut;
     }
@@ -480,7 +499,7 @@ class Evenement
      * @param DateTime|null $heureFin
      * @return void
      */
-    public function setHeureFin(?DateTime $heureFin): void
+    public function setHeureFin(?string $heureFin): void
     {
         $this->heureFin = $heureFin;
     }
@@ -505,6 +524,17 @@ class Evenement
     public function setPhoto(?string $photo): void
     {
         $this->photo = $photo;
+    }
+
+    /**
+     * @function setIsValide
+     * @details Cette fonction permet de définir la validation de l'evenement
+     * @param bool|null $is_valide
+     * @return void
+     */
+    public function setIsValide(?bool $is_valide): void
+    {
+        $this->is_valide = $is_valide;
     }
 
     /**
