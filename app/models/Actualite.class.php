@@ -39,9 +39,9 @@ class Actualite
     /**
      * @brief date de publication de l'actualité
      * @details Cette date est générée automatiquement par la base de données
-     * @var DateTime|null
+     * @var string|null
      */
-    private ?DateTime $datePubli;
+    private ?string $datePubli;
 
 
     /**
@@ -94,7 +94,7 @@ class Actualite
     ?string $titre=null,
     ?string $resume=null, 
     ?string $contenu=null, 
-    ?DateTime $datePubli=null, 
+    ?string $datePubli=null, 
     ?string $img=null,
     ?int $userId=null, 
     ?int $cateId=null, 
@@ -145,9 +145,9 @@ class Actualite
     }
 
     /**
-     * @return DateTime|null
+     * @return string|null
      */
-    public function getDatePubli(): ?DateTime
+    public function getDatePubli(): ?string
     {
         return $this->datePubli;
     }
@@ -222,10 +222,10 @@ class Actualite
     }
 
     /**
-     * @param DateTime|null $datePubli
+     * @param string|null $datePubli
      * @return void
      */
-    public function setDatePubli(?DateTime $datePubli): void
+    public function setDatePubli(?string $datePubli): void
     {
         $this->datePubli = $datePubli;
     }

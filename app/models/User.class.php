@@ -46,7 +46,7 @@ class User {
      * @details cette date est générer automatiquement par la base de données
      * @var DateTime
      */
-    private ?DateTime $dateInscr;
+    private ?string $dateInscr;
 
     /**
      * @brief biographie de l'utilisateur
@@ -70,6 +70,13 @@ class User {
     private ?bool $estAdmin;
 
     /**
+     * @brief Savoir le rôle actuel de l'utilisateur
+     * @details Permettra à un modérateur de pouvoir changer son rôle dans l'application
+     * @var string
+     */
+    private ?string $role;
+
+    /**
      * @brief Constructeur de la classe User
      * @details Permet de créer un nouvel utilisateur
      * @param int $userId Identifiant de l'utilisateur
@@ -88,10 +95,11 @@ class User {
     ?string $pseudo = null,
     ?string $email = null,
     ?string $mdp = null,
-    ?DateTime $dateInscr = null,
+    ?string $dateInscr = null,
     ?string $bio = null,
     ?string $pfp = null,
-    bool $estAdmin = false)
+    bool $estAdmin = false,
+    ?string $role = 'user')
     {
         $this->userId = $userId;
         $this->nom = $nom;
@@ -102,6 +110,7 @@ class User {
         $this->bio = $bio;
         $this->pfp = $pfp;
         $this->estAdmin = $estAdmin;
+        $this->role = $role;
     }
 
     ///////////GETTERS///////////
@@ -156,7 +165,7 @@ class User {
      * @details Permet de récupérer la date d'inscription de l'utilisateur
      * @return string
      */
-    public function getDateInscr(): ?DateTime {
+    public function getDateInscr(): ?string {
         return $this->dateInscr;
     }
 
@@ -245,7 +254,7 @@ class User {
      * @param string $dateInscr
      * @return void
      */
-    public function setDateInscr(?DateTime $dateInscr): void {
+    public function setDateInscr(?string $dateInscr): void {
         $this->dateInscr = $dateInscr;
     }
 
@@ -278,9 +287,41 @@ class User {
         $this->estAdmin = $estAdmin;
     }
 
+    /**
+     * @return string
+     */
     public function dateActuelle(): string {
         $date = date("Y-m-d");
         return $date;
     }
+<<<<<<< HEAD
     
+=======
+
+    /**
+     * @return string
+     */
+    public function getRole(): string {
+        return $this->role;
+    }
+
+    /**
+     * @param string $role
+     * @return void
+     */
+    public function setRole($role): void {
+        $this->role = $role;
+    }
+
+    /**
+     * @return string
+     */
+    public function isModerator(): string {
+        if ($this->getEstAdmin() == 1) {
+            return 'moderateur';
+        } else {
+            return 'user';
+        }
+    }
+>>>>>>> 16276bd5499edf2934a7827c0cabf595c7bb22c6
 }

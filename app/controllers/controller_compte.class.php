@@ -101,8 +101,11 @@ class ControllerCompte extends Controller
             foreach ($donnees as $key => $value) {
                 $donnees[$key] = htmlentities($value);
             }
-            $user = unserialize($_SESSION['user']);
+                
+            $user = $_SESSION['user'];
+            var_dump($user);
             $donnees['userId'] = $user->getUserId();
+            
 
 
 
@@ -150,7 +153,7 @@ class ControllerCompte extends Controller
                 // }
 
             }
-
+ 
             // recuperation des erreurs
             // Rendre le template Twig
             $pdo = Bd::getInstance()->getPdo();
@@ -190,19 +193,24 @@ class ControllerCompte extends Controller
                 if ($bioChange) {
                     $this->modifierDonneesDansLaBase($donnees['bio'], 'bio');
                 }
+
+                // if ($pfpChange) {
+                //     $this->modifierDonneesDansLaBase($donnees['pfp'], 'pfp');
+                // }
                 
+
+                $manager = new UserDao($pdo);
+                $user = $manager->find($user->getUserId());
+                $user->setRole('moderateur');
+                $_SESSION['user'] = $user;
+
                 echo $this->getTwig()->render('compte.html.twig', [
-                        'title' => 'Compte',
+                    'title' => 'Compte',
                     'donnees' => $donnees,
                     'actualites' => $actualite,
                     'categories' => $categories
 
                 ]);
-                // if($pfpChange){
-                //     $this->modifierDonneesDansLaBase($donnees['pfp'] ,'pfp');
-                // }
-                // mettre a jour
-                // header('Location: index.php?controlleur=compte&methode=lister');
             }
         } else {
             header('Location: index.php?controlleur=connexion&methode=lister');
@@ -238,7 +246,7 @@ class ControllerCompte extends Controller
     {
         $pdo = Bd::getInstance()->getPdo();
         $managerUser = new UserDao($pdo);
-        $user = unserialize($_SESSION['user']); 
+        $user = $_SESSION['user']; 
         $userId = $user->getUserId();
         $managerUser->delete($user);
         session_unset();
@@ -263,7 +271,7 @@ class ControllerCompte extends Controller
             $pdo = Bd::getInstance()->getPdo();
             $managerUser = new UserDao($pdo);
 
-            $user = unserialize($_SESSION['user']); 
+            $user = $_SESSION['user']; 
             $userId = $user->getUserId();
 
             // Insérez l'événement dans la base de données
@@ -295,5 +303,24 @@ class ControllerCompte extends Controller
             error_log("Error inserting event: " . $e->getMessage());
             throw $e; // Re-throw the exception if needed
         }
+    }
+
+    public function switchRole() {
+        $user = $_SESSION['user'];
+        if ($user->isModerator()) {
+            $_SESSION['user_role'] = $user->getRole();
+            if ($_SESSION['user_role'] === 'user') {
+                $_SESSION['user_role'] = 'moderateur';
+            } else {
+                $_SESSION['user_role'] = 'user';
+            }
+
+            // Update the user object in the session
+            $user->setRole($_SESSION['user_role']);
+            $_SESSION['user'] = $user;
+        }
+
+        // Redirect to the appropriate page
+        header('Location: index.php?controlleur=compte&methode=lister');
     }
 }
