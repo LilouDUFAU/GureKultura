@@ -223,7 +223,7 @@ class ControllerModifEv extends Controller
                     $categorieModifie = false;
                 }
 
-                if ($donnees['autorisation'] != $_SESSION['evtActuel']['autorisation']) {
+                if ($donnees['autorisation'] != $_SESSION['evtActuel']['autorisation'] && $donnees['autorisation'] != null) {
                     $autorisationModifie = true;
                 }
                 else{

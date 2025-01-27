@@ -177,6 +177,20 @@ class ControllerPropEv extends Controller
             // recuperation des donnees du formulaire
             $donnees = $_POST;
 
+            // Gestion du fichier autorisation
+            if (isset($_FILES['autorisation']) && $_FILES['autorisation']['error'] == 0) {
+                // Vérification de la validité du fichier
+                $autorisationTmpName = $_FILES['autorisation']['tmp_name'];
+                $autorisationName = $_FILES['autorisation']['name'];
+
+                // Ajouter un timestamp au nom de l'autorisation pour s'assurer qu'elle ait un nom unique
+                $timestamp = time();
+                $autorisationName = pathinfo($autorisationName, PATHINFO_FILENAME) . '_' . $timestamp . '.' . pathinfo($autorisationName, PATHINFO_EXTENSION);
+
+                // Ajoute les données de l'autorisation dans $donnees
+                $donnees['autorisationName'] = $autorisationName;
+            }
+
             // Gestion du fichier photo
             if (isset($_FILES['photo']) && $_FILES['photo']['error'] == 0) {
                 // Vérification de la validité du fichier
@@ -240,6 +254,11 @@ class ControllerPropEv extends Controller
                     ]);
                     exit();
                 }else{
+                    if (isset($_FILES['autorisation']) && $_FILES['autorisation']['error'] == 0){
+                        // La photo est valide, et est donc uploadée dans asset/evenement/autorisation/
+                        $cheminAutorisation = '../asset/evenement/autorisation/' . basename($autorisationName);
+                        move_uploaded_file($autorisationTmpName, $cheminAutorisation);
+                    }
                     if (isset($_FILES['photo']) && $_FILES['photo']['error'] == 0){
                         // La photo est valide, et est donc uploadée dans asset/evenement/photo/
                         $cheminPhoto = '../asset/evenement/photo/' . basename($photoName);
@@ -281,7 +300,7 @@ class ControllerPropEv extends Controller
             $evenement = new Evenement(
                 null,
                 $donnees['titre'],
-                $donnees['autorisation'] ?? null,
+                $donnees['autorisationName'] ?? null,
                 $donnees['description'],
                 $donnees['email'],
                 $donnees['tel'],
