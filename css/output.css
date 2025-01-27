@@ -717,10 +717,6 @@ video {
   grid-column-start: 6;
 }
 
-.col-start-7 {
-  grid-column-start: 7;
-}
-
 .col-start-8 {
   grid-column-start: 8;
 }
@@ -817,10 +813,6 @@ video {
   margin: 0.5rem;
 }
 
-.m-8 {
-  margin: 2rem;
-}
-
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -877,10 +869,6 @@ video {
 
 .mt-6 {
   margin-top: 1.5rem;
-}
-
-.mt-8 {
-  margin-top: 2rem;
 }
 
 .block {
@@ -942,11 +930,6 @@ video {
 .h-min {
   height: -moz-min-content;
   height: min-content;
-}
-
-.h-fit {
-  height: -moz-fit-content;
-  height: fit-content;
 }
 
 .max-h-1 {
@@ -1216,10 +1199,6 @@ video {
   border-color: rgb(255 255 255 / var(--tw-border-opacity, 1));
 }
 
-.border-\[\#\] {
-  border-color: #;
-}
-
 .bg-\[\#A23145\] {
   --tw-bg-opacity: 1;
   background-color: rgb(162 49 69 / var(--tw-bg-opacity, 1));
@@ -1257,10 +1236,6 @@ video {
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
-}
-
-.bg-\[\#\] {
-  background-color: #;
 }
 
 .bg-opacity-100 {
@@ -1399,10 +1374,6 @@ video {
 
 .text-center {
   text-align: center;
-}
-
-.text-justify {
-  text-align: justify;
 }
 
 .font-\[\'Sen\'\] {
@@ -2143,10 +2114,6 @@ video {
 
   .lg\:text-left {
     text-align: left;
-  }
-
-  .lg\:text-center {
-    text-align: center;
   }
 
   .lg\:text-3xl {
