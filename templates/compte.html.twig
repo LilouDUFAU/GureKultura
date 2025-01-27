@@ -81,12 +81,12 @@
 
 			{# colonne de droite #}
 				{# premier bloc #}
-					<form action="" method="post" enctype="" class="grid grid-cols-subgrid row-start-3 lg:row-start-2 col-start-1 lg:col-start-7 col-span-6 bg-[#A23145] bg-opacity-75 text-white rounded-2xl p-4 w-full h-full m-0">
+					<form action="index.php?controlleur=compte&methode=modifierMdp" method="POST" enctype="multipart/form-data" class="grid grid-cols-subgrid row-start-3 lg:row-start-2 col-start-1 lg:col-start-7 col-span-6 bg-[#A23145] bg-opacity-75 text-white rounded-2xl p-4 w-full h-full m-0">
 					<h1 class="row-start-1 col-span-6 text-xl font-bold">
 						Changer mon mot de passse</h1>
 						<div class="grid grid-cols-subgrid row-start-2 col-span-6  text-white rounded-2xl py-2 items-center">
 							<label class="text-white lg:col-span-3 col-span-6 lg:text-lg text-sm">Mot de passe actuel :</label>
-							<input type="password" id="mdp" name="mdpx" class="lg:col-start-4 lg:col-span-3 lg:row-start-1 col-start-1 col-span-6 row-start-2 rounded-lg lg:pl-2 pl-1 text-[#bfbfbf] w-full" placeholder="Saisir votre mot de passe ...">
+							<input type="password" id="mdp" name="mdp" class="lg:col-start-4 lg:col-span-3 lg:row-start-1 col-start-1 col-span-6 row-start-2 rounded-lg lg:pl-2 pl-1 text-[#bfbfbf] w-full" placeholder="Saisir votre mot de passe ...">
 							<a href="index.php?controlleur=mdpOublie&methode=lister" class="text-white lg:col-start-4 lg:col-span-2 lg:row-start-2 col-start-1 col-span-6 row-start-3 lg:text-sm text-sm">Mot de passe oublié ?</a>
 						</div>
 
@@ -100,6 +100,7 @@
 							<input type="password" id="confNouvMdp" name="confNouvMdp" class="lg:col-start-4 lg:col-span-3 lg:row-start-1 col-start-1 col-span-6 row-start-2 rounded-lg lg:pl-2 pl-1 text-[#bfbfbf] w-full" placeholder="Saisir nouveau mot de passe ...">
 						</div>
 
+						<button type="reset" arial-label="b_MdpOublie" class=" col-start-3 col-span-2 row-start-5 flex items-center justify-center max-h-1 text-[#A23145] bg-[#ffffff] rounded-lg lg:p-4 p-3 lg:font-normal lg:text-lg drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">Annuler</button>
 						<button arial-label="b_MdpOublie" class=" col-start-5 col-span-2 row-start-5 flex items-center justify-center max-h-1 text-[#A23145] bg-[#ffffff] rounded-lg lg:p-4 p-3 lg:font-normal lg:text-lg drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">Valider</button>
 						
 					</form>
