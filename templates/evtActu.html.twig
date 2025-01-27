@@ -7,7 +7,7 @@
     <!-- Contenu spécifique de chaque page -->
     <div class="h-full">
         <div class="gap-2 p-2 grid grid-cols-12 items-center">
-            <h1 class="row-start-1 col-span-12 text-center font-bold text-4xl p-2">{{ evtActus.titre }}</h1>
+            <h1 class="row-start-1 col-span-12 text-center font-bold text-4xl p-2 text-[#A23145]">{{ evtActus.titre }}</h1>
 
             <!-- Colonne de gauche -->
             <div class="grid grid-cols-subgrid col-start-1 col-span-12 row-start-2 lg:col-span-6 lg:row-start-2 h-full">
@@ -24,7 +24,7 @@
 
             <!-- Colonne de droite -->
             <div class="grid grid-cols-subgrid col-start-1 col-span-12 row-start-3 lg:col-start-7 lg:col-span-6 lg:row-start-2 border-2 border-solid border-[#A23145] bg-[#A23145] bg-opacity-55 rounded-lg p-2 h-full">
-                <h2 class="row-start-1 col-start-1 col-span-6 text-2xl font-bold text-center text-white">Fiche Responsable</h2>
+                <h2 class="row-start-1 col-start-1 col-span-12 lg:col-span-6 text-2xl font-bold text-center text-white">Fiche Responsable</h2>
                 <p class="row-start-2 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Nom : {{ evtActus.nomRep }}</p>
                 <p class="row-start-3 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Prénom : {{ evtActus.prenomRep }}</p>
                 <p class="row-start-4 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Mail : {{ evtActus.email }}</p>
