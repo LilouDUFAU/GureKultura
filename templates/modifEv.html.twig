@@ -2,11 +2,11 @@
 
 {% block content %}
 	<!-- Contenu spécifique de chaque page -->
-	<div class="m-2 gap-8 flex flex-col">
+	<div class="m-2 gap-8 flex flex-col items-center">
 
-    <h1 class="text-3xl font-bold text-center text-[#A23145]">Modifier mon évènement</h1>
+    <h1 class="text-3xl font-bold text-center text-principal">Modifier mon évènement</h1>
 
-	<form action="index.php?controlleur=modifEv&methode=validerFormModifEv" method="post" class="grid grid-cols-6 gap-2 bg-[#A23145] bg-opacity-55 text-white rounded-xl">
+	<form action="index.php?controlleur=modifEv&methode=validerFormModifEv" method="post" class="grid grid-cols-6 gap-2 bg-principal text-white rounded-xl w-fit p-4">
 		<input type="hidden" name="evtId" value={{ evenementActuel.id }}>
 
 		{# titre evenement #}
@@ -101,8 +101,8 @@
 
 		{# Bouton de validation ou annulation #}
 		<div class="grid grid-cols-subgrid row-start-15 col-start-1 col-span-6 p-2">
-			<button type="submit" class="col-start-3 col-span-2 bg-[#A23145] bg-opacity-100 text-white rounded-lg">Valider</button>
-			<a href="index.php?controlleur=mesEv&methode=lister" class="col-start-5 col-span-2 bg-[#A23145] bg-opacity-100 text-white rounded-lg text-center">Annuler</a>
+			<button type="submit" class="col-start-3 col-span-2 bg-white text-principal rounded-lg">Valider</button>
+			<a href="index.php?controlleur=mesEv&methode=lister" class="col-start-5 col-span-2 bg-white text-principal rounded-lg text-center">Annuler</a>
 		</div>
 	</form>
 	</div>

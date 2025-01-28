@@ -7,7 +7,7 @@
 			class="gap-2 p-2 grid grid-cols-12 items-center">
 
 			{# titre de la page #}
-			<h1 class="col-span-12 text-white lg:font-bold lg:text-4xl text-2xl text-center bg-[#A23145] rounded-2xl p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] mb-10">Evénements du moment</h1>
+			<h1 class="col-span-12 text-white lg:font-bold lg:text-4xl text-2xl text-center bg-principal rounded-2xl p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] mb-10">Evénements du moment</h1>
 
 			{# contenu #}
 
@@ -17,7 +17,7 @@
 				{% for event in events %}
 					{%  if event.isValide == true %}
 						<div
-							class="flex gap-4 flex-col h-full lg:px-4 lg:grid lg:grid-cols-6 lg:auto-cols-min lg:items-center rounded-2xl bg-[#A23145] drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] p-4">
+							class="flex gap-4 flex-col h-full lg:px-4 lg:grid lg:grid-cols-6 lg:auto-cols-min lg:items-center rounded-2xl bg-principal drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] p-4">
 							{# Image de l'événement #}
 							<div class="flex-1 lg:row-start-1 lg:col-start-1 lg:col-span-2 lg:w-full row-start-1 col-start-1 col-span-12 lg:m-2 w-full md:row-start-1 md:col-start-1 md:col-span-12 md:w-full lg:object-contain">
 								<img src="../asset/evenement/photo/{{ event.photo }}" alt="Image de l'événement" class="rounded-lg">
@@ -38,7 +38,7 @@
 
 
 							<div class="lg:col-start-5 lg:col-span-2 lg:flex lg:flex-col lg:items-center lg:justify-center lg:gap-10 flex flex-row justify-between items-center">
-								<p class="bg-white text-[#A23145] rounded-2xl text-sm p-2 font-bold lg:row-start-3 lg:col-start-1 lg:col-span-2  row-start-3 col-start-1 col-span-1 flex justify-center items-center text-center">{{ event.nomCategorie }}</p>
+								<p class="bg-white text-principal rounded-2xl text-sm p-2 font-bold lg:row-start-3 lg:col-start-1 lg:col-span-2  row-start-3 col-start-1 col-span-1 flex justify-center items-center text-center">{{ event.nomCategorie }}</p>
 
 
 								<FORM action="index.php?controlleur=evtActu&methode=lister" method="POST">

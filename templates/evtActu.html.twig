@@ -7,52 +7,55 @@
     <!-- Contenu spécifique de chaque page -->
     <div class="h-full">
         <div class="gap-2 p-2 grid grid-cols-12 items-center">
-            <h1 class="row-start-1 col-span-12 text-center font-bold text-4xl p-2 text-[#A23145]">{{ evtActus.titre }}</h1>
+            <h1 class="row-start-1 col-span-12 text-center font-bold text-4xl p-2 text-principal">{{ evtActus.titre }}</h1>
 
             <!-- Colonne de gauche -->
-            <div class="grid grid-cols-subgrid col-start-1 col-span-12 row-start-2 lg:col-span-6 lg:row-start-2 h-full">
-                <img src="../asset/evenement/photo/{{ evtActus.photo }}" alt="photo evenement" class="row-start-1 col-start-1 col-span-12 lg:col-span-6 rounded-lg">
-                <p class="row-start-2 col-start-1 col-span-12 lg:col-span-6 text-justify break-words">{{ evtActus.description }}</p>
-
-                <div class="row-start-3 col-start-1 col-span-12 lg:col-span-6 grid grid-cols-subgrid border-2 border-solid border-[#A23145] rounded-lg bg-[#A23145] bg-opacity-55 p-2">
-                    <p class="row-start-1 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold text-center">Date début : {{ evtActus.dateDebut }}  {{ evtActus.heureDebut }}</p>
-                    <p class="row-start-2 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold text-center">Date fin : {{ evtActus.dateFin }}  {{ evtActus.heureFin }}</p>
-                    <p class="row-start-3 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold text-center">Lieu : {{ evtActus.lieu }}</p>
-                </div>
-            </div>
-            
-
-            <!-- Colonne de droite -->
-            <div class="grid grid-cols-subgrid col-start-1 col-span-12 row-start-3 lg:col-start-7 lg:col-span-6 lg:row-start-2 border-2 border-solid border-[#A23145] bg-[#A23145] bg-opacity-55 rounded-lg p-2 h-full">
-                <h2 class="row-start-1 col-start-1 col-span-12 lg:col-span-6 text-2xl font-bold text-center text-white">Fiche Responsable</h2>
+            <div class="grid grid-cols-subgrid col-start-1 col-span-12 row-start-3 lg:col-start-1 lg:col-span-6 lg:row-start-2 border-2 border-solid border-principal bg-principal bg-opacity-55 rounded-lg p-2 h-fit text-center">
+                <h2 class="row-start-1 col-start-1 col-span-12 lg:col-span-6 text-2xl font-bold text-white">Fiche Responsable</h2>
                 <p class="row-start-2 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Nom : {{ evtActus.nomRep }}</p>
                 <p class="row-start-3 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Prénom : {{ evtActus.prenomRep }}</p>
                 <p class="row-start-4 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Mail : {{ evtActus.email }}</p>
                 <p class="row-start-5 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Téléphone : {{ evtActus.tel }}</p>
-                <a href="../asset/evenement/autorisation/{{ evtActus.autorisation }}" class="row-start-6 col-start-1 col-span-6 rounded-lg text-sky-600 underline font-semibold" target="_blank">Cliquez ici pour visionner le fichier PDF</a>
+                <a href="../asset/evenement/autorisation/{{ evtActus.autorisation }}" class="row-start-6 col-start-1 col-span-6 rounded-lg text-link underline" target="_blank">Cliquez ici pour visionner le fichier PDF <img src="../asset/icones/box-arrow-up-right.svg"></a>
 
             </div>
+
+            
+            
+
+            <!-- Colonne de droite -->
+            <div class="grid grid-cols-subgrid col-start-1 col-span-12 row-start-2 lg:col-start-7 lg:col-span-6 lg:row-start-2 h-full">
+                <img src="../asset/evenement/photo/{{ evtActus.photo }}" alt="photo evenement" class="row-start-1 col-start-1 col-span-12 lg:col-span-6 rounded-lg">
+                <p class="row-start-2 col-start-1 col-span-12 lg:col-span-6 text-justify break-words">{{ evtActus.description }}</p>
+
+                <div class="row-start-3 col-start-1 col-span-12 lg:col-span-6 grid grid-cols-subgrid border-2 border-solid border-principal rounded-lg bg-principal bg-opacity-55 p-2 text-center">
+                    <p class="row-start-1 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Date début : {{ evtActus.dateDebut }}  {{ evtActus.heureDebut }}</p>
+                    <p class="row-start-2 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Date fin : {{ evtActus.dateFin }}  {{ evtActus.heureFin }}</p>
+                    <p class="row-start-3 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Lieu : {{ evtActus.lieu }}</p>
+                </div>
+            </div>
+            
             </div>
 
         <!-- Section Commentaires -->
         <div class="row-start-4 lg:row-start-3 col-span-12 m-2 p-4 bg-[#f4f4f4] rounded-lg shadow-md">
-            <h2 class="text-2xl font-bold text-[#A23145] mb-4">Commentaires</h2>
+            <h2 class="text-2xl font-bold text-principal mb-4">Commentaires</h2>
 
             <!-- Exemples de commentaires -->
             <div class="mb-6">
-                <p class="font-semibold text-[#A23145]">John Doe :</p>
+                <p class="font-semibold text-principal">John Doe :</p>
                 <p class="text-gray-700">"Un super match, la victoire de Bayonne était bien méritée. Hâte de voir la prochaine rencontre !"</p>
             </div>
             <div class="mb-6">
-                <p class="font-semibold text-[#A23145]">Marie Dupont :</p>
+                <p class="font-semibold text-principal">Marie Dupont :</p>
                 <p class="text-gray-700">"Clermont a bien joué, mais quelques erreurs ont coûté cher. Bravo à Bayonne pour leur performance."</p>
             </div>
 
             <!-- Formulaire pour ajouter un commentaire -->
             <div class="mt-6">
-                <label for="comment" class="block text-[#A23145] font-semibold mb-2">Ajouter un commentaire :</label>
-                <textarea id="comment" name="comment" rows="3" class="w-full p-3 border-2 border-[#A23145] rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#A23145]"></textarea>
-                <button type="submit" class="mt-4 px-6 py-2 bg-[#A23145] text-white font-semibold rounded-lg hover:bg-[#8a1e36]">Envoyer</button>
+                <label for="comment" class="block text-principal font-semibold mb-2">Ajouter un commentaire :</label>
+                <textarea id="comment" name="comment" rows="3" class="w-full p-3 border-2 border-principal rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-principal"></textarea>
+                <button type="submit" class="mt-4 px-6 py-2 bg-principal text-white font-semibold rounded-lg hover:bg-[#8a1e36]">Envoyer</button>
             </div>
         </div>
     </div>
@@ -63,7 +66,7 @@
 {% if type == 'Actualites' %}
     <!-- Contenu spécifique de chaque page -->
     <div class="pt-2">
-        <div class="gap-2 p-2 grid grid-cols-12 items-center bg-[#A23145] rounded-lg">
+        <div class="gap-2 p-2 grid grid-cols-12 items-center bg-principal rounded-lg">
             {# titre de l'article #}
             <h1 class="col-span-12 text-white font-bold text-2xl lg:text-5xl text-left mb-4 break-words col-start-1 row-start-1 px-4">{{ evtActus.titre }}</h1>
             {# resume de l'article #}
@@ -84,7 +87,7 @@
             {# section commentaires #}
             <div class="gap-2 grid grid-cols-12 items-center bg-[#ffffff] border-2 border-solid border-[#621220] rounded-lg p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] sm:col-start-1 xl:col-start-10 col-span-12 xl:col-span-3 sm:row-start-4 xl:row-start-3 sm:h-full xl:h-full">
                 {# texte commentaire #}
-                <div class="gap-2 grid grid-cols-12 items-center bg-[#A23145] rounded-xl p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] text-center justify-center mb-4 col-span-12 text-white text-lg lg:text-3xl font-medium">Commentaire</div>
+                <div class="gap-2 grid grid-cols-12 items-center bg-principal rounded-xl p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] text-center justify-center mb-4 col-span-12 text-white text-lg lg:text-3xl font-medium">Commentaire</div>
                 {# un exemple de commentaire #}
                 <div class="gap-2 grid grid-cols-12 items-start p-2 mb-4 col-span-12">
                     {# pfp #}

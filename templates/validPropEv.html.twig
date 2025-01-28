@@ -2,11 +2,11 @@
 
 {% block content %}
 <div class="h-full m-2">
-    <h1 class="text-3xl font-bold text-center text-[#A23145]"> Événements non valides </h1>
+    <h1 class="text-3xl font-bold text-center text-principal"> Événements non valides </h1>
 
     <table class="w-full mt-5 rounded-lg text-white text-sm lg:text-md">
         <thead>
-            <tr class="bg-[#A23145]">
+            <tr class="bg-principal">
                 <th class="p-2 text-left">Nom</th>
                 <th class="p-2 text-left">Date début</th>
                 <th class="p-2 text-left">Date fin</th>
@@ -16,7 +16,7 @@
         </thead>
         <tbody>
             {% for evenement in evenements %}
-                <tr class="odd:bg-[#A23145] odd:bg-opacity-35 even:bg-[#A23145] even:bg-opacity-75">
+                <tr class="odd:bg-principal odd:bg-opacity-35 even:bg-principal even:bg-opacity-75">
                     <td class="p-1">{{ evenement.titre }}</td>
                     <td class="p-1">{{ evenement.dateDebut }}</td>
                     <td class="p-1">{{ evenement.dateFin }}</td>
@@ -33,14 +33,14 @@
                     <td class="p-1 flex justify-center items-center">
                         <form action="index.php?controlleur=validPropEv&methode=valider" method="post">
                             <input type="hidden" name="evtId" value="{{ evenement.evtId }}">
-                            <button type="submit" class="p-1 rounded-lg h-6 w-6 bg-[#A23145]"><img src="../asset/icones/file-plus.svg" alt="validation"></button>
+                            <button type="submit" class="p-1 rounded-lg h-6 w-6 bg-principal"><img src="../asset/icones/file-plus.svg" alt="validation"></button>
                         </form>
                     </td>
                     <td class="p-1 flex justify-center items-center">
                         <!-- Bouton qui déclenche le popup -->
                         <button 
                             type="button" 
-                            class="p-1 rounded-lg h-6 w-6 bg-[#A23145]"
+                            class="p-1 rounded-lg h-6 w-6 bg-principal"
                             onclick="openPopup('{{ evenement.evtId }}')">
                             <img src="../asset/icones/file-break.svg" alt="attente">
                         </button>
@@ -48,7 +48,7 @@
                     <td class="p-1 flex justify-center items-center">
                         <form action="index.php?controlleur=validPropEv&methode=supprimer" method="post">
                             <input type="hidden" name="evtId" value="{{ evenement.evtId }}">
-                            <button type="submit" class="p-1 rounded-lg h-6 w-6 bg-[#A23145]"><img src="../asset/icones/file-minus.svg" alt="suppression"></button>
+                            <button type="submit" class="p-1 rounded-lg h-6 w-6 bg-principal"><img src="../asset/icones/file-minus.svg" alt="suppression"></button>
                         </form>
                     </td>
                 </tr>
@@ -73,7 +73,7 @@
             </div>
             <div class="flex justify-end">
                 <button type="button" onclick="closePopup()" class="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg mr-2">Annuler</button>
-                <button type="submit" class="px-4 py-2 bg-[#A23145] text-white rounded-lg">Envoyer</button>
+                <button type="submit" class="px-4 py-2 bg-principal text-white rounded-lg">Envoyer</button>
             </div>
         </form>
     </div>

@@ -176,7 +176,8 @@ class ControllerPropEv extends Controller
 
             // recuperation des donnees du formulaire
             $donnees = $_POST;
-
+            $user = $_SESSION['user'];
+            $donnees['userId'] = $user->getUserId();
             // Gestion du fichier autorisation
             if (isset($_FILES['autorisation']) && $_FILES['autorisation']['error'] == 0) {
                 // Vérification de la validité du fichier
@@ -209,8 +210,6 @@ class ControllerPropEv extends Controller
             foreach ($donnees as $key => $value) {
                 $donnees[$key] = htmlentities($value);
             }
-            $user = $_SESSION['user'];
-            $donnees['userId'] = $user->getUserId();
 
 
             // validation des donnees du formulaire
