@@ -645,10 +645,6 @@ video {
   top: 50%;
 }
 
-.right-3 {
-  right: 0.75rem;
-}
-
 .z-50 {
   z-index: 50;
 }
@@ -883,10 +879,6 @@ video {
   display: block;
 }
 
-.\!inline {
-  display: inline !important;
-}
-
 .inline {
   display: inline;
 }
@@ -985,13 +977,13 @@ video {
   width: auto;
 }
 
-.w-full {
-  width: 100%;
-}
-
 .w-fit {
   width: -moz-fit-content;
   width: fit-content;
+}
+
+.w-full {
+  width: 100%;
 }
 
 .max-w-10 {
@@ -1170,10 +1162,6 @@ video {
 
 .rounded-md {
   border-radius: 0.375rem;
-}
-
-.rounded-sm {
-  border-radius: 0.125rem;
 }
 
 .rounded-xl {
@@ -1371,16 +1359,6 @@ video {
   padding-bottom: 6rem;
 }
 
-.px-8 {
-  padding-left: 2rem;
-  padding-right: 2rem;
-}
-
-.py-3 {
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-}
-
 .pb-3 {
   padding-bottom: 0.75rem;
 }
@@ -1499,11 +1477,6 @@ video {
   color: rgb(0 0 0 / var(--tw-text-opacity, 1));
 }
 
-.text-\[\#FF2400\] {
-  --tw-text-opacity: 1;
-  color: rgb(255 36 0 / var(--tw-text-opacity, 1));
-}
-
 .text-\[\#bfbfbf\] {
   --tw-text-opacity: 1;
   color: rgb(191 191 191 / var(--tw-text-opacity, 1));
@@ -1517,11 +1490,6 @@ video {
 .text-black {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity, 1));
-}
-
-.text-gray-300 {
-  --tw-text-opacity: 1;
-  color: rgb(224 224 224 / var(--tw-text-opacity, 1));
 }
 
 .text-gray-400 {
@@ -1566,24 +1534,6 @@ video {
 .placeholder-gray-500::placeholder {
   --tw-placeholder-opacity: 1;
   color: rgb(158 158 158 / var(--tw-placeholder-opacity, 1));
-}
-
-.placeholder-gray-400::-moz-placeholder {
-  --tw-placeholder-opacity: 1;
-  color: rgb(189 189 189 / var(--tw-placeholder-opacity, 1));
-}
-
-.placeholder-gray-400::placeholder {
-  --tw-placeholder-opacity: 1;
-  color: rgb(189 189 189 / var(--tw-placeholder-opacity, 1));
-}
-
-.opacity-100 {
-  opacity: 1;
-}
-
-.opacity-50 {
-  opacity: 0.5;
 }
 
 .opacity-75 {
@@ -1641,18 +1591,8 @@ video {
   transition-duration: 150ms;
 }
 
-.transition-all {
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
-}
-
 .duration-500 {
   transition-duration: 500ms;
-}
-
-.duration-300 {
-  transition-duration: 300ms;
 }
 
 .ease-out {
@@ -1926,10 +1866,6 @@ video {
     }
   }
 
-  .lg\:col-span-1 {
-    grid-column: span 1 / span 1;
-  }
-
   .lg\:col-span-12 {
     grid-column: span 12 / span 12;
   }
@@ -1960,10 +1896,6 @@ video {
 
   .lg\:col-start-1 {
     grid-column-start: 1;
-  }
-
-  .lg\:col-start-2 {
-    grid-column-start: 2;
   }
 
   .lg\:col-start-3 {
