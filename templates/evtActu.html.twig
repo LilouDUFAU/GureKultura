@@ -29,8 +29,8 @@
                 <p class="row-start-2 col-start-1 col-span-12 lg:col-span-6 text-justify break-words">{{ evtActus.description }}</p>
 
                 <div class="row-start-3 col-start-1 col-span-12 lg:col-span-6 grid grid-cols-subgrid border-2 border-solid border-principal rounded-lg bg-principal bg-opacity-55 p-2 text-center">
-                    <p class="row-start-1 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Date début : {{ evtActus.dateDebut }}  {{ evtActus.heureDebut }}</p>
-                    <p class="row-start-2 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Date fin : {{ evtActus.dateFin }}  {{ evtActus.heureFin }}</p>
+                    <p class="row-start-1 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Date début : {{ evtActus.dateDebut }}  {{ evtActus.heureDebut|date("H:i") }}</p>
+                    <p class="row-start-2 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Date fin : {{ evtActus.dateFin }}  {{ evtActus.heureFin|date("H:i") }}</p>
                     <p class="row-start-3 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Lieu : {{ evtActus.lieu }}</p>
                 </div>
             </div>
@@ -38,7 +38,7 @@
             </div>
 
         <!-- Section Commentaires -->
-        <div class="row-start-4 lg:row-start-3 col-span-12 m-2 p-4 bg-[#f4f4f4] rounded-lg shadow-md">
+        <div class="row-start-4 lg:row-start-3 col-span-12 m-2 p-4 bg-black rounded-lg shadow-md">
             <h2 class="text-2xl font-bold text-principal mb-4">Commentaires</h2>
 
             <!-- Exemples de commentaires -->
@@ -55,7 +55,7 @@
             <div class="mt-6">
                 <label for="comment" class="block text-principal font-semibold mb-2">Ajouter un commentaire :</label>
                 <textarea id="comment" name="comment" rows="3" class="w-full p-3 border-2 border-principal rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-principal"></textarea>
-                <button type="submit" class="mt-4 px-6 py-2 bg-principal text-white font-semibold rounded-lg hover:bg-[#8a1e36]">Envoyer</button>
+                <button type="submit" class="mt-4 px-6 py-2 bg-principal text-white font-semibold rounded-lg hover:bg-black">Envoyer</button>
             </div>
         </div>
     </div>
@@ -66,11 +66,11 @@
 {% if type == 'Actualites' %}
     <!-- Contenu spécifique de chaque page -->
     <div class="pt-2">
-        <div class="gap-2 p-2 grid grid-cols-12 items-center bg-principal rounded-lg">
+        <div class="gap-2 p-2 grid grid-cols-12 items-center rounded-lg text-principal">
             {# titre de l'article #}
-            <h1 class="col-span-12 text-white font-bold text-2xl lg:text-5xl text-left mb-4 break-words col-start-1 row-start-1 px-4">{{ evtActus.titre }}</h1>
+            <h1 class="col-span-12 text-principal font-bold text-2xl lg:text-5xl text-left mb-4 break-words col-start-1 row-start-1 px-4">{{ evtActus.titre }}</h1>
             {# resume de l'article #}
-                <div class="col-span-12 text-white font-bold text-sm lg:text-lg text-left mb-4 break-words col-start-1 row-start-2 px-4">
+                <div class="col-span-12 font-bold text-sm lg:text-lg text-left mb-4 break-words col-start-1 row-start-2 px-4">
                 {{ evtActus.resume }}
                 </div>
             {# contenu #}
@@ -80,18 +80,18 @@
                 {# image de l'article #}
                         <img src="../asset/actualite/{{ evtActus.img }}" alt="Image de l'événement" class="col-start-2 xl:col-start-2 col-span-4 row-start-1 rounded-lg mb-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
                 {# contenu de l'article #}
-                <div class="col-start-1 row-start-2 col-span-6 text-white font-medium text-xs lg:text-base text-left break-words"> 
+                <div class="col-start-1 row-start-2 col-span-6 font-bold text-xs lg:text-base text-left break-words"> 
                         {{ evtActus.contenu }}
                 </div>
             </div>
             {# section commentaires #}
-            <div class="gap-2 grid grid-cols-12 items-center bg-[#ffffff] border-2 border-solid border-[#621220] rounded-lg p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] sm:col-start-1 xl:col-start-10 col-span-12 xl:col-span-3 sm:row-start-4 xl:row-start-3 sm:h-full xl:h-full">
+            <div class="gap-2 grid grid-cols-12 items-center bg-gray-100 border-2 border-solid border-principal rounded-lg p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] sm:col-start-1 xl:col-start-10 col-span-12 xl:col-span-3 sm:row-start-4 xl:row-start-3 sm:h-full xl:h-full">
                 {# texte commentaire #}
-                <div class="gap-2 grid grid-cols-12 items-center bg-principal rounded-xl p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] text-center justify-center mb-4 col-span-12 text-white text-lg lg:text-3xl font-medium">Commentaire</div>
+                <div class="gap-2 grid grid-cols-12 items-center bg-principal rounded-xl p-4 text-center justify-center mb-4 col-span-12 text-white text-lg lg:text-3xl font-medium">Commentaire</div>
                 {# un exemple de commentaire #}
                 <div class="gap-2 grid grid-cols-12 items-start p-2 mb-4 col-span-12">
                     {# pfp #}
-                    <img src="../asset/pfp.svg" alt="pfp" class="col-start-1 col-span-2 row-span-2 row-start-1 w-full rounded-lg drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
+                    <img src="../asset/pfp.svg" alt="pfp" class="col-start-1 col-span-2 row-span-2 row-start-1 w-full rounded-lg">
                     {# nom #}
                     <div class="text-black text-base col-start-3 col-span-5 row-start-1 truncate">FABIEN</div>
                     {# temps #}
@@ -110,7 +110,7 @@
                 {# un exemple de commentaire #}
                 <div class="gap-2 grid grid-cols-12 items-start p-2 mb-4 col-span-12">
                     {# pfp #}
-                    <img src="../asset/pfp.svg" alt="pfp" class="col-start-1 col-span-2 row-span-2 row-start-1 w-full rounded-lg drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
+                    <img src="../asset/pfp.svg" alt="pfp" class="col-start-1 col-span-2 row-span-2 row-start-1 w-full rounded-lg">
                     {# nom #}
                     <div class="text-black text-base col-start-3 col-span-5 row-start-1 truncate">THOMAS</div>
                     {# temps #}
@@ -129,8 +129,8 @@
                 {# barre d'interaction #}
                 <form action="../php/formulaires/formCommentaire.php" method="post" class="gap-2 grid grid-cols-12 items-start col-span-12" enctype="multipart/form-data" novalidate>
                     {# barre de texte #}
-                    <div class="col-start-1 col-span-10 row-start-1 row-span-2 items-center rounded-lg border-2 border-solid border-black bg-[#ffffff]">
-                        <textarea placeholder="Ajouter un commentaire" name="commentaire" maxlength="500" class="placeholder-gray-500 p-4 text-[#000000] w-full resize-none overflow-auto" rows="1"></textarea>
+                    <div class="col-start-1 col-span-10 row-start-1 row-span-2 items-center rounded-lg border-2 border-solid border-principal bg-white">
+                        <textarea placeholder="Ajouter un commentaire" name="commentaire" maxlength="500" class="placeholder-gray-500 p-4 text-black w-full resize-none overflow-auto" rows="1"></textarea>
                     </div>
                     {# Ajouter une image #}
                     <input type="file" id="image" name="image" accept=".jpg,.jpeg,.png,.svg,.webp" class="hidden" />

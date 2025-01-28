@@ -178,6 +178,7 @@ class ControllerPropEv extends Controller
             $donnees = $_POST;
             $user = $_SESSION['user'];
             $donnees['userId'] = $user->getUserId();
+
             // Gestion du fichier autorisation
             if (isset($_FILES['autorisation']) && $_FILES['autorisation']['error'] == 0) {
                 // Vérification de la validité du fichier
@@ -205,6 +206,7 @@ class ControllerPropEv extends Controller
                 // Ajoute les données de la photo dans $donnees
                 $donnees['photoName'] = $photoName;
             }
+
             
             // boucle de nettoyage des donnees
             foreach ($donnees as $key => $value) {
@@ -264,7 +266,6 @@ class ControllerPropEv extends Controller
                         move_uploaded_file($photoTmpName, $cheminPhoto);
                     }
                 }
-
                 header('Location: index.php?controlleur=index&methode=lister');
                 // Les données sont valides, insérez-les dans la base de données
 
