@@ -41,11 +41,12 @@
 								<p class="lg:row-start-3 lg:col-start-1 lg:col-span-2 row-start-3 col-start-1 col-span-1 flex justify-center items-center text-center min-w-full bg-white text-principal rounded-lg text-sm p-2 font-bold">{{ event.nomCategorie }}</p>
 
 
-								<FORM action="index.php?controlleur=evtActu&methode=lister" method="POST" class="lg:col-start-1 lg:row-start-4 lg:col-span-2 lg:flex lg:justify-center lg:items-center lg:gap-4 row-start-3 col-start-2 col-span-1 flex justify-center items-center">
+								<FORM action="index.php?controlleur=evtActu&methode=lister" method="POST" class="lg:col-start-1 lg:row-start-4 lg:col-span-2 lg:flex lg:justify-center lg:items-center lg:gap-4 row-start-3 col-start-2 col-span-1 flex justify-center items-center cursor-pointer">
 									<INPUT type="hidden" name="nom" value="{{event.titre}}">
 									<INPUT type="hidden" name="id" value={{event.evtId}}>
 									<INPUT type="hidden" name="type" value="Evenements">
-									<INPUT type="SUBMIT" name="{{ event.titre }}" value="EN SAVOIR PLUS" class="text-white  text-sm  lg:text-md  font-bold row-start-3 flex justify-center items-center md:font-bold md:row-start-3 md:col-start-2 md:col-span-2 md:flex md:justify-center md:items-center">
+									<INPUT type="SUBMIT" name="{{ event.titre }}" value="EN SAVOIR PLUS" class="text-white  text-sm  lg:text-md  font-bold row-start-3 flex justify-center items-center md:font-bold md:row-start-3 md:col-start-2 md:col-span-2 md:flex md:justify-center md:items-center underline 
+									">
 								</FORM>
 							</div>
 						</div>

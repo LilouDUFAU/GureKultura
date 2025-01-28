@@ -620,10 +620,6 @@ video {
   position: relative;
 }
 
-.sticky {
-  position: sticky;
-}
-
 .inset-0 {
   inset: 0px;
 }
@@ -1004,11 +1000,6 @@ video {
 
 .max-w-md {
   max-width: 28rem;
-}
-
-.max-w-min {
-  max-width: -moz-min-content;
-  max-width: min-content;
 }
 
 .max-w-xl {
@@ -2020,10 +2011,6 @@ video {
 
   .lg\:w-full {
     width: 100%;
-  }
-
-  .lg\:min-w-full {
-    min-width: 100%;
   }
 
   .lg\:flex-auto {
