@@ -23,7 +23,7 @@ class ControllerEvtActu extends Controller {
         // Si $type n'est pas spécifié, on lui assigne "Evenements" comme valeur par défaut
         $type = isset($_POST['type']) ? $_POST['type'] : (isset($_GET['type']) ? $_GET['type'] : 'Evenements');
         $nom = isset($_POST['nom']) ? htmlentities($_POST['nom']) : '';
-        $id = isset($_POST['id']) ? htmlentities($_POST['id']) : (isset($_GET['id']) ? htmlentities($_GET['id']) : ''); // Récupérer l'ID via POST ou GET
+        $id = isset($_POST['id']) ? htmlentities($_POST['id']) : (isset($_GET['id']) ? htmlentities($_GET['id']) : ''); 
     
         // Vérifier que $type est défini et correspond à un type valide
         if (empty($type)) {
@@ -54,14 +54,9 @@ class ControllerEvtActu extends Controller {
     
             // Récupérer les commentaires associés à l'événement
             $commentaires = $this->afficherCommentaires($id);
-    
-            // Récupérer les actualités (si le type est "Actualites")
-            if ($type == "Actualites") {
-                $managerActualite = new ActualiteDao($pdo);
-                $actualite = $managerActualite->findAllWithCategorie();
-            } else {
-                $actualite = [];
-            }
+            $managerActualite = new ActualiteDao($pdo);
+            $actualite = $managerActualite->findAllWithCategorie();
+
     
             // Rendre le template Twig
             echo $this->getTwig()->render('evtActu.html.twig', [

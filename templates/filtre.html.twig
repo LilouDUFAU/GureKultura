@@ -1,0 +1,74 @@
+{% extends "base.html.twig" %}
+
+{% block content %}
+<div class="p-6">
+    <h2 class="text-2xl font-bold text-center mb-4">Filtres</h2>
+
+    <!-- Formulaire de filtres -->
+    <form action="index.php?controlleur=filtre&methode=lister" method="GET">
+        <div class="mb-4">
+            <h3 class="text-lg font-semibold">Catégories</h3>
+
+            <!-- Catégorie Sport -->
+            <label>
+                <input type="checkbox" name="category[]" value="Sport" {% if 'Sport' in categories %}checked{% endif %} onclick="toggleSubCategories('sport')">
+                Sport
+            </label><br>
+
+            <!-- Sous-catégories Sport -->
+            <div id="sport-categories" style="display: {% if 'Sport' in categories %}block{% else %}none{% endif %};">
+                {% for sport in sportCategories %}
+                    <label>
+                        <input type="checkbox" name="category[]" value="{{ sport.nom }}" {% if sport.nom in categories %}checked{% endif %}>
+                        {{ sport.nom }}
+                    </label><br>
+                {% endfor %}
+            </div>
+
+            <!-- Catégorie Culture -->
+            <label>
+                <input type="checkbox" name="category[]" value="Culture" {% if 'Culture' in categories %}checked{% endif %} onclick="toggleSubCategories('culture')">
+                Culture
+            </label><br>
+
+            <!-- Sous-catégories Culture -->
+            <div id="culture-categories" style="display: {% if 'Culture' in categories %}block{% else %}none{% endif %};">
+                {% for culture in cultureCategories %}
+                    <label>
+                        <input type="checkbox" name="category[]" value="{{ culture.nom }}" {% if culture.nom in categories %}checked{% endif %}>
+                        {{ culture.nom }}
+                    </label><br>
+                {% endfor %}
+            </div>
+        </div>
+
+        <button type="submit" class="bg-[#A23145] text-white px-4 py-2 rounded-lg">Appliquer les filtres</button>
+    </form>
+
+    <!-- Résultats filtrés -->
+    <h3 class="text-xl font-semibold mt-6">Événements</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {% for event in events %}
+            <div class="bg-white p-4 rounded-lg shadow-md">
+                <img src="../asset/evenement/{{ event.photo }}" alt="{{ event.titre }}" class="w-full h-48 object-cover mb-4">
+                <h4 class="font-semibold">{{ event.titre }}</h4>
+                <p>{{ event.lieu }}</p>
+                <p>{{ event.dateDebut|date('d/m/Y') }} - {{ event.dateFin|date('d/m/Y') }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+    // Fonction pour afficher ou masquer les sous-catégories en fonction de la catégorie sélectionnée
+    function toggleSubCategories(category) {
+        if (category === 'sport') {
+            let sportCategories = document.getElementById('sport-categories');
+            sportCategories.style.display = sportCategories.style.display === 'none' ? 'block' : 'none';
+        } else if (category === 'culture') {
+            let cultureCategories = document.getElementById('culture-categories');
+            cultureCategories.style.display = cultureCategories.style.display === 'none' ? 'block' : 'none';
+        }
+    }
+</script>
+{% endblock %}
