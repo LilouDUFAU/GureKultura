@@ -103,19 +103,34 @@
                     Commentaires
                 </div>
 
-                <!-- Afficher les commentaires réels -->
+				<!-- Afficher les commentaires réels -->
 				{% for commentaire in commentaires %}
-					<div class="grid grid-cols-12 items-start mb-2 col-span-12 pb-4">
+					<div class="grid grid-cols-12 items-start mb-4 col-span-12 pb-4 border-b border-gray-300">
+						<!-- image de profil -->
+						<div class="col-start-1 col-span-1 flex justify-center items-center">
+							<img src="../asset/icones/pp_user.svg" alt="pp" class="w-16 h-16 rounded-full">
+						</div>
+
 						<!-- nom du commentateur -->
-						<div class="font-semibold text-[#A23145] text-base col-start-2 col-span-5 row-start-1 truncate">{{ commentaire.userNom }}</div>
+						<div class="font-semibold text-[#A23145] text-base col-start-2 col-span-10 row-start-1 truncate flex items-center">
+							{{ commentaire.userNom }}
+						</div>
+
 						<!-- texte du commentaire -->
-						<div class="text-black text-base col-start-2 col-span-8 row-start-4 break-words">{{ commentaire.contenu }}</div>
+						<div class="text-black text-base col-start-2 col-span-8 row-start-4 break-words">
+							{{ commentaire.contenu }}
+						</div>
+
 						<!-- date de publication -->
-						<div class="text-gray-500 text-xs col-start-2 col-span-3 row-start-2">{{ commentaire.datePubli|date("d/m/Y H:i") }}</div>
+						<div class="text-gray-500 text-xs col-start-2 col-span-3 row-start-2">
+							{{ commentaire.datePubli|date("d/m/Y H:i") }}
+						</div>
 					</div>
 				{% else %}
 					<p>Aucun commentaire pour cette actualité.</p>
 				{% endfor %}
+
+
 
                 <!-- Formulaire pour ajouter un commentaire -->
                 <form action="index.php?controlleur=evtActu&methode=ajouterCommentaire" method="POST" class="gap-2 grid grid-cols-12 items-start col-span-12">
