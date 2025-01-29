@@ -1,80 +1,86 @@
 <html lang="fr">
 	<head>
-	<script src="../tarteaucitron/tarteaucitron.js"></script>
+		<script src="../tarteaucitron/tarteaucitron.js"></script>
 
-    <script type="text/javascript">
-		tarteaucitron.init({
-		"privacyUrl": "", /* Privacy policy url */
-		"bodyPosition": "bottom", /* or top to bring it as first element for accessibility */
+		<script type="text/javascript">
+			tarteaucitron.init({
+"privacyUrl": "", /* Privacy policy url */
+"bodyPosition": "bottom", /* or top to bring it as first element for accessibility */
 
-		"hashtag": "#tarteaucitron", /* Open the panel with this hashtag */
-		"cookieName": "tarteaucitron", /* Cookie name */
+"hashtag": "#tarteaucitron", /* Open the panel with this hashtag */
+"cookieName": "tarteaucitron", /* Cookie name */
 
-		"orientation": "middle", /* Banner position (top - bottom) */
-	
-		"groupServices": false, /* Group services by category */
-		"showDetailsOnClick": true, /* Click to expand the description */
-		"serviceDefaultState": "wait", /* Default state (true - wait - false) */
-						
-		"showAlertSmall": false, /* Show the small banner on bottom right */
-		"cookieslist": false, /* Show the cookie list */
-						
-		"closePopup": false, /* Show a close X on the banner */
+"orientation": "middle", /* Banner position (top - bottom) */
 
-		"showIcon": true, /* Show cookie icon to manage cookies */
-		//"iconSrc": "", /* Optionnal: URL or base64 encoded image */
-		"iconPosition": "BottomLeft", /* BottomRight, BottomLeft, TopRight and TopLeft */
+"groupServices": false, /* Group services by category */
+"showDetailsOnClick": true, /* Click to expand the description */
+"serviceDefaultState": "wait", /* Default state (true - wait - false) */
 
-		"adblocker": false, /* Show a Warning if an adblocker is detected */
-						
-		"DenyAllCta" : true, /* Show the deny all button */
-		"AcceptAllCta" : true, /* Show the accept all button when highPrivacy on */
-		"highPrivacy": true, /* HIGHLY RECOMMANDED Disable auto consent */
-		"alwaysNeedConsent": false, /* Ask the consent for "Privacy by design" services */
-						
-		"handleBrowserDNTRequest": false, /* If Do Not Track == 1, disallow all */
+"showAlertSmall": false, /* Show the small banner on bottom right */
+"cookieslist": false, /* Show the cookie list */
 
-		"removeCredit": false, /* Remove credit link */
-		"moreInfoLink": true, /* Show more info link */
+"closePopup": false, /* Show a close X on the banner */
 
-		"useExternalCss": false, /* If false, the tarteaucitron.css file will be loaded */
-		"useExternalJs": false, /* If false, the tarteaucitron.js file will be loaded */
+"showIcon": true,
+/* Show cookie icon to manage cookies */
+// "iconSrc": "", /* Optionnal: URL or base64 encoded image */
+"iconPosition": "BottomLeft", /* BottomRight, BottomLeft, TopRight and TopLeft */
 
-		//"cookieDomain": ".my-multisite-domaine.fr", /* Shared cookie for multisite */
-						
-		"readmoreLink": "", /* Change the default readmore link */
+"adblocker": false, /* Show a Warning if an adblocker is detected */
 
-		"mandatory": true, /* Show a message about mandatory cookies */
-		"mandatoryCta": true, /* Show the disabled accept button when mandatory on */
+"DenyAllCta": true, /* Show the deny all button */
+"AcceptAllCta": true, /* Show the accept all button when highPrivacy on */
+"highPrivacy": true, /* HIGHLY RECOMMANDED Disable auto consent */
+"alwaysNeedConsent": false, /* Ask the consent for "Privacy by design" services */
 
-		//"customCloserId": "", /* Optional a11y: Custom element ID used to open the panel */
-		
-		"googleConsentMode": true, /* Enable Google Consent Mode v2 for Google ads and GA4 */
-		
-		"partnersList": false /* Show the number of partners on the popup/middle banner */
-		});
-    </script>
-    <script type="text/javascript">
-        tarteaucitron.user.gtagUa = 'G-F8JJG36965';
-        // tarteaucitron.user.gtagCrossdomain = ['example.com', 'example2.com'];
-        tarteaucitron.user.gtagMore = function () { /* add here your optionnal gtag() */ };
-        (tarteaucitron.job = tarteaucitron.job || []).push('gtag');
-    </script>
+"handleBrowserDNTRequest": false, /* If Do Not Track == 1, disallow all */
+
+"removeCredit": false, /* Remove credit link */
+"moreInfoLink": true, /* Show more info link */
+
+"useExternalCss": false, /* If false, the tarteaucitron.css file will be loaded */
+"useExternalJs": false,
+/* If false, the tarteaucitron.js file will be loaded */
+
+// "cookieDomain": ".my-multisite-domaine.fr", /* Shared cookie for multisite */
+
+"readmoreLink": "", /* Change the default readmore link */
+
+"mandatory": true, /* Show a message about mandatory cookies */
+"mandatoryCta": true,
+/* Show the disabled accept button when mandatory on */
+
+// "customCloserId": "", /* Optional a11y: Custom element ID used to open the panel */
+
+"googleConsentMode": true, /* Enable Google Consent Mode v2 for Google ads and GA4 */
+
+"partnersList": false /* Show the number of partners on the popup/middle banner */
+});
+		</script>
+		<script type="text/javascript">
+			tarteaucitron.user.gtagUa = 'G-F8JJG36965';
+// tarteaucitron.user.gtagCrossdomain = ['example.com', 'example2.com'];
+tarteaucitron.user.gtagMore = function () { /* add here your optionnal gtag() */
+};
+(tarteaucitron.job = tarteaucitron.job || []).push('gtag');
+		</script>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="description" content="{% if description is defined %} {{description}} {% else %} {{constant('WEBSITE_DESCRIPTION')}} {% endif %}">
-		<title>{{constant('WEBSITE_TITLE')}} {{ title }}</title>
+		<title>{{constant('WEBSITE_TITLE')}}
+			{{ title }}</title>
 		<script src="../js/aside.js"></script>
 		<link rel="icon" type="image/x-icon" href="../asset/PetitLogoGkSansFondRouge.ico">
 		<link href="../css/output.css" rel="stylesheet">
 		<link href="../css/scrollbar.css" rel="stylesheet">
 	</head>
 	<body class="font-['Segoe UI'] min-h-dvh text-white text-sm lg:text-base">
-		<main class="flex flex-col">
+		<main
+			class="flex flex-col">
 			<!-- Header -->
 			<header
 				class="flex justify-between items-center min-h-16 px-7 bg-principal text-white">
-				
+
 				<!-- logo -->
 				<a href="index.php?controlleur=index&methode=lister">
 					<img src="../asset/PetitLogoGkSansFondBlanc.svg" alt="logo" class="max-w-10 max-h-10">
@@ -93,21 +99,21 @@
 					</div>
 
 					{% if user.estAdmin == False or user.role == 'user' %}
-					<div class="flex flex-col items-center">
-						<a href="index.php?controlleur=propEv&methode=lister" class=""><img src="../asset/icones/file-plus.svg" alt="propEv" class="h-6 w-6"></a>
-						<p class="hidden lg:block">Créer</p>
-					</div>
+						<div class="flex flex-col items-center">
+							<a href="index.php?controlleur=propEv&methode=lister" class=""><img src="../asset/icones/file-plus.svg" alt="propEv" class="h-6 w-6"></a>
+							<p class="hidden lg:block">Créer</p>
+						</div>
 					{% elseif user.role == 'moderateur' %}
-					<div class="flex flex-col items-center">
-						<a href="index.php?controlleur=propActu&methode=lister" class=""><img src="../asset/icones/file-plus.svg" alt="propActu" class="h-6 w-6"></a>
-						<p class="hidden lg:block">Créer</p>
-					</div>
-					
-					<div class="flex flex-col items-center">
-						<a href="index.php?controlleur=validPropEv&methode=lister" class=""><img src="../asset/icones/layout-text-sidebar-reverse.svg" alt="listEv" class="h-6 w-6"></a>
-						<p class="hidden lg:block">Proposition</p>
-					</div>
-					
+						<div class="flex flex-col items-center">
+							<a href="index.php?controlleur=propActu&methode=lister" class=""><img src="../asset/icones/file-plus.svg" alt="propActu" class="h-6 w-6"></a>
+							<p class="hidden lg:block">Créer</p>
+						</div>
+
+						<div class="flex flex-col items-center">
+							<a href="index.php?controlleur=validPropEv&methode=lister" class=""><img src="../asset/icones/layout-text-sidebar-reverse.svg" alt="listEv" class="h-6 w-6"></a>
+							<p class="hidden lg:block">Proposition</p>
+						</div>
+
 					{% endif %}
 
 					<div class="flex flex-col items-center">
@@ -131,7 +137,7 @@
 
 				</nav>
 				<!-- compte btn -->
-				{% if user != null %} 
+				{% if user != null %}
 					<div class="flex items-center space-x-4">
 						<span class="text-white"></span>
 						<a href="index.php?controlleur=compte&methode=lister" class="flex items-center justify-center border-2 border-solid border-white rounded-full p-2">
@@ -147,33 +153,33 @@
 
 			<!-- Content -->
 			<div id="grid-container" class="lg:pr-2 lg:py-2 lg:grid lg:md:grid-cols-[200px_1fr] lg:overflow-hidden lg:flex-auto ">
-				
+
 
 				<div id="left-column" class="pr-2 scrollable hidden lg:block">
 					<aside class="flex flex-col justify-center bg-principal gap-2 font-['Sen'] text-[#ffffff] scrollable p-2">
 						<h1 class="text-xl text-white text-center">ACTUS</h1>
 
 						{% for actualite in actualites %}
-						
-                            <FORM ACTION="index.php?controlleur=evtActu&methode=lister" METHOD="POST">
-								<INPUT TYPE="hidden" NAME="nom" VALUE="{{actualite.titre}}">
-								<INPUT TYPE="hidden" NAME="id" VALUE={{actualite.ActuId}}>
-								<INPUT TYPE="hidden" NAME="type" VALUE="Actualites"> 
-									<div class="p-2 grid grid-cols-1 items-center rounded-lg bg-white drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
-										
-											<INPUT TYPE="SUBMIT" VALUE="{{ actualite.titre }}" class="text-black text-center text-wrap">
-										
-										<img src="../asset/actualite/{{ actualite.img }}" alt="illustration" class="h-full w-full object-cover rounded-lg">
-									</div>
-                            </FORM>
+
+							<FORM action="index.php?controlleur=evtActu&methode=lister" method="POST">
+								<INPUT type="hidden" name="nom" value="{{actualite.titre}}">
+								<INPUT type="hidden" name="id" value={{actualite.ActuId}}>
+								<INPUT type="hidden" name="type" value="Actualites">
+								<div class="p-2 grid grid-cols-1 items-center rounded-lg bg-white drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
+
+									<INPUT type="SUBMIT" value="{{ actualite.titre }}" class="text-black text-center text-wrap">
+
+									<img src="../asset/actualite/{{ actualite.img }}" alt="illustration" class="h-full w-full object-cover rounded-lg">
+								</div>
+							</FORM>
 						{% endfor %}
 					</aside>
 				</div>
 
 
-
 				<!-- content -->
-				<div id="right-column" class="h-min">
+				<div
+					id="right-column" class="h-min">
 					<!-- Fil d'Ariane -->
 					<nav class="hidden lg:block lg:items-center text-principal space-x-2 p-4 border-4 bg-white border-principal drop-shadow-[0_5px_5px_rgba(0,0,0,0.3)]"></nav>
 
@@ -190,7 +196,7 @@
 			<footer class="grid grid-cols-12 bg-principal text-white text-sm lg:text-md p-4">
 				<div class="row-start-1 col-span-12 col-start-1 grid grid-cols-subgrid">
 
-					<div class="row-start-1 col-start-1 col-span-12 lg:row-start-1 lg:col-span-4 lg:col-start-1 p-4 flex flex-col text-left"> 
+					<div class="row-start-1 col-start-1 col-span-12 lg:row-start-1 lg:col-span-4 lg:col-start-1 p-4 flex flex-col text-left">
 						<h2 class="text-lg underline mb-1">Nous suivre</h2>
 						<div class="flex gap-6 items-center mt-1">
 							<a href="/" target="_blank" class="text-white">
@@ -239,8 +245,8 @@
 				</p> #}
 
 
-				
 			</footer>
 		</main>
 	</body>
 </html>
+

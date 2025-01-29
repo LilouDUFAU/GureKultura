@@ -1,135 +1,171 @@
 {% extends "base.html.twig" %}
-
 {% block content %}
-	<!-- Contenu spécifique de chaque page -->
-	<div class="lg:pt-2">
-		<div
-			class="bg-cover bg-no-repeat bg-[url('../asset/bg_img.svg')] gap-2 p-2 grid grid-cols-6 lg:grid-cols-12 items-center">
+	<div class="grid grid-cols-12 p-2 gap-4 text-principal">
 
-			{# titre de la page #}
-			<h1 class="col-span-6 lg:col-span-12 text-white lg:font-bold lg:text-4xl text-2xl text-center bg-principal rounded-2xl p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] mb-10">Votre compte
-			</h1>
-
-			{# colonne de gauche #}
-				{# premier bloc #}
-				<form class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-6 bg-principal bg-opacity-75 text-white rounded-2xl p-4 w-full gap-1 h-full m-0" action="index.php?controlleur=compte&methode=modifierInfo" method="POST" enctype="multipart/form-data">
-					<h1 class="row-start-1 col-span-6 text-xl font-bold">Informations personnelles</h1>
-					<div class="grid grid-cols-subgrid row-start-2 col-span-6 py-2 w-full items-center">
-						<label for="nom" class="text-white lg:col-span-2 lg:text-lg col-span-1 text-sm">Nom</label>
-						<input name="nom" id="nom" class="text-gray-400 col-start-1 col-span-6 row-start-2 lg:col-start-4 lg:col-span-3 lg:row-start-1 rounded-md px-2" value="{{ user.getNom }}"></input>
-					</div>
-
-					<div class="grid grid-cols-subgrid row-start-3 col-span-6 py-2 w-full items-center">
-						<label for="email" class="text-white lg:col-span-2 lg:text-lg col-span-1 text-sm">Email</label>
-						<input name="email" id="email" class="text-gray-400 col-start-1 col-span-6 row-start-2 lg:col-start-4 lg:col-span-3 lg:row-start-1 rounded-md px-2 bg-white" disabled value="{{ user.getEmail }}"></input>
-					</div>
-
-					<div class="grid grid-cols-subgrid row-start-4 col-span-6 py-2 w-full items-center">
-						<label for="pseudo" class="text-white lg:col-span-2 lg:text-lg col-span-1 text-sm">Pseudo</label>
-						<input name="pseudo" id="pseudo" class="text-gray-400 col-start-1 col-span-6 row-start-2 lg:col-start-4 lg:col-span-3 lg:row-start-1 rounded-md px-2" value="{{ user.getPseudo }}"></input>
-					</div>
-
-					<div class="grid grid-cols-subgrid row-start-5 col-span-6 py-2 w-full items-center">
-						<label for="bio" class="text-white lg:col-span-2 lg:text-lg col-span-6 col-start-1 text-sm">Bio</label>
-						<input name="bio" id="bio" class="text-gray-400 col-start-1 col-span-6 row-start-2 lg:col-start-4 lg:col-span-3 rounded-md px-2 lg:row-start-1" value="{{ user.getBio }}"></input>
-					</div>
-
-					<div class="grid grid-cols-subgrid row-start-6 col-span-6 py-2 w-full items-center">
-						<label for="pfp" class="text-white lg:col-span-2 lg:text-lg col-span-6 text-sm row-start-1">Photo de profil</label>
-						<input name="pfp" type="file" id="pfp" class="text-[#bfbfbf] col-start-1 col-span-6 row-start-2 lg:row-start-1 lg:col-start-4 lg:col-span-3" value="{{ user.getPfp }}"></input>
-					</div>
-					<button type="submit" id="button-valider" class=" lg:col-start-5 lg:col-span-2 flex items-center justify-center text-principal bg-white border-2 border-solid border-principal rounded-lg p-3 max-h-1 lg:font-normal drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] lg:text-lg col-start-5 col-span-2 lg:p-4 " data-champ="nom">Modifier</button>
-				</form>
-
-
-				{# deuxieme bloc #}
-				<div class="grid grid-cols-subgrid row-start-5 lg:row-start-3 col-start-1 col-span-6 bg-principal bg-opacity-75 text-white rounded-2xl p-4 w-full h-full ">
-					{% if user.role == 'user' %}
-					<div class="grid grid-cols-subgrid row-start-1 col-span-6 text-white rounded-2xl px-2 w-full items-center">
-						<label class="text-white col-start-1 col-span-3 row-start-1 lg:text-lg text-sm ">Souhaitez-vous voir vos évènements ?</label>
-						<a href="index.php?controlleur=mesEv&methode=lister " type="" class="col-start-4 col-span-3 lg:row-start-1 flex items-center justify-center max-h-1 text-principal bg-white border-2 border-solid border-principal rounded-lg p-4 lg:font-normal drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] lg:text-lg text-sm">Mes évènements</a>
-					</div>
-					{% else %}
-					<div class="grid grid-cols-subgrid row-start-1 col-span-6 text-white rounded-2xl px-2 w-full items-center">
-						<label class="text-white col-start-1 col-span-3 row-start-1 lg:text-lg text-sm ">Souhaitez-vous voir vos actualités ?</label>
-						<a href="index.php?controlleur=mesActu&methode=lister " type="" class="col-start-4 col-span-3 lg:row-start-1 flex items-center justify-center max-h-1 text-principal bg-white border-2 border-solid border-principal rounded-lg p-4 lg:font-normal drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] lg:text-lg text-sm">Mes actualités</a>
-					</div>
-					{% endif %}
-					{% if user.estAdmin %}
-					<div class="grid grid-cols-subgrid row-start-2 col-span-6 text-white rounded-2xl px-2 w-full items-center">
-						<label class="text-white col-start-1 col-span-3 row-start-1 lg:text-lg text-sm ">Souhaitez-vous changer de rôle ?</label>
-						<a href="index.php?controlleur=compte&methode=switchRole" type="" class="col-start-4 col-span-3 lg:row-start-1 flex items-center justify-center max-h-1 text-principal bg-white border-2 border-solid border-principal rounded-lg p-4 lg:font-normal drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] lg:text-lg text-sm">Changer de rôle</a>
-						<label for="role" class="text-white col-start-1 col-span-3 row-start-2 lg:text-lg text-sm font-bold " >Rôle actuel : {{ user.role }}</label>
-					</div>
-					{% endif %}
-
-					<div class="grid grid-cols-subgrid row-start-3 col-span-6 text-white rounded-2xl px-2 w-full items-center">
-						<form action="index.php?controlleur=compte&methode=deconnexion" method="post" class="grid grid-cols-subgrid row-start-2 col-span-6 text-white rounded-2xl py-2 w-full items-center">
-							<label class="text-white col-start-1 col-span-3 row-start-1 lg:text-lg text-sm ">Souhaitez-vous vous déconnectez ?</label>
-							<button arial-label="b_SupprCompte" type="" class="col-start-4 col-span-3 lg:row-start-1 flex items-center justify-center max-h-1 text-principal bg-white border-2 border-solid border-principal rounded-lg p-4 lg:font-normal drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] lg:text-lg text-sm">Me déconnecter </button>
-						</form>
-					</div>
-					<br>
-					<div class="grid grid-cols-subgrid row-start-4 col-span-6 text-white rounded-2xl px-2 w-full items-center">
-						<form action="index.php?controlleur=compte&methode=supprimerCompte" method="post" class="grid grid-cols-subgrid row-start-1 col-span-6 text-white rounded-2xl py-2 w-full items-center">
-							<label class="text-white row-start-1 col-start-1 col-span-3 lg:text-lg text-sm">Supprimer mon compte</label>
-							<button arial-label="b_SupprCompte" class="lg:col-start-4 row-start-1 lg:col-span-3 flex items-center justify-center max-h-1 text-principal bg-white border-2 border-solid border-principal rounded-lg p-4 lg:font-normal drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] lg:text-lg col-start-4 col-span-3 text-sm">Supprimer</button>
-						</form>
-					</div>
-				</div>
-
-
-			{# colonne de droite #}
-				{# premier bloc #}
-					<form action="index.php?controlleur=compte&methode=modifierMdp" method="POST" enctype="multipart/form-data" class="grid grid-cols-subgrid row-start-3 lg:row-start-2 col-start-1 lg:col-start-7 col-span-6 bg-principal bg-opacity-75 text-white rounded-2xl p-4 w-full h-full m-0">
-					<h1 class="row-start-1 col-span-6 text-xl font-bold">
-						Changer mon mot de passse</h1>
-						<div class="grid grid-cols-subgrid row-start-2 col-span-6  text-white rounded-2xl py-2 items-center">
-							<label class="text-white lg:col-span-3 col-span-6 lg:text-lg text-sm">Mot de passe actuel :</label>
-							<input type="password" id="mdp" name="mdp" class="lg:col-start-4 lg:col-span-3 lg:row-start-1 col-start-1 col-span-6 row-start-2 rounded-lg lg:pl-2 pl-1 text-[#bfbfbf] w-full" placeholder="Saisir votre mot de passe ...">
-							<a href="index.php?controlleur=mdpOublie&methode=lister" class="text-white lg:col-start-4 lg:col-span-2 lg:row-start-2 col-start-1 col-span-6 row-start-3 lg:text-sm text-sm">Mot de passe oublié ?</a>
-						</div>
-
-						<div class="grid grid-cols-subgrid row-start-3 col-span-6  text-white rounded-2xl py-2 items-center">
-							<label class="text-white lg:col-span-3 col-span-6 lg:text-lg text-sm">Nouveau mot de passe :</label>
-							<input type="password" id="nouvMdp" name="nouvMdp" class="lg:col-start-4 lg:col-span-3 lg:-row-start-1 col-start-1 col-span-6 row-start-2 rounded-lg lg:pl-2 pl-1 text-[#bfbfbf] w-full " placeholder="Saisir nouveau mot de passe ...">
-						</div>
-
-						<div class="grid grid-cols-subgrid row-start-4 col-span-6  text-white rounded-2xl py-2 items-center">
-							<label class="text-white lg:col-span-3 col-span-6 lg:text-lg text-sm">Confirmer mot de passe :</label>
-							<input type="password" id="confNouvMdp" name="confNouvMdp" class="lg:col-start-4 lg:col-span-3 lg:row-start-1 col-start-1 col-span-6 row-start-2 rounded-lg lg:pl-2 pl-1 text-[#bfbfbf] w-full" placeholder="Saisir nouveau mot de passe ...">
-						</div>
-
-						<button type="reset" arial-label="b_MdpOublie" class=" col-start-3 col-span-2 row-start-5 flex items-center justify-center max-h-1 text-principal bg-[#ffffff] rounded-lg lg:p-4 p-3 lg:font-normal lg:text-lg drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">Annuler</button>
-						<button arial-label="b_MdpOublie" class=" col-start-5 col-span-2 row-start-5 flex items-center justify-center max-h-1 text-principal bg-[#ffffff] rounded-lg lg:p-4 p-3 lg:font-normal lg:text-lg drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">Valider</button>
-						
-					</form>
-
-				{# deuxieme bloc #}
-				<div class="grid grid-cols-subgrid row-start-4 lg:row-start-3 col-start-1 lg:col-start-7 col-span-6 bg-principal bg-opacity-75 text-white rounded-2xl p-4 w-full">
-					<h1 class="row-start-1 col-span-6 text-xl font-bold">Mes autorisations</h1>
-
-					<div class="grid grid-cols-subgrid row-start-2 col-span-6  text-white rounded-2xl py-2 w-full items-center">
-						<label class="inline-flex items-center cursor-pointer col-span-6 justify-between w-full">
-							<span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300 max-w-md">J'autorise GureKultura à utiliser mon adresse e-mail et/ou mon numéro de téléphone pour m'envoyer des recommandations personnalisées, des nouveautés pertinentes.</span>
-							<div>
-								<input type="checkbox" value="" class="sr-only peer">
-								<div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
-							</div>
-						</label>
-					</div>
-
-					<div class="grid grid-cols-subgrid row-start-3 col-span-6  text-white rounded-2xl py-2 w-full items-center">
-						<label class="inline-flex items-center cursor-pointer col-span-6 justify-between w-full">
-							<span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300 max-w-md">J'autorise GureKultura à utiliser et stocker mes données personnelles telles que mes photos, nom et prénom, conformément à leur politique de confidentialité.</span>
-							<div>
-								<input type="checkbox" value="" class="sr-only peer">
-								<div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
-							</div>
-						</label>
-					</div>
-				</div>
+		{# infos de l'utilisateur #}
+		<div class="grid grid-cols-subgrid row-start-1 col-start-1 col-span-12 gap-2">
+			{# infos compte #}
+			<div class="row-start-1 col-start-2 col-span-10 flex justify-center items-center">
+				<img src="../asset/BO_logo.jpg" alt="photo de profil" class="rounded-full min-h-36 min-w-36 max-h-36 max-w-36 border-2 border-solid border-principal">
 			</div>
-	</div>
+			<div class="row-start-1 col-start-12 col-span-1 right-0 top-0">
+				<button type="button" onclick="openPopup(2)"><img src="../asset/icones/gear-wide-connected.svg" alt="parametre" class="w-8 h-8"></button>
+			</div>
+			<h2 class="row-start-2 col-start-1 col-span-12 font-bold text-lg text-center">{{ user.getPseudo }}</h2>
+			<p class="row-start-3 col-start-5 col-span-4 text-center">{{ user.getBio }}</p>
+			<button type="button" class="row-start-4 col-start-6 col-span-2 bg-principal text-white text-center rounded-md px-2 py-1" onclick="openPopup(1)">Modification profil</button>
+		</div>
 
-{% endblock %}
+		{# corps du compte #}
+		<div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-12 gap-2 bg-principal bg-opacity-55 p-4 rounded-lg">
+			{% if user.role == 'user' %}
+				<div class="grid grid-cols-subgrid row-start-1 col-start-1 col-span-12">
+					<label class="row-start-1 col-start-1 col-span-4 ">Souhaitez-vous voir vos évènements ?</label>
+					<a href="index.php?controlleur=mesEv&methode=lister " type="" class="col-start-5 col-span-2 bg-principal text-white rounded-lg text-center px-2 py-1 h-fit">Mes évènements</a>
+				</div>
+
+				<div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-12">
+					<label class="row-start-1 col-start-1 col-span-4 ">Souhaitez-vous voir vos participations ?</label>
+					<a href="index.php?controlleur=mesEv&methode=lister " type="" class="col-start-5 col-span-2 bg-principal text-white rounded-lg text-center px-2 py-1 h-fit">Mes participations</a>
+				</div>
+
+				{# voir actualité si user = admin #}
+			{% else %}
+				<div class="grid grid-cols-subgrid row-start-1 col-start-1 col-span-12">
+					<label class="row-start-1 col-start-1 col-span-4 ">Souhaitez-vous voir vos actualités ?</label>
+					<a href="index.php?controlleur=mesActu&methode=lister " class="col-start-5 col-span-2 bg-principal text-white rounded-lg text-center px-2 py-1 h-fit">Mes actualités</a>
+				</div>
+
+				<div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-12">
+					<label class="row-start-1 col-start-1 col-span-4 ">Souhaitez-vous voir les évènements proposés ?</label>
+					<a href="index.php?controlleur=mesEv&methode=lister " type="" class="col-start-5 col-span-2 bg-principal text-white rounded-lg text-center px-2 py-1 h-fit">Liste évènements</a>
+				</div>
+			{% endif %}
+
+			{# changer de role si user = admin #}
+			{% if user.estAdmin %}
+				<div class="grid grid-cols-subgrid row-start-3 col-start-1 col-span-12">
+					<label class="row-start-1 col-start-1 col-span-3">Souhaitez-vous changer de rôle ?</label>
+					<a href="index.php?controlleur=compte&methode=switchRole" class="col-start-5 col-span-2 bg-principal text-white rounded-lg text-center px-2 py-1 h-fit">Changer de rôle</a>
+					<label for="role" class="row-start-2 col-start-1 col-span-1 underline">Rôle actuel</label>
+					<label for="role" class="row-start-2 col-start-2 col-span-1 font-bold">
+						{{ user.role }}
+					</label>
+				</div>
+			{% endif %}
+		</div>
+	</div>
+</div>
+
+
+{# popup de modification de compte #}
+<div id="popup" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden z-50 text-principal">
+	<div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-xl h-fit max-h-xl">
+		<input type="hidden" id="popupModifCompte" name="compte" value="">
+		<h2 class="text-xl font-bold text-center mb-4">Modification du compte</h2>
+		<form
+			action="index.php?controlleur=compte&methode=modifierInfo" method="post" class="grid grid-cols-6 row-start-1 col-start-1 col-span-6 text-principal p-2 gap-4 text-sm lg:text-base">
+			{# nom #}
+			<div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-6 gap-4">
+				<div class="row-start-1 col-start-1 col-span-2 flex flex-row items-center gap-2">
+					<img src="../asset/icones/person-vcard (1).svg" alt="nom" class="w-6 h-6 bg-principal py-1 rounded-md">
+					<label for="nom" class="">Nom</label>
+				</div>
+				<input name="nom" id="nom" class="row-start-1 col-start-3 col-span-4 text-gray-400 border-solid border-2 border-principal rounded-md px-2" value="{{ user.getNom }}">
+			</div>
+
+			{# email #}
+			<div class="grid grid-cols-subgrid row-start-3 col-start-1 col-span-6 gap-4">
+				<div class="row-start-1 col-start-1 col-span-2 flex flex-row items-center gap-2">
+					<img src="../asset/icones/envelope.svg" alt="email" class="w-6 h-6 bg-principal py-1 rounded-md">
+					<label for="email" class="">Email</label>
+				</div>
+				<input name="email" id="email" disabled class="row-start-1 col-start-3 col-span-4 text-gray-400 border-solid border-2 border-principal rounded-md px-2" value="{{ user.getEmail }}">
+			</div>
+
+			{# pseudo #}
+			<div class="grid grid-cols-subgrid row-start-4 col-start-1 col-span-6 gap-4">
+				<div class="row-start-1 col-start-1 col-span-2 flex flex-row items-center gap-2">
+					<img src="../asset/icones/person.svg" alt="pseudo" class="w-6 h-6 bg-principal py-1 rounded-md">
+					<label for="pesudo" class="">Pseudo</label>
+				</div>
+				<input name="pseudo" id="pseudo" class="row-start-1 col-start-3 col-span-4 text-gray-400 border-solid border-2 border-principal rounded-md px-2" value="{{ user.getPseudo }}">
+			</div>
+
+			{# bio #}
+			<div class="grid grid-cols-subgrid row-start-5 col-start-1 col-span-6 gap-4">
+				<div class="row-start-1 col-start-1 col-span-2 flex flex-row items-center gap-2">
+					<img src="../asset/icones/card-text.svg" alt="bio" class="w-6 h-6 bg-principal py-1 rounded-md">
+					<label for="bio" class="">Biographie</label>
+				</div>
+				<input name="bio" id="bio" class="row-start-1 col-start-3 col-span-4 text-gray-400 border-solid border-2 border-principal rounded-md px-2" value="{{ user.getBio }}">
+			</div>
+
+			{# photo profil #}
+			<div class="grid grid-cols-subgrid row-start-6 col-start-1 col-span-6 gap-4">
+				<div class="row-start-1 col-start-1 col-span-2 flex flex-row items-center gap-2">
+					<img src="../asset/icones/image.svg" alt="pfp" class="w-6 h-6 bg-principal py-1 rounded-md">
+					<label for="pfp" class="">Photo de profil</label>
+				</div>
+				<input class="row-start-1 col-start-3 col-span-4 bg-transparent flex w-full rounded-md border-2 border-principal border-input bg-white text-sm text-gray-400 file:border-0 file:bg-principal file:text-white file:text-sm" type="file" name="pfp" id="pfp" accept=".jpg, .png" value=" {{ user.getPfp }}"/>
+			</div>
+
+			{# bouton de validation/annulation #}
+			<div class="row-start-7 col-start-1 col-span-6 flex justify-end">
+				<button type="button" onclick="closePopup()" class="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg mr-2">Annuler</button>
+				<button type="submit" class="px-4 py-2 bg-principal text-white rounded-lg">Modifier</button>
+			</div>
+		</form>
+
+	</div>
+</div>
+
+
+<div id="popup" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden z-50 text-principal">
+	<div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-xl h-fit max-h-xl">
+		<input type="hidden" id="popupParam" name="parametre" value="">
+		<h2 class="text-xl font-bold text-center mb-4">Modification du compte</h2>
+		<form
+			action="index.php?controlleur=compte&methode=modifierInfo" method="post" class="grid grid-cols-6 row-start-1 col-start-1 col-span-6 text-principal p-2 gap-4 text-sm lg:text-base">
+			{# nom #}
+			<div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-6 gap-4">
+				<div class="row-start-1 col-start-1 col-span-2 flex flex-row items-center gap-2">
+					<img src="../asset/icones/person-vcard (1).svg" alt="nom" class="w-6 h-6 bg-principal py-1 rounded-md">
+					<label for="nom" class="">Nom</label>
+				</div>
+				<input name="nom" id="nom" class="row-start-1 col-start-3 col-span-4 text-gray-400 border-solid border-2 border-principal rounded-md px-2" value="{{ user.getNom }}">
+			</div>
+
+			{# bouton de validation/annulation #}
+			<div class="row-start-7 col-start-1 col-span-6 flex justify-end">
+				<button type="button" onclick="closePopup()" class="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg mr-2">Annuler</button>
+				<button type="submit" class="px-4 py-2 bg-principal text-white rounded-lg">Modifier</button>
+			</div>
+		</form>
+
+	</div>
+</div>
+
+
+
+
+
+
+<script>
+	function openPopup(int val) {
+		if (val == 1) {
+			document.getElementById("popupModifCompte");
+			document.getElementById("popup").classList.add("hidden");
+		} else {
+			document.getElementById("popupParam");
+			document.getElementById("popup").classList.add("hidden");
+		}
+		
+
+}
+
+function closePopup() {
+document.getElementById("popup").classList.add("hidden");
+}
+</script>{% endblock %}
+
