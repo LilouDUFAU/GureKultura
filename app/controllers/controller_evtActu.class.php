@@ -53,7 +53,7 @@ class ControllerEvtActu extends Controller {
             }
     
             // Récupérer les commentaires associés à l'événement
-            $commentaires = $this->afficherCommentaires($id);
+            $commentaires = $this->afficherCommentaires($id, $type);
             $managerActualite = new ActualiteDao($pdo);
             $actualite = $managerActualite->findAllWithCategorie();
 
@@ -75,7 +75,7 @@ class ControllerEvtActu extends Controller {
      * @details Permet d'ajouter un commentaire
      */
     public function ajouterCommentaire()
-{
+    {
     // Vérifier si l'utilisateur est connecté
     if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
     
@@ -109,25 +109,43 @@ class ControllerEvtActu extends Controller {
         header("Location: index.php?controlleur=connexion&methode=lister");
         exit();
     }
-}
+    }
 
     /**
      * @function afficherCommentaires
-     * @details Permet de récupérer les commentaires associés à un événement
+     * @details Permet de récupérer les commentaires associés à un événement ou une actualité
      */
-    public function afficherCommentaires($evtId) {
+    public function afficherCommentaires($id, $type) {
         $pdo = Bd::getInstance()->getPdo();
-        $sql = "SELECT c.contenu, c.datePubli, u.nom AS userNom 
-                FROM gk_commentaire c 
-                JOIN gk_user u ON c.userId = u.userId 
-                WHERE c.evtId = :evtId 
-                ORDER BY c.datePubli DESC";
+
+        // Vérifier si le type est "Evenement" ou "Actualite" et récupérer les commentaires correspondants
+        if ($type == "Evenements") {
+            // Requête pour récupérer les commentaires pour un événement
+            $sql = "SELECT c.contenu, c.datePubli, u.nom AS userNom 
+                    FROM gk_commentaire c 
+                    JOIN gk_user u ON c.userId = u.userId 
+                    WHERE c.evtId = :id 
+                    ORDER BY c.datePubli DESC";
+        } elseif ($type == "Actualites") {
+            // Requête pour récupérer les commentaires pour une actualité
+            $sql = "SELECT c.contenu, c.datePubli, u.nom AS userNom 
+                    FROM gk_commentaire c 
+                    JOIN gk_user u ON c.userId = u.userId 
+                    WHERE c.actuId = :id 
+                    ORDER BY c.datePubli DESC";
+        } else {
+            echo "Erreur : Type invalide.";
+            return [];
+        }
+
+        // Exécuter la requête
         $stmt = $pdo->prepare($sql);
-        $stmt->execute([':evtId' => $evtId]);
+        $stmt->execute([':id' => $id]);
         $commentaires = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         return $commentaires;
     }
+
 }
 
 
