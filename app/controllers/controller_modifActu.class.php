@@ -4,16 +4,16 @@ require_once '../app/controllers/validator.class.php';
 
 
 /**
- * @class ControllerModifEv
+ * @class ControllerModifActu
  * @extends parent<Controller>
- * @details Permet de gérer les actions liées à la page "modifEv"
+ * @details Permet de gérer les actions liées à la page "modifActu"
  */
 class ControllerModifActu extends Controller
 {
 
     /**
-     * @constructor ControllerModifEv
-     * @details Constructeur de la classe ControllerModifEv
+     * @constructor ControllerModifActu
+     * @details Constructeur de la classe ControllerModifActu
      * @param Twig\Environment $twig
      * @param Twig\Loader\FileSystemLoader $loader
      * @return void
@@ -25,9 +25,9 @@ class ControllerModifActu extends Controller
 
 
     /**
-     * @function modifierEv
-     * @details Fonction permettant de modifier un événement
-     * @uses EvenementDao
+     * @function modifierActu
+     * @details Fonction permettant de modifier une actualité
+     * @uses ActualiteDao
      * @uses Bd
      * @uses update
      * @return void
@@ -55,7 +55,6 @@ class ControllerModifActu extends Controller
         $actuActuel['categorieId'] = $actualite[0]->getCateId();
 
         $_SESSION['actuActuel'] = $actuActuel;
-        var_dump($actuActuel);
 
         // Rendre le template Twig
         echo $this->getTwig()->render('modifActu.html.twig', [
@@ -116,7 +115,7 @@ class ControllerModifActu extends Controller
             // recuperation des donnees du formulaire
             $donnees = $_POST;
 
-            // si l'id de la categorie n'est pas defini, alors on recupere celui de la variable de session evenementActuel
+            // si l'id de la categorie n'est pas defini, alors on recupere celui de la variable de session actualiteActuel
             if (empty($donnees['cateId'])) {
                 $donnees['cateId'] = $_SESSION['actuActuel']['categorieId'];
             }
@@ -159,7 +158,7 @@ class ControllerModifActu extends Controller
                     $contenuModifie = false;
                 }
 
-                if ($donnees['img'] != $_SESSION['actuActuel']['img']) {
+                if ($donnees['img'] != $_SESSION['actuActuel']['img'] && $donnees['img'] != null) {
                     $imgModifie = true;
                 }
                 else{
@@ -232,7 +231,7 @@ class ControllerModifActu extends Controller
             $managerActualite->update($donnees, $champ, $_SESSION['actuActuel']['id']);
 
             // redirection vers la page de l'événement
-            // header('Location: index.php?controlleur=mesEv&methode=lister');:
+            // header('Location: index.php?controlleur=mesActu&methode=lister');:
         }catch(Exception $e){
             echo $e->getMessage();
         }

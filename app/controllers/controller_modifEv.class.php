@@ -88,7 +88,7 @@ class ControllerModifEv extends Controller
                     'obligatoire' => true,
                     'type' => 'string',
                     'longueurMin' => 5,
-                    'longueurMax' => 30,
+                    'longueurMax' => 100,
                     'format' => '/^[a-zA-Z0-9\s]+$/'
                 ],
                 'cateId' => [
@@ -223,7 +223,7 @@ class ControllerModifEv extends Controller
                     $categorieModifie = false;
                 }
 
-                if ($donnees['autorisation'] != $_SESSION['evtActuel']['autorisation']) {
+                if ($donnees['autorisation'] != $_SESSION['evtActuel']['autorisation'] && $donnees['autorisation'] != null) {
                     $autorisationModifie = true;
                 }
                 else{
@@ -300,7 +300,7 @@ class ControllerModifEv extends Controller
                     $lieuModifie = false;
                 }
 
-                if ($donnees['photo'] != $_SESSION['evtActuel']['photo']) {
+                if ($donnees['photo'] != $_SESSION['evtActuel']['photo'] && $donnees['photo'] != null) {
                     $photoModifie = true;
                 }
                 else{

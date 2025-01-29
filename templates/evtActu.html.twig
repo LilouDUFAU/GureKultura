@@ -7,51 +7,56 @@
     <!-- Contenu spécifique de chaque page -->
     <div class="h-full">
         <div class="gap-2 p-2 grid grid-cols-12 items-center">
-            <h1 class="row-start-1 col-span-12 text-center font-bold text-4xl p-2 text-[#A23145]">{{ evtActus.titre }}</h1>
+            <h1 class="row-start-1 col-span-12 text-center font-bold text-4xl p-2 text-principal">{{ evtActus.titre }}</h1>
 
             <!-- Colonne de gauche -->
-            <div class="grid grid-cols-subgrid col-start-1 col-span-12 row-start-2 lg:col-span-6 lg:row-start-2 h-full">
-                <img src="../asset/evenement/{{ evtActus.photo }}" alt="photo evenement" class="row-start-1 col-start-1 col-span-12 lg:col-span-6 rounded-lg">
-                <p class="row-start-2 col-start-1 col-span-12 lg:col-span-6 break-words">{{ evtActus.description }}</p>
+            <div class="grid grid-cols-subgrid col-start-1 col-span-12 row-start-3 lg:col-start-1 lg:col-span-6 lg:row-start-2">
+                <p class="row-start-1 col-start-1 col-span-12 lg:col-span-6 text-justify break-words text-principal">{{ evtActus.description }}</p>
+                
+                <div class="row-start-2 col-start-1 col-span-12 lg:col-span-6 border-2 border-solid border-principal bg-principal bg-opacity-55 rounded-lg p-2 h-fit text-center">
+                    <div class="row-start-1 col-start-1 col-span-12 lg:col-span-6 text-2xl font-bold text-white flex flex-row items-center justify-center gap-2 mb-4">
+                        <img src="../asset/icones/person-vcard (1).svg" alt="icone" class="w-6 h-6 inline-block">
+                        <h2 >Fiche Responsable</h2>
+                    </div>
+                    <p class="row-start-2 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Nom : {{ evtActus.nomRep }}</p>
+                    <p class="row-start-3 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Prénom : {{ evtActus.prenomRep }}</p>
+                    <p class="row-start-4 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Mail : {{ evtActus.email }}</p>
+                    <p class="row-start-5 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Téléphone : {{ evtActus.tel }}</p>
+                    <a href="../asset/evenement/autorisation/{{ evtActus.autorisation }}" class="row-start-6 col-start-1 col-span-6 rounded-lg text-link underline" target="_blank">Cliquez ici pour visionner le fichier PDF <img src="../asset/icones/box-arrow-up-right.svg"></a>
+                </div>
+            </div>
 
-                <div class="row-start-3 col-start-1 col-span-12 lg:col-span-6 grid grid-cols-subgrid border-2 border-solid border-[#A23145] rounded-lg bg-[#A23145] bg-opacity-55 p-2">
-                    <p class="row-start-1 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold text-center">Date début : {{ evtActus.dateDebut }}  {{ evtActus.heureDebut }}</p>
-                    <p class="row-start-2 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold text-center">Date fin : {{ evtActus.dateFin }}  {{ evtActus.heureFin }}</p>
-                    <p class="row-start-3 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold text-center">Lieu : {{ evtActus.lieu }}</p>
+            <!-- Colonne de droite -->
+            <div class="grid grid-cols-subgrid col-start-1 col-span-12 row-start-2 lg:col-start-7 lg:col-span-6 lg:row-start-2 h-full gap-2">
+                <img src="../asset/evenement/photo/{{ evtActus.photo }}" alt="photo evenement" class="row-start-1 col-start-1 col-span-12 lg:col-start-3 lg:col-span-2 rounded-lg">
+                <div class="row-start-2 col-start-1 col-span-12 lg:col-span-6 grid grid-cols-subgrid border-2 border-solid border-principal rounded-lg bg-principal bg-opacity-55 p-2 text-center">
+                    <p class="row-start-1 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Date début : {{ evtActus.dateDebut }}  {{ evtActus.heureDebut|date("H:i") }}</p>
+                    <p class="row-start-2 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Date fin : {{ evtActus.dateFin }}  {{ evtActus.heureFin|date("H:i") }}</p>
+                    <p class="row-start-3 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Lieu : {{ evtActus.lieu }}</p>
                 </div>
             </div>
             
-
-            <!-- Colonne de droite -->
-            <div class="grid grid-cols-subgrid col-start-1 col-span-12 row-start-3 lg:col-start-7 lg:col-span-6 lg:row-start-2 border-2 border-solid border-[#A23145] bg-[#A23145] bg-opacity-55 rounded-lg p-2 h-full">
-                <h2 class="row-start-1 col-start-1 col-span-12 lg:col-span-6 text-2xl font-bold text-center text-white">Fiche Responsable</h2>
-                <p class="row-start-2 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Nom : {{ evtActus.nomRep }}</p>
-                <p class="row-start-3 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Prénom : {{ evtActus.prenomRep }}</p>
-                <p class="row-start-4 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Mail : {{ evtActus.email }}</p>
-                <p class="row-start-5 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Téléphone : {{ evtActus.tel }}</p>
-                <img src="../asset/evenement/ {{ evtActus.autorisation}}" alt="autorisation evenment" class="row-start-6 col-start-1 col-span-6 rounded-lg">
-            </div>
             </div>
 
         <!-- Section Commentaires -->
-        <div class="row-start-4 lg:row-start-3 col-span-12 m-2 p-4 bg-[#f4f4f4] rounded-lg shadow-md">
-            <h2 class="text-2xl font-bold text-[#A23145] mb-4">Commentaires</h2>
+        <div class="row-start-4 lg:row-start-3 col-span-12 m-2 p-4 bg-gray-100 rounded-lg shadow-md drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
+            <h2 class="text-2xl font-bold text-principal mb-4">Commentaires</h2>
 
             <!-- Exemples de commentaires -->
             <div class="mb-6">
-                <p class="font-semibold text-[#A23145]">John Doe :</p>
+                <p class="font-semibold text-principal">John Doe :</p>
                 <p class="text-gray-700">"Un super match, la victoire de Bayonne était bien méritée. Hâte de voir la prochaine rencontre !"</p>
             </div>
             <div class="mb-6">
-                <p class="font-semibold text-[#A23145]">Marie Dupont :</p>
+                <p class="font-semibold text-principal">Marie Dupont :</p>
                 <p class="text-gray-700">"Clermont a bien joué, mais quelques erreurs ont coûté cher. Bravo à Bayonne pour leur performance."</p>
             </div>
 
             <!-- Formulaire pour ajouter un commentaire -->
             <div class="mt-6">
-                <label for="comment" class="block text-[#A23145] font-semibold mb-2">Ajouter un commentaire :</label>
-                <textarea id="comment" name="comment" rows="3" class="w-full p-3 border-2 border-[#A23145] rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#A23145]"></textarea>
-                <button type="submit" class="mt-4 px-6 py-2 bg-[#A23145] text-white font-semibold rounded-lg hover:bg-[#8a1e36]">Envoyer</button>
+                <label for="comment" class="block text-principal font-semibold mb-2">Ajouter un commentaire :</label>
+                <textarea id="comment" name="comment" rows="3" class="w-full p-3 border-2 border-principal rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-principal"></textarea>
+                <button type="submit" class="mt-4 px-6 py-2 bg-principal text-white font-semibold rounded-lg hover:bg-black">Envoyer</button>
             </div>
         </div>
     </div>
@@ -62,11 +67,11 @@
 {% if type == 'Actualites' %}
     <!-- Contenu spécifique de chaque page -->
     <div class="pt-2">
-        <div class="gap-2 p-2 grid grid-cols-12 items-center bg-[#A23145] rounded-lg">
+        <div class="gap-2 p-2 grid grid-cols-12 items-center rounded-lg text-principal">
             {# titre de l'article #}
-            <h1 class="col-span-12 text-white font-bold text-2xl lg:text-5xl text-left mb-4 break-words col-start-1 row-start-1 px-4">{{ evtActus.titre }}</h1>
+            <h1 class="col-span-12 text-principal font-bold text-2xl lg:text-5xl text-left mb-4 break-words col-start-1 row-start-1 px-4">{{ evtActus.titre }}</h1>
             {# resume de l'article #}
-                <div class="col-span-12 text-white font-bold text-sm lg:text-lg text-left mb-4 break-words col-start-1 row-start-2 px-4">
+                <div class="col-span-12 font-bold text-sm lg:text-lg text-left mb-4 break-words col-start-1 row-start-2 px-4">
                 {{ evtActus.resume }}
                 </div>
             {# contenu #}
@@ -76,57 +81,21 @@
                 {# image de l'article #}
                         <img src="../asset/actualite/{{ evtActus.img }}" alt="Image de l'événement" class="col-start-2 xl:col-start-2 col-span-4 row-start-1 rounded-lg mb-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
                 {# contenu de l'article #}
-                <div class="col-start-1 row-start-2 col-span-6 text-white font-medium text-xs lg:text-base text-left break-words"> 
+                <div class="col-start-1 row-start-2 col-span-6 font-bold text-xs lg:text-base text-left break-words"> 
                         {{ evtActus.contenu }}
                 </div>
             </div>
             {# section commentaires #}
-            <div class="gap-2 grid grid-cols-12 items-center bg-[#ffffff] border-2 border-solid border-[#621220] rounded-lg p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] sm:col-start-1 xl:col-start-10 col-span-12 xl:col-span-3 sm:row-start-4 xl:row-start-3 sm:h-full xl:h-full">
+            <div class="gap-2 grid grid-cols-12 items-center bg-gray-100 rounded-lg p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] sm:col-start-1 xl:col-start-10 col-span-12 xl:col-span-3 sm:row-start-4 xl:row-start-3 sm:h-full xl:h-full">
                 {# texte commentaire #}
-                <div class="gap-2 grid grid-cols-12 items-center bg-[#A23145] rounded-xl p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] text-center justify-center mb-4 col-span-12 text-white text-lg lg:text-3xl font-medium">Commentaire</div>
+                <h1 class="items-center rounded-xl text-center justify-center mb-4 col-span-12 text-principal text-lg lg:text-3xl font-medium">Commentaire</h1>
                 {# un exemple de commentaire #}
-                <div class="gap-2 grid grid-cols-12 items-start p-2 mb-4 col-span-12">
-                    {# pfp #}
-                    <img src="../asset/pfp.svg" alt="pfp" class="col-start-1 col-span-2 row-span-2 row-start-1 w-full rounded-lg drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
-                    {# nom #}
-                    <div class="text-black text-base col-start-3 col-span-5 row-start-1 truncate">FABIEN</div>
-                    {# temps #}
-                    <div class="text-black text-xs col-start-8 col-span-3 row-start-1">il y a 2 heures</div>
-                    {# ... #}
-                    <img src="../asset/pointpointpoint.svg" alt="..." class="col-start-11 col-span-1 row-span-1 row-start-1">
-                    {# texte #}
-                    <div class="text-black text-base col-start-3 col-span-8 row-start-2 break-words">Pas de souci à la fin c'est toujours Bayonne qui gagne.</div>
-                    {# like #}
-                    <button type="button" id="like-button"  class="col-start-11 col-span-1 row-span-1 row-start-2" onclick="toggleLike()">
-                        <img id="like-icon" src="../asset/pouce_en_l_air_grand.svg" alt="Like"/>
-                    </button>
-                    {# compteur de nombre de likes #}
-                    <img src="../asset/cercle_compteur_likes.svg" alt="bouton like" class="col-start-12 col-span-1 row-span-1 row-start-2">
-                </div>
-                {# un exemple de commentaire #}
-                <div class="gap-2 grid grid-cols-12 items-start p-2 mb-4 col-span-12">
-                    {# pfp #}
-                    <img src="../asset/pfp.svg" alt="pfp" class="col-start-1 col-span-2 row-span-2 row-start-1 w-full rounded-lg drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
-                    {# nom #}
-                    <div class="text-black text-base col-start-3 col-span-5 row-start-1 truncate">THOMAS</div>
-                    {# temps #}
-                    <div class="text-black text-xs col-start-8 col-span-3 row-start-1">il y a 10 heures</div>
-                    {# ... #}
-                    <img src="../asset/pointpointpoint.svg" alt="..." class="col-start-11 col-span-1 row-span-1 row-start-1">
-                    {# texte #}
-                    <img src="../asset/BO_logo.jpg" alt="photo"  class="text-black text-base col-start-3 col-span-8 row-start-2 break-words">
-                    {# like #}
-                    <button type="button" id="like-button"  class="col-start-11 col-span-1 row-span-1 row-start-2" onclick="toggleLike()">
-                        <img id="like-icon" src="../asset/pouce_en_l_air_grand.svg" alt="Like"/>
-                    </button>
-                    {# compteur de nombre de likes #}
-                    <img src="../asset/cercle_compteur_likes.svg" alt="bouton like" class="col-start-12 col-span-1 row-span-1 row-start-2">
-                </div>
+                
                 {# barre d'interaction #}
                 <form action="../php/formulaires/formCommentaire.php" method="post" class="gap-2 grid grid-cols-12 items-start col-span-12" enctype="multipart/form-data" novalidate>
                     {# barre de texte #}
-                    <div class="col-start-1 col-span-10 row-start-1 row-span-2 items-center rounded-lg border-2 border-solid border-black bg-[#ffffff]">
-                        <textarea placeholder="Ajouter un commentaire" name="commentaire" maxlength="500" class="placeholder-gray-500 p-4 text-[#000000] w-full resize-none overflow-auto" rows="1"></textarea>
+                    <div class="col-start-1 col-span-10 row-start-1 row-span-2 items-center rounded-lg border-2 border-solid border-principal bg-white">
+                        <textarea placeholder="Ajouter un commentaire" name="commentaire" maxlength="500" class="placeholder-gray-500 p-4 text-black w-full resize-none overflow-auto" rows="1"></textarea>
                     </div>
                     {# Ajouter une image #}
                     <input type="file" id="image" name="image" accept=".jpg,.jpeg,.png,.svg,.webp" class="hidden" />
