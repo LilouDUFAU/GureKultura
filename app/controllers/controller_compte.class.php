@@ -103,7 +103,6 @@ class ControllerCompte extends Controller
             }
                 
             $user = $_SESSION['user'];
-            var_dump($user);
             $donnees['userId'] = $user->getUserId();
             
 
