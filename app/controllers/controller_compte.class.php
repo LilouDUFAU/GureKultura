@@ -261,7 +261,7 @@ class ControllerCompte extends Controller
                     $mdpChange = true;
 
 
-                    if($validator->passwordExist($donnees['mdp'])){            //vérifier que le mot de passe est correct
+                    if($validator->passwordExist($donnees['mdp'], $donnees['email'])){            //vérifier que le mot de passe est correct
                         if($validator->is_strong($donnees['nouvMdp'])) {
                             if($donnees['nouvMdp'] == $donnees['confNouvMdp']) {
                                 $mdpValide = true;

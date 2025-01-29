@@ -104,7 +104,7 @@ class ControllerConnexion extends Controller {
                 echo 'Identifiant incorrect';
             }
 
-            if($validator->passwordExist($donnees['mdp'])) {
+            if($validator->passwordExist($donnees['mdp'],$donnees['email'])) {
                 $passwordOk = true;
             } else {
                 $passwordOk = false;
