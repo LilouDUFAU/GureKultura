@@ -10,25 +10,26 @@
             <h1 class="row-start-1 col-span-12 text-center font-bold text-4xl p-2 text-principal">{{ evtActus.titre }}</h1>
 
             <!-- Colonne de gauche -->
-            <div class="grid grid-cols-subgrid col-start-1 col-span-12 row-start-3 lg:col-start-1 lg:col-span-6 lg:row-start-2 border-2 border-solid border-principal bg-principal bg-opacity-55 rounded-lg p-2 h-fit text-center">
-                <h2 class="row-start-1 col-start-1 col-span-12 lg:col-span-6 text-2xl font-bold text-white">Fiche Responsable</h2>
-                <p class="row-start-2 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Nom : {{ evtActus.nomRep }}</p>
-                <p class="row-start-3 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Prénom : {{ evtActus.prenomRep }}</p>
-                <p class="row-start-4 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Mail : {{ evtActus.email }}</p>
-                <p class="row-start-5 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Téléphone : {{ evtActus.tel }}</p>
-                <a href="../asset/evenement/autorisation/{{ evtActus.autorisation }}" class="row-start-6 col-start-1 col-span-6 rounded-lg text-link underline" target="_blank">Cliquez ici pour visionner le fichier PDF <img src="../asset/icones/box-arrow-up-right.svg"></a>
-
+            <div class="grid grid-cols-subgrid col-start-1 col-span-12 row-start-3 lg:col-start-1 lg:col-span-6 lg:row-start-2">
+                <p class="row-start-1 col-start-1 col-span-12 lg:col-span-6 text-justify break-words text-principal">{{ evtActus.description }}</p>
+                
+                <div class="row-start-2 col-start-1 col-span-12 lg:col-span-6 border-2 border-solid border-principal bg-principal bg-opacity-55 rounded-lg p-2 h-fit text-center">
+                    <div class="row-start-1 col-start-1 col-span-12 lg:col-span-6 text-2xl font-bold text-white flex flex-row items-center justify-center gap-2 mb-4">
+                        <img src="../asset/icones/person-vcard (1).svg" alt="icone" class="w-6 h-6 inline-block">
+                        <h2 >Fiche Responsable</h2>
+                    </div>
+                    <p class="row-start-2 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Nom : {{ evtActus.nomRep }}</p>
+                    <p class="row-start-3 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Prénom : {{ evtActus.prenomRep }}</p>
+                    <p class="row-start-4 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Mail : {{ evtActus.email }}</p>
+                    <p class="row-start-5 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Téléphone : {{ evtActus.tel }}</p>
+                    <a href="../asset/evenement/autorisation/{{ evtActus.autorisation }}" class="row-start-6 col-start-1 col-span-6 rounded-lg text-link underline" target="_blank">Cliquez ici pour visionner le fichier PDF <img src="../asset/icones/box-arrow-up-right.svg"></a>
+                </div>
             </div>
 
-            
-            
-
             <!-- Colonne de droite -->
-            <div class="grid grid-cols-subgrid col-start-1 col-span-12 row-start-2 lg:col-start-7 lg:col-span-6 lg:row-start-2 h-full">
-                <img src="../asset/evenement/photo/{{ evtActus.photo }}" alt="photo evenement" class="row-start-1 col-start-1 col-span-12 lg:col-span-6 rounded-lg">
-                <p class="row-start-2 col-start-1 col-span-12 lg:col-span-6 text-justify break-words">{{ evtActus.description }}</p>
-
-                <div class="row-start-3 col-start-1 col-span-12 lg:col-span-6 grid grid-cols-subgrid border-2 border-solid border-principal rounded-lg bg-principal bg-opacity-55 p-2 text-center">
+            <div class="grid grid-cols-subgrid col-start-1 col-span-12 row-start-2 lg:col-start-7 lg:col-span-6 lg:row-start-2 h-full gap-2">
+                <img src="../asset/evenement/photo/{{ evtActus.photo }}" alt="photo evenement" class="row-start-1 col-start-1 col-span-12 lg:col-start-3 lg:col-span-2 rounded-lg">
+                <div class="row-start-2 col-start-1 col-span-12 lg:col-span-6 grid grid-cols-subgrid border-2 border-solid border-principal rounded-lg bg-principal bg-opacity-55 p-2 text-center">
                     <p class="row-start-1 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Date début : {{ evtActus.dateDebut }}  {{ evtActus.heureDebut|date("H:i") }}</p>
                     <p class="row-start-2 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Date fin : {{ evtActus.dateFin }}  {{ evtActus.heureFin|date("H:i") }}</p>
                     <p class="row-start-3 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Lieu : {{ evtActus.lieu }}</p>
@@ -38,7 +39,7 @@
             </div>
 
         <!-- Section Commentaires -->
-        <div class="row-start-4 lg:row-start-3 col-span-12 m-2 p-4 bg-black rounded-lg shadow-md">
+        <div class="row-start-4 lg:row-start-3 col-span-12 m-2 p-4 bg-gray-100 rounded-lg shadow-md drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
             <h2 class="text-2xl font-bold text-principal mb-4">Commentaires</h2>
 
             <!-- Exemples de commentaires -->
@@ -85,47 +86,11 @@
                 </div>
             </div>
             {# section commentaires #}
-            <div class="gap-2 grid grid-cols-12 items-center bg-gray-100 border-2 border-solid border-principal rounded-lg p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] sm:col-start-1 xl:col-start-10 col-span-12 xl:col-span-3 sm:row-start-4 xl:row-start-3 sm:h-full xl:h-full">
+            <div class="gap-2 grid grid-cols-12 items-center bg-gray-100 rounded-lg p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] sm:col-start-1 xl:col-start-10 col-span-12 xl:col-span-3 sm:row-start-4 xl:row-start-3 sm:h-full xl:h-full">
                 {# texte commentaire #}
-                <div class="gap-2 grid grid-cols-12 items-center bg-principal rounded-xl p-4 text-center justify-center mb-4 col-span-12 text-white text-lg lg:text-3xl font-medium">Commentaire</div>
+                <h1 class="items-center rounded-xl text-center justify-center mb-4 col-span-12 text-principal text-lg lg:text-3xl font-medium">Commentaire</h1>
                 {# un exemple de commentaire #}
-                <div class="gap-2 grid grid-cols-12 items-start p-2 mb-4 col-span-12">
-                    {# pfp #}
-                    <img src="../asset/pfp.svg" alt="pfp" class="col-start-1 col-span-2 row-span-2 row-start-1 w-full rounded-lg">
-                    {# nom #}
-                    <div class="text-black text-base col-start-3 col-span-5 row-start-1 truncate">FABIEN</div>
-                    {# temps #}
-                    <div class="text-black text-xs col-start-8 col-span-3 row-start-1">il y a 2 heures</div>
-                    {# ... #}
-                    <img src="../asset/pointpointpoint.svg" alt="..." class="col-start-11 col-span-1 row-span-1 row-start-1">
-                    {# texte #}
-                    <div class="text-black text-base col-start-3 col-span-8 row-start-2 break-words">Pas de souci à la fin c'est toujours Bayonne qui gagne.</div>
-                    {# like #}
-                    <button type="button" id="like-button"  class="col-start-11 col-span-1 row-span-1 row-start-2" onclick="toggleLike()">
-                        <img id="like-icon" src="../asset/pouce_en_l_air_grand.svg" alt="Like"/>
-                    </button>
-                    {# compteur de nombre de likes #}
-                    <img src="../asset/cercle_compteur_likes.svg" alt="bouton like" class="col-start-12 col-span-1 row-span-1 row-start-2">
-                </div>
-                {# un exemple de commentaire #}
-                <div class="gap-2 grid grid-cols-12 items-start p-2 mb-4 col-span-12">
-                    {# pfp #}
-                    <img src="../asset/pfp.svg" alt="pfp" class="col-start-1 col-span-2 row-span-2 row-start-1 w-full rounded-lg">
-                    {# nom #}
-                    <div class="text-black text-base col-start-3 col-span-5 row-start-1 truncate">THOMAS</div>
-                    {# temps #}
-                    <div class="text-black text-xs col-start-8 col-span-3 row-start-1">il y a 10 heures</div>
-                    {# ... #}
-                    <img src="../asset/pointpointpoint.svg" alt="..." class="col-start-11 col-span-1 row-span-1 row-start-1">
-                    {# texte #}
-                    <img src="../asset/BO_logo.jpg" alt="photo"  class="text-black text-base col-start-3 col-span-8 row-start-2 break-words">
-                    {# like #}
-                    <button type="button" id="like-button"  class="col-start-11 col-span-1 row-span-1 row-start-2" onclick="toggleLike()">
-                        <img id="like-icon" src="../asset/pouce_en_l_air_grand.svg" alt="Like"/>
-                    </button>
-                    {# compteur de nombre de likes #}
-                    <img src="../asset/cercle_compteur_likes.svg" alt="bouton like" class="col-start-12 col-span-1 row-span-1 row-start-2">
-                </div>
+                
                 {# barre d'interaction #}
                 <form action="../php/formulaires/formCommentaire.php" method="post" class="gap-2 grid grid-cols-12 items-start col-span-12" enctype="multipart/form-data" novalidate>
                     {# barre de texte #}

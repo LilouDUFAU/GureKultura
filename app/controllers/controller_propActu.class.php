@@ -36,23 +36,28 @@ class ControllerPropActu extends Controller
      */
     public function lister()
     {
-        $pdo = Bd::getInstance()->getPdo();
+        if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
+            $pdo = Bd::getInstance()->getPdo();
 
-        $loader = new \Twig\Loader\FilesystemLoader('../templates');
-        $twig = new \Twig\Environment($loader);
+            $loader = new \Twig\Loader\FilesystemLoader('../templates');
+            $twig = new \Twig\Environment($loader);
 
-        $managerActualite = new ActualiteDao($this->getPdo());
-        $actualite = $managerActualite->findAllWithCategorie();
+            $managerActualite = new ActualiteDao($this->getPdo());
+            $actualite = $managerActualite->findAllWithCategorie();
 
-        $managerCategorie = new CategorieDao($this->getPdo());
-        $categories = $managerCategorie->findAll();
+            $managerCategorie = new CategorieDao($this->getPdo());
+            $categories = $managerCategorie->findAll();
 
-        // Rendre le template Twig
-        echo $this->getTwig()->render('propActu.html.twig', [
-            'title' => 'Proposisition d\'actualité',
-            'actualites' => $actualite,
-            'categories' => $categories
-        ]);
+            // Rendre le template Twig
+            echo $this->getTwig()->render('propActu.html.twig', [
+                'title' => 'Proposisition d\'actualité',
+                'actualites' => $actualite,
+                'categories' => $categories
+            ]);
+        } else {
+            // L'utilisateur n'est pas connecté, redirigez-le vers la page de connexion
+            header('Location: index.php?controlleur=connexion&methode=lister');
+        }
     }
 
     /**
@@ -178,7 +183,7 @@ class ControllerPropActu extends Controller
 
                 ]);
 
-                if (isset($_FILES['image']) && $_FILES['image']['error'] == 0){
+                if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
                     // L'image est valide, et est donc uploadée dans asset/actualite
                     $cheminImage = '../asset/actualite/' . basename($imageName);
                     move_uploaded_file($imageTmpName, $cheminImage);

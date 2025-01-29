@@ -36,7 +36,7 @@ class ControllerPropEv extends Controller
      */
     public function lister()
     {
-        
+        if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
 
         $loader = new \Twig\Loader\FilesystemLoader('../templates');
         $twig = new \Twig\Environment($loader);
@@ -52,7 +52,10 @@ class ControllerPropEv extends Controller
             'title' => 'Proposisition d\'événement',
             'actualites' => $actualite,
             'categories' => $categories
-        ]);
+        ]);}
+        else{
+            header('Location: index.php?controlleur=connexion&methode=lister');
+        }
     }
 
 
@@ -220,7 +223,6 @@ class ControllerPropEv extends Controller
             if (!$donneesValides) {
                 $messageErreurs = $validator->getMessageErreurs();
             }
-
             // recuperation des erreurs
 
             // Rendre le template Twig
@@ -241,8 +243,7 @@ class ControllerPropEv extends Controller
                     'messageErreurs' => $messageErreurs,
                     'donnees' => $donnees,
                     'actualites' => $actualite,
-                    'categories' => $categories
-
+                    'categories' => $categories,
                 ]);
             } else {
                 if (!$this->insererDonneesDansLaBase($donnees)) {
