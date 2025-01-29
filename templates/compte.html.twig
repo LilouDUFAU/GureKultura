@@ -112,7 +112,7 @@
 
 			{# bouton de validation/annulation #}
 			<div class="row-start-7 col-start-1 col-span-6 flex justify-end">
-				<button type="button" onclick="closePopup()" class="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg mr-2">Annuler</button>
+				<button type="button" onclick="closePopup(1)" class="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg mr-2">Annuler</button>
 				<button type="submit" class="px-4 py-2 bg-principal text-white rounded-lg">Modifier</button>
 			</div>
 		</form>
@@ -138,7 +138,7 @@
 
 			{# bouton de validation/annulation #}
 			<div class="row-start-7 col-start-1 col-span-6 flex justify-end">
-				<button type="button" onclick="closePopup()" class="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg mr-2">Annuler</button>
+				<button type="button" onclick="closePopup(2)" class="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg mr-2">Annuler</button>
 				<button type="submit" class="px-4 py-2 bg-principal text-white rounded-lg">Modifier</button>
 			</div>
 		</form>
@@ -152,20 +152,22 @@
 
 
 <script>
-	function openPopup(int val) {
+	function openPopup(val) {
 		if (val == 1) {
-			document.getElementById("popupModifCompte");
-			document.getElementById("popup").classList.add("hidden");
+			document.getElementById("popupModifCompte").parentElement.parentElement.classList.remove("hidden");
 		} else {
-			document.getElementById("popupParam");
-			document.getElementById("popup").classList.add("hidden");
+			document.getElementById("popupParam").parentElement.parentElement.classList.remove("hidden");
 		}
 		
 
 }
 
-function closePopup() {
-document.getElementById("popup").classList.add("hidden");
+function closePopup(val) {
+		if (val == 1) {
+			document.getElementById("popupModifCompte").parentElement.parentElement.classList.add("hidden");
+		} else {
+			document.getElementById("popupParam").parentElement.parentElement.classList.add("hidden");
+		}
 }
 </script>{% endblock %}
 
