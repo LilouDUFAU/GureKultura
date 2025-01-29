@@ -6,8 +6,12 @@ function toggleCate(cateId, categorieOriginale) {
     cateCheckbox.forEach(function(cateCheckbox) {
         if (checkbox.checked) {
             cateCheckbox.style.display = "block";
+            cateCheckbox.classList.remove("hidden");
         } else {
             cateCheckbox.style.display = "none";
+            cateCheckbox.classList.add("hidden");
+            cateCheckbox.children[0].checked = false;
+            toggleDiv(cateCheckbox.children[0].getAttribute('cateId'));
         }
     });
 } 
@@ -20,8 +24,10 @@ function toggleDiv(cateId) {
     divs.forEach(function(div) {
                 if (checkbox.checked) {
             div.style.display = "block";
+            div.classList.remove("hidden");
         } else {
             div.style.display = "none";
+            div.classList.add("hidden");
         }
     });
 } 
