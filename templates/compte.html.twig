@@ -12,43 +12,43 @@
 				<button type="button" onclick="openPopup(2)"><img src="../asset/icones/gear-wide-connected.svg" alt="parametre" class="w-8 h-8"></button>
 			</div>
 			<h2 class="row-start-2 col-start-1 col-span-12 font-bold text-lg text-center">{{ user.getPseudo }}</h2>
-			<p class="row-start-3 col-strat-1 col-span-12 lg:col-start-5 lg:col-span-4 text-center">{{ user.getBio }}</p>
-			<button type="button" class="row-start-4 col-start-4 col-span-6 lg:col-span-2 lg:col-start-6 bg-principal text-white text-center rounded-md px-2 py-1" onclick="openPopup(1)">Modification profil</button>
+			<p class="row-start-3 col-start-5 col-span-4 text-center">{{ user.getBio }}</p>
+			<button type="button" class="row-start-4 col-start-6 col-span-2 bg-principal text-white text-center rounded-md px-2 py-1" onclick="openPopup(1)">Modification profil</button>
 		</div>
 
 		{# corps du compte #}
-		<div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-12 gap-2 p-4 border-2 border-solid border-principal rounded-lg">
+		<div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-12 gap-2 bg-principal bg-opacity-55 p-4 rounded-lg">
 			{% if user.role == 'user' %}
-				<div class="grid grid-cols-subgrid row-start-1 col-start-1 col-span-12 lg:col-start-4 lg:col-span-6">
-					<label class="row-start-1 col-start-1 col-span-7 lg:col-span-4 ">Souhaitez-vous voir vos évènements ?</label>
-					<a href="index.php?controlleur=mesEv&methode=lister " type="" class="col-start-8 col-span-5 lg:col-start-5 lg:col-span-2 bg-principal text-white rounded-lg text-center px-2 py-1 h-fit">Mes évènements</a>
+				<div class="grid grid-cols-subgrid row-start-1 col-start-1 col-span-12">
+					<label class="row-start-1 col-start-1 col-span-4 ">Souhaitez-vous voir vos évènements ?</label>
+					<a href="index.php?controlleur=mesEv&methode=lister " type="" class="col-start-5 col-span-2 bg-principal text-white rounded-lg text-center px-2 py-1 h-fit">Mes évènements</a>
 				</div>
 
-				<div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-12 lg:col-start-4 lg:col-span-6">
-					<label class="row-start-1 col-start-1 col-span-7 lg:col-span-4 ">Souhaitez-vous voir vos participations ?</label>
-					<a href="index.php?controlleur=mesEv&methode=lister " type="" class="col-start-8 col-span-5 lg:col-start-5 lg:col-span-2 bg-principal text-white rounded-lg text-center px-2 py-1 h-fit">Mes participations</a>
+				<div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-12">
+					<label class="row-start-1 col-start-1 col-span-4 ">Souhaitez-vous voir vos participations ?</label>
+					<a href="index.php?controlleur=mesEv&methode=lister " type="" class="col-start-5 col-span-2 bg-principal text-white rounded-lg text-center px-2 py-1 h-fit">Mes participations</a>
 				</div>
 
 				{# voir actualité si user = admin #}
 			{% else %}
-				<div class="grid grid-cols-subgrid row-start-1 col-start-1 col-span-12 lg:col-start-4 lg:col-span-6">
-					<label class="row-start-1 col-start-1 col-span-7 lg:col-span-4 ">Souhaitez-vous voir vos actualités ?</label>
-					<a href="index.php?controlleur=mesActu&methode=lister " class="col-start-8 col-span-5 lg:col-start-5 lg:col-span-2 bg-principal text-white rounded-lg text-center px-2 py-1 h-fit">Mes actualités</a>
+				<div class="grid grid-cols-subgrid row-start-1 col-start-1 col-span-12">
+					<label class="row-start-1 col-start-1 col-span-4 ">Souhaitez-vous voir vos actualités ?</label>
+					<a href="index.php?controlleur=mesActu&methode=lister " class="col-start-5 col-span-2 bg-principal text-white rounded-lg text-center px-2 py-1 h-fit">Mes actualités</a>
 				</div>
 
-				<div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-12 lg:col-start-4 lg:col-span-6">
-					<label class="row-start-1 col-start-1 col-span-7 lg:col-span-4 ">Souhaitez-vous voir les évènements proposés ?</label>
-					<a href="index.php?controlleur=mesEv&methode=lister " type="" class="col-start-8 col-span-5 lg:col-start-5 lg:col-span-2 bg-principal text-white rounded-lg text-center px-2 py-1 h-fit">Liste évènements</a>
+				<div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-12">
+					<label class="row-start-1 col-start-1 col-span-4 ">Souhaitez-vous voir les évènements proposés ?</label>
+					<a href="index.php?controlleur=mesEv&methode=lister " type="" class="col-start-5 col-span-2 bg-principal text-white rounded-lg text-center px-2 py-1 h-fit">Liste évènements</a>
 				</div>
 			{% endif %}
 
 			{# changer de role si user = admin #}
 			{% if user.estAdmin %}
-				<div class="grid grid-cols-subgrid row-start-3 col-start-1 col-span-12 lg:col-start-4 lg:col-span-6">
-					<label class="row-start-1 col-start-1 col-span-7 lg:col-span-3">Voulez-vous changer de rôle ?</label>
-					<a href="index.php?controlleur=compte&methode=switchRole" class="col-strat-8 col-span-5 lg:col-start-5 lg:col-span-2 bg-principal text-white rounded-lg text-center px-2 py-1 h-fit">Changer de rôle</a>
-					<label for="role" class="row-start-2 col-start-1 col-span-4 lg:ol-span-1 underline">Rôle actuel</label>
-					<label for="role" class="row-start-2 col-start-5 col-span-2 lg:col-start-2 lg:col-span-1 font-bold">
+				<div class="grid grid-cols-subgrid row-start-3 col-start-1 col-span-12">
+					<label class="row-start-1 col-start-1 col-span-3">Souhaitez-vous changer de rôle ?</label>
+					<a href="index.php?controlleur=compte&methode=switchRole" class="col-start-5 col-span-2 bg-principal text-white rounded-lg text-center px-2 py-1 h-fit">Changer de rôle</a>
+					<label for="role" class="row-start-2 col-start-1 col-span-1 underline">Rôle actuel</label>
+					<label for="role" class="row-start-2 col-start-2 col-span-1 font-bold">
 						{{ user.role }}
 					</label>
 				</div>
@@ -122,55 +122,29 @@
 
 
 <div id="popup" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden z-50 text-principal">
-	<div class="grid grid-cols-6 bg-white p-6 rounded-lg shadow-lg w-full max-w-xl h-fit max-h-xl gap-2 text-sm lg:text-base">
+	<div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-xl h-fit max-h-xl">
 		<input type="hidden" id="popupParam" name="parametre" value="">
-		<h2 class="row-start-1 col-start-1 col-span-6 text-xl font-bold text-center mb-4">Modification du compte</h2>
+		<h2 class="text-xl font-bold text-center mb-4">Modification du compte</h2>
+		<form
+			action="index.php?controlleur=compte&methode=modifierInfo" method="post" class="grid grid-cols-6 row-start-1 col-start-1 col-span-6 text-principal p-2 gap-4 text-sm lg:text-base">
+			{# nom #}
+			<div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-6 gap-4">
+				<div class="row-start-1 col-start-1 col-span-2 flex flex-row items-center gap-2">
+					<img src="../asset/icones/person-vcard (1).svg" alt="nom" class="w-6 h-6 bg-principal py-1 rounded-md">
+					<label for="nom" class="">Nom</label>
+				</div>
+				<input name="nom" id="nom" class="row-start-1 col-start-3 col-span-4 text-gray-400 border-solid border-2 border-principal rounded-md px-2" value="{{ user.getNom }}">
+			</div>
 
-		{# autorisation #}
-		<div class="row-start-2 col-start-1 col-span-6 flex flex-row justify-between items-center gap-2 border-b-2 border-b-solid border-b-gray-300 pb-2">
-				<input type="checkbox" name="autorisation" id="autorisation" class="h-4 w-4">
-				<label class="row-start-1 col-start-1 col-span-5">J'autorise GureKultura à utiliser mon adresse e-mail et/ou mon numéro de téléphone pour m'envoyer des recommandations personnalisées, des nouveautés pertinentes.</label>
-		</div>
-
-
-		<div class="row-start-3 col-start-1 col-span-6 flex flex-row justify-between items-center gap-2 border-b-2 border-b-solid border-b-gray-300 pb-2">
-				<input type="checkbox" name="autorisation2" id="autorisation2" class="h-4 w-4">
-				<label class="row-start-1 col-start-1 col-span-5">J'autorise GureKultura à utiliser et stocker mes données personnelles telles que mes photos, nom et prénom, conformément à leur politique de confidentialité.</label>
-		</div>
-
-		{# FaQ #}
-		<div class="grid grid-cols-subgrid row-start-4 col-start-1 col-span-6 border-b-2 border-b-solid border-b-gray-300 pb-2"> 
-			<label class="row-start-1 col-start-1 col-span-4">Des questions ? Rendez-vous sur notre FAQ</label>
-			<a href="index.php?controlleur=faq&methode=lister" class="row-start-1 col-start-5 col-span-2 bg-principal text-white rounded-md py-1 px-2 text-center h-fit">FAQ</a>
-		</div>
-
-		{# newsletter #}
-		<div class="grid grid-cols-subgrid row-start-5 col-start-1 col-span-6 border-b-2 border-b-solid border-b-gray-300 pb-2">
-			<label class="row-start-1 col-start-1 col-span-4">Souhaitez-vous consulter notre NewsLetter ?</label>
-			<a href="index.php?controlleur=faq&methode=lister" class="row-start-1 col-start-5 col-span-2 bg-principal text-white rounded-md py-1 px-2 text-center h-fit">NewsLetter</a>
-		</div>
-
-		{# deconnexion #}
-		<form action="index.php?controlleur=compte&methode=deconnexion" method="post" class="grid grid-cols-subgrid row-start-6 col-start-1 col-span-6 border-b-2 border-b-solid border-b-gray-300 pb-2">
-			<label class="row-start-1 col-start-1 col-span-3">Souhaitez-vous vous déconnecter ?</label>
-			<button arial-label="b_SupprCompte" class="row-start-1 col-start-5 col-span-2 bg-principal text-white rounded-md py-1 px-2 h-fit text-center">Déconnexion</button>
-		</form>
-
-		{# suppression #}
-		<form action="index.php?controlleur=compte&methode=supprimerCompte" method="post" class="grid grid-cols-subgrid row-start-7 col-start-1 col-span-6">
-			<label class="row-start-1 col-start-1 col-span-3">Souhaitez-vous supprimer votre compte ?</label>
-			<button arial-label="b_SupprCompte" class="row-start-1 col-start-5 col-span-2 bg-principal text-white rounded-md py-1 px-2 h-fit text-center">Suppression</button>
-		</form>
-
-		<div class="row-start-8 col-start-1 col-span-6 flex justify-end">
+			{# bouton de validation/annulation #}
+			<div class="row-start-7 col-start-1 col-span-6 flex justify-end">
 				<button type="button" onclick="closePopup(2)" class="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg mr-2">Annuler</button>
-		</div>
+				<button type="submit" class="px-4 py-2 bg-principal text-white rounded-lg">Modifier</button>
+			</div>
+		</form>
+
 	</div>
 </div>
-
-
-
-
 
 
 
