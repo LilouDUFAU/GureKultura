@@ -6,7 +6,7 @@
 
     <h1 class="text-3xl font-bold text-center text-principal">Modifier mon actualité</h1>
 
-	<form action="index.php?controlleur=modifActu&methode=validerFormModifActu" method="post" class="grid grid-cols-6 gap-2 text-white rounded-xl w-fit p-4">
+	<form action="index.php?controlleur=modifActu&methode=validerFormModifActu" method="post" class="grid grid-cols-6 gap-2 text-white rounded-xl w-fit p-4 text-sm lg:text-base">
 		<input type="hidden" name="actuId" value={{ actuActuel.id }}>
 
 		<div class="col-start-1 col-span-6 row-start-1 grid grid-cols-subgrid bg-principal rounded-lg p-4">
@@ -41,16 +41,19 @@
 
 
 			{# Image #}
-			<div class="grid grid-cols-subgrid row-start-14 col-start-1 col-span-6 p-2">
-				<label for="img" class="col-start-1 col-span-2">Photo</label>
-				<input type="file" name="img" id="img" class="col-start-3 col-span-4 bg-transparent text-gray-400" value={{ evenementActuel.img }}>
+			<div class="grid grid-cols-subgrid row-start-5 col-start-1 col-span-6 p-2">
+				<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
+					<img src="../asset/icones/image.svg" class="h-5 w-5" alt="icone de photo">
+					<label for="photo">Image</label>
+				</div>
+				<input class="col-start-3 col-span-4 bg-transparent flex w-full rounded-md border border-blue-300 border-input bg-white text-sm text-gray-400 file:border-0 file:bg-principal file:text-white file:text-sm" type="file" name="photo" id="photo" accept=".jpg, .png" value="{{ actuActuelle.img }}"/>
 			</div>
 		</div>
 
 		{# Bouton de validation ou annulation #}
-		<div class="grid grid-cols-subgrid row-start-15 col-start-1 col-span-6 p-2 gap-2">
-			<button type="submit" class="col-start-5 col-span-1 bg-principal  text-white rounded-lg p-1">Valider</button>
-			<a href="index.php?controlleur=mesActu&methode=lister" class="col-start-6 col-span-1 bg-principal text-white rounded-lg text-center p-1 ">Annuler</a>
+		<div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-6 gap-2">
+			<button type="submit" class="col-start-5 col-span-1 text-white bg-principal rounded-lg py-1 px-2">Valider</button>
+			<a href="index.php?controlleur=mesEv&methode=lister" class="col-start-6 col-span-1 text-white bg-principal rounded-lg text-center py-1 px-2">Annuler</a>
 		</div>	
 	</form>
 	</div>
