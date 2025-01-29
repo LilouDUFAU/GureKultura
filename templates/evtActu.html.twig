@@ -75,60 +75,71 @@
 
 
 {% if type == 'Actualites' %}
-	<!-- Contenu spécifique de chaque page -->
-	<div class="pt-2">
-		<div
-			class="gap-2 p-2 grid grid-cols-12 items-center bg-[#A23145] rounded-lg">
-			{# titre de l'article #}
-			<h1 class="col-span-12 text-white font-bold text-2xl lg:text-5xl text-left mb-4 break-words col-start-1 row-start-1 px-4">{{ evtActus.titre }}</h1>
-			{# resume de l'article #}
-			<div class="col-span-12 text-white font-bold text-sm lg:text-lg text-left mb-4 break-words col-start-1 row-start-2 px-4">
-				{{ evtActus.resume }}
-			</div>
-			{# contenu #}
+    <!-- Contenu spécifique de l'actualité -->
+    <div class="pt-2">
+        <div class="gap-2 p-2 grid grid-cols-12 items-center bg-[#A23145] rounded-lg">
+            <!-- titre de l'article -->
+            <h1 class="col-span-12 text-white font-bold text-2xl lg:text-5xl text-left mb-4 break-words col-start-1 row-start-1 px-4">{{ evtActus.titre }}</h1>
 
-			{# Colonne de gauche #}
-			<div
-				class="grid grid-cols-6 row-start-3 col-start-1 col-span-12 xl:col-span-8 px-4">
-				{# image de l'article #}
-				<img
-				src="../asset/actualite/{{ evtActus.img }}" alt="Image de l'événement" class="col-start-2 xl:col-start-2 col-span-4 row-start-1 rounded-lg mb-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
-				{# contenu de l'article #}
-				<div class="col-start-1 row-start-2 col-span-6 text-white font-medium text-xs lg:text-base text-left break-words">
-					{{ evtActus.contenu }}
-				</div>
-			</div>
+            <!-- résumé de l'article -->
+            <div class="col-span-12 text-white font-bold text-sm lg:text-lg text-left mb-4 break-words col-start-1 row-start-2 px-4">
+                {{ evtActus.resume }}
+            </div>
 
-			{# section commentaires #}
-			<div
-				class="gap-2 grid grid-cols-12 items-center bg-[#ffffff] border-2 border-solid border-[#621220] rounded-lg p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] sm:col-start-1 xl:col-start-10 col-span-12 xl:col-span-3 sm:row-start-4 xl:row-start-3 sm:h-full xl:h-full">
-				{# texte commentaire #}
-				<form action="index.php?controlleur=evtActu&methode=ajouterCommentaire" method="POST" class="gap-2 grid grid-cols-12 items-center bg-[#A23145] rounded-xl p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] text-center justify-center mb-4 col-span-12 text-white text-lg lg:text-3xl font-medium">Commentaires</div>
+            <!-- contenu -->
+            <div class="grid grid-cols-6 row-start-3 col-start-1 col-span-12 xl:col-span-8 px-4">
+                <!-- image de l'article -->
+                <img src="../asset/actualite/{{ evtActus.img }}" alt="Image de l'article" class="col-start-2 xl:col-start-2 col-span-4 row-start-1 rounded-lg mb-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
+                <!-- contenu de l'article -->
+                <div class="col-start-1 row-start-2 col-span-6 text-white font-medium text-xs lg:text-base text-left break-words">
+                    {{ evtActus.contenu }}
+                </div>
+            </div>
 
-				<!-- Afficher les commentaires réels -->
-				{% for commentaire in commentaires %}
-					<div
-						class="gap-2 grid grid-cols-12 items-start p-2 mb-4 col-span-12">
-						{# nom du commentateur #}
-						<div class="text-[#A23145] text-base col-start-3 col-span-5 row-start-1 truncate">{{ commentaire.userNom }}</div>
-						{# texte du commentaire #}
-						<div class="text-black text-base col-start-3 col-span-8 row-start-2 break-words">{{ commentaire.contenu }}</div>
-						{# date de publication #}
-						<div class="text-black text-xs col-start-8 col-span-3 row-start-2">{{ commentaire.datePubli|date("d/m/Y H:i") }}</div>
-					</div>
-				{% else %}
-					<p>Aucun commentaire pour cette actualité.</p>
-				{% endfor %}
+            <!-- section commentaires -->
+            <div class="gap-2 grid grid-cols-12 items-center bg-[#f4f4f4] border-2 border-solid border-[#621220] rounded-lg p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] sm:col-start-1 xl:col-start-10 col-span-12 xl:col-span-3 sm:row-start-4 xl:row-start-3 sm:h-full xl:h-full">
+                <!-- Titre "Commentaires" -->
+                <div class="gap-2 grid grid-cols-12 items-center bg-[#A23145] rounded-xl p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] text-center justify-center mb-4 col-span-12 text-white text-lg lg:text-3xl font-medium">
+                    Commentaires
+                </div>
 
-				<!-- Formulaire pour ajouter un commentaire -->
-				<div class="gap-2 grid grid-cols-12 items-start col-span-12">
-					<div class="col-start-1 col-span-10 row-start-1 row-span-2 items-center rounded-lg border-2 border-solid border-black bg-[#ffffff]">
-						<textarea placeholder="Ajouter un commentaire" name="commentaire" maxlength="500" class="placeholder-gray-500 p-4 text-[#000000] w-full resize-none overflow-auto" rows="1"></textarea>
-					</div>
-					<button type="submit" class="cursor-pointer col-start-12 col-span-1 row-start-2"><img src="../asset/envoyer_message.svg" alt="Publier" class="w-24 h-auto"/></button>
-				</div>
-			</form>
-		</div>
-	</div>
-</div>{% endif %}{% endblock %}{% block script %}<script src="../js/caroussel.js"></script>{% endblock %}
+                <!-- Afficher les commentaires réels -->
+                {% for commentaire in commentaires %}
+                    <div class="gap-2 grid grid-cols-12 items-start p-2 mb-4 col-span-12">
+                        <!-- nom du commentateur -->
+                        <div class="text-[#A23145] text-base col-start-3 col-span-5 row-start-1 truncate">{{ commentaire.userNom }}</div>
+                        <!-- texte du commentaire -->
+                        <div class="text-black text-base col-start-3 col-span-8 row-start-2 break-words">{{ commentaire.contenu }}</div>
+                        <!-- date de publication -->
+                        <div class="text-black text-xs col-start-8 col-span-3 row-start-2">{{ commentaire.datePubli|date("d/m/Y H:i") }}</div>
+                    </div>
+                {% else %}
+                    <p>Aucun commentaire pour cette actualité.</p>
+                {% endfor %}
+
+                <!-- Formulaire pour ajouter un commentaire -->
+                <form action="index.php?controlleur=evtActu&methode=ajouterCommentaire" method="POST" class="gap-2 grid grid-cols-12 items-start col-span-12">
+                    <!-- champ de texte pour le commentaire -->
+                    <div class="col-start-1 col-span-10 row-start-1 row-span-2 items-center rounded-lg border-2 border-solid border-black bg-[#ffffff]">
+                        <textarea placeholder="Ajouter un commentaire" name="commentaire" maxlength="500" class="placeholder-gray-500 p-4 text-[#000000] w-full resize-none overflow-auto" rows="1"></textarea>
+                    </div>
+
+                    <!-- Cacher l'ID de l'actualité -->
+                    <input type="hidden" name="actuId" value="{{ evtActus.actuId }}">
+
+                    <!-- bouton pour envoyer le commentaire (flèche) -->
+                    <button type="submit" class="cursor-pointer col-start-12 col-span-1 row-start-2">
+                        <img src="../asset/envoyer_message.svg" alt="Publier" class="w-24 h-auto"/>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+
+{% endblock %}
+{% block script %}
+<script src="../js/caroussel.js"></script>
+{% endblock %}
 

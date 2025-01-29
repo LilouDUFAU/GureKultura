@@ -75,7 +75,7 @@ class ControllerEvtActu extends Controller {
      * @details Permet d'ajouter un commentaire
      */
     public function ajouterCommentaire()
-    {
+{
     // Vérifier si l'utilisateur est connecté
     if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
     
@@ -84,24 +84,36 @@ class ControllerEvtActu extends Controller {
             // Récupérer les informations de l'utilisateur depuis la session
             $user = $_SESSION['user'];  // Récupérer l'objet utilisateur
             $userId = $user->getUserId(); // Utiliser le getter pour obtenir l'ID de l'utilisateur
-            $evtId = $_POST['evtId'];
+            $evtId = isset($_POST['evtId']) ? $_POST['evtId'] : null;
+            $actuId = isset($_POST['actuId']) ? $_POST['actuId'] : null;
             $contenu = htmlspecialchars($_POST['commentaire']); // Sécuriser le contenu du commentaire
 
-            // Vérification si l'ID de l'événement est valide
-            if (empty($evtId) || !is_numeric($evtId)) {
-                echo "Erreur : L'ID de l'événement est invalide.";
+            // Vérification si l'ID de l'événement ou de l'actualité est valide
+            if (empty($evtId) && empty($actuId)) {
+                echo "Erreur : L'ID de l'événement ou de l'actualité est invalide.";
                 return;
             }
 
             // Insertion dans la base de données
             $pdo = Bd::getInstance()->getPdo();
-            $sql = "INSERT INTO gk_commentaire (contenu, datePubli, evtId, userId) 
-                    VALUES (:contenu, NOW(), :evtId, :userId)";
+            $sql = "INSERT INTO gk_commentaire (contenu, datePubli, evtId, actuId, userId) 
+                    VALUES (:contenu, NOW(), :evtId, :actuId, :userId)";
             $stmt = $pdo->prepare($sql);
-            $stmt->execute([':contenu' => $contenu, ':evtId' => $evtId, ':userId' => $userId]);
+            $stmt->execute([
+                ':contenu' => $contenu, 
+                ':evtId' => $evtId, 
+                ':actuId' => $actuId, 
+                ':userId' => $userId
+            ]);
 
-            // Redirection après l'ajout du commentaire
-            header("Location: index.php?controlleur=evtActu&methode=lister&id=" . $evtId);
+            // Redirection vers la page correcte en fonction du type (événement ou actualité)
+            if ($evtId) {
+                // Si un événement est lié au commentaire, rediriger vers l'événement
+                header("Location: index.php?controlleur=evtActu&methode=lister&id=" . $evtId . "&type=Evenements");
+            } elseif ($actuId) {
+                // Si une actualité est liée au commentaire, rediriger vers l'actualité
+                header("Location: index.php?controlleur=evtActu&methode=lister&id=" . $actuId . "&type=Actualites");
+            }
             exit();
         }
     } else {
@@ -109,7 +121,11 @@ class ControllerEvtActu extends Controller {
         header("Location: index.php?controlleur=connexion&methode=lister");
         exit();
     }
-    }
+}
+
+    
+
+
 
     /**
      * @function afficherCommentaires
@@ -117,7 +133,7 @@ class ControllerEvtActu extends Controller {
      */
     public function afficherCommentaires($id, $type) {
         $pdo = Bd::getInstance()->getPdo();
-
+    
         // Vérifier si le type est "Evenement" ou "Actualite" et récupérer les commentaires correspondants
         if ($type == "Evenements") {
             // Requête pour récupérer les commentaires pour un événement
@@ -137,14 +153,15 @@ class ControllerEvtActu extends Controller {
             echo "Erreur : Type invalide.";
             return [];
         }
-
+    
         // Exécuter la requête
         $stmt = $pdo->prepare($sql);
         $stmt->execute([':id' => $id]);
         $commentaires = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
+    
         return $commentaires;
     }
+    
 
 }
 
