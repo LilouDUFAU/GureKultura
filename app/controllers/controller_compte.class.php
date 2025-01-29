@@ -97,10 +97,25 @@ class ControllerCompte extends Controller
 
             // recuperation des donnees du formulaire
             $donnees = $_POST;
+
+            // Gestion du fichier pfp
+            if (isset($_FILES['pfp']) && $_FILES['pfp']['error'] == 0) {
+                // Vérification de la validité du fichier
+                $pfpTmpName = $_FILES['pfp']['tmp_name'];
+                $pfpName = $_FILES['pfp']['name'];
+
+                // Ajouter un timestamp au nom de la pfp pour s'assurer qu'elle ait un nom unique
+                $timestamp = time();
+                $pfpName = pathinfo($pfpName, PATHINFO_FILENAME) . '_' . $timestamp . '.' . pathinfo($pfpName, PATHINFO_EXTENSION);
+            }
+
             // boucle de nettoyage des donnees
             foreach ($donnees as $key => $value) {
                 $donnees[$key] = htmlentities($value);
             }
+
+            // Ajoute les données de la pfp dans $donnees
+            $donnees['pfpName'] = $pfpName;
                 
             $user = $_SESSION['user'];
             var_dump($user);
@@ -147,10 +162,10 @@ class ControllerCompte extends Controller
                     $bioChange = false;
                 }
 
-                // verifier si le champ pfp est egal au pfp en base de donnee de l'utilisateur ayant l'id userId
-                // if ( $donnees['pfp'] != $user->getPfp() ) {
-                //     $pfpChange= true;
-                // }
+                // verifier si le champ pfp est egal a la pfp en base de donnee de l'utilisateur ayant l'id userId et que la pfp est non nulle
+                if ( $donnees['pfpName'] != $user->getPfp()  && $donnees['pfpName'] != null) {
+                    $pfpChange= true;
+                }
 
             }
  
@@ -178,6 +193,12 @@ class ControllerCompte extends Controller
 
                 ]);
             } else {
+
+                if (isset($_FILES['pfp']) && $_FILES['pfp']['error'] == 0){
+                    // La pfp est valide, et est donc uploadée dans asset/user
+                    $cheminPfp = '../asset/user/' . basename($pfpName);
+                    move_uploaded_file($pfpTmpName, $cheminPfp);
+                }
                 
                 // modifier
                 // Les données sont valides, modifiz-les dans la base de données
@@ -194,9 +215,9 @@ class ControllerCompte extends Controller
                     $this->modifierDonneesDansLaBase($donnees['bio'], 'bio');
                 }
 
-                // if ($pfpChange) {
-                //     $this->modifierDonneesDansLaBase($donnees['pfp'], 'pfp');
-                // }
+                if ($pfpChange) {
+                    $this->modifierDonneesDansLaBase($donnees['pfpName'], 'pfp');
+                }
                 
 
                 $manager = new UserDao($pdo);
