@@ -138,8 +138,10 @@ class ControllerPropActu extends Controller
                 $donnees[$key] = htmlentities($value);
             }
 
-            // Ajoute les données de l'image dans $donnees
-            $donnees['imageName'] = $imageName;
+            if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
+                // Ajoute les données de l'image dans $donnees
+                $donnees['imageName'] = $imageName;
+            }
 
             $user = $_SESSION['user'];
             $donnees['userId'] = $user->getUserId();

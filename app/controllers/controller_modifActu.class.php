@@ -100,7 +100,7 @@ class ControllerModifActu extends Controller
                     'longueurMax' => 500,
                     'format' => '/^[a-zA-Z0-9\s]+$/'
                 ],
-                'image' => [
+                'img' => [
                     'obligatoire' => false,
                     'type' => 'string',
                     'longueurMin' => 5,
@@ -115,6 +115,17 @@ class ControllerModifActu extends Controller
             // recuperation des donnees du formulaire
             $donnees = $_POST;
 
+            // Gestion du fichier img
+            if (isset($_FILES['img']) && $_FILES['img']['error'] == 0) {
+                // Vérification de la validité du fichier
+                $imgTmpName = $_FILES['img']['tmp_name'];
+                $imgName = $_FILES['img']['name'];
+
+                // Ajouter un timestamp au nom de la img pour s'assurer qu'elle ait un nom unique
+                $timestamp = time();
+                $imgName = pathinfo($imgName, PATHINFO_FILENAME) . '_' . $timestamp . '.' . pathinfo($imgName, PATHINFO_EXTENSION);
+            }
+
             // si l'id de la categorie n'est pas defini, alors on recupere celui de la variable de session actualiteActuel
             if (empty($donnees['cateId'])) {
                 $donnees['cateId'] = $_SESSION['actuActuel']['categorieId'];
@@ -127,6 +138,12 @@ class ControllerModifActu extends Controller
             $user = $_SESSION['user'];
             $donnees['userId'] = $user->getUserId();
 
+            if (isset($_FILES['img']) && $_FILES['img']['error'] == 0) {
+                // Ajoute les données de la img dans $donnees
+                $donnees['imgName'] = $imgName;
+            } else {
+                $donnees['imgName'] = null;
+            }
 
             // validation des donnees du formulaire
             $donneesValides = $validator->valider($donnees);
@@ -158,7 +175,7 @@ class ControllerModifActu extends Controller
                     $contenuModifie = false;
                 }
 
-                if ($donnees['img'] != $_SESSION['actuActuel']['img'] && $donnees['img'] != null) {
+                if ($donnees['imgName'] != $_SESSION['actuActuel']['img'] && $donnees['imgName'] != null) {
                     $imgModifie = true;
                 }
                 else{
@@ -197,6 +214,13 @@ class ControllerModifActu extends Controller
 
                 ]);
             } else {
+
+                if (isset($_FILES['img']) && $_FILES['img']['error'] == 0){
+                    // L'img est valide, et est donc uploadée dans asset/user
+                    $cheminImg = '../asset/actualite/' . basename($imgName);
+                    move_uploaded_file($imgTmpName, $cheminImg);
+                }
+
                 if ($titreModifie) {
                     $this->modifierDonneesDansLaBase($donnees['titre'], 'titre');
                 }
@@ -207,7 +231,7 @@ class ControllerModifActu extends Controller
                     $this->modifierDonneesDansLaBase($donnees['contenu'], 'contenu');
                 }
                 if ($imgModifie) {
-                    $this->modifierDonneesDansLaBase($donnees['img'], 'img');
+                    $this->modifierDonneesDansLaBase($donnees['imgName'], 'img');
                 }
                 if ($categorieModifie) {
                     $this->modifierDonneesDansLaBase($donnees['cateId'], 'cateId');
