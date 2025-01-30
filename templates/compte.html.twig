@@ -6,7 +6,7 @@
 		<div class="grid grid-cols-subgrid row-start-1 col-start-1 col-span-12 gap-2">
 			{# infos compte #}
 			<div class="row-start-1 col-start-2 col-span-10 flex justify-center items-center">
-				<img src="../asset/BO_logo.jpg" alt="photo de profil" class="rounded-full min-h-36 min-w-36 max-h-36 max-w-36 border-2 border-solid border-principal">
+				<img src="../asset/user/{{ user.getPfp}}" alt="photo de profil" class="rounded-full min-h-36 min-w-36 max-h-36 max-w-36 border-2 border-solid border-principal">
 			</div>
 			<div class="row-start-1 col-start-12 col-span-1 right-0 top-0">
 				<button type="button" onclick="openPopup(2)"><img src="../asset/icones/gear-wide-connected.svg" alt="parametre" class="w-8 h-8"></button>
@@ -38,7 +38,7 @@
 
 				<div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-12 lg:col-start-4 lg:col-span-6">
 					<label class="row-start-1 col-start-1 col-span-7 lg:col-span-4 ">Souhaitez-vous voir les évènements proposés ?</label>
-					<a href="index.php?controlleur=mesEv&methode=lister " type="" class="col-start-8 col-span-5 lg:col-start-5 lg:col-span-2 bg-principal text-white rounded-lg text-center px-2 py-1 h-fit">Liste évènements</a>
+					<a href="index.php?controlleur=validPropEv&methode=lister" type="" class="col-start-8 col-span-5 lg:col-start-5 lg:col-span-2 bg-principal text-white rounded-lg text-center px-2 py-1 h-fit">Liste évènements</a>
 				</div>
 			{% endif %}
 
@@ -196,4 +196,3 @@ function closePopup(val) {
 		}
 }
 </script>{% endblock %}
-

@@ -175,20 +175,13 @@ class ControllerPropActu extends Controller
                     'categories' => $categories
                 ]);
             } else {
-                echo $this->getTwig()->render('propActu.html.twig', [
-                    'title' => 'Proposition d\'actualité',
-                    'donnees' => $donnees,
-                    'actualites' => $actualite,
-                    'categories' => $categories
-
-                ]);
-
                 if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
                     // L'image est valide, et est donc uploadée dans asset/actualite
                     $cheminImage = '../asset/actualite/' . basename($imageName);
                     move_uploaded_file($imageTmpName, $cheminImage);
                 }
-
+                
+                header('Location: index.php?controlleur=index&methode=lister');
                 // Les données sont valides, insérez-les dans la base de données
                 $this->insererDonneesDansLaBase($donnees);
             }
