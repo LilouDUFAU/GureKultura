@@ -43,13 +43,25 @@ class ControllerEvtActu extends Controller {
             $type = htmlentities($_POST['type']);
             $id = htmlentities($_POST['id']);
         }
-        
+        $estInscrit = false;
         if ($type == "Evenements"){
             $managerEvtActu = new EvenementDao($pdo);
+
+            $user = $_SESSION['user'];
+            $managerParticiper = new ParticiperDAO($pdo);
+            $participerExist = $managerParticiper->findUserEvt($user->getUserId(), $id);
+            if($participerExist == null  || $participerExist == false){
+                $estInscrit = false;
+            }
+            else{
+                $estInscrit = true;
+            }
         } if ($type == "Actualites"){
             $managerEvtActu = new ActualiteDao($pdo);
         }
         $evtActu = $managerEvtActu->find($id);
+
+
 
         // Rendre le template Twig
         echo $this->getTwig()->render('evtActu.html.twig', [
@@ -57,6 +69,7 @@ class ControllerEvtActu extends Controller {
             'type' => $type,
             'actualites' => $actualite,
             'evtActus' => $evtActu,
+            'estInscrit' => $estInscrit
         ]);
     }   
 
@@ -68,37 +81,41 @@ class ControllerEvtActu extends Controller {
         $loader = new \Twig\Loader\FilesystemLoader('../templates');
         $twig = new \Twig\Environment($loader);
     
-        // Vérification de l'événement et de l'utilisateur
-        if (!isset($_POST['evtId']) || !isset($_SESSION['userId'])) {
-            // Vous pouvez rediriger ou rendre la page sans inscription ici
-            header('Location: index.php?controlleur=index&methode=lister');  // Rediriger vers la page de l'événement
-            error_log("evtId: " . (isset($_POST['evtId']) ? $_POST['evtId'] : "Non défini"));
-            error_log("userId: " . (isset($_SESSION['userId']) ? $_SESSION['userId'] : "Non défini"));
+    
+        $evtId = $_POST['evtId'];
+        $user = $_SESSION['user'];
+        $userId=$user->getUserId();
 
-            exit;
-        }
-    
-        $eventId = $_POST['evtId'];
-        $userId = $_SESSION['userId'];
-    
         $evt = new Evenement();
-        $evt->setEvtId($eventId);
+        $evt->setEvtId($evtId);
     
         // Essayer d'inscrire l'utilisateur à l'événement
-        $inscriptionReussie = $evt->inscrireUtilisateur($userId);
-    
-        if ($inscriptionReussie) {
-            $_SESSION['message'] = "Inscription réussie à l'événement !";
-        } else {
-            $_SESSION['message'] = "Vous êtes déjà inscrit à cet événement.";
+        $managerParticiper = new ParticiperDAO($pdo);
+        $estInscrit = true;
+        $participerExist = $managerParticiper->findUserEvt($userId, $evtId);
+        if($participerExist == null  || $participerExist == false){
+            $dateActuelle = new DateTime('now');
+            $dateActuelle->format('Y-m-d H:i:s');
+            $participer = new Participer(
+                $userId,
+                $evtId,
+                $dateActuelle
+            );
+            var_dump($participer);
+            $managerParticiper->insert($participer);
+            $estInscrit = false;
         }
-    
+        else{
+            $estInscrit = true;
+        }
+
         // Rendre le template Twig
         // Vérifiez si vous avez besoin d'afficher des actualités (ici on laisse $actualite vide)
         echo $twig->render('evtActu.html.twig', [
             'title' => 'InscriptionEvt',
             // Si vous avez des actualités à afficher, définissez la variable $actualite avant
             'actualites' => isset($actualite) ? $actualite : null,
+            'estInscrit' => $estInscrit
         ]);
     }
 

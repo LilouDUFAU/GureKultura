@@ -2,8 +2,10 @@
 {% extends "base.html.twig" %}
 
 {% block content %}
-
 {% if type == 'Evenements' %} 
+    {% if estInscrit == true %}
+        <h1>Vous êtes déjà inscrit !</h1>
+    {% endif %}
     <!-- Contenu spécifique de chaque page -->
     <div class="h-full">
         <div class="gap-2 p-2 grid grid-cols-12 items-center">
