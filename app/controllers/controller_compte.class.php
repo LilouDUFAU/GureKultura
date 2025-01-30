@@ -114,8 +114,12 @@ class ControllerCompte extends Controller
                 $donnees[$key] = htmlentities($value);
             }
 
+            if (isset($_FILES['pfp']) && $_FILES['pfp']['error'] == 0) {
             // Ajoute les données de la pfp dans $donnees
             $donnees['pfpName'] = $pfpName;
+            } else {
+                $donnees['pfpName'] = null;
+            }
                 
             $user = $_SESSION['user'];
             var_dump($user);
@@ -165,6 +169,8 @@ class ControllerCompte extends Controller
                 // verifier si le champ pfp est egal a la pfp en base de donnee de l'utilisateur ayant l'id userId et que la pfp est non nulle
                 if ( $donnees['pfpName'] != $user->getPfp()  && $donnees['pfpName'] != null) {
                     $pfpChange= true;
+                } else {
+                    $pfpChange= false;
                 }
 
             }
