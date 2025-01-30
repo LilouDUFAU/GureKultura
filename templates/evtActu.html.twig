@@ -5,6 +5,11 @@
 {% if type == 'Evenements' %} 
     {% if estInscrit == true %}
         <h1>Vous êtes déjà inscrit !</h1>
+
+        <form method="POST" action="index.php?controlleur=evtActu&methode=desinscrire">
+            <input type="hidden" name="evtId" value="{{ evtActus.evtId }}">
+            <button type="submit" class="px-6 py-2 bg-[#A23145] text-white font-semibold rounded-lg hover:bg-[#8a1e36]">Se désinscrire</button>
+        </form>
     {% endif %}
     <!-- Contenu spécifique de chaque page -->
     <div class="h-full">

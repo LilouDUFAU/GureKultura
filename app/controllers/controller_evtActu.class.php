@@ -119,5 +119,21 @@ class ControllerEvtActu extends Controller {
         ]);
     }
 
+
+    public function desinscrire() {    
+        // Récupérer l'ID de l'utilisateur depuis l'objet 'user' dans la session
+        $user = $_SESSION['user'];
+        $userId = $user->getUserId();  // Utiliser la méthode appropriée pour récupérer l'ID de l'utilisateur
+    
+        $eventId = $_POST['evtId'];  // Récupérer l'ID de l'événement depuis le formulaire
+    
+        // Désinscrire l'utilisateur de l'événement
+        $managerParticiper = new ParticiperDAO(Bd::getInstance()->getPdo());
+        $participer = $managerParticiper->findUserEvt($userId, $eventId);
+    
+
+    
+
+    }
     
 }
