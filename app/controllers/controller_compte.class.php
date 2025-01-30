@@ -441,11 +441,11 @@ class ControllerCompte extends Controller
                 $user->setBio($donnees);
                 $this->getTwig()->addGlobal('user', $user);
             }
-            // elseif ($champ == 'pfp') {
-            //     $user->setPfp($donnees);
-            //     $this->getTwig()->addGlobal('utilisateurConnecte', $user);
+            elseif ($champ == 'pfp') {
+                $user->setPfp($donnees);
+                $this->getTwig()->addGlobal('user', $user);
 
-            // }
+            }
 
             // Log the event data for debugging
             error_log(print_r($user, true));
