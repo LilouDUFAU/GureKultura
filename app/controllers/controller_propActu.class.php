@@ -126,27 +126,27 @@ class ControllerPropActu extends Controller
                 // Ajouter un timestamp au nom de l'image pour s'assurer qu'elle ait un nom unique
                 $timestamp = time();
                 $imageName = pathinfo($imageName, PATHINFO_FILENAME) . '_' . $timestamp . '.' . pathinfo($imageName, PATHINFO_EXTENSION);
-
-                // Ajoute les données de l'image dans $donnees
-                $donnees['imageName'] = $imageName;
             }
 
-            // boucle de nettoyage des donnees
+            // Boucle de nettoyage des donnees
             foreach ($donnees as $key => $value) {
                 $donnees[$key] = htmlentities($value);
             }
 
+            // Ajoute les données de l'image dans $donnees
+            $donnees['imageName'] = $imageName;
+
             $user = $_SESSION['user'];
             $donnees['userId'] = $user->getUserId();
 
-            // validation des donnees du formulaire
+            // Validation des donnees du formulaire
             $donneesValides = $validator->valider($donnees);
 
             if (!$donneesValides) {
                 $messageErreurs = $validator->getMessageErreurs();
             }
 
-            // recuperation des erreurs
+            // Recuperation des erreurs
 
             // Rendre le template Twig
             $pdo = Bd::getInstance()->getPdo();
