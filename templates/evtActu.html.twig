@@ -47,7 +47,10 @@
 
 			<!-- Exemples de commentaires -->
 			{% for commentaire in commentaires %}
-				<div class="mb-6">
+				<div class="col-start-1 col-span-1 flex justify-center items-center">
+					<img src="../asset/icones/pp_user.svg" alt="pp" class="w-auto h-auto rounded-full">
+				</div>
+                <div class="mb-6">
 					<p class="font-semibold text-[#A23145]">{{ commentaire.userNom }}
 						:</p>
 					<p class="text-gray-700">{{ commentaire.contenu }}</p>
@@ -150,7 +153,7 @@
             </div>
         </div>
     </div>
-{% endif %}
+{% endif %}                                                                                                         
 
 {% endblock %}
 {% block script %}
