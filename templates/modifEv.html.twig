@@ -33,16 +33,16 @@
 				<div class="grid grid-cols-subgrid row-start-3 col-start-1 col-span-6 p-2">
 					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
 						<img src="../asset/icones/ui-checks-grid.svg" class="h-5 w-5" alt="icone de type">
-						<label for="type">Catégorie</label>
+						<label for="cateId">Catégorie</label>
 					</div>
 					<!-- Dropdown Container -->
 					<select name="cateId" id="nomCategorie" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg text-gray-400">
-						<option class= value="{{ evenementActuel.cateId }}" selected>{{ evenementActuel.categorie}}</option>
+						<option class="text-gray-400" value="{{ evenementActuel.cateId }}" selected>{{ evenementActuel.categorie }}</option>
 						{% for categorie in categories %}
 							<option class="text-black" value="{{categorie.cateId}}" {% if evenementActuel.cateId == categorie.cateId %} selected {% endif %}>{{ categorie.nom }}</option>
 						{% endfor %}
-					</select></div>
-
+					</select>
+				</div>
 
 				{# description #}
 				<div class="grid grid-cols-subgrid row-start-4 col-start-1 col-span-6 p-2">
