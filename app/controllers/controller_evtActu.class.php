@@ -1,49 +1,33 @@
-<?php 
+<?php
 
-/**
- * @class ControllerEvtActu
- * @extends parent<Controller>
- * @details Permet de gérer les actions liées à la page "evtActu"
- */
 class ControllerEvtActu extends Controller {
 
-    /**
-     * @constructor ControllerEvtActu
-     * @details Constructeur de la classe ControllerEvtActu
-     * @param Twig\Environment $twig
-     * @param Twig\Loader\FileSystemLoader $loader
-     * @return void
-     */
     public function __construct(\Twig\Environment $twig, \Twig\Loader\FileSystemLoader $loader) {
         parent::__construct($twig, $loader);
     }
 
-
-    /**
-     * @function lister
-     * @details Fonction permettant d'afficher la page "evtActu"
-     * @uses ActualiteDao
-     * @uses EvenementDao
-     * @uses Bd
-     * @uses findAllWithCategorie
-     * @uses find
-     * @return void
-     */
     public function lister() {
+        // Récupérer la connexion PDO
         $pdo = Bd::getInstance()->getPdo();
 
         $loader = new \Twig\Loader\FilesystemLoader('../templates');
         $twig = new \Twig\Environment($loader);
-
-        $managerActualite = new ActualiteDao($this->getPdo());
-        $actualite = $managerActualite->findAllWithCategorie();    
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $nom = htmlentities($_POST['nom']);
             $type = htmlentities($_POST['type']);
             $id = htmlentities($_POST['id']);
         }
+
+        // Créer une instance de CommentaireDao
+        $commentaireDao = new CommentaireDao($pdo);
+        // Récupérer les commentaires pour l'événement ou l'actualité
+        $commentaires = $commentaireDao->findCommentairesByEventOrActu($id, $type);
+
+        $managerActualite = new ActualiteDao($pdo);
+
         $estInscrit = false;
+
         if ($type == "Evenements"){
             $managerEvtActu = new EvenementDao($pdo);
 
@@ -58,9 +42,10 @@ class ControllerEvtActu extends Controller {
             }
         } if ($type == "Actualites"){
             $managerEvtActu = new ActualiteDao($pdo);
-        }
-        $evtActu = $managerEvtActu->find($id);
+        } 
 
+        $evtActu = $managerEvtActu->find($id);
+        $actualite = $managerActualite->findAllWithCategorie(); 
 
 
         // Rendre le template Twig
@@ -69,7 +54,8 @@ class ControllerEvtActu extends Controller {
             'type' => $type,
             'actualites' => $actualite,
             'evtActus' => $evtActu,
-            'estInscrit' => $estInscrit
+            'estInscrit' => $estInscrit,
+            'commentaires' => $commentaires
         ]);
     }   
 
@@ -164,5 +150,43 @@ class ControllerEvtActu extends Controller {
         ]);
     }
     
-    
+    public function ajouterCommentaire() {
+        // Vérifier si l'utilisateur est connecté
+        $pdo = Bd::getInstance()->getPdo();
+        
+        $loader = new \Twig\Loader\FilesystemLoader('../templates');
+        $twig = new \Twig\Environment($loader);
+        
+        if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $user = $_SESSION['user'];
+                $userId = $user->getUserId(); // Utiliser le getter pour obtenir l'ID de l'utilisateur
+                $contenu = htmlspecialchars($_POST['commentaire']);
+                $evtId = isset($_POST['evtId']) ? $_POST['evtId'] : null;
+                $actuId = isset($_POST['actuId']) ? $_POST['actuId'] : null;
+
+                if (empty($evtId) && empty($actuId)) {
+                    echo "Erreur : L'ID de l'événement ou de l'actualité est invalide.";
+                    return;
+                }
+
+                // Créer une instance de CommentaireDao pour ajouter un commentaire
+                $commentaireDao = new CommentaireDao($pdo);
+                $commentaireDao->ajouterCommentaire($contenu, $evtId, $actuId, $userId);
+
+                // Redirection vers la page correcte en fonction du type
+                if ($evtId) {
+                    header("Location: index.php?controlleur=evtActu&methode=lister&id=" . $evtId . "&type=Evenements");
+                } elseif ($actuId) {
+                    header("Location: index.php?controlleur=evtActu&methode=lister&id=" . $actuId . "&type=Actualites");
+                }
+                exit();
+            }
+        } else {
+            header("Location: index.php?controlleur=connexion&methode=lister");
+            exit();
+        }
+    }
 }
+    
+

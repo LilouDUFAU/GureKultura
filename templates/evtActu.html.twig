@@ -1,179 +1,181 @@
-
 {% extends "base.html.twig" %}
 
 {% block content %}
 
-    <!-- Contenu spécifique de chaque page -->
-    <div class="h-full">
-        <div class="gap-2 p-2 grid grid-cols-12 items-center">
-            <h1 class="row-start-1 col-span-12 text-center font-bold text-4xl p-2 text-principal">{{ evtActus.titre }}</h1>
+{% if type == 'Evenements' %}
+	<!-- Contenu spécifique de chaque page -->
+	<div class="h-full">
+		<div class="gap-2 p-2 grid grid-cols-12 items-center">
+			<h1 class="row-start-1 col-span-12 text-center font-bold text-4xl p-2 text-[#A23145]">{{ evtActus.titre }}</h1>
 
-            <!-- Colonne de gauche -->
-            <div class="grid grid-cols-subgrid col-start-1 col-span-12 row-start-3 lg:col-start-1 lg:col-span-6 lg:row-start-2">
-                <p class="row-start-1 col-start-1 col-span-12 lg:col-span-6 text-justify break-words text-principal">{{ evtActus.description }}</p>
-                
-                <div class="row-start-2 col-start-1 col-span-12 lg:col-span-6 border-2 border-solid border-principal bg-principal bg-opacity-55 rounded-lg p-2 h-fit text-center">
-                    <div class="row-start-1 col-start-1 col-span-12 lg:col-span-6 text-2xl font-bold text-white flex flex-row items-center justify-center gap-2 mb-4">
-                        <img src="../asset/icones/person-vcard (1).svg" alt="icone" class="w-6 h-6 inline-block">
-                        <h2 >Fiche Responsable</h2>
-                    </div>
-                    <p class="row-start-2 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Nom : {{ evtActus.nomRep }}</p>
-                    <p class="row-start-3 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Prénom : {{ evtActus.prenomRep }}</p>
-                    <p class="row-start-4 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Mail : {{ evtActus.email }}</p>
-                    <p class="row-start-5 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Téléphone : {{ evtActus.tel }}</p>
-                    <a href="../asset/evenement/autorisation/{{ evtActus.autorisation }}" class="row-start-6 col-start-1 col-span-6 rounded-lg text-link underline" target="_blank">Cliquez ici pour visionner le fichier PDF <img src="../asset/icones/box-arrow-up-right.svg"></a>
-                </div>
-            </div>
+			<!-- Colonne de gauche -->
+			<div class="grid grid-cols-subgrid col-start-1 col-span-12 row-start-2 lg:col-span-6 lg:row-start-2 h-full">
+				<img src="../asset/evenement/{{ evtActus.photo }}" alt="photo evenement" class="row-start-1 col-start-1 col-span-12 lg:col-span-6 rounded-lg">
+				<p class="row-start-2 col-start-1 col-span-12 lg:col-span-6 break-words">{{ evtActus.description }}</p>
 
-            <!-- Colonne de droite -->
-            <div class="grid grid-cols-subgrid col-start-1 col-span-12 row-start-2 lg:col-start-7 lg:col-span-6 lg:row-start-2 h-full gap-2">
-                <img src="../asset/evenement/photo/{{ evtActus.photo }}" alt="photo evenement" class="row-start-1 col-start-1 col-span-12 lg:col-start-3 lg:col-span-2 rounded-lg">
-                <div class="row-start-2 col-start-1 col-span-12 lg:col-span-6 grid grid-cols-subgrid border-2 border-solid border-principal rounded-lg bg-principal bg-opacity-55 p-2 text-center">
-                    <p class="row-start-1 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Date début : {{ evtActus.dateDebut }}  {{ evtActus.heureDebut|date("H:i") }}</p>
-                    <p class="row-start-2 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Date fin : {{ evtActus.dateFin }}  {{ evtActus.heureFin|date("H:i") }}</p>
-                    <p class="row-start-3 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Lieu : {{ evtActus.lieu }}</p>
-                </div>
-            </div>
+				<div class="row-start-3 col-start-1 col-span-12 lg:col-span-6 grid grid-cols-subgrid border-2 border-solid border-[#A23145] rounded-lg bg-[#A23145] bg-opacity-55 p-2">
+					<p class="row-start-1 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold text-center">Date début :
+						{{ evtActus.dateDebut }}
+						{{ evtActus.heureDebut }}</p>
+					<p class="row-start-2 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold text-center">Date fin :
+						{{ evtActus.dateFin }}
+						{{ evtActus.heureFin }}</p>
+					<p class="row-start-3 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold text-center">Lieu :
+						{{ evtActus.lieu }}</p>
+				</div>
+			</div>
+
+
+			<!-- Colonne de droite -->
+			<div class="grid grid-cols-subgrid col-start-1 col-span-12 row-start-3 lg:col-start-7 lg:col-span-6 lg:row-start-2 border-2 border-solid border-[#A23145] bg-[#A23145] bg-opacity-55 rounded-lg p-2 h-full">
+				<h2 class="row-start-1 col-start-1 col-span-12 lg:col-span-6 text-2xl font-bold text-center text-white">Fiche Responsable</h2>
+				<p class="row-start-2 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Nom :
+					{{ evtActus.nomRep }}</p>
+				<p class="row-start-3 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Prénom :
+					{{ evtActus.prenomRep }}</p>
+				<p class="row-start-4 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Mail :
+					{{ evtActus.email }}</p>
+				<p class="row-start-5 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Téléphone :
+					{{ evtActus.tel }}</p>
+				<img src="../asset/evenement/ {{ evtActus.autorisation}}" alt="autorisation evenment" class="row-start-6 col-start-1 col-span-6 rounded-lg">
+			</div>
+		</div>
+
+    {% if type == 'Evenements' %} 
+        {% if estInscrit == true %}
             
-            </div>
-{% if type == 'Evenements' %} 
-    {% if estInscrit == true %}
-        
-        <h1 class="font-bold text-xl p-2 text-principal">Vous êtes déjà inscrit !</h1>
+            <h1 class="font-bold text-xl p-2 text-principal">Vous êtes déjà inscrit !</h1>
 
-        <form method="POST" action="index.php?controlleur=evtActu&methode=desinscrire">
-            <INPUT TYPE="hidden" NAME="nom" VALUE="{{evtActus.titre}}">
-            <INPUT TYPE="hidden" NAME="type" VALUE="{{ type }}">             
-            <input type="hidden" name="evtId" value="{{ evtActus.evtId }}">
-            <button type="submit" class="mt-4 px-6 py-2 bg-principal text-white font-semibold rounded-lg hover:bg-black">Se désinscrire</button>
-        </form>
+            <form method="POST" action="index.php?controlleur=evtActu&methode=desinscrire">
+                <INPUT TYPE="hidden" NAME="nom" VALUE="{{evtActus.titre}}">
+                <INPUT TYPE="hidden" NAME="type" VALUE="{{ type }}">             
+                <input type="hidden" name="evtId" value="{{ evtActus.evtId }}">
+                <button type="submit" class="mt-4 px-6 py-2 bg-principal text-white font-semibold rounded-lg hover:bg-black">Se désinscrire</button>
+            </form>
+        {% endif %}
+        {% if estInscrit == false %}
+            <form method="POST" action="index.php?controlleur=evtActu&methode=inscrire">
+                <INPUT TYPE="hidden" NAME="nom" VALUE="{{evtActus.titre}}">
+                <INPUT TYPE="hidden" NAME="type" VALUE="{{ type }}"> 
+                <input type="hidden" name="evtId" value="{{ evtActus.evtId }}">
+                <button type="submit" class="mt-4 px-6 py-2 bg-principal text-white font-semibold rounded-lg hover:bg-black">S'inscrire</button>
+            </form>
+        {% endif %}
+
     {% endif %}
-    {% if estInscrit == false %}
-        <form method="POST" action="index.php?controlleur=evtActu&methode=inscrire">
-            <INPUT TYPE="hidden" NAME="nom" VALUE="{{evtActus.titre}}">
-            <INPUT TYPE="hidden" NAME="type" VALUE="{{ type }}"> 
-            <input type="hidden" name="evtId" value="{{ evtActus.evtId }}">
-            <button type="submit" class="mt-4 px-6 py-2 bg-principal text-white font-semibold rounded-lg hover:bg-black">S'inscrire</button>
-        </form>
-    {% endif %}
+
+		<!-- Section Commentaires -->
+		<div class="mt-8 p-4 bg-[#f4f4f4] rounded-lg shadow-md">
+			<h2 class="text-2xl font-bold text-[#A23145] mb-4">Commentaires</h2>
+
+			<!-- Exemples de commentaires -->
+			{% for commentaire in commentaires %}
+				<div class="mb-6">
+					<p class="font-semibold text-[#A23145]">{{ commentaire.userNom }}
+						:</p>
+					<p class="text-gray-700">{{ commentaire.contenu }}</p>
+					<p class="text-gray-500 text-sm">{{ commentaire.datePubli|date("d/m/Y H:i") }}</p>
+				</div>
+			{% else %}
+				<p>Aucun commentaire pour cet événement.</p>
+			{% endfor %}
+
+			<!-- Formulaire pour ajouter un commentaire -->
+			<div class="mt-6">
+				<label for="commentaire" class="block text-[#A23145] font-semibold mb-2">Ajouter un commentaire :</label>
+				<form action="index.php?controlleur=evtActu&methode=ajouterCommentaire" method="POST">
+					<textarea id="commentaire" name="commentaire" rows="3" class="w-full p-3 border-2 border-[#A23145] rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#A23145]" required></textarea>
+					<input
+					type="hidden" name="evtId" value="{{ evtActus.evtId }}">
+					<!-- Passer l'ID de l'événement -->
+					<button type="submit" class="mt-4 px-6 py-2 bg-[#A23145] text-white font-semibold rounded-lg hover:bg-[#8a1e36]">Envoyer</button>
+				</form>
+			</div>
+		</div>
+	</div>
 
 {% endif %}
-        <!-- Section Commentaires -->
-        <div class="row-start-4 lg:row-start-3 col-span-12 m-2 p-4 bg-gray-100 rounded-lg shadow-md drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
-            <h2 class="text-2xl font-bold text-principal mb-4">Commentaires</h2>
-
-            <!-- Exemples de commentaires -->
-            <div class="mb-6">
-                <p class="font-semibold text-principal">John Doe :</p>
-                <p class="text-gray-700">"Un super match, la victoire de Bayonne était bien méritée. Hâte de voir la prochaine rencontre !"</p>
-            </div>
-            <div class="mb-6">
-                <p class="font-semibold text-principal">Marie Dupont :</p>
-                <p class="text-gray-700">"Clermont a bien joué, mais quelques erreurs ont coûté cher. Bravo à Bayonne pour leur performance."</p>
-            </div>
-
-            <!-- Formulaire pour ajouter un commentaire -->
-            <div class="mt-6">
-                <label for="comment" class="block text-principal font-semibold mb-2">Ajouter un commentaire :</label>
-                <textarea id="comment" name="comment" rows="3" class="w-full p-3 border-2 border-principal rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-principal"></textarea>
-                <button type="submit" class="mt-4 px-6 py-2 bg-principal text-white font-semibold rounded-lg hover:bg-black">Envoyer</button>
-            </div>
-            
-
-        </div>
-    </div>
-
-
 
 
 {% if type == 'Actualites' %}
-    <!-- Contenu spécifique de chaque page -->
+    <!-- Contenu spécifique de l'actualité -->
     <div class="pt-2">
-        <div class="gap-2 p-2 grid grid-cols-12 items-center rounded-lg text-principal">
-            {# titre de l'article #}
-            <h1 class="col-span-12 text-principal font-bold text-2xl lg:text-5xl text-left mb-4 break-words col-start-1 row-start-1 px-4">{{ evtActus.titre }}</h1>
-            {# resume de l'article #}
-                <div class="col-span-12 font-bold text-sm lg:text-lg text-left mb-4 break-words col-start-1 row-start-2 px-4">
-                {{ evtActus.resume }}
-                </div>
-            {# contenu #}
+        <div class="gap-2 p-2 grid grid-cols-12 items-center bg-[#A23145] rounded-lg">
+            <!-- titre de l'article -->
+            <h1 class="col-span-12 text-white font-bold text-2xl lg:text-5xl text-left mb-4 break-words col-start-1 row-start-1 px-4">{{ evtActus.titre }}</h1>
 
-            {# Colonne de gauche #}
+            <!-- résumé de l'article -->
+            <div class="col-span-12 text-white font-bold text-sm lg:text-lg text-left mb-4 break-words col-start-1 row-start-2 px-4">
+                {{ evtActus.resume }}
+            </div>
+
+            <!-- contenu -->
             <div class="grid grid-cols-6 row-start-3 col-start-1 col-span-12 xl:col-span-8 px-4">
-                {# image de l'article #}
-                        <img src="../asset/actualite/{{ evtActus.img }}" alt="Image de l'événement" class="col-start-2 xl:col-start-2 col-span-4 row-start-1 rounded-lg mb-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
-                {# contenu de l'article #}
-                <div class="col-start-1 row-start-2 col-span-6 font-bold text-xs lg:text-base text-left break-words"> 
-                        {{ evtActus.contenu }}
+                <!-- image de l'article -->
+                <img src="../asset/actualite/{{ evtActus.img }}" alt="Image de l'article" class="col-start-2 xl:col-start-2 col-span-4 row-start-1 rounded-lg mb-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
+                <!-- contenu de l'article -->
+                <div class="col-start-1 row-start-2 col-span-6 text-white font-medium text-xs lg:text-base text-left break-words">
+                    {{ evtActus.contenu }}
                 </div>
             </div>
-            {# section commentaires #}
-            <div class="gap-2 grid grid-cols-12 items-center bg-gray-100 rounded-lg p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] sm:col-start-1 xl:col-start-10 col-span-12 xl:col-span-3 sm:row-start-4 xl:row-start-3 sm:h-full xl:h-full">
-                {# texte commentaire #}
-                <h1 class="items-center rounded-xl text-center justify-center mb-4 col-span-12 text-principal text-lg lg:text-3xl font-medium">Commentaire</h1>
-                {# un exemple de commentaire #}
-                
-                {# barre d'interaction #}
-                <form action="../php/formulaires/formCommentaire.php" method="post" class="gap-2 grid grid-cols-12 items-start col-span-12" enctype="multipart/form-data" novalidate>
-                    {# barre de texte #}
-                    <div class="col-start-1 col-span-10 row-start-1 row-span-2 items-center rounded-lg border-2 border-solid border-principal bg-white">
-                        <textarea placeholder="Ajouter un commentaire" name="commentaire" maxlength="500" class="placeholder-gray-500 p-4 text-black w-full resize-none overflow-auto" rows="1"></textarea>
+
+            <!-- section commentaires -->
+            <div class="gap-2 grid grid-cols-12 items-center bg-[#f4f4f4] border-2 border-solid border-[#621220] rounded-lg p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] sm:col-start-1 xl:col-start-10 col-span-12 xl:col-span-3 sm:row-start-4 xl:row-start-3 sm:h-full xl:h-full">
+                <!-- Titre "Commentaires" -->
+                <div class="gap-2 grid grid-cols-12 items-center bg-[#A23145] rounded-xl p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] text-center justify-center mb-4 col-span-12 text-white text-lg lg:text-3xl font-medium">
+                    Commentaires
+                </div>
+
+				<!-- Afficher les commentaires réels -->
+				{% for commentaire in commentaires %}
+					<div class="grid grid-cols-12 items-start mb-4 col-span-12 pb-4 border-b border-gray-300">
+						<!-- image de profil -->
+						<div class="col-start-1 col-span-1 flex justify-center items-center">
+							<img src="../asset/icones/pp_user.svg" alt="pp" class="w-auto h-auto rounded-full">
+						</div>
+
+						<!-- nom du commentateur -->
+						<div class="font-semibold text-[#A23145] text-base col-start-2 col-span-10 row-start-1 truncate flex items-center">
+							{{ commentaire.userNom }}
+						</div>
+
+						<!-- texte du commentaire -->
+						<div class="text-black text-base col-start-2 col-span-8 row-start-4 break-words">
+							{{ commentaire.contenu }}
+						</div>
+
+						<!-- date de publication -->
+						<div class="text-gray-500 text-xs col-start-2 col-span-3 row-start-2">
+							{{ commentaire.datePubli|date("d/m/Y H:i") }}
+						</div>
+					</div>
+				{% else %}
+					<p>Aucun commentaire pour cette actualité.</p>
+				{% endfor %}
+
+
+
+                <!-- Formulaire pour ajouter un commentaire -->
+                <form action="index.php?controlleur=evtActu&methode=ajouterCommentaire" method="POST" class="gap-2 grid grid-cols-12 items-start col-span-12">
+                    <!-- champ de texte pour le commentaire -->
+                    <div class="col-start-1 col-span-10 row-start-1 row-span-2 items-center rounded-lg border-2 border-solid border-black bg-[#ffffff]">
+                        <textarea placeholder="Ajouter un commentaire" name="commentaire" maxlength="500" class="placeholder-gray-500 p-4 text-[#000000] w-full resize-none overflow-auto" rows="1"></textarea>
                     </div>
-                    {# Ajouter une image #}
-                    <input type="file" id="image" name="image" accept=".jpg,.jpeg,.png,.svg,.webp" class="hidden" />
-                    <label for="image" alt="Image" class="cursor-pointer col-start-11 col-span-1 row-start-1">
-                    <img src="../asset/image_jointe.svg" alt="Choisir une image" class="w-24 h-auto" />
-                    </label>
-                    {# Ajouter un like #}
-                    <img src="../asset/pouce_en_l_air_grand.svg" alt="Like" name="like" class="col-start-11 col-span-1 row-start-2">
 
-                    <button type="button" id="like-button" class="col-start-11 col-span-1 row-start-2" onclick="toggleLike()">
-                        <img id="like-icon" src="../asset/pouce_en_l_air_grand.svg" alt="Like"/>
+                    <!-- Cacher l'ID de l'actualité -->
+                    <input type="hidden" name="actuId" value="{{ evtActus.actuId }}">
+
+                    <!-- bouton pour envoyer le commentaire (flèche) -->
+                    <button type="submit" class="cursor-pointer col-start-12 col-span-1 row-start-2">
+                        <img src="../asset/envoyer_message.svg" alt="Publier" class="w-24 h-auto"/>
                     </button>
-
-                    {# Envoyer le commentaire #}
-                    <input type="submit" id="submit" class="hidden" />
-                    <label for="submit" class="cursor-pointer col-start-12 col-span-1 row-start-2">
-                        <img src="../asset/envoyer_message.svg" alt="Publier" class="w-24 h-auto" />
-                    </label>
-
-
-                    {# <input type="image" id="image" alt="Login" src="/media/examples/login-button.png" /> #}
                 </form>
-
-                {# CETTE FONCTION SERA A MODIFIER GRANDEMENT LORSQUE LES LIKES SERONT IMPLEMENTES CORRECTEMENT DANS LA BASE DE DONNES #}
-                {#
-                <script>
-                    // Fonction pour basculer l'état du like
-                    function toggleLike() {
-                        const likeIcon = document.getElementById('like-icon');
-                        const isLiked = localStorage.getItem('liked') === 'true'; // Vérifie si le like a déjà été donné
-
-                        if (isLiked) {
-                            // Si le like a déjà été donné, on le retire
-                            localStorage.setItem('liked', 'false');
-                            likeIcon.src = '../asset/pouce_en_l_air_grand.svg'; // Remet l'icône par défaut
-                        } else {
-                            // Si le like n'a pas encore été donné, on l'ajoute
-                            localStorage.setItem('liked', 'true');
-                            likeIcon.src = '../asset/pouce_en_l_air_grand_active.svg'; // Change l'icône pour montrer que c'est aimé
-                        }
-                    }
-
-                    // Vérifier si l'utilisateur a déjà liké au chargement de la page
-                    document.addEventListener('DOMContentLoaded', function() {
-                        const likeIcon = document.getElementById('like-icon');
-                        if (localStorage.getItem('liked') === 'true') {
-                            likeIcon.src = '../asset/pouce_en_l_air_grand_active.svg'; // L'icône de "like" actif
-                        }
-                    });
-                </script>
-                #}
-
             </div>
         </div>
     </div>
-
 {% endif %}
+
+{% endblock %}
+{% block script %}
 <script src="../js/caroussel.js"></script>
 {% endblock %}

@@ -29,6 +29,9 @@ require_once '../app/controllers/controller_mesActu.class.php';
 require_once '../app/controllers/controller_modifEv.class.php';
 require_once '../app/controllers/controller_modifActu.class.php';
 require_once '../app/controllers/controller_validPropEv.class.php';
+require_once '../app/controllers/controller_cateEvt.class.php';
+require_once '../app/controllers/controller_mdpReinitialisation.class.php';
+require_once '../app/controllers/controller_filtre.class.php';
 
 
 
@@ -45,7 +48,8 @@ require_once '../app/models/token.class.php';
 require_once '../app/models/token.dao.php';
 require_once '../app/models/Participer.class.php';
 require_once '../app/models/participer.dao.php';
-
+require_once '../app/models/commentaire.class.php';
+require_once '../app/models/commentaire.dao.php';
 
 session_start();
 //Ajout du code pour initialiser Twig
