@@ -181,6 +181,7 @@ class ControllerPropEv extends Controller
             $donnees = $_POST;
             $user = $_SESSION['user'];
             $donnees['userId'] = $user->getUserId();
+            var_dump($donnees);
 
             // Gestion du fichier autorisation
             if (isset($_FILES['autorisation']) && $_FILES['autorisation']['error'] == 0) {
@@ -208,12 +209,6 @@ class ControllerPropEv extends Controller
 
                 // Ajoute les données de la photo dans $donnees
                 $donnees['photoName'] = $photoName;
-            }
-
-            
-            // boucle de nettoyage des donnees
-            foreach ($donnees as $key => $value) {
-                $donnees[$key] = htmlentities($value);
             }
 
 
@@ -250,7 +245,7 @@ class ControllerPropEv extends Controller
                     echo $this->getTwig()->render('propEv.html.twig', [
                         'title' => 'Proposition d\'événement',
                         'erreurBD' => "Erreur lors de l'insertion de l'événement",
-                        'donnees' => $donnees,
+                        'donnees' => htmlentities($donnees),
                         'actualites' => $actualite,
                         'categories' => $categories
                     ]);

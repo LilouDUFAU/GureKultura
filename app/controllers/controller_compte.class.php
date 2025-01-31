@@ -109,10 +109,6 @@ class ControllerCompte extends Controller
                 $pfpName = pathinfo($pfpName, PATHINFO_FILENAME) . '_' . $timestamp . '.' . pathinfo($pfpName, PATHINFO_EXTENSION);
             }
 
-            // boucle de nettoyage des donnees
-            foreach ($donnees as $key => $value) {
-                $donnees[$key] = htmlentities($value);
-            }
 
             if (isset($_FILES['pfp']) && $_FILES['pfp']['error'] == 0) {
             // Ajoute les données de la pfp dans $donnees
@@ -192,7 +188,7 @@ class ControllerCompte extends Controller
                 echo $this->getTwig()->render('compte.html.twig', [
                     'title' => 'Compte',
                     'messageErreurs' => $messageErreurs,
-                    'donnees' => $donnees,
+                    'donnees' => htmlentities($donnees),
                     'actualites' => $actualite,
                     'categories' => $categories
 
@@ -232,7 +228,7 @@ class ControllerCompte extends Controller
 
                 echo $this->getTwig()->render('compte.html.twig', [
                     'title' => 'Compte',
-                    'donnees' => $donnees,
+                    'donnees' => htmlentities($donnees),
                     'actualites' => $actualite,
                     'categories' => $categories
 
@@ -272,8 +268,6 @@ class ControllerCompte extends Controller
             $user = $_SESSION['user'];
             $donnees['userId'] = $user->getUserId();
             
-
-
 
             // validation des donnees du formulaire
             $donneesValides = $validator->valider($donnees);
@@ -326,7 +320,7 @@ class ControllerCompte extends Controller
                 echo $this->getTwig()->render('compte.html.twig', [
                     'title' => 'Compte',
                     'messageErreurs' => $messageErreurs,
-                    'donnees' => $donnees,
+                    'donnees' => htmlentities($donnees),
                     'actualites' => $actualite,
                     'categories' => $categories
 
@@ -361,7 +355,7 @@ class ControllerCompte extends Controller
 
                 echo $this->getTwig()->render('compte.html.twig', [
                     'title' => 'Compte',
-                    'donnees' => $donnees,
+                    'donnees' => htmlentities($donnees),
                     'actualites' => $actualite,
                     'categories' => $categories
 

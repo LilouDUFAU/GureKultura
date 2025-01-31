@@ -133,11 +133,6 @@ class ControllerPropActu extends Controller
                 $imageName = pathinfo($imageName, PATHINFO_FILENAME) . '_' . $timestamp . '.' . pathinfo($imageName, PATHINFO_EXTENSION);
             }
 
-            // Boucle de nettoyage des donnees
-            foreach ($donnees as $key => $value) {
-                $donnees[$key] = htmlentities($value);
-            }
-
             // Ajoute les données de l'image dans $donnees
             $donnees['imageName'] = $imageName;
 
@@ -170,7 +165,7 @@ class ControllerPropActu extends Controller
                 echo $this->getTwig()->render('propActu.html.twig', [
                     'title' => 'Proposition d\'actualité',
                     'messageErreurs' => $messageErreurs,
-                    'donnees' => $donnees,
+                    'donnees' => htmlentities($donnees),
                     'actualites' => $actualite,
                     'categories' => $categories
                 ]);
