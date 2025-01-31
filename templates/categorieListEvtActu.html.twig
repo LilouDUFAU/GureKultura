@@ -1,0 +1,190 @@
+{% extends "base.html.twig" %}
+
+{% block content %}
+<!-- Contenu spécifique de chaque page -->
+<div>
+    <div class="gap-2 p-2 grid grid-cols-12 items-center">
+        
+        <h2 class="row-span-2 col-span-12 text-white lg:font-bold lg:text-4xl text-2xl text-center bg-principal-rouge rounded-2xl p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] mb-10">{{ title }}</h2>
+        {% if evtsEnCours is not empty %}
+            <h3 class="row-span-2 col-span-12 text-black font-bold text-3xl text-left">Evenements en cours</h3>
+
+            <div id="carousel1" class="row-span-3 col-span-12 relative w-full overflow-hidden mx-auto bg-principal-rouge opacity-75 rounded-lg" data-slides-default="1" data-slides-mobile="1">
+                <!-- Conteneur du carrousel -->
+                <div  id="carousel" class="carousel flex transition-transform duration-500 ease-out gap-2 p-2">
+                    <!-- Diapositives -->
+                    {% for evtEnCours in evtsEnCours %}
+                            <div style="background-image: url('../asset/evenement/photo/{{ evtEnCours.photo }}')" class="bg-cover bg-no-repeat slide md:w-1/3 w-full flex-shrink-0 text-principal-rouge text-center py-16 rounded-lg relative">
+
+                            <FORM ACTION="index.php?controlleur=evtActu&methode=lister" METHOD="POST">
+                                <INPUT TYPE="hidden" NAME="nom" VALUE="{{evtEnCours.titre}}">
+                                <INPUT TYPE="hidden" NAME="id" VALUE={{evtEnCours.evtId}}>
+                                <INPUT TYPE="hidden" NAME="type" VALUE="Evenements"> 
+                                <INPUT TYPE="SUBMIT" VALUE="{{ evtEnCours.titre }}" class="bg-white border-principal absolute inset-x-0 bottom-0 text-center rounded-lg p-2 mr-2 ml-2 mb-2">
+                            </FORM>
+                        </div>
+                    {% endfor %}
+                </div>
+                <!-- Boutons de navigation -->
+                <button id="prev1" class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full"><</button>
+                <button id="next1" class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full">></button>
+            </div>
+        {% endif %}
+        {% if evtsEnCours is empty %}
+                <h3 class="row-span-2 col-span-12 text-black font-bold text-3xl text-left p-6">Aucun Evenements en cours</h3>
+        {% endif %}
+
+
+        {% if evtsASuivre is not empty %}
+            <h3 class="row-span-4 col-span-12 text-black font-bold text-3xl text-left">Evenements à venir</h3>
+
+            <div id="carousel2" class="row-span-6 col-span-12 relative w-full overflow-hidden mx-auto bg-principal-rouge opacity-75 rounded-lg" data-slides-default="1" data-slides-mobile="1">
+                <!-- Conteneur du carrousel -->
+                <div  id="carousel" class="carousel flex transition-transform duration-500 ease-out gap-2 p-2">
+                    <!-- Diapositives -->
+                    {% for evtASuivre in evtsASuivre %}
+                            <div style="background-image: url('../asset/evenement/photo/{{ evtASuivre.photo }}')" class="bg-cover bg-no-repeat slide md:w-1/3 w-full flex-shrink-0 text-principal-rouge text-center py-16 rounded-lg relative">
+
+                            <FORM ACTION="index.php?controlleur=evtActu&methode=lister" METHOD="POST">
+                                <INPUT TYPE="hidden" NAME="nom" VALUE="{{evtASuivre.titre}}">
+                                <INPUT TYPE="hidden" NAME="id" VALUE={{evtASuivre.evtId}}>
+                                <INPUT TYPE="hidden" NAME="type" VALUE="Evenements"> 
+                                <INPUT TYPE="SUBMIT" VALUE="{{ evtASuivre.titre }}" class="bg-white border-principal absolute inset-x-0 bottom-0 text-center rounded-lg p-2 mr-2 ml-2 mb-2">
+                            </FORM>
+                        </div>
+                    {% endfor %}
+                </div>
+                <!-- Boutons de navigation -->
+                <button id="prev2" class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full"><</button>
+                <button id="next2" class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full">></button>
+            </div>
+        {% endif %}
+
+        {% if evtsASuivre is empty %}
+                <h3 class="row-span-2 col-span-12 text-black font-bold text-3xl text-left p-6">Aucun Evenements à venir</h3>
+        {% endif %}
+
+
+        {% if evtsPasser is not empty %}
+            <h3 class="row-span-5 col-span-12 text-black font-bold text-3xl text-left">Evenements passer</h3>
+            
+            <div id="carousel3" class="row-span-6 col-span-12 relative w-full overflow-hidden mx-auto bg-principal-rouge opacity-75 rounded-lg" data-slides-default="1" data-slides-mobile="1">
+                <!-- Conteneur du carrousel -->
+                <div  id="carousel" class="carousel flex transition-transform duration-500 ease-out gap-2 p-2">
+                    <!-- Diapositives -->
+                    {% for evtPasser in evtsPasser %}
+                            <div style="background-image: url('../asset/evenement/photo/{{ evtPasser.photo }}')" class="bg-cover bg-no-repeat slide md:w-1/3 w-full flex-shrink-0 text-principal-rouge text-center py-16 rounded-lg relative">
+                            <FORM ACTION="index.php?controlleur=evtActu&methode=lister" METHOD="POST">
+                                <INPUT TYPE="hidden" NAME="nom" VALUE="{{evtPasser.titre}}"> 
+                                <INPUT TYPE="hidden" NAME="id" VALUE={{evtPasser.evtId}}>
+                                <INPUT TYPE="hidden" NAME="type" VALUE="Evenements"> 
+                                <INPUT TYPE="SUBMIT" VALUE="{{ evtPasser.titre }}" class="bg-white border-principal absolute inset-x-0 bottom-0 text-center rounded-lg p-2 mr-2 ml-2 mb-2">
+                            </FORM>
+                        </div>
+                    {% endfor %}
+                </div>
+                <!-- Boutons de navigation -->
+                <button id="prev3" class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full"><</button>
+                <button id="next3" class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full">></button>
+            </div>
+        {% endif %}
+        {% if evtsPasser is empty %}
+                <h3 class="row-span-2 col-span-12 text-black font-bold text-3xl text-left p-6">Aucun Evenements passer</h3>
+        {% endif %}
+
+    </div>
+
+
+<!-- Partie actualités -->
+    <div class="gap-2 p-2 grid grid-cols-12 items-center">
+        
+        <h2 class="row-span-2 col-span-12 text-white lg:font-bold lg:text-4xl text-2xl text-center bg-principal-rouge rounded-2xl p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] mb-10">{{ title }} - Actualites</h2>
+        {% if actusEnCours is not empty %}
+            <h3 class="row-span-2 col-span-12 text-black font-bold text-3xl text-left">Actualites en cours</h3>
+
+            <div id="carousel1" class="row-span-3 col-span-12 relative w-full overflow-hidden mx-auto bg-principal-rouge opacity-75 rounded-lg" data-slides-default="1" data-slides-mobile="1">
+                <!-- Conteneur du carrousel -->
+                <div  id="carousel" class="carousel flex transition-transform duration-500 ease-out gap-2 p-2">
+                    <!-- Diapositives -->
+                    {% for actuEnCours in actusEnCours %}
+                            <div style="background-image: url('../asset/actualite/{{ actuEnCours.img }}')" class="bg-cover bg-no-repeat slide md:w-1/3 w-full flex-shrink-0 text-principal-rouge text-center py-16 rounded-lg relative">
+
+                            <FORM ACTION="index.php?controlleur=evtActu&methode=lister" METHOD="POST">
+                                <INPUT TYPE="hidden" NAME="nom" VALUE="{{actuEnCours.titre}}">
+                                <INPUT TYPE="hidden" NAME="id" VALUE={{actuEnCours.actuId}}>
+                                <INPUT TYPE="hidden" NAME="type" VALUE="Actualites"> 
+                                <INPUT TYPE="SUBMIT" VALUE="{{ actuEnCours.titre }}" class="bg-white border-principal absolute inset-x-0 bottom-0 text-center rounded-lg p-2 mr-2 ml-2 mb-2">
+                            </FORM>
+                        </div>
+                    {% endfor %}
+                </div>
+                <!-- Boutons de navigation -->
+                <button id="prev1" class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full"><</button>
+                <button id="next1" class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full">></button>
+            </div>
+        {% endif %}
+        {% if actusEnCours is empty %}
+                <h3 class="row-span-2 col-span-12 text-black font-bold text-3xl text-left p-6">Aucune Actualites en cours</h3>
+        {% endif %}
+
+
+        {% if actusASuivre is not empty %}
+            <h3 class="row-span-4 col-span-12 text-black font-bold text-3xl text-left">Actualites à venir</h3>
+
+            <div id="carousel2" class="row-span-6 col-span-12 relative w-full overflow-hidden mx-auto bg-principal-rouge opacity-75 rounded-lg" data-slides-default="1" data-slides-mobile="1">
+                <!-- Conteneur du carrousel -->
+                <div  id="carousel" class="carousel flex transition-transform duration-500 ease-out gap-2 p-2">
+                    <!-- Diapositives -->
+                    {% for actuASuivre in actusASuivre %}
+                            <div style="background-image: url('../asset/actualite/{{ actuASuivre.img }}')" class="bg-cover bg-no-repeat slide md:w-1/3 w-full flex-shrink-0 text-principal-rouge text-center py-16 rounded-lg relative">
+                            <FORM ACTION="index.php?controlleur=evtActu&methode=lister" METHOD="POST">
+                                <INPUT TYPE="hidden" NAME="nom" VALUE="{{actuASuivre.titre}}"> 
+                                    <INPUT TYPE="hidden" NAME="id" VALUE={{actuASuivre.actuId}}>
+                                <INPUT TYPE="hidden" NAME="type" VALUE="Actualites"> 
+                                <INPUT TYPE="SUBMIT" VALUE="{{ actuASuivre.titre }}" class="bg-white border-principal absolute inset-x-0 bottom-0 text-center rounded-lg p-2 mr-2 ml-2 mb-2">
+                            </FORM>
+                        </div>
+                    {% endfor %}
+                </div>
+                <!-- Boutons de navigation -->
+                <button id="prev2" class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full"><</button>
+                <button id="next2" class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full">></button>
+            </div>
+        {% endif %}
+        {% if actusASuivre is empty %}
+                <h3 class="row-span-2 col-span-12 text-black font-bold text-3xl text-left p-6">Aucune Actualites à venir</h3>
+        {% endif %}
+
+
+        {% if actusPasser is not empty %}
+            <h3 class="row-span-5 col-span-12 text-black font-bold text-3xl text-left">Actualites passer</h3>
+            
+            <div id="carousel3" class="row-span-6 col-span-12 relative w-full overflow-hidden mx-auto bg-principal-rouge opacity-75 rounded-lg" data-slides-default="1" data-slides-mobile="1">
+                <!-- Conteneur du carrousel -->
+                <div  id="carousel" class="carousel flex transition-transform duration-500 ease-out gap-2 p-2">
+                    <!-- Diapositives -->
+                    {% for actuPasser in actusPasser %}
+                            <div style="background-image: url('../asset/actualite/{{ actuPasser.img }}')" class="bg-cover bg-no-repeat slide md:w-1/3 w-full flex-shrink-0 text-principal-rouge text-center py-16 rounded-lg relative">
+                        
+                            <FORM ACTION="index.php?controlleur=evtActu&methode=lister" METHOD="POST">
+                                <INPUT TYPE="hidden" NAME="nom" VALUE="{{actuPasser.titre}}">
+                                    <INPUT TYPE="hidden" NAME="id" VALUE={{actuPasser.actuId}}> 
+                                <INPUT TYPE="hidden" NAME="type" VALUE="Actualites"> 
+                                <INPUT TYPE="SUBMIT" VALUE="{{ actuPasser.titre }}" class="bg-white border-principal absolute inset-x-0 bottom-0 text-center rounded-lg p-2 mr-2 ml-2 mb-2">
+                            </FORM>
+                        </div>
+                    {% endfor %}
+                </div>
+                <!-- Boutons de navigation -->
+                <button id="prev3" class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full"><</button>
+                <button id="next3" class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full">></button>
+            </div>
+        {% endif %}
+        {% if actusPasser is empty %}
+                <h3 class="row-span-2 col-span-12 text-black font-bold text-3xl text-left p-6">Aucune Actualites passer</h3>
+        {% endif %}
+
+    </div>
+</div>
+<script src="../js/caroussel.js"></script>
+{% endblock %}

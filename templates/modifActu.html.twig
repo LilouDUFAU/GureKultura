@@ -10,8 +10,8 @@
 			<input type="hidden" name="actuId" value={{ actuActuel.id }}>
 
 			<div
-				class="col-start-1 col-span-6 row-start-1 grid grid-cols-subgrid bg-principal rounded-lg p-4">
-				{# titre actualite #}
+				class="col-start-1 col-span-6 row-start-1 grid grid-cols-subgrid bg-principal-rouge rounded-lg p-4">
+				{# titre evenement #}
 				<div class="grid grid-cols-subgrid row-start-1 col-start-1 col-span-6 p-2">
 					<div class="col-start-1 col-span-2 flex flex-row items-center gap-2">
 						<img src="../asset/icones/fonts.svg" class="h-5 w-5 border-2 border-solid border-white rounded-md" alt="icone de titre">
@@ -59,14 +59,14 @@
 						<img src="../asset/icones/image.svg" class="h-5 w-5" alt="icone d'image">
 						<label for="img">Image</label>
 					</div>
-					<input class="col-start-3 col-span-4 bg-transparent flex w-full rounded-md border border-blue-300 border-input bg-white text-sm text-gray-400 file:border-0 file:bg-principal file:text-white file:text-sm" type="file" name="img" id="img" accept=".jpg, .png" value="{{ actuActuelle.img }}"/>
+					<input class="col-start-3 col-span-4 bg-transparent flex w-full rounded-md border border-blue-300 border-input bg-white text-sm text-gray-400 file:border-0 file:bg-principal-rouge file:text-white file:text-sm" type="file" name="img" id="img" accept=".jpg, .png" value="{{ actuActuelle.img }}"/>
 				</div>
 			</div>
 
 			{# Bouton de validation ou annulation #}
 			<div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-6 gap-2">
-				<button type="submit" class="col-start-5 col-span-1 text-white bg-principal rounded-lg py-1 px-2">Valider</button>
-				<a href="index.php?controlleur=mesEv&methode=lister" class="col-start-6 col-span-1 text-white bg-principal rounded-lg text-center py-1 px-2">Annuler</a>
+				<button type="submit" class="col-start-5 col-span-1 text-white bg-principal-rouge rounded-lg py-1 px-2">Valider</button>
+				<a href="index.php?controlleur=mesEv&methode=lister" class="col-start-6 col-span-1 text-white bg-principal-rouge rounded-lg text-center py-1 px-2">Annuler</a>
 			</div>
 		</form>
 	</div>

@@ -181,6 +181,8 @@ class ControllerPropEv extends Controller
 
             // recuperation des donnees du formulaire
             $donnees = $_POST;
+            $user = $_SESSION['user'];
+            $donnees['userId'] = $user->getUserId();
 
             // Gestion du fichier autorisation
             if (isset($_FILES['autorisation']) && $_FILES['autorisation']['error'] == 0) {
@@ -257,7 +259,7 @@ class ControllerPropEv extends Controller
                     echo $this->getTwig()->render('propEv.html.twig', [
                         'title' => 'Proposition d\'événement',
                         'erreurBD' => "Erreur lors de l'insertion de l'événement",
-                        'donnees' => $donnees,
+                        'donnees' => htmlentities($donnees),
                         'actualites' => $actualite,
                         'categories' => $categories
                     ]);

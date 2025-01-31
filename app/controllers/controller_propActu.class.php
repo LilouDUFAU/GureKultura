@@ -83,7 +83,7 @@ class ControllerPropActu extends Controller
                     'obligatoire' => true,
                     'type' => 'string',
                     'longueurMin' => 5,
-                    'longueurMax' => 50,
+                    'longueurMax' => 100,
                     'format' => '/^[a-zA-Z0-9\s]+$/'
                 ],
                 'cateId' => [
@@ -133,10 +133,10 @@ class ControllerPropActu extends Controller
                 $imageName = pathinfo($imageName, PATHINFO_FILENAME) . '_' . $timestamp . '.' . pathinfo($imageName, PATHINFO_EXTENSION);
             }
 
-            // Boucle de nettoyage des donnees
-            foreach ($donnees as $key => $value) {
-                $donnees[$key] = htmlentities($value);
-            }
+            // // Boucle de nettoyage des donnees
+            // foreach ($donnees as $key => $value) {
+            //     $donnees[$key] = htmlentities($value);
+            // }
 
             if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
                 // Ajoute les données de l'image dans $donnees
@@ -172,7 +172,7 @@ class ControllerPropActu extends Controller
                 echo $this->getTwig()->render('propActu.html.twig', [
                     'title' => 'Proposition d\'actualité',
                     'messageErreurs' => $messageErreurs,
-                    'donnees' => $donnees,
+                    'donnees' => htmlentities($donnees),
                     'actualites' => $actualite,
                     'categories' => $categories
                 ]);

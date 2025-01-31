@@ -19,8 +19,20 @@ module.exports = {
       // => @media (min-width: 1536px) { ... }
     },
     colors: {
-      principal : '#A23145',
-      secondaire : '#DFB7BE',
+      principal : {
+        rouge : '#A30000', //Pour les appels à l’action (CTA), boutons, titres forts.
+        vert : '#165B33',  //Pour les éléments d’accentuation et certaines zones interactives.
+        blanc : '#F4F1DE',  //Fond principal pour un rendu sobre et élégant.
+        gris : '#3E3E3E',  //Texte, icônes et éléments discrets.
+        doré : '#D4A373',  //Pour les événements premium et mises en avant.
+      },
+      secondaire : {
+        rouge : '#B35A30',  //Pour les appels à l’action (CTA), boutons, titres forts.
+        vert : '#819D75',  //Pour les éléments d’accentuation et certaines zones interactives.
+        blanc : '#E8D8C4',  //Fond principal pour un rendu sobre et élégant.
+        gris : '#D9D9D9',  //Texte, icônes et éléments discrets.
+        bleu : '#5E7480',  //Pour les événements premium et mises en avant.
+      },
       white: '#ffffff',
       black: '#000000',
       gray: {

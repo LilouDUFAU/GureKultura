@@ -4,12 +4,12 @@
 	<!-- Contenu spécifique de chaque page -->
 	<div class="h-full m-2">
 
-    <h1 class="text-3xl font-bold text-center text-principal">Mes événements</h1>
+    <h1 class="text-3xl font-bold text-center text-principal-rouge">Mes événements</h1>
 
 {# mettre une ligne sur deux en gris #}
     <table class="w-full mt-5 rounded-lg text-white text-sm lg:text-md">
         <thead>
-            <tr class="bg-principal">
+            <tr class="bg-principal-rouge">
                 <th class="p-2 text-left">Nom</th>
                 <th class="p-2 text-left hidden md:block">Date</th>
                 <th class="p-2 text-left">Lieu</th>
@@ -18,7 +18,7 @@
         </thead>
         <tbody>
             {% for evenement in evenements %}
-                <tr class="odd:bg-principal odd:bg-opacity-35 even:bg-principal even:bg-opacity-75">
+                <tr class="odd:bg-principal-rouge odd:bg-opacity-35 even:bg-principal-rouge even:bg-opacity-75">
                     <td class="p-1">{{ evenement.titre }}</td>
                     <td class="p-1 hidden md:block">{{ evenement.date|date('d/m/Y') }}</td>
                     <td class="p-1">{{ evenement.lieu }}</td>
@@ -40,7 +40,7 @@
                     <td class="p-1 flex justify-center items-center">
                         <form action="index.php?controlleur=mesEv&methode=supprimerEvent" method="post">
                             <input type="hidden" name="evtId" value={{ evenement.evtId}}>
-                            <button type="submit" class="bg-principal text-white p-1 rounded-lg h-6 w-6"><img src="../asset/icones/trash3.svg" alt="suppression"></button>
+                            <button type="submit" class="bg-principal-rouge text-white p-1 rounded-lg h-6 w-6"><img src="../asset/icones/trash3.svg" alt="suppression"></button>
                         </form>
                     </td>
                         

@@ -109,10 +109,6 @@ class ControllerCompte extends Controller
                 $pfpName = pathinfo($pfpName, PATHINFO_FILENAME) . '_' . $timestamp . '.' . pathinfo($pfpName, PATHINFO_EXTENSION);
             }
 
-            // boucle de nettoyage des donnees
-            foreach ($donnees as $key => $value) {
-                $donnees[$key] = htmlentities($value);
-            }
 
             if (isset($_FILES['pfp']) && $_FILES['pfp']['error'] == 0) {
             // Ajoute les données de la pfp dans $donnees
@@ -192,7 +188,7 @@ class ControllerCompte extends Controller
                 echo $this->getTwig()->render('compte.html.twig', [
                     'title' => 'Compte',
                     'messageErreurs' => $messageErreurs,
-                    'donnees' => $donnees,
+                    'donnees' => htmlentities($donnees),
                     'actualites' => $actualite,
                     'categories' => $categories
 
@@ -280,8 +276,6 @@ class ControllerCompte extends Controller
             $donnees['userId'] = $user->getUserId();
             
 
-
-
             // validation des donnees du formulaire
             $donneesValides = $validator->valider($donnees);
             if (!$donneesValides) {
@@ -301,12 +295,15 @@ class ControllerCompte extends Controller
                             } else {
                                 echo "Les mots de passe ne correspondent pas";
                                 $mdpValide = false;
+                                $mdpChange = false;
                             }
                         } else {
                             echo "Le mot de passe n'est pas assez fort, il doit contenir au moins 8 caractères, une majuscule,un chiffre et un charactère spécial";
+                            $mdpChange = false;
                         }
                     } else {
                         echo "Le mot de passe est incorrect";
+                        $mdpChange = false;
                     }
                     
                 } else {
@@ -333,7 +330,6 @@ class ControllerCompte extends Controller
                 echo $this->getTwig()->render('compte.html.twig', [
                     'title' => 'Compte',
                     'messageErreurs' => $messageErreurs,
-                    'donnees' => $donnees,
                     'actualites' => $actualite,
                     'categories' => $categories
 
@@ -342,8 +338,6 @@ class ControllerCompte extends Controller
                 
                 // modifier
                 // Les données sont valides, modifiz-les dans la base de données
-
-                
 
                 $managerUser = new UserDao($pdo);
                 $user = $managerUser->find($user->getUserId());
@@ -368,7 +362,6 @@ class ControllerCompte extends Controller
 
                 echo $this->getTwig()->render('compte.html.twig', [
                     'title' => 'Compte',
-                    'donnees' => $donnees,
                     'actualites' => $actualite,
                     'categories' => $categories
 

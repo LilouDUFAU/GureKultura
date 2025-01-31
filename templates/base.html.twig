@@ -79,7 +79,7 @@ tarteaucitron.user.gtagMore = function () { /* add here your optionnal gtag() */
 			class="flex flex-col">
 			<!-- Header -->
 			<header
-				class="flex justify-between items-center min-h-16 px-7 bg-principal text-white">
+				class="flex justify-between items-center min-h-16 px-7 bg-principal-rouge text-white">
 
 				<!-- logo -->
 				<a href="index.php?controlleur=index&methode=lister">
@@ -87,7 +87,7 @@ tarteaucitron.user.gtagMore = function () { /* add here your optionnal gtag() */
 				</a>
 
 				<!-- navbar -->
-				<nav id="menu" class="flex flex-row justify-between items-center gap-4 md:gap-8 bg-principal">
+				<nav id="menu" class="flex flex-row justify-between items-center gap-4 md:gap-8 bg-principal-rouge">
 					<div class="hidden md:flex md:flex-col md:items-center">
 						<a href="index.php?controlleur=index&methode=lister" class=""><img src="../asset/icones/house.svg" alt="home" class="h-6 w-6"></a>
 						<p class="hidden lg:block">Accueil</p>
@@ -117,8 +117,9 @@ tarteaucitron.user.gtagMore = function () { /* add here your optionnal gtag() */
 					{% endif %}
 
 					<div class="flex flex-col items-center">
-						<a href="/" class=""><img src="../asset/icones/funnel.svg" alt="home" class="h-6 w-6"></a>
+						<a href="index.php?controlleur=filtre&methode=lister" class=""><img src="../asset/icones/funnel.svg" alt="home" class="h-6 w-6"></a>
 						<p class="hidden lg:block">Trier</p>
+
 					</div>
 
 					<form class="flex gap-2 items-center border-2 border-solid border-white rounded-full px-2 py-1">
@@ -127,7 +128,7 @@ tarteaucitron.user.gtagMore = function () { /* add here your optionnal gtag() */
 								<path d="M7.667 12.667A5.333 5.333 0 107.667 2a5.333 5.333 0 000 10.667zM14.334 14l-2.9-2.9" stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"></path>
 							</svg>
 						</button>
-						<input class="bg-principal outline-none md:block hidden" placeholder="Type your text" required="" type="text">
+						<input class="bg-principal-rouge outline-none md:block hidden" placeholder="Type your text" required="" type="text">
 						<button class="reset" type="reset" class="md:block hidden">
 							<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewbox="0 0 24 24" stroke="currentColor" stroke-width="2">
 								<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
@@ -156,7 +157,7 @@ tarteaucitron.user.gtagMore = function () { /* add here your optionnal gtag() */
 
 
 				<div id="left-column" class="pr-2 scrollable hidden lg:block">
-					<aside class="flex flex-col justify-center bg-principal gap-2 font-['Sen'] text-[#ffffff] scrollable p-2">
+					<aside class="flex flex-col justify-center bg-principal-rouge gap-2 font-['Sen'] text-[#ffffff] scrollable p-2">
 						<h1 class="text-xl text-white text-center">ACTUS</h1>
 
 						{% for actualite in actualites %}
@@ -181,7 +182,7 @@ tarteaucitron.user.gtagMore = function () { /* add here your optionnal gtag() */
 				<div
 					id="right-column" class="h-min">
 					<!-- Fil d'Ariane -->
-					<nav class="hidden lg:block lg:items-center text-principal space-x-2 p-4 border-4 bg-white border-principal drop-shadow-[0_5px_5px_rgba(0,0,0,0.3)]"></nav>
+					<nav class="hidden lg:block lg:items-center text-principal-rouge space-x-2 p-4 border-4 bg-white border-principal drop-shadow-[0_5px_5px_rgba(0,0,0,0.3)]"></nav>
 
 					<!-- Contenu spécifique de chaque page -->
 					<div>
@@ -193,7 +194,7 @@ tarteaucitron.user.gtagMore = function () { /* add here your optionnal gtag() */
 
 			</div>
 
-			<footer class="grid grid-cols-12 bg-principal text-white text-sm lg:text-md p-4">
+			<footer class="grid grid-cols-12 bg-principal-rouge text-white text-sm lg:text-md p-4">
 				<div class="row-start-1 col-span-12 col-start-1 grid grid-cols-subgrid">
 
 					<div class="row-start-1 col-start-1 col-span-12 lg:row-start-1 lg:col-span-4 lg:col-start-1 p-4 flex flex-col text-left">
