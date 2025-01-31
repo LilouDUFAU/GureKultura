@@ -1440,26 +1440,6 @@ video {
   text-transform: capitalize;
 }
 
-<<<<<<< HEAD
-.text-\[\#000000\] {
-  --tw-text-opacity: 1;
-  color: rgb(0 0 0 / var(--tw-text-opacity, 1));
-}
-
-.text-\[\#A23145\] {
-  --tw-text-opacity: 1;
-  color: rgb(162 49 69 / var(--tw-text-opacity, 1));
-}
-
-.text-\[\#FF2400\] {
-  --tw-text-opacity: 1;
-  color: rgb(255 36 0 / var(--tw-text-opacity, 1));
-}
-
-.text-\[\#bfbfbf\] {
-  --tw-text-opacity: 1;
-  color: rgb(191 191 191 / var(--tw-text-opacity, 1));
-=======
 .italic {
   font-style: italic;
 }
@@ -1467,7 +1447,6 @@ video {
 .ordinal {
   --tw-ordinal: ordinal;
   font-variant-numeric: var(--tw-ordinal) var(--tw-slashed-zero) var(--tw-numeric-figure) var(--tw-numeric-spacing) var(--tw-numeric-fraction);
->>>>>>> origin
 }
 
 .text-\[\#ffffff\] {
@@ -1543,8 +1522,6 @@ video {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
-<<<<<<< HEAD
-=======
 .outline-none {
   outline: 2px solid transparent;
   outline-offset: 2px;
@@ -1556,7 +1533,6 @@ video {
   box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
 }
 
->>>>>>> origin
 .drop-shadow-\[0_5px_5px_rgba\(0\2c 0\2c 0\2c 0\.3\)\] {
   --tw-drop-shadow: drop-shadow(0 5px 5px rgba(0,0,0,0.3));
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
@@ -1595,14 +1571,6 @@ video {
 
 .\[hostname\:port\] {
   hostname: port;
-<<<<<<< HEAD
-}
-
-.after\:absolute::after {
-  content: var(--tw-content);
-  position: absolute;
-=======
->>>>>>> origin
 }
 
 .file\:border-0::file-selector-button {
