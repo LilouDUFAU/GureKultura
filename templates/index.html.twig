@@ -38,7 +38,12 @@
 
 
 							<div class="lg:col-start-5 lg:col-span-2 lg:flex lg:flex-col lg:items-center lg:justify-center lg:gap-10 grid grid-cols-subgrid items-center">
-								<p class="lg:row-start-3 lg:col-start-1 lg:col-span-2 row-start-3 col-start-1 col-span-1 flex justify-center items-center text-center min-w-full bg-white text-principal rounded-lg text-sm p-2 font-bold">{{ event.nomCategorie }}</p>
+								<FORM action="index.php?controlleur=cateEvt&methode=lister" method="POST" class="lg:col-start-1 lg:row-start-4 lg:col-span-2 lg:flex lg:justify-center lg:items-center lg:gap-4 row-start-3 col-start-2 col-span-1 flex justify-center items-center cursor-pointer">
+									<INPUT type="hidden" name="nom" value="{{event.nomCategorie}}">
+									<INPUT type="hidden" name="id" value={{event.cateId}}>
+									<INPUT type="hidden" name="type" value="Evenements">
+									<INPUT type="SUBMIT" name="{{ event.nomCategorie }}" value="{{ event.nomCategorie }}" class="lg:row-start-3 lg:col-start-1 lg:col-span-2 row-start-3 col-start-1 col-span-1 flex justify-center items-center text-center min-w-full bg-white text-principal rounded-lg text-sm p-2 font-bold">
+								</FORM>
 
 
 								<FORM action="index.php?controlleur=evtActu&methode=lister" method="POST" class="lg:col-start-1 lg:row-start-4 lg:col-span-2 lg:flex lg:justify-center lg:items-center lg:gap-4 row-start-3 col-start-2 col-span-1 flex justify-center items-center cursor-pointer">

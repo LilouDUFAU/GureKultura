@@ -29,6 +29,7 @@ require_once '../app/controllers/controller_mesActu.class.php';
 require_once '../app/controllers/controller_modifEv.class.php';
 require_once '../app/controllers/controller_modifActu.class.php';
 require_once '../app/controllers/controller_validPropEv.class.php';
+require_once '../app/controllers/controller_cateEvt.class.php';
 
 
 
