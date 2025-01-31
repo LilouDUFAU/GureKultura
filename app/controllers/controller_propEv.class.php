@@ -37,23 +37,25 @@ class ControllerPropEv extends Controller
     public function lister()
     {
         if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
+            $pdo = Bd::getInstance()->getPdo();
 
-        $loader = new \Twig\Loader\FilesystemLoader('../templates');
-        $twig = new \Twig\Environment($loader);
+            $loader = new \Twig\Loader\FilesystemLoader('../templates');
+            $twig = new \Twig\Environment($loader);
 
-        $managerActualite = new ActualiteDao($this->getPdo());
-        $actualite = $managerActualite->findAllWithCategorie();
+            $managerActualite = new ActualiteDao($this->getPdo());
+            $actualite = $managerActualite->findAllWithCategorie();
 
-        $managerCategorie = new CategorieDao($this->getPdo());
-        $categories = $managerCategorie->findAll();
+            $managerCategorie = new CategorieDao($this->getPdo());
+            $categories = $managerCategorie->findAll();
 
-        // Rendre le template Twig
-        echo $this->getTwig()->render('propEv.html.twig', [
-            'title' => 'Proposisition d\'événement',
-            'actualites' => $actualite,
-            'categories' => $categories
-        ]);}
-        else{
+            // Rendre le template Twig
+            echo $this->getTwig()->render('propEv.html.twig', [
+                'title' => 'Proposisition d\'événement',
+                'actualites' => $actualite,
+                'categories' => $categories
+            ]);
+        } else {
+            // L'utilisateur n'est pas connecté, redirigez-le vers la page de connexion
             header('Location: index.php?controlleur=connexion&methode=lister');
         }
     }
@@ -63,7 +65,7 @@ class ControllerPropEv extends Controller
      * @function validerFormulairePropEv
      * @details Fonction permettant de valider les données du formulaire de la page "Proposition d'événement"
      * @uses Validator
-     * @uses ActualiteDao
+     * @uses EvenementDao
      * @uses CategorieDao
      * @uses Bd
      * @uses findAllWithCategorie
@@ -179,8 +181,6 @@ class ControllerPropEv extends Controller
 
             // recuperation des donnees du formulaire
             $donnees = $_POST;
-            $user = $_SESSION['user'];
-            $donnees['userId'] = $user->getUserId();
 
             // Gestion du fichier autorisation
             if (isset($_FILES['autorisation']) && $_FILES['autorisation']['error'] == 0) {
@@ -191,9 +191,6 @@ class ControllerPropEv extends Controller
                 // Ajouter un timestamp au nom de l'autorisation pour s'assurer qu'elle ait un nom unique
                 $timestamp = time();
                 $autorisationName = pathinfo($autorisationName, PATHINFO_FILENAME) . '_' . $timestamp . '.' . pathinfo($autorisationName, PATHINFO_EXTENSION);
-
-                // Ajoute les données de l'autorisation dans $donnees
-                $donnees['autorisationName'] = $autorisationName;
             }
 
             // Gestion du fichier photo
@@ -204,28 +201,38 @@ class ControllerPropEv extends Controller
 
                 // Ajouter un timestamp au nom de la photo pour s'assurer qu'elle ait un nom unique
                 $timestamp = time();
-                $photoName = pathinfo($photoName, PATHINFO_FILENAME) . '_' . $timestamp . '.' . pathinfo($photoName, PATHINFO_EXTENSION);
-
-                // Ajoute les données de la photo dans $donnees
-                $donnees['photoName'] = $photoName;
+                $photoName = pathinfo($photoName, PATHINFO_FILENAME) . '_' . $timestamp . '.' . pathinfo($photoName, PATHINFO_EXTENSION);                
             }
 
-            
             // boucle de nettoyage des donnees
             foreach ($donnees as $key => $value) {
                 $donnees[$key] = htmlentities($value);
             }
 
+            $user = $_SESSION['user'];
+            $donnees['userId'] = $user->getUserId(); 
 
-            // validation des donnees du formulaire
+            if (isset($_FILES['autorisation']) && $_FILES['autorisation']['error'] == 0) {
+            // Ajoute les données de l'autorisation dans $donnees
+            $donnees['autorisationName'] = $autorisationName;
+            }
+
+            if (isset($_FILES['photo']) && $_FILES['photo']['error'] == 0) {
+            // Ajoute les données de la photo dans $donnees
+            $donnees['photoName'] = $photoName;
+            }
+
+            // Validation des donnees du formulaire
             $donneesValides = $validator->valider($donnees);
 
             if (!$donneesValides) {
                 $messageErreurs = $validator->getMessageErreurs();
             }
-            // recuperation des erreurs
+
+            // Recuperation des erreurs
 
             // Rendre le template Twig
+            $pdo = Bd::getInstance()->getPdo();
 
             $loader = new \Twig\Loader\FilesystemLoader('../templates');
             $twig = new \Twig\Environment($loader);
@@ -268,8 +275,6 @@ class ControllerPropEv extends Controller
                     }
                 }
                 header('Location: index.php?controlleur=index&methode=lister');
-                // Les données sont valides, insérez-les dans la base de données
-
 
             }
         } else {

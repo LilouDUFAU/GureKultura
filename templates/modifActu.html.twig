@@ -11,7 +11,7 @@
 
 			<div
 				class="col-start-1 col-span-6 row-start-1 grid grid-cols-subgrid bg-principal rounded-lg p-4">
-				{# titre evenement #}
+				{# titre actualite #}
 				<div class="grid grid-cols-subgrid row-start-1 col-start-1 col-span-6 p-2">
 					<div class="col-start-1 col-span-2 flex flex-row items-center gap-2">
 						<img src="../asset/icones/fonts.svg" class="h-5 w-5 border-2 border-solid border-white rounded-md" alt="icone de titre">
@@ -19,7 +19,7 @@
 					</div>
 					<input type="text" name="titre" id="titre" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 text-gray-400" value="{{ actuActuel.titre }}">
 				</div>
-				{# type evenement #}
+				{# type actualite #}
 				<div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-6 p-2">
 					<div class="col-start-1 col-span-2 flex flex-row items-center gap-2">
 						<img src="../asset/icones/ui-checks-grid.svg" class="h-5 w-5" alt="icone de categorie">
@@ -27,7 +27,7 @@
 					</div>
 					<!-- Dropdown Container -->
 					<select name="cateId" id="nomCategorie" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg text-gray-400">
-						<option class="text-gray-400" value="{{ actuActuel.cateId }}" selected>{{ actuActuel.categorie}}</option>
+						<option class="text-gray-400" value="{{ actuActuel.cateId }}" selected>{{ actuActuel.categorie }}</option>
 						{% for categorie in categories %}
 							<option class="text-black" value="{{categorie.cateId}}" {% if actuActuel.cateId == categorie.cateId %} selected {% endif %}>{{ categorie.nom }}</option>
 						{% endfor %}
@@ -43,7 +43,7 @@
 					<textarea name="resume" id="resume" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 text-gray-400">{{ actuActuel.resume }}</textarea>
 				</div>
 
-				{# resume #}
+				{# contenu #}
 				<div class="grid grid-cols-subgrid row-start-4 col-start-1 col-span-6 p-2">
 					<div class="col-start-1 col-span-2 flex flex-row items-center gap-2">
 						<img src="../asset/icones/card-text.svg" class="h-5 w-5" alt="icone de contenu">

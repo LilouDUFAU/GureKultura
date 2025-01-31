@@ -121,7 +121,7 @@ class ControllerModifActu extends Controller
                 $imgTmpName = $_FILES['img']['tmp_name'];
                 $imgName = $_FILES['img']['name'];
 
-                // Ajouter un timestamp au nom de la img pour s'assurer qu'elle ait un nom unique
+                // Ajouter un timestamp au nom de l'img pour s'assurer qu'elle ait un nom unique
                 $timestamp = time();
                 $imgName = pathinfo($imgName, PATHINFO_FILENAME) . '_' . $timestamp . '.' . pathinfo($imgName, PATHINFO_EXTENSION);
             }
@@ -139,7 +139,7 @@ class ControllerModifActu extends Controller
             $donnees['userId'] = $user->getUserId();
 
             if (isset($_FILES['img']) && $_FILES['img']['error'] == 0) {
-                // Ajoute les données de la img dans $donnees
+                // Ajoute les données de l'img dans $donnees
                 $donnees['imgName'] = $imgName;
             } else {
                 $donnees['imgName'] = null;
