@@ -1242,9 +1242,19 @@ video {
   background-color: rgb(66 66 66 / var(--tw-bg-opacity, 1));
 }
 
+.bg-principal-rouge {
+  --tw-bg-opacity: 1;
+  background-color: rgb(163 0 0 / var(--tw-bg-opacity, 1));
+}
+
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
+}
+
+.bg-principal-vert {
+  --tw-bg-opacity: 1;
+  background-color: rgb(22 91 51 / var(--tw-bg-opacity, 1));
 }
 
 .bg-opacity-50 {
@@ -1484,6 +1494,11 @@ video {
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
+.text-principal-rouge {
+  --tw-text-opacity: 1;
+  color: rgb(163 0 0 / var(--tw-text-opacity, 1));
+}
+
 .underline {
   text-decoration-line: underline;
 }
@@ -1577,6 +1592,11 @@ video {
   border-width: 0px;
 }
 
+.file\:bg-principal-rouge::file-selector-button {
+  --tw-bg-opacity: 1;
+  background-color: rgb(163 0 0 / var(--tw-bg-opacity, 1));
+}
+
 .file\:text-sm::file-selector-button {
   font-size: 0.875rem;
   line-height: 1.25rem;
@@ -1587,8 +1607,18 @@ video {
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
+.odd\:bg-principal-rouge:nth-child(odd) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(163 0 0 / var(--tw-bg-opacity, 1));
+}
+
 .odd\:bg-opacity-35:nth-child(odd) {
   --tw-bg-opacity: 0.35;
+}
+
+.even\:bg-principal-rouge:nth-child(even) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(163 0 0 / var(--tw-bg-opacity, 1));
 }
 
 .even\:bg-opacity-75:nth-child(even) {
