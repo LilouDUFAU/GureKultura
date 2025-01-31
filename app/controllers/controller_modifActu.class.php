@@ -185,13 +185,16 @@ class ControllerModifActu extends Controller
             $managerCategorie = new CategorieDao($this->getPdo());
             $categories = $managerCategorie->findAll();
 
+            $managerActualite = new ActualiteDao($this->getPdo());
+            $actualite = $managerActualite->findActuById($_SESSION['actuActuel']['id']);
+
             if (!empty($messageErreurs)) {
                 var_dump($messageErreurs);
                 // Les données ne sont pas valides, affichez les erreurs
-                echo $this->getTwig()->render('modifEv.html.twig', [
+                echo $this->getTwig()->render('modifActu.html.twig', [
                     'title' => 'Proposition d\'événement',
                     'messageErreurs' => $messageErreurs,
-                    'donnees' => $donnees,
+                    'donnees' => htmlentities($donnees),
                     'actualites' => $actualite,
                     'categories' => $categories
 
