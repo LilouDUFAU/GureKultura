@@ -76,7 +76,7 @@ class ControllerModifActu extends Controller
                     'obligatoire' => true,
                     'type' => 'string',
                     'longueurMin' => 5,
-                    'longueurMax' => 50,
+                    'longueurMax' => 100,
                     'format' => '/^[a-zA-Z0-9\s]+$/'
                 ],
                 'cateId' => [
@@ -120,10 +120,6 @@ class ControllerModifActu extends Controller
                 $donnees['cateId'] = $_SESSION['actuActuel']['categorieId'];
             }
 
-            // boucle de nettoyage des donnees 
-            foreach ($donnees as $key => $value) {
-                $donnees[$key] = htmlentities($value);
-            }
             $user = $_SESSION['user'];
             $donnees['userId'] = $user->getUserId();
 

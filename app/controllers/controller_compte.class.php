@@ -228,7 +228,7 @@ class ControllerCompte extends Controller
 
                 echo $this->getTwig()->render('compte.html.twig', [
                     'title' => 'Compte',
-                    'donnees' => htmlentities($donnees),
+                    'donnees' => $donnees,
                     'actualites' => $actualite,
                     'categories' => $categories
 
