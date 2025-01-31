@@ -159,7 +159,6 @@ class Validator
      */
     public function is_strong(string $password): bool {
         $regex = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/';
-
         // La fonction preg_match retourne 1 si une correspondance est trouvée.
         return preg_match($regex, $password) === 1;
     }

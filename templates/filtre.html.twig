@@ -1,0 +1,63 @@
+{% extends "base.html.twig" %}
+
+{% block content %}
+<div class="p-6">
+    <h2 class="text-2xl font-bold text-center mb-4">Filtres</h2>
+
+    <!-- Formulaire de filtres -->
+    <div class="mb-4">
+        <h3 class="text-lg font-semibold">Catégories</h3>
+
+        {% for categorie in categories %}
+        {% if categorie.nom == 'Sport' %}
+            <label cateId="Sport">
+                <input cateId="Sport" type="checkbox" onchange="toggleCate('Sport','1')">
+                {{ categorie.nom }}<br>
+            </label>
+        {% endif %}
+        
+        {% if categorie.categorieOriginale == 1 %}
+            <label cateId="{{ categorie.categorieOriginale }}" style="display: none;">
+                <input cateId="{{ categorie.cateId }}" type="checkbox" onchange="toggleDiv('{{ categorie.cateId }}')">
+                {{ categorie.nom }}<br>
+            </label>
+        {% endif %}
+
+        {% if categorie.nom == 'Culture' %}
+            <label cateId="Culture">
+                <input cateId="Culture" type="checkbox" onchange="toggleCate('Culture','2')">
+                {{ categorie.nom }}<br>
+            </label>
+        {% endif %}
+        
+        {% if categorie.categorieOriginale == 2 %}
+            <label cateId="{{ categorie.categorieOriginale }}" style="display: none;">
+                <input cateId="{{ categorie.cateId }}" type="checkbox" onchange="toggleDiv('{{ categorie.cateId }}')">
+                {{ categorie.nom }}<br>
+            </label>
+        {% endif %}
+    {% endfor %}
+
+
+
+
+    <!-- Résultats filtrés -->
+    <h3 class="text-xl font-semibold mt-6">Événements</h3>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {% for event in events %}
+            <div class="bg-white p-4 gap-4 rounded-lg shadow-md" cateId="{{ event.cateId }}" style="display: none;">
+                <img src="../asset/evenement/{{ event.photo }}" alt="{{ event.titre }}" class="w-full h-48 object-cover mb-4">
+                <h4 class="font-semibold">{{ event.cateId }}</h4>
+                <p>{{ event.lieu }}</p>
+                <p></p>
+                <p>{{ event.dateDebut|date('d/m/Y') }} - {{ event.dateFin|date('d/m/Y') }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% block script %}
+<script src="../js/filtre.js"></script>
+{% endblock %}  
+
+{% endblock %}
