@@ -325,7 +325,7 @@ class ControllerModifEv extends Controller
                 echo $this->getTwig()->render('modifEv.html.twig', [
                     'title' => 'Proposition d\'événement',
                     'messageErreurs' => $messageErreurs,
-                    'donnees' => htmlentities($donnees),
+                    'donnees' => $donnees,
                     'actualites' => $actualite,
                     'categories' => $categories
 

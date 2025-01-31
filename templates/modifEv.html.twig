@@ -105,7 +105,7 @@
 						<img src="../asset/icones/image.svg" class="h-5 w-5" alt="icone de photo">
 						<label for="photo">Image</label>
 					</div>
-					<input class="col-start-3 col-span-4 bg-transparent flex w-full rounded-md border border-blue-300 border-input bg-white text-sm text-gray-400 file:border-0 file:bg-principal file:text-white file:text-sm" type="file" name="photo" id="photo" class="" value="{{ evenementActuel.photo }}"/>
+					<input accept=".jpg, .png"  class="col-start-3 col-span-4 bg-transparent flex w-full rounded-md border border-blue-300 border-input bg-white text-sm text-gray-400 file:border-0 file:bg-principal file:text-white file:text-sm" type="file" name="photo" id="photo" class="" value="{{ evenementActuel.photo }}"/>
 
 				</div>
 
@@ -115,7 +115,7 @@
 						<img src="../asset/icones/file-earmark-pdf.svg" class="h-5 w-5" alt="icone de autorisation">
 						<label for="autorisation">Autorisation</label>
 					</div>
-					<input class="col-start-3 col-span-4 bg-transparent flex w-full rounded-md border border-blue-300 border-input bg-white text-sm text-gray-400 file:border-0 file:bg-principal file:text-white file:text-sm" type="file" name="autorisation" id="autorisation" value="{{ evenementActuel.autorisation }}"/>
+					<input accept=".pdf"  class="col-start-3 col-span-4 bg-transparent flex w-full rounded-md border border-blue-300 border-input bg-white text-sm text-gray-400 file:border-0 file:bg-principal file:text-white file:text-sm" type="file" name="autorisation" id="autorisation" value="{{ evenementActuel.autorisation }}"/>
 
 				</div>
 
