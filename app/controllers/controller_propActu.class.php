@@ -178,6 +178,20 @@ class ControllerPropActu extends Controller
                 ]);
             } else {
                 if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
+                    if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
+                        // Vérification si le répertoire ../asset/user/ existe, sinon le créer
+                        $cheminDossierImage = '../asset/actualite/';
+                        if (!is_dir($cheminDossierImage)) {
+                            if (!mkdir($cheminDossierImage, 0777, true)) {
+                                error_log("Erreur lors de la création du répertoire: " . $cheminDossierImage);
+                            }
+                        }
+                        // L'image est valide, et est donc uploadée dans asset/actualite
+                        $cheminImage = $cheminDossierImage . basename($imageName);
+                        move_uploaded_file($imageTmpName, $cheminImage);
+                    }
+                    
+
                     // L'image est valide, et est donc uploadée dans asset/actualite
                     $cheminImage = '../asset/actualite/' . basename($imageName);
                     move_uploaded_file($imageTmpName, $cheminImage);

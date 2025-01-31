@@ -371,6 +371,20 @@ class ControllerModifEv extends Controller
 
                 ]);
             } else {
+                // Vérification si le répertoire ../asset/evenement/autorisation/ existe, sinon le créer
+                $cheminDossierAutorisation = '../asset/evenement/autorisation/';
+                if (!is_dir($cheminDossierAutorisation)) {
+                    if (!mkdir($cheminDossierAutorisation, 0777, true)) {
+                        error_log("Erreur lors de la création du répertoire: " . $cheminDossierAutorisation);
+                    }
+                }
+                // Vérification si le répertoire ../asset/evenement/photo/ existe, sinon le créer
+                $cheminDossierPhoto = '../asset/evenement/photo/';
+                if (!is_dir($cheminDossierPhoto)) {
+                    if (!mkdir($cheminDossierPhoto, 0777, true)) {
+                        error_log("Erreur lors de la création du répertoire: " . $cheminDossierPhoto);
+                    }
+                }
 
                 if (isset($_FILES['autorisation']) && $_FILES['autorisation']['error'] == 0){
                     // L'autorisation est valide, et est donc uploadée dans asset/evenement/autorisation/

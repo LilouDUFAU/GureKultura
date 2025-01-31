@@ -216,6 +216,13 @@ class ControllerModifActu extends Controller
             } else {
 
                 if (isset($_FILES['img']) && $_FILES['img']['error'] == 0){
+                    // Vérification si le répertoire ../asset/user/ existe, sinon le créer
+                    $cheminDossierImage = '../asset/actualite/';
+                    if (!is_dir($cheminDossierImage)) {
+                        if (!mkdir($cheminDossierImage, 0777, true)) {
+                            error_log("Erreur lors de la création du répertoire: " . $cheminDossierImage);
+                        }
+                    }
                     // L'img est valide, et est donc uploadée dans asset/user
                     $cheminImg = '../asset/actualite/' . basename($imgName);
                     move_uploaded_file($imgTmpName, $cheminImg);

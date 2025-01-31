@@ -200,6 +200,13 @@ class ControllerCompte extends Controller
             } else {
 
                 if (isset($_FILES['pfp']) && $_FILES['pfp']['error'] == 0){
+                    // Vérification si le ../asset/user/ répertoire existe, sinon le créer
+                    $cheminDossierPfp = '../asset/user/';
+                    if (!is_dir($cheminDossierPfp)) {
+                        if (!mkdir($cheminDossierPfp, 0777, true)) {
+                            error_log("Erreur lors de la création du répertoire: " . $cheminDossierPfp);
+                        }
+                    }
                     // La pfp est valide, et est donc uploadée dans asset/user
                     $cheminPfp = '../asset/user/' . basename($pfpName);
                     move_uploaded_file($pfpTmpName, $cheminPfp);
