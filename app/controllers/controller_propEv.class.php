@@ -36,7 +36,7 @@ class ControllerPropEv extends Controller
      */
     public function lister()
     {
-        
+        if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
 
         $loader = new \Twig\Loader\FilesystemLoader('../templates');
         $twig = new \Twig\Environment($loader);
@@ -52,7 +52,10 @@ class ControllerPropEv extends Controller
             'title' => 'Proposisition d\'événement',
             'actualites' => $actualite,
             'categories' => $categories
-        ]);
+        ]);}
+        else{
+            header('Location: index.php?controlleur=connexion&methode=lister');
+        }
     }
 
 
@@ -81,7 +84,7 @@ class ControllerPropEv extends Controller
                     'obligatoire' => true,
                     'type' => 'string',
                     'longueurMin' => 5,
-                    'longueurMax' => 30,
+                    'longueurMax' => 100,
                     'format' => '/^[a-zA-Z0-9\s]+$/'
                 ],
                 'cateId' => [
@@ -93,7 +96,7 @@ class ControllerPropEv extends Controller
                 ],
                 'autorisation' => [
                     'obligatoire' => false,
-                    'type' => '.pdf ,.jpg, .jpeg, .png',
+                    'type' => '.pdf',
                     'format' => '/^[a-zA-Z0-9\s]+$/'
                 ],
                 'email' => [
@@ -176,13 +179,37 @@ class ControllerPropEv extends Controller
 
             // recuperation des donnees du formulaire
             $donnees = $_POST;
-            
-            // boucle de nettoyage des donnees
-            foreach ($donnees as $key => $value) {
-                $donnees[$key] = htmlentities($value);
-            }
             $user = $_SESSION['user'];
             $donnees['userId'] = $user->getUserId();
+            var_dump($donnees);
+
+            // Gestion du fichier autorisation
+            if (isset($_FILES['autorisation']) && $_FILES['autorisation']['error'] == 0) {
+                // Vérification de la validité du fichier
+                $autorisationTmpName = $_FILES['autorisation']['tmp_name'];
+                $autorisationName = $_FILES['autorisation']['name'];
+
+                // Ajouter un timestamp au nom de l'autorisation pour s'assurer qu'elle ait un nom unique
+                $timestamp = time();
+                $autorisationName = pathinfo($autorisationName, PATHINFO_FILENAME) . '_' . $timestamp . '.' . pathinfo($autorisationName, PATHINFO_EXTENSION);
+
+                // Ajoute les données de l'autorisation dans $donnees
+                $donnees['autorisationName'] = $autorisationName;
+            }
+
+            // Gestion du fichier photo
+            if (isset($_FILES['photo']) && $_FILES['photo']['error'] == 0) {
+                // Vérification de la validité du fichier
+                $photoTmpName = $_FILES['photo']['tmp_name'];
+                $photoName = $_FILES['photo']['name'];
+
+                // Ajouter un timestamp au nom de la photo pour s'assurer qu'elle ait un nom unique
+                $timestamp = time();
+                $photoName = pathinfo($photoName, PATHINFO_FILENAME) . '_' . $timestamp . '.' . pathinfo($photoName, PATHINFO_EXTENSION);
+
+                // Ajoute les données de la photo dans $donnees
+                $donnees['photoName'] = $photoName;
+            }
 
 
             // validation des donnees du formulaire
@@ -191,7 +218,6 @@ class ControllerPropEv extends Controller
             if (!$donneesValides) {
                 $messageErreurs = $validator->getMessageErreurs();
             }
-
             // recuperation des erreurs
 
             // Rendre le template Twig
@@ -212,19 +238,29 @@ class ControllerPropEv extends Controller
                     'messageErreurs' => $messageErreurs,
                     'donnees' => $donnees,
                     'actualites' => $actualite,
-                    'categories' => $categories
-
+                    'categories' => $categories,
                 ]);
             } else {
                 if (!$this->insererDonneesDansLaBase($donnees)) {
                     echo $this->getTwig()->render('propEv.html.twig', [
                         'title' => 'Proposition d\'événement',
                         'erreurBD' => "Erreur lors de l'insertion de l'événement",
-                        'donnees' => $donnees,
+                        'donnees' => htmlentities($donnees),
                         'actualites' => $actualite,
                         'categories' => $categories
                     ]);
                     exit();
+                }else{
+                    if (isset($_FILES['autorisation']) && $_FILES['autorisation']['error'] == 0){
+                        // La photo est valide, et est donc uploadée dans asset/evenement/autorisation/
+                        $cheminAutorisation = '../asset/evenement/autorisation/' . basename($autorisationName);
+                        move_uploaded_file($autorisationTmpName, $cheminAutorisation);
+                    }
+                    if (isset($_FILES['photo']) && $_FILES['photo']['error'] == 0){
+                        // La photo est valide, et est donc uploadée dans asset/evenement/photo/
+                        $cheminPhoto = '../asset/evenement/photo/' . basename($photoName);
+                        move_uploaded_file($photoTmpName, $cheminPhoto);
+                    }
                 }
                 header('Location: index.php?controlleur=index&methode=lister');
                 // Les données sont valides, insérez-les dans la base de données
@@ -260,7 +296,7 @@ class ControllerPropEv extends Controller
             $evenement = new Evenement(
                 null,
                 $donnees['titre'],
-                $donnees['autorisation'] ?? null,
+                $donnees['autorisationName'] ?? null,
                 $donnees['description'],
                 $donnees['email'],
                 $donnees['tel'],
@@ -271,7 +307,7 @@ class ControllerPropEv extends Controller
                 $donnees['debutHeure'],
                 $donnees['finHeure'],
                 $donnees['lieu'],
-                $donnees['photo'] ?? null,
+                $donnees['photoName'] ?? null,
                 false,
                 $donnees['userId'],
                 $donnees['cateId']

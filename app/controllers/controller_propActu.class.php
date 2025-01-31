@@ -36,23 +36,28 @@ class ControllerPropActu extends Controller
      */
     public function lister()
     {
-        $pdo = Bd::getInstance()->getPdo();
+        if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
+            $pdo = Bd::getInstance()->getPdo();
 
-        $loader = new \Twig\Loader\FilesystemLoader('../templates');
-        $twig = new \Twig\Environment($loader);
+            $loader = new \Twig\Loader\FilesystemLoader('../templates');
+            $twig = new \Twig\Environment($loader);
 
-        $managerActualite = new ActualiteDao($this->getPdo());
-        $actualite = $managerActualite->findAllWithCategorie();
+            $managerActualite = new ActualiteDao($this->getPdo());
+            $actualite = $managerActualite->findAllWithCategorie();
 
-        $managerCategorie = new CategorieDao($this->getPdo());
-        $categories = $managerCategorie->findAll();
+            $managerCategorie = new CategorieDao($this->getPdo());
+            $categories = $managerCategorie->findAll();
 
-        // Rendre le template Twig
-        echo $this->getTwig()->render('propActu.html.twig', [
-            'title' => 'Proposisition d\'actualité',
-            'actualites' => $actualite,
-            'categories' => $categories
-        ]);
+            // Rendre le template Twig
+            echo $this->getTwig()->render('propActu.html.twig', [
+                'title' => 'Proposisition d\'actualité',
+                'actualites' => $actualite,
+                'categories' => $categories
+            ]);
+        } else {
+            // L'utilisateur n'est pas connecté, redirigez-le vers la page de connexion
+            header('Location: index.php?controlleur=connexion&methode=lister');
+        }
     }
 
     /**
@@ -78,7 +83,7 @@ class ControllerPropActu extends Controller
                     'obligatoire' => true,
                     'type' => 'string',
                     'longueurMin' => 5,
-                    'longueurMax' => 50,
+                    'longueurMax' => 100,
                     'format' => '/^[a-zA-Z0-9\s]+$/'
                 ],
                 'cateId' => [
@@ -126,27 +131,22 @@ class ControllerPropActu extends Controller
                 // Ajouter un timestamp au nom de l'image pour s'assurer qu'elle ait un nom unique
                 $timestamp = time();
                 $imageName = pathinfo($imageName, PATHINFO_FILENAME) . '_' . $timestamp . '.' . pathinfo($imageName, PATHINFO_EXTENSION);
-
-                // Ajoute les données de l'image dans $donnees
-                $donnees['imageName'] = $imageName;
             }
 
-            // boucle de nettoyage des donnees
-            foreach ($donnees as $key => $value) {
-                $donnees[$key] = htmlentities($value);
-            }
+            // Ajoute les données de l'image dans $donnees
+            $donnees['imageName'] = $imageName;
 
             $user = $_SESSION['user'];
             $donnees['userId'] = $user->getUserId();
 
-            // validation des donnees du formulaire
+            // Validation des donnees du formulaire
             $donneesValides = $validator->valider($donnees);
 
             if (!$donneesValides) {
                 $messageErreurs = $validator->getMessageErreurs();
             }
 
-            // recuperation des erreurs
+            // Recuperation des erreurs
 
             // Rendre le template Twig
             $pdo = Bd::getInstance()->getPdo();
@@ -165,26 +165,18 @@ class ControllerPropActu extends Controller
                 echo $this->getTwig()->render('propActu.html.twig', [
                     'title' => 'Proposition d\'actualité',
                     'messageErreurs' => $messageErreurs,
-                    'donnees' => $donnees,
+                    'donnees' => htmlentities($donnees),
                     'actualites' => $actualite,
                     'categories' => $categories
                 ]);
             } else {
-                echo $this->getTwig()->render('propActu.html.twig', [
-                    'title' => 'Proposition d\'actualité',
-                    'donnees' => $donnees,
-                    'actualites' => $actualite,
-                    'categories' => $categories
-
-                ]);
-
-                if (isset($_FILES['image']) && $_FILES['image']['error'] == 0){
+                if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
                     // L'image est valide, et est donc uploadée dans asset/actualite
                     $cheminImage = '../asset/actualite/' . basename($imageName);
                     move_uploaded_file($imageTmpName, $cheminImage);
-                    }
-
-
+                }
+                
+                header('Location: index.php?controlleur=index&methode=lister');
                 // Les données sont valides, insérez-les dans la base de données
                 $this->insererDonneesDansLaBase($donnees);
             }
