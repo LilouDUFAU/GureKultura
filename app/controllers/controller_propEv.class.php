@@ -36,7 +36,7 @@ class ControllerPropEv extends Controller
      */
     public function lister()
     {
-        
+        if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
 
         $loader = new \Twig\Loader\FilesystemLoader('../templates');
         $twig = new \Twig\Environment($loader);
@@ -52,7 +52,10 @@ class ControllerPropEv extends Controller
             'title' => 'Proposisition d\'événement',
             'actualites' => $actualite,
             'categories' => $categories
-        ]);
+        ]);}
+        else{
+            header('Location: index.php?controlleur=connexion&methode=lister');
+        }
     }
 
 
@@ -81,7 +84,7 @@ class ControllerPropEv extends Controller
                     'obligatoire' => true,
                     'type' => 'string',
                     'longueurMin' => 5,
-                    'longueurMax' => 30,
+                    'longueurMax' => 100,
                     'format' => '/^[a-zA-Z0-9\s]+$/'
                 ],
                 'cateId' => [
@@ -176,6 +179,9 @@ class ControllerPropEv extends Controller
 
             // recuperation des donnees du formulaire
             $donnees = $_POST;
+            $user = $_SESSION['user'];
+            $donnees['userId'] = $user->getUserId();
+            var_dump($donnees);
 
             // Gestion du fichier autorisation
             if (isset($_FILES['autorisation']) && $_FILES['autorisation']['error'] == 0) {
@@ -204,13 +210,6 @@ class ControllerPropEv extends Controller
                 // Ajoute les données de la photo dans $donnees
                 $donnees['photoName'] = $photoName;
             }
-            
-            // boucle de nettoyage des donnees
-            foreach ($donnees as $key => $value) {
-                $donnees[$key] = htmlentities($value);
-            }
-            $user = $_SESSION['user'];
-            $donnees['userId'] = $user->getUserId();
 
 
             // validation des donnees du formulaire
@@ -219,7 +218,6 @@ class ControllerPropEv extends Controller
             if (!$donneesValides) {
                 $messageErreurs = $validator->getMessageErreurs();
             }
-
             // recuperation des erreurs
 
             // Rendre le template Twig
@@ -240,15 +238,14 @@ class ControllerPropEv extends Controller
                     'messageErreurs' => $messageErreurs,
                     'donnees' => $donnees,
                     'actualites' => $actualite,
-                    'categories' => $categories
-
+                    'categories' => $categories,
                 ]);
             } else {
                 if (!$this->insererDonneesDansLaBase($donnees)) {
                     echo $this->getTwig()->render('propEv.html.twig', [
                         'title' => 'Proposition d\'événement',
                         'erreurBD' => "Erreur lors de l'insertion de l'événement",
-                        'donnees' => $donnees,
+                        'donnees' => htmlentities($donnees),
                         'actualites' => $actualite,
                         'categories' => $categories
                     ]);
@@ -265,7 +262,6 @@ class ControllerPropEv extends Controller
                         move_uploaded_file($photoTmpName, $cheminPhoto);
                     }
                 }
-
                 header('Location: index.php?controlleur=index&methode=lister');
                 // Les données sont valides, insérez-les dans la base de données
 

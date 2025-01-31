@@ -88,7 +88,7 @@ class ControllerModifEv extends Controller
                     'obligatoire' => true,
                     'type' => 'string',
                     'longueurMin' => 5,
-                    'longueurMax' => 30,
+                    'longueurMax' => 100,
                     'format' => '/^[a-zA-Z0-9\s]+$/'
                 ],
                 'cateId' => [
@@ -192,10 +192,7 @@ class ControllerModifEv extends Controller
                 $donnees['cateId'] = $_SESSION['evtActuel']['categorieId'];
             }
 
-            // boucle de nettoyage des donnees 
-            foreach ($donnees as $key => $value) {
-                $donnees[$key] = htmlentities($value);
-            }
+
             $user = $_SESSION['user'];
             $donnees['userId'] = $user->getUserId();
 

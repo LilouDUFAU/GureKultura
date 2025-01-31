@@ -97,13 +97,27 @@ class ControllerCompte extends Controller
 
             // recuperation des donnees du formulaire
             $donnees = $_POST;
-            // boucle de nettoyage des donnees
-            foreach ($donnees as $key => $value) {
-                $donnees[$key] = htmlentities($value);
+
+            // Gestion du fichier pfp
+            if (isset($_FILES['pfp']) && $_FILES['pfp']['error'] == 0) {
+                // Vérification de la validité du fichier
+                $pfpTmpName = $_FILES['pfp']['tmp_name'];
+                $pfpName = $_FILES['pfp']['name'];
+
+                // Ajouter un timestamp au nom de la pfp pour s'assurer qu'elle ait un nom unique
+                $timestamp = time();
+                $pfpName = pathinfo($pfpName, PATHINFO_FILENAME) . '_' . $timestamp . '.' . pathinfo($pfpName, PATHINFO_EXTENSION);
+            }
+
+
+            if (isset($_FILES['pfp']) && $_FILES['pfp']['error'] == 0) {
+            // Ajoute les données de la pfp dans $donnees
+            $donnees['pfpName'] = $pfpName;
+            } else {
+                $donnees['pfpName'] = null;
             }
                 
             $user = $_SESSION['user'];
-            var_dump($user);
             $donnees['userId'] = $user->getUserId();
             
 
@@ -147,10 +161,12 @@ class ControllerCompte extends Controller
                     $bioChange = false;
                 }
 
-                // verifier si le champ pfp est egal au pfp en base de donnee de l'utilisateur ayant l'id userId
-                // if ( $donnees['pfp'] != $user->getPfp() ) {
-                //     $pfpChange= true;
-                // }
+                // verifier si le champ pfp est egal a la pfp en base de donnee de l'utilisateur ayant l'id userId et que la pfp est non nulle
+                if ( $donnees['pfpName'] != $user->getPfp()  && $donnees['pfpName'] != null) {
+                    $pfpChange= true;
+                } else {
+                    $pfpChange= false;
+                }
 
             }
  
@@ -172,12 +188,18 @@ class ControllerCompte extends Controller
                 echo $this->getTwig()->render('compte.html.twig', [
                     'title' => 'Compte',
                     'messageErreurs' => $messageErreurs,
-                    'donnees' => $donnees,
+                    'donnees' => htmlentities($donnees),
                     'actualites' => $actualite,
                     'categories' => $categories
 
                 ]);
             } else {
+
+                if (isset($_FILES['pfp']) && $_FILES['pfp']['error'] == 0){
+                    // La pfp est valide, et est donc uploadée dans asset/user
+                    $cheminPfp = '../asset/user/' . basename($pfpName);
+                    move_uploaded_file($pfpTmpName, $cheminPfp);
+                }
                 
                 // modifier
                 // Les données sont valides, modifiz-les dans la base de données
@@ -194,9 +216,9 @@ class ControllerCompte extends Controller
                     $this->modifierDonneesDansLaBase($donnees['bio'], 'bio');
                 }
 
-                // if ($pfpChange) {
-                //     $this->modifierDonneesDansLaBase($donnees['pfp'], 'pfp');
-                // }
+                if ($pfpChange) {
+                    $this->modifierDonneesDansLaBase($donnees['pfpName'], 'pfp');
+                }
                 
 
                 $manager = new UserDao($pdo);
@@ -247,8 +269,6 @@ class ControllerCompte extends Controller
             $donnees['userId'] = $user->getUserId();
             
 
-
-
             // validation des donnees du formulaire
             $donneesValides = $validator->valider($donnees);
             if (!$donneesValides) {
@@ -261,7 +281,7 @@ class ControllerCompte extends Controller
                     $mdpChange = true;
 
 
-                    if($validator->passwordExist($donnees['mdp'])){            //vérifier que le mot de passe est correct
+                    if($validator->passwordExist($donnees['mdp'], $donnees['email'])){            //vérifier que le mot de passe est correct
                         if($validator->is_strong($donnees['nouvMdp'])) {
                             if($donnees['nouvMdp'] == $donnees['confNouvMdp']) {
                                 $mdpValide = true;
@@ -300,7 +320,7 @@ class ControllerCompte extends Controller
                 echo $this->getTwig()->render('compte.html.twig', [
                     'title' => 'Compte',
                     'messageErreurs' => $messageErreurs,
-                    'donnees' => $donnees,
+                    'donnees' => htmlentities($donnees),
                     'actualites' => $actualite,
                     'categories' => $categories
 
@@ -335,7 +355,7 @@ class ControllerCompte extends Controller
 
                 echo $this->getTwig()->render('compte.html.twig', [
                     'title' => 'Compte',
-                    'donnees' => $donnees,
+                    'donnees' => htmlentities($donnees),
                     'actualites' => $actualite,
                     'categories' => $categories
 
@@ -415,11 +435,11 @@ class ControllerCompte extends Controller
                 $user->setBio($donnees);
                 $this->getTwig()->addGlobal('user', $user);
             }
-            // elseif ($champ == 'pfp') {
-            //     $user->setPfp($donnees);
-            //     $this->getTwig()->addGlobal('utilisateurConnecte', $user);
+            elseif ($champ == 'pfp') {
+                $user->setPfp($donnees);
+                $this->getTwig()->addGlobal('user', $user);
 
-            // }
+            }
 
             // Log the event data for debugging
             error_log(print_r($user, true));

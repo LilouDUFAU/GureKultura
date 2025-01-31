@@ -197,11 +197,17 @@ class Validator
      * @function passwordExist
      * @details Cette fonction permet de vérifier si un mot de passe passé en paramettre existe dans la base de données
      * @param string $password
+     * @param string $email
      * @return bool
      */
-    public function passwordExist(string $password): bool {
-        $hashedPassword = $this->hash_password($password);
-        if (password_verify($password, $hashedPassword)) {
+    public function passwordExist(string $password, string $email): bool {
+        $pdo = Bd::getInstance()->getPdo();
+        $sql = "SELECT * FROM " . PREFIX_TABLE . "user WHERE email = :email";
+        $pdoStatement = $pdo->prepare($sql);
+        $pdoStatement->execute(array(":email"=> $email));
+        $row = $pdoStatement->fetch();
+
+        if (password_verify($password, $row['mdp'])) {
             return true;
         } else {
             return false;
