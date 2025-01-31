@@ -138,8 +138,12 @@ class ParticiperDAO
     public function delete(Participer $participer): void {
         $sql = "DELETE FROM gk_participer WHERE userId = :userId AND evtId = :evtId";
         $pdoStatement = $this->pdo->prepare($sql);
-        $pdoStatement->execute([':userId' => $participer->getUserId(),':evtId' => $participer->getEvtId()]);
+        $pdoStatement->execute([
+            ':userId' => $participer->getUserId(),
+            ':evtId' => $participer->getEvtId(),
+        ]);
     }
+    
 
 
     

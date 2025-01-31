@@ -2,15 +2,7 @@
 {% extends "base.html.twig" %}
 
 {% block content %}
-{% if type == 'Evenements' %} 
-    {% if estInscrit == true %}
-        <h1>Vous êtes déjà inscrit !</h1>
 
-        <form method="POST" action="index.php?controlleur=evtActu&methode=desinscrire">
-            <input type="hidden" name="evtId" value="{{ evtActus.evtId }}">
-            <button type="submit" class="px-6 py-2 bg-[#A23145] text-white font-semibold rounded-lg hover:bg-[#8a1e36]">Se désinscrire</button>
-        </form>
-    {% endif %}
     <!-- Contenu spécifique de chaque page -->
     <div class="h-full">
         <div class="gap-2 p-2 grid grid-cols-12 items-center">
@@ -44,7 +36,28 @@
             </div>
             
             </div>
+{% if type == 'Evenements' %} 
+    {% if estInscrit == true %}
+        
+        <h1 class="font-bold text-xl p-2 text-principal">Vous êtes déjà inscrit !</h1>
 
+        <form method="POST" action="index.php?controlleur=evtActu&methode=desinscrire">
+            <INPUT TYPE="hidden" NAME="nom" VALUE="{{evtActus.titre}}">
+            <INPUT TYPE="hidden" NAME="type" VALUE="{{ type }}">             
+            <input type="hidden" name="evtId" value="{{ evtActus.evtId }}">
+            <button type="submit" class="mt-4 px-6 py-2 bg-principal text-white font-semibold rounded-lg hover:bg-black">Se désinscrire</button>
+        </form>
+    {% endif %}
+    {% if estInscrit == false %}
+        <form method="POST" action="index.php?controlleur=evtActu&methode=inscrire">
+            <INPUT TYPE="hidden" NAME="nom" VALUE="{{evtActus.titre}}">
+            <INPUT TYPE="hidden" NAME="type" VALUE="{{ type }}"> 
+            <input type="hidden" name="evtId" value="{{ evtActus.evtId }}">
+            <button type="submit" class="mt-4 px-6 py-2 bg-principal text-white font-semibold rounded-lg hover:bg-black">S'inscrire</button>
+        </form>
+    {% endif %}
+
+{% endif %}
         <!-- Section Commentaires -->
         <div class="row-start-4 lg:row-start-3 col-span-12 m-2 p-4 bg-gray-100 rounded-lg shadow-md drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
             <h2 class="text-2xl font-bold text-principal mb-4">Commentaires</h2>
@@ -66,15 +79,10 @@
                 <button type="submit" class="mt-4 px-6 py-2 bg-principal text-white font-semibold rounded-lg hover:bg-black">Envoyer</button>
             </div>
             
-            <form method="POST" action="index.php?controlleur=evtActu&methode=inscrire">
-                <input type="hidden" name="evtId" value="{{ evtActus.evtId }}">
-                <button type="submit" class="px-6 py-2 bg-[#A23145] text-white font-semibold rounded-lg hover:bg-[#8a1e36]">S'inscrire</button>
-            </form>
 
         </div>
     </div>
 
-{% endif %}
 
 
 

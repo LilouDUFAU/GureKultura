@@ -77,23 +77,29 @@ class ControllerEvtActu extends Controller {
 
     public function inscrire() {
         $pdo = Bd::getInstance()->getPdo();
-    
-        $loader = new \Twig\Loader\FilesystemLoader('../templates');
-        $twig = new \Twig\Environment($loader);
-    
-    
-        $evtId = $_POST['evtId'];
+        
         $user = $_SESSION['user'];
-        $userId=$user->getUserId();
+        $userId = $user->getUserId();
+    
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $nom = htmlentities($_POST['nom']);
+            $type = htmlentities($_POST['type']);
+            $evtId = htmlentities($_POST['evtId']);
+        }
 
         $evt = new Evenement();
         $evt->setEvtId($evtId);
-    
-        // Essayer d'inscrire l'utilisateur à l'événement
+        $managerEvenement = new EvenementDao($pdo);
+        $evtActu = $managerEvenement->find($evtId);
+        $managerActualite = new ActualiteDao($this->getPdo());
+        $actualite = $managerActualite->findAllWithCategorie();    
+
         $managerParticiper = new ParticiperDAO($pdo);
         $estInscrit = true;
         $participerExist = $managerParticiper->findUserEvt($userId, $evtId);
-        if($participerExist == null  || $participerExist == false){
+
+
+        if ($participerExist == null || $participerExist == false) {
             $dateActuelle = new DateTime('now');
             $dateActuelle->format('Y-m-d H:i:s');
             $participer = new Participer(
@@ -101,39 +107,62 @@ class ControllerEvtActu extends Controller {
                 $evtId,
                 $dateActuelle
             );
-            var_dump($participer);
-            $managerParticiper->insert($participer);
-            $estInscrit = false;
-        }
-        else{
-            $estInscrit = true;
-        }
 
+            $managerParticiper->insert($participer);
+            $estInscrit = true;  
+        }
+        
+    
         // Rendre le template Twig
-        // Vérifiez si vous avez besoin d'afficher des actualités (ici on laisse $actualite vide)
-        echo $twig->render('evtActu.html.twig', [
-            'title' => 'InscriptionEvt',
-            // Si vous avez des actualités à afficher, définissez la variable $actualite avant
-            'actualites' => isset($actualite) ? $actualite : null,
-            'estInscrit' => $estInscrit
+        echo $this->getTwig()->render('evtActu.html.twig', [
+            'title' => $nom,
+            'type' => $type,
+            'actualites' => $actualite,
+            'estInscrit' => $estInscrit,
+            'evtActus' => $evtActu 
         ]);
     }
+    
 
 
-    public function desinscrire() {    
-        // Récupérer l'ID de l'utilisateur depuis l'objet 'user' dans la session
+    public function desinscrire() {
+        $pdo = Bd::getInstance()->getPdo();
+        $loader = new \Twig\Loader\FilesystemLoader('../templates');
+        $twig = new \Twig\Environment($loader);
+        
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $nom = htmlentities($_POST['nom']);
+            $type = htmlentities($_POST['type']);
+            $evtId = htmlentities($_POST['evtId']);
+        }
+
         $user = $_SESSION['user'];
-        $userId = $user->getUserId();  // Utiliser la méthode appropriée pour récupérer l'ID de l'utilisateur
-    
-        $eventId = $_POST['evtId'];  // Récupérer l'ID de l'événement depuis le formulaire
-    
-        // Désinscrire l'utilisateur de l'événement
-        $managerParticiper = new ParticiperDAO(Bd::getInstance()->getPdo());
-        $participer = $managerParticiper->findUserEvt($userId, $eventId);
-    
+        $userId = $user->getUserId();
 
-    
+        $managerEvenement = new EvenementDao($pdo);
+        $evtActu = $managerEvenement->find($evtId);
+        $managerActualite = new ActualiteDao($this->getPdo());
+        $actualite = $managerActualite->findAllWithCategorie();    
 
+        $managerParticiper = new ParticiperDAO($pdo);
+        $participerExist = $managerParticiper->findUserEvt($userId, $evtId);
+        
+        if ($participerExist != null) {
+            $managerParticiper->delete($participerExist);
+            $estInscrit = false;
+        } else {
+            $estInscrit = true;
+        }
+    
+        // Rendre le template Twig
+        echo $this->getTwig()->render('evtActu.html.twig', [
+            'title' => $nom,
+            'type' => $type,
+            'actualites' => $actualite,
+            'estInscrit' => $estInscrit,
+            'evtActus' => $evtActu 
+        ]);
     }
+    
     
 }
