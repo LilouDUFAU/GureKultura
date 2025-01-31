@@ -1,6 +1,6 @@
 {% extends "base.html.twig" %}
 {% block content %}
-	<div class="grid grid-cols-12 p-2 gap-8 text-principal">
+	<div class="grid grid-cols-12 p-2 gap-8 text-principal-rouge">
 
 		{# infos de l'utilisateur #}
 		<div class="grid grid-cols-subgrid row-start-1 col-start-1 col-span-12 gap-2">
@@ -59,12 +59,12 @@
 
 
 {# popup de modification de compte #}
-<div id="popup" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden z-50 text-principal">
+<div id="popup" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden z-50 text-principal-rouge">
 	<div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-xl h-fit max-h-xl">
 		<input type="hidden" id="popupModifCompte" name="compte" value="">
 		<h2 class="text-xl font-bold text-center mb-4">Modification du compte</h2>
 		<form
-			action="index.php?controlleur=compte&methode=modifierInfo" method="post" enctype="multipart/form-data" class="grid grid-cols-6 row-start-1 col-start-1 col-span-6 text-principal p-2 gap-4 text-sm lg:text-base">
+			action="index.php?controlleur=compte&methode=modifierInfo" method="post" enctype="multipart/form-data" class="grid grid-cols-6 row-start-1 col-start-1 col-span-6 text-principal-rouge p-2 gap-4 text-sm lg:text-base">
 			{# nom #}
 			<div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-6 gap-4">
 				<div class="row-start-1 col-start-1 col-span-2 flex flex-row items-center gap-2">
@@ -114,7 +114,8 @@
 			<div class="row-start-7 col-start-1 col-span-6 flex justify-end gap-2">
 				<button type="submit" class="px-4 py-2 bg-principal text-white rounded-lg">Modifier</button>
 				<button type="button" onclick="closePopup(1)" class="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg mr-2">Annuler</button>
-				
+				<button type="button" onclick="openPopup(3), closePopup(1)" class="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg mr-2"> Changer le mot de passe</button>
+			
 			</div>
 		</form>
 
@@ -122,7 +123,7 @@
 </div>
 
 
-<div id="popup" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden z-50 text-principal">
+<div id="popup" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden z-50 text-principal-rouge">
 	<div class="grid grid-cols-6 bg-white p-6 rounded-lg shadow-lg w-full max-w-xl h-fit max-h-xl gap-2 text-sm lg:text-base">
 		<input type="hidden" id="popupParam" name="parametre" value="">
 		<h2 class="row-start-1 col-start-1 col-span-6 text-xl font-bold text-center mb-4">Modification du compte</h2>
@@ -170,6 +171,54 @@
 </div>
 
 
+{# popup de modification de compte #}
+<div id="popup" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden z-50 text-principal">
+	<div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-xl h-fit max-h-xl">
+		<input type="hidden" id="popupModifMdp" name="modifMdp" value="">
+		<h2 class="text-xl font-bold text-center mb-4">Modification du compte</h2>
+		<form
+			action="index.php?controlleur=compte&methode=modifierMdp" method="post" enctype="multipart/form-data" class="grid grid-cols-6 row-start-1 col-start-1 col-span-6 text-principal p-2 gap-4 text-sm lg:text-base">
+			
+			{# nom #}
+			<div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-6 gap-4">
+				<div class="row-start-1 col-start-1 col-span-3 flex flex-row items-center gap-2">
+					<img src="../asset/icones/person-vcard (1).svg" alt="mdp" class="w-6 h-6 bg-principal py-1 rounded-md">
+					<label for="mdp" class="">Mot de passe actuel</label>
+				</div>
+				<input type="password" name="mdp" id="mdp" class="row-start-1 col-start-4 col-span-5 text-gray-400 border-solid border-2 border-principal rounded-md px-2">
+			</div>
+
+			{# email #}
+			<div class="grid grid-cols-subgrid row-start-3 col-start-1 col-span-6 gap-4">
+				<div class="row-start-1 col-start-1 col-span-3 flex flex-row items-center gap-2">
+					<img src="../asset/icones/envelope.svg" alt="nouvMdp" class="w-6 h-6 bg-principal py-1 rounded-md">
+					<label for="nouvMdp" class="">Nouveau mot de passe</label>
+				</div>
+				<input type="password" name="nouvMdp" id="nouvMdp" class="row-start-1 col-start-4 col-span-5 text-gray-400 border-solid border-2 border-principal rounded-md px-2">
+			</div>
+
+			{# pseudo #}
+			<div class="grid grid-cols-subgrid row-start-4 col-start-1 col-span-6 gap-4">
+				<div class="row-start-1 col-start-1 col-span-6 flex flex-row items-center gap-2">
+					<img src="../asset/icones/person.svg" alt="confNouvMdp" class="w-6 h-6 bg-principal py-1 rounded-md">
+					<label for="confNouvMdp" class="">Confirmation mot de passe</label>
+				</div>
+				<input type="password" name="confNouvMdp" id="confNouvMdp" class="row-start-1 col-start-4 col-span-5 text-gray-400 border-solid border-2 border-principal rounded-md px-2">
+			</div>
+
+			{# bouton de validation/annulation #}
+			<div class="row-start-7 col-start-1 col-span-6 flex justify-end gap-2">
+				<input type="hidden" name="email" value="{{ user.getEmail }}">               
+				<button type="submit" class="px-4 py-2 bg-principal text-white rounded-lg">Modifier</button>
+				<button type="button" onclick="closePopup(3)" class="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg mr-2">Annuler</button>
+				
+			</div>
+		</form>
+
+	</div>
+</div>
+
+
 
 
 
@@ -182,8 +231,10 @@
 	function openPopup(val) {
 		if (val == 1) {
 			document.getElementById("popupModifCompte").parentElement.parentElement.classList.remove("hidden");
-		} else {
+		} else if (val == 2) {
 			document.getElementById("popupParam").parentElement.parentElement.classList.remove("hidden");
+		}else if (val == 3) {
+			document.getElementById("popupModifMdp").parentElement.parentElement.classList.remove("hidden");
 		}
 		
 
@@ -192,8 +243,10 @@
 function closePopup(val) {
 		if (val == 1) {
 			document.getElementById("popupModifCompte").parentElement.parentElement.classList.add("hidden");
-		} else {
+		} else if (val == 2) {
 			document.getElementById("popupParam").parentElement.parentElement.classList.add("hidden");
+		}else {
+			document.getElementById("popupModifMdp").parentElement.parentElement.classList.add("hidden");
 		}
 }
 </script>{% endblock %}

@@ -5,16 +5,16 @@
 <div>
     <div class="gap-2 p-2 grid grid-cols-12 items-center">
         
-        <h2 class="row-span-2 col-span-12 text-white lg:font-bold lg:text-4xl text-2xl text-center bg-principal rounded-2xl p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] mb-10">{{ title }}</h2>
+        <h2 class="row-span-2 col-span-12 text-white lg:font-bold lg:text-4xl text-2xl text-center bg-principal-rouge rounded-2xl p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] mb-10">{{ title }}</h2>
         {% if evtsEnCours is not empty %}
             <h3 class="row-span-2 col-span-12 text-black font-bold text-3xl text-left">Evenements en cours</h3>
 
-            <div id="carousel1" class="row-span-3 col-span-12 relative w-full overflow-hidden mx-auto bg-principal opacity-75 rounded-lg" data-slides-default="1" data-slides-mobile="1">
+            <div id="carousel1" class="row-span-3 col-span-12 relative w-full overflow-hidden mx-auto bg-principal-rouge opacity-75 rounded-lg" data-slides-default="1" data-slides-mobile="1">
                 <!-- Conteneur du carrousel -->
                 <div  id="carousel" class="carousel flex transition-transform duration-500 ease-out gap-2 p-2">
                     <!-- Diapositives -->
                     {% for evtEnCours in evtsEnCours %}
-                            <div style="background-image: url('../asset/evenement/photo/{{ evtEnCours.photo }}')" class="bg-cover bg-no-repeat slide md:w-1/3 w-full flex-shrink-0 text-principal text-center py-16 rounded-lg relative">
+                            <div style="background-image: url('../asset/evenement/photo/{{ evtEnCours.photo }}')" class="bg-cover bg-no-repeat slide md:w-1/3 w-full flex-shrink-0 text-principal-rouge text-center py-16 rounded-lg relative">
 
                             <FORM ACTION="index.php?controlleur=evtActu&methode=lister" METHOD="POST">
                                 <INPUT TYPE="hidden" NAME="nom" VALUE="{{evtEnCours.titre}}">
@@ -38,12 +38,12 @@
         {% if evtsASuivre is not empty %}
             <h3 class="row-span-4 col-span-12 text-black font-bold text-3xl text-left">Evenements à venir</h3>
 
-            <div id="carousel2" class="row-span-6 col-span-12 relative w-full overflow-hidden mx-auto bg-principal opacity-75 rounded-lg" data-slides-default="1" data-slides-mobile="1">
+            <div id="carousel2" class="row-span-6 col-span-12 relative w-full overflow-hidden mx-auto bg-principal-rouge opacity-75 rounded-lg" data-slides-default="1" data-slides-mobile="1">
                 <!-- Conteneur du carrousel -->
                 <div  id="carousel" class="carousel flex transition-transform duration-500 ease-out gap-2 p-2">
                     <!-- Diapositives -->
                     {% for evtASuivre in evtsASuivre %}
-                            <div style="background-image: url('../asset/evenement/photo/{{ evtASuivre.photo }}')" class="bg-cover bg-no-repeat slide md:w-1/3 w-full flex-shrink-0 text-principal text-center py-16 rounded-lg relative">
+                            <div style="background-image: url('../asset/evenement/photo/{{ evtASuivre.photo }}')" class="bg-cover bg-no-repeat slide md:w-1/3 w-full flex-shrink-0 text-principal-rouge text-center py-16 rounded-lg relative">
 
                             <FORM ACTION="index.php?controlleur=evtActu&methode=lister" METHOD="POST">
                                 <INPUT TYPE="hidden" NAME="nom" VALUE="{{evtASuivre.titre}}">
@@ -68,12 +68,12 @@
         {% if evtsPasser is not empty %}
             <h3 class="row-span-5 col-span-12 text-black font-bold text-3xl text-left">Evenements passer</h3>
             
-            <div id="carousel3" class="row-span-6 col-span-12 relative w-full overflow-hidden mx-auto bg-principal opacity-75 rounded-lg" data-slides-default="1" data-slides-mobile="1">
+            <div id="carousel3" class="row-span-6 col-span-12 relative w-full overflow-hidden mx-auto bg-principal-rouge opacity-75 rounded-lg" data-slides-default="1" data-slides-mobile="1">
                 <!-- Conteneur du carrousel -->
                 <div  id="carousel" class="carousel flex transition-transform duration-500 ease-out gap-2 p-2">
                     <!-- Diapositives -->
                     {% for evtPasser in evtsPasser %}
-                            <div style="background-image: url('../asset/evenement/photo/{{ evtPasser.photo }}')" class="bg-cover bg-no-repeat slide md:w-1/3 w-full flex-shrink-0 text-principal text-center py-16 rounded-lg relative">
+                            <div style="background-image: url('../asset/evenement/photo/{{ evtPasser.photo }}')" class="bg-cover bg-no-repeat slide md:w-1/3 w-full flex-shrink-0 text-principal-rouge text-center py-16 rounded-lg relative">
                             <FORM ACTION="index.php?controlleur=evtActu&methode=lister" METHOD="POST">
                                 <INPUT TYPE="hidden" NAME="nom" VALUE="{{evtPasser.titre}}"> 
                                 <INPUT TYPE="hidden" NAME="id" VALUE={{evtPasser.evtId}}>
@@ -98,16 +98,16 @@
 <!-- Partie actualités -->
     <div class="gap-2 p-2 grid grid-cols-12 items-center">
         
-        <h2 class="row-span-2 col-span-12 text-white lg:font-bold lg:text-4xl text-2xl text-center bg-principal rounded-2xl p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] mb-10">{{ title }} - Actualites</h2>
+        <h2 class="row-span-2 col-span-12 text-white lg:font-bold lg:text-4xl text-2xl text-center bg-principal-rouge rounded-2xl p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] mb-10">{{ title }} - Actualites</h2>
         {% if actusEnCours is not empty %}
             <h3 class="row-span-2 col-span-12 text-black font-bold text-3xl text-left">Actualites en cours</h3>
 
-            <div id="carousel1" class="row-span-3 col-span-12 relative w-full overflow-hidden mx-auto bg-principal opacity-75 rounded-lg" data-slides-default="1" data-slides-mobile="1">
+            <div id="carousel1" class="row-span-3 col-span-12 relative w-full overflow-hidden mx-auto bg-principal-rouge opacity-75 rounded-lg" data-slides-default="1" data-slides-mobile="1">
                 <!-- Conteneur du carrousel -->
                 <div  id="carousel" class="carousel flex transition-transform duration-500 ease-out gap-2 p-2">
                     <!-- Diapositives -->
                     {% for actuEnCours in actusEnCours %}
-                            <div style="background-image: url('../asset/actualite/{{ actuEnCours.img }}')" class="bg-cover bg-no-repeat slide md:w-1/3 w-full flex-shrink-0 text-principal text-center py-16 rounded-lg relative">
+                            <div style="background-image: url('../asset/actualite/{{ actuEnCours.img }}')" class="bg-cover bg-no-repeat slide md:w-1/3 w-full flex-shrink-0 text-principal-rouge text-center py-16 rounded-lg relative">
 
                             <FORM ACTION="index.php?controlleur=evtActu&methode=lister" METHOD="POST">
                                 <INPUT TYPE="hidden" NAME="nom" VALUE="{{actuEnCours.titre}}">
@@ -131,12 +131,12 @@
         {% if actusASuivre is not empty %}
             <h3 class="row-span-4 col-span-12 text-black font-bold text-3xl text-left">Actualites à venir</h3>
 
-            <div id="carousel2" class="row-span-6 col-span-12 relative w-full overflow-hidden mx-auto bg-principal opacity-75 rounded-lg" data-slides-default="1" data-slides-mobile="1">
+            <div id="carousel2" class="row-span-6 col-span-12 relative w-full overflow-hidden mx-auto bg-principal-rouge opacity-75 rounded-lg" data-slides-default="1" data-slides-mobile="1">
                 <!-- Conteneur du carrousel -->
                 <div  id="carousel" class="carousel flex transition-transform duration-500 ease-out gap-2 p-2">
                     <!-- Diapositives -->
                     {% for actuASuivre in actusASuivre %}
-                            <div style="background-image: url('../asset/actualite/{{ actuASuivre.img }}')" class="bg-cover bg-no-repeat slide md:w-1/3 w-full flex-shrink-0 text-principal text-center py-16 rounded-lg relative">
+                            <div style="background-image: url('../asset/actualite/{{ actuASuivre.img }}')" class="bg-cover bg-no-repeat slide md:w-1/3 w-full flex-shrink-0 text-principal-rouge text-center py-16 rounded-lg relative">
                             <FORM ACTION="index.php?controlleur=evtActu&methode=lister" METHOD="POST">
                                 <INPUT TYPE="hidden" NAME="nom" VALUE="{{actuASuivre.titre}}"> 
                                     <INPUT TYPE="hidden" NAME="id" VALUE={{actuASuivre.actuId}}>
@@ -159,12 +159,12 @@
         {% if actusPasser is not empty %}
             <h3 class="row-span-5 col-span-12 text-black font-bold text-3xl text-left">Actualites passer</h3>
             
-            <div id="carousel3" class="row-span-6 col-span-12 relative w-full overflow-hidden mx-auto bg-principal opacity-75 rounded-lg" data-slides-default="1" data-slides-mobile="1">
+            <div id="carousel3" class="row-span-6 col-span-12 relative w-full overflow-hidden mx-auto bg-principal-rouge opacity-75 rounded-lg" data-slides-default="1" data-slides-mobile="1">
                 <!-- Conteneur du carrousel -->
                 <div  id="carousel" class="carousel flex transition-transform duration-500 ease-out gap-2 p-2">
                     <!-- Diapositives -->
                     {% for actuPasser in actusPasser %}
-                            <div style="background-image: url('../asset/actualite/{{ actuPasser.img }}')" class="bg-cover bg-no-repeat slide md:w-1/3 w-full flex-shrink-0 text-principal text-center py-16 rounded-lg relative">
+                            <div style="background-image: url('../asset/actualite/{{ actuPasser.img }}')" class="bg-cover bg-no-repeat slide md:w-1/3 w-full flex-shrink-0 text-principal-rouge text-center py-16 rounded-lg relative">
                         
                             <FORM ACTION="index.php?controlleur=evtActu&methode=lister" METHOD="POST">
                                 <INPUT TYPE="hidden" NAME="nom" VALUE="{{actuPasser.titre}}">
