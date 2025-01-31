@@ -183,6 +183,7 @@ class ControllerPropEv extends Controller
             $donnees = $_POST;
             $user = $_SESSION['user'];
             $donnees['userId'] = $user->getUserId();
+            var_dump($donnees);
 
             // Gestion du fichier autorisation
             if (isset($_FILES['autorisation']) && $_FILES['autorisation']['error'] == 0) {
