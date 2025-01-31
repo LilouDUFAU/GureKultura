@@ -7,13 +7,13 @@
     <!-- Contenu spécifique de chaque page -->
     <div class="h-full">
         <div class="gap-2 p-2 grid grid-cols-12 items-center">
-            <h1 class="row-start-1 col-span-12 text-center font-bold text-4xl p-2 text-principal">{{ evtActus.titre }}</h1>
+            <h1 class="row-start-1 col-span-12 text-center font-bold text-4xl p-2 text-principal-rouge">{{ evtActus.titre }}</h1>
 
             <!-- Colonne de gauche -->
             <div class="grid grid-cols-subgrid col-start-1 col-span-12 row-start-3 lg:col-start-1 lg:col-span-6 lg:row-start-2">
-                <p class="row-start-1 col-start-1 col-span-12 lg:col-span-6 text-justify break-words text-principal">{{ evtActus.description }}</p>
+                <p class="row-start-1 col-start-1 col-span-12 lg:col-span-6 text-justify break-words text-principal-rouge">{{ evtActus.description }}</p>
                 
-                <div class="row-start-2 col-start-1 col-span-12 lg:col-span-6 border-2 border-solid border-principal bg-principal bg-opacity-55 rounded-lg p-2 h-fit text-center">
+                <div class="row-start-2 col-start-1 col-span-12 lg:col-span-6 border-2 border-solid border-principal bg-principal-rouge bg-opacity-55 rounded-lg p-2 h-fit text-center">
                     <div class="row-start-1 col-start-1 col-span-12 lg:col-span-6 text-2xl font-bold text-white flex flex-row items-center justify-center gap-2 mb-4">
                         <img src="../asset/icones/person-vcard (1).svg" alt="icone" class="w-6 h-6 inline-block">
                         <h2 >Fiche Responsable</h2>
@@ -29,7 +29,7 @@
             <!-- Colonne de droite -->
             <div class="grid grid-cols-subgrid col-start-1 col-span-12 row-start-2 lg:col-start-7 lg:col-span-6 lg:row-start-2 h-full gap-2">
                 <img src="../asset/evenement/photo/{{ evtActus.photo }}" alt="photo evenement" class="row-start-1 col-start-1 col-span-12 lg:col-start-3 lg:col-span-2 rounded-lg">
-                <div class="row-start-2 col-start-1 col-span-12 lg:col-span-6 grid grid-cols-subgrid border-2 border-solid border-principal rounded-lg bg-principal bg-opacity-55 p-2 text-center">
+                <div class="row-start-2 col-start-1 col-span-12 lg:col-span-6 grid grid-cols-subgrid border-2 border-solid border-principal rounded-lg bg-principal-rouge bg-opacity-55 p-2 text-center">
                     <p class="row-start-1 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Date début : {{ evtActus.dateDebut }}  {{ evtActus.heureDebut|date("H:i") }}</p>
                     <p class="row-start-2 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Date fin : {{ evtActus.dateFin }}  {{ evtActus.heureFin|date("H:i") }}</p>
                     <p class="row-start-3 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Lieu : {{ evtActus.lieu }}</p>
@@ -40,23 +40,23 @@
 
         <!-- Section Commentaires -->
         <div class="row-start-4 lg:row-start-3 col-span-12 m-2 p-4 bg-gray-100 rounded-lg shadow-md drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
-            <h2 class="text-2xl font-bold text-principal mb-4">Commentaires</h2>
+            <h2 class="text-2xl font-bold text-principal-rouge mb-4">Commentaires</h2>
 
             <!-- Exemples de commentaires -->
             <div class="mb-6">
-                <p class="font-semibold text-principal">John Doe :</p>
+                <p class="font-semibold text-principal-rouge">John Doe :</p>
                 <p class="text-gray-700">"Un super match, la victoire de Bayonne était bien méritée. Hâte de voir la prochaine rencontre !"</p>
             </div>
             <div class="mb-6">
-                <p class="font-semibold text-principal">Marie Dupont :</p>
+                <p class="font-semibold text-principal-rouge">Marie Dupont :</p>
                 <p class="text-gray-700">"Clermont a bien joué, mais quelques erreurs ont coûté cher. Bravo à Bayonne pour leur performance."</p>
             </div>
 
             <!-- Formulaire pour ajouter un commentaire -->
             <div class="mt-6">
-                <label for="comment" class="block text-principal font-semibold mb-2">Ajouter un commentaire :</label>
+                <label for="comment" class="block text-principal-rouge font-semibold mb-2">Ajouter un commentaire :</label>
                 <textarea id="comment" name="comment" rows="3" class="w-full p-3 border-2 border-principal rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-principal"></textarea>
-                <button type="submit" class="mt-4 px-6 py-2 bg-principal text-white font-semibold rounded-lg hover:bg-black">Envoyer</button>
+                <button type="submit" class="mt-4 px-6 py-2 bg-principal-rouge text-white font-semibold rounded-lg hover:bg-black">Envoyer</button>
             </div>
         </div>
     </div>
@@ -67,9 +67,9 @@
 {% if type == 'Actualites' %}
     <!-- Contenu spécifique de chaque page -->
     <div class="pt-2">
-        <div class="gap-2 p-2 grid grid-cols-12 items-center rounded-lg text-principal">
+        <div class="gap-2 p-2 grid grid-cols-12 items-center rounded-lg text-principal-rouge">
             {# titre de l'article #}
-            <h1 class="col-span-12 text-principal font-bold text-2xl lg:text-5xl text-left mb-4 break-words col-start-1 row-start-1 px-4">{{ evtActus.titre }}</h1>
+            <h1 class="col-span-12 text-principal-rouge font-bold text-2xl lg:text-5xl text-left mb-4 break-words col-start-1 row-start-1 px-4">{{ evtActus.titre }}</h1>
             {# resume de l'article #}
                 <div class="col-span-12 font-bold text-sm lg:text-lg text-left mb-4 break-words col-start-1 row-start-2 px-4">
                 {{ evtActus.resume }}
@@ -88,7 +88,7 @@
             {# section commentaires #}
             <div class="gap-2 grid grid-cols-12 items-center bg-gray-100 rounded-lg p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] sm:col-start-1 xl:col-start-10 col-span-12 xl:col-span-3 sm:row-start-4 xl:row-start-3 sm:h-full xl:h-full">
                 {# texte commentaire #}
-                <h1 class="items-center rounded-xl text-center justify-center mb-4 col-span-12 text-principal text-lg lg:text-3xl font-medium">Commentaire</h1>
+                <h1 class="items-center rounded-xl text-center justify-center mb-4 col-span-12 text-principal-rouge text-lg lg:text-3xl font-medium">Commentaire</h1>
                 {# un exemple de commentaire #}
                 
                 {# barre d'interaction #}
