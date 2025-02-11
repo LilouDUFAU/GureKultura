@@ -13,50 +13,143 @@ class ControllerEvtActu extends Controller {
         $loader = new \Twig\Loader\FilesystemLoader('../templates');
         $twig = new \Twig\Environment($loader);
 
-        // Créer une instance de CommentaireDao
-        $commentaireDao = new CommentaireDao($pdo);
-
-        // Vérification des données POST et GET
-        $type = isset($_POST['type']) ? $_POST['type'] : (isset($_GET['type']) ? $_GET['type'] : 'Evenements');
-        $nom = isset($_POST['nom']) ? htmlentities($_POST['nom']) : '';
-        $id = isset($_POST['id']) ? htmlentities($_POST['id']) : (isset($_GET['id']) ? htmlentities($_GET['id']) : '');
-
-        // Sélectionner le bon DAO en fonction du type
-        if ($type == "Evenements") {
-            $managerEvtActu = new EvenementDao($pdo);
-        } elseif ($type == "Actualites") {
-            $managerEvtActu = new ActualiteDao($pdo);
-        } else {
-            echo "Erreur : Type invalide.";
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $nom = htmlentities($_POST['nom']);
+            $type = htmlentities($_POST['type']);
+            $id = htmlentities($_POST['id']);
         }
 
-        if ($managerEvtActu) {
-            // Récupérer l'événement ou l'actualité correspondant
-            $evtActu = $managerEvtActu->find($id);
-    
-            // Vérifier si l'événement ou l'actualité existe
-            if (!$evtActu) {
-                echo "Erreur : L'événement ou l'actualité n'existe pas.";
-            }
-    
-            // Récupérer les commentaires pour l'événement ou l'actualité
-            $commentaires = $commentaireDao->findCommentairesByEventOrActu($id, $type);
-    
-            // Récupérer les actualités (si le type est "Actualites")
-            $managerActualite = new ActualiteDao($pdo);
-            $actualite = $managerActualite->findAllWithCategorie();
-    
-            // Rendre le template Twig
-            echo $this->getTwig()->render('evtActu.html.twig', [
-                'title' => $nom,
-                'type' => $type,
-                'actualites' => $actualite,
-                'evtActus' => $evtActu,
-                'commentaires' => $commentaires,
-            ]);
-    }
-}
+        // Créer une instance de CommentaireDao
+        $commentaireDao = new CommentaireDao($pdo);
+        // Récupérer les commentaires pour l'événement ou l'actualité
+        $commentaires = $commentaireDao->findCommentairesByEventOrActu($id, $type);
 
+        $managerActualite = new ActualiteDao($pdo);
+
+        $estInscrit = false;
+
+        if ($type == "Evenements"){
+            $managerEvtActu = new EvenementDao($pdo);
+
+            $user = $_SESSION['user'];
+            $managerParticiper = new ParticiperDAO($pdo);
+            $participerExist = $managerParticiper->findUserEvt($user->getUserId(), $id);
+            if($participerExist == null  || $participerExist == false){
+                $estInscrit = false;
+            }
+            else{
+                $estInscrit = true;
+            }
+        } if ($type == "Actualites"){
+            $managerEvtActu = new ActualiteDao($pdo);
+        } 
+
+        $evtActu = $managerEvtActu->find($id);
+        $actualite = $managerActualite->findAllWithCategorie(); 
+
+
+        // Rendre le template Twig
+        echo $this->getTwig()->render('evtActu.html.twig', [
+            'title' => $nom,
+            'type' => $type,
+            'actualites' => $actualite,
+            'evtActus' => $evtActu,
+            'estInscrit' => $estInscrit,
+            'commentaires' => $commentaires
+        ]);
+    }   
+
+
+
+    public function inscrire() {
+        $pdo = Bd::getInstance()->getPdo();
+        
+        $user = $_SESSION['user'];
+        $userId = $user->getUserId();
+    
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $nom = htmlentities($_POST['nom']);
+            $type = htmlentities($_POST['type']);
+            $evtId = htmlentities($_POST['evtId']);
+        }
+
+        $evt = new Evenement();
+        $evt->setEvtId($evtId);
+        $managerEvenement = new EvenementDao($pdo);
+        $evtActu = $managerEvenement->find($evtId);
+        $managerActualite = new ActualiteDao($this->getPdo());
+        $actualite = $managerActualite->findAllWithCategorie();    
+
+        $managerParticiper = new ParticiperDAO($pdo);
+        $estInscrit = true;
+        $participerExist = $managerParticiper->findUserEvt($userId, $evtId);
+
+
+        if ($participerExist == null || $participerExist == false) {
+            $dateActuelle = new DateTime('now');
+            $dateActuelle->format('Y-m-d H:i:s');
+            $participer = new Participer(
+                $userId,
+                $evtId,
+                $dateActuelle
+            );
+
+            $managerParticiper->insert($participer);
+            $estInscrit = true;  
+        }
+        
+    
+        // Rendre le template Twig
+        echo $this->getTwig()->render('evtActu.html.twig', [
+            'title' => $nom,
+            'type' => $type,
+            'actualites' => $actualite,
+            'estInscrit' => $estInscrit,
+            'evtActus' => $evtActu 
+        ]);
+    }
+    
+
+
+    public function desinscrire() {
+        $pdo = Bd::getInstance()->getPdo();
+        $loader = new \Twig\Loader\FilesystemLoader('../templates');
+        $twig = new \Twig\Environment($loader);
+        
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $nom = htmlentities($_POST['nom']);
+            $type = htmlentities($_POST['type']);
+            $evtId = htmlentities($_POST['evtId']);
+        }
+
+        $user = $_SESSION['user'];
+        $userId = $user->getUserId();
+
+        $managerEvenement = new EvenementDao($pdo);
+        $evtActu = $managerEvenement->find($evtId);
+        $managerActualite = new ActualiteDao($this->getPdo());
+        $actualite = $managerActualite->findAllWithCategorie();    
+
+        $managerParticiper = new ParticiperDAO($pdo);
+        $participerExist = $managerParticiper->findUserEvt($userId, $evtId);
+        
+        if ($participerExist != null) {
+            $managerParticiper->delete($participerExist);
+            $estInscrit = false;
+        } else {
+            $estInscrit = true;
+        }
+    
+        // Rendre le template Twig
+        echo $this->getTwig()->render('evtActu.html.twig', [
+            'title' => $nom,
+            'type' => $type,
+            'actualites' => $actualite,
+            'estInscrit' => $estInscrit,
+            'evtActus' => $evtActu 
+        ]);
+    }
+    
     public function ajouterCommentaire() {
         // Vérifier si l'utilisateur est connecté
         $pdo = Bd::getInstance()->getPdo();
@@ -95,3 +188,5 @@ class ControllerEvtActu extends Controller {
         }
     }
 }
+    
+

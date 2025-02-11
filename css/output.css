@@ -608,6 +608,10 @@ video {
   position: relative;
 }
 
+.sticky {
+  position: sticky;
+}
+
 .inset-0 {
   inset: 0px;
 }
@@ -863,8 +867,13 @@ video {
   display: block;
 }
 
+<<<<<<< HEAD
 .\!inline {
   display: inline !important;
+=======
+.inline-block {
+  display: inline-block;
+>>>>>>> origin
 }
 
 .inline {
@@ -1177,10 +1186,6 @@ video {
 
 .rounded-md {
   border-radius: 0.375rem;
-}
-
-.rounded-sm {
-  border-radius: 0.125rem;
 }
 
 .rounded-xl {
@@ -1550,12 +1555,23 @@ video {
   text-decoration-line: underline;
 }
 
+<<<<<<< HEAD
 .opacity-100 {
   opacity: 1;
 }
 
 .opacity-50 {
   opacity: 0.5;
+=======
+.placeholder-gray-500::-moz-placeholder {
+  --tw-placeholder-opacity: 1;
+  color: rgb(158 158 158 / var(--tw-placeholder-opacity, 1));
+}
+
+.placeholder-gray-500::placeholder {
+  --tw-placeholder-opacity: 1;
+  color: rgb(158 158 158 / var(--tw-placeholder-opacity, 1));
+>>>>>>> origin
 }
 
 .opacity-75 {
