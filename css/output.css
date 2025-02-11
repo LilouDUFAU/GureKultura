@@ -608,10 +608,6 @@ video {
   position: relative;
 }
 
-.sticky {
-  position: sticky;
-}
-
 .inset-0 {
   inset: 0px;
 }
@@ -867,13 +863,8 @@ video {
   display: block;
 }
 
-<<<<<<< HEAD
 .\!inline {
   display: inline !important;
-=======
-.inline-block {
-  display: inline-block;
->>>>>>> origin
 }
 
 .inline {
@@ -1188,6 +1179,10 @@ video {
   border-radius: 0.375rem;
 }
 
+.rounded-sm {
+  border-radius: 0.125rem;
+}
+
 .rounded-xl {
   border-radius: 0.75rem;
 }
@@ -1245,9 +1240,19 @@ video {
   border-color: rgb(162 49 69 / var(--tw-border-opacity, 1));
 }
 
+.border-text {
+  --tw-border-opacity: 1;
+  border-color: rgb(101 31 43 / var(--tw-border-opacity, 1));
+}
+
 .border-white {
   --tw-border-opacity: 1;
   border-color: rgb(255 255 255 / var(--tw-border-opacity, 1));
+}
+
+.border-t-text {
+  --tw-border-opacity: 1;
+  border-top-color: rgb(101 31 43 / var(--tw-border-opacity, 1));
 }
 
 .bg-\[\#A23145\] {
@@ -1292,7 +1297,7 @@ video {
 
 .bg-form {
   --tw-bg-opacity: 1;
-  background-color: rgb(178 85 101 / var(--tw-bg-opacity, 1));
+  background-color: rgb(185 100 115 / var(--tw-bg-opacity, 1));
 }
 
 .bg-transparent {
@@ -1302,6 +1307,11 @@ video {
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
+}
+
+.bg-text {
+  --tw-bg-opacity: 1;
+  background-color: rgb(101 31 43 / var(--tw-bg-opacity, 1));
 }
 
 .bg-opacity-50 {
@@ -1555,23 +1565,12 @@ video {
   text-decoration-line: underline;
 }
 
-<<<<<<< HEAD
 .opacity-100 {
   opacity: 1;
 }
 
 .opacity-50 {
   opacity: 0.5;
-=======
-.placeholder-gray-500::-moz-placeholder {
-  --tw-placeholder-opacity: 1;
-  color: rgb(158 158 158 / var(--tw-placeholder-opacity, 1));
-}
-
-.placeholder-gray-500::placeholder {
-  --tw-placeholder-opacity: 1;
-  color: rgb(158 158 158 / var(--tw-placeholder-opacity, 1));
->>>>>>> origin
 }
 
 .opacity-75 {
@@ -1671,6 +1670,11 @@ video {
 .hover\:bg-\[\#8a1e36\]:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(138 30 54 / var(--tw-bg-opacity, 1));
+}
+
+.hover\:bg-black:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity, 1));
 }
 
 .hover\:bg-hbutton:hover {
