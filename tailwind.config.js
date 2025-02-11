@@ -26,7 +26,7 @@ module.exports = {
         text : '#2C3E50 ', //couleur du text (paragraphe etc)
         title : '#2C3E50 ', //couleur des titres
         button : '#D6453D', //couleur des boutons
-        tbutton : '#F8F7F9', //couleur du text des boutons
+        tbutton : '#FDF6EE', //couleur du text des boutons
         hbutton : '#B03A2E', //couleur du hover des boutons
         card : '#F8E9D2', //couleur pour le fond des cartes evt et actu
         form : '#F8E9D2', //couleur pour le fond des formulaires
@@ -38,7 +38,7 @@ module.exports = {
         // fontfamily : robot
         // 'robot': ['Roboto', 'sans-serif'],
 
-        
+
         // fontfamily : sen
         'sen': ['Sen', 'sans-serif'],
 
