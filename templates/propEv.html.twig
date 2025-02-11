@@ -5,14 +5,14 @@
 	<!-- Contenu spécifique de chaque page -->
 	<div class="m-2 gap-8 flex flex-col items-center">
 
-		<h1 class="text-3xl font-bold text-center text-principal">Proposer un évènement</h1>
+		<h1 class="text-3xl font-bold text-center text-title">Proposer un évènement</h1>
 
 		<form
 			action="index.php?controlleur=propEv&methode=validerFormulairePropEv" method="post" enctype="multipart/form-data" class="flex flex-col gap-8 text-white w-fit text-sm lg:text-md">
 
 			{# info evenement #}
 			<div
-				class="grid grid-cols-6 gap-2 text-white bg-principal rounded-xl w-full p-4">
+				class="grid grid-cols-6 gap-2 text-white bg-form rounded-xl w-full p-4">
 
 				<div class="row-start-1 col-start-1 col-span-6 text-2xl font-bold text-white mb-4 flex flex-row items-center gap-2">
 					<img src="../asset/icones/card-text.svg" class="h-10 w-10 " alt="icone de evenement">
@@ -25,7 +25,7 @@
 						<img src="../asset/icones/fonts.svg" class="h-5 w-5 border-2 border-solid border-white rounded-md" alt="icone de titre">
 						<label for="titre">Titre</label>
 					</div>
-					<input type="text" name="titre" id="titre" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 text-gray-400" placeholder="Titre de l'évènement">
+					<input type="text" name="titre" id="titre" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1" placeholder="Titre de l'évènement">
 				</div>
 
 				{# type evenement #}
@@ -35,7 +35,7 @@
 						<label for="type">Catégorie</label>
 					</div>
 					<!-- Dropdown Container -->
-					<select name="cateId" id="nomCategorie" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg text-gray-400">
+					<select name="cateId" id="nomCategorie" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1">
 						<option value="{{ evenementActuel.cateId }}" selected>Selectionner une catégorie</option>
 						{% for categorie in categories %}
 							<option class="text-black" value="{{categorie.cateId}}" {% if evenementActuel.cateId == categorie.cateId %} selected {% endif %}>{{ categorie.nom }}</option>
@@ -49,44 +49,44 @@
 						<img src="../asset/icones/justify-left.svg" class="h-5 w-5" alt="icone de description">
 						<label for="description">Description</label>
 					</div>
-					<textarea name="description" id="description" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 text-gray-400" placeholder="Description de l'évènement"></textarea>
+					<textarea name="description" id="description" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1" placeholder="Description de l'évènement"></textarea>
 				</div>
 
 
 				{# dateDebut #}
-				<div class="grid grid-cols-subgrid row-start-5 col-start-1 col-span-6 p-2">
+				<div class="grid grid-cols-subgrid row-start-5 col-start-1 col-span-6 lg:col-span-3 p-2">
 					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
 						<img src="../asset/icones/calendar.svg" class="h-5 w-5" alt="icone de calendrier">
 						<label for="dateDebut">Date de début</label>
 					</div>
-					<input type="date" name="debutDate" id="debutDate" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 text-gray-400" placeholder="Date de début">
+					<input type="date" name="debutDate" id="debutDate" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1" placeholder="Date de début">
 				</div>
 
 				{# HeureDebut #}
-				<div class="grid grid-cols-subgrid row-start-6 col-start-1 col-span-6 p-2">
+				<div class="grid grid-cols-subgrid row-start-6 col-start-1 col-span-6 lg:row-start-5 lg:col-span-3 lg:col-start-4 p-2">
 					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
 						<img src="../asset/icones/clock.svg" class="h-5 w-5" alt="icone de heure">
 						<label for="heureDebut" >Heure de début</label>
 					</div>
-					<input type="time" name="debutHeure" id="debutHeure" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 text-gray-400" placeholder="Heure de début">
+					<input type="time" name="debutHeure" id="debutHeure" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1" placeholder="Heure de début">
 				</div>
 
 				{# dateFin #}
-				<div class="grid grid-cols-subgrid row-start-7 col-start-1 col-span-6 p-2">	
+				<div class="grid grid-cols-subgrid row-start-7 col-start-1 col-span-6 lg:col-span-3 p-2">	
 					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
 						<img src="../asset/icones/calendar.svg" class="h-5 w-5" alt="icone de calendrier">
 						<label for="dateFin" >Date de fin</label>
 					</div>
-					<input type="date" name="finDate" id="finDate" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 text-gray-400" placeholder="Date de fin">
+					<input type="date" name="finDate" id="finDate" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1" placeholder="Date de fin">
 				</div>
 
 				{# HeureFin #}
-				<div class="grid grid-cols-subgrid row-start-8 col-start-1 col-span-6 p-2">
+				<div class="grid grid-cols-subgrid row-start-8 col-start-1 col-span-6 lg:row-start-7 lg:col-start-4 lg:col-span-3 p-2">
 					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
 						<img src="../asset/icones/clock.svg" class="h-5 w-5" alt="icone de heure">
 						<label for="heureFin">Heure de fin</label>
 					</div>
-					<input type="time" name="finHeure" id="finHeure" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 text-gray-400" placeholder="Heure de fin">
+					<input type="time" name="finHeure" id="finHeure" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1" placeholder="Heure de fin">
 				</div>
 
 				{# Lieu #}
@@ -95,7 +95,7 @@
 						<img src="../asset/icones/geo-alt.svg" class="h-5 w-5" alt="icone de localisation">
 						<label for="lieu">Lieu</label>
 					</div>
-					<textarea name="lieu" id="lieu" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 text-gray-400" placeholder="Lieu de l'évènement"></textarea>
+					<textarea name="lieu" id="lieu" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1" placeholder="Lieu de l'évènement"></textarea>
 				</div>
 
 				{# Photo #}
@@ -104,7 +104,7 @@
 						<img src="../asset/icones/image.svg" class="h-5 w-5" alt="icone de photo">
 						<label for="photo">Image</label>
 					</div>
-					<input class="col-start-3 col-span-4 bg-transparent flex w-full rounded-md border border-blue-300 border-input bg-white text-sm text-gray-400 file:border-0 file:bg-principal file:text-white file:text-sm" type="file" name="photo" id="photo" accept=".jpg, .png" value=" {{evtActuel.photo}}"/>
+					<input class="col-start-3 col-span-4 bg-transparent flex w-full rounded-md border border-blue-300 border-input bg-white text-sm file:border-0 file:bg-button file:text-white file:text-sm" type="file" name="photo" id="photo" accept=".jpg, .png" value=" {{evtActuel.photo}}"/>
 
 				</div>
 
@@ -114,14 +114,14 @@
 						<img src="../asset/icones/file-earmark-pdf.svg" class="h-5 w-5" alt="icone de autorisation">
 						<label for="autorisation">Autorisation</label>
 					</div>
-					<input class="col-start-3 col-span-4 bg-transparent flex w-full rounded-md border border-blue-300 border-input bg-white text-sm text-gray-400 file:border-0 file:bg-principal file:text-white file:text-sm" type="file" name="autorisation" id="autorisation" accept=".pdf" value=" {{evtActuel.autorisation}}"/>
+					<input class="col-start-3 col-span-4 bg-transparent flex w-full rounded-md border border-blue-300 border-input bg-white text-sm file:border-0 file:bg-button file:text-white file:text-sm" type="file" name="autorisation" id="autorisation" accept=".pdf" value=" {{evtActuel.autorisation}}"/>
 				</div>
 
 			</div>
 
 			{# info responsable #}
 			<div
-				class="grid grid-cols-6 gap-2 text-white bg-principal rounded-xl w-full p-4">
+				class="grid grid-cols-6 gap-2 text-white bg-form rounded-xl w-full p-4">
 				{# nomResp #}
 
 				<div class="row-start-1 col-start-1 col-span-6 text-2xl font-bold text-white mb-4 flex flex-row items-center gap-2">
@@ -134,7 +134,7 @@
 						<img src="../asset/icones/person.svg" class="h-5 w-5" alt="icone de personne">
 						<label for="nomResp">Nom</label>
 					</div>
-					<input type="text" name="nomRep" id="nomRep" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 text-gray-400" placeholder="Nom du responsable">
+					<input type="text" name="nomRep" id="nomRep" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1" placeholder="Nom du responsable">
 				</div>
 
 				{# prenomResp #}
@@ -143,7 +143,7 @@
 						<img src="../asset/icones/person.svg" class="h-5 w-5" alt="icone de personne">
 						<label for="prenomResp" class="col-start-1 col-span-2">Prénom</label>
 					</div>
-					<input type="text" name="prenomRep" id="prenomRep" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 text-gray-400" placeholder="Prénom du responsable">
+					<input type="text" name="prenomRep" id="prenomRep" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1" placeholder="Prénom du responsable">
 				</div>
 
 				{# email #}
@@ -152,7 +152,7 @@
 						<img src="../asset/icones/envelope.svg" class="h-5 w-5" alt="icone de mail">
 						<label for="email">Email</label>
 					</div>
-					<input type="email" name="email" id="email" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 text-gray-400" placeholder="Email du responsable">
+					<input type="email" name="email" id="email" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1" placeholder="Email du responsable">
 				</div>
 
 				{# telephone #}
@@ -161,14 +161,14 @@
 						<img src="../asset/icones/telephone.svg" class="h-5 w-5" alt="icone de téléphone">
 						<label for="telephone">Téléphone</label>
 					</div>
-					<input type="tel" name="tel" id="tel" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 text-gray-400" placeholder="Téléphone du responsable">
+					<input type="tel" name="tel" id="tel" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1" placeholder="Téléphone du responsable">
 				</div>
 			</div>
 
 			{# Bouton de validation ou annulation #}
 			<div class="grid grid-cols-subgrid row-start-3 col-start-1 col-span-6 gap-2">
-				<button type="submit" class="col-start-5 col-span-1 text-white bg-principal rounded-lg p-1">Valider</button>
-				<a href="index.php?controlleur=mesEv&methode=lister" class="col-start-6 col-span-1 text-white bg-principal rounded-lg text-center p-1">Annuler</a>
+				<button type="submit" class="col-start-5 col-span-1 text-typoButton bg-button hover:bg-hbutton rounded-lg p-1">Valider</button>
+				<a href="index.php?controlleur=mesEv&methode=lister" class="col-start-6 col-span-1 text-typoButton bg-button hover:bg-hbutton rounded-lg text-center p-1">Annuler</a>
 			</div>
 		</form>
 	</div>
