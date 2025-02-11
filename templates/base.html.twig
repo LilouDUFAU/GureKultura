@@ -70,16 +70,14 @@ tarteaucitron.user.gtagMore = function () { /* add here your optionnal gtag() */
 		<title>{{constant('WEBSITE_TITLE')}}
 			{{ title }}</title>
 		<script src="../js/aside.js"></script>
-		<link rel="icon" type="image/x-icon" href="../asset/PetitLogoGkSansFondRouge.ico">
+		<link rel="icon" type="image/x-icon" href="../asset/PetitLogoGkSansFondBlanc.svg">
 		<link href="../css/output.css" rel="stylesheet">
 		<link href="../css/scrollbar.css" rel="stylesheet">
 	</head>
 	<body class="font-['Segoe UI'] min-h-dvh text-white text-sm lg:text-base bg-bg">
-		<main
-			class="flex flex-col">
+		<main class="flex flex-col justify-center items-center">
 			<!-- Header -->
-			<header
-				class="flex justify-between items-center min-h-16 px-7 bg-fh text-white">
+			<header class="flex justify-between items-center min-h-16 md:w-fit bg-fh text-white md:rounded-full px-6 md:gap-12 gap-4 md:m-2">
 
 				<!-- logo -->
 				<a href="index.php?controlleur=index&methode=lister">
@@ -87,7 +85,7 @@ tarteaucitron.user.gtagMore = function () { /* add here your optionnal gtag() */
 				</a>
 
 				<!-- navbar -->
-				<nav id="menu" class="flex flex-row justify-between items-center gap-4 md:gap-8 bg-principal-rouge">
+				<nav id="menu" class="flex flex-row justify-between items-center gap-4 md:gap-6 ">
 					<div class="hidden md:flex md:flex-col md:items-center">
 						<a href="index.php?controlleur=index&methode=lister" class=""><img src="../asset/icones/house.svg" alt="home" class="h-6 w-6"></a>
 						<p class="hidden lg:block">Accueil</p>
@@ -122,19 +120,21 @@ tarteaucitron.user.gtagMore = function () { /* add here your optionnal gtag() */
 
 					</div>
 
-					<form class="flex gap-2 items-center border-2 border-solid border-white rounded-full px-2 py-1">
+					
+					<form class="flex gap-2 items-center border-2 border-solid border-white rounded-full px-2 py-1 m-0">
 						<button>
 							<svg width="17" height="16" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="search">
 								<path d="M7.667 12.667A5.333 5.333 0 107.667 2a5.333 5.333 0 000 10.667zM14.334 14l-2.9-2.9" stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"></path>
 							</svg>
 						</button>
-						<input class="bg-transparent text-white outline-none md:block hidden" placeholder="Type your text" required="" type="text">
+						<input class="bg-transparent text-white outline-none md:block hidden placeholder-white" placeholder="Type your text" required="" type="text">
 						<button class="reset" type="reset" class="md:block hidden">
 							<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewbox="0 0 24 24" stroke="currentColor" stroke-width="2">
 								<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
 							</svg>
 						</button>
 					</form>
+			
 
 				</nav>
 				<!-- compte btn -->
@@ -176,9 +176,9 @@ tarteaucitron.user.gtagMore = function () { /* add here your optionnal gtag() */
 
 
 				<!-- content -->
-				<div class="p-2">
+				<div class="p-2 w-full">
 					<!-- Fil d'Ariane -->
-					<nav class="hidden lg:block lg:items-center text-principal-rouge space-x-2 p-4 border-4 bg-bg border-fh drop-shadow-[0_5px_5px_rgba(0,0,0,0.3)]"></nav>
+					{# <nav class="hidden lg:block lg:items-center text-principal-rouge space-x-2 p-4 border-4 bg-bg border-fh drop-shadow-[0_5px_5px_rgba(0,0,0,0.3)]"></nav> #}
 
 					<!-- Contenu spécifique de chaque page -->
 					<div>

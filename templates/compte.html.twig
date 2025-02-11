@@ -6,7 +6,7 @@
 		<div class="grid grid-cols-subgrid row-start-1 col-start-1 col-span-12 gap-2">
 			{# infos compte #}
 			<div class="row-start-1 col-start-2 col-span-10 flex justify-center items-center">
-				<img src="../asset/user/{{ user.getPfp}}" alt="photo de profil" class="rounded-full min-h-36 min-w-36 max-h-36 max-w-36 border-2 border-solid border-text">
+				<img src="../asset/user/{{ user.getPfp}}" alt="photo de profil" class="rounded-full min-h-36 min-w-36 max-h-36 max-w-36 border-2 border-solid border-gray-300">
 			</div>
 			<div class="row-start-1 col-start-12 col-span-1 right-0 top-0">
 				<button type="button" onclick="openPopup(2)"><img src="../asset/icones/gear-wide-connected.svg" alt="parametre" class="w-8 h-8"></button>
@@ -17,7 +17,7 @@
 		</div>
 
 		{# corps du compte #}
-		<div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-12 gap-2 p-4 border-t-2 border-t-solid border-t-text">
+		<div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-12 gap-2 p-4 border-t-2 border-t-solid border-t-gray-300">
 			{% if user.role == 'user' %}
 				<div class="grid grid-cols-subgrid row-start-1 col-start-1 col-span-12 lg:col-start-4 lg:col-span-6">
 					<label class="row-start-1 col-start-1 col-span-7 lg:col-span-4 ">Souhaitez-vous voir vos évènements ?</label>
@@ -71,7 +71,7 @@
 					<img src="../asset/icones/person-vcard (1).svg" alt="nom" class="w-6 h-6 bg-text py-1 rounded-md">
 					<label for="nom" class="">Nom</label>
 				</div>
-				<input name="nom" id="nom" class="row-start-1 col-start-3 col-span-4 border-solid border-2 border-white rounded-md px-2" value="{{ user.getNom }}">
+				<input name="nom" id="nom" class="row-start-1 col-start-3 col-span-4 border-solid border-2 border-gray-300 rounded-md px-2" value="{{ user.getNom }}">
 			</div>
 
 			{# email #}
@@ -80,7 +80,7 @@
 					<img src="../asset/icones/envelope.svg" alt="email" class="w-6 h-6 bg-text py-1 rounded-md">
 					<label for="email" class="">Email</label>
 				</div>
-				<input name="email" id="email" disabled class="row-start-1 col-start-3 col-span-4 text-gray-400 border-solid border-2 border-white rounded-md px-2" value="{{ user.getEmail }}">
+				<input name="email" id="email" disabled class="row-start-1 col-start-3 col-span-4 text-text border-solid border-2 border-gray-300 rounded-md px-2" value="{{ user.getEmail }}">
 			</div>
 
 			{# pseudo #}
@@ -89,7 +89,7 @@
 					<img src="../asset/icones/person.svg" alt="pseudo" class="w-6 h-6 bg-text py-1 rounded-md">
 					<label for="pesudo" class="">Pseudo</label>
 				</div>
-				<input name="pseudo" id="pseudo" class="row-start-1 col-start-3 col-span-4 text-gray-400 border-solid border-2 border-white rounded-md px-2" value="{{ user.getPseudo }}">
+				<input name="pseudo" id="pseudo" class="row-start-1 col-start-3 col-span-4 text-text border-solid border-2 border-gray-300 rounded-md px-2" value="{{ user.getPseudo }}">
 			</div>
 
 			{# bio #}
@@ -98,7 +98,7 @@
 					<img src="../asset/icones/card-text.svg" alt="bio" class="w-6 h-6 bg-text py-1 rounded-md">
 					<label for="bio" class="">Biographie</label>
 				</div>
-				<input name="bio" id="bio" class="row-start-1 col-start-3 col-span-4 text-gray-400 border-solid border-2 border-white rounded-md px-2" value="{{ user.getBio }}">
+				<input name="bio" id="bio" class="row-start-1 col-start-3 col-span-4 text-text border-solid border-2 border-gray-300 rounded-md px-2" value="{{ user.getBio }}">
 			</div>
 
 			{# photo profil #}
@@ -107,7 +107,7 @@
 					<img src="../asset/icones/image.svg" alt="pfp" class="w-6 h-6 bg-text py-1 rounded-md">
 					<label for="pfp" class="">Avatar</label>
 				</div>
-				<input class="row-start-1 col-start-3 col-span-4 bg-transparent flex w-full rounded-md border-2 border-white border-input bg-white text-sm text-gray-400 file:border-0 file:bg-button file:text-white file:text-sm" type="file" name="pfp" id="pfp" accept=".jpg, .png" value=" {{ user.getPfp }}"/>
+				<input class="row-start-1 col-start-3 col-span-4 bg-transparent flex w-full rounded-md border-2 border-white border-input bg-white text-sm text-text file:border-0 file:bg-button file:text-white file:text-sm" type="file" name="pfp" id="pfp" accept=".jpg, .png" value=" {{ user.getPfp }}"/>
 			</div>
 
 			{# bouton de validation/annulation #}
@@ -129,19 +129,19 @@
 		<h2 class="row-start-1 col-start-1 col-span-6 text-xl font-bold text-center mb-4">Information du compte</h2>
 
 		{# autorisation #}
-		<div class="row-start-2 col-start-1 col-span-6 flex flex-row justify-between items-center gap-2 border-b-2 border-b-solid border-text pb-2">
+		<div class="row-start-2 col-start-1 col-span-6 flex flex-row justify-between items-center gap-2 border-b-2 border-b-solid border-gray-300 pb-2">
 				<input type="checkbox" name="autorisation" id="autorisation" class="h-4 w-4">
 				<label class="row-start-1 col-start-1 col-span-5">J'autorise GureKultura à utiliser mon adresse e-mail et/ou mon numéro de téléphone pour m'envoyer des recommandations personnalisées, des nouveautés pertinentes.</label>
 		</div>
 
 
-		<div class="row-start-3 col-start-1 col-span-6 flex flex-row justify-between items-center gap-2 border-b-2 border-b-solid border-text pb-2">
+		<div class="row-start-3 col-start-1 col-span-6 flex flex-row justify-between items-center gap-2 border-b-2 border-b-solid border-gray-300 pb-2">
 				<input type="checkbox" name="autorisation2" id="autorisation2" class="h-4 w-4">
 				<label class="row-start-1 col-start-1 col-span-5">J'autorise GureKultura à utiliser et stocker mes données personnelles telles que mes photos, nom et prénom, conformément à leur politique de confidentialité.</label>
 		</div>
 
 		{# FaQ #}
-		<div class="grid grid-cols-subgrid row-start-4 col-start-1 col-span-6 border-b-2 border-b-solid border-text pb-2"> 
+		<div class="grid grid-cols-subgrid row-start-4 col-start-1 col-span-6 border-b-2 border-b-solid border-gray-300 pb-2"> 
 			<label class="row-start-1 col-start-1 col-span-4">Des questions ? Rendez-vous sur notre FAQ</label>
 			<a href="index.php?controlleur=faq&methode=lister" class="row-start-1 col-start-5 col-span-2 bg-button hover:bg-hbutton text-white rounded-md py-1 px-2 text-center h-fit">FAQ</a>
 		</div>
@@ -153,7 +153,7 @@
 		</div>
 
 		{# deconnexion #}
-		<form action="index.php?controlleur=compte&methode=deconnexion" method="post" class="grid grid-cols-subgrid row-start-6 col-start-1 col-span-6 border-b-2 border-b-solid border-text pb-2">
+		<form action="index.php?controlleur=compte&methode=deconnexion" method="post" class="grid grid-cols-subgrid row-start-6 col-start-1 col-span-6 border-b-2 border-b-solid border-gray-300 pb-2">
 			<label class="row-start-1 col-start-1 col-span-3">Souhaitez-vous vous déconnecter ?</label>
 			<button arial-label="b_SupprCompte" class="row-start-1 col-start-5 col-span-2 bg-button hover:bg-hbutton text-white rounded-md py-1 px-2 h-fit text-center">Déconnexion</button>
 		</form>
@@ -185,7 +185,7 @@
 					<img src="../asset/icones/person-vcard (1).svg" alt="mdp" class="w-6 h-6 py-1 rounded-md bg-text">
 					<label for="mdp" class="">Mot de passe actuel</label>
 				</div>
-				<input type="password" name="mdp" id="mdp" class="row-start-1 col-start-4 col-span-5 text-white border-solid border-2 border-text rounded-md px-2">
+				<input type="password" name="mdp" id="mdp" class="row-start-1 col-start-4 col-span-5 text-white border-solid border-2 border-gray-300 rounded-md px-2">
 			</div>
 
 			{# email #}
@@ -194,7 +194,7 @@
 					<img src="../asset/icones/envelope.svg" alt="nouvMdp" class="w-6 h-6 py-1 rounded-md bg-text">
 					<label for="nouvMdp" class="">Nouveau mot de passe</label>
 				</div>
-				<input type="password" name="nouvMdp" id="nouvMdp" class="row-start-1 col-start-4 col-span-5 text-white border-solid border-2 border-text rounded-md px-2">
+				<input type="password" name="nouvMdp" id="nouvMdp" class="row-start-1 col-start-4 col-span-5 text-white border-solid border-2 border-gray-300 rounded-md px-2">
 			</div>
 
 			{# pseudo #}
@@ -203,7 +203,7 @@
 					<img src="../asset/icones/person.svg" alt="confNouvMdp" class="w-6 h-6 bg-text py-1 rounded-md">
 					<label for="confNouvMdp" class="">Confirmation mot de passe</label>
 				</div>
-				<input type="password" name="confNouvMdp" id="confNouvMdp" class="row-start-1 col-start-4 col-span-5 text-gray-400 border-solid border-2 border-principal rounded-md px-2">
+				<input type="password" name="confNouvMdp" id="confNouvMdp" class="row-start-1 col-start-4 col-span-5 text-text border-solid border-2 border-principal rounded-md px-2">
 			</div>
 
 			{# bouton de validation/annulation #}
