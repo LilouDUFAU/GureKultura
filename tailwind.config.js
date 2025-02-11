@@ -19,34 +19,18 @@ module.exports = {
       // => @media (min-width: 1536px) { ... }
     },
     colors: {
-      principal : {
-        rouge : '#A30000', //Pour les appels à l’action (CTA), boutons, titres forts.
-        vert : '#165B33',  //Pour les éléments d’accentuation et certaines zones interactives.
-        blanc : '#F4F1DE',  //Fond principal pour un rendu sobre et élégant.
-        gris : '#3E3E3E',  //Texte, icônes et éléments discrets.
-        doré : '#D4A373',  //Pour les événements premium et mises en avant.
-      },
-      secondaire : {
-        rouge : '#B35A30',  //Pour les appels à l’action (CTA), boutons, titres forts.
-        vert : '#819D75',  //Pour les éléments d’accentuation et certaines zones interactives.
-        blanc : '#E8D8C4',  //Fond principal pour un rendu sobre et élégant.
-        gris : '#D9D9D9',  //Texte, icônes et éléments discrets.
-        bleu : '#5E7480',  //Pour les événements premium et mises en avant.
-      },
-      white: '#ffffff',
-      black: '#000000',
-      gray: {
-        100: '#f5f5f5',
-        200: '#eeeeee',
-        300: '#e0e0e0',
-        400: '#bdbdbd',
-        500: '#9e9e9e',
-        600: '#757575',
-        700: '#616161',
-        800: '#424242',
-        900: '#212121',
-      },
-      link: '#0000FF',
+      transparent: 'transparent',
+      bg : '#F6E8EA', //couleur du bg principal
+      fh : '#A23145', //couleur de fond pour header et footer
+      text : '#651F2B', //couleur du text (paragraphe etc)
+      title : '#651F2B', //couleur des titres
+      button : '#932D3F', //couleur des boutons
+      hbutton : '#7A2534', //couleur du hover des boutons
+      card : '#B96473', //couleur pour le fond des cartes evt et actu
+      form : '#B96473', //couleur pour le fond des formulaires
+      link: '#0000FF', //couleur pour les liens (bleu)
+      white: '#ffffff', //blanc
+      black: '#000000', //noir
     },
     extend: {},
   },
