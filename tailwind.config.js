@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./**/*.twig", "./**/*.php"],
+  content: ["./**/*.twig"],
   theme: {
     screens: {
       'sm': '640px',
@@ -18,21 +18,32 @@ module.exports = {
       '2xl': '1536px',
       // => @media (min-width: 1536px) { ... }
     },
-    colors: {
-      transparent: 'transparent',
-      bg : '#F6E8EA', //couleur du bg principal
-      fh : '#A23145', //couleur de fond pour header et footer
-      text : '#651F2B', //couleur du text (paragraphe etc)
-      title : '#651F2B', //couleur des titres
-      button : '#932D3F', //couleur des boutons
-      hbutton : '#7A2534', //couleur du hover des boutons
-      card : '#B96473', //couleur pour le fond des cartes evt et actu
-      form : '#B96473', //couleur pour le fond des formulaires
-      link: '#0000FF', //couleur pour les liens (bleu)
-      white: '#ffffff', //blanc
-      black: '#000000', //noir
+    
+    extend: {
+      colors: {
+        bg : '#FDF6EE', //couleur du bg principal
+        fh : '#F26B3A', //couleur de fond pour header et footer
+        text : '#2C3E50 ', //couleur du text (paragraphe etc)
+        title : '#2C3E50 ', //couleur des titres
+        button : '#D6453D', //couleur des boutons
+        tbutton : '#FDF6EE', //couleur du text des boutons
+        hbutton : '#B03A2E', //couleur du hover des boutons
+        card : '#F8E9D2', //couleur pour le fond des cartes evt et actu
+        form : '#F8E9D2', //couleur pour le fond des formulaires
+        link: '#0000FF', //couleur pour les liens (bleu)
+      },
+      fontFamily: {
+        // fontfamily : poppins
+        // 'poppins': ['Poppins', 'sans-serif'],
+        // fontfamily : robot
+        // 'robot': ['Roboto', 'sans-serif'],
+
+
+        // fontfamily : sen
+        'sen': ['Sen', 'sans-serif'],
+
+      },
     },
-    extend: {},
   },
   plugins: [],
 }
