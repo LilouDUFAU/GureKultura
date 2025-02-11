@@ -7,7 +7,7 @@
 			class="gap-2 p-2 grid grid-cols-12 items-center">
 
 			{# titre de la page #}
-			<h1 class="col-span-12 text-white lg:font-bold lg:text-4xl text-2xl text-center bg-principal-rouge rounded-2xl p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] mb-10">Evénements du moment</h1>
+			<h1 class="col-span-12 text-title lg:font-bold lg:text-4xl text-2xl text-center rounded-2xl p-4 mb-10 font-semibold">Evénements du moment</h1>
 
 			{# contenu #}
 
@@ -17,7 +17,7 @@
 				{% for event in events %}
 					{%  if event.isValide == true %}
 						<div
-							class="flex gap-4 flex-col h-full lg:px-4 lg:grid lg:grid-cols-6 lg:auto-cols-min lg:items-center rounded-2xl bg-principal-vert drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] p-4">
+							class="flex gap-4 flex-col h-full lg:px-4 lg:grid lg:grid-cols-6 lg:auto-cols-min lg:items-center rounded-2xl bg-card p-4">
 							{# Image de l'événement #}
 							<div class="flex-1 lg:row-start-1 lg:col-start-1 lg:col-span-2 lg:w-full row-start-1 col-start-1 col-span-12 lg:m-2 w-full md:row-start-1 md:col-start-1 md:col-span-12 md:w-full lg:object-contain">
 								<img src="../asset/evenement/photo/{{ event.photo }}" alt="Image de l'événement" class="rounded-lg">
@@ -25,7 +25,7 @@
 
 
 							{# Infos de l'événement #}
-							<div class="lg:grid lg:grid-cols-subgrid lg:col-start-3 lg:col-span-2 lg:flex-col lg:w-[250px] text-white lg:gap-2 lg:p-4">
+							<div class="lg:grid lg:grid-cols-subgrid lg:col-start-3 lg:col-span-2 lg:flex-col lg:w-[250px] text-bg lg:gap-2 lg:p-4">
 								<h3 class="lg:font-bold lg:text-xl lg:row-start-1 lg:col-span-2 lg:text-left break-words row-start-1 col-start-1 col-span-12 text-center text-lg md:row-start-1 md:col-start-1 md:col-span-12 md:text-center font-semibold">{{ event.titre }}</h3>
 								<p class="lg:text-md lg:row-start-2 lg:col-span-2 lg:text-left break-words row-start-2 col-start-1 col-span-12 text-center md:row-start-2 md:col-start-1 md:col-span-12 md:text-center text-sm">{{ event.dateDebut|date("d-m-Y") }}
 									{{ event.heureDebut|date("H:i") }}</p>
@@ -42,7 +42,7 @@
 									<INPUT type="hidden" name="nom" value="{{event.nomCategorie}}">
 									<INPUT type="hidden" name="id" value={{event.cateId}}>
 									<INPUT type="hidden" name="type" value="Evenements">
-									<INPUT type="SUBMIT" name="{{ event.nomCategorie }}" value="{{ event.nomCategorie }}" class="lg:row-start-3 lg:col-start-1 lg:col-span-2 row-start-3 col-start-1 col-span-1 flex justify-center items-center text-center min-w-full bg-white text-principal-rouge rounded-lg text-sm p-2 font-bold">
+									<INPUT type="SUBMIT" name="{{ event.nomCategorie }}" value="{{ event.nomCategorie }}" class="lg:row-start-3 lg:col-start-1 lg:col-span-2 row-start-3 col-start-1 col-span-1 flex justify-center items-center text-center min-w-full bg-button hover:bg-hbutton text-white rounded-lg text-sm p-2 font-bold">
 								</FORM>
 
 
@@ -50,7 +50,7 @@
 									<INPUT type="hidden" name="nom" value="{{event.titre}}">
 									<INPUT type="hidden" name="id" value={{event.evtId}}>
 									<INPUT type="hidden" name="type" value="Evenements">
-									<INPUT type="SUBMIT" name="{{ event.titre }}" value="EN SAVOIR PLUS" class="text-white  text-sm  lg:text-md  font-bold row-start-3 flex justify-center items-center md:font-bold md:row-start-3 md:col-start-2 md:col-span-2 md:flex md:justify-center md:items-center underline 
+									<INPUT type="SUBMIT" name="{{ event.titre }}" value="EN SAVOIR PLUS" class="text-bg  text-sm  lg:text-md  font-bold row-start-3 flex justify-center items-center md:font-bold md:row-start-3 md:col-start-2 md:col-span-2 md:flex md:justify-center md:items-center underline 
 									">
 								</FORM>
 							</div>
