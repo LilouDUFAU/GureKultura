@@ -30,6 +30,7 @@ module.exports = {
         hbutton : '#B03A2E', //couleur du hover des boutons
         card : '#F8E9D2', //couleur pour le fond des cartes evt et actu
         form : '#F8E9D2', //couleur pour le fond des formulaires
+        carousel : '#F8E9D2', //couleur pour le fond du carousel
         link: '#0000FF', //couleur pour les liens (bleu)
       },
       fontFamily: {
