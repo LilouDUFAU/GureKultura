@@ -7,13 +7,13 @@
     </h1>
 
     <!-- En-tête -->
-    <div class="grid grid-cols-12 gap-2 mt-5 bg-tabtitle text-title text-sm lg:text-md p-2 font-semibold">
+    <div class="grid grid-cols-12 gap-2 mt-5 bg-tabtitle text-title text-sm lg:text-base p-2 font-semibold">
         <div class="col-span-2">Nom</div>
         <div class="col-span-1">Date début</div>
         <div class="col-span-1">Date fin</div>
         <div class="col-span-3">Lieu</div>
-        <div class="col-span-2 text-center">Visualisation</div>
-        <div class="col-span-3 text-center">Validation</div>
+        <div class="col-span-2">Visualisation</div>
+        <div class="col-span-3">Validation</div>
     </div>
 
     <!-- Données -->
@@ -26,7 +26,7 @@
             <div class="col-span-3">{{ evenement.lieu }}</div>
 
             <!-- VISUALISATION -->
-            <div class="col-span-2 flex justify-center">
+            <div class="col-span-2 ">
                 <form action="index.php?controlleur=evtActu&methode=lister" method="post">
                     <input type="hidden" name="id" value="{{ evenement.evtId }}">
                     <input type="hidden" name="nom" value="{{ evenement.nom }}">
@@ -39,7 +39,7 @@
             </div>
 
             <!-- VALIDATION -->
-            <div class="col-span-3 flex justify-center space-x-3">
+            <div class="col-span-3 flex space-x-3">
                 <form action="index.php?controlleur=validPropEv&methode=valider" method="post" class="inline-flex">
                     <input type="hidden" name="evtId" value="{{ evenement.evtId }}">
                     <button type="submit" class="p-3 rounded-lg bg-green-500 hover:bg-green-600 flex items-center justify-center w-12 h-12">
