@@ -6,32 +6,33 @@
         Événements proposés
     </h1>
 
-    <!-- En-tête -->
-    <div class="grid grid-cols-12 gap-2 mt-5 bg-tabtitle text-title text-sm lg:text-base p-2 font-semibold">
-        <div class="col-span-2">Nom</div>
-        <div class="col-span-1">Date début</div>
-        <div class="col-span-1">Date fin</div>
-        <div class="col-span-3">Lieu</div>
-        <div class="col-span-2">Visualisation</div>
-        <div class="col-span-3">Validation</div>
-    </div>
 
-    <!-- Données -->
-    <div>
+    <div class="grid grid-cols-12 w-full mt-5 text-text text-sm lg:text-base">
+        <!-- En-tête -->
+        <div class="row-start-1 col-start-1 col-span-12 grid grid-cols-subgrid gap-2 mt-5 bg-tabtitle p-2 font-semibold">
+            <div class="col-start-1 col-span-2 p-2">Nom</div>
+            <div class="col-start-3 col-span-1 hidden lg:block p-2">Date début</div>
+            <div class="col-start-4 col-span-1 hidden lg:block p-2">Date fin</div>
+            <div class="col-start-3 lg:col-start-5 col-span-3 p-2">Lieu</div>
+            <div class="col-start-6 col-span-3 lg:col-start-8 lg:col-span-2 p-2">Visualisation</div>
+            <div class="col-start-10 col-span-3 p-2">Validation</div>
+        </div>
+
+        <!-- Données -->
         {% for evenement in evenements %}
-        <div class="grid grid-cols-12 gap-2 p-3 odd:bg-odd even:bg-even items-center text-text">
-            <div class="col-span-2">{{ evenement.titre }}</div>
-            <div class="col-span-1">{{ evenement.dateDebut }}</div>
-            <div class="col-span-1">{{ evenement.dateFin }}</div>
-            <div class="col-span-3">{{ evenement.lieu }}</div>
+        <div class="row-start-2 col-start-1 col-span-12 grid grid-cols-subgrid gap-2 p-3 odd:bg-odd even:bg-even items-center">
+            <div class="col-start-1 col-span-2 p-2">{{ evenement.titre }}</div>
+            <div class="col-start-3 col-span-1 hidden lg:block p-2">{{ evenement.dateDebut }}</div>
+            <div class="col-start-4 col-span-1 hidden lg:block p-2">{{ evenement.dateFin }}</div>
+            <div class="col-start-3 lg:col-start-5 col-span-3 p-2">{{ evenement.lieu }}</div>
 
             <!-- VISUALISATION -->
-            <div class="col-span-2 ">
+            <div class="col-start-6 col-span-3 lg:col-start-8 lg:col-span-2 p-2 items-center">
                 <form action="index.php?controlleur=evtActu&methode=lister" method="post">
                     <input type="hidden" name="id" value="{{ evenement.evtId }}">
                     <input type="hidden" name="nom" value="{{ evenement.nom }}">
                     <input type="hidden" name="type" value="Evenements">
-                    <button type="submit" class="flex items-center space-x-2 bg-button hover:bg-hbutton text-tbutton px-4 py-2 rounded-lg">
+                    <button type="submit" class="flex items-center space-x-1 lg:space-x-2 bg-button hover:bg-hbutton text-tbutton px-2 lg:px-4 py-2 rounded-lg">
                         <img src="../asset/icones/eye.svg" alt="Visualiser" class="h-5 w-5">
                         <span>Voir</span>
                     </button>
@@ -39,28 +40,28 @@
             </div>
 
             <!-- VALIDATION -->
-            <div class="col-span-3 flex space-x-3">
-                <form action="index.php?controlleur=validPropEv&methode=valider" method="post" class="inline-flex">
+            <div class="col-start-10 col-span-3 flex lg:space-x-3 flex-col lg:flex-row gap-2 p-2">
+                <form action="index.php?controlleur=validPropEv&methode=valider" method="post" class="inline-flex mb-0">
                     <input type="hidden" name="evtId" value="{{ evenement.evtId }}">
-                    <button type="submit" class="p-3 rounded-lg bg-green-500 hover:bg-green-600 flex items-center justify-center w-12 h-12">
+                    <button type="submit" class="p-1 rounded-lg bg-green-500 hover:bg-green-600 flex items-center justify-center w-8 h-8">
                         <img src="../asset/icones/file-plus.svg" alt="Validation" class="h-6 w-6">
                     </button>
                 </form>
 
-                <button type="button" class="p-3 rounded-lg bg-yellow-500 hover:bg-yellow-600 flex items-center justify-center w-12 h-12"
+                <button type="button" class="p-1 rounded-lg bg-yellow-500 hover:bg-yellow-600 flex items-center justify-center w-8 h-8"
                     onclick="openPopup('{{ evenement.evtId }}')">
                     <img src="../asset/icones/file-break.svg" alt="Attente" class="h-6 w-6">
                 </button>
 
-                <form action="index.php?controlleur=validPropEv&methode=supprimer" method="post" class="inline-flex">
+                <form action="index.php?controlleur=validPropEv&methode=supprimer" method="post" class="inline-flex mb-0">
                     <input type="hidden" name="evtId" value="{{ evenement.evtId }}">
-                    <button type="submit" class="p-3 rounded-lg bg-red-500 hover:bg-red-600 flex items-center justify-center w-12 h-12">
+                    <button type="submit" class="p-1 rounded-lg bg-red-500 hover:bg-red-600 flex items-center justify-center w-8 h-8">
                         <img src="../asset/icones/file-minus.svg" alt="Suppression" class="h-6 w-6">
                     </button>
                 </form>
             </div>
+            {% endfor %}
         </div>
-        {% endfor %}
     </div>
 </div>
 
