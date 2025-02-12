@@ -1,0 +1,49 @@
+{% extends "base.html.twig" %}
+
+{% block content %}
+	<!-- Contenu spécifique de chaque page -->
+	<div class="h-full m-2">
+
+    <h1 class="text-2xl lg:text-4xl font-semibold text-center text-title uppercase lg:font-extrabold">Mes participations</h1>
+    
+    <div class="grid grid-cols-12 w-full mt-5 text-text text-sm lg:text-md">
+        {# En-tête du tableau #}
+        <div class="col-span-12 grid grid-cols-12 bg-tabtitle font-bold">
+            <div class="col-span-3 p-2">Nom</div>
+            <div class="col-span-2 p-2 hidden md:block">Date</div>
+            <div class="col-span-3 p-2">Lieu</div>
+            <div class="col-span-2 p-2">Visualisation</div>
+            <div class="col-span-2 p-2">Inscription</div>
+        </div>
+
+        {# Contenu dynamique #}
+        {% for evenement in evenements %}
+            <div class="col-span-12 grid grid-cols-12 odd:bg-odd even:bg-even">
+                <div class="col-span-3 p-2">{{ evenement.titre }}</div>
+                <div class="col-span-2 p-2 hidden md:block">{{ evenement.dateDebut }}</div>
+                <div class="col-span-3 p-2">{{ evenement.lieu }}</div>
+                <div class="col-span-2 p-2 flex justify-center">
+                    <form action="index.php?controlleur=evtActu&methode=lister" method="post">
+                        <input type="hidden" name="id" value="{{ evenement.evtId }}">
+                        <input type="hidden" name="nom" value="{{ evenement.nom }}">
+                        <input type="hidden" name="type" value="Evenements">
+                        <button type="submit" class="flex items-center space-x-2 bg-button hover:bg-hbutton text-tbutton px-4 py-2 rounded-lg">
+                            <img src="../asset/icones/eye.svg" alt="Visualiser" class="h-5 w-5">
+                            <span>Voir</span>
+                        </button>
+                    </form>
+                </div>
+                <div class="col-span-2 p-2 flex justify-center">
+                    <form action="index.php?controlleur=evtActu&methode=desinscrire" method="post">
+                        <input type="hidden" name="id" value="{{ evenement.evtId }}">
+                        <button type="submit" class="flex items-center space-x-2 bg-button hover:bg-hbutton text-tbutton px-4 py-2 rounded-lg">
+                            <span>Se désinscrire</span>
+                        </button>
+                    </form>
+                </div>
+                
+        {% endfor %}
+    </div>
+    </div>
+
+{% endblock %}

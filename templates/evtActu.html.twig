@@ -6,7 +6,7 @@
 	<!-- Contenu spécifique de chaque page -->
 	<div class="h-full">
 		<div class="gap-2 p-2 grid grid-cols-12 items-center">
-			<h1 class="row-start-1 col-span-12 text-center font-bold text-4xl p-2 text-[#A23145]">{{ evtActus.titre }}</h1>
+			<h1 class="row-start-1 col-span-12 text-center font-bold text-4xl p-2 text-title">{{ evtActus.titre }}</h1>
 
 			<!-- Colonne de gauche -->
 			<div class="grid grid-cols-subgrid col-start-1 col-span-12 row-start-2 lg:col-span-6 lg:row-start-2 h-full">
@@ -53,7 +53,7 @@
                 <button type="submit" class="mt-4 px-6 py-2 bg-principal text-white font-semibold rounded-lg hover:bg-black">Se désinscrire</button>
             </form>
         {% endif %}
-        {% if estInscrit == false %}
+        {% if estInscrit == false and user.role == 'user' %}
             <form method="POST" action="index.php?controlleur=evtActu&methode=inscrire">
                 <INPUT TYPE="hidden" NAME="nom" VALUE="{{evtActus.titre}}">
                 <INPUT TYPE="hidden" NAME="type" VALUE="{{ type }}"> 
