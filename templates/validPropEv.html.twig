@@ -2,66 +2,73 @@
 
 {% block content %}
 <div class="h-full m-2">
-    <h1 class="text-3xl font-bold text-center text-principal"> Événements non valides </h1>
+    <h1 class="text-2xl lg:text-4xl font-semibold text-center text-title uppercase lg:font-extrabold">
+        Événements proposés
+    </h1>
 
-    <table class="w-full mt-5 rounded-lg text-white text-sm lg:text-md">
-        <thead>
-            <tr class="bg-principal">
-                <th class="p-2 text-left">Nom</th>
-                <th class="p-2 text-left">Date début</th>
-                <th class="p-2 text-left">Date fin</th>
-                <th class="p-2 text-left">Lieu</th>
-                <th class="p-2 text-left">Visualisation</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for evenement in evenements %}
-                <tr class="odd:bg-principal odd:bg-opacity-35 even:bg-principal even:bg-opacity-75">
-                    <td class="p-1">{{ evenement.titre }}</td>
-                    <td class="p-1">{{ evenement.dateDebut }}</td>
-                    <td class="p-1">{{ evenement.dateFin }}</td>
-                    <td class="p-1">{{ evenement.lieu }}</td>
-                    <td class="p-1">
-                        <form action="index.php?controlleur=evtActu&methode=lister" method="post" class="flex flex-col justify-center items-center">
-                            <input type="hidden" name="id" value={{ evenement.evtId}}>
-                            <input type="hidden" name="nom" value={{ evenement.nom}}>
-                            <input type="hidden" name="type" value= "Evenements">
-                            <img src="../asset/icones/eye.svg" alt="visualisation" class="h-10 w-10">
-                            <input type="submit" value="Voir la page">
-                        </form>
-                    </td>
-                    <td class="p-1 flex justify-center items-center">
-                        <form action="index.php?controlleur=validPropEv&methode=valider" method="post">
-                            <input type="hidden" name="evtId" value="{{ evenement.evtId }}">
-                            <button type="submit" class="p-1 rounded-lg h-6 w-6 bg-principal"><img src="../asset/icones/file-plus.svg" alt="validation"></button>
-                        </form>
-                    </td>
-                    <td class="p-1 flex justify-center items-center">
-                        <!-- Bouton qui déclenche le popup -->
-                        <button 
-                            type="button" 
-                            class="p-1 rounded-lg h-6 w-6 bg-principal"
-                            onclick="openPopup('{{ evenement.evtId }}')">
-                            <img src="../asset/icones/file-break.svg" alt="attente">
-                        </button>
-                    </td>
-                    <td class="p-1 flex justify-center items-center">
-                        <form action="index.php?controlleur=validPropEv&methode=supprimer" method="post">
-                            <input type="hidden" name="evtId" value="{{ evenement.evtId }}">
-                            <button type="submit" class="p-1 rounded-lg h-6 w-6 bg-principal"><img src="../asset/icones/file-minus.svg" alt="suppression"></button>
-                        </form>
-                    </td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <!-- En-tête -->
+    <div class="grid grid-cols-12 gap-2 mt-5 bg-tabtitle text-title text-sm lg:text-md p-2 font-semibold">
+        <div class="col-span-2">Nom</div>
+        <div class="col-span-1">Date début</div>
+        <div class="col-span-1">Date fin</div>
+        <div class="col-span-3">Lieu</div>
+        <div class="col-span-2 text-center">Visualisation</div>
+        <div class="col-span-3 text-center">Validation</div>
+    </div>
+
+    <!-- Données -->
+    <div>
+        {% for evenement in evenements %}
+        <div class="grid grid-cols-12 gap-2 p-3 odd:bg-odd even:bg-even items-center text-text">
+            <div class="col-span-2">{{ evenement.titre }}</div>
+            <div class="col-span-1">{{ evenement.dateDebut }}</div>
+            <div class="col-span-1">{{ evenement.dateFin }}</div>
+            <div class="col-span-3">{{ evenement.lieu }}</div>
+
+            <!-- VISUALISATION -->
+            <div class="col-span-2 flex justify-center">
+                <form action="index.php?controlleur=evtActu&methode=lister" method="post">
+                    <input type="hidden" name="id" value="{{ evenement.evtId }}">
+                    <input type="hidden" name="nom" value="{{ evenement.nom }}">
+                    <input type="hidden" name="type" value="Evenements">
+                    <button type="submit" class="flex items-center space-x-2 bg-button hover:bg-hbutton text-tbutton px-4 py-2 rounded-lg">
+                        <img src="../asset/icones/eye.svg" alt="Visualiser" class="h-5 w-5">
+                        <span>Voir</span>
+                    </button>
+                </form>
+            </div>
+
+            <!-- VALIDATION -->
+            <div class="col-span-3 flex justify-center space-x-3">
+                <form action="index.php?controlleur=validPropEv&methode=valider" method="post" class="inline-flex">
+                    <input type="hidden" name="evtId" value="{{ evenement.evtId }}">
+                    <button type="submit" class="p-3 rounded-lg bg-green-500 hover:bg-green-600 flex items-center justify-center w-12 h-12">
+                        <img src="../asset/icones/file-plus.svg" alt="Validation" class="h-6 w-6">
+                    </button>
+                </form>
+
+                <button type="button" class="p-3 rounded-lg bg-yellow-500 hover:bg-yellow-600 flex items-center justify-center w-12 h-12"
+                    onclick="openPopup('{{ evenement.evtId }}')">
+                    <img src="../asset/icones/file-break.svg" alt="Attente" class="h-6 w-6">
+                </button>
+
+                <form action="index.php?controlleur=validPropEv&methode=supprimer" method="post" class="inline-flex">
+                    <input type="hidden" name="evtId" value="{{ evenement.evtId }}">
+                    <button type="submit" class="p-3 rounded-lg bg-red-500 hover:bg-red-600 flex items-center justify-center w-12 h-12">
+                        <img src="../asset/icones/file-minus.svg" alt="Suppression" class="h-6 w-6">
+                    </button>
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 </div>
 
 <!-- Popup -->
 <div id="popup" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden z-50">
     <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
-        <h2 class="text-xl font-bold text-center mb-4">Mise en attente</h2>
-        <form action="index.php?controlleur=validPropEv&methode=attente" method="post">
+        <h2 class="text-xl font-bold text-center mb-4 text-title font-semibold lg:font-extrabold uppercase">Mise en attente</h2>
+        <form action="index.php?controlleur=validPropEv&methode=attente" method="post" class="text-text">
             <input type="hidden" id="popupEvtId" name="evtId" value="">
             <div class="mb-4">
                 <label for="objet" class="block text-sm font-medium text-gray-700">Objet</label>
@@ -71,9 +78,11 @@
                 <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
                 <textarea id="message" name="message" class="w-full p-2 border rounded-lg" rows="4" required></textarea>
             </div>
-            <div class="flex justify-end">
-                <button type="button" onclick="closePopup()" class="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg mr-2">Annuler</button>
-                <button type="submit" class="px-4 py-2 bg-principal text-white rounded-lg">Envoyer</button>
+            <div class="flex justify-end gap-2">
+                <button type="submit" class="px-4 py-2 bg-button hover:hbutton text-tbutton rounded-lg">Envoyer</button>
+                <button type="button" onclick="closePopup()" class="px-4 py-2 bg-button hover:hbutton text-tbutton rounded-lg mr-2">
+                    Annuler
+                </button>
             </div>
         </form>
     </div>
