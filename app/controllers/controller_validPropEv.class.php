@@ -112,6 +112,7 @@ class ControllerValidPropEv extends Controller
         $donnees = $_POST;
         $mail = new Mail();
         $mail->envoieMail($user->getEmail(), $donnees['objet'],$donnees['message']);
+        header('Location: index.php?controlleur=validPropEv&methode=lister');
 
     }
 }

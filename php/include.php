@@ -32,6 +32,7 @@ require_once '../app/controllers/controller_validPropEv.class.php';
 require_once '../app/controllers/controller_cateEvt.class.php';
 require_once '../app/controllers/controller_mdpReinitialisation.class.php';
 require_once '../app/controllers/controller_filtre.class.php';
+require_once '../app/controllers/controller_mesParticipations.class.php';
 
 
 

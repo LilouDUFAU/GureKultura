@@ -399,4 +399,18 @@ class EvenementDao
         return $evenement;
     }
 
+    public function findEvtParticipation(?int $id)
+    {
+        $sql = "SELECT gk_evenement.*, gk_categorie.nom AS nomCategorie
+                FROM gk_evenement
+                JOIN gk_categorie ON gk_categorie.cateId = gk_evenement.cateId
+                JOIN gk_participer ON gk_evenement.evtId = gk_participer.evtId
+                WHERE gk_participer.userId = :userId";
+        $pdoStatement = $this->pdo->prepare($sql);
+        $pdoStatement->execute(array(':userId' => $id));
+        $pdoStatement->setFetchMode(PDO::FETCH_ASSOC);
+        $EvenementTab = $pdoStatement->fetchAll();
+        $evenement = $this->hydrateAll($EvenementTab);
+        return $evenement;
+    }
 }
