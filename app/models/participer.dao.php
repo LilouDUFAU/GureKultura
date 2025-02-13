@@ -32,7 +32,6 @@ class ParticiperDAO
             $tab['dateInscr'] = new DateTime($tab['dateInscr']);
             $participer->setDateInscr($tab['dateInscr']);
         }
-
         return $participer;
     }
 
@@ -101,6 +100,21 @@ class ParticiperDAO
             $participer = $this->hydrate($participerTab);
             return $participer;
         }        
+    }
+
+    // fonction permettant de trouver tous les evenements auxquels participer l'utilisateur 
+    public function findAllUserEvt(?int $userId): ?array {
+        $sql = "SELECT * FROM gk_participer WHERE userId = :userId";
+        $pdoStatement = $this->pdo->prepare($sql);
+        $pdoStatement->execute(array(':userId' => $userId));
+        $pdoStatement->setFetchMode(PDO::FETCH_ASSOC);
+        $participerTab = $pdoStatement->fetchAll();
+        if($participerTab == false) {
+            return null;
+        }else{
+            $participer = $this->hydrateAll($participerTab);
+            return $participer;
+        }   
     }
 
     /**

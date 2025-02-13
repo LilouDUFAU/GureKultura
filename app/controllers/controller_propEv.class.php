@@ -183,7 +183,6 @@ class ControllerPropEv extends Controller
             $donnees = $_POST;
             $user = $_SESSION['user'];
             $donnees['userId'] = $user->getUserId();
-            var_dump($donnees);
 
             // Gestion du fichier autorisation
             if (isset($_FILES['autorisation']) && $_FILES['autorisation']['error'] == 0) {
@@ -205,11 +204,6 @@ class ControllerPropEv extends Controller
                 // Ajouter un timestamp au nom de la photo pour s'assurer qu'elle ait un nom unique
                 $timestamp = time();
                 $photoName = pathinfo($photoName, PATHINFO_FILENAME) . '_' . $timestamp . '.' . pathinfo($photoName, PATHINFO_EXTENSION);                
-            }
-
-            // boucle de nettoyage des donnees
-            foreach ($donnees as $key => $value) {
-                $donnees[$key] = htmlentities($value);
             }
 
             $user = $_SESSION['user'];

@@ -31,6 +31,9 @@ module.exports = {
         card : '#F8E9D2', //couleur pour le fond des cartes evt et actu
         form : '#F8E9D2', //couleur pour le fond des formulaires
         carousel : '#F8E9D2', //couleur pour le fond du carousel
+        tabtitle : '#F2A67E', //couleur pour les titres des onglets
+        odd : '#EADBC8', //couleur pour les lignes impaires
+        even : '#F5EDE3', //couleur pour les lignes paires
         link: '#0000FF', //couleur pour les liens (bleu)
       },
       fontFamily: {
