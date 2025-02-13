@@ -22,7 +22,7 @@
                 <div class="col-span-3 p-2">{{ evenement.titre }}</div>
                 <div class="col-span-2 p-2 hidden md:block">{{ evenement.dateDebut }}</div>
                 <div class="col-span-3 p-2">{{ evenement.lieu }}</div>
-                <div class="col-span-2 p-2 flex justify-center">
+                <div class="col-span-2 p-2">
                     <form action="index.php?controlleur=evtActu&methode=lister" method="post">
                         <input type="hidden" name="id" value="{{ evenement.evtId }}">
                         <input type="hidden" name="nom" value="{{ evenement.nom }}">
@@ -33,9 +33,11 @@
                         </button>
                     </form>
                 </div>
-                <div class="col-span-2 p-2 flex justify-center">
-                    <form action="index.php?controlleur=evtActu&methode=desinscrire" method="post">
-                        <input type="hidden" name="id" value="{{ evenement.evtId }}">
+                <div class="col-span-2 p-2">
+                    <form action="index.php?controlleur=mesParticipation&methode=desinscrire" method="post">
+                        <INPUT TYPE="hidden" NAME="nom" VALUE="{{evenement.titre}}">
+                        <INPUT TYPE="hidden" NAME="type" VALUE="Evenements"> 
+                        <input type="hidden" name="evtId" value="{{ evenement.evtId }}">
                         <button type="submit" class="flex items-center space-x-2 bg-button hover:bg-hbutton text-tbutton px-4 py-2 rounded-lg">
                             <span>Se désinscrire</span>
                         </button>

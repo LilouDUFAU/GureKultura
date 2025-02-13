@@ -7,6 +7,30 @@
 			class="gap-2 p-2 grid grid-cols-12 items-center">
 
 			{# titre de la page #}
+			<h1 class="col-span-12 text-title lg:font-extrabold lg:text-4xl text-2xl text-center rounded-2xl p-4 mb-10 font-semibold uppercase">Actualites du moment</h1>
+
+			<div id="carouselActu" class="row-span-3 col-span-12 relative w-full overflow-hidden mx-auto bg-carousel rounded-lg" data-slides-default="1" data-slides-mobile="1">
+            <!-- Conteneur du carrousel -->
+				<div  id="carouselActu" class="carousel flex transition-transform duration-500 ease-out gap-2 p-2">
+					<!-- Diapositives -->
+					{% for actualite in actualites %}
+						<div style="background-image: url('../asset/actualite/{{ actualite.img }}')" class="bg-cover bg-no-repeat slide md:w-1/3 w-full flex-shrink-0 text-principal-rouge text-center py-16 rounded-lg relative">
+							<FORM ACTION="index.php?controlleur=categorieEvtActu&methode=lister" METHOD="POST">
+								<INPUT type="hidden" name="nom" value="{{actualite.titre}}">
+								<INPUT type="hidden" name="id" value={{actualite.ActuId}}>
+								<INPUT type="hidden" name="type" value="Actualites">
+								<INPUT TYPE="SUBMIT" VALUE={{actualite.titre}} class="bg-white border-principal absolute inset-x-0 bottom-0 text-center rounded-lg p-2 mr-2 ml-2 mb-2">
+							</FORM>
+						</div>
+					{% endfor %}
+            	</div>
+				<!-- Boutons de navigation -->
+				<button id="prevActu" class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full"><</button>
+				<button id="nextActu" class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full">></button>
+        	</div>
+
+
+			{# titre de la page #}
 			<h1 class="col-span-12 text-title lg:font-extrabold lg:text-4xl text-2xl text-center rounded-2xl p-4 mb-10 font-semibold uppercase">Evénements du moment</h1>
 
 			{# contenu #}
@@ -61,5 +85,6 @@
 			</div>
 		</div>
 	</div>
+<script src="../js/caroussel.js"></script>
 {% endblock %}
 

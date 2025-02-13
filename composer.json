@@ -7,7 +7,7 @@
     "require": {
         "symfony/yaml": "^6.4",
         "phpmailer/phpmailer": "^6.9",
-        "twig/intl-extra": "*",
+        "twig/intl-extra": "^3.19",
         "twig/twig": "^3.19"
     }
 }
