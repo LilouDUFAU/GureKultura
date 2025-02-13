@@ -91,7 +91,7 @@
         }
     
         // Rendre le template Twig
-        echo $this->getTwig()->render('evtActu.html.twig', [
+        echo $this->getTwig()->render('mesParticipation.html.twig', [
             'title' => $nom,
             'type' => $type,
             'actualites' => $actualite,

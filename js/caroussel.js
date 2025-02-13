@@ -27,28 +27,33 @@ function initCarousel(carouselContainer, nextBtnId, prevBtnId) {
   window.addEventListener('resize', updateSlidesToShow);
  
   // Gestion du bouton suivant
-  document.getElementById(nextBtnId).addEventListener('click', () => {
+  document.getElementById(nextBtnId).addEventListener('click', updateCarouselNext);
+  function updateCarouselNext() {
     if (currentSlide < totalSlides - slidesToShow) {
       currentSlide += slidesToShow;
     } else {
       currentSlide = 0; // Revenir au début
     }
     updateCarousel();
-  });
-
+  }
+  
   // Gestion du bouton précédent
-  document.getElementById(prevBtnId).addEventListener('click', () => {
+  document.getElementById(prevBtnId).addEventListener('click', updateCarouselPrev);
+  function updateCarouselPrev() {
     if (currentSlide > 0) {
       currentSlide -= slidesToShow;
     } else {
-      currentSlide = totalSlides - slidesToShow; // Aller à la fin
+      currentSlide = totalSlides - slidesToShow; // Revenir à la fin
     }
     updateCarousel();
-  });
+  }
 
   function updateCarousel() {
     const slideWidth = slides[0]?.clientWidth || 0; // Largeur d'une diapositive
     carousel.style.transform = `translateX(-${currentSlide * (slideWidth + 8)}px)`;
+  }
+  if(nextBtnId == "nextActu"){
+    setInterval(updateCarouselNext, 5000);
   }
 }
 
@@ -68,4 +73,9 @@ if (carousel3) {
 const carousel4 = document.getElementById('carousel4');
 if (carousel4) {
   initCarousel(carousel4, 'next4', 'prev4');
+}
+
+const carouselActu = document.getElementById('carouselActu');
+if (carouselActu) {
+  initCarousel(carouselActu, 'nextActu', 'prevActu');
 }
