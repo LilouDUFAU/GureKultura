@@ -7,6 +7,8 @@ class ControllerEvtActu extends Controller {
     }
 
     public function lister() {
+
+
         // Récupérer la connexion PDO
         $pdo = Bd::getInstance()->getPdo();
 
@@ -17,6 +19,9 @@ class ControllerEvtActu extends Controller {
             $nom = htmlentities($_POST['nom']);
             $type = htmlentities($_POST['type']);
             $id = htmlentities($_POST['id']);
+        }
+        if (!isset($_SESSION['user']) && empty($_SESSION['user']) && $type == 'Evenements') {
+            header('Location: index.php?controlleur=connexion&methode=lister');
         }
         // Créer une instance de CommentaireDao
         $commentaireDao = new CommentaireDao($pdo);

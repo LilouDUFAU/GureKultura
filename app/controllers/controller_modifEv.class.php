@@ -34,46 +34,52 @@ class ControllerModifEv extends Controller
      */
     public function lister()
     {
-        $pdo = Bd::getInstance()->getPdo();
+        if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
 
-        $loader = new \Twig\Loader\FilesystemLoader('../templates');
-        $twig = new \Twig\Environment($loader);
+            $pdo = Bd::getInstance()->getPdo();
 
-        $managerActualite = new ActualiteDao($this->getPdo());
-        $actualite = $managerActualite->findAllWithCategorie();
+            $loader = new \Twig\Loader\FilesystemLoader('../templates');
+            $twig = new \Twig\Environment($loader);
 
-        $managerCategorie = new CategorieDao($this->getPdo());
-        $categories = $managerCategorie->findAll();
+            $managerActualite = new ActualiteDao($this->getPdo());
+            $actualite = $managerActualite->findAllWithCategorie();
 
-        $managerEvenement = new EvenementDao($this->getPdo());
-        $evenement = $managerEvenement->findEventById($_POST['evtId']);
-        $evenementActuel = [];
-        $evenementActuel['id'] = $evenement[0]->getEvtId();
-        $evenementActuel['titre'] = $evenement[0]->getTitre();
-        $evenementActuel['autorisation'] = $evenement[0]->getAutorisation();
-        $evenementActuel['email'] = $evenement[0]->getEmail();
-        $evenementActuel['tel'] = $evenement[0]->getTel();
-        $evenementActuel['nomRep'] = $evenement[0]->getNomRep();
-        $evenementActuel['prenomRep'] = $evenement[0]->getPrenomRep();
-        $evenementActuel['description'] = $evenement[0]->getDescription();
-        $evenementActuel['dateDebut'] = $evenement[0]->getDateDebut();
-        $evenementActuel['dateFin'] = $evenement[0]->getDateFin();
-        $evenementActuel['heureDebut'] = $evenement[0]->getHeureDebut();
-        $evenementActuel['heureFin'] = $evenement[0]->getHeureFin();
-        $evenementActuel['lieu'] = $evenement[0]->getLieu();
-        $evenementActuel['photo'] = $evenement[0]->getPhoto();
-        $evenementActuel['categorie'] = $evenement[0]->getNomCategorie();
-        $evenementActuel['categorieId'] = $evenement[0]->getCateId();
+            $managerCategorie = new CategorieDao($this->getPdo());
+            $categories = $managerCategorie->findAll();
 
-        $_SESSION['evtActuel'] = $evenementActuel;
+            $managerEvenement = new EvenementDao($this->getPdo());
+            $evenement = $managerEvenement->findEventById($_POST['evtId']);
+            $evenementActuel = [];
+            $evenementActuel['id'] = $evenement[0]->getEvtId();
+            $evenementActuel['titre'] = $evenement[0]->getTitre();
+            $evenementActuel['autorisation'] = $evenement[0]->getAutorisation();
+            $evenementActuel['email'] = $evenement[0]->getEmail();
+            $evenementActuel['tel'] = $evenement[0]->getTel();
+            $evenementActuel['nomRep'] = $evenement[0]->getNomRep();
+            $evenementActuel['prenomRep'] = $evenement[0]->getPrenomRep();
+            $evenementActuel['description'] = $evenement[0]->getDescription();
+            $evenementActuel['dateDebut'] = $evenement[0]->getDateDebut();
+            $evenementActuel['dateFin'] = $evenement[0]->getDateFin();
+            $evenementActuel['heureDebut'] = $evenement[0]->getHeureDebut();
+            $evenementActuel['heureFin'] = $evenement[0]->getHeureFin();
+            $evenementActuel['lieu'] = $evenement[0]->getLieu();
+            $evenementActuel['photo'] = $evenement[0]->getPhoto();
+            $evenementActuel['categorie'] = $evenement[0]->getNomCategorie();
+            $evenementActuel['categorieId'] = $evenement[0]->getCateId();
 
-        // Rendre le template Twig
-        echo $this->getTwig()->render('modifEv.html.twig', [
-            'title' => 'Mes événements',
-            'actualites' => $actualite,
-            'categories' => $categories,
-            'evenementActuel' => $evenementActuel
-        ]);
+            $_SESSION['evtActuel'] = $evenementActuel;
+
+            // Rendre le template Twig
+            echo $this->getTwig()->render('modifEv.html.twig', [
+                'title' => 'Mes événements',
+                'actualites' => $actualite,
+                'categories' => $categories,
+                'evenementActuel' => $evenementActuel
+            ]);
+        } else {
+            // L'utilisateur n'est pas connecté, redirigez-le vers la page de connexion
+            header('Location: index.php?controlleur=connexion&methode=lister');
+        }
     }
 
 
