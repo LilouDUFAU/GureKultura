@@ -183,11 +183,35 @@ class ControllerModifEv extends Controller
 
             // recuperation des donnees du formulaire
             $donnees = $_POST;
+
+            // Gestion du fichier autorisation
+            if (isset($_FILES['autorisation']) && $_FILES['autorisation']['error'] == 0) {
+                // Vérification de la validité du fichier
+                $autorisationTmpName = $_FILES['autorisation']['tmp_name'];
+                $autorisationName = $_FILES['autorisation']['name'];
+
+                // Ajouter un timestamp au nom de l'autorisation pour s'assurer qu'elle ait un nom unique
+                $timestamp = time();
+                $autorisationName = pathinfo($autorisationName, PATHINFO_FILENAME) . '_' . $timestamp . '.' . pathinfo($autorisationName, PATHINFO_EXTENSION);
+            }
+
+            // Gestion du fichier photo
+            if (isset($_FILES['photo']) && $_FILES['photo']['error'] == 0) {
+                // Vérification de la validité du fichier
+                $photoTmpName = $_FILES['photo']['tmp_name'];
+                $photoName = $_FILES['photo']['name'];
+
+                // Ajouter un timestamp au nom de la photo pour s'assurer qu'elle ait un nom unique
+                $timestamp = time();
+                $photoName = pathinfo($photoName, PATHINFO_FILENAME) . '_' . $timestamp . '.' . pathinfo($photoName, PATHINFO_EXTENSION);
+            }
+
             // recuperer seulement les 5 premiers caracteres de heure debut et fin
             $donnees['debutHeure'] = substr($donnees['debutHeure'], 0, 5);
             $donnees['finHeure'] = substr($donnees['finHeure'], 0, 5);
 
             // si l'id de la categorie n'est pas defini, alors on recupere celui de la variable de session evenementActuel
+            
             if (empty($donnees['cateId'])) {
                 $donnees['cateId'] = $_SESSION['evtActuel']['categorieId'];
             }
@@ -195,6 +219,20 @@ class ControllerModifEv extends Controller
 
             $user = $_SESSION['user'];
             $donnees['userId'] = $user->getUserId();
+
+            if (isset($_FILES['autorisation']) && $_FILES['autorisation']['error'] == 0) {
+                // Ajoute les données de l'autorisation dans $donnees
+                $donnees['autorisationName'] = $autorisationName;
+            } else {
+                $donnees['autorisationName'] = null;
+            }
+
+            if (isset($_FILES['photo']) && $_FILES['photo']['error'] == 0) {
+                // Ajoute les données de la photo dans $donnees
+                $donnees['photoName'] = $photoName;
+            } else {
+                $donnees['photoName'] = null;
+            }
 
 
             // validation des donnees du formulaire
@@ -212,7 +250,6 @@ class ControllerModifEv extends Controller
                 else{
                     $titreModifie = false;
                 }
-
                 if ($donnees['cateId'] != $_SESSION['evtActuel']['categorieId']) {
                     $categorieModifie = true;
                 }
@@ -220,7 +257,7 @@ class ControllerModifEv extends Controller
                     $categorieModifie = false;
                 }
 
-                if ($donnees['autorisation'] != $_SESSION['evtActuel']['autorisation'] && $donnees['autorisation'] != null) {
+                if ($donnees['autorisationName'] != $_SESSION['evtActuel']['autorisation'] && $donnees['autorisationName'] != null) {
                     $autorisationModifie = true;
                 }
                 else{
@@ -297,7 +334,7 @@ class ControllerModifEv extends Controller
                     $lieuModifie = false;
                 }
 
-                if ($donnees['photo'] != $_SESSION['evtActuel']['photo'] && $donnees['photo'] != null) {
+                if ($donnees['photoName'] != $_SESSION['evtActuel']['photo'] && $donnees['photoName'] != null) {
                     $photoModifie = true;
                 }
                 else{
@@ -331,6 +368,33 @@ class ControllerModifEv extends Controller
 
                 ]);
             } else {
+                // Vérification si le répertoire ../asset/evenement/autorisation/ existe, sinon le créer
+                $cheminDossierAutorisation = '../asset/evenement/autorisation/';
+                if (!is_dir($cheminDossierAutorisation)) {
+                    if (!mkdir($cheminDossierAutorisation, 0777, true)) {
+                        error_log("Erreur lors de la création du répertoire: " . $cheminDossierAutorisation);
+                    }
+                }
+                // Vérification si le répertoire ../asset/evenement/photo/ existe, sinon le créer
+                $cheminDossierPhoto = '../asset/evenement/photo/';
+                if (!is_dir($cheminDossierPhoto)) {
+                    if (!mkdir($cheminDossierPhoto, 0777, true)) {
+                        error_log("Erreur lors de la création du répertoire: " . $cheminDossierPhoto);
+                    }
+                }
+
+                if (isset($_FILES['autorisation']) && $_FILES['autorisation']['error'] == 0){
+                    // L'autorisation est valide, et est donc uploadée dans asset/evenement/autorisation/
+                    $cheminAutorisation = '../asset/evenement/autorisation/' . basename($autorisationName);
+                    move_uploaded_file($autorisationTmpName, $cheminAutorisation);
+                }
+
+                if (isset($_FILES['photo']) && $_FILES['photo']['error'] == 0){
+                    // La photo est valide, et est donc uploadée dans asset/evenement/photo/
+                    $cheminPhoto = '../asset/evenement/photo/' . basename($photoName);
+                    move_uploaded_file($photoTmpName, $cheminPhoto);
+                }
+
                 if ($titreModifie) {
                     $this->modifierDonneesDansLaBase($donnees['titre'], 'titre');
                 }
@@ -338,7 +402,7 @@ class ControllerModifEv extends Controller
                     $this->modifierDonneesDansLaBase($donnees['cateId'], 'cateId');
                 }
                 if ($autorisationModifie) {
-                    $this->modifierDonneesDansLaBase($donnees['autorisation'], 'autorisation');
+                    $this->modifierDonneesDansLaBase($donnees['autorisationName'], 'autorisation');
                 }
                 if ($emailModifie) {
                     $this->modifierDonneesDansLaBase($donnees['email'], 'email');
@@ -371,7 +435,7 @@ class ControllerModifEv extends Controller
                     $this->modifierDonneesDansLaBase($donnees['lieu'], 'lieu');
                 }
                 if ($photoModifie) {
-                    $this->modifierDonneesDansLaBase($donnees['photo'], 'photo');
+                    $this->modifierDonneesDansLaBase($donnees['photoName'], 'photo');
                 }
 
                 $manager = new EvenementDao($pdo);
@@ -392,7 +456,7 @@ class ControllerModifEv extends Controller
             $managerEvenement->update($donnees, $champ, $_SESSION['evtActuel']['id']);
 
             // redirection vers la page de l'événement
-            // header('Location: index.php?controlleur=mesEv&methode=lister');:
+            // header('Location: index.php?controlleur=mesEv&methode=lister');
         }catch(Exception $e){
             echo $e->getMessage();
         }

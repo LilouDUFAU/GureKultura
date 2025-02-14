@@ -1,9 +1,5 @@
 {
   "devDependencies": {
-    "tailwindcss": "^3.4.17"
-  },
-  "dependencies": {
-    "mailer": "^0.6.7",
-    "php": "^1.1.0"
+    "tailwindcss": "^4.0.0"
   }
 }

@@ -5,117 +5,117 @@
 	<!-- Contenu spécifique de chaque page -->
 	<div class="m-2 gap-8 flex flex-col items-center">
 
-		<h1 class="text-3xl font-bold text-center text-principal-rouge">Proposer un évènement</h1>
+		<h1 class="text-2xl lg:text-4xl font-semibold lg:font-extrabold uppercase text-center text-title">Modifier un évènement</h1>
 
 		<form
-			action="index.php?controlleur=modifEv&methode=validerFormModifEv" method="post" enctype="multipart/form-data" class="flex flex-col gap-8 text-white w-fit text-sm lg:text-md">
+			action="index.php?controlleur=modifEv&methode=validerFormModifEv" method="post" enctype="multipart/form-data" class="flex flex-col gap-8 text-text w-fit text-sm lg:text-md">
 			<input type="hidden" name="evtId" value={{ evenementActuel.id }}>
 
 			{# info evenement #}
 			<div
-				class="grid grid-cols-6 gap-2 text-white bg-principal-rouge rounded-xl w-full p-4">
+				class="grid grid-cols-6 gap-2 bg-form rounded-xl w-full p-4">
 
-				<div class="row-start-1 col-start-1 col-span-6 text-2xl font-bold text-white mb-4 flex flex-row items-center gap-2">
-					<img src="../asset/icones/card-text.svg" class="h-10 w-10 " alt="icone de evenement">
+				<div class="row-start-1 col-start-1 col-span-6 text-2xl font-bold mb-4 flex flex-row items-center gap-2">
+					<img src="../asset/icones/card-text.svg" class="h-10 w-10 bg-text py-1 rounded-md" alt="icone de evenement">
 					<h2>Fiche évènement</h2>
 				</div>
 
 				{# titre evenement #}
 				<div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-6 p-2">
 					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
-						<img src="../asset/icones/fonts.svg" class="h-5 w-5 border-2 border-solid border-white rounded-md" alt="icone de titre">
+						<img src="../asset/icones/fonts.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de titre">
 						<label for="titre">Titre</label>
 					</div>
-					<input type="text" name="titre" id="titre" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 text-gray-400" value="{{ evenementActuel.titre }}">
+					<input type="text" name="titre" id="titre" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.titre }}">
 				</div>
 
 				{# type evenement #}
 				<div class="grid grid-cols-subgrid row-start-3 col-start-1 col-span-6 p-2">
 					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
-						<img src="../asset/icones/ui-checks-grid.svg" class="h-5 w-5" alt="icone de type">
-						<label for="type">Catégorie</label>
+						<img src="../asset/icones/ui-checks-grid.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de type">
+						<label for="cateId">Catégorie</label>
 					</div>
 					<!-- Dropdown Container -->
-					<select name="cateId" id="nomCategorie" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg text-gray-400">
-						<option class= value="{{ evenementActuel.cateId }}" selected>{{ evenementActuel.categorie}}</option>
+					<select name="cateId" id="nomCategorie" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg">
+						<option class="" value="{{ evenementActuel.cateId }}" selected>{{ evenementActuel.categorie }}</option>
 						{% for categorie in categories %}
 							<option class="text-black" value="{{categorie.cateId}}" {% if evenementActuel.cateId == categorie.cateId %} selected {% endif %}>{{ categorie.nom }}</option>
 						{% endfor %}
-					</select></div>
-
+					</select>
+				</div>
 
 				{# description #}
 				<div class="grid grid-cols-subgrid row-start-4 col-start-1 col-span-6 p-2">
 					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
-						<img src="../asset/icones/justify-left.svg" class="h-5 w-5" alt="icone de description">
+						<img src="../asset/icones/justify-left.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de description">
 						<label for="description">Description</label>
 					</div>
-					<textarea name="description" id="description" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 text-gray-400">{{ evenementActuel.description }}"</textarea>
+					<textarea name="description" id="description" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2">{{ evenementActuel.description }}"</textarea>
 				</div>
 
 
 				{# dateDebut #}
-				<div class="grid grid-cols-subgrid row-start-5 col-start-1 col-span-6 p-2">
+				<div class="grid grid-cols-subgrid row-start-5 col-start-1 col-span-6 lg:col-span-3 p-2">
 					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
-						<img src="../asset/icones/calendar.svg" class="h-5 w-5" alt="icone de calendrier">
+						<img src="../asset/icones/calendar.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de calendrier">
 						<label for="dateDebut">Date de début</label>
 					</div>
-					<input type="date" name="debutDate" id="debutDate" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 text-gray-400" value="{{ evenementActuel.dateDebut}}">
+					<input type="date" name="debutDate" id="debutDate" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.dateDebut}}">
 				</div>
 
 				{# HeureDebut #}
-				<div class="grid grid-cols-subgrid row-start-6 col-start-1 col-span-6 p-2">
+				<div class="grid grid-cols-subgrid row-start-6 col-start-1 col-span-6 lg:row-start-5 lg:col-span-3 lg:col-start-4 p-2">
 					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
-						<img src="../asset/icones/clock.svg" class="h-5 w-5" alt="icone de heure">
+						<img src="../asset/icones/clock.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de heure">
 						<label for="heureDebut" >Heure de début</label>
 					</div>
-					<input type="time" name="debutHeure" id="debutHeure" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 text-gray-400" value="{{ evenementActuel.heureDebut }}">
+					<input type="time" name="debutHeure" id="debutHeure" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.heureDebut }}">
 				</div>
 
 				{# dateFin #}
-				<div class="grid grid-cols-subgrid row-start-7 col-start-1 col-span-6 p-2">	
+				<div class="grid grid-cols-subgrid row-start-7 col-start-1 col-span-6 lg:col-span-3 p-2">	
 					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
-						<img src="../asset/icones/calendar.svg" class="h-5 w-5" alt="icone de calendrier">
+						<img src="../asset/icones/calendar.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de calendrier">
 						<label for="dateFin" >Date de fin</label>
 					</div>
-					<input type="date" name="finDate" id="finDate" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 text-gray-400" value="{{ evenementActuel.dateFin }}">
+					<input type="date" name="finDate" id="finDate" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.dateFin }}">
 				</div>
 
 				{# HeureFin #}
-				<div class="grid grid-cols-subgrid row-start-8 col-start-1 col-span-6 p-2">
+				<div class="grid grid-cols-subgrid row-start-8 col-start-1 col-span-6 lg:row-start-7 lg:col-start-4 lg:col-span-3 p-2">
 					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
-						<img src="../asset/icones/clock.svg" class="h-5 w-5" alt="icone de heure">
+						<img src="../asset/icones/clock.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de heure">
 						<label for="heureFin">Heure de fin</label>
 					</div>
-					<input type="time" name="finHeure" id="finHeure" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 text-gray-400" value="{{ evenementActuel.heureFin }}">
+					<input type="time" name="finHeure" id="finHeure" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.heureFin }}">
 				</div>
 
 				{# Lieu #}
 				<div class="grid grid-cols-subgrid row-start-9 col-start-1 col-span-6 p-2">
 					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
-						<img src="../asset/icones/geo-alt.svg" class="h-5 w-5" alt="icone de localisation">
+						<img src="../asset/icones/geo-alt.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de localisation">
 						<label for="lieu">Lieu</label>
 					</div>
-					<textarea name="lieu" id="lieu" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 text-gray-400" >{{ evenementActuel.lieu }}"</textarea>
+					<textarea name="lieu" id="lieu" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2" >{{ evenementActuel.lieu }}"</textarea>
 				</div>
 
 				{# Photo #}
 				<div class="grid grid-cols-subgrid row-start-10 col-start-1 col-span-6 p-2">
 					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
-						<img src="../asset/icones/image.svg" class="h-5 w-5" alt="icone de photo">
+						<img src="../asset/icones/image.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de photo">
 						<label for="photo">Image</label>
 					</div>
-					<input accept=".jpg, .png"  class="col-start-3 col-span-4 bg-transparent flex w-full rounded-md border border-blue-300 border-input bg-white text-sm text-gray-400 file:border-0 file:bg-principal-rouge file:text-white file:text-sm" type="file" name="photo" id="photo" class="" value="{{ evenementActuel.photo }}"/>
+					<input accept=".jpg, .png"  class="col-start-3 col-span-4 bg-transparent flex w-full rounded-md border border-white border-input bg-white text-sm file:border-0 file:bg-text file:text-white file:text-sm" type="file" name="photo" id="photo" class="" value="{{ evenementActuel.photo }}"/>
 
 				</div>
 
 				{# autorisations #}
 				<div class="grid grid-cols-subgrid row-start-11 col-start-1 col-span-6 p-2">
 					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
-						<img src="../asset/icones/file-earmark-pdf.svg" class="h-5 w-5" alt="icone de autorisation">
+						<img src="../asset/icones/file-earmark-pdf.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de autorisation">
 						<label for="autorisation">Autorisation</label>
 					</div>
-					<input accept=".pdf"  class="col-start-3 col-span-4 bg-transparent flex w-full rounded-md border border-blue-300 border-input bg-white text-sm text-gray-400 file:border-0 file:bg-principal-rouge file:text-white file:text-sm" type="file" name="autorisation" id="autorisation" value="{{ evenementActuel.autorisation }}"/>
+					<input accept=".pdf"  class="col-start-3 col-span-4 bg-transparent flex w-full rounded-md border border-white border-input bg-white text-sm file:border-0 file:bg-text file:text-white file:text-sm" type="file" name="autorisation" id="autorisation" value="{{ evenementActuel.autorisation }}"/>
 
 				</div>
 
@@ -123,54 +123,56 @@
 
 			{# info responsable #}
 			<div
-				class="grid grid-cols-6 gap-2 text-white bg-principal-rouge rounded-xl w-full p-4">
+				class="grid grid-cols-6 gap-2 bg-form rounded-xl w-full p-4">
 				{# nomResp #}
 
-				<div class="row-start-1 col-start-1 col-span-6 text-2xl font-bold text-white mb-4 flex flex-row items-center gap-2">
-					<img src="../asset/icones/person-vcard (1).svg" class="h-10 w-10 " alt="icone de personne">
+				<div class="row-start-1 col-start-1 col-span-6 text-2xl font-bold mb-4 flex flex-row items-center gap-2">
+					<img src="../asset/icones/person-vcard (1).svg" class="h-10 w-10 bg-text py-1 rounded-md" alt="icone de personne">
 					<h2>Fiche Responsable</h2>
 				</div>
 
 				<div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-6 p-2">
 					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
-						<img src="../asset/icones/person.svg" class="h-5 w-5" alt="icone de personne">
+						<img src="../asset/icones/person.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de personne">
 						<label for="nomResp">Nom</label>
 					</div>
-					<input type="text" name="nomRep" id="nomRep" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 text-gray-400" value="{{ evenementActuel.nomRep }}">
+					<input type="text" name="nomRep" id="nomRep" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.nomRep }}">
 				</div>
 
 				{# prenomResp #}
 				<div class="grid grid-cols-subgrid row-start-3 col-start-1 col-span-6 p-2">
 					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
-						<img src="../asset/icones/person.svg" class="h-5 w-5" alt="icone de personne">
+						<img src="../asset/icones/person.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de personne">
 						<label for="prenomResp" class="col-start-1 col-span-2">Prénom</label>
 					</div>
-					<input type="text" name="prenomRep" id="prenomRep" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 text-gray-400" value="{{ evenementActuel.prenomRep }}">
+					<input type="text" name="prenomRep" id="prenomRep" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.prenomRep }}">
 				</div>
 
 				{# email #}
 				<div class="grid grid-cols-subgrid row-start-4 col-start-1 col-span-6 p-2">
 					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
-						<img src="../asset/icones/envelope.svg" class="h-5 w-5" alt="icone de mail">
+						<img src="../asset/icones/envelope.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de mail">
 						<label for="email">Email</label>
 					</div>
-					<input type="email" name="email" id="email" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 text-gray-400" value="{{ evenementActuel.email }}">
+					<input type="email" name="email" id="email" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.email }}">
 				</div>
 
 				{# telephone #}
 				<div class="grid grid-cols-subgrid row-start-5 col-start-1 col-span-6 p-2">
 					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
-						<img src="../asset/icones/telephone.svg" class="h-5 w-5" alt="icone de téléphone">
+						<img src="../asset/icones/telephone.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de téléphone">
 						<label for="telephone">Téléphone</label>
 					</div>
-					<input type="tel" name="tel" id="tel" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 text-gray-400" value="{{ evenementActuel.tel }}">
+					<input type="tel" name="tel" id="tel" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.tel }}">
 				</div>
 			</div>
 
 			{# Bouton de validation ou annulation #}
-			<div class="grid grid-cols-subgrid row-start-3 col-start-1 col-span-6 p-2 gap-2">
-				<button type="submit" class="col-start-5 col-span-1 text-white bg-principal-rouge rounded-lg p-1">Valider</button>
-				<a href="index.php?controlleur=mesEv&methode=lister" class="col-start-6 col-span-1 text-white bg-principal-rouge rounded-lg text-center p-1">Annuler</a>
+			<div class="grid grid-cols-6">
+				<div class="row-start-3 col-start-6 col-span-1 gap-2 flex flex-row justify-between items-center">
+					<button type="submit" class="px-4 py-2 bg-button hover:bg-hbutton text-white rounded-lg text-center">Valider</button>
+					<a href="index.php?controlleur=mesEv&methode=lister" class="px-4 py-2 bg-button hover:bg-hbutton text-white rounded-lg text-center">Annuler</a>
+				</div>
 			</div>
 		</form>
 	</div>

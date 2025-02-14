@@ -32,6 +32,7 @@ require_once '../app/controllers/controller_validPropEv.class.php';
 require_once '../app/controllers/controller_cateEvt.class.php';
 require_once '../app/controllers/controller_mdpReinitialisation.class.php';
 require_once '../app/controllers/controller_filtre.class.php';
+require_once '../app/controllers/controller_mesParticipations.class.php';
 
 
 
@@ -46,6 +47,8 @@ require_once '../app/models/user.class.php';
 require_once '../app/models/user.dao.php';
 require_once '../app/models/token.class.php';
 require_once '../app/models/token.dao.php';
+require_once '../app/models/Participer.class.php';
+require_once '../app/models/participer.dao.php';
 require_once '../app/models/commentaire.class.php';
 require_once '../app/models/commentaire.dao.php';
 

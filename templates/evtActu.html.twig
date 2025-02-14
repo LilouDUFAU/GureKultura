@@ -6,7 +6,7 @@
 	<!-- Contenu spécifique de chaque page -->
 	<div class="h-full">
 		<div class="gap-2 p-2 grid grid-cols-12 items-center">
-			<h1 class="row-start-1 col-span-12 text-center font-bold text-4xl p-2 text-[#A23145]">{{ evtActus.titre }}</h1>
+			<h1 class="row-start-1 col-span-12 text-center font-bold text-4xl p-2 text-title">{{ evtActus.titre }}</h1>
 
 			<!-- Colonne de gauche -->
 			<div class="grid grid-cols-subgrid col-start-1 col-span-12 row-start-2 lg:col-span-6 lg:row-start-2 h-full">
@@ -41,17 +41,45 @@
 			</div>
 		</div>
 
+    {% if type == 'Evenements' %} 
+        {% if estInscrit == true %}
+            
+            <h1 class="font-bold text-xl p-2 text-principal">Vous êtes déjà inscrit !</h1>
+
+            <form method="POST" action="index.php?controlleur=evtActu&methode=desinscrire">
+                <INPUT TYPE="hidden" NAME="nom" VALUE="{{evtActus.titre}}">
+                <INPUT TYPE="hidden" NAME="type" VALUE="{{ type }}">             
+                <input type="hidden" name="id" value="{{ evtActus.evtId }}">
+                <button type="submit" class="mt-4 px-6 py-2 bg-principal text-white font-semibold rounded-lg hover:bg-black">Se désinscrire</button>
+            </form>
+        {% endif %}
+        {% if estInscrit == false and user.role == 'user' %}
+            <form method="POST" action="index.php?controlleur=evtActu&methode=inscrire">
+                <INPUT TYPE="hidden" NAME="nom" VALUE="{{evtActus.titre}}">
+                <INPUT TYPE="hidden" NAME="type" VALUE="{{ type }}"> 
+                <input type="hidden" name="id" value="{{ evtActus.evtId }}">
+                <button type="submit" class="mt-4 px-6 py-2 bg-principal text-white font-semibold rounded-lg hover:bg-black">S'inscrire</button>
+            </form>
+        {% endif %}
+
+    {% endif %}
+
 		<!-- Section Commentaires -->
 		<div class="mt-8 p-4 bg-[#f4f4f4] rounded-lg shadow-md">
 			<h2 class="text-2xl font-bold text-[#A23145] mb-4">Commentaires</h2>
 
 			<!-- Exemples de commentaires -->
 			{% for commentaire in commentaires %}
+<<<<<<< HEAD
 				<div class="col-start-1 col-span-1 flex justify-center items-center">
 					<img src="../asset/icones/pp_user.svg" alt="pp" class="w-auto h-auto rounded-full">
 				</div>
                 <div class="mb-6">
 					<p class="font-semibold text-[#A23145]">{{ commentaire.userNom }}
+=======
+				<div class="mb-6">
+					<p class="font-semibold text-[#A23145]">{{ commentaire.pseudo }}
+>>>>>>> origin
 						:</p>
 					<p class="text-gray-700">{{ commentaire.contenu }}</p>
 					<p class="text-gray-500 text-sm">{{ commentaire.datePubli|date("d/m/Y H:i") }}</p>
@@ -65,8 +93,9 @@
 				<label for="commentaire" class="block text-[#A23145] font-semibold mb-2">Ajouter un commentaire :</label>
 				<form action="index.php?controlleur=evtActu&methode=ajouterCommentaire" method="POST">
 					<textarea id="commentaire" name="commentaire" rows="3" class="w-full p-3 border-2 border-[#A23145] rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#A23145]" required></textarea>
-					<input
-					type="hidden" name="evtId" value="{{ evtActus.evtId }}">
+					    <INPUT TYPE="hidden" NAME="nom" VALUE="{{evtActus.titre}}">
+						<INPUT TYPE="hidden" NAME="type" VALUE="{{ type }}"> 
+						<input type="hidden" name="id" value="{{ evtActus.evtId }}">
 					<!-- Passer l'ID de l'événement -->
 					<button type="submit" class="mt-4 px-6 py-2 bg-[#A23145] text-white font-semibold rounded-lg hover:bg-[#8a1e36]">Envoyer</button>
 				</form>
@@ -107,32 +136,33 @@
                 </div>
 
 				<!-- Afficher les commentaires réels -->
-				{% for commentaire in commentaires %}
-					<div class="grid grid-cols-12 items-start mb-4 col-span-12 pb-4 border-b border-gray-300">
-						<!-- image de profil -->
-						<div class="col-start-1 col-span-1 flex justify-center items-center">
-							<img src="../asset/icones/pp_user.svg" alt="pp" class="w-auto h-auto rounded-full">
-						</div>
+				{% if commentaires is not empty %}
+					{% for commentaire in commentaires %}
+						<div class="grid grid-cols-12 items-start mb-4 col-span-12 pb-4 border-b border-gray-300">
+							<!-- image de profil -->
+							<div class="col-start-1 col-span-1 flex justify-center items-center">
+								<img src="../asset/icones/pp_user.svg" alt="pp" class="w-auto h-auto rounded-full">
+							</div>
 
-						<!-- nom du commentateur -->
-						<div class="font-semibold text-[#A23145] text-base col-start-2 col-span-10 row-start-1 truncate flex items-center">
-							{{ commentaire.userNom }}
-						</div>
+							<!-- nom du commentateur -->
+							<div class="font-semibold text-[#A23145] text-base col-start-2 col-span-10 row-start-1 truncate flex items-center">
+								{{ commentaire.pseudo }}
+							</div>
 
-						<!-- texte du commentaire -->
-						<div class="text-black text-base col-start-2 col-span-8 row-start-4 break-words">
-							{{ commentaire.contenu }}
-						</div>
+							<!-- texte du commentaire -->
+							<div class="text-black text-base col-start-2 col-span-8 row-start-4 break-words">
+								{{ commentaire.contenu }}
+							</div>
 
-						<!-- date de publication -->
-						<div class="text-gray-500 text-xs col-start-2 col-span-3 row-start-2">
-							{{ commentaire.datePubli|date("d/m/Y H:i") }}
+							<!-- date de publication -->
+							<div class="text-gray-500 text-xs col-start-2 col-span-3 row-start-2">
+								{{ commentaire.datePubli|date("d/m/Y H:i") }}
+							</div>
 						</div>
-					</div>
+					{% endfor %}
 				{% else %}
 					<p>Aucun commentaire pour cette actualité.</p>
-				{% endfor %}
-
+				{% endif %}
 
 
                 <!-- Formulaire pour ajouter un commentaire -->
@@ -143,7 +173,9 @@
                     </div>
 
                     <!-- Cacher l'ID de l'actualité -->
-                    <input type="hidden" name="actuId" value="{{ evtActus.actuId }}">
+                    <INPUT TYPE="hidden" NAME="nom" VALUE="{{evtActus.titre}}">
+					<INPUT TYPE="hidden" NAME="type" VALUE="{{ type }}"> 
+					<input type="hidden" name="id" value="{{ evtActus.actuId }}">
 
                     <!-- bouton pour envoyer le commentaire (flèche) -->
                     <button type="submit" class="cursor-pointer col-start-12 col-span-1 row-start-2">
@@ -159,4 +191,3 @@
 {% block script %}
 <script src="../js/caroussel.js"></script>
 {% endblock %}
-

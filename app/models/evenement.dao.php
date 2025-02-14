@@ -382,4 +382,35 @@ class EvenementDao
         return $evenement;
     }
 
+    public function inscrireUtilisateur($userId, $evtId) {
+        $sql = "SELECT evt.evtId, evt.titre,evt.autorisation, evt.description, evt.email, evt.tel, evt.nomRep, evt.prenomRep, DATE(evt.dateDebut) AS dateDebut, DATE(evt.dateFin) AS dateFin, TIME(evt.heureDebut) AS heureDebut, TIME(evt.heureFin) AS heureFin, evt.lieu, evt.photo, evt.cateId, evt.userId, evt.is_valide, cate.nom AS nomCategorie FROM gk_evenement AS evt 
+                JOIN gk_participer ON evt.evtId = gk_participer.evtId 
+                JOIN gk_categorie AS cate ON evt.cateId = cate.cateId
+                WHERE gk_participer.evtId = :evtId AND gk_participer.userId = :userId";
+        $pdoStatement = $this->pdo->prepare($sql);
+        $pdoStatement->execute([':userId' => $userId , ':evtId' => $evtId]);
+        $pdoStatement->setFetchMode(PDO::FETCH_ASSOC);
+        $EvenementTab = $pdoStatement->fetchAll();  
+        $evenement = $this->hydrateById($EvenementTab);
+
+        //$sql = "INSERT INTO participer (userId, evtId, dateInscr) VALUES (?, ?, NOW())";
+
+
+        return $evenement;
+    }
+
+    public function findEvtParticipation(?int $id)
+    {
+        $sql = "SELECT gk_evenement.*, gk_categorie.nom AS nomCategorie
+                FROM gk_evenement
+                JOIN gk_categorie ON gk_categorie.cateId = gk_evenement.cateId
+                JOIN gk_participer ON gk_evenement.evtId = gk_participer.evtId
+                WHERE gk_participer.userId = :userId";
+        $pdoStatement = $this->pdo->prepare($sql);
+        $pdoStatement->execute(array(':userId' => $id));
+        $pdoStatement->setFetchMode(PDO::FETCH_ASSOC);
+        $EvenementTab = $pdoStatement->fetchAll();
+        $evenement = $this->hydrateAll($EvenementTab);
+        return $evenement;
+    }
 }

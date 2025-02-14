@@ -1,7 +1,8 @@
 <?php
 
 require_once 'include.php';
-
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 
 
 try {
@@ -31,6 +32,7 @@ try {
     if ($methode == '') {
         throw new Exception("La méthode n'est pas définie");
     }
+    
 
     $controlleur = ControllerFactory::getController($controlleurName, $loader, $twig);
     $controlleur->call($methode);

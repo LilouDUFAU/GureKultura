@@ -3,63 +3,73 @@
 {% block content %}
 	<!-- Contenu spécifique de chaque page -->
 	<div class="lg:pt-2">
-		<div
-			class="gap-2 p-2 grid grid-cols-12 items-center">
+		<div class="gap-2 p-2 grid grid-cols-12 items-center">
 
 			{# titre de la page #}
-			<h1 class="col-span-12 text-white lg:font-bold lg:text-4xl text-2xl text-center bg-principal-rouge rounded-2xl p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] mb-10">Evénements du moment</h1>
+			<h1 class="col-span-12 text-title lg:font-extrabold lg:text-4xl text-2xl text-center rounded-2xl p-4 mb-10 font-semibold uppercase">Actualites du moment</h1>
 
-			{# contenu #}
+			<div id="carouselActu" class="row-span-3 col-span-12 relative w-full overflow-hidden mx-auto bg-carousel rounded-lg" data-slides-default="1" data-slides-mobile="1">
+            <!-- Conteneur du carrousel -->
+				<div id="carouselActu" class="carousel flex transition-transform duration-500 ease-out gap-2 p-2 auto-rows-auto">
+					<!-- Diapositives -->
+					{% for actualite in actualites %}
+						<div style="background-image: url('../asset/actualite/{{ actualite.img }}')" class="bg-cover bg-no-repeat slide md:w-1/3 w-full flex-shrink-0 text-principal-rouge text-center py-16 rounded-lg relative">
+							<FORM ACTION="index.php?controlleur=categorieEvtActu&methode=lister" METHOD="POST">
+								<INPUT type="hidden" name="nom" value="{{actualite.titre}}">
+								<INPUT type="hidden" name="id" value={{actualite.ActuId}}>
+								<INPUT type="hidden" name="type" value="Actualites">
+								<INPUT TYPE="SUBMIT" VALUE={{actualite.titre}} class="bg-white border-principal absolute inset-x-0 bottom-0 text-center rounded-lg p-2 mr-2 ml-2 mb-2">
+							</FORM>
+						</div>
+					{% endfor %}
+            	</div>
+				<!-- Boutons de navigation -->
+				<button id="prevActu" class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full"><</button>
+				<button id="nextActu" class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full">></button>
+        	</div>
 
-			<div
-				class="lg:grid lg:grid-cols-2 lg:auto-rows-fr lg:gap-4 col-start-1 col-span-12 flex flex-col gap-2 md:grid md:grid-cols-2 md:auto-rows-fr md:gap-4 p-4">
+			{# titre de la page #}
+			<h1 class="col-span-12 text-title lg:font-extrabold lg:text-4xl text-2xl text-center rounded-2xl p-4 mb-10 font-semibold uppercase">Evénements du moment</h1>
+
+			{# carte evenement #}
+			<div class="col-span-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
 				{# afficher les evenements que si is_valid est true #}
 				{% for event in events %}
-					{%  if event.isValide == true %}
-						<div
-							class="flex gap-4 flex-col h-full lg:px-4 lg:grid lg:grid-cols-6 lg:auto-cols-min lg:items-center rounded-2xl bg-principal-vert drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] p-4">
+					{% if event.isValide == true %}
+						<div class="flex flex-col h-full rounded-2xl bg-card p-4">
 							{# Image de l'événement #}
-							<div class="flex-1 lg:row-start-1 lg:col-start-1 lg:col-span-2 lg:w-full row-start-1 col-start-1 col-span-12 lg:m-2 w-full md:row-start-1 md:col-start-1 md:col-span-12 md:w-full lg:object-contain">
-								<img src="../asset/evenement/photo/{{ event.photo }}" alt="Image de l'événement" class="rounded-lg">
+							<div class="flex justify-center items-center">
+								<img src="../asset/evenement/photo/{{ event.photo }}" alt="Image de l'événement" class="rounded-lg w-full h-48 object-cover">
 							</div>
-
 
 							{# Infos de l'événement #}
-							<div class="lg:grid lg:grid-cols-subgrid lg:col-start-3 lg:col-span-2 lg:flex-col lg:w-[250px] text-white lg:gap-2 lg:p-4">
-								<h3 class="lg:font-bold lg:text-xl lg:row-start-1 lg:col-span-2 lg:text-left break-words row-start-1 col-start-1 col-span-12 text-center text-lg md:row-start-1 md:col-start-1 md:col-span-12 md:text-center font-semibold">{{ event.titre }}</h3>
-								<p class="lg:text-md lg:row-start-2 lg:col-span-2 lg:text-left break-words row-start-2 col-start-1 col-span-12 text-center md:row-start-2 md:col-start-1 md:col-span-12 md:text-center text-sm">{{ event.dateDebut|date("d-m-Y") }}
-									{{ event.heureDebut|date("H:i") }}</p>
-								<p class="lg:text-md lg:row-start-3 lg:col-span-2 lg:text-left break-words row-start-3 col-start-1 col-span-12 text-center md:row-start-3 md:col-start-1 md:col-span-12 md:text-center text-sm">{{ event.dateFin|date("d-m-Y") }}
-									{{ event.heureFin|date("H:i") }}</p>
-								<p class="lg:text-md lg:row-start-4 lg:col-span-2 lg:text-left break-words row-start-4 col-start-1 col-span-12 text-center md:row-start-4 md:col-start-1 md:col-span-12 md:text-center text-sm">
-									{{ event.lieu }}
-								</p>
+							<div class="text-text text-center">
+								<h3 class="break-words text-lg font-semibold">{{ event.titre }}</h3>
+								<p class="break-words text-sm">{{ event.dateDebut|date("d-m-Y") }} {{ event.heureDebut|date("H:i") }}</p>
+								<p class="break-words text-sm">{{ event.dateFin|date("d-m-Y") }} {{ event.heureFin|date("H:i") }}</p>
+								<p class="break-words text-sm">{{ event.lieu }}</p>
 							</div>
 
-
-							<div class="lg:col-start-5 lg:col-span-2 lg:flex lg:flex-col lg:items-center lg:justify-center lg:gap-10 grid grid-cols-subgrid items-center">
-								<FORM action="index.php?controlleur=cateEvt&methode=lister" method="POST" class="lg:col-start-1 lg:row-start-4 lg:col-span-2 lg:flex lg:justify-center lg:items-center lg:gap-4 row-start-3 col-start-2 col-span-1 flex justify-center items-center cursor-pointer">
-									<INPUT type="hidden" name="nom" value="{{event.nomCategorie}}">
-									<INPUT type="hidden" name="id" value={{event.cateId}}>
-									<INPUT type="hidden" name="type" value="Evenements">
-									<INPUT type="SUBMIT" name="{{ event.nomCategorie }}" value="{{ event.nomCategorie }}" class="lg:row-start-3 lg:col-start-1 lg:col-span-2 row-start-3 col-start-1 col-span-1 flex justify-center items-center text-center min-w-full bg-white text-principal-rouge rounded-lg text-sm p-2 font-bold">
-								</FORM>
-
-
-								<FORM action="index.php?controlleur=evtActu&methode=lister" method="POST" class="lg:col-start-1 lg:row-start-4 lg:col-span-2 lg:flex lg:justify-center lg:items-center lg:gap-4 row-start-3 col-start-2 col-span-1 flex justify-center items-center cursor-pointer">
+							<div class="grid grid-cols-2 gap-2 items-center mt-4">
+								<FORM action="index.php?controlleur=evtActu&methode=lister" method="POST" class="row-start-1 col-start-1 col-span-1 flex justify-center">
 									<INPUT type="hidden" name="nom" value="{{event.titre}}">
 									<INPUT type="hidden" name="id" value={{event.evtId}}>
 									<INPUT type="hidden" name="type" value="Evenements">
-									<INPUT type="SUBMIT" name="{{ event.titre }}" value="EN SAVOIR PLUS" class="text-white  text-sm  lg:text-md  font-bold row-start-3 flex justify-center items-center md:font-bold md:row-start-3 md:col-start-2 md:col-span-2 md:flex md:justify-center md:items-center underline 
-									">
+									<INPUT type="SUBMIT" name="{{ event.titre }}" value="EN SAVOIR PLUS" class="text-text text-sm font-bold underline">
+								</FORM>
+
+								<FORM action="index.php?controlleur=cateEvt&methode=lister" method="POST" class="row-start-1 col-start-2 col-span-1 flex justify-center">
+									<INPUT type="hidden" name="nom" value="{{event.nomCategorie}}">
+									<INPUT type="hidden" name="id" value={{event.cateId}}>
+									<INPUT type="hidden" name="type" value="Evenements">
+									<INPUT type="SUBMIT" name="{{ event.nomCategorie }}" value="{{ event.nomCategorie }}" class="bg-button hover:bg-hbutton text-tbutton rounded-lg text-sm p-2 font-bold">
 								</FORM>
 							</div>
 						</div>
 					{% endif %}
 				{% endfor %}
-
 			</div>
 		</div>
 	</div>
+<script src="../js/caroussel.js"></script>
 {% endblock %}
-
