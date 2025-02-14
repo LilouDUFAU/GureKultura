@@ -11,7 +11,7 @@
         <div class="row-start-1 col-start-1 col-span-2">Titre</div>
         <div class="row-start-1 col-start-3 col-span-5 hidden lg:block">Résumé</div>
         <div class="row-start-1 lg:col-start-8 lg:col-span-2 col-start-3 col-span-3">Date publication</div>
-        <div class="row-start-1 lg:col-start-10 lg:col-span-2 col-start-7 col-span-3">Visualisation</div>
+        <div class="row-start-1 lg:col-start-10 lg:col-span-2 col-start-7 col-span-3">Aperçu</div>
         <div class="row-start-1 lg:col-start-12 lg:col-span-1 col-start-10 col-span-3">Actions</div>
     </div>
 
@@ -19,8 +19,8 @@
     <div>
         {% for actualite in actualites %}
         <div class="grid grid-cols-12 gap-2 p-3 odd:bg-odd even:bg-even items-center text-text">
-            <div class="row-start-1 col-start-1 col-span-2">{{ actualite.titre }}</div>
-            <div class="row-start-1 col-start-3 col-span-5 hidden lg:block">{{ actualite.resume }}</div>
+            <div class="row-start-1 col-start-1 col-span-2 break-words">{{ actualite.titre }}</div>
+            <div class="row-start-1 col-start-3 col-span-5 hidden lg:block break-words">{{ actualite.resume }}</div>
             <div class="row-start-1 lg:col-start-8 lg:col-span-2 col-start-3 col-span-3">{{ actualite.datePubli }}</div>
 
             <!-- VISUALISATION -->
