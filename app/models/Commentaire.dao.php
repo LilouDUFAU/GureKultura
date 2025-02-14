@@ -4,64 +4,163 @@
 require_once '../app/controllers/validator.class.php';
 
 class CommentaireDao {
+    /**
+     * @var PDO
+     */
     private ?PDO $pdo;
 
-    public function __construct(PDO $pdo) {
+    /**
+     * @constructor CommentaireDao
+     * @param PDO|null $pdo
+     * @return void
+     */
+    public function __construct(?PDO $pdo = null)
+    {
         $this->pdo = $pdo;
     }
 
-    public function getPdo(): ?PDO {
+
+    /**
+     * @function getPdo
+     * @return PDO|null
+     */
+    public function getPdo(): ?PDO
+    {
         return $this->pdo;
     }
 
-    public function setPdo(PDO $pdo): void {
+
+    /**
+     * @function setPdo
+     * @param PDO|null $pdo
+     * @return void
+     */
+    public function setPdo(?PDO $pdo): void
+    {
         $this->pdo = $pdo;
     }
 
-    public function findCommentairesByEventOrActu($id, $type) {
-        // Initialisation de la requête SQL
-        if ($type == "Evenements") {
-            $sql = "SELECT c.contenu, c.datePubli, u.nom AS userNom 
-                    FROM gk_commentaire c
-                    JOIN gk_user u ON c.userId = u.userId
-                    WHERE c.evtId = :id
-                    ORDER BY c.datePubli DESC";
-        } elseif ($type == "Actualites") {
-            $sql = "SELECT c.contenu, c.datePubli, u.nom AS userNom 
-                    FROM gk_commentaire c
-                    JOIN gk_user u ON c.userId = u.userId
-                    WHERE c.actuId = :id
-                    ORDER BY c.datePubli DESC";
-        } else {
-            echo "Erreur : Type invalide.";
-            return [];
-        }
 
-        // Exécution de la requête
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([':id' => $id]);
+    /**
+     * @function find
+     * @details Permet de trouver un événement et par son id
+     * @param int|null $id
+     * @uses hydrate
+     * @return Commentaire|null
+     */
+    public function find(?int $id): ?Commentaire
+    {
+        $sql = "SELECT c.commentaireId, c.datePubli, c.contenu, c.actuId, c.userId, c.evtId, u.pseudo 
+                FROM gk_commentaire c
+                JOIN gk_user u ON c.userId = u.userId
+                WHERE c.evtId = :id
+                ORDER BY c.datePubli DESC";
+        $pdoStatement = $this->pdo->prepare($sql);
+        $pdoStatement->execute(array(':id' => $id));
+        $pdoStatement->setFetchMode(PDO::FETCH_ASSOC);
+        $CommentaireTab = $pdoStatement->fetch();
+        $commentaire = $this->hydrate($CommentaireTab);
+        return $commentaire;
+    }
 
-        // Récupérer les résultats sous forme d'objets Commentaire
+
+    /**
+     * @function findAll
+     * @details Permet de trouver tous les événements
+     * @uses hydrateAll
+     * @return array
+     */
+    public function findAll()
+    {
+        $sql = "SELECT * FROM " . PREFIX_TABLE . "commentaire";
+        $pdoStatement = $this->pdo->prepare($sql);
+        $pdoStatement->execute();
+        $pdoStatement->setFetchMode(PDO::FETCH_ASSOC);
+        $CommentaireTab = $pdoStatement->fetchAll();
+        $commentaire = $this->hydrateAll($CommentaireTab);
+        return $commentaire;
+    }
+
+    public function findCommentairesByEvenement($id)
+    {
+        $sql = "SELECT c.commentaireId, c.datePubli, c.contenu, c.actuId, c.userId, c.evtId, u.pseudo 
+                FROM gk_commentaire c
+                JOIN gk_user u ON c.userId = u.userId
+                WHERE c.evtId = :id
+                ORDER BY c.datePubli DESC";
+        $pdoStatement = $this->pdo->prepare($sql);
+        $pdoStatement->execute(array(':id' => $id));
+        $pdoStatement->setFetchMode(PDO::FETCH_ASSOC);
+        $CommentaireTab = $pdoStatement->fetchAll();
+        $commentaire = $this->hydrateAll($CommentaireTab);
+        return $commentaire;
+    }
+    public function findCommentairesByActualite($id)
+    {
+        $sql = "SELECT c.commentaireId, c.datePubli, c.contenu, c.actuId, c.userId, c.evtId, u.pseudo 
+                FROM gk_commentaire c
+                JOIN gk_user u ON c.userId = u.userId
+                WHERE c.actuId = :id
+                ORDER BY c.datePubli DESC";
+        $pdoStatement = $this->pdo->prepare($sql);
+        $pdoStatement->execute(array(':id' => $id));
+        $pdoStatement->setFetchMode(PDO::FETCH_ASSOC);
+        $CommentaireTab = $pdoStatement->fetchAll();
+        $commentaire = $this->hydrateAll($CommentaireTab);
+        return $commentaire;
+    }
+    /**
+     * @function hydrate
+     * @details Permet d'hydrater un tableau de données pour créer un objet Commentaire
+     * @param array $tab
+     * @return Commentaire
+     */
+    public function hydrate(array $tab): Commentaire
+    {
+        $commentaire = new Commentaire();
+        $commentaire->setCommentaireId($tab['commentaireId']);
+        $commentaire->setDatePubli($tab['datePubli']);
+        $commentaire->setContenu($tab['contenu']);
+        $commentaire->setActuId($tab['actuId']);
+        $commentaire->setUserId($tab['userId']);
+        $commentaire->setEvtId($tab['evtId']);
+        $commentaire->setPseudo($tab['pseudo']);
+        return $commentaire;
+    }
+
+    /**
+     * @function hydrateAll
+     * @details Permet d'hydrater un tableau de données pour créer un tableau d'objets Commentaire
+     * @param array $tab
+     * @uses hydrate
+     * @return array
+     */
+    public function hydrateAll(array $tab): array
+    {
         $commentaires = [];
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            // Convertir la date en objet DateTime
-            $datePubli = new DateTime($row['datePubli']);
-            $commentaires[] = new Commentaire($row['contenu'], $datePubli, $row['userNom']);
+        foreach ($tab as $commentaire) {
+            $commentaires[] = $this->hydrate($commentaire);
         }
-
-
         return $commentaires;
     }
 
-    public function ajouterCommentaire($contenu, $evtId, $actuId, $userId) {
+
+    /**
+     * @function insert
+     * @details Permet d'insérer un événement dans la base de données
+     * @param Commentaire $commentaire
+     * @return void
+     */
+    public function insert(Commentaire $commentaire): void
+    {
         $sql = "INSERT INTO gk_commentaire (contenu, datePubli, evtId, actuId, userId) 
-                VALUES (:contenu, NOW(), :evtId, :actuId, :userId)";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([
-            ':contenu' => $contenu, 
-            ':evtId' => $evtId, 
-            ':actuId' => $actuId, 
-            ':userId' => $userId
+        VALUES (:contenu, NOW(), :evtId, :actuId, :userId)";
+        $pdoStatement = $this->pdo->prepare($sql);
+        $pdoStatement->execute([
+            ':contenu' => $commentaire->getContenu(), 
+            ':evtId' => $commentaire->getEvtId(), 
+            ':actuId' => $commentaire->getActuId(),
+            ':userId' => $commentaire->getUserId()
         ]);
     }
 }
