@@ -7,6 +7,8 @@ class ControllerEvtActu extends Controller {
     }
 
     public function lister() {
+
+
         // Récupérer la connexion PDO
         $pdo = Bd::getInstance()->getPdo();
 
@@ -18,7 +20,9 @@ class ControllerEvtActu extends Controller {
             $type = htmlentities($_POST['type']);
             $id = htmlentities($_POST['id']);
         }
-        var_dump($type);
+        if (!isset($_SESSION['user']) && empty($_SESSION['user']) && $type == 'Evenements') {
+            header('Location: index.php?controlleur=connexion&methode=lister');
+        }
         // Créer une instance de CommentaireDao
         $commentaireDao = new CommentaireDao($pdo);
         // Récupérer les commentaires pour l'événement ou l'actualité
@@ -183,8 +187,6 @@ class ControllerEvtActu extends Controller {
 
         }         
         $this->lister($_SERVER);
-        
-        header('Location: index.php?controlleur=evtActu&methode=lister');
     }
 }
     
