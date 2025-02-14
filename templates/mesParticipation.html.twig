@@ -6,36 +6,59 @@
 
     <h1 class="text-2xl lg:text-4xl font-semibold text-center text-title uppercase lg:font-extrabold">Mes participations</h1>
     
-    <div class="grid grid-cols-12 w-full mt-5 text-text text-sm lg:text-md">
+
         {# En-tête du tableau #}
+<<<<<<< HEAD
         <div class="col-span-12 grid grid-cols-12 bg-tabtitle font-bold">
             <div class="row-start-1 col-start-1 col-span-3 p-2">Nom</div>
             <div class="row-start-1 col-start-4 col-span-2 p-2 hidden lg:block">Date</div>
             <div class="row-start-1 col-start-4 col-span-3 lg:col-start-7 lg:col-span-3 p-2 hidden md:block">Lieu</div>
             <div class="row-start-1 col-start-4 col-span-3 md:col-start-7 md:col-span-4 lg:col-start-10 lg:col-span-2 p-2">Aperçu</div>
             <div class="row-start-1 col-start-9 col-span-4 lg:col-start-11 lg:col-span-2 p-2">Inscription</div>
+=======
+        <div class="grid grid-cols-12 bg-tabtitle font-bold text-text text-sm lg:text-md">
+            <div class="col-start-1 col-span-3 p-2">Nom</div>
+            <div class="col-start-4 col-span-2 p-2 hidden lg:block">Date</div>
+            <div class="md:col-start-4 md:col-span-3 lg:col-start-6 lg:col-span-3 p-2 hidden md:block">Lieu</div>
+            <div class="col-start-4 col-span-3 md:col-start-7 md:col-span-2 lg:col-start-9 lg:col-span-2 p-2">Aperçu</div>
+            <div class="col-start-8 col-span-4 md:col-start-10 md:col-span-3 lg:col-start-11 lg:col-span-2 p-2">Inscription</div>
+>>>>>>> 77e4902885dddc8730e2af095c20693877c2177c
         </div>
 
+        <div>
         {# Contenu dynamique #}
         {% for evenement in evenements %}
+<<<<<<< HEAD
             <div class="col-span-12 grid grid-cols-12 odd:bg-odd even:bg-even">
                 <div class="row-start-1 col-start-1 col-span-3 p-2">{{ evenement.titre }}</div>
                 <div class="row-start-1 col-start-4 col-span-2 p-2 hidden lg:block">{{ evenement.dateDebut }}</div>
                 <div class="row-start-1 col-start-4 col-span-3 lg:col-start-7 lg:col-span-3 p-2 hidden md:block">{{ evenement.lieu }}</div>
                 {# visualisation #}
                 <div class="row-start-1 col-start-4 col-span-3 md:col-start-7 md:col-span-4 lg:col-start-10 lg:col-span-2 p-2">
+=======
+            <div class="col-span-12 grid grid-cols-12 odd:bg-odd even:bg-even text-text text-sm lg:text-md">
+                <div class="col-start-1 col-span-3 p-2">{{ evenement.titre }}</div>
+                <div class="col-start-4 col-span-2 p-2 hidden lg:block">{{ evenement.dateDebut }}</div>
+                <div class="md:col-start-4 md:col-span-3 lg:col-start-6 lg:col-span-3 p-2 hidden md:block">{{ evenement.lieu }}</div>
+                {# visualisation #}
+                <div class="col-start-4 col-span-3 md:col-start-7 md:col-span-2 lg:col-start-9 lg:col-span-2 p-2">
+>>>>>>> 77e4902885dddc8730e2af095c20693877c2177c
                     <form action="index.php?controlleur=evtActu&methode=lister" method="post">
                         <input type="hidden" name="id" value="{{ evenement.evtId }}">
                         <input type="hidden" name="nom" value="{{ evenement.nom }}">
                         <input type="hidden" name="type" value="Evenements">
-                        <button type="submit" class="flex items-center space-x-2 bg-button hover:bg-hbutton text-tbutton px-4 py-2 rounded-lg">
+                        <button type="submit" class="flex items-center space-x-1 lg:space-x-2 bg-button hover:bg-hbutton text-tbutton px-2 lg:px-4 py-2 rounded-lg">
                             <img src="../asset/icones/eye.svg" alt="Visualiser" class="h-5 w-5">
                             <span>Voir</span>
                         </button>
                     </form>
                 </div>
                 {# actions #}
+<<<<<<< HEAD
                 <div class="row-start-1 col-start-9 col-span-4 lg:col-start-11 lg:col-span-2 p-2">
+=======
+                <div class="col-start-8 col-span-4 md:col-start-10 md:col-span-3 lg:col-start-11 lg:col-span-2 p-2">
+>>>>>>> 77e4902885dddc8730e2af095c20693877c2177c
                     <form action="index.php?controlleur=mesParticipation&methode=desinscrire" method="post">
                         <INPUT TYPE="hidden" NAME="nom" VALUE="{{evenement.titre}}">
                         <INPUT TYPE="hidden" NAME="type" VALUE="Evenements"> 
@@ -47,7 +70,8 @@
                 </div>
                 
         {% endfor %}
+        </div>
     </div>
-    </div>
+    
 
 {% endblock %}
