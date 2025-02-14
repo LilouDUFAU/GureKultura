@@ -10,8 +10,8 @@
     <div class="grid grid-cols-12 gap-2 mt-5 bg-tabtitle text-title text-sm lg:text-base p-2 font-semibold">
         <div class="row-start-1 col-start-1 col-span-2">Titre</div>
         <div class="row-start-1 col-start-3 col-span-5 hidden lg:block">Résumé</div>
-        <div class="row-start-1 lg:col-start-8 lg:col-span-2 col-start-3 col-span-3">Date publication</div>
-        <div class="row-start-1 lg:col-start-10 lg:col-span-2 col-start-7 col-span-3">Visualisation</div>
+        <div class="row-start-1 lg:col-start-8 lg:col-span-2 col-start-3 col-span-3 ">Date publication</div>
+        <div class="row-start-1 lg:col-start-10 lg:col-span-2 col-start-7 col-span-3 break-words">Aperçu</div>
         <div class="row-start-1 lg:col-start-12 lg:col-span-1 col-start-10 col-span-3">Actions</div>
     </div>
 
@@ -19,8 +19,8 @@
     <div>
         {% for actualite in actualites %}
         <div class="grid grid-cols-12 gap-2 p-3 odd:bg-odd even:bg-even items-center text-text">
-            <div class="row-start-1 col-start-1 col-span-2">{{ actualite.titre }}</div>
-            <div class="row-start-1 col-start-3 col-span-5 hidden lg:block">{{ actualite.resume }}</div>
+            <div class="row-start-1 col-start-1 col-span-2 break-words">{{ actualite.titre }}</div>
+            <div class="row-start-1 col-start-3 col-span-5 hidden lg:block break-words">{{ actualite.resume }}</div>
             <div class="row-start-1 lg:col-start-8 lg:col-span-2 col-start-3 col-span-3">{{ actualite.datePubli }}</div>
 
             <!-- VISUALISATION -->
@@ -29,7 +29,7 @@
                     <input type="hidden" name="id" value="{{ actualite.actuId }}">
                     <input type="hidden" name="nom" value="{{ actualite.titre }}">
                     <input type="hidden" name="type" value="Actualités">
-                    <button type="submit" class="flex items-center space-x-1 lg:space-x-2 bg-button hover:bg-hbutton text-tbutton px-2 lg:px-4 py-2 rounded-lg">
+                    <button type="submit" class="flex items-center space-x-1 lg:space-x-2 bg-button hover:bg-hbutton text-tbutton px-1 md:px-2 lg:px-4 py-2 rounded-lg">
                         <img src="../asset/icones/eye.svg" alt="Visualiser" class="h-5 w-5">
                         <span>Voir</span>
                     </button>
