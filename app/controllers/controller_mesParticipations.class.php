@@ -83,20 +83,10 @@
         $managerParticiper = new ParticiperDAO($pdo);
         $participerExist = $managerParticiper->findUserEvt($userId, $evtId);
         
-        if ($participerExist != null) {
+        if($participerExist != null){
             $managerParticiper->delete($participerExist);
-            $estInscrit = false;
-        } else {
-            $estInscrit = true;
         }
-    
         // Rendre le template Twig
-        echo $this->getTwig()->render('mesParticipation.html.twig', [
-            'title' => $nom,
-            'type' => $type,
-            'actualites' => $actualite,
-            'estInscrit' => $estInscrit,
-            'evtActus' => $evtActu 
-        ]);
+        $this->lister();
     }
 }

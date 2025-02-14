@@ -1,45 +1,61 @@
 {% extends "base.html.twig" %}
 
 {% block content %}
-	<!-- Contenu spécifique de chaque page -->
-	<div class="h-full m-2">
+<div class="h-full m-2">
+    <h1 class="text-2xl lg:text-4xl font-semibold text-center text-title uppercase lg:font-extrabold">
+        Mes actualités
+    </h1>
 
-    <h1 class="text-3xl font-bold text-center text-principal-rouge">Mes actualités</h1>
-
-{# mettre une ligne sur deux en gris #}
-    <table class="mt-5 rounded-lg text-white text-sm lg:text-md">
-        <thead>
-            <tr class="bg-principal-rouge">
-                <th class="p-2 text-left">Titre</th>
-                <th class="p-2 text-left hidden md:block">Résumé</th>
-                <th class="p-2 text-left">Date publication</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for actualite in actualites %}
-                <tr class="odd:bg-principal-rouge odd:bg-opacity-35 even:bg-principal-rouge even:bg-opacity-75">
-                    <td class="p-1">{{ actualite.titre }}</td>
-                    <td class="p-1 hidden md:block">{{ actualite.resume }}</td>
-                    <td class="p-1">{{ evenement.datePubli }}</td>
-                    {# bouton de modification #}
-                    <td class="p-1 flex justify-center items-center">
-                        <form action="index.php?controlleur=modifActu&methode=lister" method="post">
-                            <input type="hidden" name="actuId" value={{ actualite.actuId}}>
-                            <button type="submit" class="p-1 rounded-lg h-6 w-6"><img src="../asset/icones/pencil-square.svg" alt="modification"></button>
-                        </form>
-                    </td>
-                    {# bouton de suppression #}
-                    <td class="p-1 flex justify-center items-center">
-                        <form action="index.php?controlleur=mesActu&methode=supprimerActu" method="post">
-                            <input type="hidden" name="actuId" value={{ actualite.actuId}}>
-                            <button type="submit" class="bg-principal-rouge text-white p-1 rounded-lg h-6 w-6"><img src="../asset/icones/trash3.svg" alt="suppression"></button>
-                        </form>
-                    </td>
-                        
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <!-- En-tête -->
+    <div class="grid grid-cols-12 gap-2 mt-5 bg-tabtitle text-title text-sm lg:text-base p-2 font-semibold">
+        <div class="row-start-1 col-start-1 col-span-2">Titre</div>
+        <div class="row-start-1 col-start-3 col-span-5 hidden lg:block">Résumé</div>
+        <div class="row-start-1 lg:col-start-8 lg:col-span-2 col-start-3 col-span-3">Date publication</div>
+        <div class="row-start-1 lg:col-start-10 lg:col-span-2 col-start-7 col-span-3">Visualisation</div>
+        <div class="row-start-1 lg:col-start-12 lg:col-span-1 col-start-10 col-span-3">Actions</div>
     </div>
 
+    <!-- Données -->
+    <div>
+        {% for actualite in actualites %}
+        <div class="grid grid-cols-12 gap-2 p-3 odd:bg-odd even:bg-even items-center text-text">
+            <div class="row-start-1 col-start-1 col-span-2">{{ actualite.titre }}</div>
+            <div class="row-start-1 col-start-3 col-span-5 hidden lg:block">{{ actualite.resume }}</div>
+            <div class="row-start-1 lg:col-start-8 lg:col-span-2 col-start-3 col-span-3">{{ actualite.datePubli }}</div>
+
+            <!-- VISUALISATION -->
+            <div class="row-start-1 lg:col-start-10 lg:col-span-2 p-2 flex items-center col-start-7 col-span-3">
+                <form action="index.php?controlleur=evtActu&methode=lister" method="post">
+                    <input type="hidden" name="id" value="{{ actualite.actuId }}">
+                    <input type="hidden" name="nom" value="{{ actualite.titre }}">
+                    <input type="hidden" name="type" value="Actualités">
+                    <button type="submit" class="flex items-center space-x-1 lg:space-x-2 bg-button hover:bg-hbutton text-tbutton px-2 lg:px-4 py-2 rounded-lg">
+                        <img src="../asset/icones/eye.svg" alt="Visualiser" class="h-5 w-5">
+                        <span>Voir</span>
+                    </button>
+                </form>
+            </div>
+
+            <!-- ACTIONS -->
+            <div class="row-start-1 lg:col-start-12 lg:col-span-1 p-2 flex flex-col lg:flex-row lg:space-x-4 items-center col-start-10 col-span-3">
+                <!-- Modification -->
+                <form action="index.php?controlleur=modifActu&methode=lister" method="post">
+                    <input type="hidden" name="actuId" value="{{ actualite.actuId }}">
+                    <button type="submit" class="p-1 rounded-lg h-8 w-8 bg-blue-500 hover:bg-blue-600 text-white flex items-center justify-center">
+                        <img src="../asset/icones/pencil-square.svg" class="w-5 h-5" alt="modifier">
+                    </button>
+                </form>
+
+                <!-- Suppression -->
+                <form action="index.php?controlleur=mesActu&methode=supprimerActu" method="post">
+                    <input type="hidden" name="actuId" value="{{ actualite.actuId }}">
+                    <button type="submit" class="p-1 rounded-lg h-8 w-8 bg-red-500 hover:bg-red-600 text-white flex items-center justify-center">
+                        <img src="../asset/icones/trash3.svg" class="w-5 h-5" alt="supprimer">
+                    </button>
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}
