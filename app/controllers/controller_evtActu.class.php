@@ -18,7 +18,6 @@ class ControllerEvtActu extends Controller {
             $type = htmlentities($_POST['type']);
             $id = htmlentities($_POST['id']);
         }
-        var_dump($type);
         // Créer une instance de CommentaireDao
         $commentaireDao = new CommentaireDao($pdo);
         // Récupérer les commentaires pour l'événement ou l'actualité
@@ -183,8 +182,6 @@ class ControllerEvtActu extends Controller {
 
         }         
         $this->lister($_SERVER);
-        
-        header('Location: index.php?controlleur=evtActu&methode=lister');
     }
 }
     
