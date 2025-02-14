@@ -18,11 +18,15 @@ class ControllerEvtActu extends Controller {
             $type = htmlentities($_POST['type']);
             $id = htmlentities($_POST['id']);
         }
-
+        var_dump($type);
         // Créer une instance de CommentaireDao
         $commentaireDao = new CommentaireDao($pdo);
         // Récupérer les commentaires pour l'événement ou l'actualité
-        $commentaires = $commentaireDao->findCommentairesByEventOrActu($id, $type);
+        if($type == 'Evenements'){
+            $commentaires = $commentaireDao->findCommentairesByEvenement($id);
+        } else if($type == 'Actualites'){
+            $commentaires = $commentaireDao->findCommentairesByActualite($id);
+        }
 
         $managerActualite = new ActualiteDao($pdo);
 
@@ -46,8 +50,6 @@ class ControllerEvtActu extends Controller {
 
         $evtActu = $managerEvtActu->find($id);
         $actualite = $managerActualite->findAllWithCategorie(); 
-
-
         // Rendre le template Twig
         echo $this->getTwig()->render('evtActu.html.twig', [
             'title' => $nom,
@@ -70,7 +72,7 @@ class ControllerEvtActu extends Controller {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $nom = htmlentities($_POST['nom']);
             $type = htmlentities($_POST['type']);
-            $evtId = htmlentities($_POST['evtId']);
+            $evtId = htmlentities($_POST['id']);
         }
 
         $evt = new Evenement();
@@ -100,13 +102,7 @@ class ControllerEvtActu extends Controller {
         
     
         // Rendre le template Twig
-        echo $this->getTwig()->render('evtActu.html.twig', [
-            'title' => $nom,
-            'type' => $type,
-            'actualites' => $actualite,
-            'estInscrit' => $estInscrit,
-            'evtActus' => $evtActu 
-        ]);
+        $this->lister($_SERVER);
     }
     
 
@@ -119,7 +115,7 @@ class ControllerEvtActu extends Controller {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $nom = htmlentities($_POST['nom']);
             $type = htmlentities($_POST['type']);
-            $evtId = htmlentities($_POST['evtId']);
+            $evtId = htmlentities($_POST['id']);
         }
 
         $user = $_SESSION['user'];
@@ -141,13 +137,7 @@ class ControllerEvtActu extends Controller {
         }
     
         // Rendre le template Twig
-        echo $this->getTwig()->render('evtActu.html.twig', [
-            'title' => $nom,
-            'type' => $type,
-            'actualites' => $actualite,
-            'estInscrit' => $estInscrit,
-            'evtActus' => $evtActu 
-        ]);
+        $this->lister($_SERVER);
     }
     
     public function ajouterCommentaire() {
@@ -159,33 +149,42 @@ class ControllerEvtActu extends Controller {
         
         if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                $user = $_SESSION['user'];
-                $userId = $user->getUserId(); // Utiliser le getter pour obtenir l'ID de l'utilisateur
+                $nom = htmlentities($_POST['nom']);
+                $type = htmlentities($_POST['type']);
+                $evtId = htmlentities($_POST['id']);
                 $contenu = htmlspecialchars($_POST['commentaire']);
-                $evtId = isset($_POST['evtId']) ? $_POST['evtId'] : null;
-                $actuId = isset($_POST['actuId']) ? $_POST['actuId'] : null;
-
-                if (empty($evtId) && empty($actuId)) {
-                    echo "Erreur : L'ID de l'événement ou de l'actualité est invalide.";
-                    return;
-                }
-
+            }
+            $datetime = new DateTime('now');
                 // Créer une instance de CommentaireDao pour ajouter un commentaire
                 $commentaireDao = new CommentaireDao($pdo);
-                $commentaireDao->ajouterCommentaire($contenu, $evtId, $actuId, $userId);
-
-                // Redirection vers la page correcte en fonction du type
-                if ($evtId) {
-                    header("Location: index.php?controlleur=evtActu&methode=lister&id=" . $evtId . "&type=Evenements");
-                } elseif ($actuId) {
-                    header("Location: index.php?controlleur=evtActu&methode=lister&id=" . $actuId . "&type=Actualites");
+                if($type == 'Actualites'){
+                    $commentaire = new Commentaire(
+                        null,
+                        date_format($datetime, 'Y-m-d H:i:s'),
+                        $contenu,
+                        $evtId,
+                        $_SESSION['user']->getUserId(),
+                        null,
+                        $_SESSION['user']->getPseudo()
+                    );
+                } else if($type == 'Evenements'){
+                    $commentaire = new Commentaire(
+                        null,
+                        date_format($datetime, 'Y-m-d H:i:s'),
+                        $contenu,
+                        null,
+                        $_SESSION['user']->getUserId(),
+                        $evtId,
+                        $_SESSION['user']->getPseudo()
+                    );
                 }
-                exit();
-            }
-        } else {
-            header("Location: index.php?controlleur=connexion&methode=lister");
-            exit();
-        }
+                
+                $commentaireDao->insert($commentaire);
+
+        }         
+        $this->lister($_SERVER);
+        
+        header('Location: index.php?controlleur=evtActu&methode=lister');
     }
 }
     
