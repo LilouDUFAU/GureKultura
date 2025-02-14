@@ -68,7 +68,7 @@ class ControllerModifActu extends Controller
     public function validerFormModifActu()
     {
         // Vérifier si l'utilisateur est connecté
-        if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
+        if (isset($_SESSION['user']) && !empty($_SESSION['user']) && $_SESSION['user']->getEstAdmin() == true) {
         
             // definition des regles de validations que l'on souhaite verifier pour chaque champs du formulaire
             $regleValidation = [

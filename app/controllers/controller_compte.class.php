@@ -29,6 +29,8 @@ class ControllerCompte extends Controller
      */
     public function lister()
     {
+        if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
+
         $pdo = Bd::getInstance()->getPdo();
 
         $loader = new \Twig\Loader\FilesystemLoader('../templates');
@@ -42,6 +44,10 @@ class ControllerCompte extends Controller
             'title' => 'Compte',
             'actualites' => $actualite
         ]);
+        } else {
+            // L'utilisateur n'est pas connecté, redirigez-le vers la page de connexion
+            header('Location: index.php?controlleur=connexion&methode=lister');
+        }
     }
 
     /**
