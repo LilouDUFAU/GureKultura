@@ -1,38 +1,67 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
-<div class="pt-2">
-    <div class="flex flex-col items-center gap-2 p-2 py-12 sm:py-24">
-        <div class="flex flex-col gap-3 w-full max-w-xs sm:max-w-md p-6 sm:p-8 bg-form rounded-lg drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
-            <h1 class="text-2xl sm:text-3xl font-bold text-text text-center mb-4 sm:mb-6">Connexion</h1>
-            <form class="space-y-4" action="index.php?controlleur=connexion&methode=validerFormulaireConnexion" method="post" enctype="multipart/form-data">
-                <div>
-                    <input type="email" placeholder="Adresse e-mail" name="email"
-                        class="w-full p-3 rounded-md bg-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-400">
-                </div>
-                <div>
-                    <input type="password" placeholder="Mot de passe" name="mdp"
-                        class="w-full p-3 rounded-md bg-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-400">
-                    <a href="index.php?controlleur=mdpOublie&methode=lister" class="text-sm text-text mt-2 block text-center hover:underline">Mot de passe oublié ?</a>
-                </div>
-                <button type="submit" class="w-full p-3 bg-white text-red-700 font-semibold rounded-md hover:bg-gray-200 transition">Se connecter</button>
-            </form>
-            {% if error %}
-                <div class="text-black text-center">{{ error }}</div>
-            {% endif %}
-            <div class="flex items-center my-4 gap-x-5">
-                <hr class="w-full border-white border-2 rounded-lg">
-                <span class="px-2 text-text">OU</span>
-                <hr class="w-full border-white border-2 rounded-lg">
-            </div>
+<div class="pt-2 flex flex-col items-center gap-2 p-2 py-12 sm:py-24">
+	<h1 class="text-2xl lg:text-4xl font-semibold text-center text-title uppercase lg:font-extrabold mb-8">Connexion</h1>
+	<div class="flex flex-col gap-3 w-full max-w-xs sm:max-w-md p-6 sm:p-8 bg-form rounded-lg drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
+
+		<form class="grid grid-cols-6 space-y-4 text-sm lg:text-base" action="index.php?controlleur=connexion&methode=validerFormulaireConnexion" method="post" enctype="multipart/form-data">
+			<div class="grid grid-cols-subgrid row-start-1 col-start-1 col-span-6 p-2">
+				<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
+					<img src="../asset/icones/envelope.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone">
+					<label for="email">Email</label>
+				</div>
+				<input type="email" placeholder="E-mail" name="email" required title="Veuillez entrer une adresse e-mail valide" class="col-start-3 col-span-3 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text">
+			</div>
+
+			<div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-6 p-2">
+				<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
+					<img src="../asset/icones/lock.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone">
+				</div>
+				<input type="password" id="password" placeholder="Mot de passe" name="mdp" required title="Veuillez entrer un mot de passe sécurisé" class="col-start-3 col-span-3 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text">
+				<button type="button" class="toggle-password col-start-6 col-span-1 flex justify-center items-center">
+					<img src="../asset/icones/eye.svg" class="w-6 h-6 bg-button py-1 rounded-md" alt="Afficher le mot de passe">
+				</button>
+			</div>
+
+			<button type="submit" class="row-start-3 col-start-1 col-span-6 p-3 bg-button hover:bg-hbutton text-tbutton font-semibold rounded-md transition">Se connecter</button>
+		</form>
+
+
+		<div class="flex items-center my-6">
+            <hr class="w-full border-gray-300">
+            <span class="px-4 text-gray-500">OU</span>
+            <hr class="w-full border-gray-300">
         </div>
-        
-        <div class="w-full max-w-xs sm:max-w-md p-6 sm:p-8 bg-principal-rouge bg-opacity-70 rounded-lg drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
-            <div class="text-center">
-                <p class="text-text mb-4">Vous n'avez pas de compte ?</p>
-                <a href="index.php?controlleur=inscription&methode=lister" class="w-full p-3 bg-white text-red-700 font-semibold rounded-md block hover:bg-gray-200 transition">Inscrivez-vous</a>
-            </div>
+    
+        <div class="text-center">
+            <p class="text-gray-600">Vous n'avez pas de compte ?</p>
+            <a href="index.php?controlleur=inscription&methode=lister" class="block w-full p-3 bg-button text-tbutton font-semibold rounded-lg hover:bg-hbutton transition mt-2">Inscrivez-vous</a>
         </div>
-    </div>
+	</div>
 </div>
-{% endblock %}
+
+
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+	            // Gestion de l'affichage du mot de passe
+	            document.querySelectorAll(".toggle-password").forEach(function (button) {
+	                button.addEventListener("click", function () {
+	                    let inputField = button.previousElementSibling; // Sélectionner l'input correspondant
+	                    let icon = button.querySelector("img");
+	
+	                    if (inputField.type === "password") {
+	                        inputField.type = "text";
+	                        icon.src = "../asset/icones/eye-slash.svg"; // Icône pour cacher le mot de passe
+	                        icon.alt = "Masquer le mot de passe";
+	                    } else {
+	                        inputField.type = "password";
+	                        icon.src = "../asset/icones/eye.svg"; // Icône pour afficher le mot de passe
+	                        icon.alt = "Afficher le mot de passe";
+	                    }
+	                });
+	            });
+	        });
+		</script>
+	{% endblock %}
+
