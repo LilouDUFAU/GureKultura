@@ -4,9 +4,9 @@
 	<!-- Contenu spécifique de chaque page -->
 	<div class="m-2 gap-8 flex flex-col items-center justify-center">
 
-		<h1 class="text-3xl font-bold text-center text-principal">Modifier mon actualité</h1>
+		<h1 class="text-2xl lg:text-4xl font-semibold lg:font-extrabold uppercase text-center text-title">Modifier mon actualité</h1>
 
-		<form action="index.php?controlleur=modifActu&methode=validerFormModifActu" method="post" enctype="multipart/form-data" class="grid grid-cols-6 gap-2 text-white rounded-xl w-fit p-4 text-sm lg:text-base">
+		<form action="index.php?controlleur=modifActu&methode=validerFormModifActu" method="post" enctype="multipart/form-data" class="grid grid-cols-6 gap-2 bg-form text-text rounded-xl w-fit p-4 text-sm lg:text-base">
 			<input type="hidden" name="actuId" value={{ actuActuel.id }}>
 
 			<div
@@ -14,20 +14,20 @@
 				{# titre evenement #}
 				<div class="grid grid-cols-subgrid row-start-1 col-start-1 col-span-6 p-2">
 					<div class="col-start-1 col-span-2 flex flex-row items-center gap-2">
-						<img src="../asset/icones/fonts.svg" class="h-5 w-5 border-2 border-solid border-white rounded-md" alt="icone de titre">
+						<img src="../asset/icones/fonts.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de titre">
 						<label for="titre" class="">Titre</label>
 					</div>
-					<input type="text" name="titre" id="titre" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 text-gray-400" value="{{ actuActuel.titre }}">
+					<input type="text" name="titre" id="titre" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text" value="{{ actuActuel.titre }}">
 				</div>
 				{# type actualite #}
 				<div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-6 p-2">
 					<div class="col-start-1 col-span-2 flex flex-row items-center gap-2">
-						<img src="../asset/icones/ui-checks-grid.svg" class="h-5 w-5" alt="icone de categorie">
+						<img src="../asset/icones/ui-checks-grid.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de categorie">
 						<label for="nomCategorie" class="">Catégorie</label>
 					</div>
 					<!-- Dropdown Container -->
-					<select name="cateId" id="nomCategorie" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg text-gray-400">
-						<option class="text-gray-400" value="{{ actuActuel.cateId }}" selected>{{ actuActuel.categorie }}</option>
+					<select name="cateId" id="nomCategorie" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text">
+						<option class="px-2 py-1 placeholder-text outline-none text-text" value="{{ actuActuel.cateId }}" selected>{{ actuActuel.categorie }}</option>
 						{% for categorie in categories %}
 							<option class="text-black" value="{{categorie.cateId}}" {% if actuActuel.cateId == categorie.cateId %} selected {% endif %}>{{ categorie.nom }}</option>
 						{% endfor %}
@@ -37,36 +37,36 @@
 				{# resume #}
 				<div class="grid grid-cols-subgrid row-start-3 col-start-1 col-span-6 p-2">
 					<div class="col-start-1 col-span-2 flex flex-row items-center gap-2">
-						<img src="../asset/icones/card-text.svg" class="h-5 w-5" alt="icone de resume">
+						<img src="../asset/icones/card-text.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de resume">
 						<label for="resume">Résumé</label>
 					</div>
-					<textarea name="resume" id="resume" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 text-gray-400">{{ actuActuel.resume }}</textarea>
+					<textarea name="resume" id="resume" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text">{{ actuActuel.resume }}</textarea>
 				</div>
 
 				{# contenu #}
 				<div class="grid grid-cols-subgrid row-start-4 col-start-1 col-span-6 p-2">
 					<div class="col-start-1 col-span-2 flex flex-row items-center gap-2">
-						<img src="../asset/icones/card-text.svg" class="h-5 w-5" alt="icone de contenu">
+						<img src="../asset/icones/card-text.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de contenu">
 						<label for="contenu">Contenu</label>
 					</div>
-					<textarea name="contenu" id="contenu" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 text-gray-400">{{ actuActuel.contenu }}</textarea>
+					<textarea name="contenu" id="contenu" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text">{{ actuActuel.contenu }}</textarea>
 				</div>
 
 
 				{# Image #}
 				<div class="grid grid-cols-subgrid row-start-5 col-start-1 col-span-6 p-2">
 					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
-						<img src="../asset/icones/image.svg" class="h-5 w-5" alt="icone d'image">
+						<img src="../asset/icones/image.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone d'image">
 						<label for="img">Image</label>
 					</div>
-					<input class="col-start-3 col-span-4 bg-transparent flex w-full rounded-md border border-blue-300 border-input bg-white text-sm text-gray-400 file:border-0 file:bg-principal-rouge file:text-white file:text-sm" type="file" name="img" id="img" accept=".jpg, .png" value="{{ actuActuelle.img }}"/>
+					<input class="col-start-3 col-span-4 bg-transparent flex w-full rounded-md border border-white border-input bg-white text-sm file:border-0 file:bg-text file:text-white file:text-sm" type="file" name="img" id="img" accept=".jpg, .png" value="{{ actuActuelle.img }}"/>
 				</div>
 			</div>
 
 			{# Bouton de validation ou annulation #}
-			<div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-6 gap-2">
-				<button type="submit" class="col-start-5 col-span-1 text-white bg-principal-rouge rounded-lg py-1 px-2">Valider</button>
-				<a href="index.php?controlleur=mesActu&methode=lister" class="col-start-6 col-span-1 text-white bg-principal-rouge rounded-lg text-center py-1 px-2">Annuler</a>
+			<div class="row-start-2 col-start-4 col-span-2 lg:col-start-6 lg:col-span-1 gap-2 flex flex-row justify-between items-center">
+				<button type="submit" class="px-4 py-2 bg-button hover:bg-hbutton text-white rounded-lg text-center">Valider</button>
+				<a href="index.php?controlleur=mesActu&methode=lister" class="px-4 py-2 bg-button hover:bg-hbutton text-white rounded-lg text-center">Annuler</a>
 			</div>
 		</form>
 	</div>

@@ -1,56 +1,136 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
-<!-- Contenu spécifique de chaque page -->
-<div class="pt-2">
-    <div class="flex flex-col items-center bg-cover bg-no-repeat bg-[url('../asset/bg_img.svg')] gap-2 p-2 py-24">
-        <div class="flex flex-col gap-3 w-full max-w-xl p-8 bg-principal-rouge bg-opacity-70 rounded-lg drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
-            <h1 class="text-3xl font-bold text-white text-center mb-6">Inscription</h1>
-            <form class="space-y-4 gap-2" action="index.php?controlleur=inscription&methode=validerFormulaireInscription" method="post" enctype="multipart/form-data">
-                <div>
-                    <input type="email" placeholder="E-mail" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{10,100}$" title="Veuillez entrer une adresse mail valide, exemple : user@exemple.com"
-                        class="w-full p-3 rounded-md bg-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-400">
+	<div class="min-h-screen flex flex-col items-center justify-center bg-bg py-12 px-4 sm:px-6 lg:px-8">
+		<h1 class="text-2xl lg:text-4xl font-semibold text-center text-title uppercase lg:font-extrabold mb-8">Inscription</h1>
+
+		<div class="max-w-md w-full space-y-6 p-8 bg-form shadow-xl rounded-2xl">
+			<form class="grid grid-cols-6 space-y-4 text-sm lg:text-base" action="index.php?controlleur=inscription&methode=validerFormulaireInscription" method="post" enctype="multipart/form-data">
+
+				<div class="grid grid-cols-subgrid row-start-1 col-start-1 col-span-6 p-2">
+					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
+						<img src="../asset/icones/envelope.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone">
+						<label for="email">Email</label>
+					</div>
+					<input type="email" placeholder="E-mail" name="email" required title="Veuillez entrer une adresse e-mail valide" class="col-start-3 col-span-3 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text">
+				</div>
+
+				<div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-6 p-2">
+					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
+						<img src="../asset/icones/person-vcard (1).svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone">
+						<label for="nom">Nom</label>
+					</div>
+					<input type="text" placeholder="Nom complet" name="nom" required title="Veuillez entrer votre nom complet" class="col-start-3 col-span-3 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text">
+				</div>
+
+				<div class="grid grid-cols-subgrid row-start-3 col-start-1 col-span-6 p-2">
+					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
+						<img src="../asset/icones/person.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone">
+						<label for="pseudo">Pseudo</label>
+					</div>
+					<input type="text" placeholder="Nom d'utilisateur" name="pseudo" required title="Veuillez entrer un nom d'utilisateur" class="col-start-3 col-span-3 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text">
+				</div>
+
+				<!-- Champ mot de passe -->
+				<div class="grid grid-cols-subgrid row-start-4 col-start-1 col-span-6 p-2">
+					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
+						<img src="../asset/icones/lock.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone">
+					</div>
+					<input type="password" id="password" placeholder="Mot de passe" name="mdp" required title="Veuillez entrer un mot de passe sécurisé" class="col-start-3 col-span-3 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text">
+					<button type="button" class="toggle-password col-start-6 col-span-1 flex justify-center items-center">
+						<img src="../asset/icones/eye.svg" class="w-6 h-6 bg-button py-1 rounded-md" alt="Afficher le mot de passe">
+					</button>
+				</div>
+
+				<!-- Champ confirmation mot de passe -->
+				<div class="grid grid-cols-subgrid row-start-5 col-start-1 col-span-6 p-2">
+					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
+						<img src="../asset/icones/lock.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone">
+					</div>
+					<input type="password" id="confirm-password" placeholder="Confirmer le mot de passe" name="mdp2" required title="Veuillez confirmer votre mot de passe" class="col-start-3 col-span-3 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text">
+					<button type="button" class="toggle-password col-start-6 col-span-1 flex justify-center items-center">
+						<img src="../asset/icones/eye.svg" class="w-6 h-6 bg-button py-1 rounded-md" alt="Afficher le mot de passe">
+					</button>
+				</div>
+
+                <div class="row-start-6 col-start-1 col-span-6 flex justify-center mt-4">
+                    <button id="openNewsletterPopup" class="text-link underline text-sm">Voir la newsletter</button>
                 </div>
-                <div>
-                    <input type="text" placeholder="Nom complet" name="nom" required pattern="[A-Za-z]{2,100}" title="Veuillez entrer un nom valide, exemple : Dupont"
-                        class="w-full items-center p-3 rounded-md bg-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-400">
-                </div>
-                <div>
-                    <input type="text" placeholder="Nom d'utilisateur" name="pseudo" required pattern="[A-Za-z0-9]{2,30}" title="Veuillez entrer un nom d'utilisateur valide, exemple : user123"
-                        class="w-full p-3 rounded-md bg-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-400">
-                </div>
-                <div>
-                    <input type="password" placeholder="Mot de passe" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,30}$" name="mdp" required title="Le mot de passe doit contenir au moins 8 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial"
-                        class="w-full p-3 rounded-md bg-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-400">
-                </div>
-                <div>
-                    <input type="password" placeholder="Confirmer le mot de passe" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,30}$" name="mdp2" required title="Le mot de passe de confirmation doit être le même que le mot de passe"
-                        class="w-full p-3 rounded-md bg-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-400">
-                </div>
-                <div>
-                    <p class="w-full text-left text-white text-sm">
-                    En vous inscrivant, vous acceptez nos Conditions Générales. Découvrez comment nous collectons, utilisons et partageons vos données en lisant notre Politique d'utilisation des données et comment nous utilisons les cookies et autres technologies similaires en consultant notre Politique d'utilisation des cookies.
-                    </p>
-                    <div class="flex items-center my-4 justify-between">
-                        <label class="inline-flex items-center cursor-pointer text-left text-white text-sm pb-6 max-w-md">En cochant cette option, vous consentez à recevoir des notifications par mail ou SMS concernant les dernières actualités de GureKultura
-                        </label>
-                        <input type="checkbox" value="" class="peer w-5 h-5">
-                    </div>
-                    <button type="submit" class="w-full p-3 bg-white text-red-700 font-semibold rounded-md hover:bg-gray-200 transition">S'inscrire</button>
-                </div>
-            </form>
-            <div class="flex items-center my-4 gap-x-5">
-                <hr class="w-full border-white border-2 rounded-lg">
-                <span class="px-2 text-white">OU</span>
-                <hr class="w-full border-white border-2 rounded-lg">
+
+				<div class="row-start-7 col-start-1 col-span-6 flex justify-center mt-4">
+					<button type="submit" class="w-full p-3 bg-button text-tbutton font-bold rounded-lg hover:bg-hbutton transition">S'inscrire</button>
+				</div>
+			</form>
+
+            <div class="flex items-center my-6">
+                <hr class="w-full border-gray-300">
+                <span class="px-4 text-gray-500">OU</span>
+                <hr class="w-full border-gray-300">
             </div>
-        </div>
-        <div class="w-full max-w-xl p-8 bg-principal-rouge bg-opacity-70 rounded-lg drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
+        
             <div class="text-center">
-                <p class="text-white mb-4">Vous avez déjà un compte ?</p>
-                <a href="index.php?controlleur=connexion&methode=lister" class="w-full p-3 bg-white text-red-700 font-semibold rounded-md block hover:bg-gray-200 transition">Connectez-vous</a>
+                <p class="text-gray-600">Vous avez déjà un compte ?</p>
+                <a href="index.php?controlleur=connexion&methode=lister" class="block w-full p-3 bg-button text-tbutton font-semibold rounded-lg hover:bg-hbutton transition mt-2">Connectez-vous</a>
             </div>
+		</div>
+	</div>
+
+
+    <!-- Popup Newsletter -->
+    <div id="newsletterPopup" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
+        <div class="bg-white p-6 rounded-lg shadow-lg w-96 text-center overflow-y-auto max-h-[90vh]">
+            <h2 class="text-lg font-bold mb-4">Politique de confidentialité -GureKultura-</h2>
+            <p class="text-sm text-gray-600 mb-4">Nous collectons les informations suivantes :</p>
+            <ul class="list-disc pl-5 space-y-1 text-left">
+                <li>Nom et prénom</li>
+                <li>Adresse e-mail</li>
+                <li>Numéro de téléphone (facultatif)</li>
+            </ul>
+            <h3 class="text-md font-semibold mt-4">Utilisation des données</h3>
+            <p class="text-sm">Vos informations sont utilisées uniquement pour l'envoi de newsletters et d'actualités de GureKultura.</p>
+            <h3 class="text-md font-semibold mt-4">Droits et désabonnement</h3>
+            <p class="text-sm">Vous pouvez demander la suppression de vos données ou vous désabonner à tout moment.</p>
+            <h3 class="text-md font-semibold mt-4">Consentement</h3>
+            <div class="flex items-center mt-2">
+                <input type="checkbox" id="consentNewsletter" class="w-5 h-5 text-button border-gray-300 rounded focus:ring-hbutton">
+                <label for="consentNewsletter" class="ml-2 text-sm text-gray-600">J'accepte les conditions</label>
+            </div>
+            <button class="w-full mt-4 p-2 bg-button text-tbutton rounded hover:bg-hbutton transition">S'abonner</button>
+            <button id="closePopup" class="mt-2 text-sm text-gray-500 underline">Fermer</button>
         </div>
     </div>
-</div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("openNewsletterPopup").addEventListener("click", function() {
+                document.getElementById("newsletterPopup").classList.remove("hidden");
+            });
+            
+            document.getElementById("closePopup").addEventListener("click", function() {
+                document.getElementById("newsletterPopup").classList.add("hidden");
+            });
+        });
+    </script>
+
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			// Gestion de l'affichage du mot de passe
+			document.querySelectorAll(".toggle-password").forEach(function (button) {
+				button.addEventListener("click", function () {
+					let inputField = button.previousElementSibling; // Sélectionner l'input correspondant
+					let icon = button.querySelector("img");
+
+					if (inputField.type === "password") {
+						inputField.type = "text";
+						icon.src = "../asset/icones/eye-slash.svg"; // Icône pour cacher le mot de passe
+						icon.alt = "Masquer le mot de passe";
+					} else {
+						inputField.type = "password";
+						icon.src = "../asset/icones/eye.svg"; // Icône pour afficher le mot de passe
+						icon.alt = "Afficher le mot de passe";
+					}
+				});
+			});
+		});
+	</script>
 {% endblock %}
