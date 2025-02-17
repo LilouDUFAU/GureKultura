@@ -79,9 +79,18 @@ class ControllerMdpOublie extends Controller {
                 }
                 $mail = new Mail();
                 $objet = "changement de mot de passe";
-                $corp = "<h1> Lien pour réinitialiser le mot de passe : </h1>
-                <a href='http://127.0.0.1/GureKultura/php/index.php?controlleur=mdpReinitialisation&methode=lister&tok=$token'>
-                Cliquez ici</a>";
+                $corp = "<div style='font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px; text-align: center;'>
+    <div style='max-width: 600px; background: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);'>
+        <h1 style='color: #333;'>Réinitialisation du mot de passe</h1>
+        <p style='font-size: 16px; color: #666;'>Vous avez demandé à réinitialiser votre mot de passe. Cliquez sur le bouton ci-dessous pour procéder :</p>
+        <a href='http://127.0.0.1/GureKultura/php/index.php?controlleur=mdpReinitialisation&methode=lister&tok=$token' 
+           style='display: inline-block; background-color: #D6453D; color: #ffffff; padding: 12px 20px; text-decoration: none; border-radius: 5px; font-size: 18px; font-weight: bold; margin-top: 20px;'>
+            Réinitialiser le mot de passe
+        </a>
+        <p style='margin-top: 20px; font-size: 14px; color: #888;'>Si vous n'avez pas fait cette demande, ignorez cet email.</p>
+    </div>
+</div>
+";
                 $mailEnvoyer = $mail->envoieMail($destinataire, $objet, $corp);   
             }
         }
