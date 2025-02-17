@@ -33,6 +33,8 @@ require_once '../app/controllers/controller_cateEvt.class.php';
 require_once '../app/controllers/controller_mdpReinitialisation.class.php';
 require_once '../app/controllers/controller_filtre.class.php';
 require_once '../app/controllers/controller_mesParticipations.class.php';
+require_once '../app/controllers/controller_faq.class.php';
+require_once '../app/controllers/controller_NL.class.php';
 
 
 
@@ -51,6 +53,7 @@ require_once '../app/models/Participer.class.php';
 require_once '../app/models/participer.dao.php';
 require_once '../app/models/commentaire.class.php';
 require_once '../app/models/commentaire.dao.php';
+
 
 session_start();
 //Ajout du code pour initialiser Twig
