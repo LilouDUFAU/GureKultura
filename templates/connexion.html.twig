@@ -11,18 +11,22 @@
 					<img src="../asset/icones/envelope.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone">
 					<label for="email">Email</label>
 				</div>
-				<input type="email" placeholder="E-mail" name="email" required title="Veuillez entrer une adresse e-mail valide" class="col-start-3 col-span-3 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text">
+				<input type="email" placeholder="E-mail" name="email" required title="Veuillez entrer une adresse e-mail valide" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text">
 			</div>
 
-			<div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-6 p-2">
+			<div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-6 p-2 relative">
 				<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
 					<img src="../asset/icones/lock.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone">
 				</div>
-				<input type="password" id="password" placeholder="Mot de passe" name="mdp" required title="Veuillez entrer un mot de passe sécurisé" class="col-start-3 col-span-3 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text">
-				<button type="button" class="toggle-password col-start-6 col-span-1 flex justify-center items-center">
-					<img src="../asset/icones/eye.svg" class="w-6 h-6 bg-button py-1 rounded-md" alt="Afficher le mot de passe">
-				</button>
-                <a href="index.php?controlleur=mdpOublie&methode=lister" class="text-xs text-right col-start-1 col-span-6">Mot de passe oublié ?</a>
+				<div class="relative col-start-3 col-span-4 w-full">
+					<input type="password" id="password" placeholder="Mot de passe" name="mdp" required 
+						title="Veuillez entrer un mot de passe sécurisé"
+						class="bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text w-full pr-10">
+					<button type="button" class="toggle-password absolute right-2 top-1/2 transform -translate-y-1/2">
+						<img src="../asset/icones/eye.svg" class="w-6 h-6 bg-button py-1 rounded-md" alt="Afficher le mot de passe">
+					</button>
+				</div>
+				<a href="index.php?controlleur=mdpOublie&methode=lister" class="text-xs text-right col-start-1 col-span-6">Mot de passe oublié ?</a>
 			</div>
 
 			<button type="submit" class="row-start-3 col-start-1 col-span-6 p-3 bg-button hover:bg-hbutton text-tbutton font-semibold rounded-md transition">Se connecter</button>
