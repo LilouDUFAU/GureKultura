@@ -172,7 +172,7 @@ class ControllerPropActu extends Controller
                 echo $this->getTwig()->render('propActu.html.twig', [
                     'title' => 'Proposition d\'actualité',
                     'messageErreurs' => $messageErreurs,
-                    'donnees' => htmlentities($donnees),
+                    'donnees' => $donnees,
                     'actualites' => $actualite,
                     'categories' => $categories
                 ]);
