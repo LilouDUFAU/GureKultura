@@ -8,7 +8,7 @@
     
 
         {# En-tête du tableau #}
-        <div class="col-span-12 grid grid-cols-12 bg-tabtitle font-bold">
+        <div class="col-span-12 grid grid-cols-12 bg-tabtitle font-bold text-text">
             <div class="row-start-1 col-start-1 col-span-3 p-2">Nom</div>
             <div class="row-start-1 col-start-4 col-span-2 p-2 hidden lg:block">Date</div>
             <div class="row-start-1 col-start-4 col-span-3 lg:col-start-7 lg:col-span-3 p-2 hidden md:block">Lieu</div>
@@ -19,7 +19,7 @@
         <div>
         {# Contenu dynamique #}
         {% for evenement in evenements %}
-            <div class="col-span-12 grid grid-cols-12 odd:bg-odd even:bg-even">
+            <div class="col-span-12 grid grid-cols-12 odd:bg-odd even:bg-even text-text">
                 <div class="row-start-1 col-start-1 col-span-3 p-2">{{ evenement.titre }}</div>
                 <div class="row-start-1 col-start-4 col-span-2 p-2 hidden lg:block">{{ evenement.dateDebut }}</div>
                 <div class="row-start-1 col-start-4 col-span-3 lg:col-start-7 lg:col-span-3 p-2 hidden md:block">{{ evenement.lieu }}</div>
