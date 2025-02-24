@@ -23,7 +23,9 @@
 						<img src="../asset/icones/fonts.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de titre">
 						<label for="titre">Titre</label>
 					</div>
-					<input type="text" name="titre" id="titre" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text" placeholder="Titre de l'évènement">
+					<div class="relative col-start-3 col-span-4 w-full">
+						<input type="text" name="titre" id="titre" oninput='verifErreurSaisie(titre)' class="w-full col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text" placeholder="Titre de l'évènement">
+					</div>
 				</div>
 
 				{# type evenement #}
@@ -47,7 +49,9 @@
 						<img src="../asset/icones/justify-left.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de description">
 						<label for="description">Description</label>
 					</div>
-					<textarea name="description" id="description" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text" placeholder="Description de l'évènement"></textarea>
+					<div class="relative col-start-3 col-span-4 w-full">
+						<textarea name="description" id="description" oninput='verifErreurSaisie(description)' class="w-full col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text" placeholder="Description de l'évènement"></textarea>
+					</div>
 				</div>
 
 
@@ -57,7 +61,9 @@
 						<img src="../asset/icones/calendar.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de calendrier">
 						<label for="dateDebut">Date de début</label>
 					</div>
-					<input type="date" name="debutDate" id="debutDate" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text text-text outline-none" placeholder="Date de début">
+					<div class="relative col-start-3 col-span-4 w-full">
+						<input type="date" name="debutDate" id="debutDate" oninput='verifErreurSaisie(debutDate)' class="w-full col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text text-text outline-none" placeholder="Date de début">
+					</div>
 				</div>
 
 				{# HeureDebut #}
@@ -66,7 +72,9 @@
 						<img src="../asset/icones/clock.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de heure">
 						<label for="heureDebut" >Heure de début</label>
 					</div>
-					<input type="time" name="debutHeure" id="debutHeure" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text text-text outline-none" placeholder="Heure de début">
+					<div class="relative col-start-3 col-span-4 w-full">
+						<input type="time" name="debutHeure" id="debutHeure" oninput='verifErreurSaisie(debutHeure)' class="w-full col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text text-text outline-none" placeholder="Heure de début">
+					</div>
 				</div>
 
 				{# dateFin #}
@@ -75,7 +83,9 @@
 						<img src="../asset/icones/calendar.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de calendrier">
 						<label for="dateFin" >Date de fin</label>
 					</div>
-					<input type="date" name="finDate" id="finDate" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text text-text outline-none" placeholder="Date de fin">
+					<div class="relative col-start-3 col-span-4 w-full">
+						<input type="date" name="finDate" id="finDate" oninput='verifErreurSaisie(finDate)' class="w-full col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text text-text outline-none" placeholder="Date de fin">
+					</div>
 				</div>
 
 				{# HeureFin #}
@@ -84,7 +94,9 @@
 						<img src="../asset/icones/clock.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de heure">
 						<label for="heureFin">Heure de fin</label>
 					</div>
-					<input type="time" name="finHeure" id="finHeure" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text text-text outline-none" placeholder="Heure de fin">
+					<div class="relative col-start-3 col-span-4 w-full">
+						<input type="time" name="finHeure" id="finHeure" oninput='verifErreurSaisie(finHeure)' class="w-full col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text text-text outline-none" placeholder="Heure de fin">
+					</div>
 				</div>
 
 				{# Lieu #}
@@ -93,7 +105,9 @@
 						<img src="../asset/icones/geo-alt.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de localisation">
 						<label for="lieu">Lieu</label>
 					</div>
-					<textarea name="lieu" id="lieu" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text text-text outline-none" placeholder="Lieu de l'évènement"></textarea>
+					<div class="relative col-start-3 col-span-4 w-full">
+						<textarea name="lieu" id="lieu" oninput='verifErreurSaisie(lieu)' class="w-full col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text text-text outline-none" placeholder="Lieu de l'évènement"></textarea>
+					</div>
 				</div>
 
 				{# Photo #}
@@ -102,8 +116,9 @@
 						<img src="../asset/icones/image.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de photo">
 						<label for="photo">Image</label>
 					</div>
-					<input class="col-start-3 col-span-4 bg-transparent flex w-full rounded-md border border-white border-input bg-white text-sm file:border-0 file:bg-text file:text-white file:text-sm" type="file" name="photo" id="photo" accept=".jpg, .png" value=" {{evtActuel.photo}}"/>
-
+					<div class="relative col-start-3 col-span-4 w-full">
+						<input class="col-start-3 col-span-4 bg-transparent flex w-full rounded-md border border-white border-input bg-white text-sm file:border-0 file:bg-text file:text-white file:text-sm" type="file" name="photo" id="photo" accept=".jpg, .png" value=" {{evtActuel.photo}}"/>
+					</div>
 				</div>
 
 				{# autorisations #}
@@ -112,7 +127,9 @@
 						<img src="../asset/icones/file-earmark-pdf.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de autorisation">
 						<label for="autorisation">Autorisation</label>
 					</div>
-					<input class="col-start-3 col-span-4 bg-transparent flex w-full rounded-md border border-white border-input bg-white text-sm file:border-0 file:bg-text file:text-white file:text-sm" type="file" name="autorisation" id="autorisation" accept=".pdf" value=" {{evtActuel.autorisation}}"/>
+					<div class="relative col-start-3 col-span-4 w-full">
+						<input class="col-start-3 col-span-4 bg-transparent flex w-full rounded-md border border-white border-input bg-white text-sm file:border-0 file:bg-text file:text-white file:text-sm" type="file" name="autorisation" id="autorisation" accept=".pdf" value=" {{evtActuel.autorisation}}"/>
+					</div>
 				</div>
 
 			</div>
@@ -131,7 +148,10 @@
 						<img src="../asset/icones/person.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de personne">
 						<label for="nomResp">Nom</label>
 					</div>
-					<input type="text" name="nomRep" id="nomRep" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text text-text outline-none" placeholder="Nom du responsable">
+					
+					<div class="relative col-start-3 col-span-4 w-full">
+					<input type="text" name="nomRep" id="nomRep" oninput='verifErreurSaisie(nomRep)' class="w-full col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text text-text outline-none" placeholder="Nom du responsable">
+				</div>
 				</div>
 
 				{# prenomResp #}
@@ -140,7 +160,9 @@
 						<img src="../asset/icones/person.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de personne">
 						<label for="prenomResp" class="col-start-1 col-span-2">Prénom</label>
 					</div>
-					<input type="text" name="prenomRep" id="prenomRep" oninput="verifErreurSaisie(text)" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text text-text outline-none" placeholder="Prénom du responsable">
+					<div class="relative col-start-3 col-span-4 w-full">
+					<input type="text" name="prenomRep" id="prenomRep" oninput="verifErreurSaisie(prenomRep)" class="w-full col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text text-text outline-none" placeholder="Prénom du responsable">
+				</div>
 				</div>
 
 				{# email #}
@@ -149,8 +171,8 @@
 						<img src="../asset/icones/envelope.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de mail">
 						<label for="email">Email</label>
 					</div>
-					<div class="relative col-start-3 col-span-4 w-full">
-						<input type="email" name="email" id="email" oninput="verifErreurSaisie(email)" class="w-full col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text text-text outline-none" placeholder="Email du responsable">
+					<div class="grid-rows-subgrid row-start-1 col-start-3 col-span-4 w-full">
+						<input type="email" name="email" id="email" oninput="verifErreurSaisie(email)" class="row-start-2 w-full col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text text-text outline-none" placeholder="Email du responsable">
 					</div>
 				</div>
 
@@ -160,10 +182,13 @@
 						<img src="../asset/icones/telephone.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de téléphone">
 						<label for="telephone">Téléphone</label>
 					</div>
+					
+					<div class="relative col-start-3 col-span-4 w-full">
 					<input type="tel" name="tel" id="tel" oninput="verifErreurSaisie(tel)" 
-					class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text text-text outline-none" 
+					class="w-full col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text text-text outline-none" 
 					placeholder="Téléphone du responsable"
 					pattern="[0-9]{2} [0-9]{2} [0-9]{2} [0-9]{2} [0-9]{2}">
+				</div>
 				</div>
 			</div>
 

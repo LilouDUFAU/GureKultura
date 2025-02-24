@@ -1033,6 +1033,10 @@ video {
   grid-template-columns: subgrid;
 }
 
+.grid-rows-subgrid {
+  grid-template-rows: subgrid;
+}
+
 .flex-row {
   flex-direction: row;
 }
@@ -1218,6 +1222,11 @@ video {
 .border-white {
   --tw-border-opacity: 1;
   border-color: rgb(255 255 255 / var(--tw-border-opacity, 1));
+}
+
+.border-error {
+  --tw-border-opacity: 1;
+  border-color: rgb(255 0 0 / var(--tw-border-opacity, 1));
 }
 
 .border-b-gray-300 {
@@ -1594,6 +1603,11 @@ video {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+}
+
+.text-error {
+  --tw-text-opacity: 1;
+  color: rgb(255 0 0 / var(--tw-text-opacity, 1));
 }
 
 .underline {
