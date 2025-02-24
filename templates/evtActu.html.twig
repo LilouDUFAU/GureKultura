@@ -10,7 +10,7 @@
 
 			<!-- Colonne de gauche -->
 			<div class="grid grid-cols-subgrid col-start-1 col-span-12 row-start-2 lg:col-span-6 lg:row-start-2 h-full">
-				<img src="../asset/evenement/{{ evtActus.photo }}" alt="photo evenement" class="row-start-1 col-start-1 col-span-12 lg:col-span-6 rounded-lg">
+				<img src="../asset/evenement/photo/{{ evtActus.photo }}" alt="photo evenement" class="row-start-1 col-start-1 col-span-12 lg:col-span-6 rounded-lg">
 				<p class="row-start-2 col-start-1 col-span-12 lg:col-span-6 break-words">{{ evtActus.description }}</p>
 
 				<div class="row-start-3 col-start-1 col-span-12 lg:col-span-6 grid grid-cols-subgrid border-2 border-solid border-[#A23145] rounded-lg bg-[#A23145] bg-opacity-55 p-2">
@@ -37,7 +37,7 @@
 					{{ evtActus.email }}</p>
 				<p class="row-start-5 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Téléphone :
 					{{ evtActus.tel }}</p>
-				<img src="../asset/evenement/ {{ evtActus.autorisation}}" alt="autorisation evenment" class="row-start-6 col-start-1 col-span-6 rounded-lg">
+				<a href="../asset/evenement/autorisation/{{ evtActus.autorisation }}" alt="autorisation evenment" class="row-start-6 col-start-1 col-span-6 rounded-lg text-sky-600 underline font-semibold" target="_blank">Cliquez ici pour visionner le fichier PDF</a>
 			</div>
 		</div>
 

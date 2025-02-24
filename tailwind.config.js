@@ -35,6 +35,7 @@ module.exports = {
         odd : '#EADBC8', //couleur pour les lignes impaires
         even : '#F5EDE3', //couleur pour les lignes paires
         link: '#0000FF', //couleur pour les liens (bleu)
+        error: '#FF0000', //couleur pour les liens (bleu)
       },
       fontFamily: {
         // fontfamily : poppins
