@@ -72,7 +72,7 @@ function addError(input, msgError) {
 
     var messageErreur = document.createElement("p");
 
-    messageErreur.className = "row-start-3 absolute w-full h-6 py-1 text-error";
+    messageErreur.className = "absolute break-words col-start-3 col-span-4 h-6 py-1 text-error";
     messageErreur.id = "messageErreur";
 
     divParent.forEach(enfantDiv => {
