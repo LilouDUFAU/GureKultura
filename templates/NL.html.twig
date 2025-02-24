@@ -1,0 +1,68 @@
+{% extends "base.html.twig" %}
+{% block content %}
+<div class="bg-bg text-text font-sen text-sm lg:text-base">
+    <div class="max-w-3xl mx-auto p-6 bg-white shadow-lg rounded-2xl">
+        <!-- Header -->
+        <header class="bg-fh text-tbutton py-6 text-center text-4xl font-bold rounded-t-2xl">
+            Politique de confidentialité <br> -GureKultura-
+        </header>
+
+        <!-- Contenu principal -->
+        <div class="p-6 space-y-6">
+            <h2 class="text-title text-2xl font-bold border-b-4 border-tabtitle pb-2">1. Nature des données collectées</h2>
+            <p>Les informations que nous collectons pour notre NewsLetter incluent :</p>
+            <ul class="list-disc pl-5 space-y-1">
+                <li>Votre nom et prénom</li>
+                <li>Votre adresse e-mail</li>
+                <li>Éventuellement, votre numéro de téléphone pour les notifications par SMS (facultatif)</li>
+            </ul>
+            
+            <h2 class="text-title text-2xl font-bold border-b-4 border-tabtitle pb-2">2. Utilisation des données</h2>
+            <p>Vos données personnelles sont utilisées uniquement pour :</p>
+            <ul class="list-disc pl-5 space-y-1">
+                <li>Vous envoyer des newsletters contenant des actualités, événements, et promotions liées à GureKultura.</li>
+                <li>Personnaliser le contenu des communications pour qu'elles soient pertinentes pour vous.</li>
+            </ul>
+
+            <h2 class="text-title text-2xl font-bold border-b-4 border-tabtitle pb-2">3. Conservation des données</h2>
+            <p>Nous conservons vos données uniquement le temps nécessaire pour vous envoyer la newsletter ou jusqu'à ce que vous décidiez de vous désabonner.</p>
+            
+            <h2 class="text-title text-2xl font-bold border-b-4 border-tabtitle pb-2">4. Partage des données</h2>
+            <p>Vos informations ne seront jamais partagées avec des tiers à des fins commerciales.</p>
+            <p>Elles pourront être partagées avec des prestataires techniques responsables de l’envoi des newsletters (services d’emailing), dans le respect des lois sur la confidentialité.</p>
+            
+            <h2 class="text-title text-2xl font-bold border-b-4 border-tabtitle pb-2">5. Vos droits</h2>
+            <p>Conformément au RGPD, vous disposez de droits suivants concernant vos données personnelles :</p>
+            <ul class="list-disc pl-5 space-y-1">
+                <li><strong>Droit d’accès</strong> : Demander une copie des données que nous avons sur vous.</li>
+                <li><strong>Droit de rectification</strong> : Corriger ou mettre à jour vos données.</li>
+                <li><strong>Droit à l’effacement</strong> : Demander la suppression de vos données à tout moment.</li>
+                <li><strong>Droit à la portabilité</strong> : Obtenir vos données dans un format lisible.</li>
+                <li><strong>Droit d’opposition</strong> : Vous opposer à l’utilisation de vos données à des fins spécifiques.</li>
+            </ul>
+            <p>Pour exercer vos droits, contactez-nous à : <strong>gurekultura@gmail.com</strong></p>
+            
+            <h2 class="text-title text-2xl font-bold border-b-4 border-tabtitle pb-2">6. Désabonnement</h2>
+            <p>Vous pouvez vous désabonner à tout moment en cliquant sur le lien de désabonnement inclus dans chaque newsletter.</p>
+            <p>Une fois désabonné, vos données seront supprimées de notre base d’envoi.</p>
+            
+            <h2 class="text-title text-2xl font-bold border-b-4 border-tabtitle pb-2">7. Politique de Cookies</h2>
+            <p>Nous utilisons des cookies pour analyser les performances de notre newsletter et améliorer l’expérience utilisateur.</p>
+            <p>Vous pouvez gérer vos préférences liées aux cookies via les paramètres de votre navigateur.</p>
+            
+            <h2 class="text-title text-2xl font-bold border-b-4 border-tabtitle pb-2">8. Consentement</h2>
+            <p>En cochant la case ci-dessous, vous acceptez que nous utilisions vos données dans les conditions décrites ci-dessus.</p>
+            <div class="flex items-center mt-2">
+                <input type="checkbox" id="consentement" name="consentement" class="w-5 h-5 text-button border-gray-300 rounded focus:ring-hbutton">
+                <label for="consentement" class="ml-2 text-text">J'accepte les conditions</label>
+            </div>
+        </div>
+
+        <!-- CTA & Désabonnement -->
+        <div class="bg-even text-center py-6 text-sm rounded-b-2xl">
+            <p class="text-lg font-semibold">Vous souhaitez ne plus recevoir nos emails ?</p>
+            <a href="#" class="text-link underline text-lg font-bold">Désabonnez-vous ici</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

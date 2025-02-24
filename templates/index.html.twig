@@ -6,7 +6,7 @@
 		<div class="gap-2 p-2 grid grid-cols-12 items-center">
 
 			{# titre de la page #}
-			<h1 class="col-span-12 text-title lg:font-extrabold lg:text-4xl text-2xl text-center rounded-2xl p-4 mb-10 font-semibold uppercase">Actualites du moment</h1>
+			<h1 class="col-span-12 text-title lg:font-extrabold lg:text-4xl text-2xl text-center rounded-2xl p-4 mb-10 font-semibold uppercase">Actualités du moment</h1>
 
 			<div id="carouselActu" class="row-span-3 col-span-12 relative w-full overflow-hidden mx-auto bg-carousel rounded-lg" data-slides-default="1" data-slides-mobile="1">
             <!-- Conteneur du carrousel -->
@@ -18,7 +18,7 @@
 								<INPUT type="hidden" name="nom" value="{{actualite.titre}}">
 								<INPUT type="hidden" name="id" value={{actualite.ActuId}}>
 								<INPUT type="hidden" name="type" value="Actualites">
-								<INPUT TYPE="SUBMIT" VALUE={{actualite.titre}} class="bg-white border-principal absolute inset-x-0 bottom-0 text-center rounded-lg p-2 mr-2 ml-2 mb-2">
+								<INPUT TYPE="SUBMIT" VALUE="{{actualite.titre}}" class="bg-white border-principal absolute inset-x-0 bottom-0 text-center rounded-lg p-2 mx-2 mb-2">
 							</FORM>
 						</div>
 					{% endfor %}
@@ -29,7 +29,7 @@
         	</div>
 
 			{# titre de la page #}
-			<h1 class="col-span-12 text-title lg:font-extrabold lg:text-4xl text-2xl text-center rounded-2xl p-4 mb-10 font-semibold uppercase">Evénements du moment</h1>
+			<h1 class="col-span-12 text-title lg:font-extrabold lg:text-4xl text-2xl text-center rounded-2xl p-4 mb-10 font-semibold uppercase">Évènements du moment</h1>
 
 			{# carte evenement #}
 			<div class="col-span-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
@@ -50,7 +50,7 @@
 								<p class="break-words text-sm">{{ event.lieu }}</p>
 							</div>
 
-							<div class="grid grid-cols-2 gap-2 items-center mt-4">
+							<div class="grid grid-cols-2 auto-cols-fr gap-2 items-center mt-4">
 								<FORM action="index.php?controlleur=evtActu&methode=lister" method="POST" class="row-start-1 col-start-1 col-span-1 flex justify-center">
 									<INPUT type="hidden" name="nom" value="{{event.titre}}">
 									<INPUT type="hidden" name="id" value={{event.evtId}}>
@@ -62,7 +62,7 @@
 									<INPUT type="hidden" name="nom" value="{{event.nomCategorie}}">
 									<INPUT type="hidden" name="id" value={{event.cateId}}>
 									<INPUT type="hidden" name="type" value="Evenements">
-									<INPUT type="SUBMIT" name="{{ event.nomCategorie }}" value="{{ event.nomCategorie }}" class="bg-button hover:bg-hbutton text-tbutton rounded-lg text-sm p-2 font-bold">
+									<INPUT type="SUBMIT" name="{{ event.nomCategorie }}" value="{{ event.nomCategorie }}" class="bg-button w-full hover:bg-hbutton text-tbutton rounded-lg text-sm p-2 font-bold">
 								</FORM>
 							</div>
 						</div>

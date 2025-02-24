@@ -1,0 +1,72 @@
+{% extends "base.html.twig" %}
+
+{% block content %}
+<div id="faq" class="max-w-3xl mx-auto p-6 bg-bg">
+    <h2 class="text-2xl font-bold mb-6 text-center text-title">FAQ - GureKultura</h2>
+    <div class="space-y-4">
+        {% for category in faq %}
+        <div class="border rounded-lg overflow-hidden">
+            <!-- Bouton pour ouvrir/fermer la catégorie -->
+            <button class="w-full flex justify-between items-center p-4 bg-fh text-tbutton hover:bg-hbutton transition"
+                data-category="{{ loop.index0 }}">
+                <span class="font-semibold">{{ category.name }}</span>
+                <span class="chevron">▼</span>
+            </button>
+            <div class="category-content hidden bg-card p-4">
+                {% for question in category.questions %}
+                <div class="mb-2 border-b text-text">
+                    <!-- Bouton pour ouvrir/fermer la question -->
+                    <button class="w-full text-left p-2 flex justify-between items-center hover:bg-tabtitle"
+                        data-question="{{ loop.parent.index0 }}-{{ loop.index0 }}">
+                        <span>{{ question.question }}</span>
+                        <span class="chevron">▼</span>
+                    </button>
+                    <!-- Réponse de la question -->
+                    <p class="question-content hidden p-2 text-text opacity-55">
+                        {{ question.answer }}
+                    </p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    // Toggle des catégories
+    document.querySelectorAll("button[data-category]").forEach(button => {
+        button.addEventListener("click", function () {
+            let categoryContent = this.nextElementSibling;
+            let chevron = this.querySelector(".chevron");
+
+            if (categoryContent.classList.contains("hidden")) {
+                categoryContent.classList.remove("hidden");
+                chevron.textContent = "▲";
+            } else {
+                categoryContent.classList.add("hidden");
+                chevron.textContent = "▼";
+            }
+        });
+    });
+
+    // Toggle des questions
+    document.querySelectorAll("button[data-question]").forEach(button => {
+        button.addEventListener("click", function () {
+            let parentDiv = this.closest("div");
+            let questionContent = parentDiv.querySelector(".question-content");
+            let chevron = this.querySelector(".chevron");
+
+            if (questionContent.classList.contains("hidden")) {
+                questionContent.classList.remove("hidden");
+                chevron.textContent = "▲";
+            } else {
+                questionContent.classList.add("hidden");
+                chevron.textContent = "▼";
+            }
+        });
+    });
+});
+</script>
+{% endblock %}
