@@ -773,6 +773,11 @@ video {
   margin-bottom: 1rem;
 }
 
+.my-6 {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
 .mb-0 {
   margin-bottom: 0px;
 }
@@ -795,6 +800,10 @@ video {
 
 .mb-6 {
   margin-bottom: 1.5rem;
+}
+
+.mb-8 {
+  margin-bottom: 2rem;
 }
 
 .ml-2 {
@@ -861,10 +870,6 @@ video {
   height: 2.5rem;
 }
 
-.h-12 {
-  height: 3rem;
-}
-
 .h-4 {
   height: 1rem;
 }
@@ -920,10 +925,6 @@ video {
 
 .w-10 {
   width: 2.5rem;
-}
-
-.w-12 {
-  width: 3rem;
 }
 
 .w-24 {
@@ -1432,6 +1433,10 @@ video {
   padding-bottom: 1.5rem;
 }
 
+.pr-10 {
+  padding-right: 2.5rem;
+}
+
 .pr-2 {
   padding-right: 0.5rem;
 }
@@ -1446,6 +1451,10 @@ video {
 
 .text-center {
   text-align: center;
+}
+
+.text-right {
+  text-align: right;
 }
 
 .font-\[\'Sen\'\] {
@@ -1540,6 +1549,11 @@ video {
 .text-gray-500 {
   --tw-text-opacity: 1;
   color: rgb(107 114 128 / var(--tw-text-opacity, 1));
+}
+
+.text-gray-600 {
+  --tw-text-opacity: 1;
+  color: rgb(75 85 99 / var(--tw-text-opacity, 1));
 }
 
 .text-gray-700 {
@@ -1780,10 +1794,6 @@ video {
     grid-row-start: 4;
   }
 
-  .sm\:mb-6 {
-    margin-bottom: 1.5rem;
-  }
-
   .sm\:h-full {
     height: 100%;
   }
@@ -1799,11 +1809,6 @@ video {
   .sm\:py-24 {
     padding-top: 6rem;
     padding-bottom: 6rem;
-  }
-
-  .sm\:text-3xl {
-    font-size: 1.875rem;
-    line-height: 2.25rem;
   }
 }
 
