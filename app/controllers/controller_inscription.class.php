@@ -6,7 +6,8 @@ require_once '../app/controllers/validator.class.php';
  * @exteds parent <Controller>
  * @details Gère les actions liées à la page "inscription"
  */
-class ControllerInscription extends Controller {
+class ControllerInscription extends Controller
+{
 
     /**
      * @constructor ControllerInscription
@@ -14,8 +15,9 @@ class ControllerInscription extends Controller {
      * @param Twig\Environment $twig
      * @param Twig\Loader\FileSystemLoader $loader
      * @return void
-     */ 
-    public function __construct(\Twig\Environment $twig, \Twig\Loader\FileSystemLoader $loader) {
+     */
+    public function __construct(\Twig\Environment $twig, \Twig\Loader\FileSystemLoader $loader)
+    {
         parent::__construct($twig, $loader);
     }
 
@@ -27,7 +29,8 @@ class ControllerInscription extends Controller {
      * @uses findAllWithCategorie
      * @return void
      */
-    public function lister() {
+    public function lister()
+    {
         $pdo = Bd::getInstance()->getPdo();
 
         $loader = new \Twig\Loader\FilesystemLoader('../templates');
@@ -35,7 +38,7 @@ class ControllerInscription extends Controller {
 
         $managerActualite = new ActualiteDao($pdo);
         $actualite = $managerActualite->findAllWithCategorie();
-        
+
         // Rendre le template Twig
         echo $twig->render('inscription.html.twig', [
             'title' => 'Inscription',
@@ -53,7 +56,8 @@ class ControllerInscription extends Controller {
      * @uses User
      * @return void
      */
-    public function validerFormulaireInscription() {
+    public function validerFormulaireInscription()
+    {
         // definition des regles de validations que l'on souhaite verifier pour chaque champs du formulaire
         $regleValidation = [
             'email' => [
@@ -97,12 +101,12 @@ class ControllerInscription extends Controller {
         }
         // validation des donnees du formulaire
         $donneesValides = $validator->valider($donnees);
-        
+
 
         // si les donnees sont valides
         if ($donneesValides) {
             //vérifier que le pseudo est disponible
-            if($validator->is_available($donnees['pseudo'])) {
+            if ($validator->is_available($donnees['pseudo'])) {
                 $pseudoValide = true;
             } else {
                 echo "Ce pseudo est déjà utilisé";
@@ -110,7 +114,7 @@ class ControllerInscription extends Controller {
             }
 
             //vérifier que l'email est disponible
-            if($validator->is_available($donnees['email'])) {
+            if ($validator->is_available($donnees['email'])) {
                 $emailValide = true;
             } else {
                 echo "Cet email est déjà utilisé";
@@ -118,8 +122,8 @@ class ControllerInscription extends Controller {
             }
 
             //vérifier que le mot de passe est correct
-            if($validator->is_strong($donnees['mdp'])) {
-                if($donnees['mdp'] == $donnees['mdp2']) {
+            if ($validator->is_strong($donnees['mdp'])) {
+                if ($donnees['mdp'] == $donnees['mdp2']) {
                     $mdpValide = true;
                 } else {
                     echo "Les mots de passe ne correspondent pas";
@@ -128,8 +132,8 @@ class ControllerInscription extends Controller {
             } else {
                 echo "Le mot de passe n'est pas assez fort, il doit contenir au moins 8 caractères, une majuscule,un chiffre et un charactère spécial";
             }
-            
-            if($pseudoValide && $emailValide && $mdpValide) {
+
+            if ($pseudoValide && $emailValide && $mdpValide) {
                 //hasher le mot de passe
                 $donnees['mdp'] = $validator->hash_password($donnees['mdp']);
 
@@ -137,7 +141,34 @@ class ControllerInscription extends Controller {
                 $this->insererDonneesDansLaBase($donnees);
                 $mail = new Mail();
                 $objet = "Confirmation d'inscription";
-                $corp = "<p> Bienvenue sur GureKultura ! </p>";
+                $corp = "
+<div style='margin: 0; padding: 0; background-color: #FDF6EE; font-family: 'Sen', sans-serif; color: #2C3E50;'>
+    <table width='100%' cellpadding='0' cellspacing='0' border='0' align='center'>
+        <tr>
+            <td align='center' bgcolor='#F26B3A' style='padding: 20px;'>
+                <h1 style='color: #FDF6EE; margin: 0;'>🎉 Bienvenue chez GureKultura ! 🎉</h1>
+            </td>
+        </tr>
+        <tr>
+            <td align='center' style='padding: 40px 20px;'>
+                <p style='font-size: 18px; line-height: 1.5; max-width: 600px;'>Nous sommes ravis de vous accueillir dans notre communauté dédiée à la culture basque ! Préparez-vous à découvrir des événements passionnants, des ateliers enrichissants et bien plus encore.</p>
+                <p style='font-size: 18px;'>🎭 Événements | 🎶 Musique | 🍷 Gastronomie | 🏕️ Découvertes</p>
+                <a href='#' style='display: inline-block; padding: 15px 25px; background-color: #D6453D; color: #FDF6EE; text-decoration: none; font-size: 18px; border-radius: 5px; margin-top: 20px;'>Découvrir nos activités</a>
+            </td>
+        </tr>
+        <tr>
+            <td align='center' bgcolor='#F26B3A' style='padding: 20px; color: #FDF6EE;'>
+                <p style='margin: 0;'>Suivez-nous sur nos réseaux sociaux :</p>
+                <p style='margin: 10px 0;'>
+                    <a href='#' style='color: #FDF6EE; text-decoration: none; margin: 0 10px;'>Facebook</a> |
+                    <a href='#' style='color: #FDF6EE; text-decoration: none; margin: 0 10px;'>Instagram</a> |
+                    <a href='#' style='color: #FDF6EE; text-decoration: none; margin: 0 10px;'>Twitter</a>
+                </p>
+            </td>
+        </tr>
+    </table>
+</div>";
+
                 $mailEnvoyer = $mail->envoieMail($donnees['email'], $objet, $corp);
 
             }
@@ -161,7 +192,7 @@ class ControllerInscription extends Controller {
         try {
             $pdo = Bd::getInstance()->getPdo();
             $managerUser = new UserDao($pdo);
-    
+
             // Créez un nouvel objet Evenement avec les données du formulaire
             $user = new User(
                 null,
@@ -174,24 +205,24 @@ class ControllerInscription extends Controller {
                 null,
                 false
             );
-    
+
             // Log the event data for debugging
             error_log(print_r($user, true));
-    
+
             // Insérez l'événement dans la base de données
             $managerUser->insert($user);
 
             //enregistrer l'utilisateur dans la session
             $pdo = Bd::getInstance()->getPdo();
-                $managerUser = new UserDao($pdo);
-                $user = $managerUser->findWithEmail($donnees['email']);
-                if ($user->getEstAdmin() == 1) {
-                    $user->setRole('moderateur');
-                } else {
-                    $user->setRole('user');
-                }
-                $_SESSION['user'] = $user;
-                $this->getTwig()->addGlobal('utilisateurConnecte', $user);
+            $managerUser = new UserDao($pdo);
+            $user = $managerUser->findWithEmail($donnees['email']);
+            if ($user->getEstAdmin() == 1) {
+                $user->setRole('moderateur');
+            } else {
+                $user->setRole('user');
+            }
+            $_SESSION['user'] = $user;
+            $this->getTwig()->addGlobal('utilisateurConnecte', $user);
             header('Location: index.php?controlleur=index&methode=lister');
         } catch (Exception $e) {
             // Log the error message
@@ -200,3 +231,4 @@ class ControllerInscription extends Controller {
         }
     }
 }
+
