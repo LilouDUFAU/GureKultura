@@ -7,7 +7,7 @@ function verifErreurSaisie(input) {
             if (input.id === "titre" && (valeur === "" || valeur.length > 50)) {
                 addErrorForm(input, "Les titres ne peuvent pas être vides ou dépasser 50 caractères !");
             } else if (input.id === "nomRep" && valeur === "") {
-                addErrorForm(input, "Le Noms ne peuvent pas être vides !");
+                addErrorForm(input, "Le Nom ne peuvent pas être vides !");
             } else if (input.id === "nom" && valeur === "") {
                 addErrorForm(input, "Le Noms ne peuvent pas être vides !");
             } else if (input.id === "pseudo" && valeur === "") {
@@ -121,7 +121,7 @@ function removeErrorForm(input) {
 
     var messageErrExist = document.getElementById("messageErreur");
     var btnValider = document.getElementById("validerFormulaire");
-    if (btnValider.disabled && messageErrExist == null) {
+    if (btnValider !== null && btnValider.disabled && messageErrExist == null) {
         btnValider.disabled = false;
     }
 
@@ -142,16 +142,16 @@ function addErrorForm(input, msgError) {
             exist = true;
         }
     });
-    var btnValider = document.getElementById("validerFormulaire");
-    if (btnValider !== null && !btnValider.disabled) {
-        btnValider.disabled = true;
-    }
 
     if (!exist) {
         input.classList.remove("border-white");
         input.classList.add("border-error");
         messageErreur.innerHTML = msgError;
         input.parentElement.appendChild(messageErreur);
+    }
+    var btnValider = document.getElementById("validerFormulaire");
+    if (btnValider !== null && !btnValider.disabled) {
+        btnValider.disabled = true;
     }
 
 }
