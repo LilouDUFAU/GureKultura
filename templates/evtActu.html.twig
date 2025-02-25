@@ -13,67 +13,46 @@
 				<img src="../asset/evenement/photo/{{ evtActus.photo }}" alt="photo evenement" class="row-start-1 col-start-1 col-span-12 lg:col-span-6 rounded-lg">
 				<p class="row-start-2 col-start-1 col-span-12 lg:col-span-6 break-words">{{ evtActus.description }}</p>
 
-				<div class="row-start-3 col-start-1 col-span-12 lg:col-span-6 grid grid-cols-subgrid border-2 border-solid border-[#A23145] rounded-lg bg-[#A23145] bg-opacity-55 p-2">
-					<p class="row-start-1 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold text-center">Date début :
-						{{ evtActus.dateDebut }}
+				<div class="row-start-3 col-start-1 col-span-12 lg:col-span-6 grid grid-cols-subgrid bg-card rounded-lg bg-opacity-55 p-2">
+					<p class="row-start-1 col-start-1 col-span-12 lg:col-span-6 text-text font-semibold text-center">Date début :
+						{{ evtActus.dateDebut }} à
 						{{ evtActus.heureDebut }}</p>
-					<p class="row-start-2 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold text-center">Date fin :
-						{{ evtActus.dateFin }}
+					<p class="row-start-2 col-start-1 col-span-12 lg:col-span-6 text-text font-semibold text-center">Date fin :
+						{{ evtActus.dateFin }} à
 						{{ evtActus.heureFin }}</p>
-					<p class="row-start-3 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold text-center">Lieu :
+					<p class="row-start-3 col-start-1 col-span-12 lg:col-span-6 text-text font-semibold text-center">Lieu :
 						{{ evtActus.lieu }}</p>
 				</div>
 			</div>
 
 
 			<!-- Colonne de droite -->
-			<div class="grid grid-cols-subgrid col-start-1 col-span-12 row-start-3 lg:col-start-7 lg:col-span-6 lg:row-start-2 border-2 border-solid border-[#A23145] bg-[#A23145] bg-opacity-55 rounded-lg p-2 h-full">
-				<h2 class="row-start-1 col-start-1 col-span-12 lg:col-span-6 text-2xl font-bold text-center text-white">Fiche Responsable</h2>
-				<p class="row-start-2 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Nom :
+			<div class="grid grid-cols-subgrid col-start-1 col-span-12 row-start-3 lg:col-start-7 lg:col-span-6 lg:row-start-2 bg-card  bg-opacity-55 rounded-lg p-2 h-full">
+				<h2 class="row-start-1 col-start-1 col-span-12 lg:col-span-6 text-2xl font-bold text-center text-text">Fiche Responsable</h2>
+				<p class="row-start-2 col-start-1 col-span-12 lg:col-span-6 text-text font-semibold">Nom :
 					{{ evtActus.nomRep }}</p>
-				<p class="row-start-3 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Prénom :
+				<p class="row-start-3 col-start-1 col-span-12 lg:col-span-6 text-text font-semibold">Prénom :
 					{{ evtActus.prenomRep }}</p>
-				<p class="row-start-4 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Mail :
+				<p class="row-start-4 col-start-1 col-span-12 lg:col-span-6 text-text font-semibold">Mail :
 					{{ evtActus.email }}</p>
-				<p class="row-start-5 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Téléphone :
+				<p class="row-start-5 col-start-1 col-span-12 lg:col-span-6 text-text font-semibold">Téléphone :
 					{{ evtActus.tel }}</p>
 				<a href="../asset/evenement/autorisation/{{ evtActus.autorisation }}" alt="autorisation evenment" class="row-start-6 col-start-1 col-span-6 rounded-lg text-sky-600 underline font-semibold" target="_blank">Cliquez ici pour visionner le fichier PDF</a>
 			</div>
 		</div>
 
-    {% if type == 'Evenements' %} 
-        {% if estInscrit == true %}
-            
-            <h1 class="font-bold text-xl p-2 text-principal">Vous êtes déjà inscrit !</h1>
 
-            <form method="POST" action="index.php?controlleur=evtActu&methode=desinscrire">
-                <INPUT TYPE="hidden" NAME="nom" VALUE="{{evtActus.titre}}">
-                <INPUT TYPE="hidden" NAME="type" VALUE="{{ type }}">             
-                <input type="hidden" name="id" value="{{ evtActus.evtId }}">
-                <button type="submit" class="mt-4 px-6 py-2 bg-principal text-white font-semibold rounded-lg hover:bg-black">Se désinscrire</button>
-            </form>
-        {% endif %}
-        {% if estInscrit == false and user.role == 'user' %}
-            <form method="POST" action="index.php?controlleur=evtActu&methode=inscrire">
-                <INPUT TYPE="hidden" NAME="nom" VALUE="{{evtActus.titre}}">
-                <INPUT TYPE="hidden" NAME="type" VALUE="{{ type }}"> 
-                <input type="hidden" name="id" value="{{ evtActus.evtId }}">
-                <button type="submit" class="mt-4 px-6 py-2 bg-principal text-white font-semibold rounded-lg hover:bg-black">S'inscrire</button>
-            </form>
-        {% endif %}
-
-    {% endif %}
 
 		<!-- Section Commentaires -->
-		<div class="mt-8 p-4 bg-[#f4f4f4] rounded-lg shadow-md">
-			<h2 class="text-2xl font-bold text-[#A23145] mb-4">Commentaires</h2>
+		<div class="mt-8 p-4 text-tab rounded-lg shadow-lg">
+			<h2 class="text-2xl font-bold text-title mb-4">Commentaires</h2>
 
 			<!-- Exemples de commentaires -->
 			{% for commentaire in commentaires %}
 				<div class="mb-6">
-					<p class="font-semibold text-[#A23145]">{{ commentaire.pseudo }}
+					<p class="font-semibold text-text">{{ commentaire.pseudo }}
 						:</p>
-					<p class="text-gray-700">{{ commentaire.contenu }}</p>
+					<p class="text-title">{{ commentaire.contenu }}</p>
 					<p class="text-gray-500 text-sm">{{ commentaire.datePubli|date("d/m/Y H:i") }}</p>
 				</div>
 			{% else %}
@@ -82,16 +61,39 @@
 
 			<!-- Formulaire pour ajouter un commentaire -->
 			<div class="mt-6">
-				<label for="commentaire" class="block text-[#A23145] font-semibold mb-2">Ajouter un commentaire :</label>
+				<label for="commentaire" class="block text-lg font-bold text-title mb-4">Ajouter un commentaire :</label>
 				<form action="index.php?controlleur=evtActu&methode=ajouterCommentaire" method="POST">
-					<textarea id="commentaire" name="commentaire" rows="3" class="w-full p-3 border-2 border-[#A23145] rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#A23145]" required></textarea>
+					<textarea id="commentaire" name="commentaire" rows="3" class="w-full p-3 border-2 rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#A23145]" required></textarea>
 					    <INPUT TYPE="hidden" NAME="nom" VALUE="{{evtActus.titre}}">
 						<INPUT TYPE="hidden" NAME="type" VALUE="{{ type }}"> 
 						<input type="hidden" name="id" value="{{ evtActus.evtId }}">
 					<!-- Passer l'ID de l'événement -->
-					<button type="submit" class="mt-4 px-6 py-2 bg-[#A23145] text-white font-semibold rounded-lg hover:bg-[#8a1e36]">Envoyer</button>
+					<button type="submit" class="mt-4 px-6 py-2 text-white font-semibold rounded-lg bg-button">Envoyer</button>
 				</form>
 			</div>
+
+			    {% if type == 'Evenements' %} 
+					{% if estInscrit == true %}
+						
+						<h1 class="font-bold text-xl p-2 text-title">Vous êtes déjà inscrit !</h1>
+
+						<form method="POST" action="index.php?controlleur=evtActu&methode=desinscrire">
+							<INPUT TYPE="hidden" NAME="nom" VALUE="{{evtActus.titre}}">
+							<INPUT TYPE="hidden" NAME="type" VALUE="{{ type }}">             
+							<input type="hidden" name="id" value="{{ evtActus.evtId }}">
+							<button type="submit" class="mt-4 px-6 py-2 bg-principal text-white font-semibold rounded-lg bg-button">Se désinscrire</button>
+						</form>
+					{% endif %}
+					{% if estInscrit == false and user.role == 'user' %}
+						<form method="POST" action="index.php?controlleur=evtActu&methode=inscrire">
+							<INPUT TYPE="hidden" NAME="nom" VALUE="{{evtActus.titre}}">
+							<INPUT TYPE="hidden" NAME="type" VALUE="{{ type }}"> 
+							<input type="hidden" name="id" value="{{ evtActus.evtId }}">
+							<button type="submit" class="mt-4 px-6 py-2 bg-principal text-white font-semibold rounded-lg bg-button">S'inscrire</button>
+						</form>
+					{% endif %}
+
+				{% endif %}
 		</div>
 	</div>
 
@@ -101,12 +103,12 @@
 {% if type == 'Actualites' %}
     <!-- Contenu spécifique de l'actualité -->
     <div class="pt-2">
-        <div class="gap-2 p-2 grid grid-cols-12 items-center bg-[#A23145] rounded-lg">
+        <div class="gap-2 p-2 grid grid-cols-12 items-center  rounded-lg">
             <!-- titre de l'article -->
-            <h1 class="col-span-12 text-white font-bold text-2xl lg:text-5xl text-left mb-4 break-words col-start-1 row-start-1 px-4">{{ evtActus.titre }}</h1>
+            <h1 class="col-span-12 text-title font-bold text-2xl lg:text-5xl text-left mb-4 break-words col-start-1 row-start-1 px-4">{{ evtActus.titre }}</h1>
 
             <!-- résumé de l'article -->
-            <div class="col-span-12 text-white font-bold text-sm lg:text-lg text-left mb-4 break-words col-start-1 row-start-2 px-4">
+            <div class="col-span-12 text-text font-bold text-sm lg:text-lg text-left mb-4 break-words col-start-1 row-start-2 px-4">
                 {{ evtActus.resume }}
             </div>
 
@@ -115,34 +117,34 @@
                 <!-- image de l'article -->
                 <img src="../asset/actualite/{{ evtActus.img }}" alt="Image de l'article" class="col-start-2 xl:col-start-2 col-span-4 row-start-1 rounded-lg mb-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
                 <!-- contenu de l'article -->
-                <div class="col-start-1 row-start-2 col-span-6 text-white font-medium text-xs lg:text-base text-left break-words">
+                <div class="col-start-1 row-start-2 col-span-6 text-text font-medium text-m lg:text-base text-left break-words">
                     {{ evtActus.contenu }}
                 </div>
             </div>
 
             <!-- section commentaires -->
-            <div class="gap-2 grid grid-cols-12 items-center bg-[#f4f4f4] border-2 border-solid border-[#621220] rounded-lg p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] sm:col-start-1 xl:col-start-10 col-span-12 xl:col-span-3 sm:row-start-4 xl:row-start-3 sm:h-full xl:h-full">
+            <div class="gap-2 grid grid-cols-12 items-center bg-card border-2 border-solid text- rounded-lg p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] sm:col-start-1 xl:col-start-10 col-span-12 xl:col-span-3 sm:row-start-4 xl:row-start-3 sm:h-full xl:h-full">
                 <!-- Titre "Commentaires" -->
-                <div class="gap-2 grid grid-cols-12 items-center bg-[#A23145] rounded-xl p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] text-center justify-center mb-4 col-span-12 text-white text-lg lg:text-3xl font-medium">
+                <div class="gap-2 grid grid-cols-12 items-center  p-4 text-center justify-center mb-4 col-span-12 text-title text-lg lg:text-3xl font-bold">
                     Commentaires
                 </div>
 
 				<!-- Afficher les commentaires réels -->
 				{% if commentaires is not empty %}
 					{% for commentaire in commentaires %}
-						<div class="grid grid-cols-12 items-start mb-4 col-span-12 pb-4 border-b border-gray-300">
+						<div class="grid grid-cols-12 items-start mb-4 col-span-12 pb-4 border-b">
 							<!-- image de profil -->
 							<div class="col-start-1 col-span-1 flex justify-center items-center">
 								<img src="../asset/icones/pp_user.svg" alt="pp" class="w-auto h-auto rounded-full">
 							</div>
 
 							<!-- nom du commentateur -->
-							<div class="font-semibold text-[#A23145] text-base col-start-2 col-span-10 row-start-1 truncate flex items-center">
+							<div class="font-bold text-text col-start-2 col-span-10 row-start-1 truncate flex items-center">
 								{{ commentaire.pseudo }}
 							</div>
 
 							<!-- texte du commentaire -->
-							<div class="text-black text-base col-start-2 col-span-8 row-start-4 break-words">
+							<div class="text-text text-base col-start-2 col-span-8 row-start-4 break-words">
 								{{ commentaire.contenu }}
 							</div>
 
@@ -150,19 +152,18 @@
 							<div class="text-gray-500 text-xs col-start-2 col-span-3 row-start-2">
 								{{ commentaire.datePubli|date("d/m/Y H:i") }}
 							</div>
+
 						</div>
 					{% endfor %}
 				{% else %}
-					<p>Aucun commentaire pour cette actualité.</p>
+					<h1 class="col-span-12">Aucun commentaire pour cette actualité.</h1>
 				{% endif %}
 
 
                 <!-- Formulaire pour ajouter un commentaire -->
                 <form action="index.php?controlleur=evtActu&methode=ajouterCommentaire" method="POST" class="gap-2 grid grid-cols-12 items-start col-span-12">
                     <!-- champ de texte pour le commentaire -->
-                    <div class="col-start-1 col-span-10 row-start-1 row-span-2 items-center rounded-lg border-2 border-solid border-black bg-[#ffffff]">
-                        <textarea placeholder="Ajouter un commentaire" name="commentaire" maxlength="500" class="placeholder-gray-500 p-4 text-[#000000] w-full resize-none overflow-auto" rows="1"></textarea>
-                    </div>
+                    <textarea placeholder="Ajouter un commentaire" name="commentaire" maxlength="500" class="col-start-1 col-span-10 row-start-1 row-span-2 items-center  bg-white p-4 text-text w-full resize-none border-2 border-solid border-title rounded-lg" rows="1"></textarea>
 
                     <!-- Cacher l'ID de l'actualité -->
                     <INPUT TYPE="hidden" NAME="nom" VALUE="{{evtActus.titre}}">
