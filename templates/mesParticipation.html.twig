@@ -8,21 +8,21 @@
     
 
         {# En-tête du tableau #}
-        <div class="col-span-12 grid grid-cols-12 bg-tabtitle font-bold">
-            <div class="row-start-1 col-start-1 col-span-3 p-2">Nom</div>
-            <div class="row-start-1 col-start-4 col-span-2 p-2 hidden lg:block">Date</div>
-            <div class="row-start-1 col-start-4 col-span-3 lg:col-start-7 lg:col-span-3 p-2 hidden md:block">Lieu</div>
-            <div class="row-start-1 col-start-4 col-span-3 md:col-start-7 md:col-span-4 lg:col-start-10 lg:col-span-2 p-2">Aperçu</div>
-            <div class="row-start-1 col-start-9 col-span-4 lg:col-start-11 lg:col-span-2 p-2">Inscription</div>
+        <div class="col-span-12 grid grid-cols-12 mt-5  bg-tabtitle text-title text-sm lg:text-base p-2 font-semibold">
+            <div class="row-start-1 col-start-1 col-span-3 p-2 break-words">Nom</div>
+            <div class="row-start-1 col-start-4 col-span-2 p-2 hidden lg:block break-words">Date</div>
+            <div class="row-start-1 col-start-4 col-span-3 lg:col-start-7 lg:col-span-3 p-2 hidden md:block break-words">Lieu</div>
+            <div class="row-start-1 col-start-4 col-span-3 md:col-start-7 md:col-span-4 lg:col-start-10 lg:col-span-2 p-2 break-words">Aperçu</div>
+            <div class="row-start-1 col-start-9 col-span-4 lg:col-start-11 lg:col-span-2 p-2 break-words">Inscription</div>
         </div>
 
         <div>
         {# Contenu dynamique #}
         {% for evenement in evenements %}
             <div class="col-span-12 grid grid-cols-12 odd:bg-odd even:bg-even">
-                <div class="row-start-1 col-start-1 col-span-3 p-2">{{ evenement.titre }}</div>
-                <div class="row-start-1 col-start-4 col-span-2 p-2 hidden lg:block">{{ evenement.dateDebut }}</div>
-                <div class="row-start-1 col-start-4 col-span-3 lg:col-start-7 lg:col-span-3 p-2 hidden md:block">{{ evenement.lieu }}</div>
+                <div class="row-start-1 col-start-1 col-span-3 p-2 break-words">{{ evenement.titre }}</div>
+                <div class="row-start-1 col-start-4 col-span-2 p-2 hidden lg:block break-words">{{ evenement.dateDebut }}</div>
+                <div class="row-start-1 col-start-4 col-span-3 lg:col-start-7 lg:col-span-3 p-2 hidden md:block break-words">{{ evenement.lieu }}</div>
                 {# visualisation #}
                 <div class="row-start-1 col-start-4 col-span-3 md:col-start-7 md:col-span-4 lg:col-start-10 lg:col-span-2 p-2">
                     <form action="index.php?controlleur=evtActu&methode=lister" method="post">
