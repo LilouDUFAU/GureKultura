@@ -51,7 +51,7 @@ class ControllerEvtActu extends Controller {
         } if ($type == "Actualites"){
             $managerEvtActu = new ActualiteDao($pdo);
         } 
-
+        
         $evtActu = $managerEvtActu->find($id);
         $actualite = $managerActualite->findAllWithCategorie(); 
         // Rendre le template Twig
