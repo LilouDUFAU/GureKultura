@@ -75,11 +75,14 @@ class ControllerValidPropEv extends Controller
     {
         $pdo = Bd::getInstance()->getPdo();
         $managerEvenement = new EvenementDao($pdo);
-        $evenement = new Evenement($_POST['evtId']);
-
-        var_dump($evenement);
+        $evenement=$managerEvenement->find($_POST['evtId']);
+        $managerUser = new UserDao($pdo);
+        $user=$managerUser->find($evenement->getUserId());
+        $user->getEmail();
+        $donnees = $_POST;
+        $mail = new Mail();
+        $mail->envoieMail($user->getEmail(), $donnees['objet'],$donnees['message']);
         $managerEvenement->delete($evenement);
-        var_dump($_POST['evtId']);
         header('Location: index.php?controlleur=validPropEv&methode=lister');
     }
 

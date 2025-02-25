@@ -5,11 +5,11 @@
 		<h2 class="text-2xl lg:text-4xl font-semibold text-center text-title uppercase lg:font-extrabold mb-8">Inscription</h2>
 
 		<div class="max-w-md w-full space-y-6 p-8 bg-form shadow-xl rounded-2xl">
-			<form class="grid grid-cols-6 space-y-4 text-sm lg:text-base" action="index.php?controlleur=inscription&methode=validerFormulaireInscription" method="post" enctype="multipart/form-data">
+			<form class="grid grid-cols-6 space-y-4 text-sm lg:text-base text-text" action="index.php?controlleur=inscription&methode=validerFormulaireInscription" method="post" enctype="multipart/form-data">
 
 				<div class="grid grid-cols-subgrid row-start-1 col-start-1 col-span-6 p-2">
 					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
-						<img src="../asset/icones/envelope.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone">
+						<img src="../asset/icones/envelope.svg" class="w-6 h-6  py-1 rounded-md" alt="icone">
 						<label for="email">Email</label>
 					</div>
 					<input type="email" placeholder="E-mail" name="email" required title="Veuillez entrer une adresse e-mail valide" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text">
@@ -17,7 +17,7 @@
 
 				<div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-6 p-2">
 					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
-						<img src="../asset/icones/person-vcard (1).svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone">
+						<img src="../asset/icones/person-vcard (1).svg" class="w-6 h-6  py-1 rounded-md" alt="icone">
 						<label for="nom">Nom</label>
 					</div>
 					<input type="text" placeholder="Nom complet" name="nom" required title="Veuillez entrer votre nom complet" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text">
@@ -25,7 +25,7 @@
 
 				<div class="grid grid-cols-subgrid row-start-3 col-start-1 col-span-6 p-2">
 					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
-						<img src="../asset/icones/person.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone">
+						<img src="../asset/icones/person.svg" class="w-6 h-6  py-1 rounded-md" alt="icone">
 						<label for="pseudo">Pseudo</label>
 					</div>
 					<input type="text" placeholder="Nom d'utilisateur" name="pseudo" required title="Veuillez entrer un nom d'utilisateur" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text">
@@ -34,7 +34,8 @@
 				<!-- Champ mot de passe -->
 				<div class="grid grid-cols-subgrid row-start-4 col-start-1 col-span-6 p-2 relative">
 					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
-						<img src="../asset/icones/lock.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone">
+						<img src="../asset/icones/lock.svg" class="w-6 h-6  py-1 rounded-md" alt="icone">
+						<label for="password">Mot de passe</label>
 					</div>
 					<div class="relative col-start-3 col-span-4 w-full">
 						<input type="password" id="password" placeholder="Mot de passe" name="mdp" required 
@@ -49,7 +50,8 @@
 				<!-- Champ confirmation mot de passe -->
 				<div class="grid grid-cols-subgrid row-start-5 col-start-1 col-span-6 p-2 relative">
 					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
-						<img src="../asset/icones/lock.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone">
+						<img src="../asset/icones/lock.svg" class="w-6 h-6  py-1 rounded-md" alt="icone">
+						<label for="confirm-password">Confirmer le mot de passe</label>
 					</div>
 					<div class="relative col-start-3 col-span-4 w-full">
 						<input type="password" id="confirm-password" placeholder="Confirmer le mot de passe" name="mdp2" required 
