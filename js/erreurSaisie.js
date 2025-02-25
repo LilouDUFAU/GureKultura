@@ -8,6 +8,10 @@ function verifErreurSaisie(input) {
                 addErrorForm(input, "Les titres ne peuvent pas être vides ou dépasser 50 caractères !");
             } else if (input.id === "nomRep" && valeur === "") {
                 addErrorForm(input, "Le Noms ne peuvent pas être vides !");
+            } else if (input.id === "nom" && valeur === "") {
+                addErrorForm(input, "Le Noms ne peuvent pas être vides !");
+            } else if (input.id === "pseudo" && valeur === "") {
+                addErrorForm(input, "Le Pseudo ne peuvent pas être vides !");
             } else if (input.id === "prenomRep" && valeur === "") {
                 addErrorForm(input, "Le Prenom ne peuvent pas être vides !");
             } else {
@@ -52,11 +56,11 @@ function verifErreurSaisie(input) {
             var dateDebut = new Date(document.getElementById("debutDate").value);
             var dateFin = new Date(document.getElementById("finDate").value);
             var dateActuelle = new Date();
-            if (date <= dateActuelle) {
+            if (date <<= dateActuelle) {
                 addErrorForm(input, "La date ne peut pas être inférieure à la date actuelle !");
-            } else if (date >= dateFin) {
+            } else if (date >>= dateFin) {
                 addErrorForm(input, "La date ne peut pas être suppérieur à la date de fin !");
-            } else if (date <= dateDebut) {
+            } else if (date <<= dateDebut) {
                 addErrorForm(input, "La date ne peut pas être inférieure à la date de début !");
             } else {
                 removeErrorForm(input);
@@ -135,7 +139,7 @@ function addErrorForm(input, msgError) {
         }
     });
     var btnValider = document.getElementById("validerFormulaire");
-    if (!btnValider.disabled) {
+    if (btnValider !== null && !btnValider.disabled) {
         btnValider.disabled = true;
     }
 

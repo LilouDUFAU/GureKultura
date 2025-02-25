@@ -83,7 +83,9 @@
 					<img src="../asset/icones/person-vcard (1).svg" alt="nom" class="w-6 h-6  py-1 rounded-md">
 					<label for="nom" class="">Nom</label>
 				</div>
-				<input name="nom" id="nom" class="row-start-1 col-start-3 col-span-4 border-solid border-2 border-gray-300 rounded-md px-2" value="{{ user.getNom }}">
+				<div class="col-start-3 col-span-4 w-full">
+					<input name="nom" id="nom" oninput='verifErreurSaisie(nom)' class="row-start-1 col-start-3 col-span-4 border-solid border-2 border-gray-300 rounded-md px-2" value="{{ user.getNom }}">
+				</div>
 			</div>
 
 			{# email #}
@@ -99,9 +101,11 @@
 			<div class="grid grid-cols-subgrid row-start-4 col-start-1 col-span-6 gap-4">
 				<div class="row-start-1 col-start-1 col-span-2 flex flex-row items-center gap-2">
 					<img src="../asset/icones/person.svg" alt="pseudo" class="w-6 h-6  py-1 rounded-md">
-					<label for="pesudo" class="">Pseudo</label>
+						<label for="pesudo" class="">Pseudo</label>
 				</div>
-				<input name="pseudo" id="pseudo" class="row-start-1 col-start-3 col-span-4 text-text border-solid border-2 border-gray-300 rounded-md px-2" value="{{ user.getPseudo }}">
+				<div class="col-start-3 col-span-4 w-full">
+					<input name="pseudo" id="pseudo" oninput='verifErreurSaisie(pseudo)' class="row-start-1 col-start-3 col-span-4 text-text border-solid border-2 border-gray-300 rounded-md px-2" value="{{ user.getPseudo }}">
+				</div>
 			</div>
 
 			{# bio #}
@@ -132,7 +136,7 @@
 			{# bouton de validation/annulation #}
 			<div class="row-start-8 col-start-1 col-span-6 flex justify-end gap-2">
 				<button type="button" onclick="closePopup(1)" class="px-4 py-2 bg-button hover:bg-hbutton text-white rounded-lg mr-2">Annuler</button>				
-				<button type="submit" class="px-4 py-2 bg-button hover:bg-hbutton text-white rounded-lg">Modifier</button>
+				<button type="submit" id="validerFormulaire" class="px-4 py-2 bg-button hover:bg-hbutton text-white rounded-lg">Modifier</button>
 				<button type="button" onclick="openPopup(3), closePopup(1)" class="px-4 py-2 bg-button hover:bg-hbutton text-white rounded-lg mr-2"> Changer le mot de passe</button>
 			</div>
 		</form>
@@ -218,4 +222,7 @@ function closePopup(val) {
 			document.getElementById("popupModifMdp").parentElement.parentElement.classList.add("hidden");
 		}
 }
-</script>{% endblock %}
+</script>
+
+<script src="../js/erreurSaisie.js"></script>
+{% endblock %}
