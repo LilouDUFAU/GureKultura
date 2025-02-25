@@ -70,16 +70,8 @@
 
 			<!-- Exemples de commentaires -->
 			{% for commentaire in commentaires %}
-<<<<<<< HEAD
-				<div class="col-start-1 col-span-1 flex justify-center items-center">
-					<img src="../asset/icones/pp_user.svg" alt="pp" class="w-auto h-auto rounded-full">
-				</div>
-                <div class="mb-6">
-					<p class="font-semibold text-[#A23145]">{{ commentaire.userNom }}
-=======
 				<div class="mb-6">
 					<p class="font-semibold text-[#A23145]">{{ commentaire.pseudo }}
->>>>>>> origin
 						:</p>
 					<p class="text-gray-700">{{ commentaire.contenu }}</p>
 					<p class="text-gray-500 text-sm">{{ commentaire.datePubli|date("d/m/Y H:i") }}</p>

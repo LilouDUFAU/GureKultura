@@ -7,11 +7,11 @@
 		<!-- Formulaire de filtres -->
 		<div class="mb-6">
 			<div class="grid p-4 grid-cols-1 md:grid-cols-2 bg-form lg:grid-cols-3 gap-4">	
-				<h3 class="text-xl font-semibold bg-form text-title">Catégories</h3>
+				<h3 class="text-xl font-semibold text-title bg-form ">Catégories</h3>
 
 				{% for categorie in categories %}
 					{% if categorie.nom == 'Sport' %}
-						<label cateid="Sport"><br>
+						<label cateid="Sport" class ="font-semibold text-title"><br>
 							<input cateid="Sport" type="checkbox" onchange="toggleCate('Sport','1')">
 							{{ categorie.nom }}
 						</label>
@@ -25,7 +25,7 @@
 					{% endif %}
 
 					{% if categorie.nom == 'Culture' %}
-						<label cateid="Culture"><br>
+						<label cateid="Culture" class ="font-semibold text-title"><br>
 							<input cateid="Culture" type="checkbox" onchange="toggleCate('Culture','2')">
 							{{ categorie.nom }}<br>
 						</label>

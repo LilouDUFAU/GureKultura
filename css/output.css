@@ -607,6 +607,7 @@ video {
   grid-column: span 1 / span 1;
 }
 
+
 .col-span-10 {
   grid-column: span 10 / span 10;
 }
@@ -1208,6 +1209,7 @@ video {
   border-bottom-right-radius: 1rem;
   border-bottom-left-radius: 1rem;
 }
+
 
 .rounded-t-2xl {
   border-top-left-radius: 1rem;
