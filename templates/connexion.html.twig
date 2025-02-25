@@ -3,7 +3,7 @@
 {% block content %}
 <div class="pt-2 flex flex-col items-center gap-2 p-2 py-12 sm:py-24">
 	<h2 class="text-2xl lg:text-4xl font-semibold text-center text-title uppercase lg:font-extrabold mb-8">Connexion</h2>
-	<div class="flex flex-col gap-3 w-full max-w-xs sm:max-w-md p-6 sm:p-8 bg-form rounded-lg drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
+	<div class="flex flex-col gap-3 w-full max-w-lg sm:max-w-xl p-6 sm:p-8 bg-form rounded-lg drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
 
 		<form class="grid grid-cols-6 space-y-4 text-sm lg:text-base text-text" action="index.php?controlleur=connexion&methode=validerFormulaireConnexion" method="post" enctype="multipart/form-data">
 			<div class="grid grid-cols-subgrid row-start-1 col-start-1 col-span-6 p-2">
@@ -37,7 +37,6 @@
 			<button type="submit" class="row-start-3 col-start-1 col-span-6 p-3 bg-button hover:bg-hbutton text-tbutton font-semibold rounded-md transition">Se connecter</button>
 		</form>
 
-
 		<div class="flex items-center my-6">
             <hr class="w-full border-gray-300">
             <span class="px-4 text-gray-500">OU</span>
@@ -50,7 +49,6 @@
         </div>
 	</div>
 </div>
-
 
 <script>
 	document.addEventListener("DOMContentLoaded", function () {
@@ -75,4 +73,3 @@
 		</script>
 <script src="../js/erreurSaisie.js"></script>
 {% endblock %}
-
