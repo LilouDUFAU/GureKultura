@@ -1759,19 +1759,6 @@ video {
   background-color: rgb(245 237 227 / var(--tw-bg-opacity, 1));
 }
 
-<<<<<<< HEAD
-.hover\:bg-\[\#8a1e36\]:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(138 30 54 / var(--tw-bg-opacity, 1));
-}
-
-.hover\:bg-black:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(138 30 54 / var(--tw-bg-opacity, 1));
-}
-
-=======
->>>>>>> origin
 .hover\:bg-blue-600:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(37 99 235 / var(--tw-bg-opacity, 1));
