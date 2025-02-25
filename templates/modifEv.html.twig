@@ -26,7 +26,9 @@
 						<img src="../asset/icones/fonts.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de titre">
 						<label for="titre">Titre</label>
 					</div>
-					<input type="text" name="titre" id="titre" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.titre }}">
+					<div class="col-start-3 col-span-4 w-full">
+						<input type="text" name="titre" id="titre" oninput='verifErreurSaisie(titre)' class="w-full bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.titre }}">
+					</div>
 				</div>
 
 				{# type evenement #}
@@ -50,7 +52,9 @@
 						<img src="../asset/icones/justify-left.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de description">
 						<label for="description">Description</label>
 					</div>
-					<textarea name="description" id="description" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2">{{ evenementActuel.description }}"</textarea>
+					<div class="col-start-3 col-span-4 w-full">
+						<textarea name="description" id="description" oninput='verifErreurSaisie(description)' class="w-full bg-transparent border-white border-2 border-solid rounded-lg px-2">{{ evenementActuel.description }}"</textarea>
+					</div>
 				</div>
 
 
@@ -60,7 +64,9 @@
 						<img src="../asset/icones/calendar.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de calendrier">
 						<label for="dateDebut">Date de début</label>
 					</div>
-					<input type="date" name="debutDate" id="debutDate" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.dateDebut}}">
+					<div class="col-start-3 col-span-4 w-full">
+						<input type="date" name="debutDate" id="debutDate" oninput='verifErreurSaisie(debutDate)' class="w-full bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.dateDebut}}">
+					</div>
 				</div>
 
 				{# HeureDebut #}
@@ -69,7 +75,9 @@
 						<img src="../asset/icones/clock.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de heure">
 						<label for="heureDebut" >Heure de début</label>
 					</div>
-					<input type="time" name="debutHeure" id="debutHeure" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.heureDebut }}">
+				<div class="col-start-3 col-span-4 w-full">
+						<input type="time" name="debutHeure" id="debutHeure" oninput='verifErreurSaisie(debutHeure)' class="w-full bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.heureDebut }}">
+					</div>
 				</div>
 
 				{# dateFin #}
@@ -78,7 +86,9 @@
 						<img src="../asset/icones/calendar.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de calendrier">
 						<label for="dateFin" >Date de fin</label>
 					</div>
-					<input type="date" name="finDate" id="finDate" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.dateFin }}">
+					<div class="col-start-3 col-span-4 w-full">
+						<input type="date" name="finDate" id="finDate" oninput='verifErreurSaisie(finDate)' class="w-full bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.dateFin }}">
+					</div>
 				</div>
 
 				{# HeureFin #}
@@ -87,7 +97,9 @@
 						<img src="../asset/icones/clock.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de heure">
 						<label for="heureFin">Heure de fin</label>
 					</div>
-					<input type="time" name="finHeure" id="finHeure" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.heureFin }}">
+					<div class="col-start-3 col-span-4 w-full">
+						<input type="time" name="finHeure" id="finHeure" oninput='verifErreurSaisie(finHeure)' class="w-full bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.heureFin }}">
+					</div>
 				</div>
 
 				{# Lieu #}
@@ -96,7 +108,9 @@
 						<img src="../asset/icones/geo-alt.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de localisation">
 						<label for="lieu">Lieu</label>
 					</div>
-					<textarea name="lieu" id="lieu" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2" >{{ evenementActuel.lieu }}"</textarea>
+					<div class="col-start-3 col-span-4 w-full">
+						<textarea name="lieu" id="lieu" oninput='verifErreurSaisie(lieu)' class="w-full bg-transparent border-white border-2 border-solid rounded-lg px-2" >{{ evenementActuel.lieu }}"</textarea>
+					</div>
 				</div>
 
 				{# Photo #}
@@ -136,7 +150,9 @@
 						<img src="../asset/icones/person.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de personne">
 						<label for="nomResp">Nom</label>
 					</div>
-					<input type="text" name="nomRep" id="nomRep" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.nomRep }}">
+					<div class="col-start-3 col-span-4 w-full">
+						<input type="text" name="nomRep" id="nomRep" oninput='verifErreurSaisie(nom)' class="w-full bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.nomRep }}">
+					</div>
 				</div>
 
 				{# prenomResp #}
@@ -145,8 +161,12 @@
 						<img src="../asset/icones/person.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de personne">
 						<label for="prenomResp" class="col-start-1 col-span-2">Prénom</label>
 					</div>
-					<input type="text" name="prenomRep" id="prenomRep" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.prenomRep }}">
+					<div class="col-start-3 col-span-4 w-full">
+						<input type="text" name="prenomRep" id="prenomRep" oninput='verifErreurSaisie(prenom)' class="w-full bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.prenomRep }}">
+					</div>
 				</div>
+
+				{# fonction #}
 
 				{# email #}
 				<div class="grid grid-cols-subgrid row-start-4 col-start-1 col-span-6 p-2">
@@ -154,7 +174,9 @@
 						<img src="../asset/icones/envelope.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de mail">
 						<label for="email">Email</label>
 					</div>
-					<input type="email" name="email" id="email" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.email }}">
+					<div class="col-start-3 col-span-4 w-full">
+						<input type="email" name="email" id="email" oninput='verifErreurSaisie(email)' class="w-full bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.email }}">
+					</div>
 				</div>
 
 				{# telephone #}
@@ -163,7 +185,9 @@
 						<img src="../asset/icones/telephone.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de téléphone">
 						<label for="telephone">Téléphone</label>
 					</div>
-					<input type="tel" name="tel" id="tel" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.tel }}">
+					<div class="col-start-3 col-span-4 w-full">
+						<input type="tel" name="tel" id="tel" oninput='verifErreurSaisie(tel)' class="w-full bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.tel }}">
+					</div>
 				</div>
 			</div>
 
@@ -171,10 +195,11 @@
 			<div class="grid grid-cols-6">
 				<div class="row-start-1 col-start-4 col-span-2 lg:col-start-6 lg:col-span-1 gap-2 flex flex-row justify-between items-center">
 					<a href="index.php?controlleur=mesEv&methode=lister" class="px-4 py-2 bg-button hover:bg-hbutton text-white rounded-lg text-center">Annuler</a>
-					<button type="submit" class="px-4 py-2 bg-button hover:bg-hbutton text-white rounded-lg text-center">Modifier</button>
+					<button type="submit" id="validerFormulaire" class="px-4 py-2 bg-button hover:bg-hbutton text-white rounded-lg text-center">Modifier</button>
 				</div>
 			</div>
 		</form>
 	</div>
 
+<script src="../js/erreurSaisie.js"></script>
 {% endblock %}

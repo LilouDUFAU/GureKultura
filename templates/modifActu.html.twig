@@ -17,7 +17,9 @@
 						<img src="../asset/icones/fonts.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de titre">
 						<label for="titre" class="">Titre</label>
 					</div>
-					<input type="text" name="titre" id="titre" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text" value="{{ actuActuel.titre }}">
+					<div class="col-start-3 col-span-4 w-full">
+						<input type="text" name="titre" id="titre" oninput='verifErreurSaisie(titre)' class="w-full bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text" value="{{ actuActuel.titre }}">
+					</div>
 				</div>
 				{# type actualite #}
 				<div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-6 p-2">
@@ -40,7 +42,9 @@
 						<img src="../asset/icones/card-text.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de resume">
 						<label for="resume">Résumé</label>
 					</div>
-					<textarea name="resume" id="resume" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text">{{ actuActuel.resume }}</textarea>
+					<div class="col-start-3 col-span-4 w-full">
+						<textarea name="resume" id="resume" oninput='verifErreurSaisie(resume)' class="w-full bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text">{{ actuActuel.resume }}</textarea>
+					</div>
 				</div>
 
 				{# contenu #}
@@ -49,8 +53,10 @@
 						<img src="../asset/icones/card-text.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de contenu">
 						<label for="contenu">Contenu</label>
 					</div>
-					<textarea name="contenu" id="contenu" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text">{{ actuActuel.contenu }}</textarea>
-				</div>
+					<div class="col-start-3 col-span-4 w-full">
+						<textarea name="contenu" id="contenu" oninput='verifErreurSaisie(contenu)' class="w-full bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text">{{ actuActuel.contenu }}</textarea>
+					</div>
+			</div>
 
 
 				{# Image #}
@@ -71,4 +77,5 @@
 		</form>
 	</div>
 
+<script src="../js/erreurSaisie.js"></script>
 {% endblock %}
