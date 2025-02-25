@@ -7,13 +7,13 @@ function verifErreurSaisie(input) {
             if (input.id === "titre" && (valeur === "" || valeur.length > 50)) {
                 addErrorForm(input, "Les titres ne peuvent pas être vides ou dépasser 50 caractères !");
             } else if (input.id === "nomRep" && valeur === "") {
-                addErrorForm(input, "Le Nom ne peuvent pas être vides !");
+                addErrorForm(input, "Le Nom ne peut pas être vide !");
             } else if (input.id === "nom" && valeur === "") {
-                addErrorForm(input, "Le Noms ne peuvent pas être vides !");
+                addErrorForm(input, "Le Nom ne peut pas être vide !");
             } else if (input.id === "pseudo" && valeur === "") {
-                addErrorForm(input, "Le Pseudo ne peuvent pas être vides !");
+                addErrorForm(input, "Le Pseudo ne peut pas être vide !");
             } else if (input.id === "prenomRep" && valeur === "") {
-                addErrorForm(input, "Le Prenom ne peuvent pas être vides !");
+                addErrorForm(input, "Le Prenom ne peut pas être vide !");
             } else {
                 removeErrorForm(input);
             }
@@ -23,7 +23,7 @@ function verifErreurSaisie(input) {
             console.log("email");
             var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailPattern.test(valeur)) {
-                addErrorForm(input, "veuilez entré un email valide !");
+                addErrorForm(input, "Veuilez entrer un email valide !");
 
             } else {
                 removeErrorForm(input);
@@ -34,7 +34,7 @@ function verifErreurSaisie(input) {
             console.log("tel");
             var nombre = parseInt(valeur, 10);
             if (isNaN(nombre) || valeur.length != 10 || valeur[0] != 0) {
-                addErrorForm(input, "veuillez entrer un numéro de téléphone valide !");
+                addErrorForm(input, "Veuillez entrer un numéro de téléphone valide !");
 
             } else {
                 removeErrorForm(input);
@@ -43,11 +43,11 @@ function verifErreurSaisie(input) {
 
         case "textarea":
             if (input.id === "description" && (valeur === "" || valeur.length > 500)) {
-                addErrorForm(input, "La description ne peux pas être vides ou dépasser 500 caractères !");
+                addErrorForm(input, "La description ne peux pas être vide ou dépasser 500 caractères !");
             } else if ((input.id === "resume" || input.id === "contenu") && (valeur === "" || valeur.length > 500)) {
                 addErrorForm(input, "Le " + input.id + " ne peux pas être vides ou dépasser 500 caractères !");
             } else if (input.id === "lieu" && valeur === "") {
-                addErrorForm(input, "Le lieu ne peuvent pas être vide !");
+                addErrorForm(input, "Le lieu ne peut pas être vide !");
             } else {
                 removeErrorForm(input);
             }
@@ -60,11 +60,11 @@ function verifErreurSaisie(input) {
             if (valeur <= dateActuelle) {
                 addErrorForm(input, "La date ne peut pas être inférieure à la date actuelle !");
             } else if (input.id === "debutDate" && valeur >= dateFin.value) {
-                addErrorForm(dateDebut, "La date ne peut pas être suppérieur à la date de fin !");
+                addErrorForm(dateDebut, "La date ne peut pas être supérieur à la date de fin !");
                 addErrorForm(dateFin, "La date ne peut pas être inférieure à la date de début !");
             } else if (input.id === "finDate" && valeur <= dateDebut.value) {
                 addErrorForm(dateFin, "La date ne peut pas être inférieure à la date de début !");
-                addErrorForm(dateDebut, "La date ne peut pas être suppérieur à la date de fin !");
+                addErrorForm(dateDebut, "La date ne peut pas être supérieur à la date de fin !");
             } else {
                 removeErrorForm(dateDebut);
                 removeErrorForm(dateFin);
@@ -76,21 +76,21 @@ function verifErreurSaisie(input) {
             var heureFin = document.getElementById("finHeure");
             if (input.id === "debutHeure" && valeur > heureFin.value && heureFin.value !== "") {
 
-                addErrorForm(input, "l'heure ne peut pas être supérieur à l'heure de fin !");
-                addErrorForm(heureFin, "l'heure ne peux pas etre inférieure à l'heure de début !");
+                addErrorForm(input, "L'heure ne peut pas être supérieur à l'heure de fin !");
+                addErrorForm(heureFin, "L'heure ne peut pas être inférieure à l'heure de début !");
 
             } else if (input.id === "debutHeure" && valeur === "") {
 
-                addErrorForm(input, "l'heure ne peux pas etre vide !");
+                addErrorForm(input, "L'heure ne peut pas être vide !");
 
             } else if (input.id === "finHeure" && valeur < heureDebut.value && heureDebut.value !== "") {
 
-                addErrorForm(input, "l'heure ne peux pas etre inférieure à l'heure de début !");
-                addErrorForm(heureDebut, "l'heure ne peut pas être supérieur à l'heure de fin !");
+                addErrorForm(input, "L'heure ne peut pas être inférieure à l'heure de début !");
+                addErrorForm(heureDebut, "L'heure ne peut pas être supérieur à l'heure de fin !");
 
             } else if (input.id === "finHeure" && valeur < heureDebut.value) {
 
-                addErrorForm(input, "l'heure ne peux pas etre vide !");
+                addErrorForm(input, "L'heure ne peut pas etre vide !");
 
             }
             else {

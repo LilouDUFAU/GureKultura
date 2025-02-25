@@ -1,0 +1,9 @@
+{% extends "base.html.twig" %}
+
+{% block content %}
+    <section class="flex flex-col items-center">
+        <h1 class="text-4xl font-bold text-red-600 p-8">Oups ! Une erreur est survenue.</h1>
+        <p class="mt-4 text-lg text-gray-300 p-8">{{ errorMessage }}</p>
+        <a href="index.php?controlleur=index&methode=lister" class="px-4 py-2 bg-button hover:bg-hbutton text-white rounded-lg text-center">Retourner à l'accueil</a>
+    </section>
+{% endblock %}
