@@ -72,7 +72,7 @@
 
 {# popup de modification de compte #}
 <div id="popup" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden z-50 text-text">
-	<div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-xl h-fit max-h-xl">
+	<div class="bg-bg p-6 rounded-lg shadow-lg w-full max-w-xl h-fit max-h-xl">
 		<input type="hidden" id="popupModifCompte" name="compte" value="">
 		<h2 class="text-xl font-bold text-center mb-4">Modification du compte</h2>
 		<form
@@ -80,7 +80,7 @@
 			{# nom #}
 			<div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-6 gap-4">
 				<div class="row-start-1 col-start-1 col-span-2 flex flex-row items-center gap-2">
-					<img src="../asset/icones/person-vcard (1).svg" alt="nom" class="w-6 h-6 bg-text py-1 rounded-md">
+					<img src="../asset/icones/person-vcard (1).svg" alt="nom" class="w-6 h-6  py-1 rounded-md">
 					<label for="nom" class="">Nom</label>
 				</div>
 				<input name="nom" id="nom" class="row-start-1 col-start-3 col-span-4 border-solid border-2 border-gray-300 rounded-md px-2" value="{{ user.getNom }}">
@@ -89,7 +89,7 @@
 			{# email #}
 			<div class="grid grid-cols-subgrid row-start-3 col-start-1 col-span-6 gap-4">
 				<div class="row-start-1 col-start-1 col-span-2 flex flex-row items-center gap-2">
-					<img src="../asset/icones/envelope.svg" alt="email" class="w-6 h-6 bg-text py-1 rounded-md">
+					<img src="../asset/icones/envelope.svg" alt="email" class="w-6 h-6  py-1 rounded-md">
 					<label for="email" class="">Email</label>
 				</div>
 				<input name="email" id="email" disabled class="row-start-1 col-start-3 col-span-4 text-text border-solid border-2 border-gray-300 rounded-md px-2" value="{{ user.getEmail }}">
@@ -98,7 +98,7 @@
 			{# pseudo #}
 			<div class="grid grid-cols-subgrid row-start-4 col-start-1 col-span-6 gap-4">
 				<div class="row-start-1 col-start-1 col-span-2 flex flex-row items-center gap-2">
-					<img src="../asset/icones/person.svg" alt="pseudo" class="w-6 h-6 bg-text py-1 rounded-md">
+					<img src="../asset/icones/person.svg" alt="pseudo" class="w-6 h-6  py-1 rounded-md">
 					<label for="pesudo" class="">Pseudo</label>
 				</div>
 				<input name="pseudo" id="pseudo" class="row-start-1 col-start-3 col-span-4 text-text border-solid border-2 border-gray-300 rounded-md px-2" value="{{ user.getPseudo }}">
@@ -107,7 +107,7 @@
 			{# bio #}
 			<div class="grid grid-cols-subgrid row-start-5 col-start-1 col-span-6 gap-4">
 				<div class="row-start-1 col-start-1 col-span-2 flex flex-row items-center gap-2">
-					<img src="../asset/icones/card-text.svg" alt="bio" class="w-6 h-6 bg-text py-1 rounded-md">
+					<img src="../asset/icones/card-text.svg" alt="bio" class="w-6 h-6  py-1 rounded-md">
 					<label for="bio" class="">Biographie</label>
 				</div>
 				<input name="bio" id="bio" class="row-start-1 col-start-3 col-span-4 text-text border-solid border-2 border-gray-300 rounded-md px-2" value="{{ user.getBio }}">
@@ -116,10 +116,10 @@
 			{# photo profil #}
 			<div class="grid grid-cols-subgrid row-start-6 col-start-1 col-span-6 gap-4">
 				<div class="row-start-1 col-start-1 col-span-2 flex flex-row items-center gap-2">
-					<img src="../asset/icones/image.svg" alt="pfp" class="w-6 h-6 bg-text py-1 rounded-md">
+					<img src="../asset/icones/image.svg" alt="pfp" class="w-6 h-6  py-1 rounded-md">
 					<label for="pfp" class="">Avatar</label>
 				</div>
-				<input class="row-start-1 col-start-3 col-span-4 bg-transparent flex w-full rounded-md border-2 border-white border-input bg-white text-sm text-text file:border-0 file:bg-text file:text-white file:text-sm" type="file" name="pfp" id="pfp" accept=".jpg, .png" value=" {{ user.getPfp }}"/>
+				<input class="row-start-1 col-start-3 col-span-4 bg-transparent flex w-full rounded-md border-2 border-white border-input bg-white text-sm text-text file:border-2 file:bg-text file:text-white file:text-sm" type="file" name="pfp" id="pfp" accept=".jpg, .png" value=" {{ user.getPfp }}"/>
 			</div>
 
 			<div class="grid grid-cols-subgrid row-start-7 col-start-1 col-span-6 mt-4">
@@ -142,7 +142,7 @@
 
 {# popup de modification de mdp #}
 <div id="popup" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden z-50 text-text">
-	<div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-xl h-fit max-h-xl">
+	<div class="bg-bg p-6 rounded-lg shadow-lg w-full max-w-xl h-fit max-h-xl">
 		<input type="hidden" id="popupModifMdp" name="modifMdp" value="">
 		<h2 class="text-xl font-bold text-center mb-4 text-title">Modification du mot de passe</h2>
 		<form
@@ -151,7 +151,7 @@
 			{# nom #}
 			<div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-6 gap-4">
 				<div class="row-start-1 col-start-1 col-span-3 flex flex-row items-center gap-2">
-					<img src="../asset/icones/lock.svg" alt="mdp" class="w-6 h-6 py-1 rounded-md bg-text">
+					<img src="../asset/icones/lock.svg" alt="mdp" class="w-6 h-6 py-1 rounded-md ">
 					<label for="mdp" class="">Mot de passe actuel</label>
 				</div>
 				<input type="password" name="mdp" id="mdp" class="row-start-1 col-start-4 col-span-5 text-white border-solid border-2 border-gray-300 rounded-md px-2">
@@ -160,7 +160,7 @@
 			{# email #}
 			<div class="grid grid-cols-subgrid row-start-3 col-start-1 col-span-6 gap-4">
 				<div class="row-start-1 col-start-1 col-span-3 flex flex-row items-center gap-2">
-					<img src="../asset/icones/lock.svg" alt="nouvMdp" class="w-6 h-6 py-1 rounded-md bg-text">
+					<img src="../asset/icones/lock.svg" alt="nouvMdp" class="w-6 h-6 py-1 rounded-md ">
 					<label for="nouvMdp" class="">Nouveau mot de passe</label>
 				</div>
 				<input type="password" name="nouvMdp" id="nouvMdp" class="row-start-1 col-start-4 col-span-5 text-white border-solid border-2 border-gray-300 rounded-md px-2">
@@ -169,7 +169,7 @@
 			{# pseudo #}
 			<div class="grid grid-cols-subgrid row-start-4 col-start-1 col-span-6 gap-4">
 				<div class="row-start-1 col-start-1 col-span-6 flex flex-row items-center gap-2">
-					<img src="../asset/icones/lock.svg" alt="confNouvMdp" class="w-6 h-6 bg-text py-1 rounded-md">
+					<img src="../asset/icones/lock.svg" alt="confNouvMdp" class="w-6 h-6  py-1 rounded-md">
 					<label for="confNouvMdp" class="">Confirmation mot de passe</label>
 				</div>
 				<input type="password" name="confNouvMdp" id="confNouvMdp" class="row-start-1 col-start-4 col-span-5 text-text border-solid border-2 border-principal rounded-md px-2">
