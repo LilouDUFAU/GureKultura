@@ -171,7 +171,7 @@ class ControllerPropEv extends Controller
                     'obligatoire' => false,
                     'type' => 'string',
                     'longueurMin' => 5,
-                    'longueurMax' => 100,
+                    'longueurMax' => 500,
                     'format' => '/^[a-zA-Z0-9\s]+$/'
                 ]
             ];

@@ -44,6 +44,8 @@ function verifErreurSaisie(input) {
         case "textarea":
             if (input.id === "description" && (valeur === "" || valeur.length > 500)) {
                 addErrorForm(input, "La description ne peux pas être vides ou dépasser 500 caractères !");
+            } else if ((input.id === "resume" || input.id === "contenu") && (valeur === "" || valeur.length > 500)) {
+                addErrorForm(input, "Le " + input.id + " ne peux pas être vides ou dépasser 500 caractères !");
             } else if (input.id === "lieu" && valeur === "") {
                 addErrorForm(input, "Le lieu ne peuvent pas être vide !");
             } else {
@@ -52,18 +54,20 @@ function verifErreurSaisie(input) {
             break;
 
         case "date":
-            var date = new Date(valeur);
-            var dateDebut = new Date(document.getElementById("debutDate").value);
-            var dateFin = new Date(document.getElementById("finDate").value);
-            var dateActuelle = new Date();
-            if (date <<= dateActuelle) {
+            var dateDebut = document.getElementById("debutDate");
+            var dateFin = document.getElementById("finDate");
+            var dateActuelle = new Date().toLocaleDateString();
+            if (valeur <= dateActuelle) {
                 addErrorForm(input, "La date ne peut pas être inférieure à la date actuelle !");
-            } else if (date >>= dateFin) {
-                addErrorForm(input, "La date ne peut pas être suppérieur à la date de fin !");
-            } else if (date <<= dateDebut) {
-                addErrorForm(input, "La date ne peut pas être inférieure à la date de début !");
+            } else if (input.id === "debutDate" && valeur >= dateFin.value) {
+                addErrorForm(dateDebut, "La date ne peut pas être suppérieur à la date de fin !");
+                addErrorForm(dateFin, "La date ne peut pas être inférieure à la date de début !");
+            } else if (input.id === "finDate" && valeur <= dateDebut.value) {
+                addErrorForm(dateFin, "La date ne peut pas être inférieure à la date de début !");
+                addErrorForm(dateDebut, "La date ne peut pas être suppérieur à la date de fin !");
             } else {
-                removeErrorForm(input);
+                removeErrorForm(dateDebut);
+                removeErrorForm(dateFin);
             }
             break;
 
