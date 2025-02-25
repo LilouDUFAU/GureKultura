@@ -13,29 +13,29 @@
 				<img src="../asset/evenement/photo/{{ evtActus.photo }}" alt="photo evenement" class="row-start-1 col-start-1 col-span-12 lg:col-span-6 rounded-lg">
 				<p class="row-start-2 col-start-1 col-span-12 lg:col-span-6 break-words">{{ evtActus.description }}</p>
 
-				<div class="row-start-3 col-start-1 col-span-12 lg:col-span-6 grid grid-cols-subgrid border-2 border-solid border-[#A23145] rounded-lg bg-[#A23145] bg-opacity-55 p-2">
-					<p class="row-start-1 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold text-center">Date début :
+				<div class="row-start-3 col-start-1 col-span-12 lg:col-span-6 grid grid-cols-subgrid bg-card rounded-lg bg-opacity-55 p-2">
+					<p class="row-start-1 col-start-1 col-span-12 lg:col-span-6 text-text font-semibold text-center">Date début :
 						{{ evtActus.dateDebut }}
 						{{ evtActus.heureDebut }}</p>
-					<p class="row-start-2 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold text-center">Date fin :
+					<p class="row-start-2 col-start-1 col-span-12 lg:col-span-6 text-text font-semibold text-center">Date fin :
 						{{ evtActus.dateFin }}
 						{{ evtActus.heureFin }}</p>
-					<p class="row-start-3 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold text-center">Lieu :
+					<p class="row-start-3 col-start-1 col-span-12 lg:col-span-6 text-text font-semibold text-center">Lieu :
 						{{ evtActus.lieu }}</p>
 				</div>
 			</div>
 
 
 			<!-- Colonne de droite -->
-			<div class="grid grid-cols-subgrid col-start-1 col-span-12 row-start-3 lg:col-start-7 lg:col-span-6 lg:row-start-2 border-2 border-solid border-[#A23145] bg-[#A23145] bg-opacity-55 rounded-lg p-2 h-full">
-				<h2 class="row-start-1 col-start-1 col-span-12 lg:col-span-6 text-2xl font-bold text-center text-white">Fiche Responsable</h2>
-				<p class="row-start-2 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Nom :
+			<div class="grid grid-cols-subgrid col-start-1 col-span-12 row-start-3 lg:col-start-7 lg:col-span-6 lg:row-start-2 bg-card  bg-opacity-55 rounded-lg p-2 h-full">
+				<h2 class="row-start-1 col-start-1 col-span-12 lg:col-span-6 text-2xl font-bold text-center text-text">Fiche Responsable</h2>
+				<p class="row-start-2 col-start-1 col-span-12 lg:col-span-6 text-text font-semibold">Nom :
 					{{ evtActus.nomRep }}</p>
-				<p class="row-start-3 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Prénom :
+				<p class="row-start-3 col-start-1 col-span-12 lg:col-span-6 text-text font-semibold">Prénom :
 					{{ evtActus.prenomRep }}</p>
-				<p class="row-start-4 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Mail :
+				<p class="row-start-4 col-start-1 col-span-12 lg:col-span-6 text-text font-semibold">Mail :
 					{{ evtActus.email }}</p>
-				<p class="row-start-5 col-start-1 col-span-12 lg:col-span-6 text-white font-semibold">Téléphone :
+				<p class="row-start-5 col-start-1 col-span-12 lg:col-span-6 text-text font-semibold">Téléphone :
 					{{ evtActus.tel }}</p>
 				<a href="../asset/evenement/autorisation/{{ evtActus.autorisation }}" alt="autorisation evenment" class="row-start-6 col-start-1 col-span-6 rounded-lg text-sky-600 underline font-semibold" target="_blank">Cliquez ici pour visionner le fichier PDF</a>
 			</div>
@@ -44,13 +44,13 @@
     {% if type == 'Evenements' %} 
         {% if estInscrit == true %}
             
-            <h1 class="font-bold text-xl p-2 text-principal">Vous êtes déjà inscrit !</h1>
+            <h1 class="font-bold text-xl p-2 text-title">Vous êtes déjà inscrit !</h1>
 
             <form method="POST" action="index.php?controlleur=evtActu&methode=desinscrire">
                 <INPUT TYPE="hidden" NAME="nom" VALUE="{{evtActus.titre}}">
                 <INPUT TYPE="hidden" NAME="type" VALUE="{{ type }}">             
                 <input type="hidden" name="id" value="{{ evtActus.evtId }}">
-                <button type="submit" class="mt-4 px-6 py-2 bg-principal text-white font-semibold rounded-lg hover:bg-black">Se désinscrire</button>
+                <button type="submit" class="justify-center bg-principal text-white font-semibold rounded-lg bg-button">Se désinscrire</button>
             </form>
         {% endif %}
         {% if estInscrit == false and user.role == 'user' %}
@@ -58,22 +58,22 @@
                 <INPUT TYPE="hidden" NAME="nom" VALUE="{{evtActus.titre}}">
                 <INPUT TYPE="hidden" NAME="type" VALUE="{{ type }}"> 
                 <input type="hidden" name="id" value="{{ evtActus.evtId }}">
-                <button type="submit" class="mt-4 px-6 py-2 bg-principal text-white font-semibold rounded-lg hover:bg-black">S'inscrire</button>
+                <button type="submit" class="mt-4 px-6 py-2 bg-principal text-white font-semibold rounded-lg bg-button">S'inscrire</button>
             </form>
         {% endif %}
 
     {% endif %}
 
 		<!-- Section Commentaires -->
-		<div class="mt-8 p-4 bg-[#f4f4f4] rounded-lg shadow-md">
-			<h2 class="text-2xl font-bold text-[#A23145] mb-4">Commentaires</h2>
+		<div class="mt-8 p-4 text-tab rounded-lg shadow-lg">
+			<h2 class="text-2xl font-bold text-title mb-4">Commentaires</h2>
 
 			<!-- Exemples de commentaires -->
 			{% for commentaire in commentaires %}
 				<div class="mb-6">
-					<p class="font-semibold text-[#A23145]">{{ commentaire.pseudo }}
+					<p class="font-semibold text-text">{{ commentaire.pseudo }}
 						:</p>
-					<p class="text-gray-700">{{ commentaire.contenu }}</p>
+					<p class="text-title">{{ commentaire.contenu }}</p>
 					<p class="text-gray-500 text-sm">{{ commentaire.datePubli|date("d/m/Y H:i") }}</p>
 				</div>
 			{% else %}
@@ -82,14 +82,14 @@
 
 			<!-- Formulaire pour ajouter un commentaire -->
 			<div class="mt-6">
-				<label for="commentaire" class="block text-[#A23145] font-semibold mb-2">Ajouter un commentaire :</label>
+				<label for="commentaire" class="block text-lg font-bold text-title mb-4">Ajouter un commentaire :</label>
 				<form action="index.php?controlleur=evtActu&methode=ajouterCommentaire" method="POST">
-					<textarea id="commentaire" name="commentaire" rows="3" class="w-full p-3 border-2 border-[#A23145] rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#A23145]" required></textarea>
+					<textarea id="commentaire" name="commentaire" rows="3" class="w-full p-3 border-2 rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#A23145]" required></textarea>
 					    <INPUT TYPE="hidden" NAME="nom" VALUE="{{evtActus.titre}}">
 						<INPUT TYPE="hidden" NAME="type" VALUE="{{ type }}"> 
 						<input type="hidden" name="id" value="{{ evtActus.evtId }}">
 					<!-- Passer l'ID de l'événement -->
-					<button type="submit" class="mt-4 px-6 py-2 bg-[#A23145] text-white font-semibold rounded-lg hover:bg-[#8a1e36]">Envoyer</button>
+					<button type="submit" class="mt-4 px-6 py-2 bg-[#A23145] text-white font-semibold rounded-lg bg-button">Envoyer</button>
 				</form>
 			</div>
 		</div>
