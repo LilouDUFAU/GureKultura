@@ -28,7 +28,7 @@
                 <form action="index.php?controlleur=evtActu&methode=lister" method="post">
                     <input type="hidden" name="id" value="{{ actualite.actuId }}">
                     <input type="hidden" name="nom" value="{{ actualite.titre }}">
-                    <input type="hidden" name="type" value="Actualités">
+                    <input type="hidden" name="type" value="Actualites">
                     <button type="submit" class="flex items-center space-x-1 lg:space-x-2 bg-button hover:bg-hbutton text-tbutton px-1 md:px-2 lg:px-4 py-2 rounded-lg">
                         <img src="../asset/icones/eye.svg" alt="Visualiser" class="h-5 w-5">
                         <span>Voir</span>
@@ -41,7 +41,7 @@
                 <!-- Modification -->
                 <form action="index.php?controlleur=modifActu&methode=lister" method="post">
                     <input type="hidden" name="actuId" value="{{ actualite.actuId }}">
-                    <button type="submit" class="p-1 rounded-lg h-8 w-8 bg-blue-500 hover:bg-blue-600 text-white flex items-center justify-center">
+                    <button type="submit" title="Modifier" class="p-1 rounded-lg h-8 w-8 bg-blue-500 hover:bg-blue-600 text-white flex items-center justify-center">
                         <img src="../asset/icones/pencil-square.svg" class="w-5 h-5" alt="modifier">
                     </button>
                 </form>
@@ -49,7 +49,7 @@
                 <!-- Suppression -->
                 <form action="index.php?controlleur=mesActu&methode=supprimerActu" method="post">
                     <input type="hidden" name="actuId" value="{{ actualite.actuId }}">
-                    <button type="submit" class="p-1 rounded-lg h-8 w-8 bg-red-500 hover:bg-red-600 text-white flex items-center justify-center">
+                    <button type="submit" title="Supprimer" class="p-1 rounded-lg h-8 w-8 bg-red-500 hover:bg-red-600 text-white flex items-center justify-center">
                         <img src="../asset/icones/trash3.svg" class="w-5 h-5" alt="supprimer">
                     </button>
                 </form>

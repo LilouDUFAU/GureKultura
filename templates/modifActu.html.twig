@@ -4,7 +4,7 @@
 	<!-- Contenu spécifique de chaque page -->
 	<div class="m-2 gap-8 flex flex-col items-center justify-center">
 
-		<h1 class="text-2xl lg:text-4xl font-semibold lg:font-extrabold uppercase text-center text-title">Modifier mon actualité</h1>
+		<h2 class="text-2xl lg:text-4xl font-semibold lg:font-extrabold uppercase text-center text-title">Modifier mon actualité</h2>
 
 		<form action="index.php?controlleur=modifActu&methode=validerFormModifActu" method="post" enctype="multipart/form-data" class="grid grid-cols-6 gap-2 bg-form text-text rounded-xl w-fit p-4 text-sm lg:text-base">
 			<input type="hidden" name="actuId" value={{ actuActuel.id }}>
@@ -14,7 +14,7 @@
 				{# titre evenement #}
 				<div class="grid grid-cols-subgrid row-start-1 col-start-1 col-span-6 p-2">
 					<div class="col-start-1 col-span-2 flex flex-row items-center gap-2">
-						<img src="../asset/icones/fonts.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de titre">
+						<img src="../asset/icones/fonts.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de titre">
 						<label for="titre" class="">Titre</label>
 					</div>
 					<input type="text" name="titre" id="titre" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text" value="{{ actuActuel.titre }}">
@@ -22,7 +22,7 @@
 				{# type actualite #}
 				<div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-6 p-2">
 					<div class="col-start-1 col-span-2 flex flex-row items-center gap-2">
-						<img src="../asset/icones/ui-checks-grid.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de categorie">
+						<img src="../asset/icones/ui-checks-grid.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de categorie">
 						<label for="nomCategorie" class="">Catégorie</label>
 					</div>
 					<!-- Dropdown Container -->
@@ -37,7 +37,7 @@
 				{# resume #}
 				<div class="grid grid-cols-subgrid row-start-3 col-start-1 col-span-6 p-2">
 					<div class="col-start-1 col-span-2 flex flex-row items-center gap-2">
-						<img src="../asset/icones/card-text.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de resume">
+						<img src="../asset/icones/card-text.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de resume">
 						<label for="resume">Résumé</label>
 					</div>
 					<textarea name="resume" id="resume" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text">{{ actuActuel.resume }}</textarea>
@@ -46,7 +46,7 @@
 				{# contenu #}
 				<div class="grid grid-cols-subgrid row-start-4 col-start-1 col-span-6 p-2">
 					<div class="col-start-1 col-span-2 flex flex-row items-center gap-2">
-						<img src="../asset/icones/card-text.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de contenu">
+						<img src="../asset/icones/card-text.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de contenu">
 						<label for="contenu">Contenu</label>
 					</div>
 					<textarea name="contenu" id="contenu" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text">{{ actuActuel.contenu }}</textarea>
@@ -56,7 +56,7 @@
 				{# Image #}
 				<div class="grid grid-cols-subgrid row-start-5 col-start-1 col-span-6 p-2">
 					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
-						<img src="../asset/icones/image.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone d'image">
+						<img src="../asset/icones/image.svg" class="w-6 h-6  py-1 rounded-md" alt="icone d'image">
 						<label for="img">Image</label>
 					</div>
 					<input class="col-start-3 col-span-4 bg-transparent flex w-full rounded-md border border-white border-input bg-white text-sm file:border-0 file:bg-text file:text-white file:text-sm" type="file" name="img" id="img" accept=".jpg, .png" value="{{ actuActuelle.img }}"/>
@@ -65,8 +65,8 @@
 
 			{# Bouton de validation ou annulation #}
 			<div class="row-start-2 col-start-4 col-span-2 lg:col-start-6 lg:col-span-1 gap-2 flex flex-row justify-between items-center">
-				<button type="submit" class="px-4 py-2 bg-button hover:bg-hbutton text-white rounded-lg text-center">Valider</button>
-				<a href="index.php?controlleur=mesActu&methode=lister" class="px-4 py-2 bg-button hover:bg-hbutton text-white rounded-lg text-center">Annuler</a>
+				<a href="index.php?controlleur=mesActu&methode=lister" class="px-4 py-2 bg-button hover:bg-hbutton text-white rounded-lg text-center">Annuler</a>				
+				<button type="submit" class="px-4 py-2 bg-button hover:bg-hbutton text-white rounded-lg text-center">Modifier</button>
 			</div>
 		</form>
 	</div>
