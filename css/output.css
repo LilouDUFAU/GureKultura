@@ -952,10 +952,6 @@ video {
   width: 100%;
 }
 
-.w-screen {
-  width: 100vw;
-}
-
 .min-w-36 {
   min-width: 9rem;
 }
@@ -1315,11 +1311,6 @@ video {
 .bg-tabtitle {
   --tw-bg-opacity: 1;
   background-color: rgb(242 166 126 / var(--tw-bg-opacity, 1));
-}
-
-.bg-text {
-  --tw-bg-opacity: 1;
-  background-color: rgb(44 62 80 / var(--tw-bg-opacity, 1));
 }
 
 .bg-transparent {
