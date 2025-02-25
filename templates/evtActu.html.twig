@@ -41,28 +41,7 @@
 			</div>
 		</div>
 
-    {% if type == 'Evenements' %} 
-        {% if estInscrit == true %}
-            
-            <h1 class="font-bold text-xl p-2 text-title">Vous êtes déjà inscrit !</h1>
 
-            <form method="POST" action="index.php?controlleur=evtActu&methode=desinscrire">
-                <INPUT TYPE="hidden" NAME="nom" VALUE="{{evtActus.titre}}">
-                <INPUT TYPE="hidden" NAME="type" VALUE="{{ type }}">             
-                <input type="hidden" name="id" value="{{ evtActus.evtId }}">
-                <button type="submit" class="justify-center bg-principal text-white font-semibold rounded-lg bg-button">Se désinscrire</button>
-            </form>
-        {% endif %}
-        {% if estInscrit == false and user.role == 'user' %}
-            <form method="POST" action="index.php?controlleur=evtActu&methode=inscrire">
-                <INPUT TYPE="hidden" NAME="nom" VALUE="{{evtActus.titre}}">
-                <INPUT TYPE="hidden" NAME="type" VALUE="{{ type }}"> 
-                <input type="hidden" name="id" value="{{ evtActus.evtId }}">
-                <button type="submit" class="mt-4 px-6 py-2 bg-principal text-white font-semibold rounded-lg bg-button">S'inscrire</button>
-            </form>
-        {% endif %}
-
-    {% endif %}
 
 		<!-- Section Commentaires -->
 		<div class="mt-8 p-4 text-tab rounded-lg shadow-lg">
@@ -92,6 +71,29 @@
 					<button type="submit" class="mt-4 px-6 py-2 bg-[#A23145] text-white font-semibold rounded-lg bg-button">Envoyer</button>
 				</form>
 			</div>
+
+			    {% if type == 'Evenements' %} 
+					{% if estInscrit == true %}
+						
+						<h1 class="font-bold text-xl p-2 text-title">Vous êtes déjà inscrit !</h1>
+
+						<form method="POST" action="index.php?controlleur=evtActu&methode=desinscrire">
+							<INPUT TYPE="hidden" NAME="nom" VALUE="{{evtActus.titre}}">
+							<INPUT TYPE="hidden" NAME="type" VALUE="{{ type }}">             
+							<input type="hidden" name="id" value="{{ evtActus.evtId }}">
+							<button type="submit" class="mt-4 px-6 py-2 bg-principal text-white font-semibold rounded-lg bg-button">Se désinscrire</button>
+						</form>
+					{% endif %}
+					{% if estInscrit == false and user.role == 'user' %}
+						<form method="POST" action="index.php?controlleur=evtActu&methode=inscrire">
+							<INPUT TYPE="hidden" NAME="nom" VALUE="{{evtActus.titre}}">
+							<INPUT TYPE="hidden" NAME="type" VALUE="{{ type }}"> 
+							<input type="hidden" name="id" value="{{ evtActus.evtId }}">
+							<button type="submit" class="mt-4 px-6 py-2 bg-principal text-white font-semibold rounded-lg bg-button">S'inscrire</button>
+						</form>
+					{% endif %}
+
+				{% endif %}
 		</div>
 	</div>
 
