@@ -8,36 +8,33 @@
 		<div class="gap-2 p-2 grid grid-cols-12 items-center">
 			<h1 class="row-start-1 col-span-12 bg-fh text-tbutton py-6 text-center text-4xl font-bold rounded-t-2xl">{{ evtActus.titre }}</h1>
 
-			<!-- Colonne de gauche -->
-			<div class="grid grid-cols-subgrid col-start-1 col-span-12 row-start-2 lg:col-span-6 lg:row-start-2 h-full">
-				<img src="../asset/evenement/photo/{{ evtActus.photo }}" alt="photo evenement" class="row-start-1 col-start-1 col-span-12 lg:col-span-6 rounded-lg">
+			<div class="grid grid-cols-subgrid col-start-2 col-span-10 row-start-2 h-full">
+				<img src="../asset/evenement/photo/{{ evtActus.photo }}" alt="photo evenement" class="row-start-1 col-start-3 col-span-6 h-auto rounded-lg">
 				<p class="row-start-2 col-start-1 col-span-12 lg:col-span-6 break-words">{{ evtActus.description }}</p>
 
-				<div class="row-start-3 col-start-1 col-span-12 lg:col-span-6 grid grid-cols-subgrid bg-card rounded-lg bg-opacity-55 p-2">
-					<p class="row-start-1 col-start-1 col-span-12 lg:col-span-6 text-text font-semibold text-center">Date début :
+				<div class="row-start-3 col-start-1 col-span-12 grid grid-cols-subgrid bg-card rounded-lg bg-opacity-55 p-2">
+					<p class="row-start-1 col-start-1 col-span-12 text-text font-semibold text-center">Date début :
 						{{ evtActus.dateDebut|date("d/m/Y") }} à
 						{{ evtActus.heureDebut|date('H:i') }}</p>
-					<p class="row-start-2 col-start-1 col-span-12 lg:col-span-6 text-text font-semibold text-center">Date fin :
+					<p class="row-start-2 col-start-1 col-span-12 text-text font-semibold text-center">Date fin :
 						{{ evtActus.dateFin|date("d/m/Y") }} à
 						{{ evtActus.heureFin|date('H:i') }}</p>
-					<p class="row-start-3 col-start-1 col-span-12 lg:col-span-6 text-text font-semibold text-center">Lieu :
+					<p class="row-start-3 col-start-1 col-span-12 text-text font-semibold text-center">Lieu :
 						{{ evtActus.lieu }}</p>
 				</div>
 			</div>
 
-
-			<!-- Colonne de droite -->
-			<div class="grid grid-cols-subgrid col-start-1 col-span-12 row-start-3 lg:col-start-7 lg:col-span-6 lg:row-start-2 bg-card  bg-opacity-55 rounded-lg p-2">
-				<h2 class="row-start-1 col-start-1 col-span-12 lg:col-span-6 text-2xl font-bold text-center text-text">Fiche Responsable</h2>
-				<p class="row-start-2 col-start-1 col-span-12 lg:col-span-6 text-text font-semibold">Nom :
+			<div class="grid grid-cols-subgrid col-start-2 col-span-10 row-start-3 bg-card  bg-opacity-55 rounded-lg p-2">
+				<h2 class="row-start-1 col-start-1 col-span-12 text-2xl font-bold text-center text-text">Fiche Responsable</h2>
+				<p class="row-start-2 col-start-1 col-span-12 text-text font-semibold text-center">Nom :
 					{{ evtActus.nomRep }}</p>
-				<p class="row-start-3 col-start-1 col-span-12 lg:col-span-6 text-text font-semibold">Prénom :
+				<p class="row-start-3 col-start-1 col-span-12 text-text font-semibold text-center">Prénom :
 					{{ evtActus.prenomRep }}</p>
-				<p class="row-start-4 col-start-1 col-span-12 lg:col-span-6 text-text font-semibold">Mail :
+				<p class="row-start-4 col-start-1 col-span-12 text-text font-semibold text-center">Mail :
 					{{ evtActus.email }}</p>
-				<p class="row-start-5 col-start-1 col-span-12 lg:col-span-6 text-text font-semibold">Téléphone :
+				<p class="row-start-5 col-start-1 col-span-12 text-text font-semibold text-center">Téléphone :
 					{{ evtActus.tel }}</p>
-				<a href="../asset/evenement/autorisation/{{ evtActus.autorisation }}" alt="autorisation evenment" class="row-start-6 col-start-1 col-span-6 rounded-lg text-sky-600 underline font-semibold" target="_blank">Cliquez ici pour visionner le fichier PDF</a>
+				<a href="../asset/evenement/autorisation/{{ evtActus.autorisation }}" alt="autorisation evenment" class="text-center row-start-6 col-start-1 col-span-12 rounded-lg text-sky-600 underline font-semibold" target="_blank">Cliquez ici pour visionner le fichier PDF</a>
 			</div>
 		</div>
 
