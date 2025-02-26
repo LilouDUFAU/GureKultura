@@ -25,11 +25,19 @@ class ControllerPageErreur extends Controller
      * @param string|null $errorMessage Message d'erreur à afficher (optionnel).
      * @return void
      */
-    public function afficher() {
-        session_start(); // Démarrer la session si ce n'est pas déjà fait
-        $errorMessage = isset($_SESSION['error_message']) ? $_SESSION['error_message'] : "Une erreur inconnue est survenue.";
-        unset($_SESSION['error_message']); // Supprimer l'erreur après l'affichage
-        require_once 'views/pageErreur.html.twig';
+    public function lister() {
+        $e->getMessage();
+        echo $this->getTwig()->render('pageErreur.html.twig', [
+            'title' => 'Accueil',
+            'error_message' => $e
+        ]);
+    }    
+
+    public function messageErreur(string $e){
+        error_log("Error inserting event: " . $e->getMessage());
+        echo $this->getTwig()->render('pageErreur.html.twig', [
+            'title' => 'Accueil',
+            'error_message' => $e
+        ]);
     }
-    
 }

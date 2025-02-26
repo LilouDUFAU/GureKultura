@@ -464,7 +464,7 @@ class ControllerModifEv extends Controller
             // redirection vers la page de l'événement
             // header('Location: index.php?controlleur=mesEv&methode=lister');
         }catch(Exception $e){
-            echo $e->getMessage();
+            header("Location: index.php?controlleur=pageErreur&methode=lister");
         }
     }
 }

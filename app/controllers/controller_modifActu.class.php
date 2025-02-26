@@ -263,6 +263,7 @@ class ControllerModifActu extends Controller
             // redirection vers la page de l'événement
             // header('Location: index.php?controlleur=mesActu&methode=lister');:
         }catch(Exception $e){
+            header("Location: index.php?controlleur=pageErreur&methode=lister");
             echo $e->getMessage();
         }
     }

@@ -456,9 +456,10 @@ class ControllerCompte extends Controller
             // Log the event data for debugging
             error_log(print_r($user, true));
         } catch (Exception $e) {
+            header("Location: index.php?controlleur=pageErreur&methode=lister");
             // Log the error message
-            error_log("Error inserting event: " . $e->getMessage());
-            throw $e; // Re-throw the exception if needed
+            //error_log("Error inserting event: " . $e->getMessage());
+            //throw $e; // Re-throw the exception if needed
         }
     }
 

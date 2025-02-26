@@ -225,7 +225,6 @@ class ControllerInscription extends Controller
             $this->getTwig()->addGlobal('utilisateurConnecte', $user);
             header('Location: index.php?controlleur=index&methode=lister');
         } catch (Exception $e) {
-            // Log the error message
             error_log("Error inserting event: " . $e->getMessage());
             throw $e; // Re-throw the exception if needed
         }
