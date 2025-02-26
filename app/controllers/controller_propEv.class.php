@@ -334,7 +334,7 @@ class ControllerPropEv extends Controller
                 $donnees['photoName'] ?? null,
                 false,
                 $donnees['userId'],
-                //$donnees['cateId']
+                $donnees['cateId']
             );
             // Insérez l'événement dans la base de données
             $managerEvenement->insert($evenement);
