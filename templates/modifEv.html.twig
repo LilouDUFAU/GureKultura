@@ -16,23 +16,25 @@
 				class="grid grid-cols-6 gap-2 bg-form rounded-xl w-full p-4">
 
 				<div class="row-start-1 col-start-1 col-span-6 text-2xl font-bold mb-4 flex flex-row items-center gap-2">
-					<img src="../asset/icones/card-text.svg" class="h-10 w-10 bg-text py-1 rounded-md" alt="icone de evenement">
+					<img src="../asset/icones/card-text.svg" class="h-10 w-10  py-1 rounded-md" alt="icone de evenement">
 					<h2>Fiche évènement</h2>
 				</div>
 
 				{# titre evenement #}
 				<div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-6 p-2">
 					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
-						<img src="../asset/icones/fonts.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de titre">
+						<img src="../asset/icones/fonts.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de titre">
 						<label for="titre">Titre</label>
 					</div>
-					<input type="text" name="titre" id="titre" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.titre }}">
+					<div class="col-start-3 col-span-4 w-full">
+						<input type="text" name="titre" id="titre" oninput='verifErreurSaisie(titre)' class="w-full bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.titre }}">
+					</div>
 				</div>
 
 				{# type evenement #}
 				<div class="grid grid-cols-subgrid row-start-3 col-start-1 col-span-6 p-2">
 					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
-						<img src="../asset/icones/ui-checks-grid.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de type">
+						<img src="../asset/icones/ui-checks-grid.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de type">
 						<label for="cateId">Catégorie</label>
 					</div>
 					<!-- Dropdown Container -->
@@ -47,62 +49,74 @@
 				{# description #}
 				<div class="grid grid-cols-subgrid row-start-4 col-start-1 col-span-6 p-2">
 					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
-						<img src="../asset/icones/justify-left.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de description">
+						<img src="../asset/icones/justify-left.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de description">
 						<label for="description">Description</label>
 					</div>
-					<textarea name="description" id="description" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2">{{ evenementActuel.description }}"</textarea>
+					<div class="col-start-3 col-span-4 w-full">
+						<textarea name="description" id="description" oninput='verifErreurSaisie(description)' class="w-full bg-transparent border-white border-2 border-solid rounded-lg px-2">{{ evenementActuel.description }}"</textarea>
+					</div>
 				</div>
 
 
 				{# dateDebut #}
 				<div class="grid grid-cols-subgrid row-start-5 col-start-1 col-span-6 lg:col-span-3 p-2">
 					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
-						<img src="../asset/icones/calendar.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de calendrier">
+						<img src="../asset/icones/calendar.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de calendrier">
 						<label for="dateDebut">Date de début</label>
 					</div>
-					<input type="date" name="debutDate" id="debutDate" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.dateDebut}}">
+					<div class="col-start-3 col-span-4 w-full">
+						<input type="date" name="debutDate" id="debutDate" oninput='verifErreurSaisie(debutDate)' class="w-full bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.dateDebut}}">
+					</div>
 				</div>
 
 				{# HeureDebut #}
 				<div class="grid grid-cols-subgrid row-start-6 col-start-1 col-span-6 lg:row-start-5 lg:col-span-3 lg:col-start-4 p-2">
 					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
-						<img src="../asset/icones/clock.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de heure">
+						<img src="../asset/icones/clock.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de heure">
 						<label for="heureDebut" >Heure de début</label>
 					</div>
-					<input type="time" name="debutHeure" id="debutHeure" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.heureDebut }}">
+				<div class="col-start-3 col-span-4 w-full">
+						<input type="time" name="debutHeure" id="debutHeure" oninput='verifErreurSaisie(debutHeure)' class="w-full bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.heureDebut }}">
+					</div>
 				</div>
 
 				{# dateFin #}
 				<div class="grid grid-cols-subgrid row-start-7 col-start-1 col-span-6 lg:col-span-3 p-2">	
 					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
-						<img src="../asset/icones/calendar.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de calendrier">
+						<img src="../asset/icones/calendar.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de calendrier">
 						<label for="dateFin" >Date de fin</label>
 					</div>
-					<input type="date" name="finDate" id="finDate" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.dateFin }}">
+					<div class="col-start-3 col-span-4 w-full">
+						<input type="date" name="finDate" id="finDate" oninput='verifErreurSaisie(finDate)' class="w-full bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.dateFin }}">
+					</div>
 				</div>
 
 				{# HeureFin #}
 				<div class="grid grid-cols-subgrid row-start-8 col-start-1 col-span-6 lg:row-start-7 lg:col-start-4 lg:col-span-3 p-2">
 					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
-						<img src="../asset/icones/clock.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de heure">
+						<img src="../asset/icones/clock.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de heure">
 						<label for="heureFin">Heure de fin</label>
 					</div>
-					<input type="time" name="finHeure" id="finHeure" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.heureFin }}">
+					<div class="col-start-3 col-span-4 w-full">
+						<input type="time" name="finHeure" id="finHeure" oninput='verifErreurSaisie(finHeure)' class="w-full bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.heureFin }}">
+					</div>
 				</div>
 
 				{# Lieu #}
 				<div class="grid grid-cols-subgrid row-start-9 col-start-1 col-span-6 p-2">
 					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
-						<img src="../asset/icones/geo-alt.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de localisation">
+						<img src="../asset/icones/geo-alt.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de localisation">
 						<label for="lieu">Lieu</label>
 					</div>
-					<textarea name="lieu" id="lieu" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2" >{{ evenementActuel.lieu }}"</textarea>
+					<div class="col-start-3 col-span-4 w-full">
+						<textarea name="lieu" id="lieu" oninput='verifErreurSaisie(lieu)' class="w-full bg-transparent border-white border-2 border-solid rounded-lg px-2" >{{ evenementActuel.lieu }}"</textarea>
+					</div>
 				</div>
 
 				{# Photo #}
 				<div class="grid grid-cols-subgrid row-start-10 col-start-1 col-span-6 p-2">
 					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
-						<img src="../asset/icones/image.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de photo">
+						<img src="../asset/icones/image.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de photo">
 						<label for="photo">Image</label>
 					</div>
 					<input accept=".jpg, .png"  class="col-start-3 col-span-4 bg-transparent flex w-full rounded-md border border-white border-input bg-white text-sm file:border-0 file:bg-text file:text-white file:text-sm" type="file" name="photo" id="photo" class="" value="{{ evenementActuel.photo }}"/>
@@ -112,7 +126,7 @@
 				{# autorisations #}
 				<div class="grid grid-cols-subgrid row-start-11 col-start-1 col-span-6 p-2">
 					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
-						<img src="../asset/icones/file-earmark-pdf.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de autorisation">
+						<img src="../asset/icones/file-earmark-pdf.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de autorisation">
 						<label for="autorisation">Autorisation</label>
 					</div>
 					<input accept=".pdf"  class="col-start-3 col-span-4 bg-transparent flex w-full rounded-md border border-white border-input bg-white text-sm file:border-0 file:bg-text file:text-white file:text-sm" type="file" name="autorisation" id="autorisation" value="{{ evenementActuel.autorisation }}"/>
@@ -127,54 +141,65 @@
 				{# nomResp #}
 
 				<div class="row-start-1 col-start-1 col-span-6 text-2xl font-bold mb-4 flex flex-row items-center gap-2">
-					<img src="../asset/icones/person-vcard (1).svg" class="h-10 w-10 bg-text py-1 rounded-md" alt="icone de personne">
+					<img src="../asset/icones/person-vcard (1).svg" class="h-10 w-10  py-1 rounded-md" alt="icone de personne">
 					<h2>Fiche Responsable</h2>
 				</div>
 
 				<div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-6 p-2">
 					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
-						<img src="../asset/icones/person.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de personne">
+						<img src="../asset/icones/person.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de personne">
 						<label for="nomResp">Nom</label>
 					</div>
-					<input type="text" name="nomRep" id="nomRep" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.nomRep }}">
+					<div class="col-start-3 col-span-4 w-full">
+						<input type="text" name="nomRep" id="nomRep" oninput='verifErreurSaisie(nom)' class="w-full bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.nomRep }}">
+					</div>
 				</div>
 
 				{# prenomResp #}
 				<div class="grid grid-cols-subgrid row-start-3 col-start-1 col-span-6 p-2">
 					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
-						<img src="../asset/icones/person.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de personne">
+						<img src="../asset/icones/person.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de personne">
 						<label for="prenomResp" class="col-start-1 col-span-2">Prénom</label>
 					</div>
-					<input type="text" name="prenomRep" id="prenomRep" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.prenomRep }}">
+					<div class="col-start-3 col-span-4 w-full">
+						<input type="text" name="prenomRep" id="prenomRep" oninput='verifErreurSaisie(prenom)' class="w-full bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.prenomRep }}">
+					</div>
 				</div>
+
+				{# fonction #}
 
 				{# email #}
 				<div class="grid grid-cols-subgrid row-start-4 col-start-1 col-span-6 p-2">
 					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
-						<img src="../asset/icones/envelope.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de mail">
+						<img src="../asset/icones/envelope.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de mail">
 						<label for="email">Email</label>
 					</div>
-					<input type="email" name="email" id="email" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.email }}">
+					<div class="col-start-3 col-span-4 w-full">
+						<input type="email" name="email" id="email" oninput='verifErreurSaisie(email)' class="w-full bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.email }}">
+					</div>
 				</div>
 
 				{# telephone #}
 				<div class="grid grid-cols-subgrid row-start-5 col-start-1 col-span-6 p-2">
 					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
-						<img src="../asset/icones/telephone.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de téléphone">
+						<img src="../asset/icones/telephone.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de téléphone">
 						<label for="telephone">Téléphone</label>
 					</div>
-					<input type="tel" name="tel" id="tel" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.tel }}">
+					<div class="col-start-3 col-span-4 w-full">
+						<input type="tel" name="tel" id="tel" oninput='verifErreurSaisie(tel)' class="w-full bg-transparent border-white border-2 border-solid rounded-lg px-2" value="{{ evenementActuel.tel }}">
+					</div>
 				</div>
 			</div>
 
 			{# Bouton de validation ou annulation #}
 			<div class="grid grid-cols-6">
 				<div class="row-start-1 col-start-4 col-span-2 lg:col-start-6 lg:col-span-1 gap-2 flex flex-row justify-between items-center">
-					<button type="submit" class="px-4 py-2 bg-button hover:bg-hbutton text-white rounded-lg text-center">Valider</button>
 					<a href="index.php?controlleur=mesEv&methode=lister" class="px-4 py-2 bg-button hover:bg-hbutton text-white rounded-lg text-center">Annuler</a>
+					<button type="submit" id="validerFormulaire" class="px-4 py-2 bg-button hover:bg-hbutton text-white rounded-lg text-center">Modifier</button>
 				</div>
 			</div>
 		</form>
 	</div>
 
+<script src="../js/erreurSaisie.js"></script>
 {% endblock %}

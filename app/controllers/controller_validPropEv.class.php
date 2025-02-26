@@ -56,6 +56,7 @@ class ControllerValidPropEv extends Controller
             // 'description' => 'un site de gestion evenementielle au Pays Basque du Groupe 7'
             'evenements' => $evenements,
             'actualites' => $actualite,
+            'user' => $_SESSION['user'],
         ]);
         } else {
             // L'utilisateur n'est pas connecté, redirigez-le vers la page de connexion
@@ -75,11 +76,14 @@ class ControllerValidPropEv extends Controller
     {
         $pdo = Bd::getInstance()->getPdo();
         $managerEvenement = new EvenementDao($pdo);
-        $evenement = new Evenement($_POST['evtId']);
-
-        var_dump($evenement);
+        $evenement=$managerEvenement->find($_POST['evtId']);
+        $managerUser = new UserDao($pdo);
+        $user=$managerUser->find($evenement->getUserId());
+        $user->getEmail();
+        $donnees = $_POST;
+        $mail = new Mail();
+        $mail->envoieMail($user->getEmail(), 'Refus de votre évènement', $donnees['message']);
         $managerEvenement->delete($evenement);
-        var_dump($_POST['evtId']);
         header('Location: index.php?controlleur=validPropEv&methode=lister');
     }
 
@@ -117,7 +121,7 @@ class ControllerValidPropEv extends Controller
         $user->getEmail();
         $donnees = $_POST;
         $mail = new Mail();
-        $mail->envoieMail($user->getEmail(), $donnees['objet'],$donnees['message']);
+        $mail->envoieMail($user->getEmail(), 'Mise en attente de votre évènement', $donnees['message']);
         header('Location: index.php?controlleur=validPropEv&methode=lister');
 
     }

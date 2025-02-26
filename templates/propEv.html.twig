@@ -5,7 +5,7 @@
 	<!-- Contenu spécifique de chaque page -->
 	<div class="m-2 gap-8 flex flex-col items-center">
 
-		<h1 class="text-2xl lg:text-4xl font-semibold lg:font-extrabold uppercase text-center text-title">Proposer un évènement</h1>
+		<h2 class="text-2xl lg:text-4xl font-semibold lg:font-extrabold uppercase text-center text-title">Proposer un évènement</h2>
 
 		<form action="index.php?controlleur=propEv&methode=validerFormulairePropEv" method="post" enctype="multipart/form-data" class="flex flex-col gap-8 text-text w-fit text-sm lg:text-base">
 
@@ -13,14 +13,14 @@
 			<div class="grid grid-cols-6 gap-2 bg-form rounded-xl w-full p-4">
 
 				<div class="row-start-1 col-start-1 col-span-6 text-2xl font-bold mb-4 flex flex-row items-center gap-2">
-					<img src="../asset/icones/card-text.svg" class="h-10 w-10 bg-text py-1 rounded-md" alt="icone de evenement">
+					<img src="../asset/icones/card-text.svg" class="h-10 w-10  py-1 rounded-md" alt="icone de evenement">
 					<h2>Fiche évènement</h2>
 				</div>
 
 				{# titre evenement #}
 				<div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-6 p-2">
 					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
-						<img src="../asset/icones/fonts.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de titre">
+						<img src="../asset/icones/fonts.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de titre">
 						<label for="titre">Titre</label>
 					</div>
 					<div class="relative col-start-3 col-span-4 w-full">
@@ -31,7 +31,7 @@
 				{# type evenement #}
 				<div class="grid grid-cols-subgrid row-start-3 col-start-1 col-span-6 p-2">
 					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
-						<img src="../asset/icones/ui-checks-grid.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de type">
+						<img src="../asset/icones/ui-checks-grid.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de type">
 						<label for="type">Catégorie</label>
 					</div>
 					<!-- Dropdown Container -->
@@ -46,7 +46,7 @@
 				{# description #}
 				<div class="grid grid-cols-subgrid row-start-4 col-start-1 col-span-6 p-2">
 					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
-						<img src="../asset/icones/justify-left.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de description">
+						<img src="../asset/icones/justify-left.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de description">
 						<label for="description">Description</label>
 					</div>
 					<div class="relative col-start-3 col-span-4 w-full">
@@ -58,7 +58,7 @@
 				{# dateDebut #}
 				<div class="grid grid-cols-subgrid row-start-5 col-start-1 col-span-6 lg:col-span-3 p-2">
 					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
-						<img src="../asset/icones/calendar.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de calendrier">
+						<img src="../asset/icones/calendar.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de calendrier">
 						<label for="dateDebut">Date de début</label>
 					</div>
 					<div class="relative col-start-3 col-span-4 w-full">
@@ -69,7 +69,7 @@
 				{# HeureDebut #}
 				<div class="grid grid-cols-subgrid row-start-6 col-start-1 col-span-6 lg:row-start-5 lg:col-span-3 lg:col-start-4 p-2">
 					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
-						<img src="../asset/icones/clock.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de heure">
+						<img src="../asset/icones/clock.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de heure">
 						<label for="heureDebut" >Heure de début</label>
 					</div>
 					<div class="relative col-start-3 col-span-4 w-full">
@@ -80,18 +80,18 @@
 				{# dateFin #}
 				<div class="grid grid-cols-subgrid row-start-7 col-start-1 col-span-6 lg:col-span-3 p-2">	
 					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
-						<img src="../asset/icones/calendar.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de calendrier">
+						<img src="../asset/icones/calendar.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de calendrier">
 						<label for="dateFin" >Date de fin</label>
 					</div>
 					<div class="relative col-start-3 col-span-4 w-full">
-						<input type="date" name="finDate" id="finDate" oninput='verifErreurSaisie(finDate)' class="w-full col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text text-text outline-none" placeholder="Date de fin">
+						<input type="date" name="finDate" id="finDate" oninput='verifErreurSaisie(finDate)'  class="w-full col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text text-text outline-none" placeholder="Date de fin">
 					</div>
 				</div>
 
 				{# HeureFin #}
 				<div class="grid grid-cols-subgrid row-start-8 col-start-1 col-span-6 lg:row-start-7 lg:col-start-4 lg:col-span-3 p-2">
 					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
-						<img src="../asset/icones/clock.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de heure">
+						<img src="../asset/icones/clock.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de heure">
 						<label for="heureFin">Heure de fin</label>
 					</div>
 					<div class="relative col-start-3 col-span-4 w-full">
@@ -102,18 +102,18 @@
 				{# Lieu #}
 				<div class="grid grid-cols-subgrid row-start-9 col-start-1 col-span-6 p-2">
 					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
-						<img src="../asset/icones/geo-alt.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de localisation">
+						<img src="../asset/icones/geo-alt.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de localisation">
 						<label for="lieu">Lieu</label>
 					</div>
 					<div class="relative col-start-3 col-span-4 w-full">
-						<textarea name="lieu" id="lieu" oninput='verifErreurSaisie(lieu)' class="w-full col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text text-text outline-none" placeholder="Lieu de l'évènement"></textarea>
+						<textarea type="text" name="lieu" id="lieu" oninput='verifErreurSaisie(lieu)' class="w-full col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text text-text outline-none" placeholder="Lieu de l'évènement"></textarea>
 					</div>
 				</div>
 
 				{# Photo #}
 				<div class="grid grid-cols-subgrid row-start-10 col-start-1 col-span-6 p-2">
 					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
-						<img src="../asset/icones/image.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de photo">
+						<img src="../asset/icones/image.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de photo">
 						<label for="photo">Image</label>
 					</div>
 					<div class="relative col-start-3 col-span-4 w-full">
@@ -124,7 +124,7 @@
 				{# autorisations #}
 				<div class="grid grid-cols-subgrid row-start-11 col-start-1 col-span-6 p-2">
 					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
-						<img src="../asset/icones/file-earmark-pdf.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de autorisation">
+						<img src="../asset/icones/file-earmark-pdf.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de autorisation">
 						<label for="autorisation">Autorisation</label>
 					</div>
 					<div class="relative col-start-3 col-span-4 w-full">
@@ -139,13 +139,13 @@
 				{# nomResp #}
 
 				<div class="row-start-1 col-start-1 col-span-6 text-2xl font-bold mb-4 flex flex-row items-center gap-2">
-					<img src="../asset/icones/person-vcard (1).svg" class="h-10 w-10 bg-text py-1 rounded-md" alt="icone de personne">
+					<img src="../asset/icones/person-vcard (1).svg" class="h-10 w-10  py-1 rounded-md" alt="icone de personne">
 					<h2>Fiche Responsable</h2>
 				</div>
 
 				<div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-6 p-2">
 					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
-						<img src="../asset/icones/person.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de personne">
+						<img src="../asset/icones/person.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de personne">
 						<label for="nomResp">Nom</label>
 					</div>
 					
@@ -157,7 +157,7 @@
 				{# prenomResp #}
 				<div class="grid grid-cols-subgrid row-start-3 col-start-1 col-span-6 p-2">
 					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
-						<img src="../asset/icones/person.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de personne">
+						<img src="../asset/icones/person.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de personne">
 						<label for="prenomResp" class="col-start-1 col-span-2">Prénom</label>
 					</div>
 					<div class="relative col-start-3 col-span-4 w-full">
@@ -168,35 +168,34 @@
 				{# email #}
 				<div class="grid grid-cols-subgrid row-start-4 col-start-1 col-span-6 p-2">
 					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
-						<img src="../asset/icones/envelope.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de mail">
+						<img src="../asset/icones/envelope.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de mail">
 						<label for="email">Email</label>
 					</div>
-					<div class="grid-rows-subgrid row-start-1 col-start-3 col-span-4 w-full">
-						<input type="email" name="email" id="email" oninput="verifErreurSaisie(email)" class="row-start-2 w-full col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text text-text outline-none" placeholder="Email du responsable">
+					<div class="col-start-3 col-span-4 w-full">
+						<input type="email" name="email" id="email" oninput="verifErreurSaisie(email)" class="w-full col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text text-text outline-none" placeholder="Email du responsable">
 					</div>
 				</div>
 
 				{# telephone #}
 				<div class="grid grid-cols-subgrid row-start-5 col-start-1 col-span-6 p-2">
 					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
-						<img src="../asset/icones/telephone.svg" class="w-6 h-6 bg-text py-1 rounded-md" alt="icone de téléphone">
+						<img src="../asset/icones/telephone.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de téléphone">
 						<label for="telephone">Téléphone</label>
 					</div>
 					
 					<div class="relative col-start-3 col-span-4 w-full">
 					<input type="tel" name="tel" id="tel" oninput="verifErreurSaisie(tel)" 
 					class="w-full col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text text-text outline-none" 
-					placeholder="Téléphone du responsable"
-					pattern="[0-9]{2} [0-9]{2} [0-9]{2} [0-9]{2} [0-9]{2}">
+					placeholder="Téléphone du responsable">
 				</div>
 				</div>
 			</div>
 
 			{# Bouton de validation ou annulation #}
-			<div class="grid grid-cols-6">
+			<div class="grid grid-cols-6 p-2">
 				<div class="row-start-1 col-start-4 col-span-2 lg:col-start-6 lg:col-span-1 gap-2 flex flex-row justify-between items-center">
-					<button type="submit" class="px-4 py-2 bg-button hover:bg-hbutton text-white rounded-lg text-center">Valider</button>
-					<a href="index.php?controlleur=mesEv&methode=lister" class="px-4 py-2 bg-button hover:bg-hbutton text-white rounded-lg text-center">Annuler</a>
+					<a href="index.php?controlleur=mesEv&methode=lister" id="" class="px-4 py-2 bg-button hover:bg-hbutton text-white rounded-lg text-center">Annuler</a>
+					<button type="submit" class="px-4 py-2 bg-button hover:bg-hbutton text-white rounded-lg text-center">Proposer</button>
 				</div>
 			</div>
 		</form>

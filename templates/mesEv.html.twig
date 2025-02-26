@@ -4,22 +4,19 @@
 	<!-- Contenu spécifique de chaque page -->
 	<div class="h-full m-2">
 
-		<h1 class="text-2xl lg:text-4xl font-semibold text-center text-title uppercase lg:font-extrabold">Mes événements</h1>
+		<h2 class="text-2xl lg:text-4xl font-semibold text-center text-title uppercase lg:font-extrabold">Mes événements</h2>
 
 		{# En-tête du tableau #}
 		<div class="grid grid-cols-12 gap-2 mt-5 bg-tabtitle text-title text-sm lg:text-base p-2 font-semibold">
-			<div class="col-start-1 col-span-3 p-2 ">Nom</div>
-			<div class="col-start-4 col-span-2 p-2 hidden lg:block ">Date</div>
-			<div class="col-start-4 lg:col-start-6 col-span-3 p-2 ">Lieu</div>
-			<div class="col-start-7 lg:col-start-9 col-span-3 lg:col-span-2 p-2 ">Validation</div>
-			<div class="col-start-10 col-span-3 lg:col-start-11 lg:col-span-2 p-2 ">Actions</div>
+			<div class="col-start-1 col-span-3 p-2 break-words">Nom</div>
+			<div class="col-start-4 col-span-2 p-2 hidden lg:block break-words">Date</div>
+			<div class="col-start-4 lg:col-start-6 col-span-3 p-2 break-words">Lieu</div>
+			<div class="col-start-7 lg:col-start-9 col-span-3 lg:col-span-2 p-2 break-words">Validation</div>
+			<div class="col-start-10 col-span-3 lg:col-start-11 lg:col-span-2 p-2 break-words">Actions</div>
 		</div>
 
 		{# Contenu dynamique #}
-		{# <pre>
-		            {{ dump(evenements) }}
-		        </pre> #}
-        <div>
+		<div>
 		{% for evenement in evenements %}
 			<div class="grid grid-cols-12 gap-2 p-3 odd:bg-odd even:bg-even items-center text-text">
 				<div class="col-start-1 col-span-3 p-2 break-words">{{ evenement.titre }}</div>
@@ -34,26 +31,38 @@
 				</div>
 				<div
 					class="col-start-10 col-span-3 lg:col-start-11 lg:col-span-2 p-2 flex flex-col lg:flex-row lg:space-x-4 items-center">
-					{# Bouton de modification #}
-					<form action="index.php?controlleur=modifEv&methode=lister" method="post">
+					
+					{# Bouton de modification avec alerte si validé #}
+					<form action="index.php?controlleur=modifEv&methode=lister" method="post" onsubmit="return confirmModification(event, {{ evenement.isValide }})">
 						<input type="hidden" name="evtId" value="{{ evenement.evtId }}">
-						<button type="submit" class="p-1 rounded-lg h-8 w-8 bg-blue-500 hover:bg-blue-600 text-white flex items-center justify-center">
+						<button type="submit" title="Modifier" class="p-1 rounded-lg h-8 w-8 bg-blue-500 hover:bg-blue-600 text-white flex items-center justify-center">
 							<img src="../asset/icones/pencil-square.svg" class="w-5 h-5" alt="modifier">
 						</button>
 					</form>
+
 					{# Bouton de suppression #}
 					<form action="index.php?controlleur=mesEv&methode=supprimerEvent" method="post">
 						<input type="hidden" name="evtId" value="{{ evenement.evtId }}">
-						<button type="submit" class="p-1 rounded-lg h-8 w-8 bg-red-500 hover:bg-red-600 text-white flex items-center justify-center">
+						<button type="submit" title="Supprimer" class="p-1 rounded-lg h-8 w-8 bg-red-500 hover:bg-red-600 text-white flex items-center justify-center">
 							<img src="../asset/icones/trash3.svg" class="w-5 h-5" alt="supprimer">
 						</button>
 					</form>
 				</div>
-            </div>
-			{% endfor %}
-        </div>
+			</div>
+		{% endfor %}
 		</div>
 	</div>
 
-{% endblock %}
+	{# Script pour gérer l'alerte sur le bouton Modifier #}
+	<script>
+		function confirmModification(event, isValide) {
+			if (isValide) {
+				alert("Vous ne pouvez pas modifier un événement validé.");
+				event.preventDefault(); // Bloque l'envoi du formulaire
+				return false;
+			}
+			return true;
+		}
+	</script>
 
+{% endblock %}
