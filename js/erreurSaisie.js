@@ -4,8 +4,8 @@ function verifErreurSaisie(input) {
     // Vérification des champs en fonction du type
     switch (type) {
         case "text": // Zone de texte
-            if (input.id === "titre" && (valeur === "" || valeur.length > 50)) {
-                addErrorForm(input, "Les titres ne peuvent pas être vides ou dépasser 50 caractères !");
+            if (input.id === "titre" && (valeur === "" || (valeur.length > 50 || valeur.length < 5))) {
+                addErrorForm(input, "Les titres ne peuvent pas être vides ou inférieur à 5 ou dépasser 50 caractères !");
             } else if (input.id === "nomRep" && valeur === "") {
                 addErrorForm(input, "Le Nom ne peut pas être vide !");
             } else if (input.id === "nom" && valeur === "") {
@@ -42,12 +42,12 @@ function verifErreurSaisie(input) {
             break;
 
         case "textarea":
-            if (input.id === "description" && (valeur === "" || valeur.length > 500)) {
-                addErrorForm(input, "La description ne peux pas être vide ou dépasser 500 caractères !");
-            } else if ((input.id === "resume" || input.id === "contenu") && (valeur === "" || valeur.length > 500)) {
-                addErrorForm(input, "Le " + input.id + " ne peux pas être vides ou dépasser 500 caractères !");
-            } else if (input.id === "lieu" && valeur === "") {
-                addErrorForm(input, "Le lieu ne peut pas être vide !");
+            if (input.id === "description" && (valeur === "" || (valeur.length > 500 || valeur.length < 30))) {
+                addErrorForm(input, "La description ne peux pas être vide ou inférieur à 30 ou dépasser 500 caractères  !");
+            } else if ((input.id === "resume" || input.id === "contenu") && (valeur === "" || (valeur.length > 500 || valeur.length < 30))) {
+                addErrorForm(input, "Le " + input.id + " ne peux pas être vides ou inférieur à 30 ou dépasser 500 caractères  !");
+            } else if (input.id === "lieu" && (valeur === "" || (valeur.length > 100 || valeur.length < 5))) {
+                addErrorForm(input, "La lieu ne peux pas être vide ou inférieur à 5 ou dépasser 100 caractères  !");
             } else {
                 removeErrorForm(input);
             }
@@ -99,7 +99,17 @@ function verifErreurSaisie(input) {
                 removeErrorForm(heureFin);
             }
             break;
-
+        case "file":
+            var extension = getExtension(valeur);
+            console.log(extension);
+            if ((input.id === "photo" || input.id === "image" || input.id === "pfp") && (extension.toLowerCase() !== 'jpg' && extension.toLowerCase() !== 'png')) {
+                addErrorForm(input, "Veuillez choisir une image de type jpg ou png !");
+            } else if (input.id === "autorisation" && (extension.toLowerCase() !== 'pdf')) {
+                addErrorForm(input, "Veuillez choisir un fichier de type pdf !");
+            }
+            else {
+                removeErrorForm(input);
+            }
         default:
             break;
     }
@@ -155,4 +165,10 @@ function addErrorForm(input, msgError) {
         btnValider.disabled = true;
     }
 
+}
+
+
+function getExtension(file) {
+    var extension = file.split('.');
+    return extension[extension.length - 1];
 }
