@@ -349,6 +349,7 @@ class ControllerPropEv extends Controller
             $fonctionErreur->messageErreur($messageErreur);
             // Log the error message
             error_log("Error inserting event: " . $e->getMessage());
+            
             return false;
         }   
     }
