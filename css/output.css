@@ -1729,6 +1729,10 @@ video {
   transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
 }
 
+.file\:cursor-pointer::file-selector-button {
+  cursor: pointer;
+}
+
 .file\:border-0::file-selector-button {
   border-width: 0px;
 }
