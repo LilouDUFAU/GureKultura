@@ -12,7 +12,7 @@
 			<div class="col-start-3 col-span-1 hidden lg:block p-2 break-words text-center">Date début</div>
 			<div class="col-start-4 col-span-1 hidden lg:block p-2 break-words text-center">Date fin</div>
 			<div class="col-start-3 lg:col-start-5 col-span-3 p-2 break-words text-center">Lieu</div>
-			<div class="col-start-6 col-span-3 lg:col-start-8 lg:col-span-2 p-2 break-words"></div>
+			<div class="col-start-6 col-span-3 lg:col-start-8 lg:col-span-2 p-2 break-words">Aperçu</div>
 			<div class="col-start-10 col-span-3 p-2 break-words ">Validation</div>
 		</div>
 
@@ -28,8 +28,10 @@
 
 						<!-- VISUALISATION -->
 						<div class="col-start-6 col-span-3 lg:col-start-8 lg:col-span-2 p-2 items-center">
-							<form action="index.php?controlleur=evtActu&methode=lister" method="post">
+							<form action="index.php?controlleur=evtActu&methode=lister" method="post" multipart="enctype/form-data">
 								<input type="hidden" name="id" value="{{ evenement.evtId }}">
+								<input type="hidden" name="nom" value="{{ evenement.titre }}">
+								<input type="hidden" name="type" value="Evenements">
 								<button type="submit" class="flex items-center space-x-1 lg:space-x-2 bg-button hover:bg-hbutton text-tbutton px-2 lg:px-4 py-2 rounded-lg">
 									<img src="../asset/icones/eye.svg" alt="Visualiser" class="h-5 w-5">
 									<span>Voir</span>
