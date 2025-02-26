@@ -15,10 +15,10 @@
 
 				<div class="row-start-3 col-start-1 col-span-12 lg:col-span-6 grid grid-cols-subgrid bg-card rounded-lg bg-opacity-55 p-2">
 					<p class="row-start-1 col-start-1 col-span-12 lg:col-span-6 text-text font-semibold text-center">Date début :
-						{{ evtActus.dateDebut }} à
+						{{ evtActus.dateDebut|date("d/m/Y") }} à
 						{{ evtActus.heureDebut|date('H:i') }}</p>
 					<p class="row-start-2 col-start-1 col-span-12 lg:col-span-6 text-text font-semibold text-center">Date fin :
-						{{ evtActus.dateFin }} à
+						{{ evtActus.dateFin|date("d/m/Y") }} à
 						{{ evtActus.heureFin|date('H:i') }}</p>
 					<p class="row-start-3 col-start-1 col-span-12 lg:col-span-6 text-text font-semibold text-center">Lieu :
 						{{ evtActus.lieu }}</p>
@@ -27,7 +27,7 @@
 
 
 			<!-- Colonne de droite -->
-			<div class="grid grid-cols-subgrid col-start-1 col-span-12 row-start-3 lg:col-start-7 lg:col-span-6 lg:row-start-2 bg-card  bg-opacity-55 rounded-lg p-2 h-full">
+			<div class="grid grid-cols-subgrid col-start-1 col-span-12 row-start-3 lg:col-start-7 lg:col-span-6 lg:row-start-2 bg-card  bg-opacity-55 rounded-lg p-2">
 				<h2 class="row-start-1 col-start-1 col-span-12 lg:col-span-6 text-2xl font-bold text-center text-text">Fiche Responsable</h2>
 				<p class="row-start-2 col-start-1 col-span-12 lg:col-span-6 text-text font-semibold">Nom :
 					{{ evtActus.nomRep }}</p>
