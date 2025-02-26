@@ -6,7 +6,7 @@
 	<!-- Contenu spécifique de chaque page -->
 	<div class="h-full">
 		<div class="gap-2 p-2 grid grid-cols-12 items-center">
-			<h1 class="row-start-1 col-span-12 text-center font-bold text-4xl p-2 text-title">{{ evtActus.titre }}</h1>
+			<h1 class="row-start-1 col-span-12 bg-fh text-tbutton py-6 text-center text-4xl font-bold rounded-t-2xl">{{ evtActus.titre }}</h1>
 
 			<!-- Colonne de gauche -->
 			<div class="grid grid-cols-subgrid col-start-1 col-span-12 row-start-2 lg:col-span-6 lg:row-start-2 h-full">
@@ -15,11 +15,11 @@
 
 				<div class="row-start-3 col-start-1 col-span-12 lg:col-span-6 grid grid-cols-subgrid bg-card rounded-lg bg-opacity-55 p-2">
 					<p class="row-start-1 col-start-1 col-span-12 lg:col-span-6 text-text font-semibold text-center">Date début :
-						{{ evtActus.dateDebut }} à
-						{{ evtActus.heureDebut }}</p>
+						{{ evtActus.dateDebut|date("d/m/Y") }} à
+						{{ evtActus.heureDebut|date('H:i') }}</p>
 					<p class="row-start-2 col-start-1 col-span-12 lg:col-span-6 text-text font-semibold text-center">Date fin :
-						{{ evtActus.dateFin }} à
-						{{ evtActus.heureFin }}</p>
+						{{ evtActus.dateFin|date("d/m/Y") }} à
+						{{ evtActus.heureFin|date('H:i') }}</p>
 					<p class="row-start-3 col-start-1 col-span-12 lg:col-span-6 text-text font-semibold text-center">Lieu :
 						{{ evtActus.lieu }}</p>
 				</div>
@@ -27,7 +27,7 @@
 
 
 			<!-- Colonne de droite -->
-			<div class="grid grid-cols-subgrid col-start-1 col-span-12 row-start-3 lg:col-start-7 lg:col-span-6 lg:row-start-2 bg-card  bg-opacity-55 rounded-lg p-2 h-full">
+			<div class="grid grid-cols-subgrid col-start-1 col-span-12 row-start-3 lg:col-start-7 lg:col-span-6 lg:row-start-2 bg-card  bg-opacity-55 rounded-lg p-2">
 				<h2 class="row-start-1 col-start-1 col-span-12 lg:col-span-6 text-2xl font-bold text-center text-text">Fiche Responsable</h2>
 				<p class="row-start-2 col-start-1 col-span-12 lg:col-span-6 text-text font-semibold">Nom :
 					{{ evtActus.nomRep }}</p>
@@ -44,7 +44,7 @@
 
 
 		<!-- Section Commentaires -->
-		<div class="mt-8 p-4 text-tab rounded-lg shadow-lg">
+		<div class="mt-8 p-4 text-tab rounded-lg bg-card">
 			<h2 class="text-2xl font-bold text-title mb-4">Commentaires</h2>
 
 			<!-- Exemples de commentaires -->
@@ -105,7 +105,7 @@
     <div class="pt-2">
         <div class="gap-2 p-2 grid grid-cols-12 items-center  rounded-lg">
             <!-- titre de l'article -->
-            <h1 class="col-span-12 text-title font-bold text-2xl lg:text-5xl text-left mb-4 break-words col-start-1 row-start-1 px-4">{{ evtActus.titre }}</h1>
+            <h1 class="row-start-1 col-span-12 bg-fh text-tbutton py-6 text-center text-4xl font-bold rounded-t-2xl">{{ evtActus.titre }}</h1>
 
             <!-- résumé de l'article -->
             <div class="col-span-12 text-text font-bold text-sm lg:text-lg text-left mb-4 break-words col-start-1 row-start-2 px-4">
@@ -123,16 +123,16 @@
             </div>
 
             <!-- section commentaires -->
-            <div class="gap-2 grid grid-cols-12 items-center bg-card border-2 border-solid text- rounded-lg p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] sm:col-start-1 xl:col-start-10 col-span-12 xl:col-span-3 sm:row-start-4 xl:row-start-3 sm:h-full xl:h-full">
+            <div class="gap-2 grid grid-cols-12 items-center bg-card  rounded-lg p-4  sm:col-start-1 xl:col-start-10 col-span-12 xl:col-span-3 sm:row-start-4 xl:row-start-3 sm:h-full xl:h-full">
                 <!-- Titre "Commentaires" -->
-                <div class="gap-2 grid grid-cols-12 items-center  p-4 text-center justify-center mb-4 col-span-12 text-title text-lg lg:text-3xl font-bold">
+                <div class="gap-2 grid grid-cols-12 col-start-3 mb-4 col-span-12 text-title text-lg lg:text-3xl font-bold">
                     Commentaires
                 </div>
 
 				<!-- Afficher les commentaires réels -->
 				{% if commentaires is not empty %}
 					{% for commentaire in commentaires %}
-						<div class="grid grid-cols-12 items-start mb-4 col-span-12 pb-4 border-b">
+						<div class="grid grid-cols-12 items-start mb-4 col-span-12 pb-4">
 							<!-- image de profil -->
 							<div class="col-start-1 col-span-1 flex justify-center items-center">
 								<img src="../asset/icones/pp_user.svg" alt="pp" class="w-auto h-auto rounded-full">

@@ -44,8 +44,8 @@
 							{# Infos de l'événement #}
 							<div class="text-text text-center">
 								<h3 class="break-words text-lg font-semibold">{{ event.titre }}</h3>
-								<p class="break-words text-sm">{{ event.dateDebut|date("d-m-Y") }} {{ event.heureDebut|date("H:i") }}</p>
-								<p class="break-words text-sm">{{ event.dateFin|date("d-m-Y") }} {{ event.heureFin|date("H:i") }}</p>
+								<p class="break-words text-sm">Du {{ event.dateDebut|date("d/m/Y") }} à {{ event.heureDebut|date("H:i") }}</p>
+								<p class="break-words text-sm">jusqu'au {{ event.dateFin|date("d/m/Y") }} à {{ event.heureFin|date("H:i") }}</p>
 								<p class="break-words text-sm">{{ event.lieu }}</p>
 							</div>
 
