@@ -3,22 +3,30 @@
 	<div class="grid grid-cols-12 p-2 gap-y-8 text-text">
 
 		<div class="grid grid-cols-subgrid row-start-1 col-start-1 col-span-12">
-			<h1 class="row-start-1 col-start-2 col-span-10 text-2xl lg:text-4xl font-semibold text-center text-title uppercase lg:font-extrabold">Mon compte</h1>
-			<div class="flex items-center justify-center row-start-1 col-start-12 col-span-1 right-0 top-0">
-					<button type="button" onclick="openPopup(2)"><img src="../asset/icones/gear-wide-connected.svg" alt="parametre" class="h-full w-full"></button>
-			</div>
+			<h2 class="row-start-1 col-start-2 col-span-10 text-2xl lg:text-4xl font-semibold text-center text-title uppercase lg:font-extrabold">Mon compte</h2>
 		</div>
 
 		{# infos de l'utilisateur #}
 		<div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-12 gap-2">
-			{# infos compte #}
-			<div class="row-start-1 col-start-1 col-span-12 flex justify-center items-center">
-				<img src="../asset/user/{{ user.getPfp}}" alt="photo de profil" class="rounded-full min-h-36 min-w-36 max-h-36 max-w-36 border-2 border-solid border-gray-300">
-			</div>
-			<h2 class="row-start-2 col-start-1 col-span-12 font-bold text-lg text-center">{{ user.getPseudo }}</h2>
-			<p class="row-start-3 col-strat-1 col-span-12 lg:col-start-5 lg:col-span-4 text-center">{{ user.getBio }}</p>
-			<button type="button" class="row-start-4 col-start-4 col-span-6 lg:col-span-2 lg:col-start-6 bg-button hover:bg-hbutton text-white text-center rounded-md px-2 py-1" onclick="openPopup(1)">Modification profil</button>
-		</div>
+    {# infos compte #}
+    <div class="row-start-1 col-start-1 col-span-12 flex justify-center items-center">
+        {% if user.pfp == null %}
+            <img src="../asset/icones/pp_user.svg" alt="photo de profil" class="rounded-full min-h-36 min-w-36 max-h-36 max-w-36 border-2 border-solid border-gray-300">
+        {% else %}
+            <img src="../asset/user/{{ user.getPfp}}" alt="photo de profil" class="rounded-full min-h-36 min-w-36 max-h-36 max-w-36 border-2 border-solid border-gray-300">
+        {% endif %}
+    </div>
+    <h3 class="row-start-2 col-start-1 col-span-12 font-bold text-lg text-center">{{ user.getPseudo }}</h3>
+    <p class="row-start-3 col-start-1 col-span-12 lg:col-start-5 lg:col-span-4 text-center">{{ user.getBio }}</p>
+    
+    <div class="row-start-4 col-start-4 col-span-6 lg:col-span-4 lg:col-start-5 flex gap-2">
+        <button type="button" class="bg-button hover:bg-hbutton text-white text-center rounded-md px-2 py-1 w-full h-fit" onclick="openPopup(1)">Editer le profil</button>
+        <form action="index.php?controlleur=compte&methode=deconnexion" method="post" class="w-full">
+            <button type="submit" class="bg-button hover:bg-hbutton text-white rounded-md py-1 px-2 w-full">Se déconnecter</button>
+        </form>
+    </div>
+</div>
+
 
 		{# corps du compte #}
 		<div class="grid grid-cols-subgrid row-start-3 col-start-1 col-span-12 gap-2 p-4 border-t-2 border-t-solid border-t-gray-300">
@@ -64,7 +72,7 @@
 
 {# popup de modification de compte #}
 <div id="popup" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden z-50 text-text">
-	<div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-xl h-fit max-h-xl">
+	<div class="bg-bg p-6 rounded-lg shadow-lg w-full max-w-xl h-fit max-h-xl">
 		<input type="hidden" id="popupModifCompte" name="compte" value="">
 		<h2 class="text-xl font-bold text-center mb-4">Modification du compte</h2>
 		<form
@@ -72,16 +80,18 @@
 			{# nom #}
 			<div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-6 gap-4">
 				<div class="row-start-1 col-start-1 col-span-2 flex flex-row items-center gap-2">
-					<img src="../asset/icones/person-vcard (1).svg" alt="nom" class="w-6 h-6 bg-text py-1 rounded-md">
+					<img src="../asset/icones/person-vcard (1).svg" alt="nom" class="w-6 h-6  py-1 rounded-md">
 					<label for="nom" class="">Nom</label>
 				</div>
-				<input name="nom" id="nom" class="row-start-1 col-start-3 col-span-4 border-solid border-2 border-gray-300 rounded-md px-2" value="{{ user.getNom }}">
+				<div class="col-start-3 col-span-4 w-full">
+					<input name="nom" id="nom" oninput='verifErreurSaisie(nom)' class="row-start-1 col-start-3 col-span-4 border-solid border-2 border-gray-300 rounded-md px-2" value="{{ user.getNom }}">
+				</div>
 			</div>
 
 			{# email #}
 			<div class="grid grid-cols-subgrid row-start-3 col-start-1 col-span-6 gap-4">
 				<div class="row-start-1 col-start-1 col-span-2 flex flex-row items-center gap-2">
-					<img src="../asset/icones/envelope.svg" alt="email" class="w-6 h-6 bg-text py-1 rounded-md">
+					<img src="../asset/icones/envelope.svg" alt="email" class="w-6 h-6  py-1 rounded-md">
 					<label for="email" class="">Email</label>
 				</div>
 				<input name="email" id="email" disabled class="row-start-1 col-start-3 col-span-4 text-text border-solid border-2 border-gray-300 rounded-md px-2" value="{{ user.getEmail }}">
@@ -90,16 +100,18 @@
 			{# pseudo #}
 			<div class="grid grid-cols-subgrid row-start-4 col-start-1 col-span-6 gap-4">
 				<div class="row-start-1 col-start-1 col-span-2 flex flex-row items-center gap-2">
-					<img src="../asset/icones/person.svg" alt="pseudo" class="w-6 h-6 bg-text py-1 rounded-md">
-					<label for="pesudo" class="">Pseudo</label>
+					<img src="../asset/icones/person.svg" alt="pseudo" class="w-6 h-6  py-1 rounded-md">
+						<label for="pesudo" class="">Pseudo</label>
 				</div>
-				<input name="pseudo" id="pseudo" class="row-start-1 col-start-3 col-span-4 text-text border-solid border-2 border-gray-300 rounded-md px-2" value="{{ user.getPseudo }}">
+				<div class="col-start-3 col-span-4 w-full">
+					<input name="pseudo" id="pseudo" oninput='verifErreurSaisie(pseudo)' class="row-start-1 col-start-3 col-span-4 text-text border-solid border-2 border-gray-300 rounded-md px-2" value="{{ user.getPseudo }}">
+				</div>
 			</div>
 
 			{# bio #}
 			<div class="grid grid-cols-subgrid row-start-5 col-start-1 col-span-6 gap-4">
 				<div class="row-start-1 col-start-1 col-span-2 flex flex-row items-center gap-2">
-					<img src="../asset/icones/card-text.svg" alt="bio" class="w-6 h-6 bg-text py-1 rounded-md">
+					<img src="../asset/icones/card-text.svg" alt="bio" class="w-6 h-6  py-1 rounded-md">
 					<label for="bio" class="">Biographie</label>
 				</div>
 				<input name="bio" id="bio" class="row-start-1 col-start-3 col-span-4 text-text border-solid border-2 border-gray-300 rounded-md px-2" value="{{ user.getBio }}">
@@ -108,76 +120,33 @@
 			{# photo profil #}
 			<div class="grid grid-cols-subgrid row-start-6 col-start-1 col-span-6 gap-4">
 				<div class="row-start-1 col-start-1 col-span-2 flex flex-row items-center gap-2">
-					<img src="../asset/icones/image.svg" alt="pfp" class="w-6 h-6 bg-text py-1 rounded-md">
+					<img src="../asset/icones/image.svg" alt="pfp" class="w-6 h-6  py-1 rounded-md">
 					<label for="pfp" class="">Avatar</label>
 				</div>
-				<input class="row-start-1 col-start-3 col-span-4 bg-transparent flex w-full rounded-md border-2 border-white border-input bg-white text-sm text-text file:border-0 file:bg-text file:text-white file:text-sm" type="file" name="pfp" id="pfp" accept=".jpg, .png" value=" {{ user.getPfp }}"/>
+				<input class="row-start-1 col-start-3 col-span-4 bg-transparent flex w-full rounded-md border-2 border-white border-input bg-white text-sm text-text file:border-2 file:bg-text file:text-white file:text-sm" type="file" name="pfp" id="pfp" accept=".jpg, .png" value=" {{ user.getPfp }}"/>
+			</div>
+
+			<div class="grid grid-cols-subgrid row-start-7 col-start-1 col-span-6 mt-4">
+			<form action="index.php?controlleur=compte&methode=supprimerCompte" method="post" class="gap-4 items-center">
+				<label class="row-start-1 col-start-1 col-span-4 text-sm">Souhaitez-vous supprimer votre compte ?</label>
+				<button arial-label="b_SupprCompte" class="row-start-1 col-start-5 col-span-2 bg-button hover:bg-hbutton text-white rounded-md py-1 px-2 h-fit text-center">Supprimer</button>
+			</form>	
 			</div>
 
 			{# bouton de validation/annulation #}
-			<div class="row-start-7 col-start-1 col-span-6 flex justify-end gap-2">
-				<button type="submit" class="px-4 py-2 bg-button hover:bg-hbutton text-white rounded-lg">Modifier</button>
+			<div class="row-start-8 col-start-1 col-span-6 flex justify-end gap-2">
+				<button type="button" onclick="closePopup(1)" class="px-4 py-2 bg-button hover:bg-hbutton text-white rounded-lg mr-2">Annuler</button>				
+				<button type="submit" id="validerFormulaire" class="px-4 py-2 bg-button hover:bg-hbutton text-white rounded-lg">Modifier</button>
 				<button type="button" onclick="openPopup(3), closePopup(1)" class="px-4 py-2 bg-button hover:bg-hbutton text-white rounded-lg mr-2"> Changer le mot de passe</button>
-				<button type="button" onclick="closePopup(1)" class="px-4 py-2 bg-button hover:bg-hbutton text-white rounded-lg mr-2">Annuler</button>
-			
 			</div>
 		</form>
 
 	</div>
 </div>
 
-
-<div id="popup" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden z-50 text-principal-rouge">
-	<div class="grid grid-cols-6 bg-white p-6 rounded-lg shadow-lg w-full max-w-xl h-fit max-h-xl gap-2 text-sm lg:text-base text-text">
-		<input type="hidden" id="popupParam" name="parametre" value="">
-		<h2 class="row-start-1 col-start-1 col-span-6 text-xl font-bold text-center mb-4">Information du compte</h2>
-
-		{# autorisation #}
-		<div class="row-start-2 col-start-1 col-span-6 flex flex-row justify-between items-center gap-2 border-b-2 border-b-solid border-gray-300 pb-2">
-				<input type="checkbox" name="autorisation" id="autorisation" class="h-4 w-4">
-				<label class="row-start-1 col-start-1 col-span-5">J'autorise GureKultura à utiliser mon adresse e-mail et/ou mon numéro de téléphone pour m'envoyer des recommandations personnalisées, des nouveautés pertinentes.</label>
-		</div>
-
-
-		<div class="row-start-3 col-start-1 col-span-6 flex flex-row justify-between items-center gap-2 border-b-2 border-b-solid border-gray-300 pb-2">
-				<input type="checkbox" name="autorisation2" id="autorisation2" class="h-4 w-4">
-				<label class="row-start-1 col-start-1 col-span-5">J'autorise GureKultura à utiliser et stocker mes données personnelles telles que mes photos, nom et prénom, conformément à leur politique de confidentialité.</label>
-		</div>
-
-		{# FaQ #}
-		<div class="grid grid-cols-subgrid row-start-4 col-start-1 col-span-6 border-b-2 border-b-solid border-gray-300 pb-2"> 
-			<label class="row-start-1 col-start-1 col-span-4">Des questions ? Rendez-vous sur notre FAQ</label>
-			<a href="index.php?controlleur=faq&methode=lister" class="row-start-1 col-start-5 col-span-2 bg-button hover:bg-hbutton text-white rounded-md py-1 px-2 text-center h-fit">FAQ</a>
-		</div>
-
-		{# newsletter #}
-		<div class="grid grid-cols-subgrid row-start-5 col-start-1 col-span-6 border-b-2 border-b-solid border-b-gray-300 pb-2">
-			<label class="row-start-1 col-start-1 col-span-4">Souhaitez-vous consulter notre NewsLetter ?</label>
-			<a href="index.php?controlleur=NL&methode=lister" class="row-start-1 col-start-5 col-span-2 bg-button hover:bg-hbutton text-white rounded-md py-1 px-2 text-center h-fit">NewsLetter</a>
-		</div>
-
-		{# deconnexion #}
-		<form action="index.php?controlleur=compte&methode=deconnexion" method="post" class="grid grid-cols-subgrid row-start-6 col-start-1 col-span-6 border-b-2 border-b-solid border-gray-300 pb-2">
-			<label class="row-start-1 col-start-1 col-span-3">Souhaitez-vous vous déconnecter ?</label>
-			<button arial-label="b_SupprCompte" class="row-start-1 col-start-5 col-span-2 bg-button hover:bg-hbutton text-white rounded-md py-1 px-2 h-fit text-center">Déconnexion</button>
-		</form>
-
-		{# suppression #}
-		<form action="index.php?controlleur=compte&methode=supprimerCompte" method="post" class="grid grid-cols-subgrid row-start-7 col-start-1 col-span-6">
-			<label class="row-start-1 col-start-1 col-span-3">Souhaitez-vous supprimer votre compte ?</label>
-			<button arial-label="b_SupprCompte" class="row-start-1 col-start-5 col-span-2 bg-button hover:bg-hbutton text-white rounded-md py-1 px-2 h-fit text-center">Suppression</button>
-		</form>
-
-		<div class="row-start-8 col-start-1 col-span-6 flex justify-end">
-				<button type="button" onclick="closePopup(2)" class="px-4 py-2 bg-button hover:bg-hbutton text-white rounded-lg mr-2">Quitter</button>
-		</div>
-	</div>
-</div>
-
-
 {# popup de modification de mdp #}
 <div id="popup" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden z-50 text-text">
-	<div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-xl h-fit max-h-xl">
+	<div class="bg-bg p-6 rounded-lg shadow-lg w-full max-w-xl h-fit max-h-xl">
 		<input type="hidden" id="popupModifMdp" name="modifMdp" value="">
 		<h2 class="text-xl font-bold text-center mb-4 text-title">Modification du mot de passe</h2>
 		<form
@@ -186,7 +155,7 @@
 			{# nom #}
 			<div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-6 gap-4">
 				<div class="row-start-1 col-start-1 col-span-3 flex flex-row items-center gap-2">
-					<img src="../asset/icones/lock.svg" alt="mdp" class="w-6 h-6 py-1 rounded-md bg-text">
+					<img src="../asset/icones/lock.svg" alt="mdp" class="w-6 h-6 py-1 rounded-md ">
 					<label for="mdp" class="">Mot de passe actuel</label>
 				</div>
 				<input type="password" name="mdp" id="mdp" class="row-start-1 col-start-4 col-span-5 text-white border-solid border-2 border-gray-300 rounded-md px-2">
@@ -195,7 +164,7 @@
 			{# email #}
 			<div class="grid grid-cols-subgrid row-start-3 col-start-1 col-span-6 gap-4">
 				<div class="row-start-1 col-start-1 col-span-3 flex flex-row items-center gap-2">
-					<img src="../asset/icones/lock.svg" alt="nouvMdp" class="w-6 h-6 py-1 rounded-md bg-text">
+					<img src="../asset/icones/lock.svg" alt="nouvMdp" class="w-6 h-6 py-1 rounded-md ">
 					<label for="nouvMdp" class="">Nouveau mot de passe</label>
 				</div>
 				<input type="password" name="nouvMdp" id="nouvMdp" class="row-start-1 col-start-4 col-span-5 text-white border-solid border-2 border-gray-300 rounded-md px-2">
@@ -204,7 +173,7 @@
 			{# pseudo #}
 			<div class="grid grid-cols-subgrid row-start-4 col-start-1 col-span-6 gap-4">
 				<div class="row-start-1 col-start-1 col-span-6 flex flex-row items-center gap-2">
-					<img src="../asset/icones/lock.svg" alt="confNouvMdp" class="w-6 h-6 bg-text py-1 rounded-md">
+					<img src="../asset/icones/lock.svg" alt="confNouvMdp" class="w-6 h-6  py-1 rounded-md">
 					<label for="confNouvMdp" class="">Confirmation mot de passe</label>
 				</div>
 				<input type="password" name="confNouvMdp" id="confNouvMdp" class="row-start-1 col-start-4 col-span-5 text-text border-solid border-2 border-principal rounded-md px-2">
@@ -212,9 +181,9 @@
 
 			{# bouton de validation/annulation #}
 			<div class="row-start-7 col-start-1 col-span-6 flex justify-end gap-2">
-				<input type="hidden" name="email" value="{{ user.getEmail }}">               
-				<button type="submit" class="px-4 py-2 bg-button hover:bg-hbutton text-white rounded-lg">Modifier</button>
+				<input type="hidden" name="email" value="{{ user.getEmail }}">   
 				<button type="button" onclick="closePopup(3)" class="px-4 py-2 bg-button hover:bg-hbutton text-white rounded-lg mr-2">Annuler</button>
+				<button type="submit" class="px-4 py-2 bg-button hover:bg-hbutton text-white rounded-lg">Modifier</button>
 				
 			</div>
 		</form>
@@ -253,4 +222,7 @@ function closePopup(val) {
 			document.getElementById("popupModifMdp").parentElement.parentElement.classList.add("hidden");
 		}
 }
-</script>{% endblock %}
+</script>
+
+<script src="../js/erreurSaisie.js"></script>
+{% endblock %}
