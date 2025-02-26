@@ -38,7 +38,9 @@
 					<select name="cateId" id="nomCategorie" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text">
 						<option value="{{ evenementActuel.cateId }}" selected>Selectionner une catégorie</option>
 						{% for categorie in categories %}
-							<option class="text-black" value="{{categorie.cateId}}" {% if evenementActuel.cateId == categorie.cateId %} selected {% endif %}>{{ categorie.nom }}</option>
+							{% if categorie.cateId != 1 and categorie.cateId != 2 %}
+								<option class="text-black" value="{{categorie.cateId}}" {% if evenementActuel.cateId == categorie.cateId %} selected {% endif %}>{{ categorie.nom }}</option>
+							{% endif %}
 						{% endfor %}
 					</select>
 				</div>
@@ -117,7 +119,7 @@
 						<label for="photo">Image</label>
 					</div>
 					<div class="relative col-start-3 col-span-4 w-full">
-						<input class="col-start-3 col-span-4 bg-transparent flex w-full rounded-md border border-white border-input bg-white text-sm file:border-0 file:bg-text file:text-white file:text-sm" type="file" name="photo" id="photo" accept=".jpg, .png" value=" {{evtActuel.photo}}"/>
+						<input oninput='verifErreurSaisie(photo)' class="col-start-3 col-span-4 bg-transparent flex w-full rounded-md border border-white border-input bg-white text-sm file:border-0 file:bg-text file:text-white file:text-sm" type="file" name="photo" id="photo" accept=".jpg, .png" value=" {{evtActuel.photo}}"/>
 					</div>
 				</div>
 
@@ -128,7 +130,7 @@
 						<label for="autorisation">Autorisation</label>
 					</div>
 					<div class="relative col-start-3 col-span-4 w-full">
-						<input class="col-start-3 col-span-4 bg-transparent flex w-full rounded-md border border-white border-input bg-white text-sm file:border-0 file:bg-text file:text-white file:text-sm" type="file" name="autorisation" id="autorisation" accept=".pdf" value=" {{evtActuel.autorisation}}"/>
+						<input oninput='verifErreurSaisie(autorisation)' class="col-start-3 col-span-4 bg-transparent flex w-full rounded-md border border-white border-input bg-white text-sm file:border-0 file:bg-text file:text-white file:text-sm" type="file" name="autorisation" id="autorisation" accept=".pdf" value=" {{evtActuel.autorisation}}"/>
 					</div>
 				</div>
 
