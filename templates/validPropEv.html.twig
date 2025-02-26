@@ -19,41 +19,43 @@
 		<!-- Données -->
 		<div>
 			{% for evenement in evenements %}
-				<div class="grid grid-cols-12 gap-2 p-3 odd:bg-odd even:bg-even items-center text-text break-words">
-					<div class="col-start-1 col-span-2 p-2 break-words">{{ evenement.titre }}</div>
-					<div class="col-start-3 col-span-1 hidden lg:block p-2 break-words">{{ evenement.dateDebut }}</div>
-					<div class="col-start-4 col-span-1 hidden lg:block p-2 break-words">{{ evenement.dateFin }}</div>
-					<div class="col-start-3 lg:col-start-5 col-span-3 p-2 break-words">{{ evenement.lieu }}</div>
+				{% if evenement.userId != user.userId %}
+					<div class="grid grid-cols-12 gap-2 p-3 odd:bg-odd even:bg-even items-center text-text break-words">
+						<div class="col-start-1 col-span-2 p-2 break-words">{{ evenement.titre }}</div>
+						<div class="col-start-3 col-span-1 hidden lg:block p-2 break-words">{{ evenement.dateDebut }}</div>
+						<div class="col-start-4 col-span-1 hidden lg:block p-2 break-words">{{ evenement.dateFin }}</div>
+						<div class="col-start-3 lg:col-start-5 col-span-3 p-2 break-words">{{ evenement.lieu }}</div>
 
-					<!-- VISUALISATION -->
-					<div class="col-start-6 col-span-3 lg:col-start-8 lg:col-span-2 p-2 items-center">
-						<form action="index.php?controlleur=evtActu&methode=lister" method="post">
-							<input type="hidden" name="id" value="{{ evenement.evtId }}">
-							<button type="submit" class="flex items-center space-x-1 lg:space-x-2 bg-button hover:bg-hbutton text-tbutton px-2 lg:px-4 py-2 rounded-lg">
-								<img src="../asset/icones/eye.svg" alt="Visualiser" class="h-5 w-5">
-								<span>Voir</span>
+						<!-- VISUALISATION -->
+						<div class="col-start-6 col-span-3 lg:col-start-8 lg:col-span-2 p-2 items-center">
+							<form action="index.php?controlleur=evtActu&methode=lister" method="post">
+								<input type="hidden" name="id" value="{{ evenement.evtId }}">
+								<button type="submit" class="flex items-center space-x-1 lg:space-x-2 bg-button hover:bg-hbutton text-tbutton px-2 lg:px-4 py-2 rounded-lg">
+									<img src="../asset/icones/eye.svg" alt="Visualiser" class="h-5 w-5">
+									<span>Voir</span>
+								</button>
+							</form>
+						</div>
+
+						<!-- VALIDATION -->
+						<div class="col-start-10 col-span-3 flex lg:space-x-3 flex-col lg:flex-row gap-2 p-2">
+							<form action="index.php?controlleur=validPropEv&methode=valider" method="post" class="inline-flex mb-0">
+								<input type="hidden" name="evtId" value="{{ evenement.evtId }}">
+								<button type="submit" title="Accepter" class="p-1 rounded-lg bg-green-500 hover:bg-green-600 flex items-center justify-center w-8 h-8">
+									<img src="../asset/icones/file-plus.svg" alt="Validation" class="h-6 w-6">
+								</button>
+							</form>
+
+							<button type="button" title="Mettre en attente" class="p-1 rounded-lg bg-yellow-500 hover:bg-yellow-600 flex items-center justify-center w-8 h-8" onclick="openPopup('popup', '{{ evenement.evtId }}')">
+								<img src="../asset/icones/file-break.svg" alt="Attente" class="h-6 w-6">
 							</button>
-						</form>
-					</div>
 
-					<!-- VALIDATION -->
-					<div class="col-start-10 col-span-3 flex lg:space-x-3 flex-col lg:flex-row gap-2 p-2">
-						<form action="index.php?controlleur=validPropEv&methode=valider" method="post" class="inline-flex mb-0">
-							<input type="hidden" name="evtId" value="{{ evenement.evtId }}">
-							<button type="submit" title="Accepter" class="p-1 rounded-lg bg-green-500 hover:bg-green-600 flex items-center justify-center w-8 h-8">
-								<img src="../asset/icones/file-plus.svg" alt="Validation" class="h-6 w-6">
+							<button type="button" title="Refuser" class="p-1 rounded-lg bg-red-500 hover:bg-red-600 flex items-center justify-center w-8 h-8" onclick="openPopup('refusalPopup', '{{ evenement.evtId }}')">
+								<img src="../asset/icones/file-minus.svg" alt="Suppression" class="h-6 w-6">
 							</button>
-						</form>
-
-						<button type="button" title="Mettre en attente" class="p-1 rounded-lg bg-yellow-500 hover:bg-yellow-600 flex items-center justify-center w-8 h-8" onclick="openPopup('popup', '{{ evenement.evtId }}')">
-							<img src="../asset/icones/file-break.svg" alt="Attente" class="h-6 w-6">
-						</button>
-
-						<button type="button" title="Refuser" class="p-1 rounded-lg bg-red-500 hover:bg-red-600 flex items-center justify-center w-8 h-8" onclick="openPopup('refusalPopup', '{{ evenement.evtId }}')">
-							<img src="../asset/icones/file-minus.svg" alt="Suppression" class="h-6 w-6">
-						</button>
+						</div>
 					</div>
-				</div>
+				{% endif %}
 			{% endfor %}
 		</div>
 	</div>
@@ -65,10 +67,6 @@
 		<h3 class="text-xl font-bold text-center mb-4 text-title font-semibold lg:font-extrabold uppercase">Mise en attente</h3>
 		<form action="index.php?controlleur=validPropEv&methode=attente" method="post" class="text-text">
 			<input type="hidden" id="popupEvtId" name="evtId" value="">
-			<div class="mb-4">
-				<label for="objet" class="block text-sm font-medium text-gray-700">Objet</label>
-				<input type="text" id="objet" name="objet" class="w-full p-2 border rounded-lg" required>
-			</div>
 			<div class="mb-4">
 				<label for="message" class="block text-sm font-medium text-gray-700">Message</label>
 				<textarea id="message" name="message" class="w-full p-2 border rounded-lg" rows="4" required></textarea>
@@ -88,15 +86,11 @@
 		<form action="index.php?controlleur=validPropEv&methode=supprimer" method="post" class="text-text">
 			<input type="hidden" id="refusalPopupEvtId" name="evtId" value="">
 			<div class="mb-4">
-				<label for="objet" class="block text-sm font-medium text-gray-700">Objet</label>
-				<input type="text" id="objet" name="objet" class="w-full p-2 border rounded-lg" required>
-			</div>
-			<div class="mb-4">
 				<label for="message" class="block text-sm font-medium text-gray-700">Message</label>
 				<textarea id="message" name="message" class="w-full p-2 border rounded-lg" rows="4" required></textarea>
 			</div>
 			<div class="flex justify-end gap-2">
-				<button type="button" onclick="closePopup('popup')" class="px-4 py-2 bg-button hover:hbutton text-tbutton rounded-lg mr-2">Annuler</button>
+				<button type="button" onclick="closePopup('refusalPopup')" class="px-4 py-2 bg-button hover:hbutton text-tbutton rounded-lg mr-2">Annuler</button>
 				<button type="submit" class="px-4 py-2 bg-button hover:hbutton text-tbutton rounded-lg">Envoyer</button>
 			</div>
 		</form>
@@ -114,8 +108,13 @@
         }
     }
 
-    function closePopup(popupId) {
+	function closePopup(popupId) {
         document.getElementById(popupId).classList.add("hidden");
+        if (popupId === "popup") {
+            document.getElementById("popupEvtId").value = evtId;
+        } else if (popupId === "refusalPopup") {
+            document.getElementById("refusalPopupEvtId").value = evtId;
+        }
     }
 </script>
 
