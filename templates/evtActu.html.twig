@@ -6,7 +6,7 @@
 	<!-- Contenu spécifique de chaque page -->
 	<div class="h-full">
 		<div class="gap-2 p-2 grid grid-cols-12 items-center">
-			<h1 class="row-start-1 col-span-12 bg-fh text-tbutton py-6 text-center text-4xl font-bold rounded-t-2xl">{{ evtActus.titre }}</h1>
+			<h2 class="row-start-1 col-span-12 bg-fh text-tbutton py-6 text-center text-4xl font-bold rounded-t-2xl">{{ evtActus.titre }}</h2>
 
 			<div class="grid grid-cols-subgrid col-start-2 col-span-10 row-start-2 h-full">
 				<img src="../asset/evenement/photo/{{ evtActus.photo }}" alt="photo evenement" class="row-start-1 col-start-3 col-span-6 h-auto rounded-lg">
@@ -72,7 +72,7 @@
 			    {% if type == 'Evenements' %} 
 					{% if estInscrit == true %}
 						
-						<h1 class="font-bold text-lg p-2 text-title">Vous êtes déjà inscrit !</h1>
+						<h2 class="font-bold text-lg p-2 text-title">Vous êtes déjà inscrit !</h2>
 
 						<form method="POST" action="index.php?controlleur=evtActu&methode=desinscrire">
 							<INPUT TYPE="hidden" NAME="nom" VALUE="{{evtActus.titre}}">
@@ -102,7 +102,7 @@
     <div class="pt-2">
         <div class="gap-2 p-2 grid grid-cols-12 items-center  rounded-lg">
             <!-- titre de l'article -->
-            <h1 class="row-start-1 col-span-12 bg-fh text-tbutton py-6 text-center text-4xl font-bold rounded-t-2xl">{{ evtActus.titre }}</h1>
+            <h2 class="row-start-1 col-span-12 bg-fh text-tbutton py-6 text-center text-4xl font-bold rounded-t-2xl">{{ evtActus.titre }}</h2>
 
             <!-- résumé de l'article -->
             <div class="col-span-12 text-text font-bold text-sm lg:text-lg text-left mb-4 break-words col-start-1 row-start-2 px-4">
@@ -153,7 +153,7 @@
 						</div>
 					{% endfor %}
 				{% else %}
-					<h1 class="col-span-12">Aucun commentaire pour cette actualité.</h1>
+					<h2 class="col-span-12">Aucun commentaire pour cette actualité.</h2>
 				{% endif %}
 
 
