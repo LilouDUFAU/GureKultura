@@ -164,7 +164,7 @@ class ControllerEvtActu extends Controller {
                 if($type == 'Actualites'){
                     $commentaire = new Commentaire(
                         null,
-                        date_format($datetime, 'Y-m-d H:i:s'),
+                        date_format($datetime, 'Y-m-d H:i'),
                         $contenu,
                         $evtId,
                         $_SESSION['user']->getUserId(),
@@ -174,7 +174,7 @@ class ControllerEvtActu extends Controller {
                 } else if($type == 'Evenements'){
                     $commentaire = new Commentaire(
                         null,
-                        date_format($datetime, 'Y-m-d H:i:s'),
+                        date_format($datetime, 'Y-m-d H:i'),
                         $contenu,
                         null,
                         $_SESSION['user']->getUserId(),
