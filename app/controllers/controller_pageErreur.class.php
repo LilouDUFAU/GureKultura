@@ -19,17 +19,39 @@ class ControllerPageErreur extends Controller
         parent::__construct($twig, $loader);
     }
 
+        /**
+     * @function mailErreur
+     * @details Fonction permettant d'afficher la page d'erreur avec un message personnalisé.
+     * @param string|null $errorMessage Message d'erreur à afficher (optionnel).
+     * @return void
+     */ 
+
+     public function mailErreur(string $e){
+        $mail = new Mail();
+        $objet = "Erreur sur le site";
+        $corp = 'error_message'.$e;
+
+
+        $mailEnvoyer = $mail->envoieMail('gurekultura@gmail.com', $objet, $corp);
+    }
+
+
     /**
      * @function lister
      * @details Fonction permettant d'afficher la page d'erreur avec un message personnalisé.
      * @param string|null $errorMessage Message d'erreur à afficher (optionnel).
      * @return void
-     */
-    public function lister($errorMessage = "Une erreur inconnue est survenue.")
-    {
+     */  
+
+    public function messageErreur(string $e){
+        error_log("Error inserting event: " . $e);
+        $this->mailErreur($e);
         echo $this->getTwig()->render('pageErreur.html.twig', [
-            'title' => 'Erreur',
-            'errorMessage' => $errorMessage
+            'title' => 'Accueil',
+            'error_message' => $e
         ]);
     }
+
+
+
 }
