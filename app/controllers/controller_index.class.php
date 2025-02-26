@@ -49,7 +49,12 @@ class ControllerIndex extends Controller
         
         $managerCategorie = new CategorieDao($this->getPdo());
         $categorie = $managerCategorie->findAll();  
-
+         
+        if($_SESSION['filtre'] == ""){
+            $filtre = "";
+        } else{
+            $filtre = $_SESSION['filtre'];
+        }
         // Rendre le template Twig
         echo $this->getTwig()->render('index.html.twig', [
             'title' => 'Accueil',
@@ -57,6 +62,7 @@ class ControllerIndex extends Controller
             'events' => $events,
             'actualites' => $actualite,
             'categories' => $categorie,
+            'filtresSession' => $filtre,
 
 
         ]);

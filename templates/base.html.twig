@@ -74,6 +74,7 @@ tarteaucitron.user.gtagMore = function () { /* add here your optionnal gtag() */
 		<link href="../css/scrollbar.css" rel="stylesheet">
 	</head>
 	<body class="font-sen text-sm lg:text-base bg-bg min-h-screen">
+	
 		<main
 			class="flex flex-col items-center h-full">
 			<!-- Header -->
@@ -194,45 +195,45 @@ tarteaucitron.user.gtagMore = function () { /* add here your optionnal gtag() */
 
 		</div>
 
-{# popup de modification de mdp #}
+{# popup de selection de filtres #}
 <div id="popup" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 {#hidden#} z-50 text-text">
 	<div class="bg-bg p-6 rounded-lg shadow-lg w-full max-w-xl h-fit max-h-xl">
 		<input type="hidden" id="popupFiltres" name="test" value="">
+
 		<h2 class="text-xl font-bold text-center mb-4 text-title">Choix des filtres de préférences</h2>
 		<form
-			action="index.php" method="post" enctype="multipart/form-data" class="grid grid-cols-6 row-start-1 col-start-1 col-span-6 text-text p-2 gap-4 text-sm lg:text-base">
+			action="index.php?controlleur=filtre&methode=ajoutFiltreSession" method="post" enctype="multipart/form-data" class="grid grid-cols-6 row-start-1 col-start-1 col-span-6 text-text p-2 gap-4 text-sm lg:text-base">
 
-    <label for="select-options" class="row-start-2 col-start-1 col-span-5 mb-2 text-lg ">Choisissez des options :</label>
-   
-   {# DROPDOWN #}
-	
-	  <div class="row-start-3 col-start-1 col-span-5">
-        <!-- Barre de sélection -->
-        <div class="w-full items-center gap-2 p-2 bg-white border rounded-lg shadow cursor-pointer"
-            onclick="toggleDropdown()" id="dropdownToggle">
-            <div id="conteneurFiltre" class="flex gap-2">Sélectionner des filtres à appliquer</div>
-            
-        </div>
+			<input type="hidden" id="listeFiltres" name="listeFiltres" value="">
+			<label for="select-options" class="row-start-2 col-start-1 col-span-5 mb-2 text-lg ">Choisissez des options :</label>
+		
+		{# DROPDOWN #}
+			
+			<div class="row-start-3 col-start-1 col-span-5">
+				<!-- Barre de sélection -->
+				<div class="w-full items-center gap-2 p-2 bg-white border rounded-lg shadow cursor-pointer"
+					onclick="toggleDropdown()" id="dropdownToggle">
+					<div id="conteneurFiltre" class="flex gap-2">Sélectionner des filtres à appliquer</div>
+					
+				</div>
 
-        <!-- Dropdown -->
+				<!-- Dropdown -->
+				<div id="dropdownMenu" class="w-full mt-2 bg-white border rounded-lg shadow-lg hidden">
+					<select class="w-full max-h-48 overflow-y-auto" multiple>
 
-		<div id="dropdownMenu" class="w-full mt-2 bg-white border rounded-lg shadow-lg hidden">
-            <select class="w-full max-h-48 overflow-y-auto" multiple>
-
-			{% for categorie in categories %}
-                <option id="{{categorie.nom}}" class="option-item p-2 cursor-pointer">{{categorie.nom}}</option>
-			{% endfor %}
-			</select>
-		</div>
-    </div>
-
+					{% for categorie in categories %}
+						<option id="{{categorie.nom}}" class="option-item p-2 cursor-pointer">{{categorie.nom}}</option>
+					{% endfor %}
+					</select>
+				</div>
+			</div>
 
    {# DROPDOWN #}
 			
 			{# bouton de validation/annulation #}
 			<div class="row-start-7 col-start-1 col-span-6 flex justify-end gap-2">
 				<button type="button" onclick="closePopupFiltre('Filtre')" class="px-4 py-2 bg-button hover:bg-hbutton text-white rounded-lg mr-2">Annuler</button>
-				<button type="submit" onclick="ajoutFiltreSession()" class="px-4 py-2 bg-button hover:bg-hbutton text-white rounded-lg">Modifier</button>
+				<button type="input" class="px-4 py-2 bg-button hover:bg-hbutton text-white rounded-lg">Modifier</button>
 			</div>
 		</form>
 	</div>
@@ -310,7 +311,7 @@ tarteaucitron.user.gtagMore = function () { /* add here your optionnal gtag() */
 				} 
 		}
 		
-        let selectedOptions = new Set();
+        let selectedOptions = new Array();
 
         function toggleDropdown() {
             document.getElementById('dropdownMenu').classList.toggle('hidden');
@@ -318,9 +319,9 @@ tarteaucitron.user.gtagMore = function () { /* add here your optionnal gtag() */
         document.querySelectorAll('.option-item').forEach(item => {
             item.addEventListener('click', function () {
                 var valOption = this.value;
-                if (!selectedOptions.has(valOption)) {
+                if (!selectedOptions.includes(valOption)) {
 					console.log(valOption);
-                    selectedOptions.add(valOption);
+                    selectedOptions.push(valOption);
 					this.classList.add("hidden");
                     updateSelectedItems();
                 }
@@ -330,7 +331,7 @@ tarteaucitron.user.gtagMore = function () { /* add here your optionnal gtag() */
         function updateSelectedItems() {
             var container = document.getElementById('conteneurFiltre');
             container.innerHTML = '';
-
+			console.log(selectedOptions);	
             selectedOptions.forEach(valOption => {
                 var divSelectionFiltre = document.createElement('div');
                 divSelectionFiltre.className = 'flex items-center gap-1 bg-blue-500 text-white px-2 py-1 rounded-full';
@@ -338,6 +339,8 @@ tarteaucitron.user.gtagMore = function () { /* add here your optionnal gtag() */
 				 <button type="button" class="text-white bg-grey-500 font-bold" onclick="removeSelected('${valOption}')">×</button>`;
                 container.appendChild(divSelectionFiltre);
             });
+			
+			document.getElementById("listeFiltres").value = selectedOptions.toString();
 			if(selectedOptions.size == 0){
 				container.innerHTML = 'Sélectionner des filtres à appliquer';
 			}
@@ -345,7 +348,10 @@ tarteaucitron.user.gtagMore = function () { /* add here your optionnal gtag() */
 
         function removeSelected(valOption) {
 			console.log("suppression de : " + valOption);
-            selectedOptions.delete(valOption);
+			const valSuppression = selectedOptions.indexOf(valOption);
+			if (valSuppression > -1) { // only splice array when item is found
+			selectedOptions.splice(valSuppression, 1); // 2nd parameter means remove one item only
+			}
 			var valDropDown = document.getElementById(valOption);
 			valDropDown.classList.remove("hidden");
             updateSelectedItems();
