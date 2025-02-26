@@ -22,8 +22,8 @@
 				{% if evenement.userId != user.userId %}
 					<div class="grid grid-cols-12 gap-2 p-3 odd:bg-odd even:bg-even items-center text-text break-words">
 						<div class="col-start-1 col-span-2 p-2 break-words">{{ evenement.titre }}</div>
-						<div class="col-start-3 col-span-1 hidden lg:block p-2 break-words">{{ evenement.dateDebut }}</div>
-						<div class="col-start-4 col-span-1 hidden lg:block p-2 break-words">{{ evenement.dateFin }}</div>
+						<div class="col-start-3 col-span-1 hidden lg:block p-2 break-words">{{ evenement.dateDebut|date("d/m/Y") }}</div>
+						<div class="col-start-4 col-span-1 hidden lg:block p-2 break-words">{{ evenement.dateFin|date("d/m/Y") }}</div>
 						<div class="col-start-3 lg:col-start-5 col-span-3 p-2 break-words">{{ evenement.lieu }}</div>
 
 						<!-- VISUALISATION -->
