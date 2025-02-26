@@ -50,7 +50,7 @@
 
 				<div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-12 lg:col-start-4 lg:col-span-6">
 					<label class="row-start-1 col-start-1 col-span-7 lg:col-span-4 ">Souhaitez-vous voir les évènements proposés ?</label>
-					<a href="index.php?controlleur=validPropEv&methode=lister" type="" class="col-start-8 col-span-5 lg:col-start-5 lg:col-span-2 bg-button hover:bg-hbutton text-white rounded-lg text-center px-2 py-1 h-fit">Liste évènements</a>
+					<a href="index.php?controlleur=validPropEv&methode=lister" type="" class="col-start-8 col-span-5 lg:col-start-5 lg:col-span-2 bg-button hover:bg-hbutton text-white rounded-lg text-center px-2 py-1 h-fit">Liste événement</a>
 				</div>
 			{% endif %}
 
@@ -76,7 +76,7 @@
 		<input type="hidden" id="popupModifCompte" name="compte" value="">
 		<h2 class="text-xl font-bold text-center mb-4">Modification du compte</h2>
 		<form
-			action="index.php?controlleur=compte&methode=modifierInfo" method="post" enctype="multipart/form-data" class="grid grid-cols-6 row-start-1 col-start-1 col-span-6 text-text p-2 gap-4 text-sm lg:text-base">
+			action="index.php?controlleur=compte&methode=modifierInfo" method="post" enctype="multipart/form-data" class="grid grid-cols-6 text-text p-2 gap-4 text-sm lg:text-base">
 			{# nom #}
 			<div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-6 gap-4">
 				<div class="row-start-1 col-start-1 col-span-2 flex flex-row items-center gap-2">
@@ -130,14 +130,6 @@
 				</div>
 			</div>
 
-
-			<div class="grid grid-cols-subgrid row-start-7 col-start-1 col-span-6 mt-4">
-			<form action="index.php?controlleur=compte&methode=supprimerCompte" method="post" class="gap-4 items-center">
-				<label class="row-start-1 col-start-1 col-span-4 text-sm">Souhaitez-vous supprimer votre compte ?</label>
-				<button arial-label="b_SupprCompte" class="row-start-1 col-start-5 col-span-2 bg-button hover:bg-hbutton text-white rounded-md py-1 px-2 h-fit text-center">Supprimer</button>
-			</form>	
-			</div>
-
 			{# bouton de validation/annulation #}
 			<div class="row-start-8 col-start-1 col-span-6 flex justify-end gap-2">
 				<button type="button" onclick="closePopup(1)" class="px-4 py-2 bg-button hover:bg-hbutton text-white rounded-lg mr-2">Annuler</button>				
@@ -145,6 +137,13 @@
 				<button type="button" onclick="openPopup(3), closePopup(1)" class="px-4 py-2 bg-button hover:bg-hbutton text-white rounded-lg mr-2"> Changer le mot de passe</button>
 			</div>
 		</form>
+
+		<div class="grid-cols-6">
+			<form action="index.php?controlleur=compte&methode=supprimerCompte" method="post" class="grid grid-cols-subgrid gap-4 items-center">
+				<label class="row-start-1 col-start-1 col-span-5 text-sm">Souhaitez-vous supprimer votre compte ?</label>
+				<button arial-label="b_SupprCompte" class="row-start-1 col-start-6 col-span-1 bg-button hover:bg-hbutton text-white rounded-md py-1 px-2 h-fit text-center">Supprimer</button>
+			</form>	
+		</div>
 
 	</div>
 </div>
@@ -196,15 +195,6 @@
 	</div>
 </div>
 
-
-
-
-
-
-
-
-
-
 <script>
 	function openPopup(val) {
 		if (val == 1) {
@@ -214,8 +204,6 @@
 		}else if (val == 3) {
 			document.getElementById("popupModifMdp").parentElement.parentElement.classList.remove("hidden");
 		}
-		
-
 }
 
 function closePopup(val) {
