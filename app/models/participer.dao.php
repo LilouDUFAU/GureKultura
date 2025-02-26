@@ -162,7 +162,7 @@ class ParticiperDAO
     public function verifParticipationProche() {
         // Récupérer tous les événements
         $evenementDao = new EvenementDao($this->pdo);
-        $evenements = $evenementDao->findAll();
+        $evenements = $evenementDao->findAllWithCategorie();
 
         $dateActuelle = new DateTime();
 

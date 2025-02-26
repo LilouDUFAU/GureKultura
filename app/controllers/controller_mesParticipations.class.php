@@ -95,6 +95,6 @@
         $participerDao = new ParticiperDAO($pdo);
         $participerDao->verifParticipationProche();
 
-        this->lister();
+        $this->lister();
     }
 }
