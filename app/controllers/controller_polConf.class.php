@@ -5,7 +5,7 @@
  * @extends parent<Controller>
  * @details Permet de gérer les actions liées aux filtres d'événements et d'actualités
  */
-class ControllerNL extends Controller {
+class ControllerPolConf extends Controller {
 
     public function lister() {
         // Connexion PDO
@@ -24,8 +24,8 @@ class ControllerNL extends Controller {
         // $evenement = $managerEvenement->findAllWithCategorie();    
 
         // Rendre le template Twig avec les événements, actualités et catégories filtrées
-        echo $this->getTwig()->render('NL.html.twig', [
-            'title' => 'NewsLetter',
+        echo $this->getTwig()->render('polConf.html.twig', [
+            'title' => 'Politique de confidentialité',
         ]);
     }    
 }
