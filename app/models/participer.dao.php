@@ -1,6 +1,7 @@
 <?php 
 //inclure la classe validator
 require_once '../app/controllers/validator.class.php';
+require_once '../app/controllers/mail.class.php';
 
 class ParticiperDAO
 {
@@ -158,7 +159,36 @@ class ParticiperDAO
         ]);
     }
     
+    public function verifParticipationProche() {
+        // Récupérer tous les événements
+        $evenementDao = new EvenementDao($this->pdo);
+        $evenements = $evenementDao->findAllWithCategorie();
 
+        $dateActuelle = new DateTime();
 
-    
+        foreach ($evenements as $evenement) {
+            $dateDebut = new DateTime($evenement->getDateDebut());
+
+            // Vérifier si l'événement commence dans moins de 24 heures
+            if ($dateDebut->diff($dateActuelle)->h < 24 && $dateDebut > $dateActuelle) {
+                // Récupérer les utilisateurs qui participent à cet événement
+                $sql = "SELECT * FROM gk_participer WHERE evtId = :evtId";
+                $pdoStatement = $this->pdo->prepare($sql);
+                $pdoStatement->execute([':evtId' => $evenement->getEvtId()]);
+                $participants = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
+
+                foreach ($participants as $participant) {
+                    $userDao = new UserDao($this->pdo);
+                    $user = $userDao->find($participant['userId']);
+
+                    // Envoyer un email à l'utilisateur
+                    $mail = new Mail();
+                    $objet = "Rappel : Votre événement commence bientôt";
+                    $corp = "Bonjour, votre événement " . $evenement->getTitre() . " commence dans moins de 24 heures.";
+                    $mail->envoieMail($user->getEmail(), $objet, $corp);
+                }
+            }
+        }
+    }
+
 }

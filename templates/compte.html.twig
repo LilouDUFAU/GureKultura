@@ -50,7 +50,7 @@
 
 				<div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-12 lg:col-start-4 lg:col-span-6">
 					<label class="row-start-1 col-start-1 col-span-7 lg:col-span-4 ">Souhaitez-vous voir les évènements proposés ?</label>
-					<a href="index.php?controlleur=validPropEv&methode=lister" type="" class="col-start-8 col-span-5 lg:col-start-5 lg:col-span-2 bg-button hover:bg-hbutton text-white rounded-lg text-center px-2 py-1 h-fit">Liste évènements</a>
+					<a href="index.php?controlleur=validPropEv&methode=lister" type="" class="col-start-8 col-span-5 lg:col-start-5 lg:col-span-2 bg-button hover:bg-hbutton text-white rounded-lg text-center px-2 py-1 h-fit">Liste événement</a>
 				</div>
 			{% endif %}
 
@@ -84,7 +84,7 @@
 					<label for="nom" class="">Nom</label>
 				</div>
 				<div class="col-start-3 col-span-4 w-full">
-					<input name="nom" id="nom" oninput='verifErreurSaisie(nom)' class="row-start-1 col-start-3 col-span-4 border-solid border-2 border-gray-300 rounded-md px-2" value="{{ user.getNom }}">
+					<input name="nom" id="nom" oninput='verifErreurSaisie(nom)' class="row-start-1 w-full border-solid border-2 border-gray-300 rounded-md px-2" value="{{ user.getNom }}">
 				</div>
 			</div>
 
@@ -94,7 +94,9 @@
 					<img src="../asset/icones/envelope.svg" alt="email" class="w-6 h-6  py-1 rounded-md">
 					<label for="email" class="">Email</label>
 				</div>
-				<input name="email" id="email" disabled class="row-start-1 col-start-3 col-span-4 text-text border-solid border-2 border-gray-300 rounded-md px-2" value="{{ user.getEmail }}">
+				<div class="col-start-3 col-span-4 w-full">
+					<input name="email" id="email" disabled class="row-start-1 w-full text-text border-solid border-2 border-gray-300 rounded-md px-2" value="{{ user.getEmail }}">
+				</div>
 			</div>
 
 			{# pseudo #}
@@ -104,7 +106,7 @@
 						<label for="pesudo" class="">Pseudo</label>
 				</div>
 				<div class="col-start-3 col-span-4 w-full">
-					<input name="pseudo" id="pseudo" oninput='verifErreurSaisie(pseudo)' class="row-start-1 col-start-3 col-span-4 text-text border-solid border-2 border-gray-300 rounded-md px-2" value="{{ user.getPseudo }}">
+					<input name="pseudo" id="pseudo" oninput='verifErreurSaisie(pseudo)' class="row-start-1 w-full text-text border-solid border-2 border-gray-300 rounded-md px-2" value="{{ user.getPseudo }}">
 				</div>
 			</div>
 
@@ -123,7 +125,9 @@
 					<img src="../asset/icones/image.svg" alt="pfp" class="w-6 h-6  py-1 rounded-md">
 					<label for="pfp" class="cursor-pointer">Avatar</label>
 				</div>
-				<input class="row-start-1 col-start-3 col-span-4 bg-transparent flex w-full rounded-md border-2 border-white border-input bg-white text-sm text-text file:border-2 file:bg-text file:text-white file:text-sm cursor-pointer file:cursor-pointer" type="file" name="pfp" id="pfp" accept=".jpg, .png" value=" {{ user.getPfp }}"/>
+				<div class="col-start-3 col-span-4 w-full">
+					<input oninput='verifErreurSaisie(pfp)' class="row-start-1 bg-transparent flex w-full rounded-md border-2 border-white border-input bg-white text-sm text-text file:border-2 file:bg-text file:text-white file:text-sm cursor-pointer file:cursor-pointer" type="file" name="pfp" id="pfp" accept=".jpg, .png" value=" {{ user.getPfp }}"/>
+				</div>
 			</div>
 
 			{# bouton de validation/annulation #}
@@ -191,15 +195,6 @@
 	</div>
 </div>
 
-
-
-
-
-
-
-
-
-
 <script>
 	function openPopup(val) {
 		if (val == 1) {
@@ -209,8 +204,6 @@
 		}else if (val == 3) {
 			document.getElementById("popupModifMdp").parentElement.parentElement.classList.remove("hidden");
 		}
-		
-
 }
 
 function closePopup(val) {

@@ -1214,10 +1214,12 @@ video {
   border-top-right-radius: 1rem;
 }
 
+
 .rounded-t-lg {
   border-top-left-radius: 0.5rem;
   border-top-right-radius: 0.5rem;
 }
+
 
 .border {
   border-width: 1px;
