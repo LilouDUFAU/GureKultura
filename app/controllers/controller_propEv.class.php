@@ -341,12 +341,15 @@ class ControllerPropEv extends Controller
             return true;
         } catch (Exception $e) {
 
-            $fonctionErreur = new ControllerPageErreur($twig, $loader); 
-            $fonctionErreur->messageErreur($e->getMessage());
+            $loader = new \Twig\Loader\FilesystemLoader('../templates');
+            $twig = new \Twig\Environment($loader);
+
+            $fonctionErreur = new ControllerPageErreur($twig, $loader);
+            $messageErreur =$e->getMessage();
+            $fonctionErreur->messageErreur($messageErreur);
             // Log the error message
             error_log("Error inserting event: " . $e->getMessage());
             return false;
-        }
-        
+        }   
     }
 }

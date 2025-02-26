@@ -1,6 +1,7 @@
 <?php
 // inclure la classe validator
 require_once '../app/controllers/validator.class.php';
+require_once '../app/controllers/controller_pageErreur.class.php';
 
 
 /**
@@ -262,9 +263,17 @@ class ControllerModifActu extends Controller
 
             // redirection vers la page de l'événement
             // header('Location: index.php?controlleur=mesActu&methode=lister');:
-        }catch(Exception $e){
-            header("Location: index.php?controlleur=pageErreur&methode=lister");
-            echo $e->getMessage();
+        }catch (Exception $e) {
+
+            $loader = new \Twig\Loader\FilesystemLoader('../templates');
+            $twig = new \Twig\Environment($loader);
+
+            $fonctionErreur = new ControllerPageErreur($twig, $loader);
+            $messageErreur =$e->getMessage();
+            $fonctionErreur->messageErreur($messageErreur);
+            // Log the error message
+            error_log("Error inserting event: " . $e->getMessage());
+            return false;
         }
     }
 }

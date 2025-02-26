@@ -1,6 +1,8 @@
 <?php
 // inclure la classe validator
 require_once '../app/controllers/validator.class.php';
+require_once '../app/controllers/controller_pageErreur.class.php';
+
 
 
 /**
@@ -242,9 +244,16 @@ class ControllerPropActu extends Controller
             // Insérez l'événement dans la base de données
             $managerActualite->insert($actualite);
         } catch (Exception $e) {
+
+            $loader = new \Twig\Loader\FilesystemLoader('../templates');
+            $twig = new \Twig\Environment($loader);
+
+            $fonctionErreur = new ControllerPageErreur($twig, $loader);
+            $messageErreur =$e->getMessage();
+            $fonctionErreur->messageErreur($messageErreur);
             // Log the error message
             error_log("Error inserting event: " . $e->getMessage());
-            throw $e; // Re-throw the exception if needed
+            return false;
         }
     }
 }

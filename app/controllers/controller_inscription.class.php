@@ -1,5 +1,6 @@
 <?php
 require_once '../app/controllers/validator.class.php';
+require_once '../app/controllers/controller_pageErreur.class.php';
 
 /**
  * @class ControllerInscription
@@ -225,8 +226,16 @@ class ControllerInscription extends Controller
             $this->getTwig()->addGlobal('utilisateurConnecte', $user);
             header('Location: index.php?controlleur=index&methode=lister');
         } catch (Exception $e) {
+
+            $loader = new \Twig\Loader\FilesystemLoader('../templates');
+            $twig = new \Twig\Environment($loader);
+
+            $fonctionErreur = new ControllerPageErreur($twig, $loader);
+            $messageErreur =$e->getMessage();
+            $fonctionErreur->messageErreur($messageErreur);
+            // Log the error message
             error_log("Error inserting event: " . $e->getMessage());
-            throw $e; // Re-throw the exception if needed
+            return false;
         }
     }
 }
