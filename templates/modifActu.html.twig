@@ -13,22 +13,22 @@
 				class="col-start-1 col-span-6 row-start-1 grid grid-cols-subgrid bg-principal-rouge rounded-lg p-4">
 				{# titre evenement #}
 				<div class="grid grid-cols-subgrid row-start-1 col-start-1 col-span-6 p-2">
-					<div class="col-start-1 col-span-2 flex flex-row items-center gap-2">
+					<div class="border-2 border-solid border-form py-1 flex flex-row  gap-2 row-start-1 col-start-1 col-span-6 lg:col-span-1-2">
 						<img src="../asset/icones/fonts.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de titre">
 						<label for="titre" class="">Titre</label>
 					</div>
-					<div class="col-start-3 col-span-4 w-full">
+					<div class="relative row-start-2 lg:row-start-1 col-start-1 col-span-6 lg:col-start-2 lg:col-span-5 w-full">
 						<input type="text" name="titre" id="titre" oninput='verifErreurSaisie(titre)' class="w-full bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text" value="{{ actuActuel.titre }}">
 					</div>
 				</div>
 				{# type actualite #}
 				<div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-6 p-2">
-					<div class="col-start-1 col-span-2 flex flex-row items-center gap-2">
+					<div class="border-2 border-solid border-form py-1 flex flex-row  gap-2 row-start-1 col-start-1 col-span-6 lg:col-span-1">
 						<img src="../asset/icones/ui-checks-grid.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de categorie">
 						<label for="nomCategorie" class="">Catégorie</label>
 					</div>
 					<!-- Dropdown Container -->
-					<select name="cateId" id="nomCategorie" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text cursor-pointer">
+					<select name="cateId" id="nomCategorie" class="lg:row-start-1 row-start-2 col-start-1 lg:col-start-2 lg:col-span-5 col-span-6 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text cursor-pointer">
 						<option class="px-2 py-1 placeholder-text outline-none text-text" value="{{ actuActuel.cateId }}" selected>{{ actuActuel.categorie }}</option>
 						{% for categorie in categories %}
 							<option class="text-black" value="{{categorie.cateId}}" {% if actuActuel.cateId == categorie.cateId %} selected {% endif %}>{{ categorie.nom }}</option>
@@ -38,22 +38,22 @@
 
 				{# resume #}
 				<div class="grid grid-cols-subgrid row-start-3 col-start-1 col-span-6 p-2">
-					<div class="col-start-1 col-span-2 flex flex-row items-center gap-2">
+					<div class="border-2 border-solid border-form py-1 flex flex-row  gap-2 row-start-1 col-start-1 col-span-6 lg:col-span-1">
 						<img src="../asset/icones/card-text.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de resume">
 						<label for="resume">Résumé</label>
 					</div>
-					<div class="col-start-3 col-span-4 w-full">
+					<div class="relative row-start-2 lg:row-start-1 col-start-1 col-span-6 lg:col-start-2 lg:col-span-5 w-full">
 						<textarea name="resume" id="resume" oninput='verifErreurSaisie(resume)' class="w-full bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text">{{ actuActuel.resume }}</textarea>
 					</div>
 				</div>
 
 				{# contenu #}
 				<div class="grid grid-cols-subgrid row-start-4 col-start-1 col-span-6 p-2">
-					<div class="col-start-1 col-span-2 flex flex-row items-center gap-2">
+					<div class="border-2 border-solid border-form py-1 flex flex-row  gap-2 row-start-1 col-start-1 col-span-6 lg:col-span-1">
 						<img src="../asset/icones/card-text.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de contenu">
 						<label for="contenu">Contenu</label>
 					</div>
-					<div class="col-start-3 col-span-4 w-full">
+					<div class="relative row-start-2 lg:row-start-1 col-start-1 col-span-6 lg:col-start-2 lg:col-span-5 w-full">
 						<textarea name="contenu" id="contenu" oninput='verifErreurSaisie(contenu)' class="w-full bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text">{{ actuActuel.contenu }}</textarea>
 					</div>
 			</div>
@@ -61,11 +61,13 @@
 
 				{# Image #}
 				<div class="grid grid-cols-subgrid row-start-5 col-start-1 col-span-6 p-2">
-					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
+					<div class="border-2 border-solid border-form py-1 flex flex-row  gap-2 row-start-1 col-start-1 col-span-6 lg:col-span-1">
 						<img src="../asset/icones/image.svg" class="w-6 h-6  py-1 rounded-md" alt="icone d'image">
 						<label for="img" class="cursor-pointer">Image</label>
 					</div>
+					<div class="relative row-start-2 lg:row-start-1 col-start-1 col-span-6 lg:col-start-2 lg:col-span-5 w-full">
 					<input class="col-start-3 col-span-4 bg-transparent flex w-full rounded-md border border-white border-input bg-white text-sm file:border-0 file:bg-text file:text-white file:text-sm cursor-pointer file:cursor-pointer" type="file" name="img" id="img" accept=".jpg, .png" value="{{ actuActuelle.img }}"/>
+					</div>
 				</div>
 			</div>
 
