@@ -89,4 +89,12 @@
         // Rendre le template Twig
         $this->lister();
     }
+
+    public function EnvoyerRappel() {
+        $pdo = Bd::getInstance()->getPdo();
+        $participerDao = new ParticiperDAO($pdo);
+        $participerDao->verifParticipationProche();
+
+        this->lister();
+    }
 }
