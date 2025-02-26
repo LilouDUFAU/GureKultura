@@ -76,7 +76,7 @@
 		<input type="hidden" id="popupModifCompte" name="compte" value="">
 		<h2 class="text-xl font-bold text-center mb-4">Modification du compte</h2>
 		<form
-			action="index.php?controlleur=compte&methode=modifierInfo" method="post" enctype="multipart/form-data" class="grid grid-cols-6 row-start-1 col-start-1 col-span-6 text-text p-2 gap-4 text-sm lg:text-base">
+			action="index.php?controlleur=compte&methode=modifierInfo" method="post" enctype="multipart/form-data" class="grid grid-cols-6 text-text p-2 gap-4 text-sm lg:text-base">
 			{# nom #}
 			<div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-6 gap-4">
 				<div class="row-start-1 col-start-1 col-span-2 flex flex-row items-center gap-2">
@@ -126,13 +126,6 @@
 				<input class="row-start-1 col-start-3 col-span-4 bg-transparent flex w-full rounded-md border-2 border-white border-input bg-white text-sm text-text file:border-2 file:bg-text file:text-white file:text-sm cursor-pointer file:cursor-pointer" type="file" name="pfp" id="pfp" accept=".jpg, .png" value=" {{ user.getPfp }}"/>
 			</div>
 
-			<div class="grid grid-cols-subgrid row-start-7 col-start-1 col-span-6 mt-4">
-			<form action="index.php?controlleur=compte&methode=supprimerCompte" method="post" class="gap-4 items-center">
-				<label class="row-start-1 col-start-1 col-span-4 text-sm">Souhaitez-vous supprimer votre compte ?</label>
-				<button arial-label="b_SupprCompte" class="row-start-1 col-start-5 col-span-2 bg-button hover:bg-hbutton text-white rounded-md py-1 px-2 h-fit text-center">Supprimer</button>
-			</form>	
-			</div>
-
 			{# bouton de validation/annulation #}
 			<div class="row-start-8 col-start-1 col-span-6 flex justify-end gap-2">
 				<button type="button" onclick="closePopup(1)" class="px-4 py-2 bg-button hover:bg-hbutton text-white rounded-lg mr-2">Annuler</button>				
@@ -140,6 +133,13 @@
 				<button type="button" onclick="openPopup(3), closePopup(1)" class="px-4 py-2 bg-button hover:bg-hbutton text-white rounded-lg mr-2"> Changer le mot de passe</button>
 			</div>
 		</form>
+
+		<div class="grid-cols-6">
+			<form action="index.php?controlleur=compte&methode=supprimerCompte" method="post" class="grid grid-cols-subgrid gap-4 items-center">
+				<label class="row-start-1 col-start-1 col-span-5 text-sm">Souhaitez-vous supprimer votre compte ?</label>
+				<button arial-label="b_SupprCompte" class="row-start-1 col-start-6 col-span-1 bg-button hover:bg-hbutton text-white rounded-md py-1 px-2 h-fit text-center">Supprimer</button>
+			</form>	
+		</div>
 
 	</div>
 </div>
