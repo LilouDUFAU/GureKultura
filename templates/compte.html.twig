@@ -38,7 +38,7 @@
 
 				<div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-12 lg:col-start-4 lg:col-span-6">
 					<label class="row-start-1 col-start-1 col-span-7 lg:col-span-4 ">Souhaitez-vous voir vos participations ?</label>
-					<a href="index.php?controlleur=mesParticipation&methode=lister" type="" class="col-start-8 col-span-5 lg:col-start-5 lg:col-span-2 bg-button hover:bu-hbutton text-white rounded-lg text-center px-2 py-1 h-fit">Mes participations</a>
+					<a href="index.php?controlleur=mesParticipation&methode=lister" type="" class="col-start-8 col-span-5 lg:col-start-5 lg:col-span-2 bg-button hover:bg-hbutton text-white rounded-lg text-center px-2 py-1 h-fit">Mes participations</a>
 				</div>
 
 				{# voir actualité si user = admin #}
@@ -50,7 +50,7 @@
 
 				<div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-12 lg:col-start-4 lg:col-span-6">
 					<label class="row-start-1 col-start-1 col-span-7 lg:col-span-4 ">Souhaitez-vous voir les évènements proposés ?</label>
-					<a href="index.php?controlleur=validPropEv&methode=lister" type="" class="col-start-8 col-span-5 lg:col-start-5 lg:col-span-2 bg-button hover:bg-hbutton text-white rounded-lg text-center px-2 py-1 h-fit">Liste évènements</a>
+					<a href="index.php?controlleur=validPropEv&methode=lister" type="" class="col-start-8 col-span-5 lg:col-start-5 lg:col-span-2 bg-button hover:bg-hbutton text-white rounded-lg text-center px-2 py-1 h-fit">Liste événement</a>
 				</div>
 			{% endif %}
 
@@ -76,7 +76,7 @@
 		<input type="hidden" id="popupModifCompte" name="compte" value="">
 		<h2 class="text-xl font-bold text-center mb-4">Modification du compte</h2>
 		<form
-			action="index.php?controlleur=compte&methode=modifierInfo" method="post" enctype="multipart/form-data" class="grid grid-cols-6 row-start-1 col-start-1 col-span-6 text-text p-2 gap-4 text-sm lg:text-base">
+			action="index.php?controlleur=compte&methode=modifierInfo" method="post" enctype="multipart/form-data" class="grid grid-cols-6 text-text p-2 gap-4 text-sm lg:text-base">
 			{# nom #}
 			<div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-6 gap-4">
 				<div class="row-start-1 col-start-1 col-span-2 flex flex-row items-center gap-2">
@@ -84,7 +84,7 @@
 					<label for="nom" class="">Nom</label>
 				</div>
 				<div class="col-start-3 col-span-4 w-full">
-					<input name="nom" id="nom" oninput='verifErreurSaisie(nom)' class="row-start-1 col-start-3 col-span-4 border-solid border-2 border-gray-300 rounded-md px-2" value="{{ user.getNom }}">
+					<input name="nom" id="nom" oninput='verifErreurSaisie(nom)' class="row-start-1 w-full border-solid border-2 border-gray-300 rounded-md px-2" value="{{ user.getNom }}">
 				</div>
 			</div>
 
@@ -94,7 +94,9 @@
 					<img src="../asset/icones/envelope.svg" alt="email" class="w-6 h-6  py-1 rounded-md">
 					<label for="email" class="">Email</label>
 				</div>
-				<input name="email" id="email" disabled class="row-start-1 col-start-3 col-span-4 text-text border-solid border-2 border-gray-300 rounded-md px-2" value="{{ user.getEmail }}">
+				<div class="col-start-3 col-span-4 w-full">
+					<input name="email" id="email" disabled class="row-start-1 w-full text-text border-solid border-2 border-gray-300 rounded-md px-2" value="{{ user.getEmail }}">
+				</div>
 			</div>
 
 			{# pseudo #}
@@ -104,7 +106,7 @@
 						<label for="pesudo" class="">Pseudo</label>
 				</div>
 				<div class="col-start-3 col-span-4 w-full">
-					<input name="pseudo" id="pseudo" oninput='verifErreurSaisie(pseudo)' class="row-start-1 col-start-3 col-span-4 text-text border-solid border-2 border-gray-300 rounded-md px-2" value="{{ user.getPseudo }}">
+					<input name="pseudo" id="pseudo" oninput='verifErreurSaisie(pseudo)' class="row-start-1 w-full text-text border-solid border-2 border-gray-300 rounded-md px-2" value="{{ user.getPseudo }}">
 				</div>
 			</div>
 
@@ -121,16 +123,11 @@
 			<div class="grid grid-cols-subgrid row-start-6 col-start-1 col-span-6 gap-4">
 				<div class="row-start-1 col-start-1 col-span-2 flex flex-row items-center gap-2">
 					<img src="../asset/icones/image.svg" alt="pfp" class="w-6 h-6  py-1 rounded-md">
-					<label for="pfp" class="">Avatar</label>
+					<label for="pfp" class="cursor-pointer">Avatar</label>
 				</div>
-				<input class="row-start-1 col-start-3 col-span-4 bg-transparent flex w-full rounded-md border-2 border-white border-input bg-white text-sm text-text file:border-2 file:bg-text file:text-white file:text-sm" type="file" name="pfp" id="pfp" accept=".jpg, .png" value=" {{ user.getPfp }}"/>
-			</div>
-
-			<div class="grid grid-cols-subgrid row-start-7 col-start-1 col-span-6 mt-4">
-			<form action="index.php?controlleur=compte&methode=supprimerCompte" method="post" class="gap-4 items-center">
-				<label class="row-start-1 col-start-1 col-span-4 text-sm">Souhaitez-vous supprimer votre compte ?</label>
-				<button arial-label="b_SupprCompte" class="row-start-1 col-start-5 col-span-2 bg-button hover:bg-hbutton text-white rounded-md py-1 px-2 h-fit text-center">Supprimer</button>
-			</form>	
+				<div class="col-start-3 col-span-4 w-full">
+					<input oninput='verifErreurSaisie(pfp)' class="row-start-1 bg-transparent flex w-full rounded-md border-2 border-white border-input bg-white text-sm text-text file:border-2 file:bg-text file:text-white file:text-sm cursor-pointer file:cursor-pointer" type="file" name="pfp" id="pfp" accept=".jpg, .png" value=" {{ user.getPfp }}"/>
+				</div>
 			</div>
 
 			{# bouton de validation/annulation #}
@@ -140,6 +137,13 @@
 				<button type="button" onclick="openPopup(3), closePopup(1)" class="px-4 py-2 bg-button hover:bg-hbutton text-white rounded-lg mr-2"> Changer le mot de passe</button>
 			</div>
 		</form>
+
+		<div class="grid-cols-6">
+			<form action="index.php?controlleur=compte&methode=supprimerCompte" method="post" class="grid grid-cols-subgrid gap-4 items-center">
+				<label class="row-start-1 col-start-1 col-span-5 text-sm">Souhaitez-vous supprimer votre compte ?</label>
+				<button arial-label="b_SupprCompte" class="row-start-1 col-start-6 col-span-1 bg-button hover:bg-hbutton text-white rounded-md py-1 px-2 h-fit text-center">Supprimer</button>
+			</form>	
+		</div>
 
 	</div>
 </div>
@@ -191,15 +195,6 @@
 	</div>
 </div>
 
-
-
-
-
-
-
-
-
-
 <script>
 	function openPopup(val) {
 		if (val == 1) {
@@ -209,8 +204,6 @@
 		}else if (val == 3) {
 			document.getElementById("popupModifMdp").parentElement.parentElement.classList.remove("hidden");
 		}
-		
-
 }
 
 function closePopup(val) {

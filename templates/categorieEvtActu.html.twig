@@ -30,7 +30,7 @@
                                     <INPUT TYPE="hidden" NAME="id" VALUE={{evtActuEnCours.actuId}}> 
                                 {% endif %}
                                 <INPUT TYPE="hidden" NAME="type" VALUE="{{ type }}"> 
-                                <INPUT TYPE="SUBMIT" VALUE="{{ evtActuEnCours.titre }}" class="bg-white border-text font-semibold absolute inset-x-0 bottom-0 text-center rounded-lg p-2 mr-2 ml-2 mb-2">
+                                <INPUT TYPE="SUBMIT" VALUE="{{ evtActuEnCours.titre }}" class="bg-white border-text font-semibold absolute inset-x-0 bottom-0 text-center rounded-lg p-2 mr-2 ml-2 mb-2 cursor-pointer">
                             </FORM>
                         </div>
                     {% endfor %}
@@ -74,7 +74,7 @@
                                     <INPUT TYPE="hidden" NAME="id" VALUE={{evtActuASuivre.actuId}}> 
                                 {% endif %}
                                 <INPUT TYPE="hidden" NAME="type" VALUE="{{ type }}"> 
-                                <INPUT TYPE="SUBMIT" VALUE="{{ evtActuASuivre.titre }}" class="bg-white border-text font-semibold absolute inset-x-0 bottom-0 text-center rounded-lg p-2 mr-2 ml-2 mb-2">
+                                <INPUT TYPE="SUBMIT" VALUE="{{ evtActuASuivre.titre }}" class="bg-white border-text font-semibold absolute inset-x-0 bottom-0 text-center rounded-lg p-2 mr-2 ml-2 mb-2 cursor-pointer">
                             </FORM>
                         </div>
                     {% endfor %}
@@ -95,7 +95,7 @@
 
 
         {% if evtActusPasser is not empty %}
-            <h3 class="row-span-5 col-span-12 text-title font-bold text-3xl text-left">{{ type }} passer</h3>
+            <h3 class="row-span-5 col-span-12 text-title font-bold text-3xl text-left">{{ type }} passée</h3>
             
             <div id="carousel3" class="row-span-6 col-span-12 relative w-full overflow-hidden mx-auto bg-carousel opacity-75 rounded-lg" data-slides-default="1" data-slides-mobile="1">
                 <!-- Conteneur du carrousel -->
@@ -118,7 +118,7 @@
                                     <INPUT TYPE="hidden" NAME="id" VALUE={{evtActuPasser.actuId}}> 
                                 {% endif %}
                                 <INPUT TYPE="hidden" NAME="type" VALUE="{{ type }}"> 
-                                <INPUT TYPE="SUBMIT" VALUE="{{ evtActuPasser.titre }}" class="bg-white border-text font-semibold absolute inset-x-0 bottom-0 text-center rounded-lg p-2 mr-2 ml-2 mb-2">
+                                <INPUT TYPE="SUBMIT" VALUE="{{ evtActuPasser.titre }}" class="bg-white border-text font-semibold absolute inset-x-0 bottom-0 text-center rounded-lg p-2 mr-2 ml-2 mb-2 cursor-pointer">
                             </FORM>
                         </div>
                     {% endfor %}
@@ -130,10 +130,10 @@
         {% endif %}
         {% if evtActusPasser is empty %}
             {% if type == 'Evenements' %}
-                <h3 class="row-span-2 col-span-12 text-title font-bold text-3xl text-left p-6">Aucun {{ type }} passer</h3>
+                <h3 class="row-span-2 col-span-12 text-title font-bold text-3xl text-left p-6">Aucun {{ type }} passé</h3>
             {% endif %}
             {% if type == 'Actualites' %}
-                <h3 class="row-span-2 col-span-12 text-title font-bold text-3xl text-left p-6">Aucune {{ type }} passer</h3>
+                <h3 class="row-span-2 col-span-12 text-title font-bold text-3xl text-left p-6">Aucune {{ type }} passée</h3>
             {% endif %}
         {% endif %}
 

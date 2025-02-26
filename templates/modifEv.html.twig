@@ -5,7 +5,7 @@
 	<!-- Contenu spécifique de chaque page -->
 	<div class="m-2 gap-8 flex flex-col items-center">
 
-		<h1 class="text-2xl lg:text-4xl font-semibold lg:font-extrabold uppercase text-center text-title">Modifier un évènement</h1>
+		<h1 class="text-2xl lg:text-4xl font-semibold lg:font-extrabold uppercase text-center text-title">Modifier un événement</h1>
 
 		<form
 			action="index.php?controlleur=modifEv&methode=validerFormModifEv" method="post" enctype="multipart/form-data" class="flex flex-col gap-8 text-text w-fit text-sm lg:text-base">
@@ -17,7 +17,7 @@
 
 				<div class="row-start-1 col-start-1 col-span-6 text-2xl font-bold mb-4 flex flex-row items-center gap-2">
 					<img src="../asset/icones/card-text.svg" class="h-10 w-10  py-1 rounded-md" alt="icone de evenement">
-					<h2>Fiche évènement</h2>
+					<h2>Fiche événement</h2>
 				</div>
 
 				{# titre evenement #}
@@ -31,14 +31,14 @@
 					</div>
 				</div>
 
-				{# type evenement #}
+				{# categorie #}
 				<div class="grid grid-cols-subgrid row-start-3 col-start-1 col-span-6 p-2">
 					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
 						<img src="../asset/icones/ui-checks-grid.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de type">
 						<label for="cateId">Catégorie</label>
 					</div>
 					<!-- Dropdown Container -->
-					<select name="cateId" id="nomCategorie" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg">
+					<select name="cateId" id="nomCategorie" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg cursor-pointer">
 						<option class="" value="{{ evenementActuel.cateId }}" selected>{{ evenementActuel.categorie }}</option>
 						{% for categorie in categories %}
 							<option class="text-black" value="{{categorie.cateId}}" {% if evenementActuel.cateId == categorie.cateId %} selected {% endif %}>{{ categorie.nom }}</option>
@@ -117,9 +117,9 @@
 				<div class="grid grid-cols-subgrid row-start-10 col-start-1 col-span-6 p-2">
 					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
 						<img src="../asset/icones/image.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de photo">
-						<label for="photo">Image</label>
+						<label for="photo" class="cursor-pointer">Image</label>
 					</div>
-					<input accept=".jpg, .png"  class="col-start-3 col-span-4 bg-transparent flex w-full rounded-md border border-white border-input bg-white text-sm file:border-0 file:bg-text file:text-white file:text-sm" type="file" name="photo" id="photo" class="" value="{{ evenementActuel.photo }}"/>
+					<input accept=".jpg, .png"  class="col-start-3 col-span-4 bg-transparent flex w-full rounded-md border border-white border-input bg-white text-sm file:border-0 file:bg-text file:text-white file:text-sm cursor-pointer file:cursor-pointer" type="file" name="photo" id="photo" class="" value="{{ evenementActuel.photo }}"/>
 
 				</div>
 
@@ -127,9 +127,9 @@
 				<div class="grid grid-cols-subgrid row-start-11 col-start-1 col-span-6 p-2">
 					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
 						<img src="../asset/icones/file-earmark-pdf.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de autorisation">
-						<label for="autorisation">Autorisation</label>
+						<label for="autorisation" class="cursor-pointer">Autorisation</label>
 					</div>
-					<input accept=".pdf"  class="col-start-3 col-span-4 bg-transparent flex w-full rounded-md border border-white border-input bg-white text-sm file:border-0 file:bg-text file:text-white file:text-sm" type="file" name="autorisation" id="autorisation" value="{{ evenementActuel.autorisation }}"/>
+					<input accept=".pdf"  class="col-start-3 col-span-4 bg-transparent flex w-full rounded-md border border-white border-input bg-white text-sm file:border-0 file:bg-text file:text-white file:text-sm cursor-pointer file:cursor-pointer" type="file" name="autorisation" id="autorisation" value="{{ evenementActuel.autorisation }}"/>
 
 				</div>
 

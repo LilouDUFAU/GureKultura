@@ -6,45 +6,43 @@
 	<!-- Contenu spécifique de chaque page -->
 	<div class="h-full">
 		<div class="gap-2 p-2 grid grid-cols-12 items-center">
-			<h1 class="row-start-1 col-span-12 text-center font-bold text-4xl p-2 text-title">{{ evtActus.titre }}</h1>
+			<h2 class="row-start-1 col-span-12 bg-fh text-tbutton py-6 text-center text-4xl font-bold rounded-t-2xl">{{ evtActus.titre }}</h2>
 
-			<!-- Colonne de gauche -->
-			<div class="grid grid-cols-subgrid col-start-1 col-span-12 row-start-2 lg:col-span-6 lg:row-start-2 h-full">
-				<img src="../asset/evenement/photo/{{ evtActus.photo }}" alt="photo evenement" class="row-start-1 col-start-1 col-span-12 lg:col-span-6 rounded-lg">
-				<p class="row-start-2 col-start-1 col-span-12 lg:col-span-6 break-words">{{ evtActus.description }}</p>
-
-				<div class="row-start-3 col-start-1 col-span-12 lg:col-span-6 grid grid-cols-subgrid bg-card rounded-lg bg-opacity-55 p-2">
-					<p class="row-start-1 col-start-1 col-span-12 lg:col-span-6 text-text font-semibold text-center">Date début :
-						{{ evtActus.dateDebut }} à
-						{{ evtActus.heureDebut }}</p>
-					<p class="row-start-2 col-start-1 col-span-12 lg:col-span-6 text-text font-semibold text-center">Date fin :
-						{{ evtActus.dateFin }} à
-						{{ evtActus.heureFin }}</p>
-					<p class="row-start-3 col-start-1 col-span-12 lg:col-span-6 text-text font-semibold text-center">Lieu :
-						{{ evtActus.lieu }}</p>
-				</div>
+			<div class="grid grid-cols-subgrid col-start-2 col-span-10 row-start-2 h-full">
+				<img src="../asset/evenement/photo/{{ evtActus.photo }}" alt="photo evenement" class="row-start-1 col-start-1 col-span-12 lg:col-start-3 lg:col-span-6 w-full h-auto rounded-lg">
+				<p class="row-start-2 col-start-1 col-span-12 lg:col-start-3 lg:col-span-6 break-words">{{ evtActus.description }}</p>
 			</div>
 
+			<div class="grid grid-cols-subgrid lg:col-start-1 lg:col-span-6 col-start-2 col-span-10 lg:row-start-3 row-start-3 bg-card  bg-opacity-55 rounded-lg p-2 h-full">
+				<h2 class="row-start-1 col-start-1 col-span-12 text-2xl font-bold text-center text-text">Fiche Evènement</h2>
+					<p class="row-start-2 col-start-1 col-span-12 text-text font-semibold text-center">Date début :
+						{{ evtActus.dateDebut|date("d/m/Y") }} à
+						{{ evtActus.heureDebut|date('H:i') }}</p>
+					<p class="row-start-3 col-start-1 col-span-12 text-text font-semibold text-center">Date fin :
+						{{ evtActus.dateFin|date("d/m/Y") }} à
+						{{ evtActus.heureFin|date('H:i') }}</p>
+					<p class="row-start-4 col-start-1 col-span-12 text-text font-semibold text-center">Lieu :
+						{{ evtActus.lieu }}</p>
+			</div>
 
-			<!-- Colonne de droite -->
-			<div class="grid grid-cols-subgrid col-start-1 col-span-12 row-start-3 lg:col-start-7 lg:col-span-6 lg:row-start-2 bg-card  bg-opacity-55 rounded-lg p-2 h-full">
-				<h2 class="row-start-1 col-start-1 col-span-12 lg:col-span-6 text-2xl font-bold text-center text-text">Fiche Responsable</h2>
-				<p class="row-start-2 col-start-1 col-span-12 lg:col-span-6 text-text font-semibold">Nom :
+			<div class="grid grid-cols-subgrid lg:col-start-7 lg:col-span-6 col-start-2 col-span-10 lg:row-start-3 row-start-4 bg-card  bg-opacity-55 rounded-lg p-2">
+				<h2 class="row-start-1 col-start-1 col-span-12 text-2xl font-bold text-center text-text">Fiche Responsable</h2>
+				<p class="row-start-2 col-start-1 col-span-12 text-text font-semibold text-center">Nom :
 					{{ evtActus.nomRep }}</p>
-				<p class="row-start-3 col-start-1 col-span-12 lg:col-span-6 text-text font-semibold">Prénom :
+				<p class="row-start-3 col-start-1 col-span-12 text-text font-semibold text-center">Prénom :
 					{{ evtActus.prenomRep }}</p>
-				<p class="row-start-4 col-start-1 col-span-12 lg:col-span-6 text-text font-semibold">Mail :
+				<p class="row-start-4 col-start-1 col-span-12 text-text font-semibold text-center">Mail :
 					{{ evtActus.email }}</p>
-				<p class="row-start-5 col-start-1 col-span-12 lg:col-span-6 text-text font-semibold">Téléphone :
+				<p class="row-start-5 col-start-1 col-span-12 text-text font-semibold text-center">Téléphone :
 					{{ evtActus.tel }}</p>
-				<a href="../asset/evenement/autorisation/{{ evtActus.autorisation }}" alt="autorisation evenment" class="row-start-6 col-start-1 col-span-6 rounded-lg text-sky-600 underline font-semibold" target="_blank">Cliquez ici pour visionner le fichier PDF</a>
+				<a href="../asset/evenement/autorisation/{{ evtActus.autorisation }}" alt="autorisation evenment" class="text-center row-start-6 col-start-1 col-span-12 rounded-lg text-sky-600 underline font-semibold" target="_blank">Cliquez ici pour visionner le fichier PDF</a>
 			</div>
 		</div>
 
 
 
 		<!-- Section Commentaires -->
-		<div class="mt-8 p-4 text-tab rounded-lg shadow-lg">
+		<div class="mt-8 p-4 text-tab rounded-lg bg-card">
 			<h2 class="text-2xl font-bold text-title mb-4">Commentaires</h2>
 
 			<!-- Exemples de commentaires -->
@@ -75,7 +73,7 @@
 			    {% if type == 'Evenements' %} 
 					{% if estInscrit == true %}
 						
-						<h1 class="font-bold text-xl p-2 text-title">Vous êtes déjà inscrit !</h1>
+						<h2 class="font-bold text-lg p-2 text-title">Vous êtes déjà inscrit !</h2>
 
 						<form method="POST" action="index.php?controlleur=evtActu&methode=desinscrire">
 							<INPUT TYPE="hidden" NAME="nom" VALUE="{{evtActus.titre}}">
@@ -105,7 +103,7 @@
     <div class="pt-2">
         <div class="gap-2 p-2 grid grid-cols-12 items-center  rounded-lg">
             <!-- titre de l'article -->
-            <h1 class="col-span-12 text-title font-bold text-2xl lg:text-5xl text-left mb-4 break-words col-start-1 row-start-1 px-4">{{ evtActus.titre }}</h1>
+            <h2 class="row-start-1 col-span-12 bg-fh text-tbutton py-6 text-center text-4xl font-bold rounded-t-2xl">{{ evtActus.titre }}</h2>
 
             <!-- résumé de l'article -->
             <div class="col-span-12 text-text font-bold text-sm lg:text-lg text-left mb-4 break-words col-start-1 row-start-2 px-4">
@@ -113,9 +111,9 @@
             </div>
 
             <!-- contenu -->
-            <div class="grid grid-cols-6 row-start-3 col-start-1 col-span-12 xl:col-span-8 px-4">
+            <div class="grid grid-cols-6 row-start-3 col-start-1 col-span-12 lg:col-span-8 px-4">
                 <!-- image de l'article -->
-                <img src="../asset/actualite/{{ evtActus.img }}" alt="Image de l'article" class="col-start-2 xl:col-start-2 col-span-4 row-start-1 rounded-lg mb-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
+                <img src="../asset/actualite/{{ evtActus.img }}" alt="Image de l'article" class="col-start-2 lg:col-start-2 col-span-4 row-start-1 rounded-lg mb-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
                 <!-- contenu de l'article -->
                 <div class="col-start-1 row-start-2 col-span-6 text-text font-medium text-m lg:text-base text-left break-words">
                     {{ evtActus.contenu }}
@@ -123,16 +121,16 @@
             </div>
 
             <!-- section commentaires -->
-            <div class="gap-2 grid grid-cols-12 items-center bg-card border-2 border-solid text- rounded-lg p-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] sm:col-start-1 xl:col-start-10 col-span-12 xl:col-span-3 sm:row-start-4 xl:row-start-3 sm:h-full xl:h-full">
+            <div class="gap-2 grid grid-cols-12 items-center bg-card  rounded-lg p-4 col-start-1 lg:col-start-9 col-span-12 lg:col-span-4 row-start-4 lg:row-start-3 h-full lg:h-full">
                 <!-- Titre "Commentaires" -->
-                <div class="gap-2 grid grid-cols-12 items-center  p-4 text-center justify-center mb-4 col-span-12 text-title text-lg lg:text-3xl font-bold">
+                <h3 class="gap-2 col-start-1 mb-4 col-span-12 text-title text-lg text-center lg:text-3xl font-bold uppercase">
                     Commentaires
-                </div>
+                </h3>
 
 				<!-- Afficher les commentaires réels -->
 				{% if commentaires is not empty %}
 					{% for commentaire in commentaires %}
-						<div class="grid grid-cols-12 items-start mb-4 col-span-12 pb-4 border-b">
+						<div class="grid grid-cols-12 items-start mb-4 col-span-12 pb-4">
 							<!-- image de profil -->
 							<div class="col-start-1 col-span-1 flex justify-center items-center">
 								<img src="../asset/icones/pp_user.svg" alt="pp" class="w-auto h-auto rounded-full">
@@ -156,14 +154,14 @@
 						</div>
 					{% endfor %}
 				{% else %}
-					<h1 class="col-span-12">Aucun commentaire pour cette actualité.</h1>
+					<h2 class="col-span-12">Aucun commentaire pour cette actualité.</h2>
 				{% endif %}
 
 
                 <!-- Formulaire pour ajouter un commentaire -->
                 <form action="index.php?controlleur=evtActu&methode=ajouterCommentaire" method="POST" class="gap-2 grid grid-cols-12 items-start col-span-12">
                     <!-- champ de texte pour le commentaire -->
-                    <textarea placeholder="Ajouter un commentaire" name="commentaire" maxlength="500" class="col-start-1 col-span-10 row-start-1 row-span-2 items-center  bg-white p-4 text-text w-full resize-none border-2 border-solid border-title rounded-lg" rows="1"></textarea>
+                    <textarea placeholder="Ajouter un commentaire" name="commentaire" malgength="500" class="col-start-1 col-span-10 row-start-1 row-span-2 items-center  bg-white p-4 text-text w-full resize-none border-2 border-solid border-title rounded-lg" rows="1"></textarea>
 
                     <!-- Cacher l'ID de l'actualité -->
                     <INPUT TYPE="hidden" NAME="nom" VALUE="{{evtActus.titre}}">
