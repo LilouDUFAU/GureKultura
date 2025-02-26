@@ -56,13 +56,14 @@ function verifErreurSaisie(input) {
         case "date":
             var dateDebut = document.getElementById("debutDate");
             var dateFin = document.getElementById("finDate");
-            var dateActuelle = new Date().toLocaleDateString();
-            if (valeur <= dateActuelle) {
+            var dateActuelle = new Date().toISOString().split('T')[0];
+
+            if (valeur < dateActuelle) {
                 addErrorForm(input, "La date ne peut pas être inférieure à la date actuelle !");
-            } else if (input.id === "debutDate" && valeur >= dateFin.value) {
+            } else if (input.id === "debutDate" && valeur > dateFin.value) {
                 addErrorForm(dateDebut, "La date ne peut pas être supérieur à la date de fin !");
                 addErrorForm(dateFin, "La date ne peut pas être inférieure à la date de début !");
-            } else if (input.id === "finDate" && valeur <= dateDebut.value) {
+            } else if (input.id === "finDate" && valeur < dateDebut.value) {
                 addErrorForm(dateFin, "La date ne peut pas être inférieure à la date de début !");
                 addErrorForm(dateDebut, "La date ne peut pas être supérieur à la date de fin !");
             } else {
