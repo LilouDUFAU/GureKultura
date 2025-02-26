@@ -16,7 +16,9 @@
 							<img src="../asset/icones/fonts.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de titre">
 							<label for="titre">Titre</label>
 						</div>
-						<input type="text" name="titre" id="titre" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text" placeholder="Titre de l'actualité">
+						<div class="col-start-3 col-span-4 w-full">
+							<input type="text" name="titre" id="titre" oninput='verifErreurSaisie(titre)' class="w-full bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text" placeholder="Titre de l'actualité">
+						</div>
 					</div>
 					
 					{# type evenement #}
@@ -29,7 +31,9 @@
 						<select name="cateId" id="nomCategorie" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg ">
 							<option class="" selected>Catégorie de l'actualité</option>
 							{% for categorie in categories %}
-								<option class="text-black" value="{{categorie.cateId}}" {% if actuActuel.cateId == categorie.cateId %} selected {% endif %}>{{ categorie.nom }}</option>
+								{% if (categorie.cateId != 1 or categorie.cateId != 2) %}
+									<option class="text-black" value="{{categorie.cateId}}" {% if actuActuel.cateId == categorie.cateId %} selected {% endif %}>{{ categorie.nom }}</option>
+								{% endif %}
 							{% endfor %}
 						</select>
 					</div>
@@ -40,7 +44,9 @@
 							<img src="../asset/icones/card-text.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de resume">
 							<label for="resume">Résumé</label>
 						</div>
-						<textarea name="resume" id="resume" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text" placeholder="Résumé de l'actualité"></textarea>
+						<div class="col-start-3 col-span-4 w-full">
+							<textarea name="resume" id="resume" oninput='verifErreurSaisie(resume)' class="w-full bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text" placeholder="Résumé de l'actualité"></textarea>
+						</div>
 					</div>
 
 					{# Contenu #}
@@ -49,7 +55,9 @@
 							<img src="../asset/icones/card-text.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de resume">
 							<label for="date">Contenu</label>
 						</div>
-						<textarea name="contenu" id="contenu" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text" placeholder="Contenu de l'actualité"></textarea>
+						<div class="col-start-3 col-span-4 w-full">
+							<textarea name="contenu" id="contenu" oninput='verifErreurSaisie(contenu)' class="w-full bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text" placeholder="Contenu de l'actualité"></textarea>
+						</div>
 					</div>
 
 
@@ -66,10 +74,11 @@
 				{# Bouton de validation ou annulation #}
 				<div class="row-start-2 col-start-4 col-span-2 lg:col-start-6 lg:col-span-1 gap-2 flex flex-row justify-between items-center">
 					<a href="index.php?controlleur=mesEv&methode=lister" class="px-4 py-2 bg-button hover:bg-hbutton text-white rounded-lg text-center">Annuler</a>
-					<button type="submit" class="px-4 py-2 bg-button hover:bg-hbutton text-white rounded-lg text-center">Poster</button>
+					<button type="submit" id="validerFormulaire" class="px-4 py-2 bg-button hover:bg-hbutton text-white rounded-lg text-center">Poster</button>
 				</div>
 			</div>
 		</form>
 	</div>
 
+<script src="../js/erreurSaisie.js"></script>
 {% endblock %}

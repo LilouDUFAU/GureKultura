@@ -599,6 +599,7 @@ video {
   grid-column: span 1 / span 1;
 }
 
+
 .col-span-10 {
   grid-column: span 10 / span 10;
 }
@@ -637,10 +638,6 @@ video {
 
 .col-start-1 {
   grid-column-start: 1;
-}
-
-.col-start-10 {
-  grid-column-start: 10;
 }
 
 .col-start-12 {
@@ -842,6 +839,10 @@ video {
   display: block;
 }
 
+.inline {
+  display: inline;
+}
+
 .flex {
   display: flex;
 }
@@ -980,6 +981,18 @@ video {
   max-width: 20rem;
 }
 
+.max-w-lg {
+  max-width: 32rem;
+}
+
+.max-w-2xl {
+  max-width: 42rem;
+}
+
+.max-w-4xl {
+  max-width: 56rem;
+}
+
 .flex-1 {
   flex: 1 1 0%;
 }
@@ -1039,10 +1052,6 @@ video {
 
 .grid-cols-subgrid {
   grid-template-columns: subgrid;
-}
-
-.grid-rows-subgrid {
-  grid-template-rows: subgrid;
 }
 
 .flex-row {
@@ -1147,6 +1156,11 @@ video {
   white-space: nowrap;
 }
 
+.break-normal {
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
 .break-words {
   overflow-wrap: break-word;
 }
@@ -1179,6 +1193,7 @@ video {
   border-bottom-right-radius: 1rem;
   border-bottom-left-radius: 1rem;
 }
+
 
 .rounded-t-2xl {
   border-top-left-radius: 1rem;
@@ -1258,6 +1273,21 @@ video {
   background-color: rgb(253 246 238 / var(--tw-bg-opacity, 1));
 }
 
+.bg-\[\#A23145\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(162 49 69 / var(--tw-bg-opacity, 1));
+}
+
+.bg-\[\#f4f4f4\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(244 244 244 / var(--tw-bg-opacity, 1));
+}
+
+.bg-\[\#ffffff\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
+}
+
 .bg-black {
   --tw-bg-opacity: 1;
   background-color: rgb(0 0 0 / var(--tw-bg-opacity, 1));
@@ -1332,6 +1362,16 @@ video {
   background-color: rgb(234 179 8 / var(--tw-bg-opacity, 1));
 }
 
+.bg-secondaire-gris {
+  --tw-bg-opacity: 1;
+  background-color: rgb(217 217 217 / var(--tw-bg-opacity, 1));
+}
+
+.bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
+}
+
 .bg-opacity-50 {
   --tw-bg-opacity: 0.5;
 }
@@ -1387,6 +1427,10 @@ video {
 
 .p-8 {
   padding: 2rem;
+}
+
+.p-10 {
+  padding: 2.5rem;
 }
 
 .px-1 {
@@ -1548,7 +1592,7 @@ video {
 
 .text-gray-500 {
   --tw-text-opacity: 1;
-  color: rgb(107 114 128 / var(--tw-text-opacity, 1));
+  color: rgb(158 158 158 / var(--tw-text-opacity, 1));
 }
 
 .text-gray-600 {
@@ -1811,6 +1855,10 @@ video {
 
   .sm\:max-w-md {
     max-width: 28rem;
+  }
+
+  .sm\:max-w-xl {
+    max-width: 36rem;
   }
 
   .sm\:p-8 {

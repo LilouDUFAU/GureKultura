@@ -4,15 +4,16 @@
 	<div class="min-h-screen flex flex-col items-center justify-center bg-bg py-12 px-4 sm:px-6 lg:px-8">
 		<h2 class="text-2xl lg:text-4xl font-semibold text-center text-title uppercase lg:font-extrabold mb-8">Inscription</h2>
 
-		<div class="max-w-md w-full space-y-6 p-8 bg-form shadow-xl rounded-2xl">
-			<form class="grid grid-cols-6 space-y-4 text-sm lg:text-base text-text" action="index.php?controlleur=inscription&methode=validerFormulaireInscription" method="post" enctype="multipart/form-data">
+		<div class="max-w-4xl w-full space-y-6 p-10 bg-form shadow-xl rounded-2xl"> <!-- Augmentation de la largeur -->			<form class="grid grid-cols-6 space-y-4 text-sm lg:text-base text-text" action="index.php?controlleur=inscription&methode=validerFormulaireInscription" method="post" enctype="multipart/form-data">
 
 				<div class="grid grid-cols-subgrid row-start-1 col-start-1 col-span-6 p-2">
 					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
 						<img src="../asset/icones/envelope.svg" class="w-6 h-6  py-1 rounded-md" alt="icone">
 						<label for="email">Email</label>
 					</div>
-					<input type="email" placeholder="E-mail" name="email" required title="Veuillez entrer une adresse e-mail valide" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text">
+					<div class="col-start-3 col-span-4 w-full">
+						<input type="email" id="email"  placeholder="E-mail" name="email" required title="Veuillez entrer une adresse e-mail valide" oninput='verifErreurSaisie(email)' class="w-full bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text">
+					</div>
 				</div>
 
 				<div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-6 p-2">
@@ -20,7 +21,9 @@
 						<img src="../asset/icones/person-vcard (1).svg" class="w-6 h-6  py-1 rounded-md" alt="icone">
 						<label for="nom">Nom</label>
 					</div>
-					<input type="text" placeholder="Nom complet" name="nom" required title="Veuillez entrer votre nom complet" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text">
+					<div class="col-start-3 col-span-4 w-full">
+						<input type="text" id="nom" placeholder="Nom complet" name="nom" required title="Veuillez entrer votre nom complet" oninput='verifErreurSaisie(nom)' class="w-full bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text">
+					</div>
 				</div>
 
 				<div class="grid grid-cols-subgrid row-start-3 col-start-1 col-span-6 p-2">
@@ -28,7 +31,9 @@
 						<img src="../asset/icones/person.svg" class="w-6 h-6  py-1 rounded-md" alt="icone">
 						<label for="pseudo">Pseudo</label>
 					</div>
-					<input type="text" placeholder="Nom d'utilisateur" name="pseudo" required title="Veuillez entrer un nom d'utilisateur" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text">
+					<div class="col-start-3 col-span-4 w-full">
+						<input type="text" id="pseudo" placeholder="Nom d'utilisateur" name="pseudo" required title="Veuillez entrer un nom d'utilisateur" oninput='verifErreurSaisie(pseudo)' class="w-full bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text">
+					</div>
 				</div>
 
 				<!-- Champ mot de passe -->
@@ -69,7 +74,7 @@
                 </div>
 
 				<div class="row-start-7 col-start-1 col-span-6 flex justify-center mt-4">
-					<button type="submit" class="w-full p-3 bg-button text-tbutton font-bold rounded-lg hover:bg-hbutton transition">S'inscrire</button>
+					<button type="submit" id="validerFormulaire" class="w-full p-3 bg-button text-tbutton font-bold rounded-lg hover:bg-hbutton transition">S'inscrire</button>
 				</div>
 			</form>
 
@@ -144,4 +149,6 @@
 			});
 		});
 	</script>
+	
+<script src="../js/erreurSaisie.js"></script>
 {% endblock %}
