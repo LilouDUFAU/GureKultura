@@ -8,12 +8,12 @@
 
 		<!-- En-tête -->
 		<div class="grid grid-cols-12 gap-2 mt-5 bg-tabtitle text-title text-sm lg:text-base p-2 font-semibold">
-			<div class="col-start-1 col-span-2 p-2 break-words">Nom</div>
-			<div class="col-start-3 col-span-1 hidden lg:block p-2 break-words">Date début</div>
-			<div class="col-start-4 col-span-1 hidden lg:block p-2 break-words">Date fin</div>
-			<div class="col-start-3 lg:col-start-5 col-span-3 p-2 break-words">Lieu</div>
+			<div class="col-start-1 col-span-2 p-2 break-words">Nom de l'événement</div>
+			<div class="col-start-3 col-span-1 hidden lg:block p-2 break-words text-center">Date début</div>
+			<div class="col-start-4 col-span-1 hidden lg:block p-2 break-words text-center">Date fin</div>
+			<div class="col-start-3 lg:col-start-5 col-span-3 p-2 break-words text-center">Lieu</div>
 			<div class="col-start-6 col-span-3 lg:col-start-8 lg:col-span-2 p-2 break-words"></div>
-			<div class="col-start-10 col-span-3 p-2 break-words">Validation</div>
+			<div class="col-start-10 col-span-3 p-2 break-words ">Validation</div>
 		</div>
 
 		<!-- Données -->
@@ -22,9 +22,9 @@
 				{% if evenement.userId != user.userId %}
 					<div class="grid grid-cols-12 gap-2 p-3 odd:bg-odd even:bg-even items-center text-text break-words">
 						<div class="col-start-1 col-span-2 p-2 break-words">{{ evenement.titre }}</div>
-						<div class="col-start-3 col-span-1 hidden lg:block p-2 break-words">{{ evenement.dateDebut|date("d/m/Y") }} à {{}}</div>
-						<div class="col-start-4 col-span-1 hidden lg:block p-2 break-words">{{ evenement.dateFin|date("d/m/Y") }}</div>
-						<div class="col-start-3 lg:col-start-5 col-span-3 p-2 break-words">{{ evenement.lieu }}</div>
+						<div class="col-start-3 col-span-1 hidden lg:block p-2 break-words text-center">{{ evenement.dateDebut|date("d/m/Y") }} <br> - {{ evenement.heureDebut|date('H:i') }}</div>
+						<div class="col-start-4 col-span-1 hidden lg:block p-2 break-words text-center">{{ evenement.dateFin|date("d/m/Y") }} <br> - {{ evenement.heureDebut|date('H:i') }}</div>
+						<div class="col-start-3 lg:col-start-5 col-span-3 p-2 break-words text-center">{{ evenement.lieu }}</div>
 
 						<!-- VISUALISATION -->
 						<div class="col-start-6 col-span-3 lg:col-start-8 lg:col-span-2 p-2 items-center">
