@@ -8,11 +8,11 @@
 
     <!-- En-tête -->
     <div class="grid grid-cols-12 gap-2 mt-5 bg-tabtitle text-title text-sm lg:text-base p-2 font-semibold">
-        <div class="row-start-1 col-start-1 col-span-2">Titre</div>
-        <div class="row-start-1 col-start-3 col-span-5 hidden lg:block">Résumé</div>
-        <div class="row-start-1 lg:col-start-8 lg:col-span-2 col-start-3 col-span-3 ">Date publication</div>
+        <div class="row-start-1 col-start-1 col-span-2 break-words">Titre</div>
+        <div class="row-start-1 col-start-3 col-span-5 hidden lg:block break-words">Résumé</div>
+        <div class="row-start-1 lg:col-start-8 lg:col-span-2 col-start-3 col-span-3 break-words">Date publication</div>
         <div class="row-start-1 lg:col-start-10 lg:col-span-2 col-start-7 col-span-3 break-words">Aperçu</div>
-        <div class="row-start-1 lg:col-start-12 lg:col-span-1 col-start-10 col-span-3">Actions</div>
+        <div class="row-start-1 lg:col-start-12 lg:col-span-1 col-start-10 col-span-3 break-words">Actions</div>
     </div>
 
     <!-- Données -->
@@ -21,7 +21,7 @@
         <div class="grid grid-cols-12 gap-2 p-3 odd:bg-odd even:bg-even items-center text-text">
             <div class="row-start-1 col-start-1 col-span-2 break-words">{{ actualite.titre }}</div>
             <div class="row-start-1 col-start-3 col-span-5 hidden lg:block break-words">{{ actualite.resume }}</div>
-            <div class="row-start-1 lg:col-start-8 lg:col-span-2 col-start-3 col-span-3">{{ actualite.datePubli }}</div>
+            <div class="row-start-1 lg:col-start-8 lg:col-span-2 col-start-3 col-span-3 break-words">{{ actualite.datePubli }}</div>
 
             <!-- VISUALISATION -->
             <div class="row-start-1 lg:col-start-10 lg:col-span-2 p-2 flex items-center col-start-7 col-span-3">

@@ -35,6 +35,8 @@ require_once '../app/controllers/controller_filtre.class.php';
 require_once '../app/controllers/controller_mesParticipations.class.php';
 require_once '../app/controllers/controller_faq.class.php';
 require_once '../app/controllers/controller_NL.class.php';
+require_once '../app/controllers/controller_pageErreur.class.php';
+
 
 
 

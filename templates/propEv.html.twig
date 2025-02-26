@@ -84,7 +84,7 @@
 						<label for="dateFin" >Date de fin</label>
 					</div>
 					<div class="relative col-start-3 col-span-4 w-full">
-						<input type="date" name="finDate" id="finDate" oninput='verifErreurSaisie(finDate)' class="w-full col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text text-text outline-none" placeholder="Date de fin">
+						<input type="date" name="finDate" id="finDate" oninput='verifErreurSaisie(finDate)'  class="w-full col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text text-text outline-none" placeholder="Date de fin">
 					</div>
 				</div>
 
@@ -106,7 +106,7 @@
 						<label for="lieu">Lieu</label>
 					</div>
 					<div class="relative col-start-3 col-span-4 w-full">
-						<textarea name="lieu" id="lieu" oninput='verifErreurSaisie(lieu)' class="w-full col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text text-text outline-none" placeholder="Lieu de l'évènement"></textarea>
+						<textarea type="text" name="lieu" id="lieu" oninput='verifErreurSaisie(lieu)' class="w-full col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text text-text outline-none" placeholder="Lieu de l'évènement"></textarea>
 					</div>
 				</div>
 
@@ -171,8 +171,8 @@
 						<img src="../asset/icones/envelope.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de mail">
 						<label for="email">Email</label>
 					</div>
-					<div class="grid-rows-subgrid row-start-1 col-start-3 col-span-4 w-full">
-						<input type="email" name="email" id="email" oninput="verifErreurSaisie(email)" class="row-start-2 w-full col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text text-text outline-none" placeholder="Email du responsable">
+					<div class="col-start-3 col-span-4 w-full">
+						<input type="email" name="email" id="email" oninput="verifErreurSaisie(email)" class="w-full col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text text-text outline-none" placeholder="Email du responsable">
 					</div>
 				</div>
 
@@ -194,7 +194,7 @@
 			{# Bouton de validation ou annulation #}
 			<div class="grid grid-cols-6 p-2">
 				<div class="row-start-1 col-start-4 col-span-2 lg:col-start-6 lg:col-span-1 gap-2 flex flex-row justify-between items-center">
-					<a href="index.php?controlleur=mesEv&methode=lister" class="px-4 py-2 bg-button hover:bg-hbutton text-white rounded-lg text-center">Annuler</a>
+					<a href="index.php?controlleur=mesEv&methode=lister" id="" class="px-4 py-2 bg-button hover:bg-hbutton text-white rounded-lg text-center">Annuler</a>
 					<button type="submit" class="px-4 py-2 bg-button hover:bg-hbutton text-white rounded-lg text-center">Proposer</button>
 				</div>
 			</div>
