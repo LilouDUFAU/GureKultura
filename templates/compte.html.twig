@@ -162,7 +162,7 @@
 					<img src="../asset/icones/lock.svg" alt="mdp" class="w-6 h-6 py-1 rounded-md ">
 					<label for="mdp" class="">Mot de passe actuel</label>
 				</div>
-				<input type="password" name="mdp" id="mdp" class="row-start-1 col-start-4 col-span-5 text-white border-solid border-2 border-gray-300 rounded-md px-2">
+				<input type="password" name="mdp" id="mdp" oninput='verifErreurSaisie(mdp)' class="row-start-1 col-start-4 col-span-5 text-white border-solid border-2 border-gray-300 rounded-md px-2">
 			</div>
 
 			{# email #}
@@ -171,7 +171,7 @@
 					<img src="../asset/icones/lock.svg" alt="nouvMdp" class="w-6 h-6 py-1 rounded-md ">
 					<label for="nouvMdp" class="">Nouveau mot de passe</label>
 				</div>
-				<input type="password" name="nouvMdp" id="nouvMdp" class="row-start-1 col-start-4 col-span-5 text-white border-solid border-2 border-gray-300 rounded-md px-2">
+				<input type="password" name="nouvMdp" id="nouvMdp" oninput='verifErreurSaisie(nouvMdp)' class="row-start-1 col-start-4 col-span-5 text-white border-solid border-2 border-gray-300 rounded-md px-2">
 			</div>
 
 			{# pseudo #}
@@ -180,7 +180,7 @@
 					<img src="../asset/icones/lock.svg" alt="confNouvMdp" class="w-6 h-6  py-1 rounded-md">
 					<label for="confNouvMdp" class="">Confirmation mot de passe</label>
 				</div>
-				<input type="password" name="confNouvMdp" id="confNouvMdp" class="row-start-1 col-start-4 col-span-5 text-text border-solid border-2 border-principal rounded-md px-2">
+				<input type="password" name="confNouvMdp" id="confNouvMdp" oninput='verifErreurSaisie(confNouvMdp)' class="row-start-1 col-start-4 col-span-5 text-text border-solid border-2 border-principal rounded-md px-2">
 			</div>
 
 			{# bouton de validation/annulation #}
