@@ -3,6 +3,9 @@
 require_once '../app/controllers/validator.class.php';
 
 
+require_once '../app/controllers/controller_pageErreur.class.php';
+
+
 /**
  * @class ControllerPropEv
  * @extends parent<Controller>
@@ -47,7 +50,7 @@ class ControllerPropEv extends Controller
 
             $managerCategorie = new CategorieDao($this->getPdo());
             $categories = $managerCategorie->findAll();
-
+            
             // Rendre le template Twig
             echo $this->getTwig()->render('propEv.html.twig', [
                 'title' => 'Proposisition d\'événement',
@@ -337,11 +340,17 @@ class ControllerPropEv extends Controller
             $managerEvenement->insert($evenement);
             return true;
         } catch (Exception $e) {
+
+            $loader = new \Twig\Loader\FilesystemLoader('../templates');
+            $twig = new \Twig\Environment($loader);
+
+            $fonctionErreur = new ControllerPageErreur($twig, $loader);
+            $messageErreur =$e->getMessage();
+            $fonctionErreur->messageErreur($messageErreur);
             // Log the error message
             error_log("Error inserting event: " . $e->getMessage());
+            
             return false;
-
-        }
-        
+        }   
     }
 }

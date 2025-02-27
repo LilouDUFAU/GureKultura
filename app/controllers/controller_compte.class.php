@@ -1,4 +1,5 @@
 <?php
+require_once '../app/controllers/controller_pageErreur.class.php';
 
 /**
  * @class ControllerCompte
@@ -459,9 +460,16 @@ class ControllerCompte extends Controller
             // Log the event data for debugging
             error_log(print_r($user, true));
         } catch (Exception $e) {
+
+            $loader = new \Twig\Loader\FilesystemLoader('../templates');
+            $twig = new \Twig\Environment($loader);
+
+            $fonctionErreur = new ControllerPageErreur($twig, $loader);
+            $messageErreur =$e->getMessage();
+            $fonctionErreur->messageErreur($messageErreur);
             // Log the error message
             error_log("Error inserting event: " . $e->getMessage());
-            throw $e; // Re-throw the exception if needed
+            return false;
         }
     }
 

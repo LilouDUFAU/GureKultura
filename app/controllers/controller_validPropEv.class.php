@@ -85,7 +85,7 @@ class ControllerValidPropEv extends Controller
         $user->getEmail();
         $donnees = $_POST;
         $mail = new Mail();
-        $mail->envoieMail($user->getEmail(), 'Refus de votre évènement', $donnees['message']);
+        $mail->envoieMail($user->getEmail(), 'Refus de votre événement', $donnees['message']);
         $managerEvenement->delete($evenement);
         header('Location: index.php?controlleur=validPropEv&methode=lister');
     }
@@ -124,7 +124,7 @@ class ControllerValidPropEv extends Controller
         $user->getEmail();
         $donnees = $_POST;
         $mail = new Mail();
-        $mail->envoieMail($user->getEmail(), 'Mise en attente de votre évènement', $donnees['message']);
+        $mail->envoieMail($user->getEmail(), 'Mise en attente de votre événement', $donnees['message']);
         header('Location: index.php?controlleur=validPropEv&methode=lister');
 
     }

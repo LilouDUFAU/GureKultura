@@ -1,11 +1,10 @@
 <?php
 require_once '../php/include.php';
 
-// Récupérer l'instance PDO via le singleton
 $pdo = Bd::getInstance()->getPdo();
 
 // Définition du dossier de sauvegarde
-$backupDir = __DIR__ . '/';
+$backupDir = __DIR__ . '/backups/';
 if (!is_dir($backupDir)) {
     mkdir($backupDir, 0777, true);
 }
@@ -35,17 +34,22 @@ foreach ($tables as $table) {
 
     // Exporter les données
     $dataQuery = $pdo->query("SELECT * FROM `$table`");
-    $rows = $dataQuery->fetchAll();
+    $rows = $dataQuery->fetchAll(PDO::FETCH_ASSOC);
 
     if (!empty($rows)) {
         fwrite($file, "-- Données de la table `$table` --\n");
 
+        // Récupérer les colonnes une seule fois
+        $columns = array_keys($rows[0]);
+        $columnsList = "`" . implode("`, `", $columns) . "`";
+
         foreach ($rows as $row) {
             $values = array_map(function ($value) use ($pdo) {
-                return is_null($value) ? "NULL" : "'" . $pdo->quote($value) . "'";
+                return is_null($value) ? "NULL" : $pdo->quote($value);
             }, array_values($row));
 
-            $insertQuery = "INSERT INTO `$table` VALUES (" . implode(", ", $values) . ");\n";
+            $valuesList = implode(", ", $values);
+            $insertQuery = "INSERT INTO `$table` ($columnsList) VALUES ($valuesList);\n";
             fwrite($file, $insertQuery);
         }
         fwrite($file, "\n");
