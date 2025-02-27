@@ -153,10 +153,10 @@ class ControllerEvtActu extends Controller {
         
         if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                $nom = htmlentities($_POST['nom']);
-                $type = htmlentities($_POST['type']);
-                $evtId = htmlentities($_POST['id']);
-                $contenu = htmlentities($_POST['commentaire']);
+                $nom = htmlentities($_POST['nom'],ENT_COMPAT, 'UTF-8');
+                $type = htmlentities($_POST['type'],ENT_COMPAT, 'UTF-8');
+                $evtId = htmlentities($_POST['id'],ENT_COMPAT, 'UTF-8');
+                $contenu = htmlentities($_POST['commentaire'],ENT_COMPAT, 'UTF-8');
             }
             $datetime = new DateTime('now');
                 // Créer une instance de CommentaireDao pour ajouter un commentaire
