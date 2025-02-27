@@ -67,6 +67,8 @@ class ControllermdpReinitialisation extends Controller {
         }
 
 
+        $managerCategorie = new CategorieDao($this->getPdo());
+        $categorie = $managerCategorie->findAll();
     
         // Rendre le template Twig
         echo $this->getTwig()->render('mdpReinitialisation.html.twig', [
@@ -74,7 +76,8 @@ class ControllermdpReinitialisation extends Controller {
             'actualites' => $actualite,
             'tokenValide' => $tokenValide,
             'token' => $token,
-            'user' => $user
+            'user' => $user,
+            'categories' => $categorie
         ]);
     }
     /**

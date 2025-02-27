@@ -27,9 +27,14 @@ class ControllerPageErreur extends Controller
      */
     public function lister($errorMessage = "Une erreur inconnue est survenue.")
     {
+        
+        $pdo = Bd::getInstance()->getPdo();
+        $managerCategorie = new CategorieDao($this->getPdo());
+        $categorie = $managerCategorie->findAll();
         echo $this->getTwig()->render('pageErreur.html.twig', [
             'title' => 'Erreur',
-            'errorMessage' => $errorMessage
+            'errorMessage' => $errorMessage,
+            'categories' => $categorie
         ]);
     }
 }

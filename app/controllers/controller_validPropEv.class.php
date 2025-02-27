@@ -49,6 +49,8 @@ class ControllerValidPropEv extends Controller
         $managerEvenement = new EvenementDao($this->getPdo());
         $evenements = $managerEvenement->findNotValid();
         
+        $managerCategorie = new CategorieDao($this->getPdo());
+        $categorie = $managerCategorie->findAll();
 
         // Rendre le template Twig
         echo $this->getTwig()->render('validPropEv.html.twig', [
@@ -57,6 +59,7 @@ class ControllerValidPropEv extends Controller
             'evenements' => $evenements,
             'actualites' => $actualite,
             'user' => $_SESSION['user'],
+            'categories' => $categorie
         ]);
         } else {
             // L'utilisateur n'est pas connecté, redirigez-le vers la page de connexion

@@ -110,6 +110,19 @@ function verifErreurSaisie(input) {
             else {
                 removeErrorForm(input);
             }
+        case "password":
+            console.log("password");
+            console.log(valeur);
+            var mdpPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!mdpPattern.test(valeur)) {
+                addErrorForm(input, "Veuilez entrer un mot de passe assez fort !");
+
+            } else {
+                removeErrorForm(input);
+            }
+            break;
+
+
         default:
             break;
     }

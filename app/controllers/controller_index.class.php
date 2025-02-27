@@ -48,7 +48,7 @@ class ControllerIndex extends Controller
         $events = $managerEvenement->findAllWithCategorie();
         
         $managerCategorie = new CategorieDao($this->getPdo());
-        $categorie = $managerCategorie->findAll();  
+        $categorie = $managerCategorie->findAll();
         $filtres = "";
         if(!isset($_SESSION['filtres']) || $_SESSION['filtres'] == ""){
             $filtres = "";

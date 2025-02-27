@@ -39,10 +39,13 @@ class ControllerCompte extends Controller
         $managerActualite = new ActualiteDao($this->getPdo());
         $actualite = $managerActualite->findAllWithCategorie();
 
+        $managerCategorie = new CategorieDao($this->getPdo());
+        $categorie = $managerCategorie->findAll();
         // Rendre le template Twig
         echo $this->getTwig()->render('compte.html.twig', [
             'title' => 'Compte',
-            'actualites' => $actualite
+            'actualites' => $actualite,
+            'categories' => $categorie
         ]);
         } else {
             // L'utilisateur n'est pas connecté, redirigez-le vers la page de connexion
