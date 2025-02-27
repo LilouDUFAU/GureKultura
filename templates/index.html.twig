@@ -35,7 +35,40 @@
 			<div class="col-span-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
 				{# afficher les evenements que si is_valid est true #}
 				{% for event in events %}
-					{% if event.isValide == true %}
+					{% if event.isValide == true and event.nomCategorie in filtresSession %}
+						<div class="flex flex-col h-full rounded-2xl bg-card p-4">
+							{# Image de l'événement #}
+							<div class="flex justify-center items-center">
+								<img src="../asset/evenement/photo/{{ event.photo }}" alt="Image de l'événement" class="rounded-lg w-full h-48 object-cover">
+							</div>
+							{# Infos de l'événement #}
+							<div class="text-text text-center">
+								<h3 class="break-words text-lg font-semibold">{{ event.titre }}</h3>
+								<p class="break-words text-sm">Du {{ event.dateDebut|date("d/m/Y") }} à {{ event.heureDebut|date("H:i") }}</p>
+								<p class="break-words text-sm">jusqu'au {{ event.dateFin|date("d/m/Y") }} à {{ event.heureFin|date("H:i") }}</p>
+								<p class="break-words text-sm">{{ event.lieu }}</p>
+							</div>
+
+							<div class="grid grid-cols-2 auto-cols-fr gap-2 items-center mt-4">
+								<FORM action="index.php?controlleur=evtActu&methode=lister" method="POST" class="row-start-1 col-start-1 col-span-1 flex justify-center">
+									<INPUT type="hidden" name="nom" value="{{event.titre}}">
+									<INPUT type="hidden" name="id" value={{event.evtId}}>
+									<INPUT type="hidden" name="type" value="Evenements">
+									<INPUT type="SUBMIT" name="{{ event.titre }}" value="EN SAVOIR PLUS" class="text-text text-sm font-bold underline cursor-pointer">
+								</FORM>
+
+								<FORM action="index.php?controlleur=cateEvt&methode=lister" method="POST" class="row-start-1 col-start-2 col-span-1 flex justify-center">
+									<INPUT type="hidden" name="nom" value="{{event.nomCategorie}}">
+									<INPUT type="hidden" name="id" value={{event.cateId}}>
+									<INPUT type="hidden" name="type" value="Evenements">
+									<INPUT type="SUBMIT" name="{{ event.nomCategorie }}" value="{{ event.nomCategorie }}" class="bg-button w-full hover:bg-hbutton text-tbutton rounded-lg text-sm p-2 font-bold cursor-pointer">
+								</FORM>
+							</div>
+						</div>
+					{% endif %}
+				{% endfor %}
+				{% for event in events %}
+					{% if event.isValide == true and event.nomCategorie not in filtresSession %}
 						<div class="flex flex-col h-full rounded-2xl bg-card p-4">
 							{# Image de l'événement #}
 							<div class="flex justify-center items-center">

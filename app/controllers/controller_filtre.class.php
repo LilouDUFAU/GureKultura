@@ -29,15 +29,13 @@ class ControllerFiltre extends Controller {
         $managerEvenement = new EvenementDao($this->getPdo());
         $events = $managerEvenement->findAllWithCategorie();   
         
-        if(isset($_SESSION['filtres']) && $_SESSION['filtres'] == ""){
-            if($filtres == ""){
-                $filtres = "";
-            }
-        } else{
-            $_SESSION['filtres'] = $filtres;
+        if(isset($filtres) && $filtres != ""){
+            $_SESSION['filtres'] = $filtres;    
         }
-
-      // Rendre le template Twig
+        else{
+            $_SESSION['filtres'] = "";
+        }
+        // Rendre le template Twig
         echo $this->getTwig()->render('index.html.twig', [
             'title' => 'Accueil',
             // 'description' => 'un site de gestion evenementielle au Pays Basque du Groupe 7'

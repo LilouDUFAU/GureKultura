@@ -196,7 +196,7 @@ tarteaucitron.user.gtagMore = function () { /* add here your optionnal gtag() */
 		</div>
 
 {# popup de selection de filtres #}
-<div id="popup" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 {#hidden#} z-50 text-text">
+<div id="popup" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden z-50 text-text">
 	<div class="bg-bg p-6 rounded-lg shadow-lg w-full max-w-xl h-fit max-h-xl">
 		<input type="hidden" id="popupFiltres" name="test" value="">
 
@@ -320,7 +320,6 @@ tarteaucitron.user.gtagMore = function () { /* add here your optionnal gtag() */
             item.addEventListener('click', function () {
                 var valOption = this.value;
                 if (!selectedOptions.includes(valOption)) {
-					console.log(valOption);
                     selectedOptions.push(valOption);
 					this.classList.add("hidden");
                     updateSelectedItems();
@@ -331,7 +330,6 @@ tarteaucitron.user.gtagMore = function () { /* add here your optionnal gtag() */
         function updateSelectedItems() {
             var container = document.getElementById('conteneurFiltre');
             container.innerHTML = '';
-			console.log(selectedOptions);	
             selectedOptions.forEach(valOption => {
                 var divSelectionFiltre = document.createElement('div');
                 divSelectionFiltre.className = 'flex items-center gap-1 bg-blue-500 text-white px-2 py-1 rounded-full';
@@ -341,13 +339,12 @@ tarteaucitron.user.gtagMore = function () { /* add here your optionnal gtag() */
             });
 			
 			document.getElementById("listeFiltres").value = selectedOptions.toString();
-			if(selectedOptions.size == 0){
+			if(selectedOptions.length === 0){
 				container.innerHTML = 'Sélectionner des filtres à appliquer';
 			}
         }
 
         function removeSelected(valOption) {
-			console.log("suppression de : " + valOption);
 			const valSuppression = selectedOptions.indexOf(valOption);
 			if (valSuppression > -1) { // only splice array when item is found
 			selectedOptions.splice(valSuppression, 1); // 2nd parameter means remove one item only
