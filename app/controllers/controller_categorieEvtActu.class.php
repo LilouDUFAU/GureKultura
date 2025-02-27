@@ -51,6 +51,8 @@ class ControllerCategorieEvtActu extends Controller {
         } if ($type == "Actualites"){
             $managerEvtActu = new ActualiteDao($pdo);
         }
+        $managerCategorie = new CategorieDao($this->getPdo());
+        $categorie = $managerCategorie->findAll();
         $evtActuEnCours = $managerEvtActu->findEnCours($id);
         $evtActuASuivre = $managerEvtActu->findAsuivre($id);
         $evtActuPasser = $managerEvtActu->findPasser($id);
@@ -60,6 +62,7 @@ class ControllerCategorieEvtActu extends Controller {
             'title' => $nom,
             'type' => $type,
             'actualites' => $actualite,
+            'categories' => $categorie,
             'evtActusEnCours' => $evtActuEnCours,
             'evtActusASuivre' => $evtActuASuivre,
             'evtActusPasser' => $evtActuPasser,

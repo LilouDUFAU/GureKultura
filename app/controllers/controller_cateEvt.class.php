@@ -50,6 +50,9 @@ class ControllerCateEvt extends Controller {
         $managerEvenement = new EvenementDao($this->getPdo());
         $evenement = $managerEvenement->findAllWithCategorie();    
 
+        $managerCategorie = new CategorieDao($this->getPdo());
+        $categorie = $managerCategorie->findAll();
+        
         $evtEnCours = $managerEvenement->findEnCours($id);
         $evtASuivre = $managerEvenement->findAsuivre($id);
         $evtPasser = $managerEvenement->findPasser($id);
@@ -62,7 +65,7 @@ class ControllerCateEvt extends Controller {
         echo $this->getTwig()->render('categorieListEvtActu.html.twig', [
             'title' => $nom,
             'actualites' => $actualite,
-
+            'categories' => $categorie,
             'evtsEnCours' => $evtEnCours,
             'evtsASuivre' => $evtASuivre,
             'evtsPasser' => $evtPasser,
