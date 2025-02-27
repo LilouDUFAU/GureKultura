@@ -156,7 +156,7 @@ class ControllerEvtActu extends Controller {
                 $nom = htmlentities($_POST['nom']);
                 $type = htmlentities($_POST['type']);
                 $evtId = htmlentities($_POST['id']);
-                $contenu = htmlentities($_POST['commentaire']);
+                $contenu = htmlspecialchars($_POST['commentaire'],ENT_COMPAT, 'UTF-8');
             }
             $datetime = new DateTime('now');
                 // Créer une instance de CommentaireDao pour ajouter un commentaire
