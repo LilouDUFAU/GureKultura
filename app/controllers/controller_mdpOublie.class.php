@@ -95,11 +95,14 @@ class ControllerMdpOublie extends Controller {
             }
         }
 
+        $managerCategorie = new CategorieDao($this->getPdo());
+        $categorie = $managerCategorie->findAll();
         // Rendre le template Twig
         echo $this->getTwig()->render('mdpOublie.html.twig', [
             'title' => 'Mot de passe oublie',
             'actualites' => $actualite,
-            'emailSend' => $mailEnvoyer
+            'emailSend' => $mailEnvoyer,
+            'categories' => $categorie
         ]);
     }
     public function generateToken($length)

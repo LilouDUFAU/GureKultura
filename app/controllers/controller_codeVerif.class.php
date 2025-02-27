@@ -36,10 +36,13 @@ class ControllerCodeVerif extends Controller {
         $managerActualite = new ActualiteDao($this->getPdo());
         $actualite = $managerActualite->findAllWithCategorie();
 
+        $managerCategorie = new CategorieDao($this->getPdo());
+        $categorie = $managerCategorie->findAll();
         // Rendre le template Twig
         echo $this->getTwig()->render('codeVerif.html.twig', [
             'title' => 'Code Verification',
-            'actualites' => $actualite
+            'actualites' => $actualite,
+            'categories' => $categorie
         ]);
     }
 }

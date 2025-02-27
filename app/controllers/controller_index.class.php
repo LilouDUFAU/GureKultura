@@ -47,13 +47,23 @@ class ControllerIndex extends Controller
         $managerEvenement = new EvenementDao($this->getPdo());
         $events = $managerEvenement->findAllWithCategorie();
         
-
+        $managerCategorie = new CategorieDao($this->getPdo());
+        $categorie = $managerCategorie->findAll();
+        $filtres = "";
+        if(!isset($_SESSION['filtres']) || $_SESSION['filtres'] == ""){
+            $filtres = "";
+        }
+        else{
+            $filtres = $_SESSION['filtres'] ;
+        }
         // Rendre le template Twig
         echo $this->getTwig()->render('index.html.twig', [
             'title' => 'Accueil',
             // 'description' => 'un site de gestion evenementielle au Pays Basque du Groupe 7'
             'events' => $events,
             'actualites' => $actualite,
+            'categories' => $categorie,
+            'filtresSession' => $filtres,
 
 
         ]);

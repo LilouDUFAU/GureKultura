@@ -44,11 +44,15 @@ class ControllerPageErreur extends Controller
      */  
 
     public function messageErreur(string $e){
+        $pdo = Bd::getInstance()->getPdo();
+        $managerCategorie = new CategorieDao($this->getPdo());
+        $categorie = $managerCategorie->findAll();
         error_log("Error inserting event: " . $e);
         $this->mailErreur($e);
         echo $this->getTwig()->render('pageErreur.html.twig', [
             'title' => 'Accueil',
-            'error_message' => $e
+            'error_message' => $e,
+            'categories' => $categorie
         ]);
     }
 

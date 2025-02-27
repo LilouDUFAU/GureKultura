@@ -73,10 +73,13 @@ class ControllerFaq extends Controller
             ]
         ];
 
+        $managerCategorie = new CategorieDao($this->getPdo());
+        $categorie = $managerCategorie->findAll();
         // Rendre le template Twig avec la FAQ
         echo $this->getTwig()->render('faq.html.twig', [
             'title' => 'FAQ',
-            'faq' => $faq
+            'faq' => $faq,
+            'categories' => $categorie
         ]);
     }
 }

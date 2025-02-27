@@ -40,10 +40,13 @@ class ControllerInscription extends Controller
         $managerActualite = new ActualiteDao($pdo);
         $actualite = $managerActualite->findAllWithCategorie();
 
+        $managerCategorie = new CategorieDao($this->getPdo());
+        $categorie = $managerCategorie->findAll();
         // Rendre le template Twig
         echo $twig->render('inscription.html.twig', [
             'title' => 'Inscription',
-            'actualites' => $actualite
+            'actualites' => $actualite,
+            'categories' => $categorie
         ]);
     }
 

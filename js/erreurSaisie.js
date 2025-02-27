@@ -110,6 +110,25 @@ function verifErreurSaisie(input) {
             else {
                 removeErrorForm(input);
             }
+        case "password":
+            var mdpPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (input.id === "password" || input.id === "nouvMdp") {
+                if (!mdpPattern.test(valeur)) {
+                    addErrorForm(input, "Veuilez entrer un mot de passe assez fort !");
+                }
+            } else if (input.id === "confirmpassword" && document.getElementById("password").value !== valeur) {
+
+                addErrorForm(input, "Les mots de passe ne correspondent pas !");
+
+            } else if (input.id === "confNouvMdp" && document.getElementById("nouvMdp").value !== valeur) {
+                addErrorForm(input, "Les mots de passe ne correspondent pas !");
+
+            } else {
+                removeErrorForm(input);
+            }
+            break;
+
+
         default:
             break;
     }
