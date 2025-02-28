@@ -119,7 +119,7 @@
 						<label for="photo" class="cursor-pointer">Image</label>
 					</div>
 					<div class="relative row-start-2 lg:row-start-1 col-start-1 col-span-6 lg:col-start-2 lg:col-span-5 w-full">
-						<input class="col-start-3 col-span-4 bg-transparent flex w-full rounded-md border border-white border-input bg-white text-sm file:border-0 file:bg-text file:text-white file:text-sm" type="file" name="photo" id="photo" accept=".jpg, .png" value=" {{evtActuel.photo}}"/>
+						<input oninput='verifErreurSaisie(photo)' class="col-start-3 col-span-4 bg-transparent flex w-full rounded-md border border-white border-input bg-white text-sm file:border-0 file:bg-text file:text-white file:text-sm" type="file" name="photo" id="photo" accept=".jpg, .png" value=" {{evtActuel.photo}}"/>
 					</div>
 				</div>
 
@@ -130,7 +130,7 @@
 						<label for="autorisation" class="cursor-pointer">Autorisation</label>
 					</div>
 					<div class="relative row-start-2 lg:row-start-1 col-start-1 col-span-6 lg:col-start-2 lg:col-span-5 w-full">
-						<input class="col-start-3 col-span-4 bg-transparent flex w-full rounded-md border border-white border-input bg-white text-sm file:border-0 file:bg-text file:text-white file:text-sm" type="file" name="autorisation" id="autorisation" accept=".pdf" value=" {{evtActuel.autorisation}}"/>
+						<input oninput='verifErreurSaisie(autorisation)' class="col-start-3 col-span-4 bg-transparent flex w-full rounded-md border border-white border-input bg-white text-sm file:border-0 file:bg-text file:text-white file:text-sm" type="file" name="autorisation" id="autorisation" accept=".pdf" value=" {{evtActuel.autorisation}}"/>
 					</div>
 				</div>
 
