@@ -52,6 +52,8 @@ class ControllerEvtActu extends Controller {
             $managerEvtActu = new ActualiteDao($pdo);
         } 
         
+        $managerCategorie = new CategorieDao($this->getPdo());
+        $categorie = $managerCategorie->findAll();
         $evtActu = $managerEvtActu->find($id);
         $actualite = $managerActualite->findAllWithCategorie(); 
         // Rendre le template Twig
@@ -59,6 +61,7 @@ class ControllerEvtActu extends Controller {
             'title' => $nom,
             'type' => $type,
             'actualites' => $actualite,
+            'categories' => $categorie,
             'evtActus' => $evtActu,
             'estInscrit' => $estInscrit,
             'commentaires' => $commentaires
@@ -156,7 +159,7 @@ class ControllerEvtActu extends Controller {
                 $nom = htmlentities($_POST['nom']);
                 $type = htmlentities($_POST['type']);
                 $evtId = htmlentities($_POST['id']);
-                $contenu = htmlspecialchars($_POST['commentaire']);
+                $contenu = htmlspecialchars($_POST['commentaire'],ENT_COMPAT, 'UTF-8');
             }
             $datetime = new DateTime('now');
                 // Créer une instance de CommentaireDao pour ajouter un commentaire

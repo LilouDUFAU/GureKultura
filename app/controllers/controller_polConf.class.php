@@ -13,8 +13,8 @@ class ControllerPolConf extends Controller {
     
 
         // Récupérer les catégories disponibles et leurs sous-catégories
-        // $managerCategorie = new CategorieDao($pdo);
-        // $categories = $managerCategorie->findAll();
+         $managerCategorie = new CategorieDao($pdo);
+         $categories = $managerCategorie->findAll();
         
         // $managerActualite = new ActualiteDao($this->getPdo());
         // $actualite = $managerActualite->findAllWithCategorie();    
@@ -26,6 +26,7 @@ class ControllerPolConf extends Controller {
         // Rendre le template Twig avec les événements, actualités et catégories filtrées
         echo $this->getTwig()->render('polConf.html.twig', [
             'title' => 'Politique de confidentialité',
+            'categories' => $categories
         ]);
     }    
 }

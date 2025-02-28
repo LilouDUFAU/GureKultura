@@ -6,36 +6,37 @@
 	<!-- Contenu spécifique de chaque page -->
 	<div class="h-full">
 		<div class="gap-2 p-2 grid grid-cols-12 items-center">
-			<h2 class="row-start-1 col-span-12 bg-fh text-tbutton py-6 text-center text-4xl font-bold rounded-t-2xl">{{ evtActus.titre }}</h2>
+			<h2 class="row-start-1 col-span-12 bg-fh text-tbutton py-6 text-center text-lg lg:text-4xl font-bold rounded-t-2xl">{{ evtActus.titre }}</h2>
 
 			<div class="grid grid-cols-subgrid col-start-2 col-span-10 row-start-2 h-full">
 				<img src="../asset/evenement/photo/{{ evtActus.photo }}" alt="photo evenement" class="row-start-1 col-start-1 col-span-12 lg:col-start-3 lg:col-span-6 w-full h-auto rounded-lg">
-				<p class="row-start-2 col-start-1 col-span-12 lg:col-start-3 lg:col-span-6 break-words">{{ evtActus.description }}</p>
+				<p class="text-center row-start-2 col-start-1 col-span-12 lg:col-start-3 lg:col-span-6 break-words">{{ evtActus.description }}</p>
 			</div>
 
-			<div class="grid grid-cols-subgrid lg:col-start-1 lg:col-span-6 col-start-2 col-span-10 lg:row-start-3 row-start-3 bg-card  bg-opacity-55 rounded-lg p-2 h-full">
-				<h2 class="row-start-1 col-start-1 col-span-12 text-2xl font-bold text-center text-text">Fiche Evènement</h2>
-					<p class="row-start-2 col-start-1 col-span-12 text-text font-semibold text-center">Date début :
+			<div class="grid grid-cols-subgrid lg:col-start-1 lg:col-span-6 col-start-2 col-span-10 lg:row-start-3 row-start-3 bg-card  bg-opacity-55 rounded-lg p-2 ">
+				<h2 class="row-start-1 col-start-1 col-span-12 text-2xl font-bold text-left text-text">Fiche Evènement</h2>
+					<p class="row-start-2 col-start-1 col-span-12 text-text font-semibold text-left">Date début :
 						{{ evtActus.dateDebut|date("d/m/Y") }} à
 						{{ evtActus.heureDebut|date('H:i') }}</p>
-					<p class="row-start-3 col-start-1 col-span-12 text-text font-semibold text-center">Date fin :
+					<p class="row-start-3 col-start-1 col-span-12 text-text font-semibold text-left">Date fin :
 						{{ evtActus.dateFin|date("d/m/Y") }} à
 						{{ evtActus.heureFin|date('H:i') }}</p>
-					<p class="row-start-4 col-start-1 col-span-12 text-text font-semibold text-center">Lieu :
+					<p class="row-start-4 col-start-1 col-span-12 text-text font-semibold text-left">Lieu :
 						{{ evtActus.lieu }}</p>
+										<a href="../asset/evenement/autorisation/{{ evtActus.autorisation }}" alt="autorisation evenment" class="text-left row-start-6 col-start-1 col-span-12 rounded-lg text-sky-600 underline font-semibold" target="_blank">Cliquez ici pour visionner le fichier PDF</a>
+
 			</div>
 
 			<div class="grid grid-cols-subgrid lg:col-start-7 lg:col-span-6 col-start-2 col-span-10 lg:row-start-3 row-start-4 bg-card  bg-opacity-55 rounded-lg p-2">
-				<h2 class="row-start-1 col-start-1 col-span-12 text-2xl font-bold text-center text-text">Fiche Responsable</h2>
-				<p class="row-start-2 col-start-1 col-span-12 text-text font-semibold text-center">Nom :
+				<h2 class="row-start-1 col-start-1 col-span-12 text-2xl font-bold text-left text-text">Fiche Responsable</h2>
+				<p class="row-start-2 col-start-1 col-span-12 text-text font-semibold text-left">Nom :
 					{{ evtActus.nomRep }}</p>
-				<p class="row-start-3 col-start-1 col-span-12 text-text font-semibold text-center">Prénom :
+				<p class="row-start-3 col-start-1 col-span-12 text-text font-semibold text-left">Prénom :
 					{{ evtActus.prenomRep }}</p>
-				<p class="row-start-4 col-start-1 col-span-12 text-text font-semibold text-center">Mail :
+				<p class="row-start-4 col-start-1 col-span-12 text-text font-semibold text-left">Mail :
 					{{ evtActus.email }}</p>
-				<p class="row-start-5 col-start-1 col-span-12 text-text font-semibold text-center">Téléphone :
+				<p class="row-start-5 col-start-1 col-span-12 text-text font-semibold text-left">Téléphone :
 					{{ evtActus.tel }}</p>
-				<a href="../asset/evenement/autorisation/{{ evtActus.autorisation }}" alt="autorisation evenment" class="text-center row-start-6 col-start-1 col-span-12 rounded-lg text-sky-600 underline font-semibold" target="_blank">Cliquez ici pour visionner le fichier PDF</a>
 			</div>
 		</div>
 
@@ -103,79 +104,55 @@
     <div class="pt-2">
         <div class="gap-2 p-2 grid grid-cols-12 items-center  rounded-lg">
             <!-- titre de l'article -->
-            <h2 class="row-start-1 col-span-12 bg-fh text-tbutton py-6 text-center text-4xl font-bold rounded-t-2xl">{{ evtActus.titre }}</h2>
+            <h2 class="row-start-1 col-span-12 bg-fh text-tbutton py-6 text-center lg:text-4xl text-lg font-bold rounded-t-2xl">{{ evtActus.titre }}</h2>
 
             <!-- résumé de l'article -->
-            <div class="col-span-12 text-text font-bold text-sm lg:text-lg text-left mb-4 break-words col-start-1 row-start-2 px-4">
+            <p class="text-center col-span-12 text-text font-bold text-sm lg:text-lg text-left mb-4 break-words col-start-1 row-start-2 px-4">
                 {{ evtActus.resume }}
-            </div>
+            </p>
 
             <!-- contenu -->
-            <div class="grid grid-cols-6 row-start-3 col-start-1 col-span-12 lg:col-span-8 px-4">
+            <div class="grid grid-cols-subgrid row-start-3 col-start-1 col-span-12 px-4">
                 <!-- image de l'article -->
-                <img src="../asset/actualite/{{ evtActus.img }}" alt="Image de l'article" class="col-start-2 lg:col-start-2 col-span-4 row-start-1 rounded-lg mb-4 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
+                <img src="../asset/actualite/{{ evtActus.img }}" alt="Image de l'article" class="col-start-1 lg:col-start-3 col-span-12 row-start-1 lg:col-span-8 rounded-lg mb-4 w-full">
                 <!-- contenu de l'article -->
-                <div class="col-start-1 row-start-2 col-span-6 text-text font-medium text-m lg:text-base text-left break-words">
+                <p class="col-start-1 row-start-2 col-span-12 text-text  text-sm lg:text-base break-words">
                     {{ evtActus.contenu }}
-                </div>
+                </p>
             </div>
-
-            <!-- section commentaires -->
-            <div class="gap-2 grid grid-cols-12 items-center bg-card  rounded-lg p-4 col-start-1 lg:col-start-9 col-span-12 lg:col-span-4 row-start-4 lg:row-start-3 h-full lg:h-full">
-                <!-- Titre "Commentaires" -->
-                <h3 class="gap-2 col-start-1 mb-4 col-span-12 text-title text-lg text-center lg:text-3xl font-bold uppercase">
-                    Commentaires
-                </h3>
-
-				<!-- Afficher les commentaires réels -->
-				{% if commentaires is not empty %}
-					{% for commentaire in commentaires %}
-						<div class="grid grid-cols-12 items-start mb-4 col-span-12 pb-4">
-							<!-- image de profil -->
-							<div class="col-start-1 col-span-1 flex justify-center items-center">
-								<img src="../asset/icones/pp_user.svg" alt="pp" class="w-auto h-auto rounded-full">
-							</div>
-
-							<!-- nom du commentateur -->
-							<div class="font-bold text-text col-start-2 col-span-10 row-start-1 truncate flex items-center">
-								{{ commentaire.pseudo }}
-							</div>
-
-							<!-- texte du commentaire -->
-							<div class="text-text text-base col-start-2 col-span-8 row-start-4 break-words">
-								{{ commentaire.contenu }}
-							</div>
-
-							<!-- date de publication -->
-							<div class="text-gray-500 text-xs col-start-2 col-span-3 row-start-2">
-								{{ commentaire.datePubli|date("d/m/Y H:i") }}
-							</div>
-
-						</div>
-					{% endfor %}
-				{% else %}
-					<h2 class="col-span-12">Aucun commentaire pour cette actualité.</h2>
-				{% endif %}
-
-
-                <!-- Formulaire pour ajouter un commentaire -->
-                <form action="index.php?controlleur=evtActu&methode=ajouterCommentaire" method="POST" class="gap-2 grid grid-cols-12 items-start col-span-12">
-                    <!-- champ de texte pour le commentaire -->
-                    <textarea placeholder="Ajouter un commentaire" name="commentaire" malgength="500" class="col-start-1 col-span-10 row-start-1 row-span-2 items-center  bg-white p-4 text-text w-full resize-none border-2 border-solid border-title rounded-lg" rows="1"></textarea>
-
-                    <!-- Cacher l'ID de l'actualité -->
-                    <INPUT TYPE="hidden" NAME="nom" VALUE="{{evtActus.titre}}">
-					<INPUT TYPE="hidden" NAME="type" VALUE="{{ type }}"> 
-					<input type="hidden" name="id" value="{{ evtActus.actuId }}">
-
-                    <!-- bouton pour envoyer le commentaire (flèche) -->
-                    <button type="submit" class="cursor-pointer col-start-12 col-span-1 row-start-2">
-                        <img src="../asset/envoyer_message.svg" alt="Publier" class="w-24 h-auto"/>
-                    </button>
-                </form>
-            </div>
-        </div>
+		</div>
     </div>
+				
+		<!-- Section Commentaires -->
+		<div class="mt-8 p-4 text-tab rounded-lg bg-card">
+			<h2 class="text-2xl font-bold text-title mb-4">Commentaires</h2>
+
+			<!-- Exemples de commentaires -->
+			{% for commentaire in commentaires %}
+				<div class="mb-6">
+					<p class="font-semibold text-text">{{ commentaire.pseudo }}
+						:</p>
+					<p class="text-title">{{ commentaire.contenu }}</p>
+					<p class="text-gray-500 text-sm">{{ commentaire.datePubli|date("d/m/Y H:i") }}</p>
+				</div>
+			{% else %}
+				<p>Aucun commentaire pour cette actualité.</p>
+			{% endfor %}
+
+			<!-- Formulaire pour ajouter un commentaire -->
+			<div class="mt-6">
+				<label for="commentaire" class="block text-lg font-bold text-title mb-4">Ajouter un commentaire :</label>
+				<form action="index.php?controlleur=evtActu&methode=ajouterCommentaire" method="POST">
+					<textarea id="commentaire" name="commentaire" rows="3" class="w-full p-3 border-2 rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#A23145]" required></textarea>
+					    <INPUT TYPE="hidden" NAME="nom" VALUE="{{evtActus.titre}}">
+						<INPUT TYPE="hidden" NAME="type" VALUE="{{ type }}"> 
+						<input type="hidden" name="id" value="{{ evtActus.actuId }}">
+					<!-- Passer l'ID de l'événement -->
+					<button type="submit" class="mt-4 px-6 py-2 text-white font-semibold rounded-lg bg-button">Envoyer</button>
+				</form>
+			</div>
+
+        </div>
 {% endif %}                                                                                                         
 
 {% endblock %}

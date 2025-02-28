@@ -49,6 +49,8 @@ class ControllerValidPropEv extends Controller
         $managerEvenement = new EvenementDao($this->getPdo());
         $evenements = $managerEvenement->findNotValid();
         
+        $managerCategorie = new CategorieDao($this->getPdo());
+        $categorie = $managerCategorie->findAll();
 
         // Rendre le template Twig
         echo $this->getTwig()->render('validPropEv.html.twig', [
@@ -57,6 +59,7 @@ class ControllerValidPropEv extends Controller
             'evenements' => $evenements,
             'actualites' => $actualite,
             'user' => $_SESSION['user'],
+            'categories' => $categorie
         ]);
         } else {
             // L'utilisateur n'est pas connecté, redirigez-le vers la page de connexion
@@ -82,7 +85,7 @@ class ControllerValidPropEv extends Controller
         $user->getEmail();
         $donnees = $_POST;
         $mail = new Mail();
-        $mail->envoieMail($user->getEmail(), 'Refus de votre évènement', $donnees['message']);
+        $mail->envoieMail($user->getEmail(), 'Refus de votre événement', $donnees['message']);
         $managerEvenement->delete($evenement);
         header('Location: index.php?controlleur=validPropEv&methode=lister');
     }
@@ -121,7 +124,7 @@ class ControllerValidPropEv extends Controller
         $user->getEmail();
         $donnees = $_POST;
         $mail = new Mail();
-        $mail->envoieMail($user->getEmail(), 'Mise en attente de votre évènement', $donnees['message']);
+        $mail->envoieMail($user->getEmail(), 'Mise en attente de votre événement', $donnees['message']);
         header('Location: index.php?controlleur=validPropEv&methode=lister');
 
     }
