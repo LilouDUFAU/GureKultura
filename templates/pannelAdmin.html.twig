@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+<div class="min-h-screen flex flex-col items-center justify-center bg-bg py-12 px-4 sm:px-6 lg:px-8">
+    <h2 class="text-2xl lg:text-4xl font-semibold text-center text-title uppercase lg:font-extrabold mb-8">Panneau Administrateur</h2>
+
+    <div class="max-w-4xl w-full space-y-6 p-10 bg-form shadow-xl rounded-2xl">
+        <div class="grid grid-cols-1 gap-6">
+            <button onclick="openPopup('sauvegardePopup')" class="w-full p-3 bg-button text-tbutton font-bold rounded-lg hover:bg-hbutton transition">Sauvegarde</button>
+            <button onclick="location.href='index.php?controlleur=admin&methode=restaurationBD'" class="w-full p-3 bg-button text-tbutton font-bold rounded-lg hover:bg-hbutton transition">Restauration</button>
+        </div>
+    </div>
+</div>
+
+<!-- Popup Sauvegarde -->
+<div id="sauvegardePopup" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
+    <div class="bg-white p-6 rounded-lg shadow-lg w-96 text-center">
+        <h2 class="text-lg font-bold mb-4">Options de Sauvegarde</h2>
+        <form action="index.php?controlleur=admin&methode=sauvegarde" method="post">
+            <div class="flex flex-col items-start mb-4">
+                <label class="flex items-center mb-2">
+                    <input type="checkbox" name="bd" class="mr-2">
+                    Sauvegarde la BD
+                </label>
+                <label class="flex items-center">
+                    <input type="checkbox" name="file" class="mr-2">
+                    Sauvegarde des fichiers du projet
+                </label>
+            </div>
+            <button type="submit" class="w-full p-3 bg-button text-tbutton font-bold rounded-lg hover:bg-hbutton transition">Valider</button>
+        </form>
+        <button onclick="closePopup('sauvegardePopup')" class="mt-4 text-sm text-gray-500 underline">Annuler</button>
+    </div>
+</div>
+
+<script>
+    function openPopup(popupId) {
+        document.getElementById(popupId).classList.remove('hidden');
+    }
+
+    function closePopup(popupId) {
+        document.getElementById(popupId).classList.add('hidden');
+    }
+</script>
+{% endblock %}
