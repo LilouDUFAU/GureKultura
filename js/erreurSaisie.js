@@ -5,15 +5,15 @@ function verifErreurSaisie(input) {
     switch (type) {
         case "text": // Zone de texte
             if (input.id === "titre" && (valeur === "" || (valeur.length > 50 || valeur.length < 5))) {
-                addErrorForm(input, "Les titres ne peuvent pas être vides ou inférieur à 5 ou dépasser 50 caractères !");
+                addErrorForm(input, "La taille du titre doit être comprise entre 5 et 50 caractères.");
             } else if (input.id === "nomRep" && valeur === "") {
-                addErrorForm(input, "Le Nom ne peut pas être vide !");
+                addErrorForm(input, "Veuillez renseigner un nom.");
             } else if (input.id === "nom" && valeur === "") {
-                addErrorForm(input, "Le Nom ne peut pas être vide !");
+                addErrorForm(input, "Veuillez renseigner un nom.");
             } else if (input.id === "pseudo" && valeur === "") {
-                addErrorForm(input, "Le Pseudo ne peut pas être vide !");
+                addErrorForm(input, "Veuillez renseigner un pseudo.");
             } else if (input.id === "prenomRep" && valeur === "") {
-                addErrorForm(input, "Le Prenom ne peut pas être vide !");
+                addErrorForm(input, "Veuillez renseigner un pseudo.");
             } else {
                 removeErrorForm(input);
             }
@@ -22,7 +22,7 @@ function verifErreurSaisie(input) {
         case "email":
             var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailPattern.test(valeur)) {
-                addErrorForm(input, "Veuilez entrer un email valide !");
+                addErrorForm(input, "Veuilez renseigner un email valide.");
 
             } else {
                 removeErrorForm(input);
@@ -33,7 +33,7 @@ function verifErreurSaisie(input) {
             console.log("tel");
             var nombre = parseInt(valeur, 10);
             if (isNaN(nombre) || valeur.length != 10 || valeur[0] != 0) {
-                addErrorForm(input, "Veuillez entrer un numéro de téléphone valide !");
+                addErrorForm(input, "Veuillez renseigner un numéro de téléphone valide.");
 
             } else {
                 removeErrorForm(input);
@@ -42,11 +42,11 @@ function verifErreurSaisie(input) {
 
         case "textarea":
             if (input.id === "description" && (valeur === "" || (valeur.length > 500 || valeur.length < 30))) {
-                addErrorForm(input, "La description ne peux pas être vide ou inférieur à 30 ou dépasser 500 caractères  !");
+                addErrorForm(input, "La taille de la description doit être comprise entre 30 et 500 caractères.");
             } else if ((input.id === "resume" || input.id === "contenu") && (valeur === "" || (valeur.length > 500 || valeur.length < 30))) {
-                addErrorForm(input, "Le " + input.id + " ne peux pas être vides ou inférieur à 30 ou dépasser 500 caractères  !");
+                addErrorForm(input, "La taille du " + input.id + " doit être comprise entre 30 et 500 caractères.");
             } else if (input.id === "lieu" && (valeur === "" || (valeur.length > 100 || valeur.length < 5))) {
-                addErrorForm(input, "La lieu ne peux pas être vide ou inférieur à 5 ou dépasser 100 caractères  !");
+                addErrorForm(input, "La taille de la description doit être comprise entre 5 et 100 caractères.");
             } else {
                 removeErrorForm(input);
             }
@@ -58,13 +58,13 @@ function verifErreurSaisie(input) {
             var dateActuelle = new Date().toISOString().split('T')[0];
 
             if (valeur < dateActuelle) {
-                addErrorForm(input, "La date ne peut pas être inférieure à la date actuelle !");
+                addErrorForm(input, "Veuillez renseigner une date qui n'est pas antérieure à la date actuelle.");
             } else if (input.id === "debutDate" && valeur > dateFin.value) {
-                addErrorForm(dateDebut, "La date ne peut pas être supérieur à la date de fin !");
-                addErrorForm(dateFin, "La date ne peut pas être inférieure à la date de début !");
+                addErrorForm(dateDebut, "Veuillez renseigner une date de début antérieure ou égale à la date de fin.");
+                addErrorForm(dateFin, "Veuillez renseigner une date de fin postérieure ou égale à la date de début.");
             } else if (input.id === "finDate" && valeur < dateDebut.value) {
-                addErrorForm(dateFin, "La date ne peut pas être inférieure à la date de début !");
-                addErrorForm(dateDebut, "La date ne peut pas être supérieur à la date de fin !");
+                addErrorForm(dateFin, "Veuillez renseigner une date de fin postérieure ou égale à la date de début.");
+                addErrorForm(dateDebut, "Veuillez renseigner une date de début antérieure ou égale à la date de fin.");
             } else {
                 removeErrorForm(dateDebut);
                 removeErrorForm(dateFin);
@@ -76,21 +76,21 @@ function verifErreurSaisie(input) {
             var heureFin = document.getElementById("finHeure");
             if (input.id === "debutHeure" && valeur > heureFin.value && heureFin.value !== "") {
 
-                addErrorForm(input, "L'heure ne peut pas être supérieur à l'heure de fin !");
-                addErrorForm(heureFin, "L'heure ne peut pas être inférieure à l'heure de début !");
+                addErrorForm(input, "Veuillez renseigner une heure de début antérieure ou égale à l'heure de fin.");
+                addErrorForm(heureFin, "Veuillez renseigner une heure de fin postérieure ou égale à l'heure de début.");
 
             } else if (input.id === "debutHeure" && valeur === "") {
 
-                addErrorForm(input, "L'heure ne peut pas être vide !");
+                addErrorForm(input, "Veuillez renseigner une heure.");
 
             } else if (input.id === "finHeure" && valeur < heureDebut.value && heureDebut.value !== "") {
 
-                addErrorForm(input, "L'heure ne peut pas être inférieure à l'heure de début !");
-                addErrorForm(heureDebut, "L'heure ne peut pas être supérieur à l'heure de fin !");
+                addErrorForm(input, "Veuillez renseigner une heure de fin postérieure ou égale à l'heure de début.");
+                addErrorForm(heureDebut, "Veuillez renseigner une heure de début antérieure ou égale à l'heure de fin.");
 
             } else if (input.id === "finHeure" && valeur < heureDebut.value) {
 
-                addErrorForm(input, "L'heure ne peut pas etre vide !");
+                addErrorForm(input, "Veuillez renseigner une heure.");
 
             }
             else {
@@ -102,9 +102,9 @@ function verifErreurSaisie(input) {
             var extension = getExtension(valeur);
             console.log(extension);
             if ((input.id === "photo" || input.id === "image" || input.id === "pfp") && (extension.toLowerCase() !== 'jpg' && extension.toLowerCase() !== 'png')) {
-                addErrorForm(input, "Veuillez choisir une image de type jpg ou png !");
+                addErrorForm(input, "Veuillez sélectionner une image au format jpg ou png.");
             } else if (input.id === "autorisation" && (extension.toLowerCase() !== 'pdf')) {
-                addErrorForm(input, "Veuillez choisir un fichier de type pdf !");
+                addErrorForm(input, "Veuillez sélectionner un fichier au format pdf.");
             }
             else {
                 removeErrorForm(input);
@@ -115,14 +115,14 @@ function verifErreurSaisie(input) {
             if (input.id === "mdp" || input.id === "nouvMdp" || input.id === "password") {
                 console.log(mdpPattern.test(valeur));
                 if (!mdpPattern.test(valeur)) {
-                    addErrorForm(input, "Veuilez entrer un mot de passe assez fort !");
+                    addErrorForm(input, "Veuilez entrer un mot de passe assez fort.");
                 }
             } else if (input.id === "confirmpassword" && document.getElementById("password").value !== valeur) {
 
-                addErrorForm(input, "Les mots de passe ne correspondent pas !");
+                addErrorForm(input, "Les mots de passe ne correspondent pas.");
 
             } else if (input.id === "confNouvMdp" && document.getElementById("nouvMdp").value !== valeur) {
-                addErrorForm(input, "Les mots de passe ne correspondent pas !");
+                addErrorForm(input, "Les mots de passe ne correspondent pas.");
 
             } else {
                 removeErrorForm(input);
