@@ -1,0 +1,21 @@
+.politiqueConf {
+    text-decoration: none;
+    background-image: linear-gradient(0deg, #D6453D, #D6453D 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 50%;
+    background-position-y: calc(200% - 2px);
+    color: #2C3E50;
+    font-weight: 500;
+    transition: all 300ms ease 0s;
+    font-size: 1rem;
+    line-height: 1.125rem;
+    letter-spacing: -0.03125rem;
+    font-weight: 600 !important;
+    cursor: pointer;
+}
+
+.politiqueConf:hover {
+    background-size: 100% 100%;
+    background-position-y: 0%;
+    color: #F6F6F6;
+}
