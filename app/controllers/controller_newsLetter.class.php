@@ -47,7 +47,6 @@ class ControllerNewsLetter extends Controller {
             // Vérification de l'e-mail
             $email = filter_var($_POST["email"], FILTER_VALIDATE_EMAIL);
             
-            // Vérification des cases cochées
             $news = isset($_POST["news"]) ? "oui" : "non";
             $event = isset($_POST["event"]) ? "oui" : "non";
             $actu = isset($_POST["actu"]) ? "oui" : "non";
