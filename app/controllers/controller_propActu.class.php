@@ -179,33 +179,48 @@ class ControllerPropActu extends Controller
                     'categories' => $categories
                 ]);
             } else {
-                if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
+                if (!$this->insererDonneesDansLaBase($donnees)) {
+                    echo $this->getTwig()->render('propActu.html.twig', [
+                        'title' => 'Proposition d\'actualité',
+                        'erreurBD' => "Erreur lors de l'insertion de l'actualité",
+                        'donnees' => htmlentities($donnees),
+                        'actualites' => $actualite,
+                        'categories' => $categories
+                    ]);
+                    exit();}
+                else{
                     if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
-                        // Vérification si le répertoire ../asset/user/ existe, sinon le créer
-                        $cheminDossierImage = '../asset/actualite/';
-                        if (!is_dir($cheminDossierImage)) {
-                            if (!mkdir($cheminDossierImage, 0777, true)) {
-                                error_log("Erreur lors de la création du répertoire: " . $cheminDossierImage);
+                        if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
+                            // Vérification si le répertoire ../asset/user/ existe, sinon le créer
+                            $cheminDossierImage = '../asset/actualite/';
+                            if (!is_dir($cheminDossierImage)) {
+                                if (!mkdir($cheminDossierImage, 0777, true)) {
+                                    error_log("Erreur lors de la création du répertoire: " . $cheminDossierImage);
+                                }
                             }
+                            // L'image est valide, et est donc uploadée dans asset/actualite
+                            $cheminImage = $cheminDossierImage . basename($imageName);
+                            move_uploaded_file($imageTmpName, $cheminImage);
                         }
+                        
+
                         // L'image est valide, et est donc uploadée dans asset/actualite
-                        $cheminImage = $cheminDossierImage . basename($imageName);
+                        $cheminImage = '../asset/actualite/' . basename($imageName);
                         move_uploaded_file($imageTmpName, $cheminImage);
                     }
-                    
-
-                    // L'image est valide, et est donc uploadée dans asset/actualite
-                    $cheminImage = '../asset/actualite/' . basename($imageName);
-                    move_uploaded_file($imageTmpName, $cheminImage);
-                }
                 
-                header('Location: index.php?controlleur=index&methode=lister');
+                    header('Location: index.php?controlleur=index&methode=lister');
+                }
                 // Les données sont valides, insérez-les dans la base de données
-                $this->insererDonneesDansLaBase($donnees);
+                // $this->insererDonneesDansLaBase($donnees);
             }
         } else {
             // L'utilisateur n'est pas connecté, redirigez-le vers la page de connexion
-            header('Location: index.php?controlleur=connexion&methode=lister');
+            // header('Location: index.php?controlleur=connexion&methode=lister');
+            echo $this->getTwig()->render('propActu.html.twig', [
+                'title' => 'Proposition d\'actualité',
+                'messageErreurs' => "Vous devez vous connecter et être modérateur pour poster une actualité"
+            ]);
         }
 
     }
@@ -221,7 +236,7 @@ class ControllerPropActu extends Controller
      * @uses insert
      * @return void
      */
-    private function insererDonneesDansLaBase(array $donnees)
+    private function insererDonneesDansLaBase(array $donnees): bool
     {
         try {
             $pdo = Bd::getInstance()->getPdo();
@@ -239,10 +254,9 @@ class ControllerPropActu extends Controller
                 $donnees['cateId']
             );
 
-            // Log the event data for debugging
-            error_log(print_r($actualite, true));
             // Insérez l'événement dans la base de données
             $managerActualite->insert($actualite);
+            return true;
         } catch (Exception $e) {
 
             $loader = new \Twig\Loader\FilesystemLoader('../templates');
@@ -253,7 +267,8 @@ class ControllerPropActu extends Controller
             $fonctionErreur->messageErreur($messageErreur);
             // Log the error message
             error_log("Error inserting event: " . $e->getMessage());
+            
             return false;
-        }
+        }   
     }
 }
