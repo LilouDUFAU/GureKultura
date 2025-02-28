@@ -175,7 +175,9 @@ tarteaucitron.user.gtagMore = function () { /* add here your optionnal gtag() */
 							</svg>
 							</div>
 							{% else %}
+							<div class=" border-2 border-solid border-white rounded-full p-1">
 							<img src="../asset/user/{{user.pfp}}" alt="profil" class="h-10 w-auto">
+							</div>
 							{% endif %}
 							
 							<span class="hidden lg:block">{{user.pseudo}} : <b>{{user.role}}</b></span>
