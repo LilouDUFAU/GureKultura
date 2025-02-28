@@ -30,37 +30,37 @@ class ControllerFaq extends Controller
             [
                 'name' => 'Général',
                 'questions' => [
-                    ['question' => 'Qu’est-ce que GureKultura ?', 'answer' => 'GureKultura est une application dédiée à la culture basque.'],
-                    ['question' => 'Comment fonctionne l’application ?', 'answer' => 'L’application vous permet de rechercher des événements, enregistrer vos favoris et obtenir des informations détaillées sur la culture basque.'],
-                    ['question' => 'Sur quels appareils puis-je utiliser GureKultura ?', 'answer' => 'GureKultura est disponible sur mobile (Android, iOS) et sur le web.'],
-                    ['question' => 'L’application est-elle gratuite ?', 'answer' => 'Oui, l’application est gratuite. Certaines fonctionnalités avancées peuvent nécessiter un abonnement.']
+                    ['question' => 'Qu’est-ce que GureKultura ?', 'answer' => 'GureKultura est une application dédiée à la découverte de la culture basque. Vous y trouverez diverses actualités et divers événements au sein de la région basque.'],
+                    ['question' => 'A quoi sert GureKultura ?', 'answer' => 'GureKultura vous permet de rechercher et de vous inscrire à des événements, et lire des actualités sur la région basque.'],
+                    ['question' => 'Sur quels appareils puis-je utiliser GureKultura ?', 'answer' => 'GureKultura une application web, qui est donc disponible sur tout appareils possédant un navigateur web.'],
+                    ['question' => 'L’application est-elle gratuite ?', 'answer' => 'Oui, l’application est 100% gratuite.']
                 ]
             ],
             [
                 'name' => 'Contenu et Fonctionnalités',
                 'questions' => [
-                    ['question' => 'Quels types de contenus trouve-t-on sur GureKultura ?', 'answer' => 'Vous y trouverez des festivals, concerts, expositions, ateliers et bien plus encore !'],
+                    ['question' => 'Quels types de contenus trouve-t-on sur GureKultura ?', 'answer' => 'Vous y trouverez des festivals, concerts, expositions, ateliers, sports, et bien plus encore !'],
                     ['question' => 'Comment rechercher un événement culturel près de chez moi ?', 'answer' => 'Utilisez la barre de recherche et filtrez par localisation pour voir les événements à proximité.'],
-                    ['question' => 'Puis-je enregistrer mes événements favoris ?', 'answer' => 'Oui, vous pouvez enregistrer vos événements préférés dans votre compte utilisateur.'],
-                    ['question' => 'Comment être informé des nouvelles activités culturelles ?', 'answer' => 'Activez les notifications dans les paramètres de votre compte pour recevoir des mises à jour.']
+                    //['question' => 'Puis-je enregistrer mes événements favoris ?', 'answer' => 'Oui, vous pouvez enregistrer vos événements préférés dans votre compte utilisateur.'],
+                    //['question' => 'Comment être informé des nouvelles activités culturelles ?', 'answer' => 'Activez les notifications dans les paramètres de votre compte pour recevoir des mises à jour.']
                 ]
             ],
             [
-                'name' => 'Comptes et Abonnements',
+                'name' => 'Comptes',
                 'questions' => [
-                    ['question' => 'Dois-je créer un compte pour utiliser GureKultura ?', 'answer' => 'Non, mais un compte vous permet d’accéder à des fonctionnalités supplémentaires comme la sauvegarde des favoris.'],
-                    ['question' => 'Comment modifier mes informations personnelles ?', 'answer' => 'Rendez-vous dans les paramètres de votre compte pour modifier vos informations personnelles.'],
-                    ['question' => 'Y a-t-il une version premium avec des fonctionnalités supplémentaires ?', 'answer' => 'Oui, une version premium offre des avantages exclusifs comme des réductions sur les billets.'],
-                    ['question' => 'Comment supprimer mon compte ?', 'answer' => 'Vous pouvez supprimer votre compte dans les paramètres ou contacter notre support.']
+                    ['question' => 'Dois-je créer un compte pour utiliser GureKultura ?', 'answer' => 'Non, mais un compte vous permet d’accéder à des fonctionnalités supplémentaires comme la capacité de vous inscrire à des événements, ou encore la possibilité de publier les vôtres.'],
+                    ['question' => 'Comment modifier mes informations personnelles ?', 'answer' => 'Rendez-vous dans les paramètres de votre compte, puis dans Editer le profil.'],
+                    ['question' => 'Y a-t-il une version premium avec des fonctionnalités supplémentaires ?', 'answer' => 'Non, GureKultura ne possède pas de fonctionnalités premium.'],
+                    ['question' => 'Comment supprimer mon compte ?', 'answer' => 'Vous pouvez supprimer votre compte en allant dans les paramètres, dans Editer le profil, puis en cliquant sur Supprimer, ou alors en contactant notre support.']
                 ]
             ],
             [
-                'name' => 'Événements et Billetterie',
+                'name' => 'Événements et inscriptions',
                 'questions' => [
-                    ['question' => 'Comment réserver un billet pour un événement ?', 'answer' => 'Les billets peuvent être réservés directement via l’application en accédant à la page de l’événement.'],
-                    ['question' => 'Puis-je annuler ou modifier ma réservation ?', 'answer' => 'Cela dépend des conditions de l’organisateur. Vérifiez les détails sur la page de l’événement.'],
+                    ['question' => 'Comment faire pour s\'inscrire à un événement ?', 'answer' => 'Rendez vous sur la page de l\'événement auquel vous souhaitez vous inscrire, puis cliquez sur le bouton S\'inscrire.'],
+                    ['question' => 'Puis-je annuler mon inscription ?', 'answer' => 'Rendez vous sur la page de l\'événement auquel vous souhaitez vous inscrire, puis cliquez sur le bouton Se désinscrire.'],
                     ['question' => 'Comment savoir si un événement est complet ?', 'answer' => 'Un indicateur de disponibilité est affiché sur chaque événement.'],
-                    ['question' => 'Puis-je proposer un événement sur GureKultura ?', 'answer' => 'Oui, les organisateurs peuvent soumettre leurs événements via notre plateforme dédiée.']
+                    ['question' => 'Puis-je proposer un événement sur GureKultura ?', 'answer' => 'Oui, les organisateurs peuvent soumettre leurs événements via notre plateforme dédiée. Pour cela, après connection à votre compte GureKultura, allez en haut de la page et cliquez sur Proposer. Vous serez ensuite incités à remplir un formulaire contenant les informations de votre événement. Une fois le formulaire rempli, cliquez sur Proposer, puis patientez le temps qu\'un de nos modérateurs vérifie la validité de votre événement.']
                 ]
             ],
             [
@@ -68,7 +68,7 @@ class ControllerFaq extends Controller
                 'questions' => [
                     ['question' => 'Que faire si j’ai un problème avec l’application ?', 'answer' => 'Contactez notre support via la section “Aide” de l’application.'],
                     ['question' => 'Comment signaler un bug ou une erreur sur un événement ?', 'answer' => 'Vous pouvez utiliser le bouton “Signaler un problème” sur la page de l’événement concerné.'],
-                    ['question' => 'Comment contacter l’équipe de GureKultura ?', 'answer' => 'Nous sommes joignables par email à support@gurekultura.com ou via nos réseaux sociaux.']
+                    ['question' => 'Comment contacter l’équipe de GureKultura ?', 'answer' => 'Nous sommes joignables par email à gurekultura@gmail.com.'] //Si on les implémente, ajouter : ou via nos réseaux sociaux
                 ]
             ]
         ];
