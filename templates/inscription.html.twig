@@ -4,46 +4,47 @@
 	<div class="min-h-screen flex flex-col items-center justify-center bg-bg py-12 px-4 sm:px-6 lg:px-8">
 		<h2 class="text-2xl lg:text-4xl font-semibold text-center text-title uppercase lg:font-extrabold mb-8">Inscription</h2>
 
-		<div class="max-w-4xl w-full space-y-6 p-10 bg-form shadow-xl rounded-2xl"> <!-- Augmentation de la largeur -->			<form class="grid grid-cols-6 space-y-4 text-sm lg:text-base text-text" action="index.php?controlleur=inscription&methode=validerFormulaireInscription" method="post" enctype="multipart/form-data">
+		<div class="max-w-4xl w-full space-y-6 p-10 bg-form shadow-xl rounded-2xl"> <!-- Augmentation de la largeur -->			
+		<form class="grid grid-cols-6 space-y-4 text-sm lg:text-base text-text" action="index.php?controlleur=inscription&methode=validerFormulaireInscription" method="post" enctype="multipart/form-data">
 
 				<div class="grid grid-cols-subgrid row-start-1 col-start-1 col-span-6 p-2">
-					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
+					<div class="border-2 border-solid border-form py-1 flex flex-row  gap-2 row-start-1 col-start-1 col-span-6">
 						<img src="../asset/icones/envelope.svg" class="w-6 h-6  py-1 rounded-md" alt="icone">
 						<label for="email">Email</label>
 					</div>
-					<div class="col-start-3 col-span-4 w-full">
+					<div class="relative row-start-2 col-start-1 col-span-6 w-full">
 						<input type="email" id="email"  placeholder="E-mail" name="email" required title="Veuillez entrer une adresse e-mail valide" oninput='verifErreurSaisie(email)' class="w-full bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text">
 					</div>
 				</div>
 
 				<div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-6 p-2">
-					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
+					<div class="border-2 border-solid border-form py-1 flex flex-row  gap-2 row-start-1 col-start-1 col-span-6 ">
 						<img src="../asset/icones/person-vcard (1).svg" class="w-6 h-6  py-1 rounded-md" alt="icone">
 						<label for="nom">Nom</label>
 					</div>
-					<div class="col-start-3 col-span-4 w-full">
+					<div class="relative row-start-2 col-start-1 col-span-6  w-full">
 						<input type="text" id="nom" placeholder="Nom complet" name="nom" required title="Veuillez entrer votre nom complet" oninput='verifErreurSaisie(nom)' class="w-full bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text">
 					</div>
 				</div>
 
 				<div class="grid grid-cols-subgrid row-start-3 col-start-1 col-span-6 p-2">
-					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
+					<div class="border-2 border-solid border-form py-1 flex flex-row  gap-2 row-start-1 col-start-1 col-span-6 ">
 						<img src="../asset/icones/person.svg" class="w-6 h-6  py-1 rounded-md" alt="icone">
 						<label for="pseudo">Pseudo</label>
 					</div>
-					<div class="col-start-3 col-span-4 w-full">
+					<div class="relative row-start-2  col-start-1 col-span-6  w-full">
 						<input type="text" id="pseudo" placeholder="Nom d'utilisateur" name="pseudo" required title="Veuillez entrer un nom d'utilisateur" oninput='verifErreurSaisie(pseudo)' class="w-full bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text">
 					</div>
 				</div>
 
 				<!-- Champ mot de passe -->
 				<div class="grid grid-cols-subgrid row-start-4 col-start-1 col-span-6 p-2 relative">
-					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
+					<div class="border-2 border-solid border-form py-1 flex flex-row  gap-2 row-start-1 col-start-1 col-span-6 ">
 						<img src="../asset/icones/lock.svg" class="w-6 h-6  py-1 rounded-md" alt="icone">
 						<label for="password">Mot de passe</label>
 					</div>
-					<div class="relative col-start-3 col-span-4 w-full">
-						<input type="password" id="password" placeholder="Mot de passe" oninput='verifErreurSaisie(password)' name="mdp" required 
+					<div class="relative row-start-2  col-start-1 col-span-6  w-full">
+						<input type="password" id="password" placeholder="Mot de passe" name="mdp" required 
 							title="Veuillez entrer un mot de passe sécurisé"
 							class="bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text w-full pr-10">
 						<button type="button" class="toggle-password absolute right-2 top-1/2 transform -translate-y-1/2" tabindex="-1">
@@ -54,12 +55,12 @@
 
 				<!-- Champ confirmation mot de passe -->
 				<div class="grid grid-cols-subgrid row-start-5 col-start-1 col-span-6 p-2 relative">
-					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
+					<div class="border-2 border-solid border-form py-1 flex flex-row  gap-2 row-start-1 col-start-1 col-span-6 ">
 						<img src="../asset/icones/lock.svg" class="w-6 h-6  py-1 rounded-md" alt="icone">
 						<label for="confirm-password">Confirmer le mot de passe</label>
 					</div>
-					<div class="relative col-start-3 col-span-4 w-full">
-						<input type="password" id="confirmpassword" oninput='verifErreurSaisie(confirmpassword)' placeholder="Confirmer le mot de passe" name="mdp2" required 
+					<div class="relative row-start-2  col-start-1 col-span-6 w-full">
+						<input type="password" id="confirm-password" placeholder="Confirmer le mot de passe" name="mdp2" required 
 							title="Veuillez confirmer votre mot de passe"
 							class="bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text w-full pr-10">
 						<button type="button" class="toggle-password absolute right-2 top-1/2 transform -translate-y-1/2" tabindex="-1">

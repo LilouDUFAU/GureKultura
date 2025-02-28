@@ -19,23 +19,23 @@
 
 				{# titre evenement #}
 				<div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-6 p-2">
-					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
+					<div class="border-2 border-solid border-form py-1 flex flex-row  gap-2 row-start-1 col-start-1 col-span-6 lg:col-span-1">
 						<img src="../asset/icones/fonts.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de titre">
 						<label for="titre">Titre</label>
 					</div>
-					<div class="relative col-start-3 col-span-4 w-full">
+					<div class="relative row-start-2 lg:row-start-1 col-start-1 col-span-6 lg:col-start-2 lg:col-span-5 w-full">
 						<input type="text" name="titre" id="titre" oninput='verifErreurSaisie(titre)' class="w-full col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text" placeholder="Titre de l'événement">
 					</div>
 				</div>
 
 				{# categorie #}
 				<div class="grid grid-cols-subgrid row-start-3 col-start-1 col-span-6 p-2">
-					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
+					<div class="border-2 border-solid border-form py-1 flex flex-row  gap-2 row-start-1 col-start-1 col-span-6 lg:col-span-1">
 						<img src="../asset/icones/ui-checks-grid.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de type">
 						<label for="type">Catégorie</label>
 					</div>
 					<!-- Dropdown Container -->
-					<select name="cateId" id="nomCategorie" class="col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text cursor-pointer">
+					<select name="cateId" id="nomCategorie" class="lg:row-start-1 row-start-2 col-start-1 lg:col-start-2 lg:col-span-5 col-span-6 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text cursor-pointer">
 						<option value="{{ evenementActuel.cateId }}" selected>Selectionner une catégorie</option>
 						{% for categorie in categories %}
 							{% if categorie.cateId != 1 and categorie.cateId != 2 %}
@@ -47,11 +47,11 @@
 
 				{# description #}
 				<div class="grid grid-cols-subgrid row-start-4 col-start-1 col-span-6 p-2">
-					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
+					<div class="border-2 border-solid border-form py-1 flex flex-row  gap-2 row-start-1 col-start-1 col-span-6 lg:col-span-1">
 						<img src="../asset/icones/justify-left.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de description">
 						<label for="description">Description</label>
 					</div>
-					<div class="relative col-start-3 col-span-4 w-full">
+					<div class="relative row-start-2 lg:row-start-1 col-start-1 col-span-6 lg:col-start-2 lg:col-span-5 w-full">
 						<textarea name="description" id="description" oninput='verifErreurSaisie(description)' class="w-full col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text" placeholder="Description de l'événement"></textarea>
 					</div>
 				</div>
@@ -59,77 +59,77 @@
 
 				{# dateDebut #}
 				<div class="grid grid-cols-subgrid row-start-5 col-start-1 col-span-6 lg:col-span-3 p-2">
-					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
+					<div class="border-2 border-solid border-form py-1 flex flex-row  gap-2 row-start-1 col-start-1 col-span-6 lg:col-span-1">
 						<img src="../asset/icones/calendar.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de calendrier">
 						<label for="dateDebut">Date de début</label>
 					</div>
-					<div class="relative col-start-3 col-span-4 w-full">
+					<div class="relative row-start-2 lg:row-start-1 col-start-1 col-span-6 lg:col-start-2 lg:col-span-5 w-full">
 						<input type="date" name="debutDate" id="debutDate" oninput='verifErreurSaisie(debutDate)' class="w-full col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text text-text outline-none" placeholder="Date de début">
 					</div>
 				</div>
 
 				{# HeureDebut #}
 				<div class="grid grid-cols-subgrid row-start-6 col-start-1 col-span-6 lg:row-start-5 lg:col-span-3 lg:col-start-4 p-2">
-					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
+					<div class="border-2 border-solid border-form py-1 flex flex-row  gap-2 row-start-1 col-start-1 col-span-6 lg:col-span-1">
 						<img src="../asset/icones/clock.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de heure">
 						<label for="heureDebut" >Heure de début</label>
 					</div>
-					<div class="relative col-start-3 col-span-4 w-full">
+					<div class="relative row-start-2 lg:row-start-1 col-start-1 col-span-6 lg:col-start-2 lg:col-span-4 w-full">
 						<input type="time" name="debutHeure" id="debutHeure" oninput='verifErreurSaisie(debutHeure)' class="w-full col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text text-text outline-none" placeholder="Heure de début">
 					</div>
 				</div>
 
 				{# dateFin #}
 				<div class="grid grid-cols-subgrid row-start-7 col-start-1 col-span-6 lg:col-span-3 p-2">	
-					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
+					<div class="border-2 border-solid border-form py-1 flex flex-row  gap-2 row-start-1 col-start-1 col-span-6 lg:col-span-1">
 						<img src="../asset/icones/calendar.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de calendrier">
 						<label for="dateFin" >Date de fin</label>
 					</div>
-					<div class="relative col-start-3 col-span-4 w-full">
+					<div class="relative row-start-2 lg:row-start-1 col-start-1 col-span-6 lg:col-start-2 lg:col-span-5 w-full">
 						<input type="date" name="finDate" id="finDate" oninput='verifErreurSaisie(finDate)'  class="w-full col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text text-text outline-none" placeholder="Date de fin">
 					</div>
 				</div>
 
 				{# HeureFin #}
 				<div class="grid grid-cols-subgrid row-start-8 col-start-1 col-span-6 lg:row-start-7 lg:col-start-4 lg:col-span-3 p-2">
-					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
+					<div class="border-2 border-solid border-form py-1 flex flex-row  gap-2 row-start-1 col-start-1 col-span-6 lg:col-span-12">
 						<img src="../asset/icones/clock.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de heure">
 						<label for="heureFin">Heure de fin</label>
 					</div>
-					<div class="relative col-start-3 col-span-4 w-full">
+					<div class="relative row-start-2 lg:row-start-1 col-start-1 col-span-6 lg:col-start-2 lg:col-span-5 w-full">
 						<input type="time" name="finHeure" id="finHeure" oninput='verifErreurSaisie(finHeure)' class="w-full col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text text-text outline-none" placeholder="Heure de fin">
 					</div>
 				</div>
 
 				{# Lieu #}
 				<div class="grid grid-cols-subgrid row-start-9 col-start-1 col-span-6 p-2">
-					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
+					<div class="border-2 border-solid border-form py-1 flex flex-row gap-2 row-start-1 col-start-1 col-span-6 lg:col-span-1">
 						<img src="../asset/icones/geo-alt.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de localisation">
 						<label for="lieu">Lieu</label>
 					</div>
-					<div class="relative col-start-3 col-span-4 w-full">
+					<div class="relative row-start-2 lg:row-start-1 col-start-1 col-span-6 lg:col-start-2 lg:col-span-5 w-full">
 						<textarea type="text" name="lieu" id="lieu" oninput='verifErreurSaisie(lieu)' class="w-full col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text text-text outline-none" placeholder="Lieu de l'événement"></textarea>
 					</div>
 				</div>
 
 				{# Photo #}
 				<div class="grid grid-cols-subgrid row-start-10 col-start-1 col-span-6 p-2">
-					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
+					<div class="border-2 border-solid border-form py-1 flex flex-row  gap-2 row-start-1 col-start-1 col-span-6 lg:col-span-1">
 						<img src="../asset/icones/image.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de photo">
 						<label for="photo" class="cursor-pointer">Image</label>
 					</div>
-					<div class="relative col-start-3 col-span-4 w-full">
+					<div class="relative row-start-2 lg:row-start-1 col-start-1 col-span-6 lg:col-start-2 lg:col-span-5 w-full">
 						<input class="col-start-3 col-span-4 bg-transparent flex w-full rounded-md border border-white border-input bg-white text-sm file:border-0 file:bg-text file:text-white file:text-sm" type="file" name="photo" id="photo" accept=".jpg, .png" value=" {{evtActuel.photo}}"/>
 					</div>
 				</div>
 
 				{# autorisations #}
 				<div class="grid grid-cols-subgrid row-start-11 col-start-1 col-span-6 p-2">
-					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
+					<div class="border-2 border-solid border-form py-1 flex flex-row  gap-2 row-start-1 col-start-1 col-span-6 lg:col-span-1">
 						<img src="../asset/icones/file-earmark-pdf.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de autorisation">
 						<label for="autorisation" class="cursor-pointer">Autorisation</label>
 					</div>
-					<div class="relative col-start-3 col-span-4 w-full">
+					<div class="relative row-start-2 lg:row-start-1 col-start-1 col-span-6 lg:col-start-2 lg:col-span-5 w-full">
 						<input class="col-start-3 col-span-4 bg-transparent flex w-full rounded-md border border-white border-input bg-white text-sm file:border-0 file:bg-text file:text-white file:text-sm" type="file" name="autorisation" id="autorisation" accept=".pdf" value=" {{evtActuel.autorisation}}"/>
 					</div>
 				</div>
@@ -146,46 +146,46 @@
 				</div>
 
 				<div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-6 p-2">
-					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
+					<div class="border-2 border-solid border-form py-1 flex flex-row  gap-2 row-start-1 col-start-1 col-span-6 lg:col-span-1">
 						<img src="../asset/icones/person.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de personne">
 						<label for="nomResp">Nom</label>
 					</div>
 					
-					<div class="relative col-start-3 col-span-4 w-full">
+					<div class="relative row-start-2 lg:row-start-1 col-start-1 col-span-6 lg:col-start-2 lg:col-span-5 w-full">
 					<input type="text" name="nomRep" id="nomRep" oninput='verifErreurSaisie(nomRep)' class="w-full col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text text-text outline-none" placeholder="Nom du responsable">
 				</div>
 				</div>
 
 				{# prenomResp #}
 				<div class="grid grid-cols-subgrid row-start-3 col-start-1 col-span-6 p-2">
-					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
+					<div class="border-2 border-solid border-form py-1 flex flex-row  gap-2 row-start-1 col-start-1 col-span-6 lg:col-span-1">
 						<img src="../asset/icones/person.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de personne">
 						<label for="prenomResp" class="col-start-1 col-span-2">Prénom</label>
 					</div>
-					<div class="relative col-start-3 col-span-4 w-full">
+					<div class="relative row-start-2 lg:row-start-1 col-start-1 col-span-6 lg:col-start-2 lg:col-span-5 w-full">
 					<input type="text" name="prenomRep" id="prenomRep" oninput="verifErreurSaisie(prenomRep)" class="w-full col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text text-text outline-none" placeholder="Prénom du responsable">
 				</div>
 				</div>
 
 				{# email #}
 				<div class="grid grid-cols-subgrid row-start-4 col-start-1 col-span-6 p-2">
-					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
+					<div class="border-2 border-solid border-form py-1 flex flex-row  gap-2 row-start-1 col-start-1 col-span-6 lg:col-span-1">
 						<img src="../asset/icones/envelope.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de mail">
 						<label for="email">Email</label>
 					</div>
-					<div class="col-start-3 col-span-4 w-full">
+					<div class="crelative row-start-2 lg:row-start-1 col-start-1 col-span-6 lg:col-start-2 lg:col-span-5 w-full">
 						<input type="email" name="email" id="email" oninput="verifErreurSaisie(email)" class="w-full col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text text-text outline-none" placeholder="Email du responsable">
 					</div>
 				</div>
 
 				{# telephone #}
 				<div class="grid grid-cols-subgrid row-start-5 col-start-1 col-span-6 p-2">
-					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
+					<div class="border-2 border-solid border-form py-1 flex flex-row  gap-2 row-start-1 col-start-1 col-span-6 lg:col-span-1">
 						<img src="../asset/icones/telephone.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de téléphone">
 						<label for="telephone">Téléphone</label>
 					</div>
 					
-					<div class="relative col-start-3 col-span-4 w-full">
+					<div class="relative row-start-2 lg:row-start-1 col-start-1 col-span-6 lg:col-start-2 lg:col-span-5 w-full">
 					<input type="tel" name="tel" id="tel" oninput="verifErreurSaisie(tel)" 
 					class="w-full col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text text-text outline-none" 
 					placeholder="Téléphone du responsable">
