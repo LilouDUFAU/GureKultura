@@ -72,6 +72,7 @@ tarteaucitron.user.gtagMore = function () { /* add here your optionnal gtag() */
 		<link rel="icon" type="image/x-icon" href="../asset/PetitLogoGkSansFondBlanc.svg">
 		<link href="../css/output.css" rel="stylesheet">
 		<link href="../css/scrollbar.css" rel="stylesheet">
+		<link href="../css/NewsLetter.css" rel="stylesheet">
 	</head>
 	<body class="font-sen text-sm lg:text-base bg-bg min-h-screen">
 	
@@ -79,7 +80,7 @@ tarteaucitron.user.gtagMore = function () { /* add here your optionnal gtag() */
 			class="flex flex-col items-center h-full">
 			<!-- Header -->
 			<header
-				class="w-full flex justify-between items-center min-h-16 md:w-fit bg-fh text-white md:rounded-full px-6 md:gap-12 gap-4 md:m-2">
+				class="w-full flex justify-between items-center h-fit p-2 md:w-fit bg-fh text-white md:rounded-full px-6 md:gap-12 gap-4 md:m-2">
 
 				<!-- logo -->
 				<a href="index.php?controlleur=index&methode=lister">
@@ -87,7 +88,7 @@ tarteaucitron.user.gtagMore = function () { /* add here your optionnal gtag() */
 				</a>
 
 				<!-- navbar -->
-				<nav id="menu" class="flex flex-row justify-between items-center gap-4 md:gap-6 ">
+				<nav id="menu" class="flex flex-row justify-between items-center gap-4 md:gap-6">
 
 					<a
 						href="index.php?controlleur=categorie&methode=lister" class="flex flex-col items-center">
@@ -164,22 +165,27 @@ tarteaucitron.user.gtagMore = function () { /* add here your optionnal gtag() */
 				{% if user != null %}
 					<div class="flex items-center space-x-4">
 						<span class="text-white"></span>
-						<a href="index.php?controlleur=compte&methode=lister" class="flex items-center justify-center border-2 border-solid border-white rounded-full p-2">
+						<a href="index.php?controlleur=compte&methode=lister" class="justify-center flex flex-col items-center">
 							{# <img src="../asset/icones/person.svg" alt="profil" class="h-6 w-6"> #}
+							<div class=" border-2 border-solid border-white rounded-full p-1">
 							<svg width="auto" height="24" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path d="M8 8C9.65685 8 11 6.65685 11 5C11 3.34315 9.65685 2 8 2C6.34315 2 5 3.34315 5 5C5 6.65685 6.34315 8 8 8ZM10 5C10 6.10457 9.10457 7 8 7C6.89543 7 6 6.10457 6 5C6 3.89543 6.89543 3 8 3C9.10457 3 10 3.89543 10 5Z" fill="#ffffff"/>
 								<path d="M14 13C14 14 13 14 13 14H3C3 14 2 14 2 13C2 12 3 9 8 9C13 9 14 12 14 13ZM13 12.9965C12.9986 12.7497 12.8462 12.0104 12.1679 11.3321C11.5156 10.6798 10.2891 10 7.99999 10C5.71088 10 4.48435 10.6798 3.8321 11.3321C3.15375 12.0104 3.00142 12.7497 3 12.9965H13Z" fill="#ffffff"/>
 							</svg>
+							</div>
+							<span class="hidden lg:block">{{user.pseudo}} : <b>{{user.role}}</b></span>
 						</a>
 					</div>
 				{% else %}
-					<a href="index.php?controlleur=connexion&methode=lister" class="flex items-center justify-center border-2 border-solid border-white rounded-full p-2">
+					<a href="index.php?controlleur=connexion&methode=lister" class="justify-center flex flex-col items-center">
 						{# <img src="../asset/icones/person.svg" alt="profil" class="h-6 w-6"> #}
+						<div class=" border-2 border-solid border-white rounded-full p-1">
 						<svg width="auto" height="24" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path d="M8 8C9.65685 8 11 6.65685 11 5C11 3.34315 9.65685 2 8 2C6.34315 2 5 3.34315 5 5C5 6.65685 6.34315 8 8 8ZM10 5C10 6.10457 9.10457 7 8 7C6.89543 7 6 6.10457 6 5C6 3.89543 6.89543 3 8 3C9.10457 3 10 3.89543 10 5Z" fill="#ffffff"/>
 							<path d="M14 13C14 14 13 14 13 14H3C3 14 2 14 2 13C2 12 3 9 8 9C13 9 14 12 14 13ZM13 12.9965C12.9986 12.7497 12.8462 12.0104 12.1679 11.3321C11.5156 10.6798 10.2891 10 7.99999 10C5.71088 10 4.48435 10.6798 3.8321 11.3321C3.15375 12.0104 3.00142 12.7497 3 12.9965H13Z" fill="#ffffff"/>
 						</svg>
-
+						</div>
+						<span class="hidden lg:block">Connexion</span>
 					</a>
 				{% endif %}
 			</header>
@@ -240,16 +246,14 @@ tarteaucitron.user.gtagMore = function () { /* add here your optionnal gtag() */
 </div>
 
 
-		<footer class="grid grid-cols-12 bg-fh text-white text-sm lg:text-md p-4">
+		<footer class="grid grid-cols-12 bg-fh text-white text-sm lg:text-md p-2">
 			<div class="row-start-1 col-span-12 col-start-1 grid grid-cols-subgrid">
-				<div class="row-start-1 col-start-1 col-span-12 lg:row-start-1 lg:col-span-4 lg:col-start-1 p-4 flex flex-col text-left">
+				<div class="row-start-1 col-start-1 col-span-12 lg:row-start-1 lg:col-span-4 lg:col-start-1 px-4 py-2 flex flex-col text-left">
 					<h2 class="text-lg underline mb-1">À propos</h2>
-					<p>Le site GureKultura est un site d'actualités et d'événements locaux. Il a pour but de vous informer sur les actualités et les événements de votre région.</p>
-					<br>
+					<p>GureKultura est un site d'actualités et d'événements locaux. Il a pour but de vous informer sur les actualités et les événements de votre région.</p>
 					<p>D'autres questions ?
-						<a href="index.php?controlleur=faq&methode=lister" class="underline">Consultez notre FAQ</a>
+						<a href="index.php?controlleur=faq&methode=lister" class="underline">Consulter notre FAQ</a>
 					</p>
-					<br>
 					<p xmlns:cc="http://creativecommons.org/ns#" class="underline">Cette œuvre est sous licence
 						<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-ND 4.0</a>
 						<div class="flex flex-row items-center space-x-2">
@@ -261,14 +265,16 @@ tarteaucitron.user.gtagMore = function () { /* add here your optionnal gtag() */
 					</p>
 				</div>
 
-				<div class="row-start-2 col-start-1 col-span-12 lg:row-start-1 lg:col-span-4 lg:col-start-5 p-4 lg:border-x-2 lg:border-x-solid lg:border-x-white flex flex-col text-left">
+				<div class="row-start-2 col-start-1 col-span-12 lg:row-start-1 lg:col-span-4 lg:col-start-5 px-4 py-2 lg:border-x-2 lg:border-x-solid lg:border-x-white flex flex-col text-left">
 					<h2 class="text-lg underline mb-1">Nous contacter</h2>
 					<p>Adresse : 2 Allée du Parc Montaury, 64600 Anglet, France</p>
+					<br>
 					<p>Téléphone : +33 6 07 08 09 10</p>
+					<br>
 					<p>Email : gurekultura@gmail.com</p>
 				</div>
 
-				<div class="row-start-3 col-start-1 col-span-12 lg:row-start-1 lg:col-span-4 lg:col-start-9 p-4 flex flex-col text-left">
+				<div class="row-start-3 col-start-1 col-span-12 lg:row-start-1 lg:col-span-4 lg:col-start-9 px-4 py-2 flex flex-col text-left">
 					<h2 class="text-lg underline mb-1">Nous suivre</h2>
 					<div class="flex gap-6 items-center mt-1">
 						<a href="/" target="_blank" class="text-white">
@@ -283,14 +289,16 @@ tarteaucitron.user.gtagMore = function () { /* add here your optionnal gtag() */
 						<a href="/" target="_blank" class="text-white">
 							<img src="../asset/icones/linkedin.svg" alt="linkedin" class="h-6 w-6">
 						</a>
-						<a href="/" target="_blank" class="text-white">
+						<a href="https://github.com/LilouDUFAU/GureKultura.git" target="_blank" class="text-white">
 							<img src="../asset/icones/github.svg" alt="github" class="h-6 w-6">
+						</a>
+						<a href="https://www.youtube.com/@GureKultura" target="_blank" class="text-white">
+							<img src="../asset/icones/youtube.svg" alt="youtube" class="h-6 w-6">
 						</a>
 					</div>
 					<br>
 					<a href="index.php?controlleur=polConf&methode=lister" target"_blank" class="text-white mt-2 underline ">Politique de confidentialité</a>
-					<br>
-					<a href="index.php?controlleur=NL&methode=lister" target"_blank" class="text-white mt-2 underline ">Inscrivez-vous à notre NewsLetter !</a>
+					<a href="index.php?controlleur=newsLetter&methode=lister" target"_blank" class="text-white mt-2 underline ">Inscrivez-vous à notre NewsLetter !</a>
 				</div>
 			</div>
 			</footer>
