@@ -3,28 +3,30 @@
 	<div class="bg-bg min-h-screen py-16 px-6 sm:px-8 lg:px-12">
 		<h1 class="text-title text-5xl font-extrabold text-center mb-16 uppercase">Aide</h1>
 
-		<div
-			class="max-w-7xl mx-auto space-y-32">
+		<div class="max-w-7xl mx-auto space-y-32">
 			<!-- Section Utilisateurs -->
 			<div>
 				<h2 class="text-title text-4xl font-bold mb-12 text-center">Gestion des utilisateurs</h2>
 				<div class="grid gap-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 lg:text-base text-sm">
 					<div class="bg-card p-8 rounded-2xl shadow-2xl hover:scale-105 transform transition duration-300">
 						<h3 class="text-tabtitle text-2xl font-semibold mb-4">Créer un compte</h3>
-						<div class="rounded-lg overflow-hidden shadow-md">
-							<iframe class="w-full h-64" src="https://www.youtube.com/embed/1J1Q2J1J1Q2" frameborder="0" allowfullscreen></iframe>
-						</div>
+						<a href="https://www.youtube.com/embed/yteekcRY1Yk?si=CvM3KIRP8FI7Y6Nb" target="_blank" class="text-blue-500 underline">Voir la vidéo</a>
+						<div class="rounded-lg overflow-hidden shadow-md" style="aspect-ratio: 16 / 9;">
+                            <iframe class="w-full h-full" src="https://www.youtube.com/embed/yteekcRY1Yk?si=CvM3KIRP8FI7Y6Nb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
 					</div>
 					<div class="bg-card p-8 rounded-2xl shadow-2xl hover:scale-105 transform transition duration-300 lg:text-base text-sm">
 						<h3 class="text-tabtitle text-2xl font-semibold mb-4">Se connecter</h3>
-						<div class="rounded-lg overflow-hidden shadow-md">
-							<iframe class="w-full h-64" src="https://www.youtube.com/embed/1J1Q2J1J1Q2" frameborder="0" allowfullscreen></iframe>
+						<a href="https://www.youtube.com/embed/1J1Q2J1J1Q2" target="_blank" class="text-blue-500 underline">Voir la vidéo</a>
+						<div class="rounded-lg overflow-hidden shadow-md" style="aspect-ratio: 16 / 9;">
+							<iframe class="w-full h-full" src="https://www.youtube.com/embed/1J1Q2J1J1Q2" frameborder="0" allowfullscreen></iframe>
 						</div>
 					</div>
 					<div class="bg-card p-8 rounded-2xl shadow-2xl hover:scale-105 transform transition duration-300 lg:text-base text-sm">
 						<h3 class="text-tabtitle text-2xl font-semibold mb-4">Se déconnecter</h3>
-						<div class="rounded-lg overflow-hidden shadow-md">
-							<iframe class="w-full h-64" src="https://www.youtube.com/embed/1J1Q2J1J1Q2" frameborder="0" allowfullscreen></iframe>
+						<a href="https://www.youtube.com/embed/1J1Q2J1J1Q2" target="_blank" class="text-blue-500 underline">Voir la vidéo</a>
+						<div class="rounded-lg overflow-hidden shadow-md" style="aspect-ratio: 16 / 9;">
+							<iframe class="w-full h-full" src="https://www.youtube.com/embed/1J1Q2J1J1Q2" frameborder="0" allowfullscreen></iframe>
 						</div>
 					</div>
 				</div>
@@ -34,42 +36,15 @@
 			<div>
 				<h2 class="text-title text-4xl font-bold mb-12 text-center">Gestion des évènements</h2>
 				<div class="grid gap-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+					{% for title in ["Proposer un évènement", "Voir nos évènements", "S'inscrire à un évènement", "Accepter un évènement", "Refuser un évènement", "Mettre en attente un évènement"] %}
 					<div class="bg-card p-8 rounded-2xl shadow-2xl hover:scale-105 transform transition duration-300">
-						<h3 class="text-tabtitle text-2xl font-semibold mb-4">Proposer un évènement</h3>
-						<div class="rounded-lg overflow-hidden shadow-md">
-							<iframe class="w-full h-64" src="https://www.youtube.com/embed/1J1Q2J1J1Q2" frameborder="0" allowfullscreen></iframe>
+						<h3 class="text-tabtitle text-2xl font-semibold mb-4">{{ title }}</h3>
+						<a href="https://www.youtube.com/embed/1J1Q2J1J1Q2" target="_blank" class="text-blue-500 underline">Voir la vidéo</a>
+						<div class="rounded-lg overflow-hidden shadow-md" style="aspect-ratio: 16 / 9;">
+							<iframe class="w-full h-full" src="https://www.youtube.com/embed/1J1Q2J1J1Q2" frameborder="0" allowfullscreen></iframe>
 						</div>
 					</div>
-					<div class="bg-card p-8 rounded-2xl shadow-2xl hover:scale-105 transform transition duration-300">
-						<h3 class="text-tabtitle text-2xl font-semibold mb-4">Voir nos évènements</h3>
-						<div class="rounded-lg overflow-hidden shadow-md">
-							<iframe class="w-full h-64" src="https://www.youtube.com/embed/1J1Q2J1J1Q2" frameborder="0" allowfullscreen></iframe>
-						</div>
-					</div>
-					<div class="bg-card p-8 rounded-2xl shadow-2xl hover:scale-105 transform transition duration-300">
-						<h3 class="text-tabtitle text-2xl font-semibold mb-4">S'inscrire à un évènement</h3>
-						<div class="rounded-lg overflow-hidden shadow-md">
-							<iframe class="w-full h-64" src="https://www.youtube.com/embed/1J1Q2J1J1Q2" frameborder="0" allowfullscreen></iframe>
-						</div>
-					</div>
-					<div class="bg-card p-8 rounded-2xl shadow-2xl hover:scale-105 transform transition duration-300">
-						<h3 class="text-tabtitle text-2xl font-semibold mb-4">Accepter un évènement</h3>
-						<div class="rounded-lg overflow-hidden shadow-md">
-							<iframe class="w-full h-64" src="https://www.youtube.com/embed/1J1Q2J1J1Q2" frameborder="0" allowfullscreen></iframe>
-						</div>
-					</div>
-					<div class="bg-card p-8 rounded-2xl shadow-2xl hover:scale-105 transform transition duration-300">
-						<h3 class="text-tabtitle text-2xl font-semibold mb-4">Refuser un évènement</h3>
-						<div class="rounded-lg overflow-hidden shadow-md">
-							<iframe class="w-full h-64" src="https://www.youtube.com/embed/1J1Q2J1J1Q2" frameborder="0" allowfullscreen></iframe>
-						</div>
-					</div>
-					<div class="bg-card p-8 rounded-2xl shadow-2xl hover:scale-105 transform transition duration-300">
-						<h3 class="text-tabtitle text-2xl font-semibold mb-4">Mettre en attente un évènement</h3>
-						<div class="rounded-lg overflow-hidden shadow-md">
-							<iframe class="w-full h-64" src="https://www.youtube.com/embed/1J1Q2J1J1Q2" frameborder="0" allowfullscreen></iframe>
-						</div>
-					</div>
+					{% endfor %}
 				</div>
 			</div>
 
@@ -79,13 +54,13 @@
 				<div class="grid gap-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
 					<div class="bg-card p-8 rounded-2xl shadow-2xl hover:scale-105 transform transition duration-300">
 						<h3 class="text-tabtitle text-2xl font-semibold mb-4">Créer une tâche</h3>
-						<div class="rounded-lg overflow-hidden shadow-md">
-							<iframe class="w-full h-64" src="https://www.youtube.com/embed/1J1Q2J1J1Q2" frameborder="0" allowfullscreen></iframe>
+						<a href="https://www.youtube.com/embed/1J1Q2J1J1Q2" target="_blank" class="text-blue-500 underline">Voir la vidéo</a>
+						<div class="rounded-lg overflow-hidden shadow-md" style="aspect-ratio: 16 / 9;">
+							<iframe class="w-full h-full" src="https://www.youtube.com/embed/1J1Q2J1J1Q2" frameborder="0" allowfullscreen></iframe>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
 {% endblock %}
