@@ -35,7 +35,8 @@ require_once '../app/controllers/controller_faq.class.php';
 require_once '../app/controllers/controller_polConf.class.php';
 require_once '../app/controllers/controller_pageErreur.class.php';
 require_once '../app/controllers/controller_newsLetter.class.php';
-
+require_once '../app/controllers/controller_aide.class.php';
+require_once '../app/controllers/controller_quiSommesNous.class.php';
 
 
 
