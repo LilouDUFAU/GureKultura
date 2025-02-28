@@ -57,6 +57,10 @@
 			{# changer de role si user = admin #}
 			{% if user.estAdmin %}
 				<div class="grid grid-cols-subgrid row-start-3 col-start-1 col-span-12 lg:col-start-4 lg:col-span-6">
+					<label class="row-start-1 col-start-1 col-span-7 lg:col-span-4 ">Accéder au pannel administrateur ?</label>
+					<a href="index.php?controlleur=admin&methode=lister" type="" class="col-start-8 col-span-5 lg:col-start-5 lg:col-span-2 bg-button hover:bg-hbutton text-white rounded-lg text-center px-2 py-1 h-fit">Accéder</a>
+				</div>
+				<div class="grid grid-cols-subgrid row-start-4 col-start-1 col-span-12 lg:col-start-4 lg:col-span-6">
 					<label class="row-start-1 col-start-1 col-span-7 lg:col-span-3">Voulez-vous changer de rôle ?</label>
 					<a href="index.php?controlleur=compte&methode=switchRole" class="col-strat-8 col-span-5 lg:col-start-5 lg:col-span-2 bg-button hover:bg-hbutton text-white rounded-lg text-center px-2 py-1 h-fit">Changer de rôle</a>
 					<label for="role" class="row-start-2 col-start-1 col-span-4 lg:ol-span-1 underline">Rôle actuel</label>
