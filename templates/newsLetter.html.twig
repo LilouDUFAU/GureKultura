@@ -7,45 +7,39 @@
 		<div class="max-w-4xl w-full space-y-6 p-10 bg-form shadow-xl rounded-2xl">
 			<form class="grid grid-cols-6 space-y-4 text-sm lg:text-base text-text" action="index.php?controlleur=newsLetter&methode=validerFormulaireNewsLetter" method="post" enctype="multipart/form-data">
 				<div class="grid grid-cols-subgrid row-start-1 col-start-1 col-span-6 p-2">
-					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
+					<div class="border-2 border-solid border-form py-1 flex flex-row  gap-2 row-start-1 col-start-1 col-span-6 lg:col-span-1">
 						<img src="../asset/icones/envelope.svg" class="w-6 h-6  py-1 rounded-md" alt="icone">
 						<label for="email">Email</label>
 					</div>
-					<div class="col-start-3 col-span-4 w-full">
+					<div class="relative row-start-2 lg:row-start-1 col-start-1 col-span-6 lg:col-start-2 lg:col-span-5 w-full">
 						<input type="email" id="email"  placeholder="E-mail" name="email" required title="Veuillez entrer une adresse e-mail valide" oninput='verifErreurSaisie(email)' class="w-full bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text">
 					</div>
 				</div>
 
 				<div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-6 p-2">
-					<p class="col-start-1 col-span-6 text-md text-gray-600">En m'inscrivant à la NewsLetter, j'accepte :</p>
+					<p class="col-start-1 col-span-6 text-md text-gray-600 font-bold">En m'inscrivant à la NewsLetter, j'accepte :</p>
 				</div>
 
 				<div class="grid grid-cols-subgrid row-start-3 col-start-1 col-span-6 p-2">
-					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
+					<div class="flex flex-row items-center gap-2 col-start-1 col-span-6">
 						<input type="checkbox" id="news" name="news" class="bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 outline-none text-text w-6 h-6">
 						
-					</div>
-					<div class="col-start-3 col-span-4 w-full">
 						<label for="news">Recevoir des e-mails sur les nouveautés de l'application.</label>
 					</div>
 				</div>
 
 				<div class="grid grid-cols-subgrid row-start-4 col-start-1 col-span-6 p-2">
-					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
+					<div class="flex flex-row items-center gap-2 col-start-1 col-span-6">
 						<input type="checkbox" id="event" name="event" class="bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 outline-none text-text w-6 h-6">
 						
-					</div>
-					<div class="col-start-3 col-span-4 w-full">
 						<label for="event">Recevoir des e-mails sur les nouveaux événements susceptibles de m'intéresser.</label>
 					</div>
 				</div>
 
 				<div class="grid grid-cols-subgrid row-start-5 col-start-1 col-span-6 p-2">
-					<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
+					<div class="flex flex-row items-center gap-2 col-start-1 col-span-6">
 						<input type="checkbox" id="actu" name="actu" class="bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 outline-none text-text w-6 h-6">
 						
-					</div>
-					<div class="col-start-3 col-span-4 w-full">
 						<label for="actu">Recevoir des e-mails sur les actualités importantes.</label>
 					</div>
 

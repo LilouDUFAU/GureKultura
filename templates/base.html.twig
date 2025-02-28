@@ -167,17 +167,12 @@ tarteaucitron.user.gtagMore = function () { /* add here your optionnal gtag() */
 						<span class="text-white"></span>
 						<a href="index.php?controlleur=compte&methode=lister" class="justify-center flex flex-col items-center">
 							{# <img src="../asset/icones/person.svg" alt="profil" class="h-6 w-6"> #}
-							{% if user.pfp == null %}
 							<div class=" border-2 border-solid border-white rounded-full p-1">
 							<svg width="auto" height="24" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path d="M8 8C9.65685 8 11 6.65685 11 5C11 3.34315 9.65685 2 8 2C6.34315 2 5 3.34315 5 5C5 6.65685 6.34315 8 8 8ZM10 5C10 6.10457 9.10457 7 8 7C6.89543 7 6 6.10457 6 5C6 3.89543 6.89543 3 8 3C9.10457 3 10 3.89543 10 5Z" fill="#ffffff"/>
 								<path d="M14 13C14 14 13 14 13 14H3C3 14 2 14 2 13C2 12 3 9 8 9C13 9 14 12 14 13ZM13 12.9965C12.9986 12.7497 12.8462 12.0104 12.1679 11.3321C11.5156 10.6798 10.2891 10 7.99999 10C5.71088 10 4.48435 10.6798 3.8321 11.3321C3.15375 12.0104 3.00142 12.7497 3 12.9965H13Z" fill="#ffffff"/>
 							</svg>
 							</div>
-							{% else %}
-							<img src="../asset/user/{{user.pfp}}" alt="profil" class="h-10 w-auto">
-							{% endif %}
-							
 							<span class="hidden lg:block">{{user.pseudo}} : <b>{{user.role}}</b></span>
 						</a>
 					</div>
@@ -224,7 +219,7 @@ tarteaucitron.user.gtagMore = function () { /* add here your optionnal gtag() */
 				<!-- Barre de sélection -->
 				<div class="w-full items-center gap-2 p-2 bg-white border rounded-lg shadow cursor-pointer"
 					onclick="toggleDropdown()" id="dropdownToggle">
-					<div id="conteneurFiltre" class="flex gap-2">Sélectionner des filtres à appliquer</div>
+					<div id="conteneurFiltre" class="overflow-y-auto flex-wrap flex gap-2">Sélectionner des filtres à appliquer</div>
 					
 				</div>
 
@@ -251,11 +246,14 @@ tarteaucitron.user.gtagMore = function () { /* add here your optionnal gtag() */
 </div>
 
 
-		<footer class="grid grid-cols-12 bg-fh text-white text-sm lg:text-md p-2">
+		<footer class="grid grid-cols-12 bg-fh text-white text-sm lg:text-md p-2 w-full">
 			<div class="row-start-1 col-span-12 col-start-1 grid grid-cols-subgrid">
 				<div class="row-start-1 col-start-1 col-span-12 lg:row-start-1 lg:col-span-4 lg:col-start-1 px-4 py-2 flex flex-col text-left">
 					<h2 class="text-lg underline mb-1">À propos</h2>
-					<p>GureKultura est un site d'actualités et d'événements locaux. Il a pour but de vous informer sur les actualités et les événements de votre région.</p>
+					<a href="index.php?controlleur=quiSommesNous&methode=lister" class="underline">Qui sommes-nous ?</a>
+					<p>Besoins d'aide ?
+						<a href="index.php?controlleur=aide&methode=lister" class="underline">Consulter nos tutoriels</a>
+					</p>
 					<p>D'autres questions ?
 						<a href="index.php?controlleur=faq&methode=lister" class="underline">Consulter notre FAQ</a>
 					</p>
@@ -302,87 +300,14 @@ tarteaucitron.user.gtagMore = function () { /* add here your optionnal gtag() */
 						</a>
 					</div>
 					<br>
-<<<<<<< HEAD
 					<a href="index.php?controlleur=polConf&methode=lister" target"_blank" class="text-white mt-2 underline ">Politique de confidentialité</a>
-					<br>
 					<a href="index.php?controlleur=newsLetter&methode=lister" target"_blank" class="text-white mt-2 underline ">Inscrivez-vous à notre NewsLetter !</a>
-=======
-					<a href="index.php?controlleur=polConf&methode=lister" target"_blank" class="text-white underline ">Politique de confidentialité</a>
-					<a href="index.php?controlleur=NL&methode=lister" target"_blank" class="text-white underline ">S'inscrire à notre NewsLetter !</a>
->>>>>>> origin
 				</div>
 			</div>
 			</footer>
 	<p class="text-error hidden border-error break-normal"> </p>
 	</body>
-	<script>
-		function openPopupFiltre(val) {
-			if (val == "Filtre") {
-				document.getElementById("popupFiltres").parentElement.parentElement.classList.remove("hidden");
-				updateSelectedItems()
-			}
-			
-
-		}
-
-		function closePopupFiltre(val) {
-				if (val == "Filtre") {
-					document.getElementById("popupFiltres").parentElement.parentElement.classList.add("hidden");
-				} 
-		}
-		
-        let selectedOptions = new Array();
-
-        function toggleDropdown() {
-            document.getElementById('dropdownMenu').classList.toggle('hidden');
-        }
-        document.querySelectorAll('.option-item').forEach(item => {
-            item.addEventListener('click', function () {
-                var valOption = this.value;
-                if (!selectedOptions.includes(valOption)) {
-                    selectedOptions.push(valOption);
-					this.classList.add("hidden");
-                    updateSelectedItems();
-                }
-            });
-        });
-
-        function updateSelectedItems() {
-            var container = document.getElementById('conteneurFiltre');
-            container.innerHTML = '';
-            selectedOptions.forEach(valOption => {
-                var divSelectionFiltre = document.createElement('div');
-                divSelectionFiltre.className = 'flex items-center gap-1 bg-blue-500 text-white px-2 py-1 rounded-full';
-                divSelectionFiltre.innerHTML = `<span>${valOption}</span>
-				 <button type="button" class="text-white bg-grey-500 font-bold" onclick="removeSelected('${valOption}')">×</button>`;
-                container.appendChild(divSelectionFiltre);
-            });
-			
-			document.getElementById("listeFiltres").value = selectedOptions.toString();
-			if(selectedOptions.length === 0){
-				container.innerHTML = 'Sélectionner des filtres à appliquer';
-			}
-        }
-
-        function removeSelected(valOption) {
-			const valSuppression = selectedOptions.indexOf(valOption);
-			if (valSuppression > -1) { // only splice array when item is found
-			selectedOptions.splice(valSuppression, 1); // 2nd parameter means remove one item only
-			}
-			var valDropDown = document.getElementById(valOption);
-			valDropDown.classList.remove("hidden");
-            updateSelectedItems();
-        }
-
-        document.addEventListener('click', function (event) {
-            var dropdown = document.getElementById('dropdownToggle');
-            var menu = document.getElementById('dropdownMenu');
-
-            if (!dropdown.contains(event.target) && !menu.contains(event.target)) {
-                menu.classList.add('hidden');
-            }
-        });
-	</script>
+	<script src="../js/filtre.js"></script>
 </html>
 </main>
 <p class="text-error hidden border-error"></p>
