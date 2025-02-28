@@ -20,7 +20,6 @@ function verifErreurSaisie(input) {
             break;
 
         case "email":
-            console.log("email");
             var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailPattern.test(valeur)) {
                 addErrorForm(input, "Veuilez entrer un email valide !");
@@ -111,8 +110,10 @@ function verifErreurSaisie(input) {
                 removeErrorForm(input);
             }
         case "password":
-            var mdpPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (input.id === "password" || input.id === "nouvMdp") {
+            var mdpPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+            console.log(mdpPattern.test(valeur));
+            if (input.id === "mdp" || input.id === "nouvMdp" || input.id === "password") {
+                console.log(mdpPattern.test(valeur));
                 if (!mdpPattern.test(valeur)) {
                     addErrorForm(input, "Veuilez entrer un mot de passe assez fort !");
                 }
