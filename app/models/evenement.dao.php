@@ -65,6 +65,46 @@ class EvenementDao
         return $evenement;
     }
 
+    public function findWithMail(?int $id): ?Evenement
+
+    {
+        $sql = "SELECT evt.evtId, evt.titre,evt.autorisation, evt.description, evt.email, evt.tel, evt.nomRep, evt.prenomRep, DATE(evt.dateDebut) AS dateDebut, DATE(evt.dateFin) AS dateFin, TIME(evt.heureDebut) AS heureDebut, TIME(evt.heureFin) AS heureFin, evt.lieu, evt.photo, evt.cateId, evt.userId, evt.is_valide , cate.nom AS nomCategorie, user.email
+            FROM gk_evenement AS evt
+            JOIN gk_categorie AS cate ON evt.cateId = cate.cateId WHERE evt.evtId = :id
+            JOIN gk_user AS user ON evt.userId = user.userId";
+        $pdoStatement = $this->pdo->prepare($sql);
+        $pdoStatement->execute(array(':id' => $id));
+        $pdoStatement->setFetchMode(PDO::FETCH_ASSOC);
+        $EvenementTab = $pdoStatement->fetch();
+        $evenement = $this->hydrateWithMail($EvenementTab);
+        return $evenement;
+    }
+
+    public function hydrateWithMail(array $tab): Evenement
+    {
+        $evenement = new Evenement();
+        $evenement->setEvtId($tab['evtId']);
+        $evenement->setTitre($tab['titre']);
+        $evenement->setAutorisation($tab['autorisation']);
+        $evenement->setDescription($tab['description']);
+        $evenement->setEmail($tab['email']);
+        $evenement->setTel($tab['tel']);
+        $evenement->setNomRep($tab['nomRep']);
+        $evenement->setPrenomRep($tab['prenomRep']);;
+        $evenement->setDateDebut($tab['dateDebut']);
+        $evenement->setDateFin($tab['dateFin']);
+        $evenement->setHeureDebut($tab['heureDebut']);
+        $evenement->setHeureFin($tab['heureFin']);
+        $evenement->setLieu($tab['lieu']);
+        $evenement->setPhoto($tab['photo']);
+        $evenement->setCateId($tab['cateId']);     
+        $evenement->setUserId($tab['userId']); 
+        $evenement->setNomCategorie($tab['nomCategorie']);
+        $evenement->setIsValide($tab['is_valide']);
+        $evenement->setEmail($tab['email']);
+        return $evenement;
+    }
+
 
     /**
      * @function findAll
