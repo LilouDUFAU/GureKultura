@@ -1,33 +1,67 @@
-function toggleCate(cateId, categorieOriginale) {
-    var checkbox = document.querySelector("input[cateId='" + cateId + "']");
-    var cateCheckbox = document.querySelectorAll("label[cateId='" + categorieOriginale + "']");
 
-    // Parcourir les divs et modifier leur affichage
-    cateCheckbox.forEach(function(cateCheckbox) {
-        if (checkbox.checked) {
-            cateCheckbox.style.display = "block";
-            cateCheckbox.classList.remove("hidden");
-        } else {
-            cateCheckbox.style.display = "none";
-            cateCheckbox.classList.add("hidden");
-            cateCheckbox.children[0].checked = false;
-            toggleDiv(cateCheckbox.children[0].getAttribute('cateId'));
+function openPopupFiltre(val) {
+    if (val == "Filtre") {
+        document.getElementById("popupFiltres").parentElement.parentElement.classList.remove("hidden");
+        updateSelectedItems()
+    }
+
+
+}
+
+function closePopupFiltre(val) {
+    if (val == "Filtre") {
+        document.getElementById("popupFiltres").parentElement.parentElement.classList.add("hidden");
+    }
+}
+
+let selectedOptions = new Array();
+
+function toggleDropdown() {
+    document.getElementById('dropdownMenu').classList.toggle('hidden');
+}
+document.querySelectorAll('.option-item').forEach(item => {
+    item.addEventListener('click', function () {
+        var valOption = this.value;
+        if (!selectedOptions.includes(valOption)) {
+            selectedOptions.push(valOption);
+            this.classList.add("hidden");
+            updateSelectedItems();
         }
     });
-} 
+});
 
-function toggleDiv(cateId) {
-    var checkbox = document.querySelector("input[cateId='" + cateId + "']");
-    var divs = document.querySelectorAll("div[cateId='" + cateId + "']");
-
-    // Parcourir les divs et modifier leur affichage
-    divs.forEach(function(div) {
-                if (checkbox.checked) {
-            div.style.display = "block";
-            div.classList.remove("hidden");
-        } else {
-            div.style.display = "none";
-            div.classList.add("hidden");
-        }
+function updateSelectedItems() {
+    var container = document.getElementById('conteneurFiltre');
+    container.innerHTML = '';
+    selectedOptions.forEach(valOption => {
+        var divSelectionFiltre = document.createElement('div');
+        divSelectionFiltre.className = 'flex items-center gap-1 bg-blue-500 text-white px-2 py-1 rounded-full';
+        divSelectionFiltre.innerHTML = `<span>${valOption}</span>
+				 <button type="button" class="text-white bg-grey-500 font-bold" onclick="removeSelected('${valOption}')">×</button>`;
+        container.appendChild(divSelectionFiltre);
     });
-} 
+
+    document.getElementById("listeFiltres").value = selectedOptions.toString();
+    if (selectedOptions.length === 0) {
+        container.innerHTML = 'Sélectionner des filtres à appliquer';
+    }
+}
+
+function removeSelected(valOption) {
+    const valSuppression = selectedOptions.indexOf(valOption);
+    if (valSuppression > -1) { // only splice array when item is found
+        selectedOptions.splice(valSuppression, 1); // 2nd parameter means remove one item only
+    }
+    var valDropDown = document.getElementById(valOption);
+    valDropDown.classList.remove("hidden");
+    updateSelectedItems();
+}
+
+document.addEventListener('click', function (event) {
+    var dropdown = document.getElementById('dropdownToggle');
+    var menu = document.getElementById('dropdownMenu');
+
+    if (!dropdown.contains(event.target) && !menu.contains(event.target)) {
+        menu.classList.add('hidden');
+    }
+});
