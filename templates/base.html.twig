@@ -167,19 +167,12 @@ tarteaucitron.user.gtagMore = function () { /* add here your optionnal gtag() */
 						<span class="text-white"></span>
 						<a href="index.php?controlleur=compte&methode=lister" class="justify-center flex flex-col items-center">
 							{# <img src="../asset/icones/person.svg" alt="profil" class="h-6 w-6"> #}
-							{% if user.pfp == null %}
 							<div class=" border-2 border-solid border-white rounded-full p-1">
 							<svg width="auto" height="24" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path d="M8 8C9.65685 8 11 6.65685 11 5C11 3.34315 9.65685 2 8 2C6.34315 2 5 3.34315 5 5C5 6.65685 6.34315 8 8 8ZM10 5C10 6.10457 9.10457 7 8 7C6.89543 7 6 6.10457 6 5C6 3.89543 6.89543 3 8 3C9.10457 3 10 3.89543 10 5Z" fill="#ffffff"/>
 								<path d="M14 13C14 14 13 14 13 14H3C3 14 2 14 2 13C2 12 3 9 8 9C13 9 14 12 14 13ZM13 12.9965C12.9986 12.7497 12.8462 12.0104 12.1679 11.3321C11.5156 10.6798 10.2891 10 7.99999 10C5.71088 10 4.48435 10.6798 3.8321 11.3321C3.15375 12.0104 3.00142 12.7497 3 12.9965H13Z" fill="#ffffff"/>
 							</svg>
 							</div>
-							{% else %}
-							<div class=" border-2 border-solid border-white rounded-full p-1">
-							<img src="../asset/user/{{user.pfp}}" alt="profil" class="h-10 w-auto">
-							</div>
-							{% endif %}
-							
 							<span class="hidden lg:block">{{user.pseudo}} : <b>{{user.role}}</b></span>
 						</a>
 					</div>
@@ -304,14 +297,8 @@ tarteaucitron.user.gtagMore = function () { /* add here your optionnal gtag() */
 						</a>
 					</div>
 					<br>
-<<<<<<< HEAD
 					<a href="index.php?controlleur=polConf&methode=lister" target"_blank" class="text-white mt-2 underline ">Politique de confidentialité</a>
-					<br>
 					<a href="index.php?controlleur=newsLetter&methode=lister" target"_blank" class="text-white mt-2 underline ">Inscrivez-vous à notre NewsLetter !</a>
-=======
-					<a href="index.php?controlleur=polConf&methode=lister" target"_blank" class="text-white underline ">Politique de confidentialité</a>
-					<a href="index.php?controlleur=NL&methode=lister" target"_blank" class="text-white underline ">S'inscrire à notre NewsLetter !</a>
->>>>>>> origin
 				</div>
 			</div>
 			</footer>
