@@ -104,7 +104,11 @@ class ControllerEvtActu extends Controller {
             );
 
             $managerParticiper->insert($participer);
-            $estInscrit = true;  
+            $estInscrit = true;
+            $nbPlaces = $evtActu->getNbPlaces();
+            $nbPlacesRestantes = $nbPlaces - 1;
+            $evtActu->setNbPlaces($nbPlacesRestantes);
+            $managerEvenement->update($nbPlacesRestantes, 'nbPLaces', $evtId);
         }
         
     
@@ -139,6 +143,10 @@ class ControllerEvtActu extends Controller {
         if ($participerExist != null) {
             $managerParticiper->delete($participerExist);
             $estInscrit = false;
+            $nbPlaces = $evtActu->getNbPlaces();
+            $nbPlacesRestantes = $nbPlaces + 1;
+            $evtActu->setNbPlaces($nbPlacesRestantes);
+            $managerEvenement->update($nbPlacesRestantes, 'nbPLaces', $evtId);
         } else {
             $estInscrit = true;
         }
