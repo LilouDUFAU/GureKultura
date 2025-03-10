@@ -72,6 +72,8 @@
 			</div>
 
 			    {% if type == 'Evenements' %} 
+				<p class="text-title">Il reste <b>{{ nbPLaces }}</b> places disponibles.</p>
+
 					{% if estInscrit == true %}
 						
 						<h2 class="font-bold text-lg p-2 text-title">Vous êtes déjà inscrit !</h2>
@@ -90,6 +92,10 @@
 							<input type="hidden" name="id" value="{{ evtActus.evtId }}">
 							<button type="submit" class="mt-4 px-6 py-2 bg-principal text-white font-semibold rounded-lg bg-button">S'inscrire</button>
 						</form>
+					{% endif %}
+
+					{% if nbPLaces != null %}
+						<p class="text-title">Il reste {{ nbPLaces }} places disponibles.</p>
 					{% endif %}
 
 				{% endif %}

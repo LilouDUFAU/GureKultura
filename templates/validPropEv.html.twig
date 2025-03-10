@@ -9,11 +9,12 @@
 		<!-- En-tête -->
 		<div class="grid grid-cols-12 gap-2 mt-5 bg-tabtitle text-title text-sm lg:text-base p-2 font-semibold">
 			<div class="col-start-1 col-span-2 p-2 break-words">Nom de l'événement</div>
-			<div class="col-start-3 col-span-1 hidden lg:block p-2 break-words text-center">Date début</div>
-			<div class="col-start-4 col-span-1 hidden lg:block p-2 break-words text-center">Date fin</div>
-			<div class="col-start-3 lg:col-start-5 col-span-3 p-2 break-words text-center">Lieu</div>
-			<div class="col-start-6 col-span-3 lg:col-start-8 lg:col-span-2 p-2 break-words">Aperçu</div>
-			<div class="col-start-10 col-span-3 p-2 break-words ">Validation</div>
+			<div class="hidden col-start-3 col-span-1 lg:block p-2 break-words text-center">Date début</div>
+			<div class="hidden col-start-4 col-span-1 lg:block p-2 break-words text-center">Date fin</div>
+			<div class="hidden col-start-5 col-span-2 lg:block p-2 break-words text-center">Lieu</div>
+			<div class="col-start-3 col-span-3 lg:col-start-7 lg:col-span-2 p-2 break-words text-center">Représentant</div>
+			<div class="col-start-7 col-span-3 lg:col-start-9 lg:col-span-2 p-2 break-words text-center">Aperçu</div>
+			<div class="col-start-11 col-span-2 p-2 break-words text-center">Validation</div>
 		</div>
 
 		<!-- Données -->
@@ -24,10 +25,11 @@
 						<div class="col-start-1 col-span-2 p-2 break-words">{{ evenement.titre }}</div>
 						<div class="col-start-3 col-span-1 hidden lg:block p-2 break-words text-center">{{ evenement.dateDebut|date("d/m/Y") }} <br> - {{ evenement.heureDebut|date('H:i') }}</div>
 						<div class="col-start-4 col-span-1 hidden lg:block p-2 break-words text-center">{{ evenement.dateFin|date("d/m/Y") }} <br> - {{ evenement.heureDebut|date('H:i') }}</div>
-						<div class="col-start-3 lg:col-start-5 col-span-3 p-2 break-words text-center">{{ evenement.lieu }}</div>
+						<div class="col-start-3 lg:col-start-5 col-span-2 p-2 break-words text-center">{{ evenement.lieu }}</div>
+						<div class="col-start-6 col-span-3 lg:col-start-7 lg:col-span-2 p-2 break-words text-center">{{ evenement.nomRep }} {{ evenement.prenomRep }}</div>
 
 						<!-- VISUALISATION -->
-						<div class="col-start-6 col-span-3 lg:col-start-8 lg:col-span-2 p-2 items-center">
+						<div class="col-start-6 col-span-3 lg:col-start-9 lg:col-span-2 p-2 items-center flex justify-center">
 							<form action="index.php?controlleur=evtActu&methode=lister" method="post" multipart="enctype/form-data">
 								<input type="hidden" name="id" value="{{ evenement.evtId }}">
 								<input type="hidden" name="nom" value="{{ evenement.titre }}">
@@ -40,7 +42,7 @@
 						</div>
 
 						<!-- VALIDATION -->
-						<div class="col-start-10 col-span-3 flex lg:space-x-3 flex-col lg:flex-row gap-2 p-2">
+						<div class="col-start-11 col-span-2 p-2 break-words flex lg:space-x-3 flex-col lg:flex-row gap-2 p-2 justify-center">
 							<form action="index.php?controlleur=validPropEv&methode=valider" method="post" class="inline-flex mb-0">
 								<input type="hidden" name="evtId" value="{{ evenement.evtId }}">
 								<button type="submit" title="Accepter" class="p-1 rounded-lg bg-green-500 hover:bg-green-600 flex items-center justify-center w-8 h-8">

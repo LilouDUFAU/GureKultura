@@ -7,7 +7,8 @@
 
 		<h2 class="text-2xl lg:text-4xl font-semibold lg:font-extrabold uppercase text-center text-title">Proposer un événement</h2>
 
-		<form action="index.php?controlleur=propEv&methode=validerFormulairePropEv" method="post" enctype="multipart/form-data" class="flex flex-col gap-8 text-text w-fit text-sm lg:text-base">
+		<form
+			action="index.php?controlleur=propEv&methode=validerFormulairePropEv" method="post" enctype="multipart/form-data" class="flex flex-col gap-8 text-text w-fit text-sm lg:text-base">
 
 			{# info evenement #}
 			<div class="grid grid-cols-6 gap-2 bg-form rounded-xl w-full p-4">
@@ -72,7 +73,7 @@
 				<div class="grid grid-cols-subgrid row-start-6 col-start-1 col-span-6 lg:row-start-5 lg:col-span-3 lg:col-start-4 p-2">
 					<div class="border-2 border-solid border-form py-1 flex flex-row  gap-2 row-start-1 col-start-1 col-span-6 lg:col-span-1">
 						<img src="../asset/icones/clock.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de heure">
-						<label for="heureDebut" >Heure de début</label>
+						<label for="heureDebut">Heure de début</label>
 					</div>
 					<div class="relative row-start-2 lg:row-start-1 col-start-1 col-span-6 lg:col-start-2 lg:col-span-4 w-full">
 						<input type="time" name="debutHeure" id="debutHeure" oninput='verifErreurSaisie(debutHeure)' class="w-full col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text text-text outline-none" placeholder="Heure de début">
@@ -80,13 +81,13 @@
 				</div>
 
 				{# dateFin #}
-				<div class="grid grid-cols-subgrid row-start-7 col-start-1 col-span-6 lg:col-span-3 p-2">	
+				<div class="grid grid-cols-subgrid row-start-7 col-start-1 col-span-6 lg:col-span-3 p-2">
 					<div class="border-2 border-solid border-form py-1 flex flex-row  gap-2 row-start-1 col-start-1 col-span-6 lg:col-span-1">
 						<img src="../asset/icones/calendar.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de calendrier">
-						<label for="dateFin" >Date de fin</label>
+						<label for="dateFin">Date de fin</label>
 					</div>
 					<div class="relative row-start-2 lg:row-start-1 col-start-1 col-span-6 lg:col-start-2 lg:col-span-5 w-full">
-						<input type="date" name="finDate" id="finDate" oninput='verifErreurSaisie(finDate)'  class="w-full col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text text-text outline-none" placeholder="Date de fin">
+						<input type="date" name="finDate" id="finDate" oninput='verifErreurSaisie(finDate)' class="w-full col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text text-text outline-none" placeholder="Date de fin">
 					</div>
 				</div>
 
@@ -134,10 +135,21 @@
 					</div>
 				</div>
 
+				{# nb places #}
+				<div class="grid grid-cols-subgrid row-start-12 col-start-1 col-span-6 p-2">
+					<div class="border-2 border-solid border-form py-1 flex flex-row  gap-2 row-start-1 col-start-1 col-span-6 lg:col-span-1">
+						<img src="../asset/icones/calendar.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de calendrier">
+						<label for="nbPlaces">Nombre de places</label>
+					</div>
+					<div class="relative row-start-2 lg:row-start-1 col-start-1 col-span-6 lg:col-start-2 lg:col-span-5 w-full">
+						<input type="number" name="nbPlaces" id="nbPlaces" oninput='verifErreurSaisie(nbPlaces)' class="w-full col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text text-text outline-none" placeholder="Nombre de places">
+					</div>
+				</div>
 			</div>
 
 			{# info responsable #}
-			<div class="grid grid-cols-6 gap-2 bg-form rounded-xl w-full p-4">
+			<div
+				class="grid grid-cols-6 gap-2 bg-form rounded-xl w-full p-4">
 				{# nomResp #}
 
 				<div class="row-start-1 col-start-1 col-span-6 text-2xl font-bold mb-4 flex flex-row items-center gap-2">
@@ -150,10 +162,10 @@
 						<img src="../asset/icones/person.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de personne">
 						<label for="nomResp">Nom</label>
 					</div>
-					
+
 					<div class="relative row-start-2 lg:row-start-1 col-start-1 col-span-6 lg:col-start-2 lg:col-span-5 w-full">
-					<input type="text" name="nomRep" id="nomRep" oninput='verifErreurSaisie(nomRep)' class="w-full col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text text-text outline-none" placeholder="Nom du responsable">
-				</div>
+						<input type="text" name="nomRep" id="nomRep" oninput='verifErreurSaisie(nomRep)' class="w-full col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text text-text outline-none" placeholder="Nom du responsable">
+					</div>
 				</div>
 
 				{# prenomResp #}
@@ -163,8 +175,8 @@
 						<label for="prenomResp" class="col-start-1 col-span-2">Prénom</label>
 					</div>
 					<div class="relative row-start-2 lg:row-start-1 col-start-1 col-span-6 lg:col-start-2 lg:col-span-5 w-full">
-					<input type="text" name="prenomRep" id="prenomRep" oninput="verifErreurSaisie(prenomRep)" class="w-full col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text text-text outline-none" placeholder="Prénom du responsable">
-				</div>
+						<input type="text" name="prenomRep" id="prenomRep" oninput="verifErreurSaisie(prenomRep)" class="w-full col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text text-text outline-none" placeholder="Prénom du responsable">
+					</div>
 				</div>
 
 				{# email #}
@@ -184,12 +196,10 @@
 						<img src="../asset/icones/telephone.svg" class="w-6 h-6  py-1 rounded-md" alt="icone de téléphone">
 						<label for="telephone">Téléphone</label>
 					</div>
-					
+
 					<div class="relative row-start-2 lg:row-start-1 col-start-1 col-span-6 lg:col-start-2 lg:col-span-5 w-full">
-					<input type="tel" name="tel" id="tel" oninput="verifErreurSaisie(tel)" 
-					class="w-full col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text text-text outline-none" 
-					placeholder="Téléphone du responsable">
-				</div>
+						<input type="tel" name="tel" id="tel" oninput="verifErreurSaisie(tel)" class="w-full col-start-3 col-span-4 bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text text-text outline-none" placeholder="Téléphone du responsable">
+					</div>
 				</div>
 			</div>
 
@@ -202,5 +212,6 @@
 			</div>
 		</form>
 	</div>
-<script src="../js/erreurSaisie.js"></script>
+	<script src="../js/erreurSaisie.js"></script>
 {% endblock %}
+

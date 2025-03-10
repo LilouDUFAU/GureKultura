@@ -118,6 +118,12 @@ class Evenement
      */
     private ?string $nomCategorie;
 
+    /**
+     * @brief nb place de l'événement
+     * @var int|null
+     */
+    private ?int $nbPlaces;
+
 
     /**
      * @constructor Evenement
@@ -140,6 +146,7 @@ class Evenement
      * @param int|null $userId
      * @param int|null $cateId
      * @param string|null $nomCategorie
+     * @param int|null $nbPlaces
      * @return void
      */
     public function __construct(?int $evtId=null, 
@@ -159,7 +166,8 @@ class Evenement
     ?bool $is_valide=null,
     ?int $userId=null,
     ?int $cateId=null,
-    ?string $nomCategorie=null)
+    ?string $nomCategorie=null,
+    ?int $nbPlaces=null)
     {
         $this->evtId = $evtId;
         $this->titre = $titre;
@@ -179,6 +187,7 @@ class Evenement
         $this->userId = $userId;
         $this->cateId = $cateId;
         $this->nomCategorie = $nomCategorie;
+        $this->nbPlaces = $nbPlaces;
     }
 
     /////////////////////////////
@@ -364,6 +373,16 @@ class Evenement
     public function getNomCategorie(): ?string 
     {
         return $this->nomCategorie;
+    }
+
+    /**
+     * @function getNbPlaces
+     * @details Cette fonction permet de récupérer le nombre de places de l'événement
+     * @return int|null
+     */
+    public function getNbPlaces(): ?int
+    {
+        return $this->nbPlaces;
     }
 
       
@@ -568,5 +587,16 @@ class Evenement
     public function setNomCategorie(?string $nomCategorie): void
     {
         $this->nomCategorie = $nomCategorie;
+    }
+
+    /**
+     * @function setNbPlaces
+     * @details Cette fonction permet de définir le nombre de places de l'événement
+     * @param int|null $nbPlaces
+     * @return void
+     */
+    public function setNbPlaces(?int $nbPlaces): void
+    {
+        $this->nbPlaces = $nbPlaces;
     }
 }
