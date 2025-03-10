@@ -351,7 +351,7 @@ class EvenementDao
      */
     public function insert(Evenement $evenement): void
     {
-        $sql = "INSERT INTO " . PREFIX_TABLE . "evenement (userId, titre, autorisation, description, email, tel, nomRep, prenomRep, dateDebut, dateFin, heureDebut, heureFin, lieu, photo, cateId) 
+        $sql = "INSERT INTO " . PREFIX_TABLE . "evenement (userId, titre, autorisation, description, email, tel, nomRep, prenomRep, dateDebut, dateFin, heureDebut, heureFin, lieu, photo, cateId, nbPlaces) 
             VALUES (:userId, :titre, :autorisation, :description, :email, :tel, :nomRep, :prenomRep, :dateDebut, :dateFin, :heureDebut, :heureFin, :lieu, :photo, :cateId, :nbPlaces)";
         $pdoStatement = $this->pdo->prepare($sql);
         $pdoStatement->execute([

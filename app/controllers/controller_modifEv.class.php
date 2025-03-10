@@ -185,7 +185,7 @@ class ControllerModifEv extends Controller
                     'longueurMax' => 100,
                     'format' => '/^[a-zA-Z0-9\s]+$/'
                 ],
-                'places' => [
+                'nbPlaces' => [
                     'obligatoire' => false,
                     'type' => 'integer',
                     'format' => '/^[a-zA-Z0-9\s]+$/'
@@ -355,7 +355,7 @@ class ControllerModifEv extends Controller
                     $photoModifie = false;
                 }  
 
-                if ($donnees['places'] != $_SESSION['evtActuel']['nbPlaces']) {
+                if ($donnees['nbPlaces'] != $_SESSION['evtActuel']['nbPlaces']) {
                     $placesModifie = true;
                 }
                 else{
@@ -459,7 +459,7 @@ class ControllerModifEv extends Controller
                     $this->modifierDonneesDansLaBase($donnees['photoName'], 'photo');
                 }
                 if ($placesModifie) {
-                    $this->modifierDonneesDansLaBase($donnees['places'], 'nbPlaces');
+                    $this->modifierDonneesDansLaBase($donnees['nbPlaces'], 'nbPlaces');
                 }
 
                 $manager = new EvenementDao($pdo);
