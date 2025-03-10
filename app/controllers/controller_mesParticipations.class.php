@@ -85,6 +85,10 @@
         
         if($participerExist != null){
             $managerParticiper->delete($participerExist);
+            $nbPlaces = $evtActu->getNbPlaces();
+            $nbPlacesRestantes = $nbPlaces + 1;
+            $evtActu->setNbPlaces($nbPlacesRestantes);
+            $managerEvenement->update($nbPlacesRestantes, 'nbPLaces', $evtId);
         }
         // Rendre le template Twig
         $this->lister();

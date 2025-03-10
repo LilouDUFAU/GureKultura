@@ -67,7 +67,8 @@ class ControllerModifEv extends Controller
             $evenementActuel['lieu'] = $evenement[0]->getLieu();
             $evenementActuel['photo'] = $evenement[0]->getPhoto();
             $evenementActuel['categorie'] = $evenement[0]->getNomCategorie();
-            $evenementActuel['categorieId'] = $evenement[0]->getCateId();
+            $evenementActuel['categorieId'] = $evenement[0]->getCateId();   
+            $evenementActuel['nbPlaces'] = $evenement[0]->getNbPlaces();
 
             $_SESSION['evtActuel'] = $evenementActuel;
 
@@ -182,6 +183,11 @@ class ControllerModifEv extends Controller
                     'type' => 'string',
                     'longueurMin' => 5,
                     'longueurMax' => 100,
+                    'format' => '/^[a-zA-Z0-9\s]+$/'
+                ],
+                'places' => [
+                    'obligatoire' => false,
+                    'type' => 'integer',
                     'format' => '/^[a-zA-Z0-9\s]+$/'
                 ]
             ];
@@ -348,6 +354,13 @@ class ControllerModifEv extends Controller
                 else{
                     $photoModifie = false;
                 }  
+
+                if ($donnees['places'] != $_SESSION['evtActuel']['nbPlaces']) {
+                    $placesModifie = true;
+                }
+                else{
+                    $placesModifie = false;
+                }
             }
 
             // recuperation des erreurs
@@ -444,6 +457,9 @@ class ControllerModifEv extends Controller
                 }
                 if ($photoModifie) {
                     $this->modifierDonneesDansLaBase($donnees['photoName'], 'photo');
+                }
+                if ($placesModifie) {
+                    $this->modifierDonneesDansLaBase($donnees['places'], 'nbPlaces');
                 }
 
                 $manager = new EvenementDao($pdo);

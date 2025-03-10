@@ -176,6 +176,11 @@ class ControllerPropEv extends Controller
                     'longueurMin' => 5,
                     'longueurMax' => 500,
                     'format' => '/^[a-zA-Z0-9\s]+$/'
+                ],
+                'places' => [
+                    'obligatoire' => false,
+                    'type' => 'integer',
+                    'format' => '/^[a-zA-Z0-9\s]+$/'
                 ]
             ];
 
@@ -334,7 +339,8 @@ class ControllerPropEv extends Controller
                 $donnees['photoName'] ?? null,
                 false,
                 $donnees['userId'],
-                $donnees['cateId']
+                $donnees['cateId'],
+                $donnees['places'] ?? null
             );
             // Insérez l'événement dans la base de données
             $managerEvenement->insert($evenement);

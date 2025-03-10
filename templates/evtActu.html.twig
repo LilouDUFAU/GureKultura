@@ -72,6 +72,18 @@
 			</div>
 
 			    {% if type == 'Evenements' %} 
+
+				{% if evtActus.nbPlaces != null and evtActus.nbPlaces > 0 %}
+				<p class="text-title">Il reste <b>{{ evtActus.nbPLaces }}</b> places disponibles.</p>
+				{% if estInscrit == false and user.role == 'user' %}
+						<form method="POST" action="index.php?controlleur=evtActu&methode=inscrire">
+							<INPUT TYPE="hidden" NAME="nom" VALUE="{{evtActus.titre}}">
+							<INPUT TYPE="hidden" NAME="type" VALUE="{{ type }}"> 
+							<input type="hidden" name="id" value="{{ evtActus.evtId }}">
+							<button type="submit" class="mt-4 px-6 py-2 bg-principal text-white font-semibold rounded-lg bg-button">S'inscrire</button>
+						</form>
+					{% endif %}
+				{% endif %}
 					{% if estInscrit == true %}
 						
 						<h2 class="font-bold text-lg p-2 text-title">Vous êtes déjà inscrit !</h2>
@@ -83,15 +95,6 @@
 							<button type="submit" class="mt-4 px-6 py-2 bg-principal text-white font-semibold rounded-lg bg-button">Se désinscrire</button>
 						</form>
 					{% endif %}
-					{% if estInscrit == false and user.role == 'user' %}
-						<form method="POST" action="index.php?controlleur=evtActu&methode=inscrire">
-							<INPUT TYPE="hidden" NAME="nom" VALUE="{{evtActus.titre}}">
-							<INPUT TYPE="hidden" NAME="type" VALUE="{{ type }}"> 
-							<input type="hidden" name="id" value="{{ evtActus.evtId }}">
-							<button type="submit" class="mt-4 px-6 py-2 bg-principal text-white font-semibold rounded-lg bg-button">S'inscrire</button>
-						</form>
-					{% endif %}
-
 				{% endif %}
 		</div>
 	</div>

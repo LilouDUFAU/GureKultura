@@ -54,7 +54,7 @@ class EvenementDao
      */
     public function find(?int $id): ?Evenement
     {
-        $sql = "SELECT evt.evtId, evt.titre,evt.autorisation, evt.description, evt.email, evt.tel, evt.nomRep, evt.prenomRep, DATE(evt.dateDebut) AS dateDebut, DATE(evt.dateFin) AS dateFin, TIME(evt.heureDebut) AS heureDebut, TIME(evt.heureFin) AS heureFin, evt.lieu, evt.photo, evt.cateId, evt.userId, evt.is_valide , cate.nom AS nomCategorie
+        $sql = "SELECT evt.evtId, evt.titre,evt.autorisation, evt.description, evt.email, evt.tel, evt.nomRep, evt.prenomRep, DATE(evt.dateDebut) AS dateDebut, DATE(evt.dateFin) AS dateFin, TIME(evt.heureDebut) AS heureDebut, TIME(evt.heureFin) AS heureFin, evt.lieu, evt.photo, evt.cateId, evt.userId, evt.is_valide , cate.nom AS nomCategorie, evt.nbPlaces
             FROM gk_evenement AS evt
             JOIN gk_categorie AS cate ON evt.cateId = cate.cateId WHERE evt.evtId = :id";
         $pdoStatement = $this->pdo->prepare($sql);
@@ -68,7 +68,7 @@ class EvenementDao
     public function findWithMail(?int $id): ?Evenement
 
     {
-        $sql = "SELECT evt.evtId, evt.titre,evt.autorisation, evt.description, evt.email, evt.tel, evt.nomRep, evt.prenomRep, DATE(evt.dateDebut) AS dateDebut, DATE(evt.dateFin) AS dateFin, TIME(evt.heureDebut) AS heureDebut, TIME(evt.heureFin) AS heureFin, evt.lieu, evt.photo, evt.cateId, evt.userId, evt.is_valide , cate.nom AS nomCategorie, user.email
+        $sql = "SELECT evt.evtId, evt.titre,evt.autorisation, evt.description, evt.email, evt.tel, evt.nomRep, evt.prenomRep, DATE(evt.dateDebut) AS dateDebut, DATE(evt.dateFin) AS dateFin, TIME(evt.heureDebut) AS heureDebut, TIME(evt.heureFin) AS heureFin, evt.lieu, evt.photo, evt.cateId, evt.userId, evt.is_valide , cate.nom AS nomCategorie, user.email, evt.nbPlaces
             FROM gk_evenement AS evt
             JOIN gk_categorie AS cate ON evt.cateId = cate.cateId WHERE evt.evtId = :id
             JOIN gk_user AS user ON evt.userId = user.userId";
@@ -102,6 +102,7 @@ class EvenementDao
         $evenement->setNomCategorie($tab['nomCategorie']);
         $evenement->setIsValide($tab['is_valide']);
         $evenement->setEmail($tab['email']);
+        $evenement->setNbPlaces($tab['nbPlaces']);
         return $evenement;
     }
 
@@ -132,7 +133,7 @@ class EvenementDao
      */
     public function findEnCours(?int $id)
     {
-        $sql = "SELECT evt.evtId, evt.titre,evt.autorisation, evt.description, evt.email, evt.tel, evt.nomRep, evt.prenomRep, DATE(evt.dateDebut) AS dateDebut, DATE(evt.dateFin) AS dateFin, TIME(evt.heureDebut) AS heureDebut, TIME(evt.heureFin) AS heureFin, evt.lieu, evt.photo,evt.cateId, evt.userId, evt.is_valide , cate.nom AS nomCategorie
+        $sql = "SELECT evt.evtId, evt.titre,evt.autorisation, evt.description, evt.email, evt.tel, evt.nomRep, evt.prenomRep, DATE(evt.dateDebut) AS dateDebut, DATE(evt.dateFin) AS dateFin, TIME(evt.heureDebut) AS heureDebut, TIME(evt.heureFin) AS heureFin, evt.lieu, evt.photo,evt.cateId, evt.userId, evt.is_valide , cate.nom AS nomCategorie, evt.nbPlaces
             FROM gk_evenement AS evt
             JOIN gk_categorie AS cate ON evt.cateId = cate.cateId WHERE evt.dateDebut = CURRENT_DATE AND evt.cateId =:id";
         $pdoStatement = $this->pdo->prepare($sql);
@@ -152,7 +153,7 @@ class EvenementDao
      */
     public function findASuivre(?int $id)
     {
-        $sql = "SELECT evt.evtId, evt.titre,evt.autorisation, evt.description, evt.email, evt.tel, evt.nomRep, evt.prenomRep, DATE(evt.dateDebut) AS dateDebut, DATE(evt.dateFin) AS dateFin, TIME(evt.heureDebut) AS heureDebut, TIME(evt.heureFin) AS heureFin, evt.lieu, evt.photo,evt.cateId, evt.userId, evt.is_valide , cate.nom AS nomCategorie
+        $sql = "SELECT evt.evtId, evt.titre,evt.autorisation, evt.description, evt.email, evt.tel, evt.nomRep, evt.prenomRep, DATE(evt.dateDebut) AS dateDebut, DATE(evt.dateFin) AS dateFin, TIME(evt.heureDebut) AS heureDebut, TIME(evt.heureFin) AS heureFin, evt.lieu, evt.photo,evt.cateId, evt.userId, evt.is_valide , cate.nom AS nomCategorie, evt.nbPlaces
             FROM gk_evenement AS evt
             JOIN gk_categorie AS cate ON evt.cateId = cate.cateId WHERE evt.dateDebut > CURRENT_DATE AND evt.cateId =:id";
         $pdoStatement = $this->pdo->prepare($sql);
@@ -172,7 +173,7 @@ class EvenementDao
      */
     public function findPasser(?int $id)
     {
-        $sql = "SELECT evt.evtId, evt.titre,evt.autorisation, evt.description, evt.email, evt.tel, evt.nomRep, evt.prenomRep, DATE(evt.dateDebut) AS dateDebut, DATE(evt.dateFin) AS dateFin, TIME(evt.heureDebut) AS heureDebut, TIME(evt.heureFin) AS heureFin, evt.lieu, evt.photo, evt.cateId, evt.userId, evt.is_valide ,cate.nom AS nomCategorie
+        $sql = "SELECT evt.evtId, evt.titre,evt.autorisation, evt.description, evt.email, evt.tel, evt.nomRep, evt.prenomRep, DATE(evt.dateDebut) AS dateDebut, DATE(evt.dateFin) AS dateFin, TIME(evt.heureDebut) AS heureDebut, TIME(evt.heureFin) AS heureFin, evt.lieu, evt.photo, evt.cateId, evt.userId, evt.is_valide ,cate.nom AS nomCategorie, evt.nbPlaces
             FROM gk_evenement AS evt
             JOIN gk_categorie AS cate ON evt.cateId = cate.cateId WHERE evt.dateDebut < CURRENT_DATE AND evt.cateId =:id";
         $pdoStatement = $this->pdo->prepare($sql);
@@ -191,7 +192,7 @@ class EvenementDao
      */
     public function findAllWithCategorie(): array
     {
-        $sql = "SELECT evt.evtId, evt.titre,evt.autorisation, evt.description, evt.email, evt.tel, evt.nomRep, evt.prenomRep, DATE(evt.dateDebut) AS dateDebut, DATE(evt.dateFin) AS dateFin, TIME(evt.heureDebut) AS heureDebut, TIME(evt.heureFin) AS heureFin, evt.lieu, evt.photo, evt.cateId, evt.userId, evt.is_valide , cate.nom AS nomCategorie
+        $sql = "SELECT evt.evtId, evt.titre,evt.autorisation, evt.description, evt.email, evt.tel, evt.nomRep, evt.prenomRep, DATE(evt.dateDebut) AS dateDebut, DATE(evt.dateFin) AS dateFin, TIME(evt.heureDebut) AS heureDebut, TIME(evt.heureFin) AS heureFin, evt.lieu, evt.photo, evt.cateId, evt.userId, evt.is_valide , cate.nom AS nomCategorie, evt.nbPlaces
             FROM gk_evenement AS evt
             JOIN gk_categorie AS cate ON evt.cateId = cate.cateId";
 
@@ -213,7 +214,7 @@ class EvenementDao
      */
     public function findEventByUser (?int $id)
     {
-        $sql = "SELECT evt.evtId, evt.titre,evt.autorisation, evt.description, evt.email, evt.tel, evt.nomRep, evt.prenomRep, DATE(evt.dateDebut) AS dateDebut, DATE(evt.dateFin) AS dateFin, TIME(evt.heureDebut) AS heureDebut, TIME(evt.heureFin) AS heureFin, evt.lieu, evt.photo, evt.cateId, evt.userId, evt.is_valide, cate.nom AS nomCategorie
+        $sql = "SELECT evt.evtId, evt.titre,evt.autorisation, evt.description, evt.email, evt.tel, evt.nomRep, evt.prenomRep, DATE(evt.dateDebut) AS dateDebut, DATE(evt.dateFin) AS dateFin, TIME(evt.heureDebut) AS heureDebut, TIME(evt.heureFin) AS heureFin, evt.lieu, evt.photo, evt.cateId, evt.userId, evt.is_valide, cate.nom AS nomCategorie, evt.nbPlaces
             FROM gk_evenement AS evt
             JOIN gk_categorie AS cate ON evt.cateId = cate.cateId WHERE evt.userId = :id";
         $pdoStatement = $this->pdo->prepare($sql);
@@ -234,7 +235,7 @@ class EvenementDao
      */
     public function findEventById (?int $id): array
     {
-        $sql = "SELECT evt.evtId, evt.titre,evt.autorisation, evt.description, evt.email, evt.tel, evt.nomRep, evt.prenomRep, DATE(evt.dateDebut) AS dateDebut, DATE(evt.dateFin) AS dateFin, TIME(evt.heureDebut) AS heureDebut, TIME(evt.heureFin) AS heureFin, evt.lieu, evt.photo, evt.cateId, evt.userId, evt.is_valide, cate.nom AS nomCategorie
+        $sql = "SELECT evt.evtId, evt.titre,evt.autorisation, evt.description, evt.email, evt.tel, evt.nomRep, evt.prenomRep, DATE(evt.dateDebut) AS dateDebut, DATE(evt.dateFin) AS dateFin, TIME(evt.heureDebut) AS heureDebut, TIME(evt.heureFin) AS heureFin, evt.lieu, evt.photo, evt.cateId, evt.userId, evt.is_valide, cate.nom AS nomCategorie, evt.nbPlaces
             FROM gk_evenement AS evt
             JOIN gk_categorie AS cate ON evt.cateId = cate.cateId WHERE evt.evtId = :id";
         $pdoStatement = $this->pdo->prepare($sql);
@@ -272,6 +273,7 @@ class EvenementDao
         $evenement->setUserId($tab['userId']); 
         $evenement->setNomCategorie($tab['nomCategorie']);
         $evenement->setIsValide($tab['is_valide']);
+        $evenement->setNbPlaces($tab['nbPlaces']);
         return $evenement;
     }
 
@@ -350,7 +352,7 @@ class EvenementDao
     public function insert(Evenement $evenement): void
     {
         $sql = "INSERT INTO " . PREFIX_TABLE . "evenement (userId, titre, autorisation, description, email, tel, nomRep, prenomRep, dateDebut, dateFin, heureDebut, heureFin, lieu, photo, cateId) 
-            VALUES (:userId, :titre, :autorisation, :description, :email, :tel, :nomRep, :prenomRep, :dateDebut, :dateFin, :heureDebut, :heureFin, :lieu, :photo, :cateId)";
+            VALUES (:userId, :titre, :autorisation, :description, :email, :tel, :nomRep, :prenomRep, :dateDebut, :dateFin, :heureDebut, :heureFin, :lieu, :photo, :cateId, :nbPlaces)";
         $pdoStatement = $this->pdo->prepare($sql);
         $pdoStatement->execute([
             ':userId' => $evenement->getUserId(),
@@ -367,7 +369,8 @@ class EvenementDao
             ':heureFin' => $evenement->getHeureFin(),
             ':lieu' => $evenement->getLieu(),
             ':photo' => $evenement->getPhoto(),
-            ':cateId' => $evenement->getCateId()
+            ':cateId' => $evenement->getCateId(),
+            ':nbPlaces' => $evenement->getNbPlaces()
             
         ]);
     }
@@ -411,7 +414,7 @@ class EvenementDao
 
     public function findNotValid()
     {
-        $sql = "SELECT evt.evtId, evt.titre,evt.autorisation, evt.description, evt.email, evt.tel, evt.nomRep, evt.prenomRep, DATE(evt.dateDebut) AS dateDebut, DATE(evt.dateFin) AS dateFin, TIME(evt.heureDebut) AS heureDebut, TIME(evt.heureFin) AS heureFin, evt.lieu, evt.photo, evt.cateId, evt.userId, evt.is_valide , cate.nom AS nomCategorie
+        $sql = "SELECT evt.evtId, evt.titre,evt.autorisation, evt.description, evt.email, evt.tel, evt.nomRep, evt.prenomRep, DATE(evt.dateDebut) AS dateDebut, DATE(evt.dateFin) AS dateFin, TIME(evt.heureDebut) AS heureDebut, TIME(evt.heureFin) AS heureFin, evt.lieu, evt.photo, evt.cateId, evt.userId, evt.is_valide , cate.nom AS nomCategorie, evt.nbPlaces
             FROM gk_evenement AS evt
             JOIN gk_categorie AS cate ON evt.cateId = cate.cateId WHERE evt.is_valide = 0";
         $pdoStatement = $this->pdo->prepare($sql);
@@ -423,7 +426,7 @@ class EvenementDao
     }
 
     public function inscrireUtilisateur($userId, $evtId) {
-        $sql = "SELECT evt.evtId, evt.titre,evt.autorisation, evt.description, evt.email, evt.tel, evt.nomRep, evt.prenomRep, DATE(evt.dateDebut) AS dateDebut, DATE(evt.dateFin) AS dateFin, TIME(evt.heureDebut) AS heureDebut, TIME(evt.heureFin) AS heureFin, evt.lieu, evt.photo, evt.cateId, evt.userId, evt.is_valide, cate.nom AS nomCategorie FROM gk_evenement AS evt 
+        $sql = "SELECT evt.evtId, evt.titre,evt.autorisation, evt.description, evt.email, evt.tel, evt.nomRep, evt.prenomRep, DATE(evt.dateDebut) AS dateDebut, DATE(evt.dateFin) AS dateFin, TIME(evt.heureDebut) AS heureDebut, TIME(evt.heureFin) AS heureFin, evt.lieu, evt.photo, evt.cateId, evt.userId, evt.is_valide, cate.nom AS nomCategorie, evt.nbPlaces FROM gk_evenement AS evt 
                 JOIN gk_participer ON evt.evtId = gk_participer.evtId 
                 JOIN gk_categorie AS cate ON evt.cateId = cate.cateId
                 WHERE gk_participer.evtId = :evtId AND gk_participer.userId = :userId";

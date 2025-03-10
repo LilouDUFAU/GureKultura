@@ -75,7 +75,7 @@ tarteaucitron.user.gtagMore = function () { /* add here your optionnal gtag() */
 		<link href="../css/NewsLetter.css" rel="stylesheet">
 	</head>
 	<body class="font-sen text-sm lg:text-base bg-bg min-h-screen">
-	
+
 		<main
 			class="flex flex-col items-center h-full">
 			<!-- Header -->
@@ -139,10 +139,10 @@ tarteaucitron.user.gtagMore = function () { /* add here your optionnal gtag() */
 
 					{% endif %}
 
-       				<button type="button" onclick="openPopupFiltre('Filtre')">
+					<button type="button" onclick="openPopupFiltre('Filtre')">
 						<svg width="auto" height="24" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<path d="M1.5 1.5C1.5 1.22386 1.72386 1 2 1H14C14.2761 1 14.5 1.22386 14.5 1.5V3.5C14.5 3.62352 14.4543 3.74267 14.3716 3.83448L10 8.69187V13.5C10 13.7152 9.86228 13.9063 9.65811 13.9743L6.65811 14.9743C6.50564 15.0252 6.33803 14.9996 6.20764 14.9056C6.07726 14.8116 6 14.6607 6 14.5V8.69187L1.62835 3.83448C1.54572 3.74267 1.5 3.62352 1.5 3.5V1.5ZM2.5 2V3.30813L6.87165 8.16552C6.95428 8.25733 7 8.37648 7 8.5V13.8063L9 13.1396V8.5C9 8.37648 9.04572 8.25733 9.12835 8.16552L13.5 3.30813V2H2.5Z" fill="#ffffff"/>
-							</svg>
+							<path d="M1.5 1.5C1.5 1.22386 1.72386 1 2 1H14C14.2761 1 14.5 1.22386 14.5 1.5V3.5C14.5 3.62352 14.4543 3.74267 14.3716 3.83448L10 8.69187V13.5C10 13.7152 9.86228 13.9063 9.65811 13.9743L6.65811 14.9743C6.50564 15.0252 6.33803 14.9996 6.20764 14.9056C6.07726 14.8116 6 14.6607 6 14.5V8.69187L1.62835 3.83448C1.54572 3.74267 1.5 3.62352 1.5 3.5V1.5ZM2.5 2V3.30813L6.87165 8.16552C6.95428 8.25733 7 8.37648 7 8.5V13.8063L9 13.1396V8.5C9 8.37648 9.04572 8.25733 9.12835 8.16552L13.5 3.30813V2H2.5Z" fill="#ffffff"/>
+						</svg>
 						<p class="hidden lg:block">Trier</p>
 					</button>
 
@@ -163,6 +163,7 @@ tarteaucitron.user.gtagMore = function () { /* add here your optionnal gtag() */
 				</nav>
 				<!-- compte btn -->
 				{% if user != null %}
+					{% if user.role == 'user' %}
 					<div class="flex items-center space-x-4">
 						<span class="text-white"></span>
 						<a href="index.php?controlleur=compte&methode=lister" class="justify-center flex flex-col items-center">
@@ -173,17 +174,35 @@ tarteaucitron.user.gtagMore = function () { /* add here your optionnal gtag() */
 								<path d="M14 13C14 14 13 14 13 14H3C3 14 2 14 2 13C2 12 3 9 8 9C13 9 14 12 14 13ZM13 12.9965C12.9986 12.7497 12.8462 12.0104 12.1679 11.3321C11.5156 10.6798 10.2891 10 7.99999 10C5.71088 10 4.48435 10.6798 3.8321 11.3321C3.15375 12.0104 3.00142 12.7497 3 12.9965H13Z" fill="#ffffff"/>
 							</svg>
 							</div>
-							<span class="hidden lg:block">{{user.pseudo}} : <b>{{user.role}}</b></span>
+							<span class="hidden lg:block">{{user.pseudo}} : <b>Utilisateur</b></span>
 						</a>
 					</div>
+					{% elseif user.role == 'moderateur' %}
+						<div class="flex items-center space-x-4">
+							<span class="text-white"></span>
+							<a
+								href="index.php?controlleur=compte&methode=lister" class="justify-center flex flex-col items-center">
+								{# <img src="../asset/icones/person.svg" alt="profil" class="h-6 w-6"> #}
+								<div class=" border-2 border-solid border-white rounded-full p-1">
+									<svg width="auto" height="24" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path d="M8 8C9.65685 8 11 6.65685 11 5C11 3.34315 9.65685 2 8 2C6.34315 2 5 3.34315 5 5C5 6.65685 6.34315 8 8 8ZM10 5C10 6.10457 9.10457 7 8 7C6.89543 7 6 6.10457 6 5C6 3.89543 6.89543 3 8 3C9.10457 3 10 3.89543 10 5Z" fill="#ffffff"/>
+										<path d="M14 13C14 14 13 14 13 14H3C3 14 2 14 2 13C2 12 3 9 8 9C13 9 14 12 14 13ZM13 12.9965C12.9986 12.7497 12.8462 12.0104 12.1679 11.3321C11.5156 10.6798 10.2891 10 7.99999 10C5.71088 10 4.48435 10.6798 3.8321 11.3321C3.15375 12.0104 3.00142 12.7497 3 12.9965H13Z" fill="#ffffff"/>
+									</svg>
+								</div>
+								<span class="hidden lg:block">{{user.pseudo}} : <b>Modérateur</b>
+								</span>
+							</a>
+						</div>
+					{% endif %}
 				{% else %}
-					<a href="index.php?controlleur=connexion&methode=lister" class="justify-center flex flex-col items-center">
+					<a
+						href="index.php?controlleur=connexion&methode=lister" class="justify-center flex flex-col items-center">
 						{# <img src="../asset/icones/person.svg" alt="profil" class="h-6 w-6"> #}
 						<div class=" border-2 border-solid border-white rounded-full p-1">
-						<svg width="auto" height="24" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path d="M8 8C9.65685 8 11 6.65685 11 5C11 3.34315 9.65685 2 8 2C6.34315 2 5 3.34315 5 5C5 6.65685 6.34315 8 8 8ZM10 5C10 6.10457 9.10457 7 8 7C6.89543 7 6 6.10457 6 5C6 3.89543 6.89543 3 8 3C9.10457 3 10 3.89543 10 5Z" fill="#ffffff"/>
-							<path d="M14 13C14 14 13 14 13 14H3C3 14 2 14 2 13C2 12 3 9 8 9C13 9 14 12 14 13ZM13 12.9965C12.9986 12.7497 12.8462 12.0104 12.1679 11.3321C11.5156 10.6798 10.2891 10 7.99999 10C5.71088 10 4.48435 10.6798 3.8321 11.3321C3.15375 12.0104 3.00142 12.7497 3 12.9965H13Z" fill="#ffffff"/>
-						</svg>
+							<svg width="auto" height="24" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M8 8C9.65685 8 11 6.65685 11 5C11 3.34315 9.65685 2 8 2C6.34315 2 5 3.34315 5 5C5 6.65685 6.34315 8 8 8ZM10 5C10 6.10457 9.10457 7 8 7C6.89543 7 6 6.10457 6 5C6 3.89543 6.89543 3 8 3C9.10457 3 10 3.89543 10 5Z" fill="#ffffff"/>
+								<path d="M14 13C14 14 13 14 13 14H3C3 14 2 14 2 13C2 12 3 9 8 9C13 9 14 12 14 13ZM13 12.9965C12.9986 12.7497 12.8462 12.0104 12.1679 11.3321C11.5156 10.6798 10.2891 10 7.99999 10C5.71088 10 4.48435 10.6798 3.8321 11.3321C3.15375 12.0104 3.00142 12.7497 3 12.9965H13Z" fill="#ffffff"/>
+							</svg>
 						</div>
 						<span class="hidden lg:block">Connexion</span>
 					</a>
@@ -201,49 +220,48 @@ tarteaucitron.user.gtagMore = function () { /* add here your optionnal gtag() */
 
 		</div>
 
-{# popup de selection de filtres #}
-<div id="popup" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden z-50 text-text">
-	<div class="bg-bg p-6 rounded-lg shadow-lg w-full max-w-xl h-fit max-h-xl">
-		<input type="hidden" id="popupFiltres" name="test" value="">
+		{# popup de selection de filtres #}
+		<div id="popup" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden z-50 text-text">
+			<div class="bg-bg p-6 rounded-lg shadow-lg w-full max-w-xl h-fit max-h-xl">
+				<input type="hidden" id="popupFiltres" name="test" value="">
 
-		<h2 class="text-xl font-bold text-center mb-4 text-title">Choix des filtres de préférences</h2>
-		<form
-			action="index.php?controlleur=filtre&methode=ajoutFiltreSession" method="post" enctype="multipart/form-data" class="grid grid-cols-6 row-start-1 col-start-1 col-span-6 text-text p-2 gap-4 text-sm lg:text-base">
+				<h2 class="text-xl font-bold text-center mb-4 text-title">Choix des filtres de préférences</h2>
+				<form action="index.php?controlleur=filtre&methode=ajoutFiltreSession" method="post" enctype="multipart/form-data" class="grid grid-cols-6 row-start-1 col-start-1 col-span-6 text-text p-2 gap-4 text-sm lg:text-base">
 
-			<input type="hidden" id="listeFiltres" name="listeFiltres" value="">
-			<label for="select-options" class="row-start-2 col-start-1 col-span-5 mb-2 text-lg ">Choisissez des options :</label>
-		
-		{# DROPDOWN #}
-			
-			<div class="row-start-3 col-start-1 col-span-5">
-				<!-- Barre de sélection -->
-				<div class="w-full items-center gap-2 p-2 bg-white border rounded-lg shadow cursor-pointer"
-					onclick="toggleDropdown()" id="dropdownToggle">
-					<div id="conteneurFiltre" class="overflow-y-auto flex-wrap flex gap-2">Sélectionner des filtres à appliquer</div>
-					
-				</div>
+					<input type="hidden" id="listeFiltres" name="listeFiltres" value="">
+					<label for="select-options" class="row-start-2 col-start-1 col-span-5 mb-2 text-lg ">Choisissez des options :</label>
 
-				<!-- Dropdown -->
-				<div id="dropdownMenu" class="w-full mt-2 bg-white border rounded-lg shadow-lg hidden">
-					<select class="w-full max-h-48 overflow-y-auto" multiple>
+					{# DROPDOWN #}
 
-					{% for categorie in categories %}
-						<option id="{{categorie.nom}}" class="option-item p-2 cursor-pointer">{{categorie.nom}}</option>
-					{% endfor %}
-					</select>
-				</div>
+					<div
+						class="row-start-3 col-start-1 col-span-5">
+						<!-- Barre de sélection -->
+						<div class="w-full items-center gap-2 p-2 bg-white border rounded-lg shadow cursor-pointer" onclick="toggleDropdown()" id="dropdownToggle">
+							<div id="conteneurFiltre" class="overflow-y-auto flex-wrap flex gap-2">Sélectionner des filtres à appliquer</div>
+
+						</div>
+
+						<!-- Dropdown -->
+						<div id="dropdownMenu" class="w-full mt-2 bg-white border rounded-lg shadow-lg hidden">
+							<select class="w-full max-h-48 overflow-y-auto" multiple>
+
+								{% for categorie in categories %}
+									<option id="{{categorie.nom}}" class="option-item p-2 cursor-pointer">{{categorie.nom}}</option>
+								{% endfor %}
+							</select>
+						</div>
+					</div>
+
+					{# DROPDOWN #}
+
+					{# bouton de validation/annulation #}
+					<div class="row-start-7 col-start-1 col-span-6 flex justify-end gap-2">
+						<button type="button" onclick="closePopupFiltre('Filtre')" class="px-4 py-2 bg-button hover:bg-hbutton text-white rounded-lg mr-2">Annuler</button>
+						<button type="input" class="px-4 py-2 bg-button hover:bg-hbutton text-white rounded-lg">Modifier</button>
+					</div>
+				</form>
 			</div>
-
-   {# DROPDOWN #}
-			
-			{# bouton de validation/annulation #}
-			<div class="row-start-7 col-start-1 col-span-6 flex justify-end gap-2">
-				<button type="button" onclick="closePopupFiltre('Filtre')" class="px-4 py-2 bg-button hover:bg-hbutton text-white rounded-lg mr-2">Annuler</button>
-				<button type="input" class="px-4 py-2 bg-button hover:bg-hbutton text-white rounded-lg">Modifier</button>
-			</div>
-		</form>
-	</div>
-</div>
+		</div>
 
 
 		<footer class="grid grid-cols-12 bg-fh text-white text-sm lg:text-md p-2 w-full">
@@ -304,10 +322,8 @@ tarteaucitron.user.gtagMore = function () { /* add here your optionnal gtag() */
 					<a href="index.php?controlleur=newsLetter&methode=lister" target"_blank" class="text-white mt-2 underline ">Inscrivez-vous à notre NewsLetter !</a>
 				</div>
 			</div>
-			</footer>
-	<p class="text-error hidden border-error break-normal"> </p>
+		</footer>
+		<p class="text-error hidden border-error break-normal"></p>
 	</body>
 	<script src="../js/filtre.js"></script>
-</html>
-</main>
-<p class="text-error hidden border-error"></p>
+</html></main><p class="text-error hidden border-error"></p>
