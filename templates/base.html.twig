@@ -98,7 +98,7 @@ tarteaucitron.user.gtagMore = function () { /* add here your optionnal gtag() */
 							<path d="M0 2C0 0.89543 0.895431 0 2 0H5C6.10457 0 7 0.895431 7 2V5C7 6.10457 6.10457 7 5 7H2C0.89543 7 0 6.10457 0 5V2ZM5.35355 2.85355C5.54882 2.65829 5.54882 2.34171 5.35355 2.14645C5.15829 1.95118 4.84171 1.95118 4.64645 2.14645L3 3.79289L2.35355 3.14645C2.15829 2.95118 1.84171 2.95118 1.64645 3.14645C1.45118 3.34171 1.45118 3.65829 1.64645 3.85355L2.64645 4.85355C2.84171 5.04882 3.15829 5.04882 3.35355 4.85355L5.35355 2.85355Z" fill="#ffffff"/>
 						</svg>
 
-						<p class="hidden lg:block">Catégorie</p>
+						<p class="hidden lg:block">Catégories</p>
 					</a>
 
 					{% if user.estAdmin == False or user.role == 'user' %}
@@ -143,7 +143,7 @@ tarteaucitron.user.gtagMore = function () { /* add here your optionnal gtag() */
 						<svg width="auto" height="24" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path d="M1.5 1.5C1.5 1.22386 1.72386 1 2 1H14C14.2761 1 14.5 1.22386 14.5 1.5V3.5C14.5 3.62352 14.4543 3.74267 14.3716 3.83448L10 8.69187V13.5C10 13.7152 9.86228 13.9063 9.65811 13.9743L6.65811 14.9743C6.50564 15.0252 6.33803 14.9996 6.20764 14.9056C6.07726 14.8116 6 14.6607 6 14.5V8.69187L1.62835 3.83448C1.54572 3.74267 1.5 3.62352 1.5 3.5V1.5ZM2.5 2V3.30813L6.87165 8.16552C6.95428 8.25733 7 8.37648 7 8.5V13.8063L9 13.1396V8.5C9 8.37648 9.04572 8.25733 9.12835 8.16552L13.5 3.30813V2H2.5Z" fill="#ffffff"/>
 						</svg>
-						<p class="hidden lg:block">Trier</p>
+						<p class="hidden lg:block">Filtrer</p>
 					</button>
 
 					<form class="flex gap-2 items-center border-2 border-solid border-white rounded-full px-2 py-1 m-0">
@@ -152,7 +152,7 @@ tarteaucitron.user.gtagMore = function () { /* add here your optionnal gtag() */
 								<path d="M7.667 12.667A5.333 5.333 0 107.667 2a5.333 5.333 0 000 10.667zM14.334 14l-2.9-2.9" stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"></path>
 							</svg>
 						</button>
-						<input class="bg-transparent text-white outline-none md:block hidden placeholder-white" placeholder="Type your text" required="" type="text">
+						<input class="bg-transparent text-white outline-none md:block hidden placeholder-white" placeholder="Chercher ..." required="" type="text">
 						<button class="reset" type="reset" class="md:block hidden">
 							<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewbox="0 0 24 24" stroke="currentColor" stroke-width="2">
 								<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
