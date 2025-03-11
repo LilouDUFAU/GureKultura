@@ -28,6 +28,10 @@
 								</form>
 							{% endif %}
 						{% endif %}
+						{% if evtActus.nbPlaces == 0 %}
+						<p class="text-title lg:text-lg text-base text-center font-bold">Il ne reste plus de places pour cet évènement.</p>
+						{% endif %}
+
 						{% if estInscrit == true %}
 
 							<h2 class="font-bold lg:text-lg text-base p-2 text-title text-center">Vous êtes déjà inscrit !</h2>
