@@ -27,12 +27,34 @@
 									<button type="submit" class="mt-4 px-6 py-2 bg-principal text-white font-semibold rounded-lg bg-button">S'inscrire</button>
 								</form>
 							{% endif %}
+							{% if estInscrit == false and user.role == 'moderateur' %}
+								<p class="text-red-500 lg:text-lg text-base text-center font-bold">Pour vous inscrire vous devez être en mode <b>Utilisateur</b></p>
+							{% endif %}
 						{% endif %}
-						{% if evtActus.nbPlaces == 0 %}
+
+						{# plus de place → message manque de places #}
+						{% if evtActus.nbPlaces == 0 and estInscrit != true %}
 						<p class="text-title lg:text-lg text-base text-center font-bold">Il ne reste plus de places pour cet évènement.</p>
 						{% endif %}
 
-						{% if estInscrit == true %}
+						{# nombre de places illimité → message inscription possible #}
+						{% if evtActus.nbPlaces == '-1' %}
+						<p class="text-title lg:text-lg text-base text-center font-bold">Cet évènement possède un nombre de places illimitées donc Inscrivez-vous !</p>
+							{% if estInscrit == false and user.role == 'user' %}
+								<form class="flex items-center justify-center" method="POST" action="index.php?controlleur=evtActu&methode=inscrire">
+									<INPUT type="hidden" name="nom" value="{{evtActus.titre}}">
+									<INPUT type="hidden" name="type" value="{{ type }}">
+									<input type="hidden" name="id" value="{{ evtActus.evtId }}">
+									<button type="submit" class="mt-4 px-6 py-2 bg-principal text-white font-semibold rounded-lg bg-button">S'inscrire</button>
+								</form>
+							{% endif %}
+							{% if estInscrit == false and user.role == 'moderateur' %}
+								<p class="text-red-500 lg:text-lg text-base text-center font-bold">Pour vous inscrire vous devez être en mode <b>Utilisateur</b></p>
+							{% endif %}
+
+						{% endif %}
+
+						{% if estInscrit == true and user.role == 'user' %}
 
 							<h2 class="font-bold lg:text-lg text-base p-2 text-title text-center">Vous êtes déjà inscrit !</h2>
 
@@ -42,6 +64,10 @@
 								<input type="hidden" name="id" value="{{ evtActus.evtId }}">
 								<button type="submit" class="mt-4 px-6 py-2 bg-principal text-white font-semibold rounded-lg bg-button">Se désinscrire</button>
 							</form>
+						{% endif %}
+						{% if estInscrit == true and user.role == 'moderateur' %}
+							<h2 class="font-bold lg:text-lg text-base p-2 text-title text-center">Vous êtes déjà inscrit !</h2>
+							<p class="text-red-500 lg:text-lg text-base text-center font-bold">Pour vous désinscrire vous devez être en mode <b>Utilisateur</b></p>
 						{% endif %}
 					{% endif %}
 				</div>
