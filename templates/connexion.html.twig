@@ -7,11 +7,11 @@
 
 		<form class="grid grid-cols-6 space-y-4 text-sm lg:text-base text-text" action="index.php?controlleur=connexion&methode=validerFormulaireConnexion" method="post" enctype="multipart/form-data">
 			<div class="grid grid-cols-subgrid row-start-1 col-start-1 col-span-6 p-2">
-				<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
+				<div class="border-2 border-solid border-form py-1 flex flex-row  gap-2 row-start-1 col-start-1 col-span-6">
 					<img src="../asset/icones/envelope.svg" class="w-6 h-6  py-1 rounded-md" alt="icone">
 					<label for="email">Email</label>
 				</div>
-				<div class="relative col-start-3 col-span-4 w-full">
+				<div class="relative row-start-2 col-start-1 col-span-6 w-full">
 					<input type="email" id='email' oninput='verifErreurSaisie(email)' placeholder="E-mail" name="email" 
 						required title="Veuillez entrer une adresse e-mail valide" 
 						class="bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text w-full pr-10">
@@ -19,12 +19,13 @@
 			</div>
 
 			<div class="grid grid-cols-subgrid row-start-2 col-start-1 col-span-6 p-2 relative">
-				<div class="flex flex-row items-center gap-2 col-start-1 col-span-2">
+				<div class="border-2 border-solid border-form py-1 flex flex-row  gap-2 row-start-1 col-start-1 col-span-6">
 					<img src="../asset/icones/lock.svg" class="w-6 h-6  py-1 rounded-md" alt="icone">
 					<label for="password">Mot de passe</label>
 				</div>
-				<div class="relative col-start-3 col-span-4 w-full">
+				<div class="relative row-start-2 col-start-1 col-span-6 w-full">
 					<input type="password" id="password" placeholder="Mot de passe" name="mdp" required 
+
 						title="Veuillez entrer un mot de passe sécurisé"
 						class="bg-transparent border-white border-2 border-solid rounded-lg px-2 py-1 placeholder-text outline-none text-text w-full pr-10">
 					<button type="button" class="toggle-password absolute right-2 top-1/2 transform -translate-y-1/2" tabindex="-1">

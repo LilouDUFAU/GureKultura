@@ -7,34 +7,34 @@
 		</h2>
 
 		<!-- En-tête -->
-		<div class="grid grid-cols-12 gap-2 mt-5 bg-tabtitle text-title text-sm lg:text-base p-2 font-semibold">
-			<div class="col-start-1 col-span-2 p-2 break-words">Nom de l'événement</div>
-			<div class="hidden col-start-3 col-span-1 lg:block p-2 break-words text-center">Date début</div>
-			<div class="hidden col-start-4 col-span-1 lg:block p-2 break-words text-center">Date fin</div>
-			<div class="hidden col-start-5 col-span-2 lg:block p-2 break-words text-center">Lieu</div>
-			<div class="col-start-3 col-span-3 lg:col-start-7 lg:col-span-2 p-2 break-words text-center">Représentant</div>
-			<div class="col-start-7 col-span-3 lg:col-start-9 lg:col-span-2 p-2 break-words text-center">Aperçu</div>
-			<div class="col-start-11 col-span-2 p-2 break-words text-center">Validation</div>
+		<div class="grid grid-cols-12 gap-1 mt-5 bg-tabtitle text-title text-sm lg:text-base p-1 font-semibold">
+			<div class="col-start-1 col-span-3 lg:col-span-2 p-1 break-words">Nom de l'événement</div>
+			<div class="hidden col-start-3 col-span-1 lg:block p-1 break-words text-center">Date début</div>
+			<div class="hidden col-start-4 col-span-1 lg:block p-1 break-words text-center">Date fin</div>
+			<div class="hidden col-start-5 col-span-2 lg:block p-1 break-words text-center">Lieu</div>
+			<div class="col-start-4 col-span-3 lg:col-start-7 lg:col-span-2 p-1 break-words text-center">Représentant</div>
+			<div class="col-start-7 col-span-3 lg:col-start-9 lg:col-span-2 p-1 break-words text-center">Aperçu</div>
+			<div class="lg:col-start-11 col-start-10 col-span-3 p-1 break-words text-center">Validation</div>
 		</div>
 
 		<!-- Données -->
 		<div>
 			{% for evenement in evenements %}
 				{% if evenement.userId != user.userId %}
-					<div class="grid grid-cols-12 gap-2 p-3 odd:bg-odd even:bg-even items-center text-text break-words">
-						<div class="col-start-1 col-span-2 p-2 break-words">{{ evenement.titre }}</div>
-						<div class="col-start-3 col-span-1 hidden lg:block p-2 break-words text-center">{{ evenement.dateDebut|date("d/m/Y") }} <br> - {{ evenement.heureDebut|date('H:i') }}</div>
-						<div class="col-start-4 col-span-1 hidden lg:block p-2 break-words text-center">{{ evenement.dateFin|date("d/m/Y") }} <br> - {{ evenement.heureDebut|date('H:i') }}</div>
-						<div class="col-start-3 lg:col-start-5 col-span-2 p-2 break-words text-center">{{ evenement.lieu }}</div>
-						<div class="col-start-6 col-span-3 lg:col-start-7 lg:col-span-2 p-2 break-words text-center">{{ evenement.nomRep }} {{ evenement.prenomRep }}</div>
+					<div class="grid grid-cols-12 gap-1 p-3 odd:bg-odd even:bg-even items-center text-text break-words">
+						<div class="col-start-1 col-span-3 lg:col-span-2 p-1 break-words">{{ evenement.titre }}</div>
+						<div class="hidden col-start-3 col-span-1 lg:block p-1 break-words text-center">{{ evenement.dateDebut|date("d/m/Y") }} <br> - {{ evenement.heureDebut|date('H:i') }}</div>
+						<div class="hidden col-start-4 col-span-1 lg:block p-1 break-words text-center">{{ evenement.dateFin|date("d/m/Y") }} <br> - {{ evenement.heureDebut|date('H:i') }}</div>
+						<div class="hidden col-start-5 col-span-2 lg:block p-1 break-words text-center">{{ evenement.lieu }}</div>
+						<div class="col-start-4 col-span-3 lg:col-start-7 lg:col-span-2 p-1 break-words text-center">{{ evenement.nomRep }} {{ evenement.prenomRep }}</div>
 
 						<!-- VISUALISATION -->
-						<div class="col-start-6 col-span-3 lg:col-start-9 lg:col-span-2 p-2 items-center flex justify-center">
+						<div class="col-start-7 col-span-3 lg:col-start-9 lg:col-span-2 p-1 break-words lg:flex-row  flex flex-col justify-center items-center">
 							<form action="index.php?controlleur=evtActu&methode=lister" method="post" multipart="enctype/form-data">
 								<input type="hidden" name="id" value="{{ evenement.evtId }}">
 								<input type="hidden" name="nom" value="{{ evenement.titre }}">
 								<input type="hidden" name="type" value="Evenements">
-								<button type="submit" class="flex items-center space-x-1 lg:space-x-2 bg-button hover:bg-hbutton text-tbutton px-2 lg:px-4 py-2 rounded-lg">
+								<button type="submit" class="flex items-center space-x-1 lg:space-x-2 bg-button hover:bg-hbutton text-tbutton py-1 px-2 lg:px-4 py-2 rounded-lg">
 									<img src="../asset/icones/eye.svg" alt="Visualiser" class="h-5 w-5">
 									<span>Voir</span>
 								</button>
@@ -42,7 +42,7 @@
 						</div>
 
 						<!-- VALIDATION -->
-						<div class="col-start-11 col-span-2 p-2 break-words flex lg:space-x-3 flex-col lg:flex-row gap-2 p-2 justify-center">
+						<div class="lg:col-start-11 col-start-10 col-span-3 p-1 break-words flex flex-col lg:space-x-3 lg:flex-row gap-1 justify-center items-center">
 							<form action="index.php?controlleur=validPropEv&methode=valider" method="post" class="inline-flex mb-0">
 								<input type="hidden" name="evtId" value="{{ evenement.evtId }}">
 								<button type="submit" title="Accepter" class="p-1 rounded-lg bg-green-500 hover:bg-green-600 flex items-center justify-center w-8 h-8">
@@ -73,9 +73,9 @@
 			<input type="hidden" id="popupEvtId" name="evtId" value="">
 			<div class="mb-4">
 				<label for="message" class="block text-sm font-medium text-gray-700">Message</label>
-				<textarea id="message" name="message" class="w-full p-2 border rounded-lg" rows="4" required></textarea>
+				<textarea id="message" name="message" class="w-full p-1 border rounded-lg" rows="4" required></textarea>
 			</div>
-			<div class="flex justify-end gap-2">
+			<div class="flex justify-end gap-1">
 				<button type="button" onclick="closePopup('popup')" class="px-4 py-2 bg-button hover:hbutton text-tbutton rounded-lg mr-2">Annuler</button>
 				<button type="submit" class="px-4 py-2 bg-button hover:hbutton text-tbutton rounded-lg">Envoyer</button>
 			</div>
@@ -91,9 +91,9 @@
 			<input type="hidden" id="refusalPopupEvtId" name="evtId" value="">
 			<div class="mb-4">
 				<label for="message" class="block text-sm font-medium text-gray-700">Message</label>
-				<textarea id="message" name="message" class="w-full p-2 border rounded-lg" rows="4" required></textarea>
+				<textarea id="message" name="message" class="w-full p-1 border rounded-lg" rows="4" required></textarea>
 			</div>
-			<div class="flex justify-end gap-2">
+			<div class="flex justify-end gap-1">
 				<button type="button" onclick="closePopup('refusalPopup')" class="px-4 py-2 bg-button hover:hbutton text-tbutton rounded-lg mr-2">Annuler</button>
 				<button type="submit" class="px-4 py-2 bg-button hover:hbutton text-tbutton rounded-lg">Envoyer</button>
 			</div>

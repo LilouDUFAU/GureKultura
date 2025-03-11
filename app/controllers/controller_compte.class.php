@@ -240,7 +240,6 @@ class ControllerCompte extends Controller
 
                 $manager = new UserDao($pdo);
                 $user = $manager->find($user->getUserId());
-                $user->setRole('moderateur');
                 $_SESSION['user'] = $user;
 
                 echo $this->getTwig()->render('compte.html.twig', [

@@ -2,130 +2,137 @@
 
 {% block content %}
 
-{% if type == 'Evenements' %}
-	<!-- Contenu spécifique de chaque page -->
-	<div class="h-full">
-		<div class="gap-2 p-2 grid grid-cols-12 items-center">
-			<h2 class="row-start-1 col-span-12 bg-fh text-tbutton py-6 text-center text-lg lg:text-4xl font-bold rounded-t-2xl">{{ evtActus.titre }}</h2>
+	{% if type == 'Evenements' %}
+		<!-- Contenu spécifique de chaque page -->
+		<div class="h-full">
+			<div class="gap-2 grid grid-cols-12 items-center py-8">
+				<h2 class="row-start-1 col-span-12 bg-fh text-tbutton py-6 text-center text-lg lg:text-4xl font-bold rounded-t-2xl">{{ evtActus.titre }}</h2>
 
-			<div class="grid grid-cols-subgrid col-start-2 col-span-10 row-start-2 h-full">
-				<img src="../asset/evenement/photo/{{ evtActus.photo }}" alt="photo evenement" class="row-start-1 col-start-1 col-span-12 lg:col-start-3 lg:col-span-6 w-full h-auto rounded-lg">
-				<p class="text-center row-start-2 col-start-1 col-span-12 lg:col-start-3 lg:col-span-6 break-words">{{ evtActus.description }}</p>
-			</div>
+				<div class="grid grid-cols-subgrid col-start-2 col-span-10 row-start-2 h-full">
+					<img src="../asset/evenement/photo/{{ evtActus.photo }}" alt="photo evenement" class="row-start-1 col-start-1 col-span-12 lg:col-start-3 lg:col-span-6 w-full h-auto rounded-lg">
+					<p class="text-center row-start-2 col-start-1 col-span-12 lg:col-start-3 lg:col-span-6 break-words">{{ evtActus.description }}</p>
+				</div>
 
-			<div class="grid grid-cols-subgrid lg:col-start-1 lg:col-span-6 col-start-2 col-span-10 lg:row-start-3 row-start-3 bg-card  bg-opacity-55 rounded-lg p-2 ">
-				<h2 class="row-start-1 col-start-1 col-span-12 text-2xl font-bold text-left text-text">Fiche Evènement</h2>
+				<div class="flex flex-col lg:col-start-4 lg:col-span-6 col-start-2 col-span-10 lg:row-start-3 row-start-3 bg-card rounded-lg p-2 ">
+					{% if type == 'Evenements' %}
+						{% if evtActus.nbPlaces != null and evtActus.nbPlaces > 0 %}
+							<p class="text-title lg:text-lg text-base text-center">Il reste
+								<b>{{ evtActus.nbPLaces }}</b>
+								places disponibles.</p>
+							{% if estInscrit == false and user.role == 'user' %}
+								<form class="flex items-center justify-center" method="POST" action="index.php?controlleur=evtActu&methode=inscrire">
+									<INPUT type="hidden" name="nom" value="{{evtActus.titre}}">
+									<INPUT type="hidden" name="type" value="{{ type }}">
+									<input type="hidden" name="id" value="{{ evtActus.evtId }}">
+									<button type="submit" class="mt-4 px-6 py-2 bg-principal text-white font-semibold rounded-lg bg-button">S'inscrire</button>
+								</form>
+							{% endif %}
+						{% endif %}
+						{% if estInscrit == true %}
+
+							<h2 class="font-bold lg:text-lg text-base p-2 text-title text-center">Vous êtes déjà inscrit !</h2>
+
+							<form class="flex items-center justify-center" method="POST" action="index.php?controlleur=evtActu&methode=desinscrire">
+								<INPUT type="hidden" name="nom" value="{{evtActus.titre}}">
+								<INPUT type="hidden" name="type" value="{{ type }}">
+								<input type="hidden" name="id" value="{{ evtActus.evtId }}">
+								<button type="submit" class="mt-4 px-6 py-2 bg-principal text-white font-semibold rounded-lg bg-button">Se désinscrire</button>
+							</form>
+						{% endif %}
+					{% endif %}
+				</div>
+
+				<div class="grid grid-cols-subgrid lg:col-start-1 lg:col-span-6 col-start-2 col-span-10 lg:row-start-4 row-start-4 bg-card rounded-lg p-2 ">
+					<h2 class="row-start-1 col-start-1 col-span-12 text-2xl font-bold text-left text-text">Fiche Evènement</h2>
 					<p class="row-start-2 col-start-1 col-span-12 text-text font-semibold text-left">Date début :
-						{{ evtActus.dateDebut|date("d/m/Y") }} à
+						{{ evtActus.dateDebut|date("d/m/Y") }}
+						à
 						{{ evtActus.heureDebut|date('H:i') }}</p>
 					<p class="row-start-3 col-start-1 col-span-12 text-text font-semibold text-left">Date fin :
-						{{ evtActus.dateFin|date("d/m/Y") }} à
+						{{ evtActus.dateFin|date("d/m/Y") }}
+						à
 						{{ evtActus.heureFin|date('H:i') }}</p>
 					<p class="row-start-4 col-start-1 col-span-12 text-text font-semibold text-left">Lieu :
 						{{ evtActus.lieu }}</p>
-										<a href="../asset/evenement/autorisation/{{ evtActus.autorisation }}" alt="autorisation evenment" class="text-left row-start-6 col-start-1 col-span-12 rounded-lg text-sky-600 underline font-semibold" target="_blank">Cliquez ici pour visionner le fichier PDF</a>
+					<a href="../asset/evenement/autorisation/{{ evtActus.autorisation }}" alt="autorisation evenment" class="text-left row-start-6 col-start-1 col-span-12 rounded-lg text-sky-600 underline font-semibold" target="_blank">Cliquez ici pour visionner le fichier PDF</a>
 
-			</div>
-
-			<div class="grid grid-cols-subgrid lg:col-start-7 lg:col-span-6 col-start-2 col-span-10 lg:row-start-3 row-start-4 bg-card  bg-opacity-55 rounded-lg p-2">
-				<h2 class="row-start-1 col-start-1 col-span-12 text-2xl font-bold text-left text-text">Fiche Responsable</h2>
-				<p class="row-start-2 col-start-1 col-span-12 text-text font-semibold text-left">Nom :
-					{{ evtActus.nomRep }}</p>
-				<p class="row-start-3 col-start-1 col-span-12 text-text font-semibold text-left">Prénom :
-					{{ evtActus.prenomRep }}</p>
-				<p class="row-start-4 col-start-1 col-span-12 text-text font-semibold text-left">Mail :
-					{{ evtActus.email }}</p>
-				<p class="row-start-5 col-start-1 col-span-12 text-text font-semibold text-left">Téléphone :
-					{{ evtActus.tel }}</p>
-			</div>
-		</div>
-
-
-
-		<!-- Section Commentaires -->
-		<div class="mt-8 p-4 text-tab rounded-lg bg-card">
-			<h2 class="text-2xl font-bold text-title mb-4">Commentaires</h2>
-
-			<!-- Exemples de commentaires -->
-			{% for commentaire in commentaires %}
-				<div class="mb-6">
-					<p class="font-semibold text-text">{{ commentaire.pseudo }}
-						:</p>
-					<p class="text-title">{{ commentaire.contenu }}</p>
-					<p class="text-gray-500 text-sm">{{ commentaire.datePubli|date("d/m/Y H:i") }}</p>
 				</div>
-			{% else %}
-				<p>Aucun commentaire pour cet événement.</p>
-			{% endfor %}
 
-			<!-- Formulaire pour ajouter un commentaire -->
-			<div class="mt-6">
-				<label for="commentaire" class="block text-lg font-bold text-title mb-4">Ajouter un commentaire :</label>
-				<form action="index.php?controlleur=evtActu&methode=ajouterCommentaire" method="POST">
-					<textarea id="commentaire" name="commentaire" rows="3" class="w-full p-3 border-2 rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#A23145]" required></textarea>
-					    <INPUT TYPE="hidden" NAME="nom" VALUE="{{evtActus.titre}}">
-						<INPUT TYPE="hidden" NAME="type" VALUE="{{ type }}"> 
-						<input type="hidden" name="id" value="{{ evtActus.evtId }}">
-					<!-- Passer l'ID de l'événement -->
-					<button type="submit" class="mt-4 px-6 py-2 text-white font-semibold rounded-lg bg-button">Envoyer</button>
-				</form>
+				<div class="grid grid-cols-subgrid lg:col-start-7 lg:col-span-6 col-start-2 col-span-10 lg:row-start-4 row-start-5 bg-card rounded-lg p-2">
+					<h2 class="row-start-1 col-start-1 col-span-12 text-2xl font-bold text-left text-text">Fiche Responsable</h2>
+					<p class="row-start-2 col-start-1 col-span-12 text-text font-semibold text-left">Nom :
+						{{ evtActus.nomRep }}</p>
+					<p class="row-start-3 col-start-1 col-span-12 text-text font-semibold text-left">Prénom :
+						{{ evtActus.prenomRep }}</p>
+					<p class="row-start-4 col-start-1 col-span-12 text-text font-semibold text-left">Mail :
+						{{ evtActus.email }}</p>
+					<p class="row-start-5 col-start-1 col-span-12 text-text font-semibold text-left">Téléphone :
+						{{ evtActus.tel }}</p>
+				</div>
 			</div>
 
-			    {% if type == 'Evenements' %} 
+			<!-- Section Commentaires -->
+			<div class="mt-8 p-4 text-tab rounded-lg bg-card w-full">
+				<h2 class="text-2xl font-bold text-title mb-4">Commentaires</h2>
 
-				{% if evtActus.nbPlaces != null and evtActus.nbPlaces > 0 %}
-				<p class="text-title">Il reste <b>{{ evtActus.nbPLaces }}</b> places disponibles.</p>
-				{% if estInscrit == false and user.role == 'user' %}
-						<form method="POST" action="index.php?controlleur=evtActu&methode=inscrire">
-							<INPUT TYPE="hidden" NAME="nom" VALUE="{{evtActus.titre}}">
-							<INPUT TYPE="hidden" NAME="type" VALUE="{{ type }}"> 
-							<input type="hidden" name="id" value="{{ evtActus.evtId }}">
-							<button type="submit" class="mt-4 px-6 py-2 bg-principal text-white font-semibold rounded-lg bg-button">S'inscrire</button>
-						</form>
-					{% endif %}
-				{% endif %}
-					{% if estInscrit == true %}
-						
-						<h2 class="font-bold text-lg p-2 text-title">Vous êtes déjà inscrit !</h2>
+				<!-- Exemples de commentaires -->
+				{% for commentaire in commentaires %}
+					<div class="mb-6">
+						<p class="font-semibold text-text">{{ commentaire.pseudo }}
+							:</p>
+						<p class="text-title">{{ commentaire.contenu }}</p>
+						<p class="text-gray-500 text-sm">{{ commentaire.datePubli|date("d/m/Y H:i") }}</p>
+					</div>
+				{% else %}
+					<p>Aucun commentaire pour cet événement.</p>
+				{% endfor %}
 
-						<form method="POST" action="index.php?controlleur=evtActu&methode=desinscrire">
-							<INPUT TYPE="hidden" NAME="nom" VALUE="{{evtActus.titre}}">
-							<INPUT TYPE="hidden" NAME="type" VALUE="{{ type }}">             
-							<input type="hidden" name="id" value="{{ evtActus.evtId }}">
-							<button type="submit" class="mt-4 px-6 py-2 bg-principal text-white font-semibold rounded-lg bg-button">Se désinscrire</button>
-						</form>
-					{% endif %}
-				{% endif %}
+				<!-- Formulaire pour ajouter un commentaire -->
+				<div class="mt-6">
+					<label for="commentaire" class="block text-lg font-bold text-title mb-4">Ajouter un commentaire :</label>
+					<form action="index.php?controlleur=evtActu&methode=ajouterCommentaire" method="POST">
+						<textarea id="commentaire" name="commentaire" rows="3" class="w-full p-3 border-2 rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#A23145]" required></textarea>
+						<INPUT type="hidden" name="nom" value="{{evtActus.titre}}">
+						<INPUT type="hidden" name="type" value="{{ type }}">
+						<input
+						type="hidden" name="id" value="{{ evtActus.evtId }}">
+						<!-- Passer l'ID de l'événement -->
+						<button type="submit" class="mt-4 px-6 py-2 text-white font-semibold rounded-lg bg-button">Envoyer</button>
+					</form>
+				</div>
+			</div>
 		</div>
-	</div>
 
-{% endif %}
+	{% endif %}
 
 
-{% if type == 'Actualites' %}
-    <!-- Contenu spécifique de l'actualité -->
-    <div class="pt-2">
-        <div class="gap-2 p-2 grid grid-cols-12 items-center  rounded-lg">
-            <!-- titre de l'article -->
-            <h2 class="row-start-1 col-span-12 bg-fh text-tbutton py-6 text-center lg:text-4xl text-lg font-bold rounded-t-2xl">{{ evtActus.titre }}</h2>
+	{% if type == 'Actualites' %}
+		<!-- Contenu spécifique de l'actualité -->
+		<div class="pt-2">
+			<div
+				class="gap-2 p-2 grid grid-cols-12 items-center  rounded-lg">
+				<!-- titre de l'article -->
+				<h2 class="row-start-1 col-span-12 bg-fh text-tbutton py-6 text-center lg:text-4xl text-lg font-bold rounded-t-2xl">{{ evtActus.titre }}</h2>
 
-            <!-- résumé de l'article -->
-            <p class="text-center col-span-12 text-text font-bold text-sm lg:text-lg text-left mb-4 break-words col-start-1 row-start-2 px-4">
-                {{ evtActus.resume }}
-            </p>
+				<!-- résumé de l'article -->
+				<p class="text-center col-span-12 text-text font-bold text-sm lg:text-lg text-left mb-4 break-words col-start-1 row-start-2 px-4">
+					{{ evtActus.resume }}
+				</p>
 
-            <!-- contenu -->
-            <div class="grid grid-cols-subgrid row-start-3 col-start-1 col-span-12 px-4">
-                <!-- image de l'article -->
-                <img src="../asset/actualite/{{ evtActus.img }}" alt="Image de l'article" class="col-start-1 lg:col-start-3 col-span-12 row-start-1 lg:col-span-8 rounded-lg mb-4 w-full">
-                <!-- contenu de l'article -->
-                <p class="col-start-1 row-start-2 col-span-12 text-text  text-sm lg:text-base break-words">
-                    {{ evtActus.contenu }}
-                </p>
-            </div>
+				<!-- contenu -->
+				<div
+					class="grid grid-cols-subgrid row-start-3 col-start-1 col-span-12 px-4">
+					<!-- image de l'article -->
+					<img
+					src="../asset/actualite/{{ evtActus.img }}" alt="Image de l'article" class="col-start-1 lg:col-start-3 col-span-12 row-start-1 lg:col-span-8 rounded-lg mb-4 w-full">
+					<!-- contenu de l'article -->
+					<p class="col-start-1 row-start-2 col-span-12 text-text  text-sm lg:text-base break-words">
+						{{ evtActus.contenu }}
+					</p>
+				</div>
+			</div>
 		</div>
-    </div>
-				
+
 		<!-- Section Commentaires -->
 		<div class="mt-8 p-4 text-tab rounded-lg bg-card">
 			<h2 class="text-2xl font-bold text-title mb-4">Commentaires</h2>
@@ -147,18 +154,20 @@
 				<label for="commentaire" class="block text-lg font-bold text-title mb-4">Ajouter un commentaire :</label>
 				<form action="index.php?controlleur=evtActu&methode=ajouterCommentaire" method="POST">
 					<textarea id="commentaire" name="commentaire" rows="3" class="w-full p-3 border-2 rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#A23145]" required></textarea>
-					    <INPUT TYPE="hidden" NAME="nom" VALUE="{{evtActus.titre}}">
-						<INPUT TYPE="hidden" NAME="type" VALUE="{{ type }}"> 
-						<input type="hidden" name="id" value="{{ evtActus.actuId }}">
+					<INPUT type="hidden" name="nom" value="{{evtActus.titre}}">
+					<INPUT type="hidden" name="type" value="{{ type }}">
+					<input
+					type="hidden" name="id" value="{{ evtActus.actuId }}">
 					<!-- Passer l'ID de l'événement -->
 					<button type="submit" class="mt-4 px-6 py-2 text-white font-semibold rounded-lg bg-button">Envoyer</button>
 				</form>
 			</div>
 
-        </div>
-{% endif %}                                                                                                         
+		</div>
+	{% endif %}
 
 {% endblock %}
 {% block script %}
-<script src="../js/caroussel.js"></script>
+	<script src="../js/caroussel.js"></script>
 {% endblock %}
+

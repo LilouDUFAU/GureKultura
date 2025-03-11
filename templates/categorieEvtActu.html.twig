@@ -2,12 +2,10 @@
 
 {% block content %}
 <!-- Contenu spécifique de chaque page -->
-<div>
-    <div class="gap-2 p-2 grid grid-cols-12 items-center">
-        
-        <h2 class="row-start-1 col-start-2 col-span-10 text-2xl lg:text-4xl font-semibold text-center text-title uppercase lg:font-extrabold">{{ title }} - {{ type }}</h2>
+<div class="gap-2 p-2 grid grid-cols-12 items-center">
+        <h1 class="row-start-1 col-start-1 col-span-12 text-title lg:font-extrabold font-bold lg:text-4xl text-3xl bg-carousel rounded-2xl p-4 mt-12">{{ title }} - {{ type }}</h1>
         {% if evtActusEnCours is not empty %}
-            <h3 class="row-span-2 bg-form col-span-12 text-title font-bold text-3xl text-left">{{ type }} en cours</h3>
+            <h3 class="row-span-2 bg-form col-span-12 text-title font-semibold lg:font-bold lg:text-3xl text-2xl text-left px-4">{{ type }} en cours</h3>
 
             <div id="carousel1" class="row-span-3 col-span-12 relative w-full overflow-hidden mx-auto bg-carousel opacity-75 rounded-lg" data-slides-default="1" data-slides-mobile="1">
                 <!-- Conteneur du carrousel -->
@@ -42,16 +40,16 @@
         {% endif %}
         {% if evtActusEnCours is empty %}
             {% if type == 'Evenements' %}
-                <h3 class="row-span-2 col-span-12 text-title font-bold text-3xl text-left p-6">Aucun {{ type }} en cours</h3>
+                <h3 class="row-span-2 col-span-12 text-title font-semibold lg:font-bold lg:text-3xl text-2xl text-left px-4">Aucun {{ type }} en cours</h3>
             {% endif %}
             {% if type == 'Actualites' %}
-                <h3 class="row-span-2 col-span-12 text-title font-bold text-3xl text-left p-6">Aucune {{ type }} en cours</h3>
+                <h3 class="row-span-2 col-span-12 text-title font-semibold lg:font-bold lg:text-3xl text-2xl text-left px-4">Aucune {{ type }} en cours</h3>
             {% endif %}
         {% endif %}
 
 
         {% if evtActusASuivre is not empty %}
-            <h3 class="row-span-4 col-span-12 text-title font-bold text-3xl text-left">{{ type }} à venir</h3>
+            <h3 class="row-span-4 col-span-12 text-title font-semibold lg:font-bold lg:text-3xl text-2xl text-left px-4">{{ type }} à venir</h3>
 
             <div id="carousel2" class="row-span-6 col-span-12 relative w-full overflow-hidden mx-auto bg-carousel opacity-75 rounded-lg" data-slides-default="1" data-slides-mobile="1">
                 <!-- Conteneur du carrousel -->
@@ -86,16 +84,16 @@
         {% endif %}
         {% if evtActusASuivre is empty %}
             {% if type == 'Evenements' %}
-                <h3 class="row-span-2 col-span-12 text-title font-bold text-3xl text-left p-6">Aucun {{ type }} à venir</h3>
+                <h3 class="row-span-2 col-span-12 text-title font-semibold lg:font-bold lg:text-3xl text-2xl text-left px-4">Aucun {{ type }} à venir</h3>
             {% endif %}
             {% if type == 'Actualites' %}
-                <h3 class="row-span-2 col-span-12 text-title font-bold text-3xl text-left p-6">Aucune {{ type }} à venir</h3>
+                <h3 class="row-span-2 col-span-12 text-title font-semibold lg:font-bold lg:text-3xl text-2xl text-left px-4">Aucune {{ type }} à venir</h3>
             {% endif %}
         {% endif %}
 
 
         {% if evtActusPasser is not empty %}
-            <h3 class="row-span-5 col-span-12 text-title font-bold text-3xl text-left">{{ type }} passée</h3>
+            <h3 class="row-span-5 col-span-12 text-title font-semibold lg:font-bold lg:text-3xl text-2xl text-left px-4">{{ type }} passée</h3>
             
             <div id="carousel3" class="row-span-6 col-span-12 relative w-full overflow-hidden mx-auto bg-carousel opacity-75 rounded-lg" data-slides-default="1" data-slides-mobile="1">
                 <!-- Conteneur du carrousel -->
@@ -130,14 +128,12 @@
         {% endif %}
         {% if evtActusPasser is empty %}
             {% if type == 'Evenements' %}
-                <h3 class="row-span-2 col-span-12 text-title font-bold text-3xl text-left p-6">Aucun {{ type }} passé</h3>
+                <h3 class="row-span-2 col-span-12 text-title font-semibold lg:font-bold lg:text-3xl text-2xl text-left px-4">Aucun {{ type }} passé</h3>
             {% endif %}
             {% if type == 'Actualites' %}
-                <h3 class="row-span-2 col-span-12 text-title font-bold text-3xl text-left p-6">Aucune {{ type }} passée</h3>
+                <h3 class="row-span-2 col-span-12 text-title font-semibold lg:font-bold lg:text-3xl text-2xl text-left px-4">Aucune {{ type }} passée</h3>
             {% endif %}
         {% endif %}
-
-    </div>
 </div>
 <script src="../js/caroussel.js"></script>
 {% endblock %}

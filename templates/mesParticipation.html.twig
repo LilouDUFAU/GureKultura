@@ -8,41 +8,41 @@
     
 
         {# En-tête du tableau #}
-        <div class="col-span-12 grid grid-cols-12 mt-5 bg-tabtitle text-title text-sm lg:text-base p-2 font-semibold">
-            <div class="row-start-1 col-start-1 col-span-3 p-2 break-words">Nom</div>
-            <div class="row-start-1 col-start-4 col-span-2 p-2 hidden lg:block break-words">Date</div>
-            <div class="row-start-1 col-start-4 col-span-3 lg:col-start-7 lg:col-span-3 p-2 hidden md:block break-words">Lieu</div>
-            <div class="row-start-1 col-start-4 col-span-3 md:col-start-7 md:col-span-4 lg:col-start-10 lg:col-span-2 p-2 break-words">Aperçu</div>
-            <div class="row-start-1 col-start-9 col-span-4 lg:col-start-11 lg:col-span-2 p-2 break-words">Inscription</div>
+        <div class="col-span-12 grid grid-cols-12 mt-5 bg-tabtitle text-title text-sm lg:text-base p-1 font-semibold">
+            <div class="row-start-1 col-start-1 col-span-4 md:col-span-3 p-1 break-words">Nom</div>
+            <div class="row-start-1 col-start-4 col-span-2 p-1 hidden lg:block break-words text-center">Date</div>
+            <div class="row-start-1 col-start-4 col-span-3 lg:col-start-7 lg:col-span-3 p-1 hidden md:block break-words text-center">Lieu</div>
+            <div class="row-start-1 col-start-5 col-span-3 md:col-start-7 md:col-span-4 lg:col-start-10 lg:col-span-2 p-1 break-words text-center">Aperçu</div>
+            <div class="row-start-1 col-start-9 col-span-4 lg:col-start-11 lg:col-span-2 p-1 break-words text-center">Inscription</div>
         </div>
 
         <div>
         {# Contenu dynamique #}
         {% for evenement in evenements %}
             <div class="col-span-12 grid grid-cols-12 odd:bg-odd even:bg-even">
-                <div class="row-start-1 col-start-1 col-span-3 p-2 break-words">{{ evenement.titre }}</div>
-                <div class="row-start-1 col-start-4 col-span-2 p-2 hidden lg:block break-words">{{ evtActus.dateDebut|date("d/m/Y") }} <br> -
+                <div class="row-start-1 col-start-1 col-span-4 md:col-span-3 p-1 break-words">{{ evenement.titre }}</div>
+                <div class="row-start-1 col-start-4 col-span-2 p-1 hidden lg:block break-words text-center">{{ evtActus.dateDebut|date("d/m/Y") }} -
 						{{ evtActus.heureDebut|date('H:i') }}</div>
-                <div class="row-start-1 col-start-4 col-span-3 lg:col-start-7 lg:col-span-3 p-2 hidden md:block break-words">{{ evenement.lieu }}</div>
+                <div class="row-start-1 col-start-4 col-span-3 lg:col-start-7 lg:col-span-3 p-1 hidden md:block break-words text-center">{{ evenement.lieu }}</div>
                 {# visualisation #}
-                <div class="row-start-1 col-start-4 col-span-3 md:col-start-7 md:col-span-4 lg:col-start-10 lg:col-span-2 p-2">
+                <div class="row-start-1 col-start-5 col-span-3 md:col-start-7 md:col-span-4 lg:col-start-10 lg:col-span-2 p-1 break-words flex items-center justify-center">
                     <form action="index.php?controlleur=evtActu&methode=lister" method="post">
                         <input type="hidden" name="id" value="{{ evenement.evtId }}">
                         <input type="hidden" name="nom" value="{{ evenement.nom }}">
                         <input type="hidden" name="type" value="Evenements">
-                        <button type="submit" class="flex items-center space-x-1 lg:space-x-2 bg-button hover:bg-hbutton text-tbutton px-2 lg:px-4 py-2 rounded-lg">
+                        <button type="submit" class="flex items-center space-x-1 lg:space-x-2 bg-button hover:bg-hbutton text-tbutton px-2 py-1 lg:px-4 lg:py-2 rounded-lg">
                             <img src="../asset/icones/eye.svg" alt="Visualiser" class="h-5 w-5">
                             <span>Voir</span>
                         </button>
                     </form>
                 </div>
                 {# actions #}
-                <div class="row-start-1 col-start-9 col-span-4 lg:col-start-11 lg:col-span-2 p-2">
+                <div class="row-start-1 col-start-9 col-span-4 lg:col-start-11 lg:col-span-2 p-1 break-words flex justify-center items-center">
                     <form action="index.php?controlleur=mesParticipation&methode=desinscrire" method="post">
                         <INPUT TYPE="hidden" NAME="nom" VALUE="{{evenement.titre}}">
                         <INPUT TYPE="hidden" NAME="type" VALUE="Evenements"> 
                         <input type="hidden" name="evtId" value="{{ evenement.evtId }}">
-                        <button type="submit" class="flex items-center space-x-2 bg-button hover:bg-hbutton text-tbutton px-4 py-2 rounded-lg">
+                        <button type="submit" class="flex items-center space-x-1 lg:space-x-2 bg-button hover:bg-hbutton text-tbutton px-2 py-1 lg:px-4 lg:py-2 rounded-lg">
                             <span>Se désinscrire</span>
                         </button>
                     </form>

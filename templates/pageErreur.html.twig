@@ -1,8 +1,9 @@
 {% extends "base.html.twig" %}
 
 {% block content %}
-    <section class="flex flex-col items-center">
-        <h1 class="text-4xl font-bold text-red-600 p-8">Oups ! Une erreur est survenue.</h1>
+    <section class="flex flex-col items-center justify-center">
+        <h1 class="text-4xl font-bold text-red-600 text-center">Oups ! Une erreur interne est survenue.</h1>
+        <p class="text-lg  text-red-600 text-center pb-8">Nous sommes désolés pour la gêne occasionnée, un message a été envoyé aux développeurs afin de remédier à l'erreur.</p>
         <a href="index.php?controlleur=index&methode=lister" class="px-4 py-2 bg-button hover:bg-hbutton text-white rounded-lg text-center">Retourner à l'accueil</a>
     </section>
 {% endblock %}

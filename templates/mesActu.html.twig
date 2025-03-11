@@ -7,24 +7,24 @@
     </h1>
 
     <!-- En-tête -->
-    <div class="grid grid-cols-12 gap-2 mt-5 bg-tabtitle text-title text-sm lg:text-base p-2 font-semibold">
-        <div class="row-start-1 col-start-1 col-span-2 break-words">Titre</div>
-        <div class="row-start-1 col-start-3 col-span-5 hidden lg:block break-words">Résumé</div>
-        <div class="row-start-1 lg:col-start-8 lg:col-span-2 col-start-3 col-span-3 break-words">Date publication</div>
-        <div class="row-start-1 lg:col-start-10 lg:col-span-2 col-start-7 col-span-3 break-words">Aperçu</div>
-        <div class="row-start-1 lg:col-start-12 lg:col-span-1 col-start-10 col-span-3 break-words">Actions</div>
+    <div class="grid grid-cols-12 gap-1 mt-5 bg-tabtitle text-title text-sm lg:text-base p-1 font-semibold">
+        <div class="row-start-1 col-start-1 lg:col-span-2 col-span-4 break-words">Titre</div>
+        <div class="row-start-1 col-start-3 col-span-5 hidden lg:block break-words text-center">Résumé</div>
+        <div class="row-start-1 col-start-8 lg:block col-span-2 hidden break-words text-center">Date publication</div>
+        <div class="row-start-1 lg:col-start-10 lg:col-span-2 col-start-5 col-span-4 break-words text-center">Aperçu</div>
+        <div class="row-start-1 lg:col-start-12 lg:col-span-1 col-start-9 col-span-4 break-words text-center">Actions</div>
     </div>
 
     <!-- Données -->
     <div>
         {% for actualite in actualites %}
-        <div class="grid grid-cols-12 gap-2 p-3 odd:bg-odd even:bg-even items-center text-text">
-            <div class="row-start-1 col-start-1 col-span-2 break-words">{{ actualite.titre }}</div>
-            <div class="row-start-1 col-start-3 col-span-5 hidden lg:block break-words">{{ actualite.resume }}</div>
-            <div class="row-start-1 lg:col-start-8 lg:col-span-2 col-start-3 col-span-3 break-words">{{ actualite.datePubli }}</div>
+        <div class="grid grid-cols-12 gap-1 p-3 odd:bg-odd even:bg-even items-center text-text">
+            <div class="row-start-1 col-start-1 lg:col-span-2 col-span-4 break-words">{{ actualite.titre }}</div>
+            <div class="row-start-1 col-start-3 col-span-5 hidden lg:block break-words text-center">{{ actualite.resume }}</div>
+            <div class="rrow-start-1 col-start-8 lg:block col-span-2 hidden break-words text-center">{{ actualite.datePubli }}</div>
 
             <!-- VISUALISATION -->
-            <div class="row-start-1 lg:col-start-10 lg:col-span-2 p-2 flex items-center col-start-7 col-span-3">
+            <div class="row-start-1 lg:col-start-10 lg:col-span-2 col-start-5 col-span-4 break-words flex items-center justify-center">
                 <form action="index.php?controlleur=evtActu&methode=lister" method="post">
                     <input type="hidden" name="id" value="{{ actualite.actuId }}">
                     <input type="hidden" name="nom" value="{{ actualite.titre }}">
@@ -37,7 +37,7 @@
             </div>
 
             <!-- ACTIONS -->
-            <div class="row-start-1 lg:col-start-12 lg:col-span-1 p-2 flex flex-col lg:flex-row lg:space-x-4 items-center col-start-10 col-span-3">
+            <div class="row-start-1 lg:col-start-12 lg:col-span-1 col-start-9 col-span-4 break-words flex flex-col lg:flex-row lg:space-x-4 items-center">
                 <!-- Modification -->
                 <form action="index.php?controlleur=modifActu&methode=lister" method="post">
                     <input type="hidden" name="actuId" value="{{ actualite.actuId }}">
