@@ -58,12 +58,7 @@
 
 							<h2 class="font-bold lg:text-lg text-base p-2 text-title text-center">Vous êtes déjà inscrit !</h2>
 
-							<form class="flex items-center justify-center" method="POST" action="index.php?controlleur=evtActu&methode=desinscrire">
-								<INPUT type="hidden" name="nom" value="{{evtActus.titre}}">
-								<INPUT type="hidden" name="type" value="{{ type }}">
-								<input type="hidden" name="id" value="{{ evtActus.evtId }}">
-								<button type="submit" class="mt-4 px-6 py-2 bg-principal text-white font-semibold rounded-lg bg-button">Se désinscrire</button>
-							</form>
+							<button onclick="openPopup('sauvegardePopup');" class="mt-4 px-6 py-2 bg-principal text-white font-semibold rounded-lg bg-button">Se désinscrire</button>
 						{% endif %}
 						{% if estInscrit == true and user.role == 'moderateur' %}
 							<h2 class="font-bold lg:text-lg text-base p-2 text-title text-center">Vous êtes déjà inscrit !</h2>
@@ -195,6 +190,29 @@
 
 		</div>
 	{% endif %}
+
+	<div id="sauvegardePopup" class="fixed flex inset-0 items-center justify-center bg-black bg-opacity-50 hidden">
+		<div class="bg-white p-6 rounded-lg shadow-lg w-96 text-center">
+			<h2 class="text-lg font-bold mb-4">Êtes-vous sure de vouloir vous désinscrire de cet événement ?</h2>
+			<form class="flex items-center justify-center" method="POST" action="index.php?controlleur=evtActu&methode=desinscrire">
+				<INPUT type="hidden" name="nom" value="{{evtActus.titre}}">
+				<INPUT type="hidden" name="type" value="{{ type }}">
+				<input type="hidden" name="id" value="{{ evtActus.evtId }}">
+				<button type="submit" class="mt-4 px-6 py-2 bg-principal text-white font-semibold rounded-lg bg-button">Se désinscrire</button>
+			</form>
+			<button onclick="closePopup('sauvegardePopup')" class="mt-4 text-sm text-gray-500 underline">Annuler</button>
+		</div>
+	</div>
+
+	<script>
+		function openPopup(popupId) {
+			document.getElementById(popupId).classList.remove('hidden');
+		}
+
+		function closePopup(popupId) {
+			document.getElementById(popupId).classList.add('hidden');
+		}
+	</script>
 
 {% endblock %}
 {% block script %}
