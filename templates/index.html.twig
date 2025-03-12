@@ -10,10 +10,10 @@
 
 			<div id="carouselActu" class="row-span-3 col-span-12 relative w-full overflow-hidden mx-auto bg-carousel rounded-lg mb-10" data-slides-default="1" data-slides-mobile="1">
             <!-- Conteneur du carrousel -->
-				<div id="carouselActu" class="carousel flex transition-transform duration-500 ease-out gap-2 p-2 auto-rows-auto">
+				<div id="carouselActu" class="carousel flex transition-transform duration-500 ease-out gap-6 p-4 auto-rows-auto">
 					<!-- Diapositives -->
 					{% for actualite in actualites %}
-						<div style="background-image: url('../asset/actualite/{{ actualite.img }}')" class="bg-cover bg-no-repeat slide md:w-1/3 w-full flex-shrink-0 text-principal-rouge text-center py-16 rounded-lg relative">
+						<div style="background-image: url('../asset/actualite/{{ actualite.img }}')" class="bg-cover bg-no-repeat slide md:w-1/3 w-full flex-shrink-0 text-principal-rouge text-center gap-8 py-20 rounded-lg relative">
 							<FORM ACTION="index.php?controlleur=evtActu&methode=lister" METHOD="POST">
 								<INPUT type="hidden" name="nom" value="{{actualite.titre}}">
 								<INPUT type="hidden" name="id" value={{actualite.ActuId}}>
@@ -29,10 +29,10 @@
         	</div>
 
 			{# titre de la page #}
-			<h2 class="col-span-12 text-title lg:font-extrabold lg:text-4xl text-2xl text-center rounded-2xl p-4 font-semibold uppercase">Événements du moment</h2>
+			<h2 class="col-span-12 text-title lg:font-extrabold lg:text-4xl text-2xl text-center rounded-2xl p-4 font-semibold uppercase pt-20">Événements du moment</h2>
 
 			{# carte evenement #}
-			<div class="col-span-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
+			<div class="col-span-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">
 				{# afficher les evenements que si is_valid est true #}
 				{% for event in events %}
 					{% if event.isValide == true and (event.nomCategorie in filtresSession or filtresSession[0] == "") %}
